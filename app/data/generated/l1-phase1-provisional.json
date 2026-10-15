@@ -1,0 +1,957 @@
+{
+  "schemaVersion": "unibench.dashboard.l1-phase1-provisional.v3",
+  "bundleVersion": "cosmos3-nano-l1-phase1-provisional-item-evidence-20260905-v4",
+  "generatedAt": "2026-09-05T15:00:00+08:00",
+  "run": {
+    "id": "l1-all-metrics-cosmos3-native-phase1-provisional-12episodes-20260902-v1",
+    "status": "PASS",
+    "testedModel": "nvidia/Cosmos3-Nano",
+    "predictionCount": 1070,
+    "predictionSha256": "2b2c5ca43c58b9151a2b74eb609bee36b7b63aeef6fd9f240403b888f6a110e3",
+    "contractVersion": "benchmark2027-cosmos3-native-l1-all-metrics-v0.2",
+    "resultTier": "provisional",
+    "publishScope": "internal_development_only",
+    "humanGtReview": "not_started",
+    "judgeModel": "Qwen/Qwen3-VL-8B-Instruct",
+    "judgeHumanCalibration": "waived_for_provisional_run",
+    "generalizationScope": "12_episode_stack_bowls_development_pilot_only",
+    "crossLayerTotal": "forbidden"
+  },
+  "coverage": {
+    "membershipCount": 2815,
+    "nonNotApplicableMembershipCount": 2807,
+    "scoreBearingMembershipCount": 2793,
+    "scoreBearingFraction": 0.9950124688279302,
+    "metricCount": 29,
+    "numericMetricCount": 26,
+    "terminalCounts": {
+      "contract_pending": 14,
+      "not_applicable": 8,
+      "scored": 2514,
+      "scored_provisional_gt": 160,
+      "scored_provisional_judge": 119
+    },
+    "infrastructureFailureCount": 0
+  },
+  "layers": {
+    "L1-A": {
+      "metricCount": 8,
+      "numericMetricCount": 8,
+      "pendingMetricCount": 0
+    },
+    "L1-B": {
+      "metricCount": 5,
+      "numericMetricCount": 5,
+      "pendingMetricCount": 0
+    },
+    "L1-C": {
+      "metricCount": 11,
+      "numericMetricCount": 11,
+      "pendingMetricCount": 0
+    },
+    "L1-D": {
+      "metricCount": 5,
+      "numericMetricCount": 2,
+      "pendingMetricCount": 3
+    }
+  },
+  "metrics": [
+    {
+      "metricId": "l1a.object_state_f1",
+      "layer": "L1-A",
+      "score": 84.74771019717289,
+      "rawScore": 0.847477101971729,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.llm_alignment",
+      "layer": "L1-A",
+      "score": 15.36358585858586,
+      "rawScore": 0.1536358585858586,
+      "state": "scored_provisional_judge",
+      "scoreTier": "provisional_judge_uncalibrated",
+      "lane": "judge",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored_provisional_judge": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.text_spatial_f1",
+      "layer": "L1-A",
+      "score": 13.437861095907072,
+      "rawScore": 0.13437861095907072,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.mra",
+      "layer": "L1-A",
+      "score": 0,
+      "rawScore": 0,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.roa",
+      "layer": "L1-A",
+      "score": 54.81060606060606,
+      "rawScore": 0.5481060606060606,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.refspatial",
+      "layer": "L1-A",
+      "score": 65.66096184517237,
+      "rawScore": 0.6566096184517237,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 574,
+      "membershipN": 574,
+      "terminalCounts": {
+        "scored": 574
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.direct",
+      "layer": "L1-A",
+      "score": 76.72099537889014,
+      "rawScore": 0.7672099537889013,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 574,
+      "membershipN": 574,
+      "terminalCounts": {
+        "scored": 574
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1a.pio_s1",
+      "layer": "L1-A",
+      "score": 72.76478507069065,
+      "rawScore": 0.7276478507069065,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 574,
+      "membershipN": 574,
+      "terminalCounts": {
+        "scored": 574
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1b.situational",
+      "layer": "L1-B",
+      "score": 66.66666666666666,
+      "rawScore": 0.6666666666666666,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 21,
+      "membershipN": 21,
+      "terminalCounts": {
+        "scored": 21
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1b.area_hit_ratio",
+      "layer": "L1-B",
+      "score": 40,
+      "rawScore": 0.4,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 19,
+      "membershipN": 19,
+      "terminalCounts": {
+        "scored_provisional_gt": 19
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1b.affordance_similarity",
+      "layer": "L1-B",
+      "score": 95.66683009715481,
+      "rawScore": 0.9566683009715481,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 19,
+      "membershipN": 19,
+      "terminalCounts": {
+        "scored_provisional_gt": 19
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1b.pio_s2",
+      "layer": "L1-B",
+      "score": 9.151533227581313,
+      "rawScore": 0.09151533227581313,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 19,
+      "membershipN": 19,
+      "terminalCounts": {
+        "scored_provisional_gt": 19
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1b.affordance_ap",
+      "layer": "L1-B",
+      "score": 2.272727272727273,
+      "rawScore": 0.022727272727272728,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 19,
+      "membershipN": 19,
+      "terminalCounts": {
+        "scored_provisional_gt": 19
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.stage_accuracy",
+      "layer": "L1-C",
+      "score": 49.8989898989899,
+      "rawScore": 0.49898989898989904,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.next_subgoal_accuracy",
+      "layer": "L1-C",
+      "score": 38.93939393939394,
+      "rawScore": 0.38939393939393935,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.stage_macro_f1",
+      "layer": "L1-C",
+      "score": 23.16557322361837,
+      "rawScore": 0.23165573223618371,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 107,
+      "membershipN": 107,
+      "terminalCounts": {
+        "scored": 107
+      },
+      "aggregationProfile": "blueprint_weighted_explicit_class_macro_f1"
+    },
+    {
+      "metricId": "l1c.plan_step_f1",
+      "layer": "L1-C",
+      "score": 0,
+      "rawScore": 0,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.plan_edit_similarity",
+      "layer": "L1-C",
+      "score": 0,
+      "rawScore": 0,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.dependency_f1",
+      "layer": "L1-C",
+      "score": 0,
+      "rawScore": 0,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.bleu1",
+      "layer": "L1-C",
+      "score": 22.845359448655252,
+      "rawScore": 0.22845359448655253,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.bleu2",
+      "layer": "L1-C",
+      "score": 6.272487712280607,
+      "rawScore": 0.06272487712280607,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.bleu3",
+      "layer": "L1-C",
+      "score": 0,
+      "rawScore": 0,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.bleu4",
+      "layer": "L1-C",
+      "score": 0,
+      "rawScore": 0,
+      "state": "scored_provisional_gt",
+      "scoreTier": "provisional_gt_not_human_signed_off",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_gt": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1c.planning_llm_alignment",
+      "layer": "L1-C",
+      "score": 79.16666666666666,
+      "rawScore": 0.7916666666666666,
+      "state": "scored_provisional_judge",
+      "scoreTier": "provisional_judge_uncalibrated",
+      "lane": "judge",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored_provisional_judge": 12
+      },
+      "aggregationProfile": "canonical_sample_then_blueprint_macro"
+    },
+    {
+      "metricId": "l1d.failure_occurrence_macro_f1",
+      "layer": "L1-D",
+      "score": 41.25874125874126,
+      "rawScore": 0.4125874125874126,
+      "state": "scored",
+      "scoreTier": "frozen_deterministic",
+      "lane": "deterministic",
+      "scoreBearingN": 12,
+      "membershipN": 12,
+      "terminalCounts": {
+        "scored": 12
+      },
+      "aggregationProfile": "blueprint_weighted_explicit_class_macro_f1"
+    },
+    {
+      "metricId": "l1d.failure_type_macro_f1",
+      "layer": "L1-D",
+      "score": 9.090909090909092,
+      "rawScore": 0.09090909090909091,
+      "state": "scored_with_contract_pending",
+      "scoreTier": "frozen_deterministic_with_contract_pending",
+      "lane": "deterministic",
+      "scoreBearingN": 10,
+      "membershipN": 12,
+      "terminalCounts": {
+        "contract_pending": 2,
+        "scored": 10
+      },
+      "aggregationProfile": "blueprint_weighted_explicit_class_macro_f1"
+    },
+    {
+      "metricId": "l1d.failure_onset_similarity",
+      "layer": "L1-D",
+      "score": null,
+      "rawScore": null,
+      "state": "contract_pending",
+      "scoreTier": "contract_pending",
+      "lane": "deterministic",
+      "scoreBearingN": 0,
+      "membershipN": 12,
+      "terminalCounts": {
+        "contract_pending": 4,
+        "not_applicable": 8
+      },
+      "aggregationProfile": null
+    },
+    {
+      "metricId": "l1d.recovery_subgoal_accuracy",
+      "layer": "L1-D",
+      "score": null,
+      "rawScore": null,
+      "state": "contract_pending",
+      "scoreTier": "contract_pending",
+      "lane": "deterministic",
+      "scoreBearingN": 0,
+      "membershipN": 4,
+      "terminalCounts": {
+        "contract_pending": 4
+      },
+      "aggregationProfile": null
+    },
+    {
+      "metricId": "l1d.recovery_plan_score",
+      "layer": "L1-D",
+      "score": null,
+      "rawScore": null,
+      "state": "contract_pending",
+      "scoreTier": "contract_pending",
+      "lane": "deterministic",
+      "scoreBearingN": 0,
+      "membershipN": 4,
+      "terminalCounts": {
+        "contract_pending": 4
+      },
+      "aggregationProfile": null
+    }
+  ],
+  "examples": [
+    {
+      "canonicalSampleId": "0970d026706a3a8ed108e64410798032eeb2f4d586569e21c460d1e151f00608",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Identify the visible bowls, their task-relevant states, and their relations.",
+      "queryType": "scene_graph",
+      "promptFamily": "scene_graph",
+      "camera": "cam_head",
+      "frameIndices": [
+        213
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/384cb762c5cc902d9d38e9d100511e2ed27dd7185949e7cc59a5c45eb94167d8.png",
+          "sha256": "384cb762c5cc902d9d38e9d100511e2ed27dd7185949e7cc59a5c45eb94167d8",
+          "frameIndex": 213
+        }
+      ],
+      "metricMemberships": [
+        "l1a.object_state_f1",
+        "l1a.llm_alignment",
+        "l1a.text_spatial_f1"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "1dbd4605e1dabdc7f22ade3ce056dc19bfc6f18c7e402e4e79d1384cd7dc3bff",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "5bdc4ae7cb2f5a7338cf42b7ad1ec5dd4954b749bc7a1009cc89bb5a4ddc8694",
+      "seed": 19,
+      "split": "diagnostic_failure",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Does this episode show a task failure? If so, identify its type and first visually observable onset frame.",
+      "queryType": "failure",
+      "promptFamily": "failure_diagnosis",
+      "camera": "cam_head",
+      "frameIndices": [
+        0,
+        9,
+        18,
+        27,
+        37,
+        46,
+        55,
+        65
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/e64ba72560309d6fe679e2781b8eae743b90bbb286b52e3dfffffeb740041f14.png",
+          "sha256": "e64ba72560309d6fe679e2781b8eae743b90bbb286b52e3dfffffeb740041f14",
+          "frameIndex": 0
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/f04f8c7d580726bc59da8b30c58435abc32065205eeca8ece8e05bfdb5727307.png",
+          "sha256": "f04f8c7d580726bc59da8b30c58435abc32065205eeca8ece8e05bfdb5727307",
+          "frameIndex": 9
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/b500c663c1c4fc56d3932e4f7df2b1dd286e3351bed55608208efe4faa47e5c3.png",
+          "sha256": "b500c663c1c4fc56d3932e4f7df2b1dd286e3351bed55608208efe4faa47e5c3",
+          "frameIndex": 18
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/5519cd45620989136c633e3ec103dfd959f8d85caa44d88742ec4620b7a8d23c.png",
+          "sha256": "5519cd45620989136c633e3ec103dfd959f8d85caa44d88742ec4620b7a8d23c",
+          "frameIndex": 27
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/6d696a203ab5ad5a7681c8e870763576302f81b641d9e50d898ec1931e27ad42.png",
+          "sha256": "6d696a203ab5ad5a7681c8e870763576302f81b641d9e50d898ec1931e27ad42",
+          "frameIndex": 37
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/0d7372551b2b4d5f4f6158314e3312b9a961b7f6bed37b195fa7051b3cfbf9de.png",
+          "sha256": "0d7372551b2b4d5f4f6158314e3312b9a961b7f6bed37b195fa7051b3cfbf9de",
+          "frameIndex": 46
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/434902b334ee9fc156dbc2a3f452ddb5994cf4836ed44fb3e86adf7fca94f806.png",
+          "sha256": "434902b334ee9fc156dbc2a3f452ddb5994cf4836ed44fb3e86adf7fca94f806",
+          "frameIndex": 55
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/e394b29a75b80b69a8c4b2fedb635224b9dd7df53b0253da29087ce172450f14.png",
+          "sha256": "e394b29a75b80b69a8c4b2fedb635224b9dd7df53b0253da29087ce172450f14",
+          "frameIndex": 65
+        }
+      ],
+      "metricMemberships": [
+        "l1d.failure_occurrence_macro_f1",
+        "l1d.failure_type_macro_f1",
+        "l1d.failure_onset_similarity"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Give a valid ordered plan and dependency graph for completing the bowl stack.",
+      "queryType": "planning",
+      "promptFamily": "task_plan_graph",
+      "camera": "cam_head",
+      "frameIndices": [
+        0
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/cbe006ddbf1cee911c417f616cc12ba9dd02c6ddf9aa4b01feec075c501cbfd3.png",
+          "sha256": "cbe006ddbf1cee911c417f616cc12ba9dd02c6ddf9aa4b01feec075c501cbfd3",
+          "frameIndex": 0
+        }
+      ],
+      "metricMemberships": [
+        "l1c.plan_step_f1",
+        "l1c.plan_edit_similarity",
+        "l1c.dependency_f1",
+        "l1c.bleu1",
+        "l1c.bleu2",
+        "l1c.bleu3",
+        "l1c.bleu4",
+        "l1c.planning_llm_alignment"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "4eb9f3c026f54926bd4c40b1261e0c337675a3a9060ef5801cc11df55cf3bebd",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "5bdc4ae7cb2f5a7338cf42b7ad1ec5dd4954b749bc7a1009cc89bb5a4ddc8694",
+      "seed": 19,
+      "split": "diagnostic_failure",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Propose the next recovery subgoal and a safe recovery plan for this failed or incomplete episode.",
+      "queryType": "recovery",
+      "promptFamily": "recovery_plan",
+      "camera": "cam_head",
+      "frameIndices": [
+        0,
+        9,
+        18,
+        27,
+        37,
+        46,
+        55,
+        65
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/e64ba72560309d6fe679e2781b8eae743b90bbb286b52e3dfffffeb740041f14.png",
+          "sha256": "e64ba72560309d6fe679e2781b8eae743b90bbb286b52e3dfffffeb740041f14",
+          "frameIndex": 0
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/f04f8c7d580726bc59da8b30c58435abc32065205eeca8ece8e05bfdb5727307.png",
+          "sha256": "f04f8c7d580726bc59da8b30c58435abc32065205eeca8ece8e05bfdb5727307",
+          "frameIndex": 9
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/b500c663c1c4fc56d3932e4f7df2b1dd286e3351bed55608208efe4faa47e5c3.png",
+          "sha256": "b500c663c1c4fc56d3932e4f7df2b1dd286e3351bed55608208efe4faa47e5c3",
+          "frameIndex": 18
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/5519cd45620989136c633e3ec103dfd959f8d85caa44d88742ec4620b7a8d23c.png",
+          "sha256": "5519cd45620989136c633e3ec103dfd959f8d85caa44d88742ec4620b7a8d23c",
+          "frameIndex": 27
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/6d696a203ab5ad5a7681c8e870763576302f81b641d9e50d898ec1931e27ad42.png",
+          "sha256": "6d696a203ab5ad5a7681c8e870763576302f81b641d9e50d898ec1931e27ad42",
+          "frameIndex": 37
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/0d7372551b2b4d5f4f6158314e3312b9a961b7f6bed37b195fa7051b3cfbf9de.png",
+          "sha256": "0d7372551b2b4d5f4f6158314e3312b9a961b7f6bed37b195fa7051b3cfbf9de",
+          "frameIndex": 46
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/434902b334ee9fc156dbc2a3f452ddb5994cf4836ed44fb3e86adf7fca94f806.png",
+          "sha256": "434902b334ee9fc156dbc2a3f452ddb5994cf4836ed44fb3e86adf7fca94f806",
+          "frameIndex": 55
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/e394b29a75b80b69a8c4b2fedb635224b9dd7df53b0253da29087ce172450f14.png",
+          "sha256": "e394b29a75b80b69a8c4b2fedb635224b9dd7df53b0253da29087ce172450f14",
+          "frameIndex": 65
+        }
+      ],
+      "metricMemberships": [
+        "l1d.recovery_subgoal_accuracy",
+        "l1d.recovery_plan_score"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "57f7eb4acaffa10498f70f900b1f46003d0e4dbbfecff9c4a7d19861808135b7",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "What is the current five-class task stage and the next symbolic subgoal?",
+      "queryType": "task_state",
+      "promptFamily": "task_state_and_next_subgoal",
+      "camera": "cam_head",
+      "frameIndices": [
+        153
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/e739a85b3894c57d9fb079ba1dfa445cf77a98936073c2e6609995cc84aa58c8.png",
+          "sha256": "e739a85b3894c57d9fb079ba1dfa445cf77a98936073c2e6609995cc84aa58c8",
+          "frameIndex": 153
+        }
+      ],
+      "metricMemberships": [
+        "l1c.stage_accuracy",
+        "l1c.next_subgoal_accuracy",
+        "l1c.stage_macro_f1"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "a4eaa6f3bc019f4837706865bb2f41b02f144f7918689f30dd03d90134fdda1a",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Which visible bowl is the next interaction target for advancing the stack? Return its box and an interior point.",
+      "queryType": "situational_grounding",
+      "promptFamily": "next_subgoal_grounding",
+      "camera": "cam_head",
+      "frameIndices": [
+        30,
+        34,
+        38,
+        42,
+        46,
+        50,
+        54,
+        58
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/35ef9eac32a93bd3fe672e51d730cc376b94a08681b18769535ef223348ac3e8.png",
+          "sha256": "35ef9eac32a93bd3fe672e51d730cc376b94a08681b18769535ef223348ac3e8",
+          "frameIndex": 30
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/60003449600e4058ef17cd37a04935dea5141f339d085de871a29e663f0b7ca4.png",
+          "sha256": "60003449600e4058ef17cd37a04935dea5141f339d085de871a29e663f0b7ca4",
+          "frameIndex": 34
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/195d65f4b5fb03aec5f43d7bedb574f5bc30aff1d32224db822baeb249b1fee7.png",
+          "sha256": "195d65f4b5fb03aec5f43d7bedb574f5bc30aff1d32224db822baeb249b1fee7",
+          "frameIndex": 38
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/d44cf006efa144b0d894c60e7867abb0c13c0209eaa79b22b42d49355d94688c.png",
+          "sha256": "d44cf006efa144b0d894c60e7867abb0c13c0209eaa79b22b42d49355d94688c",
+          "frameIndex": 42
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/28eb6900974d14277a0b7bbb4e193c417eb182a81f26eee412951ea3c2b7a922.png",
+          "sha256": "28eb6900974d14277a0b7bbb4e193c417eb182a81f26eee412951ea3c2b7a922",
+          "frameIndex": 46
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/553d552a5afc3b90550a763ae3b3ea9c9d041c9668c6b7b4e376e01208044b27.png",
+          "sha256": "553d552a5afc3b90550a763ae3b3ea9c9d041c9668c6b7b4e376e01208044b27",
+          "frameIndex": 50
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/096f08072df682ecb17fddf445b89c08bad50062c170ac40f2d1c70f698ad774.png",
+          "sha256": "096f08072df682ecb17fddf445b89c08bad50062c170ac40f2d1c70f698ad774",
+          "frameIndex": 54
+        },
+        {
+          "url": "/api/l1-phase1-media/samples/442d41b92cb3c7f93f6cb327e3e104947035a36db6983a4230b3a59a31dd7a44.png",
+          "sha256": "442d41b92cb3c7f93f6cb327e3e104947035a36db6983a4230b3a59a31dd7a44",
+          "frameIndex": 58
+        }
+      ],
+      "metricMemberships": [
+        "l1b.situational"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "a65aaaa882e6eee7e3a25d78904cb420342c2ea59887a374d31dfdd2672ba7bd",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Mark the visible object-object placement-contact region that establishes this stack transition.",
+      "queryType": "interaction",
+      "promptFamily": "task_conditioned_interaction",
+      "camera": "cam_head",
+      "frameIndices": [
+        108
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/a1a9b1d559ba0d40857a3d6991276d4468d3cf79d2a2afc30b231f31cc1bdead.png",
+          "sha256": "a1a9b1d559ba0d40857a3d6991276d4468d3cf79d2a2afc30b231f31cc1bdead",
+          "frameIndex": 108
+        }
+      ],
+      "metricMemberships": [
+        "l1b.area_hit_ratio",
+        "l1b.affordance_similarity",
+        "l1b.pio_s2",
+        "l1b.affordance_ap"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "cce1282e86f97e83f8e3da4edf82c13603c14749c508a3f67c32b740293e174e",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "What is the center-to-center distance in meters between the leftmost and rightmost visible bowls?",
+      "queryType": "mra_numeric",
+      "promptFamily": "metric_reasoning_absolute",
+      "camera": "cam_head",
+      "frameIndices": [
+        213
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/384cb762c5cc902d9d38e9d100511e2ed27dd7185949e7cc59a5c45eb94167d8.png",
+          "sha256": "384cb762c5cc902d9d38e9d100511e2ed27dd7185949e7cc59a5c45eb94167d8",
+          "frameIndex": 213
+        }
+      ],
+      "metricMemberships": [
+        "l1a.mra"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "e13c25ff816faf065ce4022665c4ddf7695ac62aa5a967ad2f2b78e7a0686566",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "From the leftmost visible bowl, what is the clockwise image-plane bearing to the rightmost visible bowl, in degrees from 12 o'clock?",
+      "queryType": "roa_numeric",
+      "promptFamily": "relative_orientation_angle",
+      "camera": "cam_head",
+      "frameIndices": [
+        213
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/384cb762c5cc902d9d38e9d100511e2ed27dd7185949e7cc59a5c45eb94167d8.png",
+          "sha256": "384cb762c5cc902d9d38e9d100511e2ed27dd7185949e7cc59a5c45eb94167d8",
+          "frameIndex": 213
+        }
+      ],
+      "metricMemberships": [
+        "l1a.roa"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    },
+    {
+      "canonicalSampleId": "fde9978596c97ecb12a7f327e9a23697b318b87a96aea22c62f421ebbef88bcf",
+      "taskId": "stack_bowls",
+      "episodeBlueprintId": "b9eade4c8fd8fa2886ef164a6207e0d5525f1ed25bd364f0b8950eaa2ce4b602",
+      "seed": 127,
+      "split": "validation",
+      "instruction": "Stack the three bowls into one stable stack.",
+      "question": "Locate the leftmost visible bowl with a box and an interior point.",
+      "queryType": "direct_grounding",
+      "promptFamily": "direct_grounding",
+      "camera": "cam_head",
+      "frameIndices": [
+        0
+      ],
+      "media": [
+        {
+          "url": "/api/l1-phase1-media/samples/cbe006ddbf1cee911c417f616cc12ba9dd02c6ddf9aa4b01feec075c501cbfd3.png",
+          "sha256": "cbe006ddbf1cee911c417f616cc12ba9dd02c6ddf9aa4b01feec075c501cbfd3",
+          "frameIndex": 0
+        }
+      ],
+      "metricMemberships": [
+        "l1a.refspatial",
+        "l1a.direct",
+        "l1a.pio_s1"
+      ],
+      "reviewStatus": "automated_binding_verified"
+    }
+  ],
+  "exampleByMetricId": {
+    "l1a.refspatial": "fde9978596c97ecb12a7f327e9a23697b318b87a96aea22c62f421ebbef88bcf",
+    "l1a.direct": "fde9978596c97ecb12a7f327e9a23697b318b87a96aea22c62f421ebbef88bcf",
+    "l1a.pio_s1": "fde9978596c97ecb12a7f327e9a23697b318b87a96aea22c62f421ebbef88bcf",
+    "l1a.object_state_f1": "0970d026706a3a8ed108e64410798032eeb2f4d586569e21c460d1e151f00608",
+    "l1a.llm_alignment": "0970d026706a3a8ed108e64410798032eeb2f4d586569e21c460d1e151f00608",
+    "l1a.text_spatial_f1": "0970d026706a3a8ed108e64410798032eeb2f4d586569e21c460d1e151f00608",
+    "l1a.mra": "cce1282e86f97e83f8e3da4edf82c13603c14749c508a3f67c32b740293e174e",
+    "l1a.roa": "e13c25ff816faf065ce4022665c4ddf7695ac62aa5a967ad2f2b78e7a0686566",
+    "l1c.stage_accuracy": "57f7eb4acaffa10498f70f900b1f46003d0e4dbbfecff9c4a7d19861808135b7",
+    "l1c.next_subgoal_accuracy": "57f7eb4acaffa10498f70f900b1f46003d0e4dbbfecff9c4a7d19861808135b7",
+    "l1c.stage_macro_f1": "57f7eb4acaffa10498f70f900b1f46003d0e4dbbfecff9c4a7d19861808135b7",
+    "l1b.situational": "a4eaa6f3bc019f4837706865bb2f41b02f144f7918689f30dd03d90134fdda1a",
+    "l1b.area_hit_ratio": "a65aaaa882e6eee7e3a25d78904cb420342c2ea59887a374d31dfdd2672ba7bd",
+    "l1b.affordance_similarity": "a65aaaa882e6eee7e3a25d78904cb420342c2ea59887a374d31dfdd2672ba7bd",
+    "l1b.pio_s2": "a65aaaa882e6eee7e3a25d78904cb420342c2ea59887a374d31dfdd2672ba7bd",
+    "l1b.affordance_ap": "a65aaaa882e6eee7e3a25d78904cb420342c2ea59887a374d31dfdd2672ba7bd",
+    "l1c.plan_step_f1": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.plan_edit_similarity": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.dependency_f1": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.bleu1": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.bleu2": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.bleu3": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.bleu4": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1c.planning_llm_alignment": "416f429942ec892d3ccf52477b3c605fa9a4bdf40cd17eef6ca765af333340f2",
+    "l1d.failure_occurrence_macro_f1": "1dbd4605e1dabdc7f22ade3ce056dc19bfc6f18c7e402e4e79d1384cd7dc3bff",
+    "l1d.failure_type_macro_f1": "1dbd4605e1dabdc7f22ade3ce056dc19bfc6f18c7e402e4e79d1384cd7dc3bff",
+    "l1d.failure_onset_similarity": "1dbd4605e1dabdc7f22ade3ce056dc19bfc6f18c7e402e4e79d1384cd7dc3bff",
+    "l1d.recovery_subgoal_accuracy": "4eb9f3c026f54926bd4c40b1261e0c337675a3a9060ef5801cc11df55cf3bebd",
+    "l1d.recovery_plan_score": "4eb9f3c026f54926bd4c40b1261e0c337675a3a9060ef5801cc11df55cf3bebd"
+  },
+  "blockers": [
+    "47/47 human GT review items are not started",
+    "Qwen Judge human calibration is waived, not passed",
+    "14 memberships have genuine missing GT and remain contract_pending",
+    "evidence covers only a 12-episode Stack Bowls development pilot"
+  ],
+  "forbiddenClaims": [
+    "cross-layer unified total",
+    "cross-task generalization",
+    "human-validated result",
+    "Qwen as tested model or prediction fallback"
+  ],
+  "sourceHashes": {
+    "summary.provisional.json": "37af99b9fd85394c5c5a28b60f9f0dac7f7597e16ff0092328e8fd9a485ea1f3",
+    "coverage.json": "ca3922745fc5bb0329c643d611b90e0b24f7e4645bf1e21c9fadee2fb527d21c",
+    "aggregate.combined_pilot_descriptive.json": "f54bc325f7b590975ea37d2e0a2ea4bcc71931e398f89cce0250844be004b95c",
+    "publishability_report.json": "20be2ed267a189b7e857087c05fabf15788187cf61ea059d02a4b83f3da88106",
+    "validation.json": "47b6a2e3a505617eadf14019c8af786d69f6c009ef543cd85c643052d24d2568",
+    "experiment_manifest.json": "cc880cbfef37a8c8eb0133e057d3800a35f88aff55a4d112d0c641d5cb8e4ccd",
+    "public.jsonl": "53530f094e69d9aed3be49ca8beea4b5f468562cbede9d6cac4497bee682e2bb",
+    "predictions.jsonl": "2b2c5ca43c58b9151a2b74eb609bee36b7b63aeef6fd9f240403b888f6a110e3"
+  }
+}

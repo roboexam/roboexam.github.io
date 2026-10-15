@@ -1,0 +1,4942 @@
+{
+  "schemaVersion": "unibench.dashboard.acwm.v1",
+  "bundleVersion": "official8-20260810-v1",
+  "generatedBy": "scripts/export-acwm-results.mjs",
+  "primarySplit": "heldout73 (70 unseen + 3 test)",
+  "protocol": "1 condition + 38 future frames · 39 valid / 42 stored · 320×256 · 25/6 FPS · cam_head",
+  "sourceRevisions": {
+    "ACWM-Phys": "9a5ce2babb18ba42c83b56dc5b70fef7e4ca4b0c",
+    "WorldArena": "2da2ae253b8637ba9de3afc7bea4e087f778ee4d"
+  },
+  "mediaManifestSha256": "13b5b753cdf513b30234c9fd543d4a47f139beee8ddfdddf645a31499f0abf18",
+  "models": {
+    "Cosmos Predict 2.5": {
+      "modelId": "cosmos_predict_2_5",
+      "displayName": "Cosmos Predict 2.5",
+      "task": "stack_bowls",
+      "resultVersion": "metrics_official8_stageb2000_20260810T050325Z",
+      "status": "8 / 10 complete",
+      "completed": "8 / 10",
+      "protocol": "39 valid / 42 stored frames · 320×256 · 25/6 FPS",
+      "values": {
+        "MSE": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "lower",
+          "unit": "mean squared error",
+          "primary": "0.00638585",
+          "aux": "heldout73 · all100 0.00607845",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.006385846886375587
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.006078445634339005
+            }
+          }
+        },
+        "M-MSE": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "lower",
+          "unit": "weighted mean squared error",
+          "primary": "0.01305704",
+          "aux": "heldout73 · all100 0.01248627",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.013057036449056458
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.01248626656935905
+            }
+          }
+        },
+        "PSNR": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "dB",
+          "primary": "21.94780819",
+          "aux": "heldout73 · all100 22.16206749",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 21.947808186737777
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 22.162067487999067
+            }
+          }
+        },
+        "SSIM": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "score",
+          "primary": "0.85180270",
+          "aux": "heldout73 · all100 0.85516222",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.851802700186429
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.8551622241735458
+            }
+          }
+        },
+        "IQ": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "normalized score",
+          "primary": "0.72152487",
+          "aux": "heldout73 · all100 0.72411763",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.7215248679779771
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.7241176282931596
+            }
+          }
+        },
+        "MS": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "evaluator score",
+          "primary": "1.96855957",
+          "aux": "heldout73 · all100 1.96869386",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 1.968559565806827
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 1.9686938628626243
+            }
+          }
+        },
+        "TA": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "trajectory score",
+          "primary": "12.91658904",
+          "aux": "heldout73 · all100 12.98248000",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 12.916589041095891
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 12.982480000000008
+            }
+          }
+        },
+        "JEPA": {
+          "availability": "available",
+          "granularity": "distribution",
+          "direction": "higher",
+          "unit": "similarity",
+          "primary": "0.51336633",
+          "aux": "heldout73 · all100 0.51847748 · split-level",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.5133663303106849
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.5184774813496473
+            }
+          }
+        },
+        "INTERACT": {
+          "availability": "not_run",
+          "granularity": "judge_episode",
+          "direction": "higher",
+          "unit": "normalized judge score",
+          "primary": "NOT_RUN",
+          "aux": "官方 Qwen3-VL Interaction Quality 尚未运行",
+          "status": "NOT_RUN",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": null
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": null
+            }
+          }
+        },
+        "AF": {
+          "availability": "input_missing",
+          "granularity": "counterfactual_group",
+          "direction": "higher",
+          "unit": "group score",
+          "primary": "INPUT_MISSING",
+          "aux": "缺同一首帧下 3 条不同有效 action 的三视频组",
+          "status": "INPUT_MISSING",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 0,
+              "value": null
+            },
+            "all100": {
+              "sampleCount": 0,
+              "value": null
+            }
+          },
+          "missingEvidence": {
+            "episodeCount": 100,
+            "distinctInitialFrameCount": 100,
+            "eligibleGroupCount": 0,
+            "requirement": "three valid action-conditioned predictions sharing one identical initial frame"
+          }
+        }
+      },
+      "samples": [
+        {
+          "id": "stack_bowls_001",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed211-20260809T113948Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00695961",
+            "M-MSE": "0.01296348",
+            "PSNR": "21.57414347",
+            "SSIM": "0.84307361",
+            "IQ": "0.69616525",
+            "MS": "1.99833104",
+            "TA": "7.43300000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-001-pred.mp4",
+              "sha256": "1e43311e973d74b6767327abf256f52ac8f3581aa62658e2361d7fee07966ccf"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-001-gt.mp4",
+              "sha256": "d02f7e4bcb6bad1546d77bad859e3ae56dd8c82cd943c0c878cbc05be517e6a5"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_002",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed247-20260809T120811Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00458370",
+            "M-MSE": "0.00980275",
+            "PSNR": "23.38782461",
+            "SSIM": "0.87083012",
+            "IQ": "0.73042786",
+            "MS": "1.93894675",
+            "TA": "5.28200000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-002-pred.mp4",
+              "sha256": "5bdf55938e47305bb2edc016a1d86984cf9043758128aff53440173aad64cec1"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-002-gt.mp4",
+              "sha256": "96f640a2eeeee67f685c5a9ecff0950bbea22afae5453de0df899e619e59f2e1"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_003",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed36-seed36-20260803T061115Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00500142",
+            "M-MSE": "0.01033289",
+            "PSNR": "23.00906156",
+            "SSIM": "0.86206359",
+            "IQ": "0.72733987",
+            "MS": "1.96872096",
+            "TA": "14.35800000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-003-pred.mp4",
+              "sha256": "1786b354e7c4836ff31211e8c9298f08d1ae74bfdff5caa82171cef667cd8953"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-003-gt.mp4",
+              "sha256": "658bbd776473bd4fdf05012b0afee32134a8dc36b2ad47c0a8dc8fb149492dac"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_004",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed208-20260809T114458Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00639117",
+            "M-MSE": "0.01353003",
+            "PSNR": "21.94418763",
+            "SSIM": "0.84215504",
+            "IQ": "0.71215002",
+            "MS": "1.95756663",
+            "TA": "5.57400000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-004-pred.mp4",
+              "sha256": "513aa831a8d74a83137ca9fe4497ec8b3eb08e66e9052a2ae3736b4fb435552a"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-004-gt.mp4",
+              "sha256": "0b12c8163e69822035d4f69a42f3e49651db98c2d7cc40cc1abdebfe91ee2468"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_005",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed31-seed31-20260803T055604Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "test",
+          "values": {
+            "MSE": "0.00509532",
+            "M-MSE": "0.01063099",
+            "PSNR": "22.92827699",
+            "SSIM": "0.86447340",
+            "IQ": "0.72913325",
+            "MS": "1.95198229",
+            "TA": "5.72200000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-005-pred.mp4",
+              "sha256": "e2fa20e845a58b67b1bc663506fa646f5c992f2eefe8a62a2b46716c4c995e2c"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-005-gt.mp4",
+              "sha256": "58506d26b6dc1b1820cb99fd4dfbd13ac6c6db0dc647144e837dc24a177231c3"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_006",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed249-20260809T121055Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00424577",
+            "M-MSE": "0.00911775",
+            "PSNR": "23.72042306",
+            "SSIM": "0.87448490",
+            "IQ": "0.72960507",
+            "MS": "1.93715037",
+            "TA": "29.42500000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-006-pred.mp4",
+              "sha256": "56f965706e275ab452948075bd012e51bae47f206aae35530598923a2791a866"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-006-gt.mp4",
+              "sha256": "4320d479f99296a41e6769372c1580e3d83a42d0bcd56f5ced2b2737536c1842"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_007",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed115-20260809T105305Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00757639",
+            "M-MSE": "0.01499384",
+            "PSNR": "21.20537122",
+            "SSIM": "0.84091067",
+            "IQ": "0.71567115",
+            "MS": "1.96453621",
+            "TA": "7.52300000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-007-pred.mp4",
+              "sha256": "275058219a183f07ffa8512f9a75c1737f061a390935ef6b478e29a700270b45"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-007-gt.mp4",
+              "sha256": "b186db61c49df6f973b361359b896f084a1a62dd2409b1b908f30ea6a65588e3"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_008",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed20-seed20-20260803T052508Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00640920",
+            "M-MSE": "0.01366084",
+            "PSNR": "21.93195694",
+            "SSIM": "0.85732204",
+            "IQ": "0.73389516",
+            "MS": "1.96939903",
+            "TA": "5.09700000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-008-pred.mp4",
+              "sha256": "4032ee051692130d0fdecd696010968dce6423162d6d3f4b6cc5dafb95796a2b"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-008-gt.mp4",
+              "sha256": "2bff919ce08ac4b049d0845734f29c7813497aad771a6051e00f70cb79010eef"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_009",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed147-20260809T110644Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00449351",
+            "M-MSE": "0.00941356",
+            "PSNR": "23.47413512",
+            "SSIM": "0.87428576",
+            "IQ": "0.74488670",
+            "MS": "1.96329228",
+            "TA": "11.47600000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-009-pred.mp4",
+              "sha256": "220fc04ad9b6715e58bc60e8756532635acd4dc270f75178124d2b60ab0085dd"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-009-gt.mp4",
+              "sha256": "531ca59fe884e9c187f111b2f9c798ca7815d12045a0bd57bac4ce892d4b03af"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_010",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed15-seed15-20260803T051110Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00487961",
+            "M-MSE": "0.01028845",
+            "PSNR": "23.11614026",
+            "SSIM": "0.86576825",
+            "IQ": "0.73031391",
+            "MS": "2.00414665",
+            "TA": "13.23400000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/cosmos-stack-bowls-010-pred.mp4",
+              "sha256": "8b364d9bf16b7afd33d787d810ddf8f9f25dd73f2802f597ce94139c030291e7"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/cosmos-stack-bowls-010-gt.mp4",
+              "sha256": "229c5c86f88f064158c442852e40ea15271db971f21ae359503180897e26b816"
+            }
+          },
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_011",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed210-20260809T114652Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00712063",
+            "M-MSE": "0.01456024",
+            "PSNR": "21.47481240",
+            "SSIM": "0.84030962",
+            "IQ": "0.69907814",
+            "MS": "1.96169576",
+            "TA": "8.67200000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_012",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed26-seed26-20260803T054133Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00725643",
+            "M-MSE": "0.01702191",
+            "PSNR": "21.39276608",
+            "SSIM": "0.85933155",
+            "IQ": "0.74140212",
+            "MS": "1.93457808",
+            "TA": "15.48500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_013",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed50-20260809T093122Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00413409",
+            "M-MSE": "0.00845794",
+            "PSNR": "23.83618664",
+            "SSIM": "0.87104541",
+            "IQ": "0.73594119",
+            "MS": "1.96020852",
+            "TA": "9.84700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_014",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed44-20260809T091257Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00465516",
+            "M-MSE": "0.00950625",
+            "PSNR": "23.32064410",
+            "SSIM": "0.86399555",
+            "IQ": "0.73691222",
+            "MS": "1.97621015",
+            "TA": "25.92600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_015",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed158-20260809T111740Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00604701",
+            "M-MSE": "0.01099601",
+            "PSNR": "22.18458799",
+            "SSIM": "0.86100399",
+            "IQ": "0.72043874",
+            "MS": "1.97517541",
+            "TA": "29.90500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_016",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed231-20260809T115453Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00852111",
+            "M-MSE": "0.01743836",
+            "PSNR": "20.69503138",
+            "SSIM": "0.83299500",
+            "IQ": "0.71234838",
+            "MS": "1.96739544",
+            "TA": "9.23800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_017",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed108-20260809T104805Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00872736",
+            "M-MSE": "0.01663342",
+            "PSNR": "20.59116400",
+            "SSIM": "0.82740510",
+            "IQ": "0.71708141",
+            "MS": "2.00406775",
+            "TA": "7.18600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_018",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-validated-seed11-20260803T045828Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "test",
+          "values": {
+            "MSE": "0.00619988",
+            "M-MSE": "0.01247657",
+            "PSNR": "22.07616144",
+            "SSIM": "0.85889816",
+            "IQ": "0.73588935",
+            "MS": "1.97475336",
+            "TA": "5.45700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_019",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed17-seed17-20260803T051645Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00384448",
+            "M-MSE": "0.00838571",
+            "PSNR": "24.15161366",
+            "SSIM": "0.87640339",
+            "IQ": "0.72840096",
+            "MS": "1.97530454",
+            "TA": "5.38400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_020",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-distinct-c2-seed10-20260803T041916Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00469137",
+            "M-MSE": "0.01004282",
+            "PSNR": "23.28699835",
+            "SSIM": "0.86711794",
+            "IQ": "0.72525245",
+            "MS": "1.93713173",
+            "TA": "22.15900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_021",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed12-seed12-20260803T050236Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00421023",
+            "M-MSE": "0.00881018",
+            "PSNR": "23.75693343",
+            "SSIM": "0.87073028",
+            "IQ": "0.73378538",
+            "MS": "1.96475627",
+            "TA": "25.35000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_022",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed139-20260809T110448Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00697292",
+            "M-MSE": "0.01395486",
+            "PSNR": "21.56584540",
+            "SSIM": "0.83785993",
+            "IQ": "0.71793407",
+            "MS": "1.99446020",
+            "TA": "8.21200000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_023",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed206-20260809T114258Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00742996",
+            "M-MSE": "0.01462962",
+            "PSNR": "21.29012657",
+            "SSIM": "0.83519685",
+            "IQ": "0.71841861",
+            "MS": "2.00205042",
+            "TA": "10.76100000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_024",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed137-20260809T110250Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00878610",
+            "M-MSE": "0.01860565",
+            "PSNR": "20.56203181",
+            "SSIM": "0.83686906",
+            "IQ": "0.71796622",
+            "MS": "1.94845446",
+            "TA": "32.42400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_025",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed34-seed34-20260803T060458Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00620369",
+            "M-MSE": "0.01299993",
+            "PSNR": "22.07349272",
+            "SSIM": "0.85580492",
+            "IQ": "0.73511548",
+            "MS": "1.99522206",
+            "TA": "4.38200000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_026",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed233-20260809T115733Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00732314",
+            "M-MSE": "0.01432407",
+            "PSNR": "21.35302330",
+            "SSIM": "0.83986330",
+            "IQ": "0.71271031",
+            "MS": "1.97716162",
+            "TA": "8.17800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_027",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed230-20260809T115355Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00908763",
+            "M-MSE": "0.01815365",
+            "PSNR": "20.41548681",
+            "SSIM": "0.83500826",
+            "IQ": "0.71421182",
+            "MS": "1.96574494",
+            "TA": "12.48700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_028",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed118-20260809T105416Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00538424",
+            "M-MSE": "0.01122917",
+            "PSNR": "22.68875135",
+            "SSIM": "0.86312604",
+            "IQ": "0.72739993",
+            "MS": "1.97822152",
+            "TA": "33.99800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_029",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed45-20260809T091257Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00560804",
+            "M-MSE": "0.01204552",
+            "PSNR": "22.51188058",
+            "SSIM": "0.86083418",
+            "IQ": "0.71831630",
+            "MS": "1.94901605",
+            "TA": "5.54800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_030",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed37-seed37-20260803T061424Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00532383",
+            "M-MSE": "0.01092954",
+            "PSNR": "22.73775228",
+            "SSIM": "0.86051589",
+            "IQ": "0.71693761",
+            "MS": "1.97407654",
+            "TA": "4.13600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_031",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed226-20260809T114849Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00781027",
+            "M-MSE": "0.01644654",
+            "PSNR": "21.07333503",
+            "SSIM": "0.83725965",
+            "IQ": "0.70674316",
+            "MS": "2.01127452",
+            "TA": "26.33400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_032",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed213-20260809T114149Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00974736",
+            "M-MSE": "0.01866347",
+            "PSNR": "20.11112345",
+            "SSIM": "0.82381761",
+            "IQ": "0.70868838",
+            "MS": "1.99400636",
+            "TA": "17.43500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_033",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed250-20260809T120206Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00857666",
+            "M-MSE": "0.01656182",
+            "PSNR": "20.66681373",
+            "SSIM": "0.82589632",
+            "IQ": "0.72090066",
+            "MS": "1.98454660",
+            "TA": "19.88300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_034",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed42-20260809T090657Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00508239",
+            "M-MSE": "0.01045391",
+            "PSNR": "22.93930975",
+            "SSIM": "0.86506563",
+            "IQ": "0.74094077",
+            "MS": "1.93639651",
+            "TA": "16.33400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_035",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed215-20260809T114356Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00663001",
+            "M-MSE": "0.01444770",
+            "PSNR": "21.78485194",
+            "SSIM": "0.84761137",
+            "IQ": "0.71031423",
+            "MS": "1.96253914",
+            "TA": "7.83100000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_036",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed24-seed24-20260803T053603Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "val",
+          "values": {
+            "MSE": "0.00514462",
+            "M-MSE": "0.01041375",
+            "PSNR": "22.88645788",
+            "SSIM": "0.86397129",
+            "IQ": "0.73033758",
+            "MS": "1.96881355",
+            "TA": "7.40400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_037",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed235-20260809T120010Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00634461",
+            "M-MSE": "0.01333826",
+            "PSNR": "21.97594359",
+            "SSIM": "0.84798497",
+            "IQ": "0.70867767",
+            "MS": "1.99918325",
+            "TA": "7.19600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_038",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed228-20260809T115058Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00770679",
+            "M-MSE": "0.01605792",
+            "PSNR": "21.13126056",
+            "SSIM": "0.83512050",
+            "IQ": "0.71821834",
+            "MS": "1.98377868",
+            "TA": "26.08300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_039",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed43-20260809T090704Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00553687",
+            "M-MSE": "0.01141194",
+            "PSNR": "22.56735137",
+            "SSIM": "0.86490035",
+            "IQ": "0.73198804",
+            "MS": "1.99238891",
+            "TA": "7.93300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_040",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed227-20260809T114946Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00590148",
+            "M-MSE": "0.01200817",
+            "PSNR": "22.29038455",
+            "SSIM": "0.86395508",
+            "IQ": "0.74434377",
+            "MS": "1.95638121",
+            "TA": "7.47700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_041",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed127-20260809T105856Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00578244",
+            "M-MSE": "0.01208134",
+            "PSNR": "22.37887881",
+            "SSIM": "0.86427486",
+            "IQ": "0.73943200",
+            "MS": "1.96684190",
+            "TA": "29.09400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_042",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed107-20260809T104453Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00557755",
+            "M-MSE": "0.01067996",
+            "PSNR": "22.53556054",
+            "SSIM": "0.86747408",
+            "IQ": "0.73360263",
+            "MS": "1.95778121",
+            "TA": "5.74500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_043",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed23-seed23-20260803T053322Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00631442",
+            "M-MSE": "0.01262575",
+            "PSNR": "21.99665997",
+            "SSIM": "0.85824054",
+            "IQ": "0.74037973",
+            "MS": "1.98462195",
+            "TA": "5.61700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_044",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed156-20260809T111549Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00383457",
+            "M-MSE": "0.00784170",
+            "PSNR": "24.16281821",
+            "SSIM": "0.87196201",
+            "IQ": "0.72563748",
+            "MS": "1.97931020",
+            "TA": "22.66000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_045",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed106-20260809T104604Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00614033",
+            "M-MSE": "0.01277884",
+            "PSNR": "22.11807260",
+            "SSIM": "0.84785265",
+            "IQ": "0.71241787",
+            "MS": "1.93271196",
+            "TA": "6.99500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_046",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed110-20260809T105009Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00809975",
+            "M-MSE": "0.01620284",
+            "PSNR": "20.91527617",
+            "SSIM": "0.83092850",
+            "IQ": "0.70290935",
+            "MS": "2.00217206",
+            "TA": "8.07600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_047",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed120-20260809T105618Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00579599",
+            "M-MSE": "0.01343662",
+            "PSNR": "22.36871510",
+            "SSIM": "0.86591142",
+            "IQ": "0.74646914",
+            "MS": "1.93232301",
+            "TA": "6.84200000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_048",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed16-seed16-20260803T051357Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00537436",
+            "M-MSE": "0.01116967",
+            "PSNR": "22.69672596",
+            "SSIM": "0.86463016",
+            "IQ": "0.73052168",
+            "MS": "1.96322721",
+            "TA": "25.94500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_049",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed248-20260809T115924Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00708582",
+            "M-MSE": "0.01467315",
+            "PSNR": "21.49609174",
+            "SSIM": "0.83978152",
+            "IQ": "0.69278246",
+            "MS": "2.00975674",
+            "TA": "6.71300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_050",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed246-20260809T115641Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00732036",
+            "M-MSE": "0.01457253",
+            "PSNR": "21.35467199",
+            "SSIM": "0.84111863",
+            "IQ": "0.69126399",
+            "MS": "1.96035684",
+            "TA": "23.99300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_051",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-distinct-a-seed0-20260803T040620Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "val",
+          "values": {
+            "MSE": "0.00417483",
+            "M-MSE": "0.00885774",
+            "PSNR": "23.79359736",
+            "SSIM": "0.87361830",
+            "IQ": "0.73899586",
+            "MS": "1.94968935",
+            "TA": "18.05600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_052",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed140-20260809T110800Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00477010",
+            "M-MSE": "0.00999246",
+            "PSNR": "23.21471510",
+            "SSIM": "0.87001812",
+            "IQ": "0.72643598",
+            "MS": "1.94432235",
+            "TA": "32.58600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_053",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed149-20260809T110840Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00389791",
+            "M-MSE": "0.00815270",
+            "PSNR": "24.09166637",
+            "SSIM": "0.87517321",
+            "IQ": "0.73863188",
+            "MS": "1.99232187",
+            "TA": "5.42300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_054",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed148-20260809T111154Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00695965",
+            "M-MSE": "0.01480283",
+            "PSNR": "21.57412109",
+            "SSIM": "0.83968478",
+            "IQ": "0.69751891",
+            "MS": "1.98368937",
+            "TA": "17.72900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_055",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed129-20260809T110052Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00457850",
+            "M-MSE": "0.00978996",
+            "PSNR": "23.39275872",
+            "SSIM": "0.87260926",
+            "IQ": "0.74652325",
+            "MS": "1.96968730",
+            "TA": "4.80600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_056",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed21-seed21-20260803T052756Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00561119",
+            "M-MSE": "0.01236011",
+            "PSNR": "22.50944279",
+            "SSIM": "0.85969865",
+            "IQ": "0.72915177",
+            "MS": "1.97076157",
+            "TA": "17.01800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_057",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed113-20260809T105104Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00846804",
+            "M-MSE": "0.01693184",
+            "PSNR": "20.72216382",
+            "SSIM": "0.83187145",
+            "IQ": "0.71569471",
+            "MS": "2.00046501",
+            "TA": "8.71900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_058",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed13-seed13-20260803T050529Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00372415",
+            "M-MSE": "0.00748333",
+            "PSNR": "24.28971111",
+            "SSIM": "0.87570453",
+            "IQ": "0.73718144",
+            "MS": "1.97117998",
+            "TA": "4.99800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_059",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed150-20260809T111350Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00527927",
+            "M-MSE": "0.01121107",
+            "PSNR": "22.77425265",
+            "SSIM": "0.85382062",
+            "IQ": "0.69235186",
+            "MS": "1.98934317",
+            "TA": "7.74700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_060",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed146-20260809T110956Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00703700",
+            "M-MSE": "0.01298747",
+            "PSNR": "21.52611586",
+            "SSIM": "0.83990800",
+            "IQ": "0.71609301",
+            "MS": "1.96646361",
+            "TA": "6.51900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_061",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed117-20260809T105504Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00719401",
+            "M-MSE": "0.01386327",
+            "PSNR": "21.43028579",
+            "SSIM": "0.83528399",
+            "IQ": "0.70320858",
+            "MS": "1.97160630",
+            "TA": "7.73500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_062",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed14-seed14-20260803T050818Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00447302",
+            "M-MSE": "0.00921726",
+            "PSNR": "23.49398158",
+            "SSIM": "0.86909544",
+            "IQ": "0.73752287",
+            "MS": "2.00214086",
+            "TA": "11.43600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_063",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed136-20260809T110407Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00536033",
+            "M-MSE": "0.01156924",
+            "PSNR": "22.70807701",
+            "SSIM": "0.86357468",
+            "IQ": "0.73429290",
+            "MS": "1.94855909",
+            "TA": "4.17500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_064",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-distinct-b-seed1-20260803T040949Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00874168",
+            "M-MSE": "0.01777806",
+            "PSNR": "20.58404572",
+            "SSIM": "0.83990109",
+            "IQ": "0.70387365",
+            "MS": "1.93028328",
+            "TA": "6.50400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_065",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed119-20260809T105701Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00660873",
+            "M-MSE": "0.01241813",
+            "PSNR": "21.79881352",
+            "SSIM": "0.84214979",
+            "IQ": "0.70529350",
+            "MS": "1.96077689",
+            "TA": "9.40900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_066",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed27-seed27-20260803T054418Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00481757",
+            "M-MSE": "0.01014423",
+            "PSNR": "23.17171392",
+            "SSIM": "0.86762631",
+            "IQ": "0.73485029",
+            "MS": "1.95217241",
+            "TA": "23.15800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_067",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed46-20260809T091854Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00585899",
+            "M-MSE": "0.01242365",
+            "PSNR": "22.32176717",
+            "SSIM": "0.85650134",
+            "IQ": "0.72938451",
+            "MS": "1.95744473",
+            "TA": "5.98800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_068",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed159-20260809T111232Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00814882",
+            "M-MSE": "0.01665428",
+            "PSNR": "20.88904685",
+            "SSIM": "0.83774549",
+            "IQ": "0.71734083",
+            "MS": "1.98496354",
+            "TA": "7.13600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_069",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed258-20260809T120736Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00463657",
+            "M-MSE": "0.00990925",
+            "PSNR": "23.33802690",
+            "SSIM": "0.86888152",
+            "IQ": "0.72749727",
+            "MS": "1.96072627",
+            "TA": "35.68000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_070",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed28-seed28-20260803T054706Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00398699",
+            "M-MSE": "0.00807855",
+            "PSNR": "23.99354111",
+            "SSIM": "0.86884338",
+            "IQ": "0.72642449",
+            "MS": "1.99662720",
+            "TA": "5.21400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_071",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed260-20260809T121028Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00533945",
+            "M-MSE": "0.01159549",
+            "PSNR": "22.72502570",
+            "SSIM": "0.86757094",
+            "IQ": "0.74229779",
+            "MS": "1.93005327",
+            "TA": "28.70400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_072",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed39-seed39-20260803T062052Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00511983",
+            "M-MSE": "0.01066119",
+            "PSNR": "22.90743659",
+            "SSIM": "0.86663395",
+            "IQ": "0.74395022",
+            "MS": "1.93048612",
+            "TA": "15.40600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_073",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed40-seed40-20260803T062400Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00479405",
+            "M-MSE": "0.01034901",
+            "PSNR": "23.19296197",
+            "SSIM": "0.86531311",
+            "IQ": "0.73246785",
+            "MS": "1.95800494",
+            "TA": "5.04200000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_074",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed18-seed18-20260803T051926Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00496223",
+            "M-MSE": "0.01011406",
+            "PSNR": "23.04322104",
+            "SSIM": "0.86758071",
+            "IQ": "0.72491619",
+            "MS": "1.96830433",
+            "TA": "4.93500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_075",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed209-20260809T113746Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00502597",
+            "M-MSE": "0.01064726",
+            "PSNR": "22.98779421",
+            "SSIM": "0.86516738",
+            "IQ": "0.73065144",
+            "MS": "1.97314185",
+            "TA": "4.87800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_076",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed256-20260809T120453Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00528295",
+            "M-MSE": "0.01150602",
+            "PSNR": "22.77122668",
+            "SSIM": "0.86559415",
+            "IQ": "0.73851507",
+            "MS": "1.96296124",
+            "TA": "4.91600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_077",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed157-20260809T111036Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00655866",
+            "M-MSE": "0.01380628",
+            "PSNR": "21.83183915",
+            "SSIM": "0.84813893",
+            "IQ": "0.71363125",
+            "MS": "1.98277445",
+            "TA": "4.03000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_078",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed126-20260809T105814Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00835774",
+            "M-MSE": "0.01691711",
+            "PSNR": "20.77910430",
+            "SSIM": "0.83229846",
+            "IQ": "0.71518957",
+            "MS": "1.99674248",
+            "TA": "6.68600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_079",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed111-20260809T104903Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00669446",
+            "M-MSE": "0.01302768",
+            "PSNR": "21.74283933",
+            "SSIM": "0.84624404",
+            "IQ": "0.69769836",
+            "MS": "2.00005634",
+            "TA": "25.62000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_080",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed217-20260809T114556Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00739984",
+            "M-MSE": "0.01515918",
+            "PSNR": "21.30777204",
+            "SSIM": "0.83343709",
+            "IQ": "0.70558240",
+            "MS": "1.96079979",
+            "TA": "7.50400000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_081",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed128-20260809T110014Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00718593",
+            "M-MSE": "0.01465761",
+            "PSNR": "21.43516446",
+            "SSIM": "0.84252179",
+            "IQ": "0.71633707",
+            "MS": "1.95930985",
+            "TA": "7.86700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_082",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed130-20260809T110211Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00656733",
+            "M-MSE": "0.01295439",
+            "PSNR": "21.82610308",
+            "SSIM": "0.84362149",
+            "IQ": "0.71565812",
+            "MS": "1.96593609",
+            "TA": "7.18300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_083",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed237-20260809T120248Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00824459",
+            "M-MSE": "0.01714033",
+            "PSNR": "20.83830366",
+            "SSIM": "0.83713686",
+            "IQ": "0.71367067",
+            "MS": "1.95781282",
+            "TA": "24.94300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_084",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed116-20260809T105208Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00698315",
+            "M-MSE": "0.01301000",
+            "PSNR": "21.55947875",
+            "SSIM": "0.85684645",
+            "IQ": "0.72020854",
+            "MS": "1.99521997",
+            "TA": "13.15600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_085",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed22-seed22-20260803T053043Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00502958",
+            "M-MSE": "0.01079043",
+            "PSNR": "22.98467288",
+            "SSIM": "0.86573607",
+            "IQ": "0.73304020",
+            "MS": "1.97462001",
+            "TA": "11.64800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_086",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed219-20260809T114751Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00788132",
+            "M-MSE": "0.01596786",
+            "PSNR": "21.03400586",
+            "SSIM": "0.83400357",
+            "IQ": "0.71279515",
+            "MS": "1.96452926",
+            "TA": "6.71600000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_087",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed160-20260809T111928Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00512654",
+            "M-MSE": "0.01073086",
+            "PSNR": "22.90174401",
+            "SSIM": "0.86507159",
+            "IQ": "0.72969998",
+            "MS": "1.93283219",
+            "TA": "36.11300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_088",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed239-20260809T120535Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00667379",
+            "M-MSE": "0.01284037",
+            "PSNR": "21.75626930",
+            "SSIM": "0.83432233",
+            "IQ": "0.71720541",
+            "MS": "1.98903521",
+            "TA": "3.51700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_089",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed19-seed19-20260803T052214Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "val",
+          "values": {
+            "MSE": "0.00742777",
+            "M-MSE": "0.01368400",
+            "PSNR": "21.29140685",
+            "SSIM": "0.85331923",
+            "IQ": "0.73980262",
+            "MS": "1.95094457",
+            "TA": "16.93900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_090",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed32-seed32-20260803T055903Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00451340",
+            "M-MSE": "0.00927457",
+            "PSNR": "23.45495603",
+            "SSIM": "0.87001234",
+            "IQ": "0.73335826",
+            "MS": "1.99402105",
+            "TA": "15.58700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_091",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed109-20260809T104702Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00686515",
+            "M-MSE": "0.01270344",
+            "PSNR": "21.63349288",
+            "SSIM": "0.85770375",
+            "IQ": "0.73837066",
+            "MS": "1.93529316",
+            "TA": "4.63000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_092",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed138-20260809T110603Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00482844",
+            "M-MSE": "0.01007161",
+            "PSNR": "23.16192469",
+            "SSIM": "0.86480790",
+            "IQ": "0.72857739",
+            "MS": "1.93741304",
+            "TA": "28.49900000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_093",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed48-20260809T092508Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00504399",
+            "M-MSE": "0.01045681",
+            "PSNR": "22.97224723",
+            "SSIM": "0.86486179",
+            "IQ": "0.72466962",
+            "MS": "1.96732935",
+            "TA": "6.45700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_094",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed41-20260809T090050Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00564020",
+            "M-MSE": "0.01226498",
+            "PSNR": "22.48704843",
+            "SSIM": "0.85803723",
+            "IQ": "0.73406104",
+            "MS": "1.93212531",
+            "TA": "19.57300000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_095",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed30-seed30-20260803T055259Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00559490",
+            "M-MSE": "0.01168334",
+            "PSNR": "22.52207013",
+            "SSIM": "0.85674882",
+            "IQ": "0.72131936",
+            "MS": "2.01211790",
+            "TA": "22.93800000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_096",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed207-20260809T113542Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00581809",
+            "M-MSE": "0.01250366",
+            "PSNR": "22.35218823",
+            "SSIM": "0.86671925",
+            "IQ": "0.73909888",
+            "MS": "1.97372372",
+            "TA": "4.77500000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_097",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed47-20260809T091900Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00642917",
+            "M-MSE": "0.01374405",
+            "PSNR": "21.91844240",
+            "SSIM": "0.85870212",
+            "IQ": "0.74415831",
+            "MS": "1.92363015",
+            "TA": "7.20000000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_098",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed33-seed33-20260803T060203Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "test",
+          "values": {
+            "MSE": "0.00457424",
+            "M-MSE": "0.00947710",
+            "PSNR": "23.39679644",
+            "SSIM": "0.87261295",
+            "IQ": "0.73109722",
+            "MS": "1.97991331",
+            "TA": "4.61200000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_099",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed25-seed25-20260803T053853Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00405291",
+            "M-MSE": "0.00877954",
+            "PSNR": "23.92232166",
+            "SSIM": "0.87289351",
+            "IQ": "0.72991048",
+            "MS": "1.96318583",
+            "TA": "27.90700000"
+          },
+          "media": null,
+          "interaction": null
+        },
+        {
+          "id": "stack_bowls_100",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed229-20260809T115201Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00653187",
+            "M-MSE": "0.01533187",
+            "PSNR": "21.84961710",
+            "SSIM": "0.86341566",
+            "IQ": "0.73385829",
+            "MS": "1.94567569",
+            "TA": "4.78200000"
+          },
+          "media": null,
+          "interaction": null
+        }
+      ],
+      "provenance": {
+        "result": {
+          "schemaVersion": "benchmark2027_cosmos25_acwm_official8_summary_v1",
+          "sha256": "26d41a3105db304a32520981318953679c4a7dbab440b41191e5897c4ac7ca32"
+        },
+        "inputManifest": {
+          "schemaVersion": "benchmark2027_cosmos25_acwm_metric_manifest_v1",
+          "sha256": "b520297f8636df558412c45b4d2ec632858afb86aeb22ec07571f8216abbd814"
+        },
+        "interaction": null,
+        "actionFollowing": null
+      }
+    },
+    "CtrlWorld": {
+      "modelId": "ctrlworld",
+      "displayName": "CtrlWorld",
+      "task": "stack_bowls",
+      "resultVersion": "official8-success100-20260810",
+      "status": "9 / 10 complete",
+      "completed": "9 / 10",
+      "protocol": "39 valid / 42 stored frames · 320×256 · 25/6 FPS",
+      "values": {
+        "MSE": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "lower",
+          "unit": "mean squared error",
+          "primary": "0.01075862",
+          "aux": "heldout73 · all100 0.01045401",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.010758618026818724
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.010454014437273144
+            }
+          }
+        },
+        "M-MSE": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "lower",
+          "unit": "weighted mean squared error",
+          "primary": "0.02382539",
+          "aux": "heldout73 · all100 0.02302334",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.02382538667818726
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.02302333814935833
+            }
+          }
+        },
+        "PSNR": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "dB",
+          "primary": "19.68243108",
+          "aux": "heldout73 · all100 19.80716489",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 19.68243107700487
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 19.8071648903256
+            }
+          }
+        },
+        "SSIM": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "score",
+          "primary": "0.82362471",
+          "aux": "heldout73 · all100 0.82549163",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.8236247056151089
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.825491629242897
+            }
+          }
+        },
+        "IQ": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "normalized score",
+          "primary": "0.74731479",
+          "aux": "heldout73 · all100 0.75166249",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.7473147877517985
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.7516624877734062
+            }
+          }
+        },
+        "MS": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "evaluator score",
+          "primary": "1.85673515",
+          "aux": "heldout73 · all100 1.84325903",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 1.8567351523228075
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 1.843259028805333
+            }
+          }
+        },
+        "TA": {
+          "availability": "available",
+          "granularity": "episode",
+          "direction": "higher",
+          "unit": "trajectory score",
+          "primary": "22.87224658",
+          "aux": "heldout73 · all100 23.20988000",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 22.872246575342473
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 23.209880000000002
+            }
+          }
+        },
+        "JEPA": {
+          "availability": "available",
+          "granularity": "distribution",
+          "direction": "higher",
+          "unit": "similarity",
+          "primary": "0.40164100",
+          "aux": "heldout73 · all100 0.39583421 · split-level",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.4016409951731574
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.39583421070893765
+            }
+          }
+        },
+        "INTERACT": {
+          "availability": "available",
+          "granularity": "judge_episode",
+          "direction": "higher",
+          "unit": "normalized judge score",
+          "primary": "0.64109589",
+          "aux": "heldout73 · all100 0.65600000",
+          "status": "OK",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 73,
+              "value": 0.6410958904109596
+            },
+            "all100": {
+              "sampleCount": 100,
+              "value": 0.6560000000000004
+            }
+          }
+        },
+        "AF": {
+          "availability": "input_missing",
+          "granularity": "counterfactual_group",
+          "direction": "higher",
+          "unit": "group score",
+          "primary": "INPUT_MISSING",
+          "aux": "缺同一首帧下 3 条不同有效 action 的三视频组",
+          "status": "INPUT_MISSING",
+          "groups": {
+            "heldout73": {
+              "sampleCount": 0,
+              "value": null
+            },
+            "all100": {
+              "sampleCount": 0,
+              "value": null
+            }
+          },
+          "missingEvidence": {
+            "episodeCount": 100,
+            "distinctInitialFrameCount": 100,
+            "eligibleGroupCount": 0,
+            "requirement": "three valid action-conditioned predictions sharing one identical initial frame"
+          }
+        }
+      },
+      "samples": [
+        {
+          "id": "stack_bowls_001",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed211-20260809T113948Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00719995",
+            "M-MSE": "0.01532679",
+            "PSNR": "21.42669969",
+            "SSIM": "0.83639783",
+            "IQ": "0.73792469",
+            "MS": "1.91679785",
+            "TA": "30.64900000",
+            "INTERACT": "0.80000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-001-pred.mp4",
+              "sha256": "6df5afd9192ba3fe6e4cab6f70e2ff43162973954847bdc6ae8c750613aea505"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-001-gt.mp4",
+              "sha256": "d02f7e4bcb6bad1546d77bad859e3ae56dd8c82cd943c0c878cbc05be517e6a5"
+            }
+          },
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight object deformation visible during stacking, indicating plausible physics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "6df5afd9192ba3fe6e4cab6f70e2ff43162973954847bdc6ae8c750613aea505",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_002",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed247-20260809T120811Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00966179",
+            "M-MSE": "0.02007680",
+            "PSNR": "20.14941748",
+            "SSIM": "0.83724499",
+            "IQ": "0.76791970",
+            "MS": "1.85184748",
+            "TA": "29.59600000",
+            "INTERACT": "0.80000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-002-pred.mp4",
+              "sha256": "9cccfae35b025a52a5988eeea9cf73c84808085a2ce26baa70f1d2edcf602a58"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-002-gt.mp4",
+              "sha256": "85a71e1a1dc7b501940e365221b5248522ee82fffd7f071257f9c6338dcfe230"
+            }
+          },
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms make realistic contact with bowls; objects move with appropriate inertia during grasping and stacking; minor visual artifacts in contact points but overall physics plausible",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "9cccfae35b025a52a5988eeea9cf73c84808085a2ce26baa70f1d2edcf602a58",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_003",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed36-seed36-20260803T061115Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00994330",
+            "M-MSE": "0.02069515",
+            "PSNR": "20.02469146",
+            "SSIM": "0.82996768",
+            "IQ": "0.77187776",
+            "MS": "1.77694278",
+            "TA": "27.21800000",
+            "INTERACT": "0.80000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-003-pred.mp4",
+              "sha256": "dc947f0fa84649d54fccddf99356cf95b54524ac286fab6d4a8e8fa2bf577821"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-003-gt.mp4",
+              "sha256": "658bbd776473bd4fdf05012b0afee32134a8dc36b2ad47c0a8dc8fb149492dac"
+            }
+          },
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during stacking; no penetration or sliding artifacts",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "dc947f0fa84649d54fccddf99356cf95b54524ac286fab6d4a8e8fa2bf577821",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_004",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed208-20260809T114458Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01069675",
+            "M-MSE": "0.02386833",
+            "PSNR": "19.70747856",
+            "SSIM": "0.82619214",
+            "IQ": "0.72970265",
+            "MS": "1.92272733",
+            "TA": "25.62400000",
+            "INTERACT": "0.80000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-004-pred.mp4",
+              "sha256": "f47291c3e4c4e7cec150aaf606e657ac0b474ac559633295fcdff41dfe1de430"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-004-gt.mp4",
+              "sha256": "0b12c8163e69822035d4f69a42f3e49651db98c2d7cc40cc1abdebfe91ee2468"
+            }
+          },
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arm grasps and lifts a bowl with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f47291c3e4c4e7cec150aaf606e657ac0b474ac559633295fcdff41dfe1de430",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_005",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed31-seed31-20260803T055604Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "test",
+          "values": {
+            "MSE": "0.00957703",
+            "M-MSE": "0.02100441",
+            "PSNR": "20.18768600",
+            "SSIM": "0.82818574",
+            "IQ": "0.76528193",
+            "MS": "1.79704908",
+            "TA": "20.46400000",
+            "INTERACT": "0.60000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-005-pred.mp4",
+              "sha256": "54fd50cb892fe2bc89d794c4578ab71679a55feb6ac7081263e2b5dae813bfbc"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-005-gt.mp4",
+              "sha256": "0409a0267629c74edb7cc2a310ac3e55841007811f871c9518cb6a06726f0f75"
+            }
+          },
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "54fd50cb892fe2bc89d794c4578ab71679a55feb6ac7081263e2b5dae813bfbc",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_006",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed249-20260809T121055Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01097752",
+            "M-MSE": "0.02426017",
+            "PSNR": "19.59495491",
+            "SSIM": "0.81415784",
+            "IQ": "0.76464656",
+            "MS": "1.93205831",
+            "TA": "25.30300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-006-pred.mp4",
+              "sha256": "6a876746d79fff336fc783b3d0ffcbe37776f619a4594bffc92130d19f5b40c1"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-006-gt.mp4",
+              "sha256": "4320d479f99296a41e6769372c1580e3d83a42d0bcd56f5ced2b2737536c1842"
+            }
+          },
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to slide or float slightly during manipulation, indicating minor physics inconsistencies",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "6a876746d79fff336fc783b3d0ffcbe37776f619a4594bffc92130d19f5b40c1",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_007",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed115-20260809T105305Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00973373",
+            "M-MSE": "0.02177124",
+            "PSNR": "20.11720217",
+            "SSIM": "0.82815951",
+            "IQ": "0.73572024",
+            "MS": "1.89244221",
+            "TA": "23.48700000",
+            "INTERACT": "0.80000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-007-pred.mp4",
+              "sha256": "2a578ec3145236a1436c2faec92409924a472406c9fe2076e905266f29257b2a"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-007-gt.mp4",
+              "sha256": "b186db61c49df6f973b361359b896f084a1a62dd2409b1b908f30ea6a65588e3"
+            }
+          },
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight motion blur indicates movement, but no penetration or unrealistic sliding observed",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "2a578ec3145236a1436c2faec92409924a472406c9fe2076e905266f29257b2a",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_008",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed20-seed20-20260803T052508Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00944583",
+            "M-MSE": "0.02124678",
+            "PSNR": "20.24759232",
+            "SSIM": "0.83496779",
+            "IQ": "0.76955220",
+            "MS": "1.77350410",
+            "TA": "35.18900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-008-pred.mp4",
+              "sha256": "793395a81d2809b2935b2632eb475b286028a51cc930a167335ff0376b13138b"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-008-gt.mp4",
+              "sha256": "2bff919ce08ac4b049d0845734f29c7813497aad771a6051e00f70cb79010eef"
+            }
+          },
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "793395a81d2809b2935b2632eb475b286028a51cc930a167335ff0376b13138b",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_009",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed147-20260809T110644Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00892339",
+            "M-MSE": "0.01960067",
+            "PSNR": "20.49469777",
+            "SSIM": "0.83355880",
+            "IQ": "0.76475065",
+            "MS": "1.81667175",
+            "TA": "21.83100000",
+            "INTERACT": "0.60000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-009-pred.mp4",
+              "sha256": "16cf5221de780aa00e7075ad077df12425a0751d7ad464b851809cf4112ab9d8"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-009-gt.mp4",
+              "sha256": "531ca59fe884e9c187f111b2f9c798ca7815d12045a0bd57bac4ce892d4b03af"
+            }
+          },
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to slide or float slightly during manipulation, indicating minor physics inconsistencies",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "16cf5221de780aa00e7075ad077df12425a0751d7ad464b851809cf4112ab9d8",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_010",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed15-seed15-20260803T051110Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00841924",
+            "M-MSE": "0.01849297",
+            "PSNR": "20.74726792",
+            "SSIM": "0.83813411",
+            "IQ": "0.76464339",
+            "MS": "1.79438959",
+            "TA": "16.30800000",
+            "INTERACT": "0.80000000"
+          },
+          "media": {
+            "prediction": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-010-pred.mp4",
+              "sha256": "cab4e6ce54f8f26fa155e15ef701a2cc2733e2fcebb496be6eb66ee121338865"
+            },
+            "groundTruth": {
+              "url": "/media/acwm/ctrlworld-stack-bowls-010-gt.mp4",
+              "sha256": "3c1cfef0a5f97befe69888fef3b5ea1617468024168e8c526b0220248ed33c57"
+            }
+          },
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during stacking; no penetration or sliding artifacts",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "cab4e6ce54f8f26fa155e15ef701a2cc2733e2fcebb496be6eb66ee121338865",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_011",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed210-20260809T114652Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.02080915",
+            "M-MSE": "0.04767158",
+            "PSNR": "16.81745541",
+            "SSIM": "0.76535809",
+            "IQ": "0.73407479",
+            "MS": "1.97465297",
+            "TA": "6.42800000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robot gripper makes contact with bowl but interaction appears slightly stiff; bowl rotates unnaturally during lifting, suggesting imperfect force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "7f14edeb391b96e31fd37e7042615c0a8c40494d2c0e24d815d01ddec0cc7404",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_012",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed26-seed26-20260803T054133Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01022981",
+            "M-MSE": "0.02224019",
+            "PSNR": "19.90131804",
+            "SSIM": "0.82816792",
+            "IQ": "0.76849521",
+            "MS": "1.80555678",
+            "TA": "28.13900000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during stacking; no penetration or sliding without friction",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "3c4c62599b1b3d11cc19f07dffc1ac4e89d25cc3cb2bf2e9543805d35c14f595",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_013",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed50-20260809T093122Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00879779",
+            "M-MSE": "0.01896866",
+            "PSNR": "20.55625965",
+            "SSIM": "0.83771193",
+            "IQ": "0.76843247",
+            "MS": "1.76860049",
+            "TA": "31.14800000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unrealistic motion during stacking attempts; object deformation not visible but contact appears mostly realistic",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "0dd3512a19ceb90da8630e7116693f537d8c80c9711d1666f92a031cb97ce6b9",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_014",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed44-20260809T091257Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00974890",
+            "M-MSE": "0.02127339",
+            "PSNR": "20.11044133",
+            "SSIM": "0.83113980",
+            "IQ": "0.76403427",
+            "MS": "1.78529516",
+            "TA": "21.17900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "b10e925235a9c6753453a9f8b7bcb35058f0def9f4bf562f04041f1576024fc0",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_015",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed158-20260809T111740Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00843056",
+            "M-MSE": "0.01833532",
+            "PSNR": "20.74143295",
+            "SSIM": "0.83755016",
+            "IQ": "0.75836441",
+            "MS": "1.78322021",
+            "TA": "25.00900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to be lifted without realistic inertia response",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "9d58fd144039d8e6c5b99fc878a0e5588dc97e2496399f000b3367af40cbe1cc",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_016",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed231-20260809T115453Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00945075",
+            "M-MSE": "0.02112267",
+            "PSNR": "20.24533075",
+            "SSIM": "0.82987338",
+            "IQ": "0.72703425",
+            "MS": "1.87081268",
+            "TA": "30.25700000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth joint movement; one bowl is lifted and placed on another, but the stacking is not fully completed in the frames shown",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "6350a03e3c299d9d2c3413fc6abe0e6d48bcb641de5945d438db24763cbc6cce",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_017",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed108-20260809T104805Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01007522",
+            "M-MSE": "0.02303128",
+            "PSNR": "19.96744955",
+            "SSIM": "0.82768482",
+            "IQ": "0.73773859",
+            "MS": "1.84880386",
+            "TA": "17.68600000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but one bowl appears to slide slightly during manipulation; grasping is not perfectly secure, showing minor penetration or instability",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "a68b94bdf7cee65fee79d143226a97ada709a71e7b58a024a8348a4facb66ffb",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_018",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-validated-seed11-20260803T045828Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "test",
+          "values": {
+            "MSE": "0.00945173",
+            "M-MSE": "0.02000071",
+            "PSNR": "20.24488311",
+            "SSIM": "0.83142430",
+            "IQ": "0.76947222",
+            "MS": "1.84037855",
+            "TA": "28.24400000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "a07c874cc583cba7cbe183bf9ba2bbe5edffc62b88d1de0f18fca31e7c1dcb51",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_019",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed17-seed17-20260803T051645Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00840529",
+            "M-MSE": "0.01909764",
+            "PSNR": "20.75446897",
+            "SSIM": "0.84176898",
+            "IQ": "0.76668751",
+            "MS": "1.75916989",
+            "TA": "15.51400000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "57e017d9e7b2b2b28035b2a1146918b62461059426e0b0caf78c8362d2ddbd73",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_020",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-distinct-c2-seed10-20260803T041916Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00946606",
+            "M-MSE": "0.02079557",
+            "PSNR": "20.23830097",
+            "SSIM": "0.82952851",
+            "IQ": "0.76034827",
+            "MS": "1.79297640",
+            "TA": "38.76500000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight motion blur indicates movement but no penetration or unrealistic sliding observed",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "2e4085717e5a14f38d3319980e465175362a159b39986ff9001a63276cecff9c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_021",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed12-seed12-20260803T050236Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01031602",
+            "M-MSE": "0.02247342",
+            "PSNR": "19.86487566",
+            "SSIM": "0.82677066",
+            "IQ": "0.76865740",
+            "MS": "1.81129313",
+            "TA": "23.34000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls, but some frames show slight penetration or unrealistic contact; bowls appear to slide without sufficient friction during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "1c8f4f01f7dc1ccb7588ace0606f4b0d0a6e7ea78a9e73cae1c1ad16ba7ac74b",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_022",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed139-20260809T110448Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00975819",
+            "M-MSE": "0.02197708",
+            "PSNR": "20.10630315",
+            "SSIM": "0.82680118",
+            "IQ": "0.72965636",
+            "MS": "2.03546447",
+            "TA": "23.71200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but one bowl appears to slide slightly during manipulation; grasping is not perfectly secure on all instances",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f1280de49b6955b9559c94ed5b2712a971ff6e584632dd94fc38812a4ccccb6b",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_023",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed206-20260809T114258Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01235061",
+            "M-MSE": "0.02791412",
+            "PSNR": "19.08311290",
+            "SSIM": "0.82146519",
+            "IQ": "0.73417034",
+            "MS": "1.82546690",
+            "TA": "19.60100000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears slightly jerky and lacks smooth force transfer; one bowl is lifted while another remains stationary, suggesting incomplete coordination",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "b32af3bc2822fac35c10c0cfc476a6893232d260ed140791a00965c7ab1d1018",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_024",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed137-20260809T110250Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01079730",
+            "M-MSE": "0.02501968",
+            "PSNR": "19.66684452",
+            "SSIM": "0.82547909",
+            "IQ": "0.71811259",
+            "MS": "1.98986823",
+            "TA": "16.50600000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "638dd8ba5513c72274f80fcc2143057c800c74a778b3016aeac68c183e3febda",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_025",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed34-seed34-20260803T060458Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00945598",
+            "M-MSE": "0.02104016",
+            "PSNR": "20.24293090",
+            "SSIM": "0.83171874",
+            "IQ": "0.76588911",
+            "MS": "1.79345062",
+            "TA": "26.78100000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "74db05fa0b25af73daedc02eddc825ade1a7be13882a40fc96cca2b61ec641a6",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_026",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed233-20260809T115733Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01096273",
+            "M-MSE": "0.02430062",
+            "PSNR": "19.60080949",
+            "SSIM": "0.81899929",
+            "IQ": "0.71912658",
+            "MS": "1.89577359",
+            "TA": "6.72000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to float or slide slightly without realistic friction; grasping is not perfectly secure on all instances",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "b23ac92e241e515b4abe828f2dc0137d1c51b5aa53b9dae0f8ceafaa308736d1",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_027",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed230-20260809T115355Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01153156",
+            "M-MSE": "0.02497910",
+            "PSNR": "19.38111570",
+            "SSIM": "0.82285327",
+            "IQ": "0.74109039",
+            "MS": "1.79173809",
+            "TA": "23.98900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robot gripper makes contact with bowl but appears to slide or lift with minimal resistance; slight penetration visible in some frames; object deformation not evident",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "aea300629ee6a2fc23033395fcb59a73fdec53cb3e032ce911cf8ef53121783c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_028",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed118-20260809T105416Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00739546",
+            "M-MSE": "0.01585915",
+            "PSNR": "21.31034423",
+            "SSIM": "0.83850217",
+            "IQ": "0.76475935",
+            "MS": "1.84964472",
+            "TA": "25.18800000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable lifting; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f504da6f475542b58e3ac305628d078f595132ddd756a193c57a32dbacb26649",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_029",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed45-20260809T091257Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00949925",
+            "M-MSE": "0.02088419",
+            "PSNR": "20.22310184",
+            "SSIM": "0.83522874",
+            "IQ": "0.76023187",
+            "MS": "1.85131069",
+            "TA": "16.63100000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "72b456dfa11cccd7b8153df0f08f4ded4bc73b6e1ed9fed89754fde7e5637884",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_030",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed37-seed37-20260803T061424Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01012774",
+            "M-MSE": "0.02083313",
+            "PSNR": "19.94487068",
+            "SSIM": "0.82850361",
+            "IQ": "0.76358838",
+            "MS": "1.79826115",
+            "TA": "30.02000000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during lifting; no penetration or sliding without friction",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "d3dd9e1be6e042833607a3cfedf81081fa49eee38effb5f80d44eac5c21ed309",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_031",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed226-20260809T114849Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00895129",
+            "M-MSE": "0.02040401",
+            "PSNR": "20.48113772",
+            "SSIM": "0.83239788",
+            "IQ": "0.73929409",
+            "MS": "1.89866175",
+            "TA": "18.52200000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during lifting; no penetration or sliding artifacts",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "b3400a6cc7cecb10e5e16ac44aea577360e0c5b0fabc02f6e658f6484b2a94fe",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_032",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed213-20260809T114149Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01175022",
+            "M-MSE": "0.02622223",
+            "PSNR": "19.29953552",
+            "SSIM": "0.81834263",
+            "IQ": "0.74105937",
+            "MS": "1.93861558",
+            "TA": "9.03200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unrealistic motion during stacking attempts",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "db76cfdef3cc3b2ec199afb5ad6025302db513c89a56bc7efe1847d5b3c65187",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_033",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed250-20260809T120206Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00945154",
+            "M-MSE": "0.02129959",
+            "PSNR": "20.24497084",
+            "SSIM": "0.82786453",
+            "IQ": "0.74180848",
+            "MS": "1.91968324",
+            "TA": "11.38400000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; motion appears slightly jerky and lacks smooth force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f30ae2dc65a89fb63b24fb354c3484a7c4bd0d016fc9dd172776d169db3ef271",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_034",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed42-20260809T090657Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00836045",
+            "M-MSE": "0.01780043",
+            "PSNR": "20.77769722",
+            "SSIM": "0.83918303",
+            "IQ": "0.76510343",
+            "MS": "1.83362020",
+            "TA": "34.76300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unrealistic motion during stacking; object deformation not visible but contact appears mostly realistic",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "442d1c53f8011b128451328d2fb323b84347eca5a1ca9d612928b160f989c742",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_035",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed215-20260809T114356Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.02209074",
+            "M-MSE": "0.05066773",
+            "PSNR": "16.55789529",
+            "SSIM": "0.75678951",
+            "IQ": "0.72071934",
+            "MS": "1.90672399",
+            "TA": "5.94400000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arm makes realistic contact with bowl, lifts it with proper force transfer; slight visual artifact in gripper closure but no penetration or sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "966a0b794fc1832db0d418fd648cec71e9979f058c24cf64eccdfac13b70bfb3",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_036",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed24-seed24-20260803T053603Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "val",
+          "values": {
+            "MSE": "0.00892352",
+            "M-MSE": "0.01926274",
+            "PSNR": "20.49463250",
+            "SSIM": "0.83578616",
+            "IQ": "0.76312170",
+            "MS": "1.82130957",
+            "TA": "25.50500000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "eed0d973a3a7896505c07a81544c272f35969a679248b3ce19b0b3abafc9f9ca",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_037",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed235-20260809T120010Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00779071",
+            "M-MSE": "0.01705223",
+            "PSNR": "21.08422361",
+            "SSIM": "0.83949238",
+            "IQ": "0.72938899",
+            "MS": "1.88986869",
+            "TA": "19.89800000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but one bowl appears to be lifted without clear contact in frame 7; stacking motion is not fully completed in final frames",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "ecf4edb5fc93f733a975f585542977370f54db6ca5cafb0e4cfdeca269810737",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_038",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed228-20260809T115058Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01022200",
+            "M-MSE": "0.02291378",
+            "PSNR": "19.90463577",
+            "SSIM": "0.82998151",
+            "IQ": "0.73607352",
+            "MS": "2.03747751",
+            "TA": "8.42500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth kinematics; slight penetration visible when bowls are lifted",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "2b2bc54a44bddaf225b99b54072f92fb29c0b06a8d76796d0bcf07d4bbc974a7",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_039",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed43-20260809T090704Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01166490",
+            "M-MSE": "0.02530591",
+            "PSNR": "19.33118469",
+            "SSIM": "0.81150073",
+            "IQ": "0.76182147",
+            "MS": "1.89482457",
+            "TA": "37.63700000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "1b0af2e683d725de12825ca32ca32b9af5eda06ed50ae325482c33fbc4b8f18c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_040",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed227-20260809T114946Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00853503",
+            "M-MSE": "0.01835901",
+            "PSNR": "20.68794566",
+            "SSIM": "0.83767515",
+            "IQ": "0.76649606",
+            "MS": "1.80088595",
+            "TA": "67.53600000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to slide slightly during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "8623cc39341f4b41231f58046f99d2c730909961cfa2a19a2345a7f871790f80",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_041",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed127-20260809T105856Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01644033",
+            "M-MSE": "0.03687544",
+            "PSNR": "17.84089105",
+            "SSIM": "0.77886593",
+            "IQ": "0.75617443",
+            "MS": "1.98771639",
+            "TA": "27.24300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to slide or rotate unnaturally during manipulation; grasping is not always perfectly secure",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "0e51994b7c800b2211c363c1364294b851504e6cfaa9d44bbdad3eceafa58c6c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_042",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed107-20260809T104453Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00845598",
+            "M-MSE": "0.01838237",
+            "PSNR": "20.72835654",
+            "SSIM": "0.83540970",
+            "IQ": "0.76536800",
+            "MS": "1.82008266",
+            "TA": "26.29100000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but interactions show slight penetration and unrealistic force transfer during stacking; bowls do not maintain stable contact during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "68022ecaa33be1924819c84876afa94dfaa2f3ebf687e590463da17e05d9817c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_043",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed23-seed23-20260803T053322Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00853669",
+            "M-MSE": "0.01832432",
+            "PSNR": "20.68709843",
+            "SSIM": "0.83630311",
+            "IQ": "0.76099518",
+            "MS": "1.73106905",
+            "TA": "15.64900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to slide slightly during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "19da2add49642213b70720212b73a059e1bc84c72f24a3d0b9a2bc889557a64a",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_044",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed156-20260809T111549Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.02193722",
+            "M-MSE": "0.04852329",
+            "PSNR": "16.58818260",
+            "SSIM": "0.75817841",
+            "IQ": "0.75823522",
+            "MS": "2.03271775",
+            "TA": "36.71800000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight deformation visible when stacked, indicating proper force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "98c249bb793623ce5ae380e0276d7e5bf9560f6455a85f9e2a5921b48e8d8fad",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_045",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed106-20260809T104604Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01088411",
+            "M-MSE": "0.02407515",
+            "PSNR": "19.63206720",
+            "SSIM": "0.82397187",
+            "IQ": "0.70110662",
+            "MS": "1.80353219",
+            "TA": "14.37900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but one bowl is split and handled separately; motion appears slightly jerky and lacks smooth force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "4115c029ff21f14a7fd4611054c9baed31198b8dc424970f5b180556da9ded0d",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_046",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed110-20260809T105009Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01137280",
+            "M-MSE": "0.02527807",
+            "PSNR": "19.44132288",
+            "SSIM": "0.82577193",
+            "IQ": "0.71794150",
+            "MS": "1.78911589",
+            "TA": "21.31400000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f15329954027e40f9c8a000e99b828c09a6a67604c13801749fc5e02733c08ea",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_047",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed120-20260809T105618Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00879222",
+            "M-MSE": "0.01938358",
+            "PSNR": "20.55901113",
+            "SSIM": "0.83647859",
+            "IQ": "0.76923108",
+            "MS": "1.75954313",
+            "TA": "21.09900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to slide slightly during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "78454355cdcbfdcd1441fc08d1c87d5428ddb02fc9f420e48d6ed2067855ee6d",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_048",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed16-seed16-20260803T051357Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01151466",
+            "M-MSE": "0.02553471",
+            "PSNR": "19.38748681",
+            "SSIM": "0.82531512",
+            "IQ": "0.76386429",
+            "MS": "1.79644018",
+            "TA": "22.01300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but interactions show slight penetration and unrealistic sliding; bowls do not stack properly with visible gaps",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "12aff47a87d3f1cb4fee53556d5b97454ca310abca88b87f1d67c2de0a4b9388",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_049",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed248-20260809T115924Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.02219115",
+            "M-MSE": "0.05119060",
+            "PSNR": "16.53819993",
+            "SSIM": "0.76306713",
+            "IQ": "0.72689644",
+            "MS": "1.97938465",
+            "TA": "7.51400000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robot gripper makes contact with bowl but interaction appears imprecise; bowl rotates unnaturally and seems to float slightly without realistic weight response during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "db0df5a3db4bd50a5c5daf4de066d99c0a2f58de47cdc4010cee1618c8523c8d",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_050",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed246-20260809T115641Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00758450",
+            "M-MSE": "0.01595065",
+            "PSNR": "21.20072518",
+            "SSIM": "0.83317614",
+            "IQ": "0.72758907",
+            "MS": "1.88553646",
+            "TA": "28.78300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but objects show slight penetration and unrealistic deformation during stacking; motion appears jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "76f03b06af7f260b58d7798eac13733a313e69736722eee3599cce8dfd60f43c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_051",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-distinct-a-seed0-20260803T040620Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "val",
+          "values": {
+            "MSE": "0.01074357",
+            "M-MSE": "0.02172680",
+            "PSNR": "19.68850920",
+            "SSIM": "0.82768279",
+            "IQ": "0.76997375",
+            "MS": "1.78093210",
+            "TA": "23.02600000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but interactions show slight penetration and unrealistic force transfer during stacking; bowls do not exhibit expected inertia or deformation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "22d72f6553a98469e711979192c4b0fd330475e3ab7215727e2cb59757d6f764",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_052",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed140-20260809T110800Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01040660",
+            "M-MSE": "0.02247973",
+            "PSNR": "19.82690747",
+            "SSIM": "0.83082348",
+            "IQ": "0.77017240",
+            "MS": "1.76680290",
+            "TA": "5.24500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but some frames show slight penetration or unrealistic contact during stacking; motion appears somewhat jerky and lacks smooth force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "58a0646708417d0195bd22a9149db38a903756f781f2b270fd8b99a5e775149e",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_053",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed149-20260809T110840Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00990421",
+            "M-MSE": "0.02075828",
+            "PSNR": "20.04179824",
+            "SSIM": "0.82988584",
+            "IQ": "0.76552007",
+            "MS": "1.81438248",
+            "TA": "33.68600000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls with plausible contact, but some frames show slight penetration or unrealistic motion during stacking; object deformation not visible",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "0f2d85d85dfbbe3972befab91a91e3b36c1f1f89b4061c196ffc3905cf763938",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_054",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed148-20260809T111154Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00964058",
+            "M-MSE": "0.02172258",
+            "PSNR": "20.15896385",
+            "SSIM": "0.83099735",
+            "IQ": "0.74104317",
+            "MS": "2.04735919",
+            "TA": "28.56300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but one bowl is dropped and not stacked; motion appears slightly jerky and lacks smooth force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "484154e8197feb472e539b4811f6be0b3abb244e0ff0847bd4a1a2bff3141d28",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_055",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed129-20260809T110052Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00854018",
+            "M-MSE": "0.01886822",
+            "PSNR": "20.68532583",
+            "SSIM": "0.83859223",
+            "IQ": "0.76682562",
+            "MS": "1.80072681",
+            "TA": "34.10000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "c80a1aff2b4d361d5891ed132a8b47dc40e3b1b16dce8517c20048d4f50fdb50",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_056",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed21-seed21-20260803T052756Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00905564",
+            "M-MSE": "0.02057559",
+            "PSNR": "20.43080211",
+            "SSIM": "0.83523762",
+            "IQ": "0.75735622",
+            "MS": "1.82284270",
+            "TA": "26.13200000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "3ddf00ef52841aa2dde7138e0bf67323774b74b1bb0f6fcec4560fd614b49d44",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_057",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed113-20260809T105104Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01307123",
+            "M-MSE": "0.02922599",
+            "PSNR": "18.83683067",
+            "SSIM": "0.81973499",
+            "IQ": "0.73887770",
+            "MS": "1.89610244",
+            "TA": "7.46300000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight motion blur indicates movement, but no penetration or unrealistic sliding observed",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "2a2f70add0e3b2ae9224b885631db544dd93ff219b64beec2c3d62e26ca6b8f6",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_058",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed13-seed13-20260803T050529Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00875748",
+            "M-MSE": "0.01861921",
+            "PSNR": "20.57620560",
+            "SSIM": "0.83411610",
+            "IQ": "0.76544437",
+            "MS": "1.82898422",
+            "TA": "20.47800000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "3e22f312a6b2b5702d56698598e1480d39893116a22d2320de7def9b90dd4692",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_059",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed150-20260809T111350Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00778987",
+            "M-MSE": "0.01657115",
+            "PSNR": "21.08469036",
+            "SSIM": "0.83384401",
+            "IQ": "0.74317347",
+            "MS": "1.87186743",
+            "TA": "26.66400000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but objects show slight penetration and unrealistic deformation during stacking; motion appears jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "3d53f7754d383606b96151d029621bc758bc1028abedb7ee0169f28cace424c3",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_060",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed146-20260809T110956Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00984205",
+            "M-MSE": "0.02194006",
+            "PSNR": "20.06914145",
+            "SSIM": "0.83017743",
+            "IQ": "0.72925612",
+            "MS": "2.01728136",
+            "TA": "19.01000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth kinematics; one bowl is lifted while another remains stationary, suggesting incomplete or incorrect stacking attempt",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "709c0c03dee16c8ebe701067026847d8761c7795080aee0a4cfd096e5e873f21",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_061",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed117-20260809T105504Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01133225",
+            "M-MSE": "0.02455078",
+            "PSNR": "19.45683641",
+            "SSIM": "0.82533735",
+            "IQ": "0.73030606",
+            "MS": "1.79567943",
+            "TA": "18.17800000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth joint movement; one bowl is lifted and placed on another, but the stacking is not fully completed in the frames shown",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f3824e25a84285b20dd867d51b269a7a1f4cd8f10fc1fc31f39d52916f5db51f",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_062",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed14-seed14-20260803T050818Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01059658",
+            "M-MSE": "0.02279354",
+            "PSNR": "19.74833874",
+            "SSIM": "0.82293546",
+            "IQ": "0.76920557",
+            "MS": "1.81544011",
+            "TA": "29.94200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable lifting; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "49ec4282d77f04b1f502632ba205208bd9ea9492de3552b1ec87f7ae017b6f62",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_063",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed136-20260809T110407Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00887349",
+            "M-MSE": "0.01969054",
+            "PSNR": "20.51905016",
+            "SSIM": "0.83670306",
+            "IQ": "0.77168573",
+            "MS": "1.78159188",
+            "TA": "56.28300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable lifting; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "9bc185c4c47b095f6a7dc5f6df141d2ddaa9dd34b44a21853b9c52e282f47508",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_064",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-distinct-b-seed1-20260803T040949Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00767251",
+            "M-MSE": "0.01615760",
+            "PSNR": "21.15062044",
+            "SSIM": "0.83347791",
+            "IQ": "0.71533368",
+            "MS": "1.87809612",
+            "TA": "14.94900000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during stacking; no penetration or sliding artifacts",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "aae7cddfb00bf4cdb23b3fdd64246e0c074ad363a0df370c626a4a044b49e81b",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_065",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed119-20260809T105701Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00594495",
+            "M-MSE": "0.01234483",
+            "PSNR": "22.25851400",
+            "SSIM": "0.84745497",
+            "IQ": "0.73000703",
+            "MS": "1.85760303",
+            "TA": "22.34000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but objects show slight penetration and unrealistic deformation during stacking; motion appears jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f5ee7bfbf13513e446c8541e0038ba9eea1c589ccd6662b1b18c28f7ef5c8da0",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_066",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed27-seed27-20260803T054418Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01289121",
+            "M-MSE": "0.02715792",
+            "PSNR": "18.89705959",
+            "SSIM": "0.80481601",
+            "IQ": "0.76540996",
+            "MS": "1.90440119",
+            "TA": "20.57400000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight penetration visible during stacking but overall physics plausible",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "b4d3f648ab18b136c934fd2b1af424637ade6988a3ddd0af766604089a661c44",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_067",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed46-20260809T091854Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00801529",
+            "M-MSE": "0.01791071",
+            "PSNR": "20.96080122",
+            "SSIM": "0.84329486",
+            "IQ": "0.76406029",
+            "MS": "1.78869916",
+            "TA": "22.16500000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight penetration visible during stacking but overall physics plausible",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "343f762bae2e57165131fbb7b8d7bdd26aedd14ca7214c97e20ef112d37ddb7e",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_068",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed159-20260809T111232Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01851894",
+            "M-MSE": "0.04170383",
+            "PSNR": "17.32383650",
+            "SSIM": "0.76994419",
+            "IQ": "0.72741149",
+            "MS": "1.86218534",
+            "TA": "8.66200000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight object deformation visible during stacking; no penetration or sliding artifacts",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "8ebdeec552debfc57644f50bb5c62081edc3be0c4fe231c4e4d99d0dfcbb26e8",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_069",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed258-20260809T120736Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00906727",
+            "M-MSE": "0.02024630",
+            "PSNR": "20.42522796",
+            "SSIM": "0.83656740",
+            "IQ": "0.75856761",
+            "MS": "1.69261932",
+            "TA": "29.63500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable lifting; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "4a4b92879e5441a066dd539402fd628d93ae35896a3f6591d386d626a2b73632",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_070",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed28-seed28-20260803T054706Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00902824",
+            "M-MSE": "0.01978746",
+            "PSNR": "20.44396329",
+            "SSIM": "0.83484447",
+            "IQ": "0.76424391",
+            "MS": "1.83156491",
+            "TA": "17.64200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth joint movement; one bowl is lifted but not stacked, indicating incomplete task",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "1ea5af84abad10ea97ab5bc3d5d3f969faef766cd02ea6577446e91a44b143a9",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_071",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed260-20260809T121028Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00873437",
+            "M-MSE": "0.01924189",
+            "PSNR": "20.58767750",
+            "SSIM": "0.83727688",
+            "IQ": "0.76854375",
+            "MS": "1.76961560",
+            "TA": "24.02600000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to slide slightly during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "1abb38c5f4caa8a7c9d199a32587ad1e7a0fba4cf0df636b758932ca6969494b",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_072",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed39-seed39-20260803T062052Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00847651",
+            "M-MSE": "0.01803412",
+            "PSNR": "20.71782615",
+            "SSIM": "0.83364546",
+            "IQ": "0.76810952",
+            "MS": "1.79931746",
+            "TA": "25.98500000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight object deformation not visible but no penetration or sliding observed",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "add7a97dc1015e95abacbfc3c694cd6d0691b96f6c98ce06d0499314ace3db6a",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_073",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed40-seed40-20260803T062400Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00928009",
+            "M-MSE": "0.02063083",
+            "PSNR": "20.32447334",
+            "SSIM": "0.83361417",
+            "IQ": "0.76582365",
+            "MS": "1.78365716",
+            "TA": "29.10600000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "ed338d40ca27ada7a5aed168af8ab15c8924ce24ab12ffec6ce3a5ebca6587ae",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_074",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed18-seed18-20260803T051926Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00916135",
+            "M-MSE": "0.01940303",
+            "PSNR": "20.38040212",
+            "SSIM": "0.83299077",
+            "IQ": "0.76921370",
+            "MS": "1.83053681",
+            "TA": "21.61100000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "f1c5dd13395103d725c07572ec5c8707cd38ba80a3b202cfdfafd8f4b3579c9a",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_075",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed209-20260809T113746Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01152092",
+            "M-MSE": "0.02527305",
+            "PSNR": "19.38512415",
+            "SSIM": "0.80745983",
+            "IQ": "0.76014389",
+            "MS": "1.85152576",
+            "TA": "29.32900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to slide or float slightly during manipulation, indicating minor physics inconsistencies",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "2084470dea0d1b60e783dd7348c996e149cbeb3541b3a1540806ec4a99c73323",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_076",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed256-20260809T120453Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00944525",
+            "M-MSE": "0.02107739",
+            "PSNR": "20.24786210",
+            "SSIM": "0.83474821",
+            "IQ": "0.77167367",
+            "MS": "1.81062146",
+            "TA": "23.03500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to slide slightly during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "e4a5c6dc4e51e9754396c71792bf062980c63c884dbc3ace22427b6c00a87281",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_077",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed157-20260809T111036Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00968229",
+            "M-MSE": "0.02119698",
+            "PSNR": "20.14021245",
+            "SSIM": "0.82766843",
+            "IQ": "0.71223766",
+            "MS": "1.88652107",
+            "TA": "16.79200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to float or slide slightly without realistic friction; one bowl is lifted without clear contact with the table surface",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "52d50478ba597b2a0b8bf19071179ee7fd323fd444dd95c3ef421592cd01c710",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_078",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed126-20260809T105814Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01039341",
+            "M-MSE": "0.02337704",
+            "PSNR": "19.83241601",
+            "SSIM": "0.82899570",
+            "IQ": "0.73264537",
+            "MS": "1.85483246",
+            "TA": "25.76600000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "080e42a945e2213661b7327af90eddf06abb60dc5a92c58193f1c2c76d115f21",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_079",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed111-20260809T104903Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01191913",
+            "M-MSE": "0.02722977",
+            "PSNR": "19.23755228",
+            "SSIM": "0.81773883",
+            "IQ": "0.72940682",
+            "MS": "1.72552673",
+            "TA": "7.25200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth force transfer; one bowl is lifted while another remains stationary, suggesting incomplete coordination",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "d45699aa0df236844a3e90b5a0196def03c1ac8738f53d2c4f8d53ef3f04c5cc",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_080",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed217-20260809T114556Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01269237",
+            "M-MSE": "0.02874707",
+            "PSNR": "18.96456918",
+            "SSIM": "0.81864274",
+            "IQ": "0.72186721",
+            "MS": "1.83476723",
+            "TA": "13.86400000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robot arm makes contact with bowl but grasping appears imprecise; bowl slightly deforms upon contact, suggesting unrealistic force response",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "0df268f1b7a6fb9071b35551173c63de9189277c73724da0197ce23c9ba290f7",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_081",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed128-20260809T110014Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00936970",
+            "M-MSE": "0.02080565",
+            "PSNR": "20.28274013",
+            "SSIM": "0.83136320",
+            "IQ": "0.72880657",
+            "MS": "1.85315990",
+            "TA": "26.98000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but motion appears jerky and lacks smooth kinematics; slight penetration visible when bowls are lifted",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "52a2204ca51f91ffb78ce3cbbe9c2160d8d4266ef89b17272843abfcbec3b37b",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_082",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed130-20260809T110211Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01121785",
+            "M-MSE": "0.02533870",
+            "PSNR": "19.50090082",
+            "SSIM": "0.82308334",
+            "IQ": "0.71279331",
+            "MS": "1.86801365",
+            "TA": "7.65300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms make contact with bowls but show slight penetration and lack of realistic force response during grasping; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "e6c04c48a1d24c05230e3d4403b5dd0ecb0948dde47c0aa5677f843d258d6b78",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_083",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed237-20260809T120248Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00977187",
+            "M-MSE": "0.02172710",
+            "PSNR": "20.10021896",
+            "SSIM": "0.83171308",
+            "IQ": "0.72629914",
+            "MS": "1.87260987",
+            "TA": "24.05000000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but one bowl appears to slide slightly during manipulation; grasping is not perfectly secure on all instances",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "7c73a88f79f987718c2fcba01ed3fcf7615b5902cd5ecbc0e7231cb5c04114d1",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_084",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed116-20260809T105208Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00895797",
+            "M-MSE": "0.01960642",
+            "PSNR": "20.47790004",
+            "SSIM": "0.83286244",
+            "IQ": "0.76531770",
+            "MS": "1.76502998",
+            "TA": "29.46900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but interactions show slight penetration and unrealistic motion; bowls appear to slide without consistent friction",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "795da8328168e1164816050b359e64a5436e5ba742248e1ac50f1e48b4e5f5f3",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_085",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed22-seed22-20260803T053043Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00855685",
+            "M-MSE": "0.01895032",
+            "PSNR": "20.67685561",
+            "SSIM": "0.84057862",
+            "IQ": "0.76319627",
+            "MS": "1.76380799",
+            "TA": "23.22300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but interactions show slight penetration and unrealistic motion; bowls appear to slide without consistent friction during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "fb8083e6b5647a6ccc802605039270f802ad5eeb072d07c5830fa0a79b4aa0fd",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_086",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed219-20260809T114751Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01210003",
+            "M-MSE": "0.02663694",
+            "PSNR": "19.17213337",
+            "SSIM": "0.81760699",
+            "IQ": "0.73497723",
+            "MS": "1.83595539",
+            "TA": "18.83300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; bowls appear to slide slightly during manipulation",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "944d57a598faf15db844b63b26bdb23763d13c1b5d6b9cd1ec7a5c9c3371ea12",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_087",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed160-20260809T111928Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01743760",
+            "M-MSE": "0.03814382",
+            "PSNR": "17.58513143",
+            "SSIM": "0.77018225",
+            "IQ": "0.75537457",
+            "MS": "1.98813737",
+            "TA": "24.80700000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and move bowls, but some interactions show slight penetration or unrealistic sliding; bowls are not stacked as instructed",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "fe60ac4a0762161d86a3141c8b6c8c41e6996030f0abf146b34208d51c06c012",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_088",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed239-20260809T120535Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01345175",
+            "M-MSE": "0.02986304",
+            "PSNR": "18.71220967",
+            "SSIM": "0.81468457",
+            "IQ": "0.74320744",
+            "MS": "1.76650470",
+            "TA": "12.54500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robot arm grasps bowl with visible contact, but motion appears jerky and lacks smooth force transfer; object does not show realistic inertia during lifting",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "5bff02800401835d8ba5205a7c1c8c440390f4c3117e987cc72c0f25f4dc1fb7",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_089",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed19-seed19-20260803T052214Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "val",
+          "values": {
+            "MSE": "0.00983089",
+            "M-MSE": "0.02158723",
+            "PSNR": "20.07406629",
+            "SSIM": "0.83389604",
+            "IQ": "0.76999744",
+            "MS": "1.78678651",
+            "TA": "36.03500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "37e566f615c26adef8848595abbbfc0abc5b6e2abd555774b079554f1b7a8612",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_090",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed32-seed32-20260803T055903Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01013607",
+            "M-MSE": "0.02151440",
+            "PSNR": "19.94129902",
+            "SSIM": "0.83074170",
+            "IQ": "0.76330607",
+            "MS": "1.78928187",
+            "TA": "16.92200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls, but some frames show slight penetration or unrealistic contact; motion appears jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "9726e38a6b5376a4d4f52489ece06c90d7d4d48a43cf0268eef9fd03f82fbb37",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_091",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed109-20260809T104702Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00884944",
+            "M-MSE": "0.01943212",
+            "PSNR": "20.53083896",
+            "SSIM": "0.83324611",
+            "IQ": "0.76985003",
+            "MS": "1.73203478",
+            "TA": "29.96300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unrealistic motion during stacking; object deformation not visible but contact appears mostly realistic",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "2fd8579b39312d682bfa5d153f7cb99161cb8aaa23beb33f476bd6e2cfbe36ca",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_092",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed138-20260809T110603Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00889137",
+            "M-MSE": "0.01946981",
+            "PSNR": "20.51031003",
+            "SSIM": "0.83768404",
+            "IQ": "0.76387743",
+            "MS": "1.81696200",
+            "TA": "19.10500000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "cfa6de0a49fe9a3a17e0b5d0f435213b961e36efeedb04448e942207016d4b25",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_093",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w1-seed48-20260809T092508Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00992900",
+            "M-MSE": "0.02017140",
+            "PSNR": "20.03094034",
+            "SSIM": "0.83182877",
+            "IQ": "0.77274951",
+            "MS": "1.80789434",
+            "TA": "22.04300000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact; slight penetration visible when stacking, but overall physics plausible",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "1a99e142be6862f79fa8b1ae36de1af4fdd8f0f9fb05dc76b56a7ab6651fa8d2",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_094",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed41-20260809T090050Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01106794",
+            "M-MSE": "0.02489187",
+            "PSNR": "19.55932888",
+            "SSIM": "0.82903886",
+            "IQ": "0.76541465",
+            "MS": "1.85451849",
+            "TA": "18.20900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to slide or deform slightly during manipulation, indicating minor physics inaccuracies",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "3ba5f5f7a9664e66413afb598f067816d1651391fd7f1eddb29f7d6d93e39454",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_095",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed30-seed30-20260803T055259Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.01242076",
+            "M-MSE": "0.02727710",
+            "PSNR": "19.05851627",
+            "SSIM": "0.80375648",
+            "IQ": "0.75628086",
+            "MS": "1.93850077",
+            "TA": "25.01300000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable grip; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "271fa152ce3bd6b1325e8fce49e9f7a365d5c670eb795994b51a12dd96246cb2",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_096",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed207-20260809T113542Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00843174",
+            "M-MSE": "0.01838429",
+            "PSNR": "20.74082081",
+            "SSIM": "0.83785862",
+            "IQ": "0.76804175",
+            "MS": "1.74161882",
+            "TA": "23.21700000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable lifting; motion appears somewhat jerky and lacks smooth kinematics",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "e200561e1ecbd4022f96517cda1dd4b063e3ba73ad0f3b99c38c492bdf0a405e",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_097",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed47-20260809T091900Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.00778404",
+            "M-MSE": "0.01684838",
+            "PSNR": "21.08794529",
+            "SSIM": "0.84076494",
+            "IQ": "0.76853351",
+            "MS": "1.73469084",
+            "TA": "39.33200000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some frames show slight penetration or unstable stacking; motion appears slightly jerky and lacks smooth force transfer",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "a0dc5e47de9c5636d57be9a74623423f0c1c416d69983a30a0648b53f2813d3c",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_098",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed33-seed33-20260803T060203Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "test",
+          "values": {
+            "MSE": "0.00888192",
+            "M-MSE": "0.01963992",
+            "PSNR": "20.51492653",
+            "SSIM": "0.83501279",
+            "IQ": "0.76081940",
+            "MS": "1.77877380",
+            "TA": "33.56700000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight motion blur indicates movement but no penetration or unrealistic sliding",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "186357cba48f583ade1ca0dd7312daaa5101ed80fc3978fd25a08d4b868706d0",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_099",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-corrected-v2-single-seed25-seed25-20260803T053853Z_episode_0000000",
+          "heldout73": false,
+          "trainingMembership": "train",
+          "values": {
+            "MSE": "0.00863045",
+            "M-MSE": "0.01906682",
+            "PSNR": "20.63966202",
+            "SSIM": "0.83529341",
+            "IQ": "0.76165391",
+            "MS": "1.77572357",
+            "TA": "16.23500000",
+            "INTERACT": "0.80000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 4,
+            "normalizedScore": 0.8,
+            "reason": "Robotic arms grasp and lift bowls with realistic contact and force transfer; slight object deformation not visible but motion appears physically plausible",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "93442254ca540ccb77352154fca83f06e7d0f4e707f0158f54994ba19ff1fd1f",
+            "error": null
+          }
+        },
+        {
+          "id": "stack_bowls_100",
+          "episodeId": "success/ACWM-wjx-oracle-stack-bowls-expand100-w0-seed229-20260809T115201Z_episode_0000000",
+          "heldout73": true,
+          "trainingMembership": "manifest_unseen",
+          "values": {
+            "MSE": "0.01159774",
+            "M-MSE": "0.02529176",
+            "PSNR": "19.35626170",
+            "SSIM": "0.80967045",
+            "IQ": "0.76794013",
+            "MS": "1.98083588",
+            "TA": "22.10900000",
+            "INTERACT": "0.60000000"
+          },
+          "media": null,
+          "interaction": {
+            "rawScore": 3,
+            "normalizedScore": 0.6,
+            "reason": "Robotic arms grasp and lift bowls with plausible contact, but some bowls appear to float or slide without realistic friction; one bowl is lifted and moved away from the central stack, not stacked as instructed",
+            "instruction": "Stack the three bowls together.",
+            "sampledFrameCount": 16,
+            "sourceVideoSha256": "4e9ed9cda9df48e6b8171509139cb86970fab7fdcea5ce87c159b51f70cb7bbb",
+            "error": null
+          }
+        }
+      ],
+      "provenance": {
+        "result": {
+          "schemaVersion": "benchmark2027_cosmos25_acwm_official8_summary_v1",
+          "sha256": "fcafdb45d0dbfa025c04558e903940cfd7405fc46b30f2e9c87dbe91d29cf30c"
+        },
+        "inputManifest": {
+          "schemaVersion": "benchmark2027_cosmos25_acwm_metric_manifest_v1",
+          "sha256": "690431afe855c174912a7fdce988da5adf422cfba75a903ca358723b150bcf7b"
+        },
+        "interaction": {
+          "schemaVersion": "benchmark2027_worldarena_interaction_quality_v1",
+          "sha256": "8c8a211eeb61b0e6dd4ba8352df67378f2d454476982157c1969282ca51108da"
+        },
+        "actionFollowing": {
+          "schemaVersion": "benchmark2027_worldarena_action_following_input_audit_v1",
+          "sha256": "89a66f0e0405ae75656025b50700c52a4556d224e27a4517e9e215505404cd0e"
+        }
+      }
+    }
+  }
+}

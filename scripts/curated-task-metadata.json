@@ -1,0 +1,213 @@
+{
+  "arrange_largest_number": {
+    "tags": [
+      "G",
+      "R",
+      "M"
+    ],
+    "instructionZh": "将数字从左到右排列，组成可能的最大数字，并放到垫子上。",
+    "priority": 4
+  },
+  "build_tower": {
+    "tags": [
+      "R",
+      "P",
+      "M"
+    ],
+    "instructionZh": "使用木块和木板搭建一座塔。"
+  },
+  "classify_objects_by_language": {
+    "tags": [
+      "G",
+      "R",
+      "M"
+    ],
+    "instructionZh": "按指令把三类物体分别放入左、中、右三个篮子，然后让机械臂归位。",
+    "priority": 1
+  },
+  "cover_blocks": {
+    "tags": [
+      "G",
+      "M",
+      "R"
+    ],
+    "instructionZh": "从左到右盖住方块，记住颜色，然后按红、绿、蓝的顺序揭开。"
+  },
+  "fold_clothes": {
+    "tags": [
+      "F",
+      "P"
+    ],
+    "instructionZh": "把衣服整齐地折叠好。"
+  },
+  "hang_mugs": {
+    "tags": [
+      "R",
+      "P",
+      "M"
+    ],
+    "instructionZh": "把所有杯子挂到杯架上。"
+  },
+  "imitate_sorting_sequence": {
+    "tags": [
+      "G",
+      "M",
+      "R"
+    ],
+    "instructionZh": "观察并记住物体摆放顺序，然后按相同顺序把对应物体放入篮子。"
+  },
+  "insert_key": {
+    "tags": [
+      "F",
+      "P",
+      "M"
+    ],
+    "instructionZh": "拿起钥匙，交给另一只手，插入锁孔并转动。"
+  },
+  "insert_tubes": {
+    "tags": [
+      "P",
+      "M"
+    ],
+    "instructionZh": "依次把三根管子插入架子。"
+  },
+  "make_toast": {
+    "tags": [
+      "F",
+      "M"
+    ],
+    "instructionZh": "拿起两片面包放进烤面包机，然后按下压杆。"
+  },
+  "pack_objects_into_box": {
+    "tags": [
+      "R",
+      "P",
+      "M"
+    ],
+    "instructionZh": "把所有物体正面朝左放入盒子。"
+  },
+  "pick_from_conveyor_by_image": {
+    "tags": [
+      "G",
+      "R",
+      "F"
+    ],
+    "instructionZh": "选择传送带上与板上图像匹配的物体，拿起后放入篮子。"
+  },
+  "play_stacking_toy": {
+    "tags": [
+      "G",
+      "F",
+      "P",
+      "M"
+    ],
+    "instructionZh": "把所有套叠玩具片放到对应的柱子上。"
+  },
+  "play_tic_tac_toe": {
+    "tags": [
+      "G",
+      "R",
+      "P",
+      "S",
+      "M"
+    ],
+    "instructionZh": "作为先手与对手轮流落子，直到九个格子全部填满。",
+    "priority": 3
+  },
+  "plug_in_charger": {
+    "tags": [
+      "F",
+      "P"
+    ],
+    "instructionZh": "把充电器插入电源排插。"
+  },
+  "pour_by_language": {
+    "tags": [
+      "G",
+      "R",
+      "F",
+      "M"
+    ],
+    "instructionZh": "按指令将三瓶液体分别倒入对应的三个碗中，然后让机械臂归位。"
+  },
+  "pour_liquid_into_cup": {
+    "tags": [
+      "F",
+      "R",
+      "P"
+    ],
+    "instructionZh": "把瓶中的液体倒入杯子。"
+  },
+  "press_by_number": {
+    "tags": [
+      "G",
+      "F",
+      "M"
+    ],
+    "instructionZh": "根据数字卡要求按压两个红色按钮，然后按蓝色按钮确认。"
+  },
+  "push_T": {
+    "tags": [
+      "R",
+      "P",
+      "F"
+    ],
+    "instructionZh": "推动 T 形方块，使其精确对齐灰色 T 形垫。"
+  },
+  "put_bottles_into_dustbin": {
+    "tags": [
+      "R",
+      "M"
+    ],
+    "instructionZh": "拿起瓶子并将它们扔进垃圾桶，需要时在双手之间交接。"
+  },
+  "solve_equation": {
+    "tags": [
+      "G",
+      "R",
+      "P"
+    ],
+    "instructionZh": "从桌面的数字和运算符中选出能让算式成立的缺失项，放到空白垫子上，然后让机械臂归位。",
+    "priority": 2
+  },
+  "sort_nesting_dolls_by_size": {
+    "tags": [
+      "G",
+      "R",
+      "M"
+    ],
+    "instructionZh": "从左到右按从小到大的顺序排列五个套娃。"
+  },
+  "stack_blocks": {
+    "tags": [
+      "G",
+      "R",
+      "P",
+      "M"
+    ],
+    "instructionZh": "把三个不同纹理的方块叠起来。"
+  },
+  "stack_bowls": {
+    "tags": [
+      "R",
+      "M"
+    ],
+    "instructionZh": "将三个碗叠放在一起。"
+  },
+  "store_tools_in_toolbox": {
+    "tags": [
+      "G",
+      "R",
+      "F",
+      "M"
+    ],
+    "instructionZh": "把每件工具放入工具箱中对应的位置，然后让机械臂归位。"
+  },
+  "sweep_blocks": {
+    "tags": [
+      "F",
+      "M"
+    ],
+    "instructionZh": "拿起扫帚交给右手，然后用簸箕把方块扫起来。"
+  }
+}

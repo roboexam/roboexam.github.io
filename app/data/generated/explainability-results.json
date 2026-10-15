@@ -1,0 +1,1544 @@
+{
+  "schemaVersion": "unibench.dashboard.explainability.v1",
+  "bundleVersion": "metric-success-correlation-20260819-v1",
+  "generatedBy": "scripts/export-explainability-results.mjs",
+  "relationship": "metric-success-association",
+  "models": {
+    "Pi0.5": {
+      "modelId": "pi05",
+      "displayName": "Pi0.5",
+      "family": "VLA",
+      "task": "stack_bowls",
+      "resultVersion": "vla13-events100-pre250-20260819-v1",
+      "cohort": {
+        "episodes": 100,
+        "uniqueSeeds": 100,
+        "success": 76,
+        "partial": 22,
+        "failure": 2,
+        "nonSuccess": 24,
+        "successRate": 0.76
+      },
+      "method": {
+        "correlation": "Point-biserial r",
+        "target": "success=1；half-success / failure=0",
+        "bootstrapSamples": 20000,
+        "confidenceInterval": "stratified percentile bootstrap 95% CI",
+        "multipleTesting": "Benjamini-Hochberg FDR across the allowlisted metrics",
+        "randomSeed": 20260819,
+        "preOutcomeSteps": 250
+      },
+      "series": {
+        "fullEpisode": [
+          {
+            "metricId": "left.ee_sparc",
+            "label": "Left EE SPARC",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "higher",
+            "r": -0.3737212951533315,
+            "ci95": [
+              -0.5688591166959758,
+              -0.1498875171328509
+            ],
+            "pValue": 0.00012815750961344717,
+            "qValue": 0.0003844725288403415,
+            "significant": true,
+            "successMean": -5.019213188901235,
+            "nonSuccessMean": -4.117497896399526,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.ee_path_length_m",
+            "label": "Left EE path length (m)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.042135424776010164,
+            "ci95": [
+              -0.25559733919182803,
+              0.18516927367895045
+            ],
+            "pValue": 0.6772331336244665,
+            "qValue": 0.7032805618407921,
+            "significant": false,
+            "successMean": 1.1735450959410851,
+            "nonSuccessMean": 1.2079780946353438,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.ee_speed_mean_m_s",
+            "label": "Left mean EE speed (m/s)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "neutral",
+            "r": 0.4133534128581803,
+            "ci95": [
+              0.24371922588865436,
+              0.5992765840143691
+            ],
+            "pValue": 0.000019169897875905955,
+            "qValue": 0.0000646984053311826,
+            "significant": true,
+            "successMean": 0.08022551980157638,
+            "nonSuccessMean": 0.05589893067062155,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.ee_sparc",
+            "label": "Right EE SPARC",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "higher",
+            "r": 0.4223536845546944,
+            "ci95": [
+              0.23707115759946523,
+              0.604542230141537
+            ],
+            "pValue": 0.000012028755068132912,
+            "qValue": 0.0000463966266913698,
+            "significant": true,
+            "successMean": -4.50887771769173,
+            "nonSuccessMean": -5.534352856039636,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.ee_path_length_m",
+            "label": "Right EE path length (m)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.5370925848979626,
+            "ci95": [
+              -0.6672338461451969,
+              -0.3940502931250215
+            ],
+            "pValue": 8.366659016589278e-9,
+            "qValue": 4.51799586895821e-8,
+            "significant": true,
+            "successMean": 1.262832994300961,
+            "nonSuccessMean": 1.8233532058696864,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.ee_speed_mean_m_s",
+            "label": "Right mean EE speed (m/s)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "neutral",
+            "r": -0.007756343295679561,
+            "ci95": [
+              -0.2011181133402547,
+              0.14154193496925407
+            ],
+            "pValue": 0.9389501838971844,
+            "qValue": 0.9389501838971844,
+            "significant": false,
+            "successMean": 0.0878009180587154,
+            "nonSuccessMean": 0.08824962530279824,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.joint_path_length_rad",
+            "label": "Left Joint path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.0733659885334044,
+            "ci95": [
+              -0.2788647987349778,
+              0.1581892451808596
+            ],
+            "pValue": 0.46819785707650363,
+            "qValue": 0.5267225892110666,
+            "significant": false,
+            "successMean": 7.263166362198829,
+            "nonSuccessMean": 7.6101752482682485,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.orientation_path_length_rad",
+            "label": "Left Orientation path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.13773031044142528,
+            "ci95": [
+              -0.342505939783023,
+              0.08255862395349385
+            ],
+            "pValue": 0.17177921913955443,
+            "qValue": 0.22085899603657,
+            "significant": false,
+            "successMean": 4.076691588540828,
+            "nonSuccessMean": 4.393276924167966,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.joint_path_length_rad",
+            "label": "Right Joint path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.5654863390984919,
+            "ci95": [
+              -0.6817577904080647,
+              -0.4387184813774385
+            ],
+            "pValue": 8.789805160848619e-10,
+            "qValue": 7.910824644763756e-9,
+            "significant": true,
+            "successMean": 8.287492675067586,
+            "nonSuccessMean": 11.791382676197491,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.orientation_path_length_rad",
+            "label": "Right Orientation path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.6160006260247949,
+            "ci95": [
+              -0.7367813140668326,
+              -0.4800083732708626
+            ],
+            "pValue": 9.00802402838975e-12,
+            "qValue": 1.2160832438326162e-10,
+            "significant": true,
+            "successMean": 4.243415496942205,
+            "nonSuccessMean": 5.98766467954277,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "total.joint_path_length_rad",
+            "label": "Total Joint path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.5466698521847916,
+            "ci95": [
+              -0.6713206006905715,
+              -0.41253010669393914
+            ],
+            "pValue": 4.005262881509323e-9,
+            "qValue": 2.703552445018793e-8,
+            "significant": true,
+            "successMean": 15.550659037266419,
+            "nonSuccessMean": 19.401557924465738,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "total.orientation_path_length_rad",
+            "label": "Total Orientation path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.529591587573652,
+            "ci95": [
+              -0.6548910746456097,
+              -0.3873004996646918
+            ],
+            "pValue": 1.4663557331872871e-8,
+            "qValue": 6.598600799342792e-8,
+            "significant": true,
+            "successMean": 8.320107085483032,
+            "nonSuccessMean": 10.380941603710736,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          }
+        ],
+        "preOutcome": [
+          {
+            "metricId": "pre_outcome.left.ee_sparc",
+            "label": "Pre-outcome left EE SPARC",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "higher",
+            "r": 0.15145627160795908,
+            "ci95": [
+              -0.045588048198127396,
+              0.36073026848671297
+            ],
+            "pValue": 0.13252657756052794,
+            "qValue": 0.1789108797067127,
+            "significant": false,
+            "successMean": -3.8137422434838926,
+            "nonSuccessMean": -4.381738425401205,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.ee_path_length_m",
+            "label": "Pre-outcome left EE path length (m)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.2108072599834971,
+            "ci95": [
+              -0.013846218159009927,
+              0.4273443666955139
+            ],
+            "pValue": 0.03526615789671671,
+            "qValue": 0.07324509717010394,
+            "significant": false,
+            "successMean": 0.6398142667252695,
+            "nonSuccessMean": 0.49533424228228506,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.ee_speed_mean_m_s",
+            "label": "Pre-outcome left Mean EE speed (m/s)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "neutral",
+            "r": 0.20637904407573526,
+            "ci95": [
+              -0.022260933494573528,
+              0.4285630807269846
+            ],
+            "pValue": 0.03939119114434565,
+            "qValue": 0.0759687257783809,
+            "significant": false,
+            "successMean": 0.05956348363829382,
+            "nonSuccessMean": 0.04481444133615389,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.joint_path_length_rad",
+            "label": "Pre-outcome left Joint path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.2303938143373864,
+            "ci95": [
+              0.017122574458263644,
+              0.43801979389846246
+            ],
+            "pValue": 0.021105693305284508,
+            "qValue": 0.04748780993689014,
+            "significant": true,
+            "successMean": 4.066362928979266,
+            "nonSuccessMean": 3.143148837022322,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.orientation_path_length_rad",
+            "label": "Pre-outcome left Orientation path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.23571842689673758,
+            "ci95": [
+              0.029796631172854384,
+              0.4303617369273808
+            ],
+            "pValue": 0.018229680147918762,
+            "qValue": 0.04474557854489151,
+            "significant": true,
+            "successMean": 2.327300521264011,
+            "nonSuccessMean": 1.888320363446723,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.ee_sparc",
+            "label": "Pre-outcome right EE SPARC",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "higher",
+            "r": -0.09524562114929783,
+            "ci95": [
+              -0.28842223219964114,
+              0.09986586451657996
+            ],
+            "pValue": 0.34587189593700945,
+            "qValue": 0.40602353001301106,
+            "significant": false,
+            "successMean": -3.8504493471028227,
+            "nonSuccessMean": -3.717244478005061,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.ee_path_length_m",
+            "label": "Pre-outcome right EE path length (m)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": -0.16072410988756594,
+            "ci95": [
+              -0.4018700037832652,
+              0.07184123931328781
+            ],
+            "pValue": 0.1101681290016304,
+            "qValue": 0.15655470963389584,
+            "significant": false,
+            "successMean": 1.0163887240953995,
+            "nonSuccessMean": 1.111201811957807,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.ee_speed_mean_m_s",
+            "label": "Pre-outcome right Mean EE speed (m/s)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "neutral",
+            "r": -0.16186941608317326,
+            "ci95": [
+              -0.4038242209463507,
+              0.07472145678466965
+            ],
+            "pValue": 0.10762221321464777,
+            "qValue": 0.15655470963389584,
+            "significant": false,
+            "successMean": 0.09916538460848195,
+            "nonSuccessMean": 0.10893924316004688,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.joint_path_length_rad",
+            "label": "Pre-outcome right Joint path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": -0.10781964506698878,
+            "ci95": [
+              -0.333650089278923,
+              0.1122283561005302
+            ],
+            "pValue": 0.2856300817163877,
+            "qValue": 0.3505460093792031,
+            "significant": false,
+            "successMean": 6.733198035567068,
+            "nonSuccessMean": 7.110114391677321,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.orientation_path_length_rad",
+            "label": "Pre-outcome right Orientation path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": -0.04223401397801545,
+            "ci95": [
+              -0.27702706817699935,
+              0.1735972426534014
+            ],
+            "pValue": 0.6765200429391088,
+            "qValue": 0.7032805618407921,
+            "significant": false,
+            "successMean": 3.3888907841810685,
+            "nonSuccessMean": 3.444878506656645,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.total.joint_path_length_rad",
+            "label": "Pre-outcome total Joint path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.17800841394014816,
+            "ci95": [
+              -0.024938688282295497,
+              0.3811975989687935
+            ],
+            "pValue": 0.07641376558169848,
+            "qValue": 0.12136303945328582,
+            "significant": false,
+            "successMean": 10.799560964546334,
+            "nonSuccessMean": 10.253263228699643,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.total.orientation_path_length_rad",
+            "label": "Pre-outcome total Orientation path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.19416358232474162,
+            "ci95": [
+              0.01014024507209085,
+              0.3815413618353473
+            ],
+            "pValue": 0.052905866218622234,
+            "qValue": 0.08927864924392502,
+            "significant": false,
+            "successMean": 5.716191305445079,
+            "nonSuccessMean": 5.333198870103368,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          }
+        ],
+        "diagnostics": [
+          {
+            "metricId": "iterations_per_second",
+            "label": "Iterations/s",
+            "status": "computed",
+            "window": "diagnostics",
+            "direction": "higher",
+            "r": -0.19836193261436547,
+            "ci95": [
+              -0.367141792099469,
+              -0.019055953398480766
+            ],
+            "pValue": 0.047885165205662716,
+            "qValue": 0.08619329737019289,
+            "significant": false,
+            "successMean": 5.308196103603452,
+            "nonSuccessMean": 5.436158919568464,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "wall_time_s",
+            "label": "Wall time (s)",
+            "status": "computed",
+            "window": "diagnostics",
+            "direction": "lower",
+            "r": -0.6700618708885987,
+            "ci95": [
+              -0.7656720411211905,
+              -0.5740674627388842
+            ],
+            "pValue": 2.460445764480395e-14,
+            "qValue": 6.643203564097067e-13,
+            "significant": true,
+            "successMean": 66.33427930365788,
+            "nonSuccessMean": 92.15901606654167,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          }
+        ],
+        "events": [
+          {
+            "metricId": "event_count.task_adherence_event_count",
+            "label": "Task Adherence Event Count",
+            "status": "computed",
+            "window": "events",
+            "direction": "lower",
+            "r": -0.2409248980850911,
+            "ci95": [
+              -0.38948248585325007,
+              -0.17884778999621978
+            ],
+            "pValue": 0.015750746601231963,
+            "qValue": 0.0425270158233263,
+            "significant": true,
+            "successMean": 0,
+            "nonSuccessMean": 0.125,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": null,
+            "association": {
+              "contingency": {
+                "event_non_success": 2,
+                "event_success": 0,
+                "no_event_non_success": 22,
+                "no_event_success": 76
+              },
+              "fisher_exact_p_value": 0.05575757575757576,
+              "metric": "task_adherence_event_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": 0,
+              "status": "computed",
+              "success_rate_given_event": 0,
+              "success_rate_given_no_event": 0.7755102040816326,
+              "telemetry_coverage": 1
+            }
+          },
+          {
+            "metricId": "event_count.object_slip_count",
+            "label": "Object Slip Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 24,
+                "no_event_success": 76
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "object_slip_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.76,
+              "telemetry_coverage": 1
+            }
+          },
+          {
+            "metricId": "event_count.environment_collision_count",
+            "label": "Environment Collision Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 24,
+                "no_event_success": 76
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "environment_collision_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.76,
+              "telemetry_coverage": 1
+            }
+          },
+          {
+            "metricId": "event_count.self_collision_count",
+            "label": "Self Collision Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 76,
+            "nonSuccessN": 24,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 24,
+                "no_event_success": 76
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "self_collision_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.76,
+              "telemetry_coverage": 1
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "correlationSha256": "88752050b4813128719b850f15bce93238f0ce7973485968ba1b4aebce73a071",
+        "episodesSha256": "b3a1daf0ab1c991926a93cd8e8b0b460155bb336f2fb49a8bb67affa0070d918",
+        "inputManifestSha256": "f3094cd480d9d266370c03301be76c989528b12c45a83d0bda0779180eeb1dc1",
+        "sourceSchemaVersion": 2,
+        "createdAtUtc": "2026-08-19T14:15:30.464630+00:00",
+        "pipelineCommit": "dd7f4ff58f03adba4bc58065c4910543fdeb89ca",
+        "correlationScriptSha256": "3b5108d2a9da4340c3c7af3c61408048b7685deafc1a3116973015dcb74853ed"
+      }
+    },
+    "FastWAM": {
+      "modelId": "fastwam",
+      "displayName": "FastWAM",
+      "family": "WAM",
+      "task": "stack_bowls",
+      "resultVersion": "vla13-events100-pre250-20260819-v1",
+      "cohort": {
+        "episodes": 100,
+        "uniqueSeeds": 100,
+        "success": 12,
+        "partial": 31,
+        "failure": 57,
+        "nonSuccess": 88,
+        "successRate": 0.12
+      },
+      "method": {
+        "correlation": "Point-biserial r",
+        "target": "success=1；half-success / failure=0",
+        "bootstrapSamples": 20000,
+        "confidenceInterval": "stratified percentile bootstrap 95% CI",
+        "multipleTesting": "Benjamini-Hochberg FDR across the allowlisted metrics",
+        "randomSeed": 20260819,
+        "preOutcomeSteps": 250
+      },
+      "series": {
+        "fullEpisode": [
+          {
+            "metricId": "left.ee_sparc",
+            "label": "Left EE SPARC",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "higher",
+            "r": -0.029612448438123825,
+            "ci95": [
+              -0.15553276928777163,
+              0.0756588989124211
+            ],
+            "pValue": 0.7699306510639026,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": -4.789534481591644,
+            "nonSuccessMean": -4.648425550027158,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.ee_path_length_m",
+            "label": "Left EE path length (m)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.005131007512027105,
+            "ci95": [
+              -0.11677898795655481,
+              0.11866928225271742
+            ],
+            "pValue": 0.9595922225172473,
+            "qValue": 0.9595922225172473,
+            "significant": false,
+            "successMean": 1.4670399555517977,
+            "nonSuccessMean": 1.474838237836788,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.ee_speed_mean_m_s",
+            "label": "Left mean EE speed (m/s)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "neutral",
+            "r": 0.3759229373946527,
+            "ci95": [
+              0.2777717205250566,
+              0.4911702594158327
+            ],
+            "pValue": 0.00011604209578631812,
+            "qValue": 0.0011170786106932179,
+            "significant": true,
+            "successMean": 0.0906569440099551,
+            "nonSuccessMean": 0.060712126683988774,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.ee_sparc",
+            "label": "Right EE SPARC",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "higher",
+            "r": -0.012283746399010772,
+            "ci95": [
+              -0.18900222673113884,
+              0.1230216858516879
+            ],
+            "pValue": 0.903455277879635,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": -4.5663398169006335,
+            "nonSuccessMean": -4.53239621752837,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.ee_path_length_m",
+            "label": "Right EE path length (m)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.3735938272797901,
+            "ci95": [
+              -0.4911695833094969,
+              -0.23338955586221385
+            ],
+            "pValue": 0.00012889368584921744,
+            "qValue": 0.0011170786106932179,
+            "significant": true,
+            "successMean": 1.323021902305228,
+            "nonSuccessMean": 1.7243816248294062,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.ee_speed_mean_m_s",
+            "label": "Right mean EE speed (m/s)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "neutral",
+            "r": 0.12864421506864848,
+            "ci95": [
+              -0.029591295806454674,
+              0.28523801982044217
+            ],
+            "pValue": 0.2021054745319399,
+            "qValue": 0.30910249046061394,
+            "significant": false,
+            "successMean": 0.08288258069662154,
+            "nonSuccessMean": 0.07606714160241358,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.joint_path_length_rad",
+            "label": "Left Joint path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.016398127741044995,
+            "ci95": [
+              -0.10519269418697896,
+              0.09489139946286715
+            ],
+            "pValue": 0.8713605857612492,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": 8.734863502790281,
+            "nonSuccessMean": 8.892729762134582,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "left.orientation_path_length_rad",
+            "label": "Left Orientation path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.11857987743140681,
+            "ci95": [
+              -0.21916224111410906,
+              -0.014220609967738183
+            ],
+            "pValue": 0.23997815249523752,
+            "qValue": 0.3466351091597875,
+            "significant": false,
+            "successMean": 5.056110937172662,
+            "nonSuccessMean": 5.638085486601567,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.joint_path_length_rad",
+            "label": "Right Joint path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.29501655034379926,
+            "ci95": [
+              -0.4269051977205704,
+              -0.13534468847830575
+            ],
+            "pValue": 0.002885380683514199,
+            "qValue": 0.015003979554273836,
+            "significant": true,
+            "successMean": 8.305470760389683,
+            "nonSuccessMean": 10.08597545710669,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "right.orientation_path_length_rad",
+            "label": "Right Orientation path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.3325017166673271,
+            "ci95": [
+              -0.4569602565098636,
+              -0.19405059792013107
+            ],
+            "pValue": 0.0007250726009833664,
+            "qValue": 0.0047129719063918815,
+            "significant": true,
+            "successMean": 5.024767735169555,
+            "nonSuccessMean": 6.1131672431003645,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "total.joint_path_length_rad",
+            "label": "Total Joint path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.15723897125275435,
+            "ci95": [
+              -0.26005017582868917,
+              -0.03802008144737141
+            ],
+            "pValue": 0.11820403146637988,
+            "qValue": 0.20488698787505846,
+            "significant": false,
+            "successMean": 17.040334263179968,
+            "nonSuccessMean": 18.978705219241274,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "total.orientation_path_length_rad",
+            "label": "Total Orientation path length (rad)",
+            "status": "computed",
+            "window": "fullEpisode",
+            "direction": "lower",
+            "r": -0.2438610001824475,
+            "ci95": [
+              -0.35094859824914365,
+              -0.1317273482105102
+            ],
+            "pValue": 0.014485902089229697,
+            "qValue": 0.05380477918856745,
+            "significant": false,
+            "successMean": 10.080878672342214,
+            "nonSuccessMean": 11.75125272970193,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          }
+        ],
+        "preOutcome": [
+          {
+            "metricId": "pre_outcome.left.ee_sparc",
+            "label": "Pre-outcome left EE SPARC",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "higher",
+            "r": 0.21678721998403452,
+            "ci95": [
+              0.11312674006094951,
+              0.3236937009996724
+            ],
+            "pValue": 0.0302767903447057,
+            "qValue": 0.08746628321803868,
+            "significant": false,
+            "successMean": -3.050118778193008,
+            "nonSuccessMean": -3.948165901243615,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.ee_path_length_m",
+            "label": "Pre-outcome left EE path length (m)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.030264534300877013,
+            "ci95": [
+              -0.07699246790671842,
+              0.1343329020862705
+            ],
+            "pValue": 0.7650096179645692,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": 0.7545547222811845,
+            "nonSuccessMean": 0.7303152070784236,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.ee_speed_mean_m_s",
+            "label": "Pre-outcome left Mean EE speed (m/s)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "neutral",
+            "r": 0.03678657817625916,
+            "ci95": [
+              -0.07080592396507389,
+              0.1378558219938303
+            ],
+            "pValue": 0.7163331193308277,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": 0.06460075750266689,
+            "nonSuccessMean": 0.061674013812064346,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.joint_path_length_rad",
+            "label": "Pre-outcome left Joint path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.02105702025140234,
+            "ci95": [
+              -0.0690159631262236,
+              0.1059049145198109
+            ],
+            "pValue": 0.8352712440972007,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": 4.780408347307105,
+            "nonSuccessMean": 4.680048783166854,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.left.orientation_path_length_rad",
+            "label": "Pre-outcome left Orientation path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": -0.012110828922909494,
+            "ci95": [
+              -0.09449811673293101,
+              0.06858961231052156
+            ],
+            "pValue": 0.9048079186428407,
+            "qValue": 0.9410002353885544,
+            "significant": false,
+            "successMean": 2.837237942524313,
+            "nonSuccessMean": 2.8666403238699165,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.ee_sparc",
+            "label": "Pre-outcome right EE SPARC",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "higher",
+            "r": -0.18213201143734015,
+            "ci95": [
+              -0.2903204496694504,
+              -0.07408286581524023
+            ],
+            "pValue": 0.0697358071227813,
+            "qValue": 0.1394716142455626,
+            "significant": false,
+            "successMean": -4.297119717044496,
+            "nonSuccessMean": -3.8295024849448045,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.ee_path_length_m",
+            "label": "Pre-outcome right EE path length (m)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.18288765349257718,
+            "ci95": [
+              0.0895519458999202,
+              0.27187202139302796
+            ],
+            "pValue": 0.06856481502422192,
+            "qValue": 0.1394716142455626,
+            "significant": false,
+            "successMean": 1.1246362576482694,
+            "nonSuccessMean": 1.005511245180838,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.ee_speed_mean_m_s",
+            "label": "Pre-outcome right Mean EE speed (m/s)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "neutral",
+            "r": 0.17613013920096748,
+            "ci95": [
+              0.08259318161035885,
+              0.2644975034104921
+            ],
+            "pValue": 0.07962115505352485,
+            "qValue": 0.14786785938511757,
+            "significant": false,
+            "successMean": 0.10342869741035471,
+            "nonSuccessMean": 0.0916325539496615,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.joint_path_length_rad",
+            "label": "Pre-outcome right Joint path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.23904790143614865,
+            "ci95": [
+              0.1610156230565646,
+              0.3179487295608475
+            ],
+            "pValue": 0.016608529236202266,
+            "qValue": 0.05397772001765737,
+            "significant": false,
+            "successMean": 7.076431549919287,
+            "nonSuccessMean": 6.171946436239153,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.right.orientation_path_length_rad",
+            "label": "Pre-outcome right Orientation path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.26833138966793285,
+            "ci95": [
+              0.18391749976883578,
+              0.3517694415946057
+            ],
+            "pValue": 0.0069491852918587916,
+            "qValue": 0.030113136264721427,
+            "significant": true,
+            "successMean": 4.176890436465985,
+            "nonSuccessMean": 3.647801358453752,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.total.joint_path_length_rad",
+            "label": "Pre-outcome total Joint path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.20023261868452819,
+            "ci95": [
+              0.13721101244109907,
+              0.26328552599648225
+            ],
+            "pValue": 0.04577859577294375,
+            "qValue": 0.11902434900965375,
+            "significant": false,
+            "successMean": 11.856839897226388,
+            "nonSuccessMean": 10.851995219406009,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "pre_outcome.total.orientation_path_length_rad",
+            "label": "Pre-outcome total Orientation path length (rad)",
+            "status": "computed",
+            "window": "preOutcome",
+            "direction": "lower",
+            "r": 0.18554837533816104,
+            "ci95": [
+              0.11888025373516396,
+              0.250238624766829
+            ],
+            "pValue": 0.06456765842659393,
+            "qValue": 0.1394716142455626,
+            "significant": false,
+            "successMean": 7.014128378990297,
+            "nonSuccessMean": 6.514441682323669,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          }
+        ],
+        "diagnostics": [
+          {
+            "metricId": "iterations_per_second",
+            "label": "Iterations/s",
+            "status": "computed",
+            "window": "diagnostics",
+            "direction": "higher",
+            "r": -0.14426567959171055,
+            "ci95": [
+              -0.2936436673327718,
+              0.012855877572087218
+            ],
+            "pValue": 0.15213753233029986,
+            "qValue": 0.24722349003673727,
+            "significant": false,
+            "successMean": 4.240368353952608,
+            "nonSuccessMean": 4.346901581448367,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          },
+          {
+            "metricId": "wall_time_s",
+            "label": "Wall time (s)",
+            "status": "computed",
+            "window": "diagnostics",
+            "direction": "lower",
+            "r": -0.7792841435448563,
+            "ci95": [
+              -0.8777332052243635,
+              -0.6427488815525846
+            ],
+            "pValue": 1.3201435817633593e-21,
+            "qValue": 3.432373312584734e-20,
+            "significant": true,
+            "successMean": 85.64388204358335,
+            "nonSuccessMean": 115.38985292563638,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": null
+          }
+        ],
+        "events": [
+          {
+            "metricId": "event_count.task_adherence_event_count",
+            "label": "Task Adherence Event Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 88,
+                "no_event_success": 12
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "task_adherence_event_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.12,
+              "telemetry_coverage": 1
+            }
+          },
+          {
+            "metricId": "event_count.object_slip_count",
+            "label": "Object Slip Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 88,
+                "no_event_success": 12
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "object_slip_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.12,
+              "telemetry_coverage": 1
+            }
+          },
+          {
+            "metricId": "event_count.environment_collision_count",
+            "label": "Environment Collision Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 88,
+                "no_event_success": 12
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "environment_collision_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.12,
+              "telemetry_coverage": 1
+            }
+          },
+          {
+            "metricId": "event_count.self_collision_count",
+            "label": "Self Collision Count",
+            "status": "unavailable",
+            "window": "events",
+            "direction": "lower",
+            "r": null,
+            "ci95": [
+              null,
+              null
+            ],
+            "pValue": null,
+            "qValue": null,
+            "significant": false,
+            "successMean": null,
+            "nonSuccessMean": null,
+            "successN": 12,
+            "nonSuccessN": 88,
+            "n": 100,
+            "missing": 0,
+            "reason": "feature is constant",
+            "association": {
+              "contingency": {
+                "event_non_success": 0,
+                "event_success": 0,
+                "no_event_non_success": 88,
+                "no_event_success": 12
+              },
+              "fisher_exact_p_value": 1,
+              "metric": "self_collision_count",
+              "n": 100,
+              "odds_ratio_success_event_vs_no_event": "inf",
+              "status": "computed",
+              "success_rate_given_event": null,
+              "success_rate_given_no_event": 0.12,
+              "telemetry_coverage": 1
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "correlationSha256": "8c258696f1835e3d5877f83274baa02c5c150df50f885240be856c0890e17764",
+        "episodesSha256": "3f3bfdeb76d5978c6e05b4dad9fcb91359616839f02badeae06f71b9ca6980b4",
+        "inputManifestSha256": "c78353d56fbe76988600e36495a7a4f1b83ad5977209c21600222f2d8903fb3e",
+        "sourceSchemaVersion": 2,
+        "createdAtUtc": "2026-08-19T14:17:16.764259+00:00",
+        "pipelineCommit": "dd7f4ff58f03adba4bc58065c4910543fdeb89ca",
+        "correlationScriptSha256": "3b5108d2a9da4340c3c7af3c61408048b7685deafc1a3116973015dcb74853ed"
+      }
+    }
+  }
+}

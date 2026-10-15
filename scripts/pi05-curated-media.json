@@ -1,0 +1,2327 @@
+{
+  "23cef70b605deeb7ffce90f3b2ca02c4d4704fe0dee4006acabd01cc0e852a8c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000000_cam_head_success.mp4",
+    "size": 996034,
+    "sha256": "23cef70b605deeb7ffce90f3b2ca02c4d4704fe0dee4006acabd01cc0e852a8c"
+  },
+  "e77e9757ee85e5429287662ad50ef0b8c39b5b13ece4f20a599945d85ec2e014.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000000_cam_left_wrist_success.mp4",
+    "size": 4037226,
+    "sha256": "e77e9757ee85e5429287662ad50ef0b8c39b5b13ece4f20a599945d85ec2e014"
+  },
+  "77b4f6ea158b7ab6703770484ab8fea8950bb211f03a11fb5f2c261174789315.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000000_cam_right_wrist_success.mp4",
+    "size": 2653316,
+    "sha256": "77b4f6ea158b7ab6703770484ab8fea8950bb211f03a11fb5f2c261174789315"
+  },
+  "a7c2a1caa5cbbf0c6c51234b5a8cab6b490b43bf6ed3a0f9696120d88d396164.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000001_cam_head_success.mp4",
+    "size": 1077242,
+    "sha256": "a7c2a1caa5cbbf0c6c51234b5a8cab6b490b43bf6ed3a0f9696120d88d396164"
+  },
+  "f007d8906c98678c4749e4b79cb53b750ccd705ac6096255b81166f28982494a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000001_cam_left_wrist_success.mp4",
+    "size": 2047520,
+    "sha256": "f007d8906c98678c4749e4b79cb53b750ccd705ac6096255b81166f28982494a"
+  },
+  "cd6285b1bc79d993aaf0890d2d800b30d69f5ee36ce2f05913199880dbb15610.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000001_cam_right_wrist_success.mp4",
+    "size": 1327002,
+    "sha256": "cd6285b1bc79d993aaf0890d2d800b30d69f5ee36ce2f05913199880dbb15610"
+  },
+  "6ffe09c9bf48a50a75b89fca4663eed1e39e855383c8cc108841d6e1080ef74b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000002_cam_head_success.mp4",
+    "size": 604730,
+    "sha256": "6ffe09c9bf48a50a75b89fca4663eed1e39e855383c8cc108841d6e1080ef74b"
+  },
+  "f0db0bf8f40d6430e00e36dac0e5db616935b656125893964e7b707423d7b2f3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000002_cam_left_wrist_success.mp4",
+    "size": 924071,
+    "sha256": "f0db0bf8f40d6430e00e36dac0e5db616935b656125893964e7b707423d7b2f3"
+  },
+  "f911875172dc4a64c8487a77bd9a4389b37b77ccd7ce8a8212bb0a108a10aca4.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000002_cam_right_wrist_success.mp4",
+    "size": 902506,
+    "sha256": "f911875172dc4a64c8487a77bd9a4389b37b77ccd7ce8a8212bb0a108a10aca4"
+  },
+  "043a5f824f993a694fb22d73d9a4d51d3e09eff264e74a6d5dac4b0fcea0850a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000003_cam_head_success.mp4",
+    "size": 1297356,
+    "sha256": "043a5f824f993a694fb22d73d9a4d51d3e09eff264e74a6d5dac4b0fcea0850a"
+  },
+  "7677397f074bb739b3dcd54bfa2bdd965c6f6782860436ff53898e91418626ef.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000003_cam_left_wrist_success.mp4",
+    "size": 2532560,
+    "sha256": "7677397f074bb739b3dcd54bfa2bdd965c6f6782860436ff53898e91418626ef"
+  },
+  "123c3bac2f8bb6cebf648c08b08fbc550c9dd3a4b5afd3707b9541fd256bb997.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000003_cam_right_wrist_success.mp4",
+    "size": 1530298,
+    "sha256": "123c3bac2f8bb6cebf648c08b08fbc550c9dd3a4b5afd3707b9541fd256bb997"
+  },
+  "621398fdd0c91fb1b5d3237074a1271f229d26616e8d8bde5586bb81422573fa.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000004_cam_head_success.mp4",
+    "size": 1088758,
+    "sha256": "621398fdd0c91fb1b5d3237074a1271f229d26616e8d8bde5586bb81422573fa"
+  },
+  "f854725862000709121acb5c3ae47317e400815392268d81248de64ad1e2aab9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000004_cam_left_wrist_success.mp4",
+    "size": 2156815,
+    "sha256": "f854725862000709121acb5c3ae47317e400815392268d81248de64ad1e2aab9"
+  },
+  "9f466f125be1fdb30b2c728fe86c6743fdb11735681dcfc53a04617ca4912a3b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000004_cam_right_wrist_success.mp4",
+    "size": 1304148,
+    "sha256": "9f466f125be1fdb30b2c728fe86c6743fdb11735681dcfc53a04617ca4912a3b"
+  },
+  "d702bccc1ca48ed31b0e51a7853c50853534c607dc726469601219c39b7dfda0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000005_cam_head_fail.mp4",
+    "size": 1342127,
+    "sha256": "d702bccc1ca48ed31b0e51a7853c50853534c607dc726469601219c39b7dfda0"
+  },
+  "afe906841eb0963aebf028b2db15d70f42f34cb71309b4f25353142033bff6ce.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000005_cam_left_wrist_fail.mp4",
+    "size": 2330770,
+    "sha256": "afe906841eb0963aebf028b2db15d70f42f34cb71309b4f25353142033bff6ce"
+  },
+  "d3f20fe13d96dec685e78472515a6db8e3fd5e477a9ee7f2479cf806cf4ed34b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000005_cam_right_wrist_fail.mp4",
+    "size": 1989095,
+    "sha256": "d3f20fe13d96dec685e78472515a6db8e3fd5e477a9ee7f2479cf806cf4ed34b"
+  },
+  "f70e656c5c57fb0d31546181a34f206918d1a9a7df5878e14e143092b9eba34a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000006_cam_head_success.mp4",
+    "size": 1014786,
+    "sha256": "f70e656c5c57fb0d31546181a34f206918d1a9a7df5878e14e143092b9eba34a"
+  },
+  "b0be226ef5fcd39d142bc3ab9fc23da3d4b6560a76697b85ba336574c060aacd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000006_cam_left_wrist_success.mp4",
+    "size": 2016307,
+    "sha256": "b0be226ef5fcd39d142bc3ab9fc23da3d4b6560a76697b85ba336574c060aacd"
+  },
+  "88c2c775d65ee5611d25b17e745fcf8d32e27f4adaac93461306837f9cbccfc1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000006_cam_right_wrist_success.mp4",
+    "size": 1335489,
+    "sha256": "88c2c775d65ee5611d25b17e745fcf8d32e27f4adaac93461306837f9cbccfc1"
+  },
+  "3d2919f973b8fca8aecc28d52895fb9901dd8efc959b735d543b14e25b5e2b9b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000007_cam_head_success.mp4",
+    "size": 949628,
+    "sha256": "3d2919f973b8fca8aecc28d52895fb9901dd8efc959b735d543b14e25b5e2b9b"
+  },
+  "de605fe5de2fd08e7c36fa8f4ef3470d5c1716e02f63d8aa67c5dc4b800b90cb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000007_cam_left_wrist_success.mp4",
+    "size": 1653314,
+    "sha256": "de605fe5de2fd08e7c36fa8f4ef3470d5c1716e02f63d8aa67c5dc4b800b90cb"
+  },
+  "e10d1d9aaa5e964727471c5dcdf6a2eae5ecea7f32b884b8b3bec5e27201079b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000007_cam_right_wrist_success.mp4",
+    "size": 1226482,
+    "sha256": "e10d1d9aaa5e964727471c5dcdf6a2eae5ecea7f32b884b8b3bec5e27201079b"
+  },
+  "4c51471eb7f02b4837ea4a6283948a83f43690ae126ae857450912c1d1dba2ad.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000008_cam_head_success.mp4",
+    "size": 1259106,
+    "sha256": "4c51471eb7f02b4837ea4a6283948a83f43690ae126ae857450912c1d1dba2ad"
+  },
+  "33cda6bf4e3f5bd5835b6e4b6988f70ad03174b5237dcfe47a3bfd0847dcc861.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000008_cam_left_wrist_success.mp4",
+    "size": 2582169,
+    "sha256": "33cda6bf4e3f5bd5835b6e4b6988f70ad03174b5237dcfe47a3bfd0847dcc861"
+  },
+  "72d86daab59ee999394e5d43c1823d6f4a2f15cf70bb40c0cd6b91bf57fdce67.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000008_cam_right_wrist_success.mp4",
+    "size": 1494924,
+    "sha256": "72d86daab59ee999394e5d43c1823d6f4a2f15cf70bb40c0cd6b91bf57fdce67"
+  },
+  "f8de02fbbabb5b584f7b620aa071dbff51c625cec9b7ac5f12380795291a94a3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000009_cam_head_success.mp4",
+    "size": 462742,
+    "sha256": "f8de02fbbabb5b584f7b620aa071dbff51c625cec9b7ac5f12380795291a94a3"
+  },
+  "9affbbb64eb1df228dc5c51b640931f0fa40c0f730a9f5477b1bfa529ec50197.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000009_cam_left_wrist_success.mp4",
+    "size": 755882,
+    "sha256": "9affbbb64eb1df228dc5c51b640931f0fa40c0f730a9f5477b1bfa529ec50197"
+  },
+  "3c9ff3a258bd236186f9ed1834bd0fda388be3205dc6c57b31bf591413020c5f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000009_cam_right_wrist_success.mp4",
+    "size": 731627,
+    "sha256": "3c9ff3a258bd236186f9ed1834bd0fda388be3205dc6c57b31bf591413020c5f"
+  },
+  "27cf70042989fcc64bb83b8562ebba628d8fd5905b6e1501ede973bc597740cc.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000010_cam_head_fail.mp4",
+    "size": 1414857,
+    "sha256": "27cf70042989fcc64bb83b8562ebba628d8fd5905b6e1501ede973bc597740cc"
+  },
+  "e266a1559b45d97fd2190da5caa0fc5f1e30cb8a980c069f75961cb953c5fe75.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 2818979,
+    "sha256": "e266a1559b45d97fd2190da5caa0fc5f1e30cb8a980c069f75961cb953c5fe75"
+  },
+  "f43f3c573bc984aebffcb4a3d4b84f0f4d676e434854f435c5542fb4a733af03.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 1641878,
+    "sha256": "f43f3c573bc984aebffcb4a3d4b84f0f4d676e434854f435c5542fb4a733af03"
+  },
+  "6007261303746d5ccc1942438903056c80d993d44b5342c2463c9415c496538a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000011_cam_head_success.mp4",
+    "size": 1308697,
+    "sha256": "6007261303746d5ccc1942438903056c80d993d44b5342c2463c9415c496538a"
+  },
+  "62d6bb071a2de8845f6c5d65287f8e3d7608f1ae0c3ad8dd0f1dd8c473c61e8d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000011_cam_left_wrist_success.mp4",
+    "size": 2631039,
+    "sha256": "62d6bb071a2de8845f6c5d65287f8e3d7608f1ae0c3ad8dd0f1dd8c473c61e8d"
+  },
+  "9b3147657f94dae3d2e1b374083bac634857e8dbb3dce226860a656a86a6b2ab.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000011_cam_right_wrist_success.mp4",
+    "size": 1560139,
+    "sha256": "9b3147657f94dae3d2e1b374083bac634857e8dbb3dce226860a656a86a6b2ab"
+  },
+  "e512af472cd35a458706d13165d74882f2ac535c4fafba8b00791fa18016aafe.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000012_cam_head_success.mp4",
+    "size": 1155172,
+    "sha256": "e512af472cd35a458706d13165d74882f2ac535c4fafba8b00791fa18016aafe"
+  },
+  "a9c6d77ef7a6621d7b314ca7e1a9152ebdb4c9276156a46171153914f94c06d2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000012_cam_left_wrist_success.mp4",
+    "size": 2406152,
+    "sha256": "a9c6d77ef7a6621d7b314ca7e1a9152ebdb4c9276156a46171153914f94c06d2"
+  },
+  "ff5890143a741718b0c7b4e1a94f735c010f7ee55f3cfff87ecf0ca1cc79473a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000012_cam_right_wrist_success.mp4",
+    "size": 1462448,
+    "sha256": "ff5890143a741718b0c7b4e1a94f735c010f7ee55f3cfff87ecf0ca1cc79473a"
+  },
+  "ab765d05854b950d2c446a35b3c48756d046b9f33d9b3ad1198763b90c894e2f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000013_cam_head_success.mp4",
+    "size": 1008731,
+    "sha256": "ab765d05854b950d2c446a35b3c48756d046b9f33d9b3ad1198763b90c894e2f"
+  },
+  "6e66dcc177d29ada93361e083b1afac6db49d239b10e4fee4426ed09c9e66494.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000013_cam_left_wrist_success.mp4",
+    "size": 1900001,
+    "sha256": "6e66dcc177d29ada93361e083b1afac6db49d239b10e4fee4426ed09c9e66494"
+  },
+  "3aab5ada76e5f7d3983be554044235aed5a13165142ec7ce9f34fce672cb951c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000013_cam_right_wrist_success.mp4",
+    "size": 1312197,
+    "sha256": "3aab5ada76e5f7d3983be554044235aed5a13165142ec7ce9f34fce672cb951c"
+  },
+  "f1af67a4211390c97b3e2ac80d90c01434c3120ea80b0e07367435a249597bff.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000014_cam_head_success.mp4",
+    "size": 878433,
+    "sha256": "f1af67a4211390c97b3e2ac80d90c01434c3120ea80b0e07367435a249597bff"
+  },
+  "0c8eab747dcbfed968aac43c8b6174c673d1b1a36325084bc851fe9247869459.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000014_cam_left_wrist_success.mp4",
+    "size": 3973047,
+    "sha256": "0c8eab747dcbfed968aac43c8b6174c673d1b1a36325084bc851fe9247869459"
+  },
+  "85b995a363ce26802d34a0ffe52fb4566b01a742546b60f4cc65de171574ae51.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000014_cam_right_wrist_success.mp4",
+    "size": 2580129,
+    "sha256": "85b995a363ce26802d34a0ffe52fb4566b01a742546b60f4cc65de171574ae51"
+  },
+  "9f9705471908dc617a696e15e711803d8b70d2aeb7f6afccfc251996241a66cf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000015_cam_head_success.mp4",
+    "size": 1080764,
+    "sha256": "9f9705471908dc617a696e15e711803d8b70d2aeb7f6afccfc251996241a66cf"
+  },
+  "19995cf94b2390f95b3a6b116d1c425779b489dfe2aa9c5e4ec7764a9b8fb674.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000015_cam_left_wrist_success.mp4",
+    "size": 1978555,
+    "sha256": "19995cf94b2390f95b3a6b116d1c425779b489dfe2aa9c5e4ec7764a9b8fb674"
+  },
+  "7969a0cc377e0e8f17700f6bd69eabd9f210a8bcd436992042d9a39858afceda.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000015_cam_right_wrist_success.mp4",
+    "size": 1347387,
+    "sha256": "7969a0cc377e0e8f17700f6bd69eabd9f210a8bcd436992042d9a39858afceda"
+  },
+  "e001f24dbe20c9c6501dd711ab1b2742e05e9b4bdbe4fe0d87e8d04eebb5dc0e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000016_cam_head_success.mp4",
+    "size": 1031905,
+    "sha256": "e001f24dbe20c9c6501dd711ab1b2742e05e9b4bdbe4fe0d87e8d04eebb5dc0e"
+  },
+  "841b0961e26dd5f3358cfd24c708443f153decfba769633d7ea9011b344e096d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000016_cam_left_wrist_success.mp4",
+    "size": 1946836,
+    "sha256": "841b0961e26dd5f3358cfd24c708443f153decfba769633d7ea9011b344e096d"
+  },
+  "9f0974025ff4c53b99e39d3c2538d5d9c14ae2c098170f7253f8704002754387.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000016_cam_right_wrist_success.mp4",
+    "size": 1282612,
+    "sha256": "9f0974025ff4c53b99e39d3c2538d5d9c14ae2c098170f7253f8704002754387"
+  },
+  "060f3090677a8e98f8fb3ab4862a327df1bed038ea470b150a9ff7eaffa67847.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000017_cam_head_success.mp4",
+    "size": 527648,
+    "sha256": "060f3090677a8e98f8fb3ab4862a327df1bed038ea470b150a9ff7eaffa67847"
+  },
+  "a21a7d7947d82f79f96a6d07cb3f3e2c9d8fffb9ea338d38a06081617d226c8d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000017_cam_left_wrist_success.mp4",
+    "size": 807152,
+    "sha256": "a21a7d7947d82f79f96a6d07cb3f3e2c9d8fffb9ea338d38a06081617d226c8d"
+  },
+  "6b20c79e274614160e2ab88969baaf7093ed375ac541c8d560570f30e33cc1c8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000017_cam_right_wrist_success.mp4",
+    "size": 780841,
+    "sha256": "6b20c79e274614160e2ab88969baaf7093ed375ac541c8d560570f30e33cc1c8"
+  },
+  "124a68a12dfab12827a3bb0b0efa0fa7e6f281b3dabc651b1324905451afff8b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000018_cam_head_fail.mp4",
+    "size": 1452413,
+    "sha256": "124a68a12dfab12827a3bb0b0efa0fa7e6f281b3dabc651b1324905451afff8b"
+  },
+  "f0cda6b76b2a4363250b78d7290d80b789d99ed427607ad5083b0bab7ffca655.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 2364099,
+    "sha256": "f0cda6b76b2a4363250b78d7290d80b789d99ed427607ad5083b0bab7ffca655"
+  },
+  "67c77abcd1ecbb9f1714a5e8c327cd2ef766034d70e7e30184faea2061c2bf98.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 2070578,
+    "sha256": "67c77abcd1ecbb9f1714a5e8c327cd2ef766034d70e7e30184faea2061c2bf98"
+  },
+  "6cac7bbf607d8a8d75aa59edc555b207f28eb0152f3e804b0aea87952d38e46d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000019_cam_head_success.mp4",
+    "size": 978372,
+    "sha256": "6cac7bbf607d8a8d75aa59edc555b207f28eb0152f3e804b0aea87952d38e46d"
+  },
+  "855bdf022899d871fa271a509e2acd98b5871377ed32372d700fe67227c4de92.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000019_cam_left_wrist_success.mp4",
+    "size": 1924547,
+    "sha256": "855bdf022899d871fa271a509e2acd98b5871377ed32372d700fe67227c4de92"
+  },
+  "2be48d4a67fdc530be32f77b8ae904805f85d4dbb8364c076eb2bcdae4db80aa.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000019_cam_right_wrist_success.mp4",
+    "size": 1273813,
+    "sha256": "2be48d4a67fdc530be32f77b8ae904805f85d4dbb8364c076eb2bcdae4db80aa"
+  },
+  "6bdfa9548399a563d131f48e4bf0352dd12ea80dec7d1aa09fac32ffff98d265.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000020_cam_head_fail.mp4",
+    "size": 1217162,
+    "sha256": "6bdfa9548399a563d131f48e4bf0352dd12ea80dec7d1aa09fac32ffff98d265"
+  },
+  "4b9d2dc6a2897c1402bdbd913482386a81bc907443324b54564837ef3fc6642d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000020_cam_left_wrist_fail.mp4",
+    "size": 1925657,
+    "sha256": "4b9d2dc6a2897c1402bdbd913482386a81bc907443324b54564837ef3fc6642d"
+  },
+  "c40abdbc5064e449626e722b37b75d95cac2ac75d518312f5a03f1da9d876cad.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000020_cam_right_wrist_fail.mp4",
+    "size": 1871678,
+    "sha256": "c40abdbc5064e449626e722b37b75d95cac2ac75d518312f5a03f1da9d876cad"
+  },
+  "ec4915586ea011dbdf3c601467710d796e3977585f8fb8d209354d92780c56ab.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000021_cam_head_success.mp4",
+    "size": 1022727,
+    "sha256": "ec4915586ea011dbdf3c601467710d796e3977585f8fb8d209354d92780c56ab"
+  },
+  "5c4cba5bae9f8ab913000b50726eff39762fc72d136bcd305ff746867853ccfd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000021_cam_left_wrist_success.mp4",
+    "size": 1926089,
+    "sha256": "5c4cba5bae9f8ab913000b50726eff39762fc72d136bcd305ff746867853ccfd"
+  },
+  "3fc970dfbe38462b287f6634e59f264fb55c8da08913e146dfc0065335fbcc9d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000021_cam_right_wrist_success.mp4",
+    "size": 1337635,
+    "sha256": "3fc970dfbe38462b287f6634e59f264fb55c8da08913e146dfc0065335fbcc9d"
+  },
+  "cf8c273de3786d78f93b3f32fb666055969aa77c339e3274575ce5ac77abcba2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000022_cam_head_fail.mp4",
+    "size": 1255223,
+    "sha256": "cf8c273de3786d78f93b3f32fb666055969aa77c339e3274575ce5ac77abcba2"
+  },
+  "9b14138d365671e61957e014093d6f6c5e3281df154f966e4ad183168246540b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000022_cam_left_wrist_fail.mp4",
+    "size": 4344872,
+    "sha256": "9b14138d365671e61957e014093d6f6c5e3281df154f966e4ad183168246540b"
+  },
+  "7f9a99a708188a6c32132656727152b8d76e0564b989a3aa371cce30e6204a13.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000022_cam_right_wrist_fail.mp4",
+    "size": 3007014,
+    "sha256": "7f9a99a708188a6c32132656727152b8d76e0564b989a3aa371cce30e6204a13"
+  },
+  "6c3d0921d0aee003b3ff9a693c68d1ef84ea0d540152d67d464a5c1e7b2abbba.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000023_cam_head_success.mp4",
+    "size": 958250,
+    "sha256": "6c3d0921d0aee003b3ff9a693c68d1ef84ea0d540152d67d464a5c1e7b2abbba"
+  },
+  "19d3235b92aace744323b46250de9028aa2272abd8316f6094ea7feccaffad3d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000023_cam_left_wrist_success.mp4",
+    "size": 1663432,
+    "sha256": "19d3235b92aace744323b46250de9028aa2272abd8316f6094ea7feccaffad3d"
+  },
+  "d0133337c9f5fecc73314384e1fd715279be485196b2b3e9eb28328ecfa98121.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000023_cam_right_wrist_success.mp4",
+    "size": 1263149,
+    "sha256": "d0133337c9f5fecc73314384e1fd715279be485196b2b3e9eb28328ecfa98121"
+  },
+  "08f0f3c69338a0c327942ee027ef9bf26aa8530c365c7033768a03f62f105963.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000024_cam_head_success.mp4",
+    "size": 1067269,
+    "sha256": "08f0f3c69338a0c327942ee027ef9bf26aa8530c365c7033768a03f62f105963"
+  },
+  "4dc724d45cba787e2f40fcd0e07e40dd38db733df389e36c39246d1e92e3a045.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000024_cam_left_wrist_success.mp4",
+    "size": 1849695,
+    "sha256": "4dc724d45cba787e2f40fcd0e07e40dd38db733df389e36c39246d1e92e3a045"
+  },
+  "7803c56b5cbe9b3d77ff71e093d0475528135b8ce02f8bede9f5a5e82fb4008b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000024_cam_right_wrist_success.mp4",
+    "size": 1282369,
+    "sha256": "7803c56b5cbe9b3d77ff71e093d0475528135b8ce02f8bede9f5a5e82fb4008b"
+  },
+  "6a0163785da707d96ab41b8a85ffa00aa8ce5f2f756d7619e9736170723f57f5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000025_cam_head_success.mp4",
+    "size": 443589,
+    "sha256": "6a0163785da707d96ab41b8a85ffa00aa8ce5f2f756d7619e9736170723f57f5"
+  },
+  "7e773e33d2e6363ffeb235131ef70461faadf77098734e6186e7f0990457d6f5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000025_cam_left_wrist_success.mp4",
+    "size": 720207,
+    "sha256": "7e773e33d2e6363ffeb235131ef70461faadf77098734e6186e7f0990457d6f5"
+  },
+  "02b14e21b18e74ff83c2bf8c949ac96bccfbf3d0d2676869910db7288a4ff9e0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000025_cam_right_wrist_success.mp4",
+    "size": 719617,
+    "sha256": "02b14e21b18e74ff83c2bf8c949ac96bccfbf3d0d2676869910db7288a4ff9e0"
+  },
+  "fea5d03261b83a33e31ddc4aeab14381cdd6ec134d1a87628cabb4a400015a7f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000026_cam_head_success.mp4",
+    "size": 953874,
+    "sha256": "fea5d03261b83a33e31ddc4aeab14381cdd6ec134d1a87628cabb4a400015a7f"
+  },
+  "978afefa2b1bd50985766687807c353515d03c644f596b69951eb27792e0097e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000026_cam_left_wrist_success.mp4",
+    "size": 1784894,
+    "sha256": "978afefa2b1bd50985766687807c353515d03c644f596b69951eb27792e0097e"
+  },
+  "4b137affaaf406510c5ff2c6208fc605de2c66114ac370227033fca55d912f09.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000026_cam_right_wrist_success.mp4",
+    "size": 1242296,
+    "sha256": "4b137affaaf406510c5ff2c6208fc605de2c66114ac370227033fca55d912f09"
+  },
+  "e005be431320dcbc1ac5606c96fcc137c37cc56283f551c60dc93e29dde2f51b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000027_cam_head_fail.mp4",
+    "size": 1351217,
+    "sha256": "e005be431320dcbc1ac5606c96fcc137c37cc56283f551c60dc93e29dde2f51b"
+  },
+  "7a034bc551a24d96a3706eb062211549d92ead1c2e2416f751e0868f54f2b48d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000027_cam_left_wrist_fail.mp4",
+    "size": 2456608,
+    "sha256": "7a034bc551a24d96a3706eb062211549d92ead1c2e2416f751e0868f54f2b48d"
+  },
+  "d5372fa12761195b26aac97f49dc30f53cb91f9703ec1d4b5ff5176e98a48f70.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000027_cam_right_wrist_fail.mp4",
+    "size": 1695960,
+    "sha256": "d5372fa12761195b26aac97f49dc30f53cb91f9703ec1d4b5ff5176e98a48f70"
+  },
+  "0b5e976374b7efbf13d44f81d530805c64301cdb4b7516298c614622320ae194.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000028_cam_head_fail.mp4",
+    "size": 1304765,
+    "sha256": "0b5e976374b7efbf13d44f81d530805c64301cdb4b7516298c614622320ae194"
+  },
+  "55ddf141b1612b39747816b18b4355a3ad2748481638b217c6712cb54093c5fa.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000028_cam_left_wrist_fail.mp4",
+    "size": 2175725,
+    "sha256": "55ddf141b1612b39747816b18b4355a3ad2748481638b217c6712cb54093c5fa"
+  },
+  "261faf831ce09433b942b27a5618b30ceaf5b5b6e074b92b9e83622ca034054d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000028_cam_right_wrist_fail.mp4",
+    "size": 2098215,
+    "sha256": "261faf831ce09433b942b27a5618b30ceaf5b5b6e074b92b9e83622ca034054d"
+  },
+  "2dfe6842f5ca8e9e22861797dc6584418e3c4d252de209d09aad7ef40e1fcd94.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000029_cam_head_success.mp4",
+    "size": 795244,
+    "sha256": "2dfe6842f5ca8e9e22861797dc6584418e3c4d252de209d09aad7ef40e1fcd94"
+  },
+  "42fa579fd71dae5698912747921b4eb9abe2463abf5859946fa20163eac23da7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000029_cam_left_wrist_success.mp4",
+    "size": 1455149,
+    "sha256": "42fa579fd71dae5698912747921b4eb9abe2463abf5859946fa20163eac23da7"
+  },
+  "01af68722e56ecab13f903b8d7e16a2b7275580c2cfca7d23664847a9d7f5689.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/stack_bowls_20261014T101827/attempt-01/eval_result/RoboDojo/stack_bowls/Pi_05/arx_x5/0_action_type=joint/stack_bowls_20261014T101827/episode_0000029_cam_right_wrist_success.mp4",
+    "size": 1109779,
+    "sha256": "01af68722e56ecab13f903b8d7e16a2b7275580c2cfca7d23664847a9d7f5689"
+  },
+  "00f130e5f3b4af52afff644d4d6a697d08d3f7ae5d3f517c638a7c4d89a6a72c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000000_cam_head_fail.mp4",
+    "size": 2518506,
+    "sha256": "00f130e5f3b4af52afff644d4d6a697d08d3f7ae5d3f517c638a7c4d89a6a72c"
+  },
+  "64bb086752dac12e3f76d0bb79273605f18b0d9ff981ff766b8d405abfe5a8b7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000000_cam_left_wrist_fail.mp4",
+    "size": 4430761,
+    "sha256": "64bb086752dac12e3f76d0bb79273605f18b0d9ff981ff766b8d405abfe5a8b7"
+  },
+  "5404341116402a872aaa230b5452506c202df12ebb6278790319bf188ce47b47.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000000_cam_right_wrist_fail.mp4",
+    "size": 4710843,
+    "sha256": "5404341116402a872aaa230b5452506c202df12ebb6278790319bf188ce47b47"
+  },
+  "d4cec7fd62e4255aa1da44da216ee22d7ab9acabbcb311286797f50e5404045a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000001_cam_head_fail.mp4",
+    "size": 2163009,
+    "sha256": "d4cec7fd62e4255aa1da44da216ee22d7ab9acabbcb311286797f50e5404045a"
+  },
+  "9bfd0a955e75d1423a54ab63f9bc3c5ebf6a01015b213916ddf9cd6977bd74c8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000001_cam_left_wrist_fail.mp4",
+    "size": 3534141,
+    "sha256": "9bfd0a955e75d1423a54ab63f9bc3c5ebf6a01015b213916ddf9cd6977bd74c8"
+  },
+  "6ad09e2dc18f9baef1fe877dc691f6b189e4624701980f858b8746932a04fa8d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000001_cam_right_wrist_fail.mp4",
+    "size": 3909027,
+    "sha256": "6ad09e2dc18f9baef1fe877dc691f6b189e4624701980f858b8746932a04fa8d"
+  },
+  "bba84e4491b40cdc96d6f7543edc3f3a4d3585d968acfae42ca2bd2b2df6fbf8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000002_cam_head_fail.mp4",
+    "size": 2458443,
+    "sha256": "bba84e4491b40cdc96d6f7543edc3f3a4d3585d968acfae42ca2bd2b2df6fbf8"
+  },
+  "6a38476b21c3f0bdd8e7cbe1cec90778a688a422c413ea7dfaf9821fa3624cd6.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000002_cam_left_wrist_fail.mp4",
+    "size": 3880461,
+    "sha256": "6a38476b21c3f0bdd8e7cbe1cec90778a688a422c413ea7dfaf9821fa3624cd6"
+  },
+  "5000fe4fb16066e3c5f4836572b9e9b62da714ed11d1c12f13d2feff530c58f8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000002_cam_right_wrist_fail.mp4",
+    "size": 4612948,
+    "sha256": "5000fe4fb16066e3c5f4836572b9e9b62da714ed11d1c12f13d2feff530c58f8"
+  },
+  "e1d83b145b29994cbf20c82a496343fb9178bb28a77e6eccb86b52fe4359fb57.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000003_cam_head_fail.mp4",
+    "size": 2478089,
+    "sha256": "e1d83b145b29994cbf20c82a496343fb9178bb28a77e6eccb86b52fe4359fb57"
+  },
+  "dcbaf3edbb27d6ea5cef0dca1bdec62ddc04ab07a708f666667c322b892eba05.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000003_cam_left_wrist_fail.mp4",
+    "size": 4349711,
+    "sha256": "dcbaf3edbb27d6ea5cef0dca1bdec62ddc04ab07a708f666667c322b892eba05"
+  },
+  "1de3a5c1ec08184927395e60067b6494422ff108af03f86594d2637c10c05e71.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000003_cam_right_wrist_fail.mp4",
+    "size": 4493166,
+    "sha256": "1de3a5c1ec08184927395e60067b6494422ff108af03f86594d2637c10c05e71"
+  },
+  "fe4241fb3349539f63171092cafca0d648e4f720ac909256404c57668762df43.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000004_cam_head_fail.mp4",
+    "size": 2310866,
+    "sha256": "fe4241fb3349539f63171092cafca0d648e4f720ac909256404c57668762df43"
+  },
+  "e86206358301c2d91cf320fd1b398ebe7519450f9140c81a3ef3178f08e08f7f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000004_cam_left_wrist_fail.mp4",
+    "size": 3690213,
+    "sha256": "e86206358301c2d91cf320fd1b398ebe7519450f9140c81a3ef3178f08e08f7f"
+  },
+  "e680e003c64e200e26d55cfead448adfd7eb7fff79f346465c2a387c007cce22.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000004_cam_right_wrist_fail.mp4",
+    "size": 4631302,
+    "sha256": "e680e003c64e200e26d55cfead448adfd7eb7fff79f346465c2a387c007cce22"
+  },
+  "9875e54c607f4bd091a25f9d26451c4d2731da69d0005dd91768a32dfb1c3f69.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000005_cam_head_fail.mp4",
+    "size": 2367115,
+    "sha256": "9875e54c607f4bd091a25f9d26451c4d2731da69d0005dd91768a32dfb1c3f69"
+  },
+  "4d4774bfa76909ade6cf2400e41bf5a0dd29b69089fb79b470ca1ec4f9181e73.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000005_cam_left_wrist_fail.mp4",
+    "size": 4377645,
+    "sha256": "4d4774bfa76909ade6cf2400e41bf5a0dd29b69089fb79b470ca1ec4f9181e73"
+  },
+  "e5174549ac42250913fbb6cbe2bacb77a95aab75e86e9108b2209ad5c12b5579.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000005_cam_right_wrist_fail.mp4",
+    "size": 3893208,
+    "sha256": "e5174549ac42250913fbb6cbe2bacb77a95aab75e86e9108b2209ad5c12b5579"
+  },
+  "ac42bcb8d26612259c84e982683e8bcd3817cef7824236818a4423395ca000dd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000006_cam_head_fail.mp4",
+    "size": 2389501,
+    "sha256": "ac42bcb8d26612259c84e982683e8bcd3817cef7824236818a4423395ca000dd"
+  },
+  "0ab8aa10691580e754c27a660c1ee7b78284438edc6a3c820c8e4456534ec5bf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000006_cam_left_wrist_fail.mp4",
+    "size": 4156955,
+    "sha256": "0ab8aa10691580e754c27a660c1ee7b78284438edc6a3c820c8e4456534ec5bf"
+  },
+  "9749a2078ee36e4132578caef44a0d1ad57d17be8555bada4d9b9081da88d253.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000006_cam_right_wrist_fail.mp4",
+    "size": 4248216,
+    "sha256": "9749a2078ee36e4132578caef44a0d1ad57d17be8555bada4d9b9081da88d253"
+  },
+  "8499b05d7502d2d73fe9c287f80e21e99576a46a9d45d4b882658859484a609c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000007_cam_head_fail.mp4",
+    "size": 2482919,
+    "sha256": "8499b05d7502d2d73fe9c287f80e21e99576a46a9d45d4b882658859484a609c"
+  },
+  "190fd0bd28265bf08dc96462ecc3324cf5077a138797742f861e55f909f2fd07.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000007_cam_left_wrist_fail.mp4",
+    "size": 4626360,
+    "sha256": "190fd0bd28265bf08dc96462ecc3324cf5077a138797742f861e55f909f2fd07"
+  },
+  "dab642270dc30df650527fd49e4588aa7109ec1c68b0dd0f3f27b20da9205d03.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000007_cam_right_wrist_fail.mp4",
+    "size": 4188936,
+    "sha256": "dab642270dc30df650527fd49e4588aa7109ec1c68b0dd0f3f27b20da9205d03"
+  },
+  "c346863c547711b4531bc5291ef3dab398a9758cd15d0ede73142e93479c5379.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000008_cam_head_fail.mp4",
+    "size": 2229132,
+    "sha256": "c346863c547711b4531bc5291ef3dab398a9758cd15d0ede73142e93479c5379"
+  },
+  "7e1c242ce1f514f979f19a74761264e1649b5a6cdd092ad466b99cfb47d224eb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000008_cam_left_wrist_fail.mp4",
+    "size": 3819238,
+    "sha256": "7e1c242ce1f514f979f19a74761264e1649b5a6cdd092ad466b99cfb47d224eb"
+  },
+  "18fd3744d12dda48a41213093d07d47a7c910173b2dff9305b70b8bd03b87ad7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000008_cam_right_wrist_fail.mp4",
+    "size": 4037721,
+    "sha256": "18fd3744d12dda48a41213093d07d47a7c910173b2dff9305b70b8bd03b87ad7"
+  },
+  "f451b45ab3c5f13a6616828e4f040a066c5b3aa4d8bf13ea4eaad3c3951d2be9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000009_cam_head_fail.mp4",
+    "size": 2208075,
+    "sha256": "f451b45ab3c5f13a6616828e4f040a066c5b3aa4d8bf13ea4eaad3c3951d2be9"
+  },
+  "51b2371961c44c9a6eacdb390e3cbfb4d2afe9604a40bfc6748d97875381d0e9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000009_cam_left_wrist_fail.mp4",
+    "size": 3897121,
+    "sha256": "51b2371961c44c9a6eacdb390e3cbfb4d2afe9604a40bfc6748d97875381d0e9"
+  },
+  "6953baa3f767f71deea2938f4562af8ef0bcba55efdaaabff40e1ad35666161b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000009_cam_right_wrist_fail.mp4",
+    "size": 3917316,
+    "sha256": "6953baa3f767f71deea2938f4562af8ef0bcba55efdaaabff40e1ad35666161b"
+  },
+  "b079fa3c016eb490ba3338b6b7990b8590982df0b0bd972a1d437ac4bc82f431.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000010_cam_head_fail.mp4",
+    "size": 2518830,
+    "sha256": "b079fa3c016eb490ba3338b6b7990b8590982df0b0bd972a1d437ac4bc82f431"
+  },
+  "6b2adfb903eaa084b2ebdc1a271e51a15a7c0b5f739d5b097cb3db824194c280.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 4397796,
+    "sha256": "6b2adfb903eaa084b2ebdc1a271e51a15a7c0b5f739d5b097cb3db824194c280"
+  },
+  "2411d47f48dc8e9b2d998b69e91d7cc4595977f1797cbb6d1c77f999eb6f6d41.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 4811721,
+    "sha256": "2411d47f48dc8e9b2d998b69e91d7cc4595977f1797cbb6d1c77f999eb6f6d41"
+  },
+  "cc5fc1b0c79a9f4ab351dadc03c92728929a65fdc693e769d8674c074d47c8f8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000011_cam_head_fail.mp4",
+    "size": 2250140,
+    "sha256": "cc5fc1b0c79a9f4ab351dadc03c92728929a65fdc693e769d8674c074d47c8f8"
+  },
+  "602b13f308e96df2be0c211fa27dd2422c37224c61f592c274afebcd3bb04b30.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000011_cam_left_wrist_fail.mp4",
+    "size": 4035951,
+    "sha256": "602b13f308e96df2be0c211fa27dd2422c37224c61f592c274afebcd3bb04b30"
+  },
+  "390ba146e310c72129ffaf7f8738a8719714fc4e55c8097471ebb92d1e41e053.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000011_cam_right_wrist_fail.mp4",
+    "size": 4071041,
+    "sha256": "390ba146e310c72129ffaf7f8738a8719714fc4e55c8097471ebb92d1e41e053"
+  },
+  "a577acd6275b353747d1ebb01739fac8ee45ee02fc3b76d9fcfd276c7f712675.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000012_cam_head_fail.mp4",
+    "size": 2358072,
+    "sha256": "a577acd6275b353747d1ebb01739fac8ee45ee02fc3b76d9fcfd276c7f712675"
+  },
+  "6e05d58387028fc888c1e04b6b7db4acb9c88beb3494afddb2ba449178bb4545.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000012_cam_left_wrist_fail.mp4",
+    "size": 4423040,
+    "sha256": "6e05d58387028fc888c1e04b6b7db4acb9c88beb3494afddb2ba449178bb4545"
+  },
+  "225d2f3c5ba580760ff538a631424377b199b4df1e48974ff0417ab2dc9dbb39.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000012_cam_right_wrist_fail.mp4",
+    "size": 3838242,
+    "sha256": "225d2f3c5ba580760ff538a631424377b199b4df1e48974ff0417ab2dc9dbb39"
+  },
+  "c482461ac37c4d8daaa7c487b3e2d63b7057a02272dbc2dd2ba08f9ba27392ee.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000013_cam_head_fail.mp4",
+    "size": 2295538,
+    "sha256": "c482461ac37c4d8daaa7c487b3e2d63b7057a02272dbc2dd2ba08f9ba27392ee"
+  },
+  "8bdac3645e52dfff32a2a50b2e23f154e5f5ae57f35cc80a05d0db2385b1d026.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000013_cam_left_wrist_fail.mp4",
+    "size": 4107375,
+    "sha256": "8bdac3645e52dfff32a2a50b2e23f154e5f5ae57f35cc80a05d0db2385b1d026"
+  },
+  "d14e37fd72a9da7cd987ac4642f37312711e9686f06a3baa6624c4ed1daad26e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000013_cam_right_wrist_fail.mp4",
+    "size": 3872309,
+    "sha256": "d14e37fd72a9da7cd987ac4642f37312711e9686f06a3baa6624c4ed1daad26e"
+  },
+  "1a37a3b0eef74854786f40554ac833f9aff5abf57ea6dd4bf54ec35021198ea8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000014_cam_head_fail.mp4",
+    "size": 2338451,
+    "sha256": "1a37a3b0eef74854786f40554ac833f9aff5abf57ea6dd4bf54ec35021198ea8"
+  },
+  "1a288c35368205b41dfa39640b8e599b47082df80a7a23cd56ab37c866638906.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000014_cam_left_wrist_fail.mp4",
+    "size": 4572816,
+    "sha256": "1a288c35368205b41dfa39640b8e599b47082df80a7a23cd56ab37c866638906"
+  },
+  "8b0f6b9654bd047a8aabc7174c259bc95bf5d9271af9733633898810e6665ce0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000014_cam_right_wrist_fail.mp4",
+    "size": 3947099,
+    "sha256": "8b0f6b9654bd047a8aabc7174c259bc95bf5d9271af9733633898810e6665ce0"
+  },
+  "ce9fd72c0a058b40b091a2ebde621ffb73ef487e4de039be7251c5864439f6ce.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000015_cam_head_fail.mp4",
+    "size": 2469276,
+    "sha256": "ce9fd72c0a058b40b091a2ebde621ffb73ef487e4de039be7251c5864439f6ce"
+  },
+  "3437b88a708568a122c9ddbef647d5d55aae7d8370c406efa973062167c1aefc.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000015_cam_left_wrist_fail.mp4",
+    "size": 4447910,
+    "sha256": "3437b88a708568a122c9ddbef647d5d55aae7d8370c406efa973062167c1aefc"
+  },
+  "16bb5dd5c718514d57f46651cb176381524da85f246380bd7185f671c8560aa7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000015_cam_right_wrist_fail.mp4",
+    "size": 4401091,
+    "sha256": "16bb5dd5c718514d57f46651cb176381524da85f246380bd7185f671c8560aa7"
+  },
+  "62a10655bddb28fb0c73b43aaee96619cf4160d444540ef0f67a7447fda4a896.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000016_cam_head_fail.mp4",
+    "size": 2405020,
+    "sha256": "62a10655bddb28fb0c73b43aaee96619cf4160d444540ef0f67a7447fda4a896"
+  },
+  "5a98efb33cf23ef364a552c9b431bf17a4c1949add5f3d8d7c816c7ff6be7cfe.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000016_cam_left_wrist_fail.mp4",
+    "size": 3937804,
+    "sha256": "5a98efb33cf23ef364a552c9b431bf17a4c1949add5f3d8d7c816c7ff6be7cfe"
+  },
+  "f6e9ee450d4edffe1f8c39dad76b8f2a813cc0d53ca11b64743db37bcb16919e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000016_cam_right_wrist_fail.mp4",
+    "size": 4672873,
+    "sha256": "f6e9ee450d4edffe1f8c39dad76b8f2a813cc0d53ca11b64743db37bcb16919e"
+  },
+  "4adf500d48f8fcb5916ee90e967d6544422dd2ce59d6d21a78d7101657852472.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000017_cam_head_fail.mp4",
+    "size": 2150586,
+    "sha256": "4adf500d48f8fcb5916ee90e967d6544422dd2ce59d6d21a78d7101657852472"
+  },
+  "a6b6fb8cd0e3d784dd59a640408689101db93314985a2d8de048ed72acf3f8ef.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000017_cam_left_wrist_fail.mp4",
+    "size": 3872719,
+    "sha256": "a6b6fb8cd0e3d784dd59a640408689101db93314985a2d8de048ed72acf3f8ef"
+  },
+  "517e84e919484be86afc47b90bdf43026cc1246244f325e9a084b1529be626b1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000017_cam_right_wrist_fail.mp4",
+    "size": 3802671,
+    "sha256": "517e84e919484be86afc47b90bdf43026cc1246244f325e9a084b1529be626b1"
+  },
+  "b9d7889013651291ce6085456a3b532ae4ac5bb4ce2a12ba33c6c92743a1d06a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000018_cam_head_fail.mp4",
+    "size": 2461766,
+    "sha256": "b9d7889013651291ce6085456a3b532ae4ac5bb4ce2a12ba33c6c92743a1d06a"
+  },
+  "2d84a965e8f957b01bd8e3551a3d817b8eddce77bfc02bfcdb191f4833a89e83.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 4128147,
+    "sha256": "2d84a965e8f957b01bd8e3551a3d817b8eddce77bfc02bfcdb191f4833a89e83"
+  },
+  "922bcbd547e46e24dfe1243e9d4f55657e0b57075bda152c8d6732ac1f981b4c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 4377714,
+    "sha256": "922bcbd547e46e24dfe1243e9d4f55657e0b57075bda152c8d6732ac1f981b4c"
+  },
+  "aa35f9d2e58bdae318a5f9948ae3dd0fdac787cd0732809b77e3161af6161cde.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000019_cam_head_fail.mp4",
+    "size": 2161863,
+    "sha256": "aa35f9d2e58bdae318a5f9948ae3dd0fdac787cd0732809b77e3161af6161cde"
+  },
+  "33ba4dabe1b3acf18dc943948219e910dcc3b46e73c44f98aa890fe8c85c2293.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000019_cam_left_wrist_fail.mp4",
+    "size": 3553098,
+    "sha256": "33ba4dabe1b3acf18dc943948219e910dcc3b46e73c44f98aa890fe8c85c2293"
+  },
+  "c543319dcf4e7fcc8e88f0a70d20d83bb4eefedbcd075a46820706d4df1c869f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/build_tower_20261014T115831/attempt-01/eval_result/RoboDojo/build_tower/Pi_05/arx_x5/0_action_type=joint/build_tower_20261014T115831/episode_0000019_cam_right_wrist_fail.mp4",
+    "size": 3886732,
+    "sha256": "c543319dcf4e7fcc8e88f0a70d20d83bb4eefedbcd075a46820706d4df1c869f"
+  },
+  "184f1ebcea0187dd2309bbaeb5bc1bccc413333c987d06f06fe2ef24c1929922.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000000_cam_head_success.mp4",
+    "size": 1233655,
+    "sha256": "184f1ebcea0187dd2309bbaeb5bc1bccc413333c987d06f06fe2ef24c1929922"
+  },
+  "b35bd1daff6ce1c0d22694047d3e4f43e4b58350d6a8333a33a57ccc6711f3f3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000000_cam_left_wrist_success.mp4",
+    "size": 1912834,
+    "sha256": "b35bd1daff6ce1c0d22694047d3e4f43e4b58350d6a8333a33a57ccc6711f3f3"
+  },
+  "479d3d8bd6b77d1ff23cd029d5ba40ee8b3e71ad0ed04c3b7ccec1ad362894aa.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000000_cam_right_wrist_success.mp4",
+    "size": 1487880,
+    "sha256": "479d3d8bd6b77d1ff23cd029d5ba40ee8b3e71ad0ed04c3b7ccec1ad362894aa"
+  },
+  "2b4be1e7b7c9e290432c2674e24c9fad420e23a7ef5fe84164adc50d45dd119e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000001_cam_head_fail.mp4",
+    "size": 1615618,
+    "sha256": "2b4be1e7b7c9e290432c2674e24c9fad420e23a7ef5fe84164adc50d45dd119e"
+  },
+  "f855ca75c8851e84f6c270d5f2e006e52be25253d10580f39797dab268a03495.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000001_cam_left_wrist_fail.mp4",
+    "size": 2131671,
+    "sha256": "f855ca75c8851e84f6c270d5f2e006e52be25253d10580f39797dab268a03495"
+  },
+  "a4b6ac4f6bc06100e92ea03b3fb874a6f336ed9cd87ea27a95f7317eac4fd05e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000001_cam_right_wrist_fail.mp4",
+    "size": 2482830,
+    "sha256": "a4b6ac4f6bc06100e92ea03b3fb874a6f336ed9cd87ea27a95f7317eac4fd05e"
+  },
+  "2840dfc6aa6a6a857356472eedaa5106fe3b8722d171cfc89ca22f87fa12849a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000002_cam_head_fail.mp4",
+    "size": 1752602,
+    "sha256": "2840dfc6aa6a6a857356472eedaa5106fe3b8722d171cfc89ca22f87fa12849a"
+  },
+  "002d73023a68a63d8898a6dff8db1948f1818ed60835cd841e8027aae587e043.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000002_cam_left_wrist_fail.mp4",
+    "size": 3096805,
+    "sha256": "002d73023a68a63d8898a6dff8db1948f1818ed60835cd841e8027aae587e043"
+  },
+  "bc4599e3840274748b39cee6f8d91b0bcc38ee409e676f7c91629f113ddb4e83.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000002_cam_right_wrist_fail.mp4",
+    "size": 1951596,
+    "sha256": "bc4599e3840274748b39cee6f8d91b0bcc38ee409e676f7c91629f113ddb4e83"
+  },
+  "a23a31b2b1c53ec24f56b4eef43d404be2646409ed53ec42445da7c16bf8b367.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000003_cam_head_success.mp4",
+    "size": 1311976,
+    "sha256": "a23a31b2b1c53ec24f56b4eef43d404be2646409ed53ec42445da7c16bf8b367"
+  },
+  "a4f7204d03a0ac3bf983e38a15d2b12242344b45b3159478d34d3ed380231ffb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000003_cam_left_wrist_success.mp4",
+    "size": 2108382,
+    "sha256": "a4f7204d03a0ac3bf983e38a15d2b12242344b45b3159478d34d3ed380231ffb"
+  },
+  "5d5af70f5aae40048409c48255456625549686d6613c75a81eef3e945549a09e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000003_cam_right_wrist_success.mp4",
+    "size": 1539866,
+    "sha256": "5d5af70f5aae40048409c48255456625549686d6613c75a81eef3e945549a09e"
+  },
+  "359abfe89d28c883ae8d3d5775c29438ba176949c0a684bdd93fdeefd1f6fd7a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000004_cam_head_fail.mp4",
+    "size": 1722908,
+    "sha256": "359abfe89d28c883ae8d3d5775c29438ba176949c0a684bdd93fdeefd1f6fd7a"
+  },
+  "bafe2edc9260920c6180bf4a84f3f0bc2f3a3e95b0226bd1e79c5cf3e8f0e4fb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000004_cam_left_wrist_fail.mp4",
+    "size": 3116619,
+    "sha256": "bafe2edc9260920c6180bf4a84f3f0bc2f3a3e95b0226bd1e79c5cf3e8f0e4fb"
+  },
+  "d494a4d3b849c01ec17116cf319439b51865244d56a79ca5751fc3a6dcf5d5c5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000004_cam_right_wrist_fail.mp4",
+    "size": 1954080,
+    "sha256": "d494a4d3b849c01ec17116cf319439b51865244d56a79ca5751fc3a6dcf5d5c5"
+  },
+  "f27ef8553c6f49a8b0f845d96604527fc9f669c4d9b7d76d8740a36851a34e17.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000005_cam_head_success.mp4",
+    "size": 1465909,
+    "sha256": "f27ef8553c6f49a8b0f845d96604527fc9f669c4d9b7d76d8740a36851a34e17"
+  },
+  "577edb883f9761b8e68561805e8d5a0d2aade243d731fba467e54030b12053b3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000005_cam_left_wrist_success.mp4",
+    "size": 2499472,
+    "sha256": "577edb883f9761b8e68561805e8d5a0d2aade243d731fba467e54030b12053b3"
+  },
+  "b4066381d15eb3f391f84c3494d537957dcd98446c64124de62e68bd275e4ee3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000005_cam_right_wrist_success.mp4",
+    "size": 1675296,
+    "sha256": "b4066381d15eb3f391f84c3494d537957dcd98446c64124de62e68bd275e4ee3"
+  },
+  "4fbcd09f39fd35c56cce76f7c19688c390e060004cca66c83329d9d138eaf0af.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000006_cam_head_fail.mp4",
+    "size": 1661763,
+    "sha256": "4fbcd09f39fd35c56cce76f7c19688c390e060004cca66c83329d9d138eaf0af"
+  },
+  "727cd29df04023ef2d0f8c7b9be81f585ec8fa994e91cc9d60a7552c3137ebfa.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000006_cam_left_wrist_fail.mp4",
+    "size": 2832561,
+    "sha256": "727cd29df04023ef2d0f8c7b9be81f585ec8fa994e91cc9d60a7552c3137ebfa"
+  },
+  "9128d4bf5e1f264b5a4d6fa40e81d77e30c5fe49acc39b29aa289e995b6ce475.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000006_cam_right_wrist_fail.mp4",
+    "size": 1951515,
+    "sha256": "9128d4bf5e1f264b5a4d6fa40e81d77e30c5fe49acc39b29aa289e995b6ce475"
+  },
+  "0c6fc4b1b338303b448bc15902877b15719744d2311bc5e20aee913b9ad420e5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000007_cam_head_fail.mp4",
+    "size": 1689109,
+    "sha256": "0c6fc4b1b338303b448bc15902877b15719744d2311bc5e20aee913b9ad420e5"
+  },
+  "05edc9eceebf5edcff33c582d92704788fea2d35018122603a6cab585ad596db.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000007_cam_left_wrist_fail.mp4",
+    "size": 3052921,
+    "sha256": "05edc9eceebf5edcff33c582d92704788fea2d35018122603a6cab585ad596db"
+  },
+  "4be5c0e6f2c133e6ce3ff092b56c34510c2a0e03ef40d042eddfc10bf4dd8fdc.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000007_cam_right_wrist_fail.mp4",
+    "size": 1942152,
+    "sha256": "4be5c0e6f2c133e6ce3ff092b56c34510c2a0e03ef40d042eddfc10bf4dd8fdc"
+  },
+  "e51adf5c62b4cb3f7d050dd58a4ba6a3b2020dc0e7eb33dec3496d5d25f10215.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000008_cam_head_fail.mp4",
+    "size": 1640075,
+    "sha256": "e51adf5c62b4cb3f7d050dd58a4ba6a3b2020dc0e7eb33dec3496d5d25f10215"
+  },
+  "c19c3baee346ad4f57e706237448ab16522e2754909d47b7a39752dee007667b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000008_cam_left_wrist_fail.mp4",
+    "size": 2841583,
+    "sha256": "c19c3baee346ad4f57e706237448ab16522e2754909d47b7a39752dee007667b"
+  },
+  "2d84b8f5cbb08bd2fea556e445699841652c1977139961329eebb67dafa2dd6e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000008_cam_right_wrist_fail.mp4",
+    "size": 1942807,
+    "sha256": "2d84b8f5cbb08bd2fea556e445699841652c1977139961329eebb67dafa2dd6e"
+  },
+  "2173ef0e0896e3acd2410c8d4f26f521437faa92a8de3ee32f72000fe070a98e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000009_cam_head_fail.mp4",
+    "size": 1714951,
+    "sha256": "2173ef0e0896e3acd2410c8d4f26f521437faa92a8de3ee32f72000fe070a98e"
+  },
+  "5ca2d7ee20502d2a40d9a415a98a56d7339353d203e5f920ce4eb17bcbd4aed3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000009_cam_left_wrist_fail.mp4",
+    "size": 3012087,
+    "sha256": "5ca2d7ee20502d2a40d9a415a98a56d7339353d203e5f920ce4eb17bcbd4aed3"
+  },
+  "6ab33852e3e2dddb49f561aadaeb8860c8e779cf24ec60831e262bbb7a4de311.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000009_cam_right_wrist_fail.mp4",
+    "size": 1947863,
+    "sha256": "6ab33852e3e2dddb49f561aadaeb8860c8e779cf24ec60831e262bbb7a4de311"
+  },
+  "5f75684ddd77716576083271c6e39b13b5fdca051fd0eb8871119ca735a2ae1a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000010_cam_head_fail.mp4",
+    "size": 1753238,
+    "sha256": "5f75684ddd77716576083271c6e39b13b5fdca051fd0eb8871119ca735a2ae1a"
+  },
+  "48e8c547e9d1e076b38934eb12440300403d6e3ec383129010c49cc22e5b5336.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 3134050,
+    "sha256": "48e8c547e9d1e076b38934eb12440300403d6e3ec383129010c49cc22e5b5336"
+  },
+  "3bbb7ba342bb06cde231cd34fd94e5095dd0c1cf565df80f24d5fea06719d049.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 1959563,
+    "sha256": "3bbb7ba342bb06cde231cd34fd94e5095dd0c1cf565df80f24d5fea06719d049"
+  },
+  "77160137a4a10965a92ac6bb8c7f0d910074f733913a3e0970b244bab0255e9c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000011_cam_head_fail.mp4",
+    "size": 1620837,
+    "sha256": "77160137a4a10965a92ac6bb8c7f0d910074f733913a3e0970b244bab0255e9c"
+  },
+  "d78f72ca097094356fc551402bef8aaf9a43273e09384b76d35ab270d3e23f25.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000011_cam_left_wrist_fail.mp4",
+    "size": 2870639,
+    "sha256": "d78f72ca097094356fc551402bef8aaf9a43273e09384b76d35ab270d3e23f25"
+  },
+  "54616179be1527887f12c1b49d0b0e77b07b271945e548e16184706c8f7ffa97.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000011_cam_right_wrist_fail.mp4",
+    "size": 1955271,
+    "sha256": "54616179be1527887f12c1b49d0b0e77b07b271945e548e16184706c8f7ffa97"
+  },
+  "0fd92812d255a0e2c6313b64b79566371071c4e80dd84e68ed442571ed478e31.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000012_cam_head_fail.mp4",
+    "size": 1578584,
+    "sha256": "0fd92812d255a0e2c6313b64b79566371071c4e80dd84e68ed442571ed478e31"
+  },
+  "61c0a391dc2b982e63b0d24ef037e286807d0b894927ecac63e5281d7e9d01c7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000012_cam_left_wrist_fail.mp4",
+    "size": 2704706,
+    "sha256": "61c0a391dc2b982e63b0d24ef037e286807d0b894927ecac63e5281d7e9d01c7"
+  },
+  "96f5ba1a6a464e2deb7d4b3ff13ffeaceeeef9bda4af5744f10b7e337ed60afd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000012_cam_right_wrist_fail.mp4",
+    "size": 1913287,
+    "sha256": "96f5ba1a6a464e2deb7d4b3ff13ffeaceeeef9bda4af5744f10b7e337ed60afd"
+  },
+  "d529dd209797c370e2121bc1e470339bf03b091ed0f7fa8aac8487369d645299.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000013_cam_head_success.mp4",
+    "size": 1288341,
+    "sha256": "d529dd209797c370e2121bc1e470339bf03b091ed0f7fa8aac8487369d645299"
+  },
+  "d8df6aac3b5ba0e8227f89dc30360e32b1ac1e2bfa413f824d867f69f1ae438b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000013_cam_left_wrist_success.mp4",
+    "size": 2104118,
+    "sha256": "d8df6aac3b5ba0e8227f89dc30360e32b1ac1e2bfa413f824d867f69f1ae438b"
+  },
+  "ad61a80d828c709320f81dd9482e7fe8dd84d72d0b02927ceb1478adee9cb408.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000013_cam_right_wrist_success.mp4",
+    "size": 1542841,
+    "sha256": "ad61a80d828c709320f81dd9482e7fe8dd84d72d0b02927ceb1478adee9cb408"
+  },
+  "bfff59abb65d0177ae710edb1c6706e5635b5b439f5268c9d53715c89540e07f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000014_cam_head_fail.mp4",
+    "size": 1579709,
+    "sha256": "bfff59abb65d0177ae710edb1c6706e5635b5b439f5268c9d53715c89540e07f"
+  },
+  "9bf8867c6ee5497113847f82d891096944260b5539d37324f68fa925f3474f13.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000014_cam_left_wrist_fail.mp4",
+    "size": 2686584,
+    "sha256": "9bf8867c6ee5497113847f82d891096944260b5539d37324f68fa925f3474f13"
+  },
+  "173a871dcf53cb5379d1bdd6424063ad29d060a212fc035777fbd20f2fa00c20.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000014_cam_right_wrist_fail.mp4",
+    "size": 1939113,
+    "sha256": "173a871dcf53cb5379d1bdd6424063ad29d060a212fc035777fbd20f2fa00c20"
+  },
+  "15f93cd83a126b5bf11aa36d3db6dd7e4b1e142a4a31b4339e82ad990a173661.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000015_cam_head_fail.mp4",
+    "size": 1695961,
+    "sha256": "15f93cd83a126b5bf11aa36d3db6dd7e4b1e142a4a31b4339e82ad990a173661"
+  },
+  "2634f3c00e3301f2a399917dbe0de2f3ede1bb7cd5d28ea7a325811381dd8680.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000015_cam_left_wrist_fail.mp4",
+    "size": 2991437,
+    "sha256": "2634f3c00e3301f2a399917dbe0de2f3ede1bb7cd5d28ea7a325811381dd8680"
+  },
+  "75bfc4347dd2528fdfd94b550a7c8c4e1297d1c1c6e04deab02565efb185b66b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000015_cam_right_wrist_fail.mp4",
+    "size": 1922733,
+    "sha256": "75bfc4347dd2528fdfd94b550a7c8c4e1297d1c1c6e04deab02565efb185b66b"
+  },
+  "e925f1b3a9d22155f5cd956372ca86b06ba3f4eaf67e2805d8db466fc6f4a824.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000016_cam_head_fail.mp4",
+    "size": 1573809,
+    "sha256": "e925f1b3a9d22155f5cd956372ca86b06ba3f4eaf67e2805d8db466fc6f4a824"
+  },
+  "5a226ad2559ad0c5782afff61529747b4d6735c5f520f36eff17fa9d5bb0a4ae.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000016_cam_left_wrist_fail.mp4",
+    "size": 2676634,
+    "sha256": "5a226ad2559ad0c5782afff61529747b4d6735c5f520f36eff17fa9d5bb0a4ae"
+  },
+  "7be2e98fa66f83abf69b64478cc4dd5ffc954608b049c7edf4549abb3e20badc.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000016_cam_right_wrist_fail.mp4",
+    "size": 1956333,
+    "sha256": "7be2e98fa66f83abf69b64478cc4dd5ffc954608b049c7edf4549abb3e20badc"
+  },
+  "f6576334cb38f63e2d30e07c732c1b2faf48ece37fea3dc82bea46ddde7a10ff.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000017_cam_head_fail.mp4",
+    "size": 1837685,
+    "sha256": "f6576334cb38f63e2d30e07c732c1b2faf48ece37fea3dc82bea46ddde7a10ff"
+  },
+  "a3991c6641e60816eb323567089e1397bea1782fb42df060f20a4e1a8c837a2a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000017_cam_left_wrist_fail.mp4",
+    "size": 3213817,
+    "sha256": "a3991c6641e60816eb323567089e1397bea1782fb42df060f20a4e1a8c837a2a"
+  },
+  "3e920f9028f895c56f81242b176b85db7114edb8e40363adabc18e1ac158e3ba.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000017_cam_right_wrist_fail.mp4",
+    "size": 1954155,
+    "sha256": "3e920f9028f895c56f81242b176b85db7114edb8e40363adabc18e1ac158e3ba"
+  },
+  "8ae649e48eefe2ff31d271b36c21c7b6708aa0d78104e72e1ef80eead492b5d3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000018_cam_head_fail.mp4",
+    "size": 1641331,
+    "sha256": "8ae649e48eefe2ff31d271b36c21c7b6708aa0d78104e72e1ef80eead492b5d3"
+  },
+  "afe46da2f1f33414be568855e529db7edbf9645907b0097b0a074ec0f8e67a7d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 2841774,
+    "sha256": "afe46da2f1f33414be568855e529db7edbf9645907b0097b0a074ec0f8e67a7d"
+  },
+  "300eb2529875e69ec57d62f9b7c1f7c2ff41c92b830f3dcd287563034a7ba904.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 1930084,
+    "sha256": "300eb2529875e69ec57d62f9b7c1f7c2ff41c92b830f3dcd287563034a7ba904"
+  },
+  "42ee9c8e6ec402349ed274502ab8f224d861f789b254d61503776fcb1b2485ad.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000019_cam_head_fail.mp4",
+    "size": 1581191,
+    "sha256": "42ee9c8e6ec402349ed274502ab8f224d861f789b254d61503776fcb1b2485ad"
+  },
+  "ff6c5deb5ad88e26f4f653626c0996c9a6444fc42858f788ded76f29d88138e1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000019_cam_left_wrist_fail.mp4",
+    "size": 2471795,
+    "sha256": "ff6c5deb5ad88e26f4f653626c0996c9a6444fc42858f788ded76f29d88138e1"
+  },
+  "c752d4ddee8dd1a91fa0568ee0f92f62cdfd821fce9f5b5a5893560cf0070bff.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/cover_blocks_20261014T115837/attempt-01/eval_result/RoboDojo/cover_blocks/Pi_05/arx_x5/0_action_type=joint/cover_blocks_20261014T115837/episode_0000019_cam_right_wrist_fail.mp4",
+    "size": 2169036,
+    "sha256": "c752d4ddee8dd1a91fa0568ee0f92f62cdfd821fce9f5b5a5893560cf0070bff"
+  },
+  "c387d25ad3193bb43de9e387201270bf8aa60fbe6bcb7925e3d565fbf990025c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000000_cam_head_fail.mp4",
+    "size": 662947,
+    "sha256": "c387d25ad3193bb43de9e387201270bf8aa60fbe6bcb7925e3d565fbf990025c"
+  },
+  "040655500d8272a0727b293f41b899421a9ef0ba16215a76c68b0f21264ba2c0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000000_cam_left_wrist_fail.mp4",
+    "size": 1198253,
+    "sha256": "040655500d8272a0727b293f41b899421a9ef0ba16215a76c68b0f21264ba2c0"
+  },
+  "d9b0d20134252d87b8462aa9f51a6b5e445f0e68d2811767fd8a8edeff843662.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000000_cam_right_wrist_fail.mp4",
+    "size": 1017453,
+    "sha256": "d9b0d20134252d87b8462aa9f51a6b5e445f0e68d2811767fd8a8edeff843662"
+  },
+  "afe19af356651d95bc5419a15e8b40dbfb6d072daf03803af9e4cabf9764e704.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000001_cam_head_fail.mp4",
+    "size": 707569,
+    "sha256": "afe19af356651d95bc5419a15e8b40dbfb6d072daf03803af9e4cabf9764e704"
+  },
+  "c22329a6f50a31021619bcb653de26e225a341632365c43eb65d6b0ff7f7f8a9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000001_cam_left_wrist_fail.mp4",
+    "size": 1000922,
+    "sha256": "c22329a6f50a31021619bcb653de26e225a341632365c43eb65d6b0ff7f7f8a9"
+  },
+  "b8e6f6f4688fa7c9fdcc95b09c27b1321edd51aed9e72a0a81debf8b3134097b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000001_cam_right_wrist_fail.mp4",
+    "size": 1226284,
+    "sha256": "b8e6f6f4688fa7c9fdcc95b09c27b1321edd51aed9e72a0a81debf8b3134097b"
+  },
+  "7be2ce395357e85b1d2d65bacb577d772a62bbf1cc5e95c5914995442eb052f7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000002_cam_head_fail.mp4",
+    "size": 544758,
+    "sha256": "7be2ce395357e85b1d2d65bacb577d772a62bbf1cc5e95c5914995442eb052f7"
+  },
+  "906c4a9094d35de506cde1b9de96f424b67b503c8649a7186b7636fecbf9d66d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000002_cam_left_wrist_fail.mp4",
+    "size": 448555,
+    "sha256": "906c4a9094d35de506cde1b9de96f424b67b503c8649a7186b7636fecbf9d66d"
+  },
+  "4fb93e5fe31a78b914932703abb4866567ac4a016a006e5219ca34aed8799025.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000002_cam_right_wrist_fail.mp4",
+    "size": 1665406,
+    "sha256": "4fb93e5fe31a78b914932703abb4866567ac4a016a006e5219ca34aed8799025"
+  },
+  "d13c0bba08013ec66a3cc4871c7aba9f5cdbba77aa2ec4c682b892e0d272b65d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000003_cam_head_fail.mp4",
+    "size": 681417,
+    "sha256": "d13c0bba08013ec66a3cc4871c7aba9f5cdbba77aa2ec4c682b892e0d272b65d"
+  },
+  "f56b8fb3ea304e4ce34fa8806f5a473e0081fcd1cb2955dce4d152f8c1c0c76e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000003_cam_left_wrist_fail.mp4",
+    "size": 913661,
+    "sha256": "f56b8fb3ea304e4ce34fa8806f5a473e0081fcd1cb2955dce4d152f8c1c0c76e"
+  },
+  "247cecded325a181693e6a814415c1f84bb78d0f42f3462e2147be80d867fc67.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000003_cam_right_wrist_fail.mp4",
+    "size": 1438202,
+    "sha256": "247cecded325a181693e6a814415c1f84bb78d0f42f3462e2147be80d867fc67"
+  },
+  "4c055af42a2923045326715729db9ca29038392debb279f2637b0451c0deee50.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000004_cam_head_fail.mp4",
+    "size": 554749,
+    "sha256": "4c055af42a2923045326715729db9ca29038392debb279f2637b0451c0deee50"
+  },
+  "ba360cd34c5e2a05f38980855414af5c09e644d833fa2ef5352470023801e6c7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000004_cam_left_wrist_fail.mp4",
+    "size": 764486,
+    "sha256": "ba360cd34c5e2a05f38980855414af5c09e644d833fa2ef5352470023801e6c7"
+  },
+  "d565d25ac155cec63f8d68dc0bdf9f52609bc87f791273556ddfac6a4740645c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000004_cam_right_wrist_fail.mp4",
+    "size": 1434073,
+    "sha256": "d565d25ac155cec63f8d68dc0bdf9f52609bc87f791273556ddfac6a4740645c"
+  },
+  "d6311593c95900d9f34910530fa1e71d2c34cb70c1b02f15601cce5ecf6ac6b0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000005_cam_head_fail.mp4",
+    "size": 731501,
+    "sha256": "d6311593c95900d9f34910530fa1e71d2c34cb70c1b02f15601cce5ecf6ac6b0"
+  },
+  "1b12f5c51a955c280499a7cdaf63de2b7eb21b8e509bed6d5ae70e60d66c7871.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000005_cam_left_wrist_fail.mp4",
+    "size": 972382,
+    "sha256": "1b12f5c51a955c280499a7cdaf63de2b7eb21b8e509bed6d5ae70e60d66c7871"
+  },
+  "9ba578937eb38ca6d999ee987be5254295687ac0c449ecbb7ea8879506377294.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000005_cam_right_wrist_fail.mp4",
+    "size": 1379515,
+    "sha256": "9ba578937eb38ca6d999ee987be5254295687ac0c449ecbb7ea8879506377294"
+  },
+  "4da85719c5d0d8bc77346134f5b84b308331e2996a2c2830ae64702dafb0388c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000006_cam_head_fail.mp4",
+    "size": 643292,
+    "sha256": "4da85719c5d0d8bc77346134f5b84b308331e2996a2c2830ae64702dafb0388c"
+  },
+  "0e6728e7e960cce6ba19d309f51fb3c394c5ff80f4205a9d6e7a1d038bf8cfea.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000006_cam_left_wrist_fail.mp4",
+    "size": 1050790,
+    "sha256": "0e6728e7e960cce6ba19d309f51fb3c394c5ff80f4205a9d6e7a1d038bf8cfea"
+  },
+  "48e8b701b5bd71049007f60dc30633d3ceb44b374c2a5d6f9376e314e7d970bf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000006_cam_right_wrist_fail.mp4",
+    "size": 1156230,
+    "sha256": "48e8b701b5bd71049007f60dc30633d3ceb44b374c2a5d6f9376e314e7d970bf"
+  },
+  "39840b84fc7b2e5384ed25e050a84ded70e382920fcecd342c1cd2f4a5624da5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000007_cam_head_fail.mp4",
+    "size": 533899,
+    "sha256": "39840b84fc7b2e5384ed25e050a84ded70e382920fcecd342c1cd2f4a5624da5"
+  },
+  "169e37566dc54fc912bca819807d520da10c6fb4c4d03a989abcab817ec86bc8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000007_cam_left_wrist_fail.mp4",
+    "size": 449948,
+    "sha256": "169e37566dc54fc912bca819807d520da10c6fb4c4d03a989abcab817ec86bc8"
+  },
+  "508ea1ae1fb65346c73979a23d052e35ae82ffa84eab0bada68dbe8d8b3888bf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000007_cam_right_wrist_fail.mp4",
+    "size": 1687416,
+    "sha256": "508ea1ae1fb65346c73979a23d052e35ae82ffa84eab0bada68dbe8d8b3888bf"
+  },
+  "9ff8b9a1768d118013dcf993d06f0ba3ea818a85c3fcdb909a9ca5e038fb6d7e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000008_cam_head_fail.mp4",
+    "size": 621165,
+    "sha256": "9ff8b9a1768d118013dcf993d06f0ba3ea818a85c3fcdb909a9ca5e038fb6d7e"
+  },
+  "a70e2dcb9bd1f1c7537609a77dd7aa7184b006e05df5ffc5b3e270a427322d86.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000008_cam_left_wrist_fail.mp4",
+    "size": 804849,
+    "sha256": "a70e2dcb9bd1f1c7537609a77dd7aa7184b006e05df5ffc5b3e270a427322d86"
+  },
+  "5b588ed91e788681f7b7a7146d3ffc5a3b0bcf8b83c60d549db88666e968ee72.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000008_cam_right_wrist_fail.mp4",
+    "size": 1307844,
+    "sha256": "5b588ed91e788681f7b7a7146d3ffc5a3b0bcf8b83c60d549db88666e968ee72"
+  },
+  "26b8a3de82659b5f0faf68b764002b1640e5adcd4706733537d23c2bb2773fe5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000009_cam_head_fail.mp4",
+    "size": 676424,
+    "sha256": "26b8a3de82659b5f0faf68b764002b1640e5adcd4706733537d23c2bb2773fe5"
+  },
+  "09f0e6278edba82f69c5c5534a93faffef17e11c4a98bfe0bb2c2cc00500a1cd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000009_cam_left_wrist_fail.mp4",
+    "size": 1152307,
+    "sha256": "09f0e6278edba82f69c5c5534a93faffef17e11c4a98bfe0bb2c2cc00500a1cd"
+  },
+  "4adf16654cb4f9aaae927d0baef4238b90e3b835c23e06c816f6a52d00358265.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000009_cam_right_wrist_fail.mp4",
+    "size": 1078794,
+    "sha256": "4adf16654cb4f9aaae927d0baef4238b90e3b835c23e06c816f6a52d00358265"
+  },
+  "34d7a4032f0ae7c7ad25a925afa9e3d9c73ac1d9fcb61985e9d73b3f89cde532.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000010_cam_head_fail.mp4",
+    "size": 590179,
+    "sha256": "34d7a4032f0ae7c7ad25a925afa9e3d9c73ac1d9fcb61985e9d73b3f89cde532"
+  },
+  "0aa758ff951a4835e43cbf2e269dd08e07c5fc8b410952a34d5fbd5b017e8ed8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 953712,
+    "sha256": "0aa758ff951a4835e43cbf2e269dd08e07c5fc8b410952a34d5fbd5b017e8ed8"
+  },
+  "05082715511ecf9316c0388032348e09be1a55f2274c9507b0047d1c2e495086.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 1018112,
+    "sha256": "05082715511ecf9316c0388032348e09be1a55f2274c9507b0047d1c2e495086"
+  },
+  "241373fa6c293398dd56d0b2dd31800f32da5fd436fdcdd0160649a8f5a88196.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000011_cam_head_fail.mp4",
+    "size": 706438,
+    "sha256": "241373fa6c293398dd56d0b2dd31800f32da5fd436fdcdd0160649a8f5a88196"
+  },
+  "172dfc1fc919f5c21cb2c69390e11f78129981d474a0694be75e20aeb7a8535e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000011_cam_left_wrist_fail.mp4",
+    "size": 773762,
+    "sha256": "172dfc1fc919f5c21cb2c69390e11f78129981d474a0694be75e20aeb7a8535e"
+  },
+  "4351724598d31f2c64063f7f8494fc2bfc48dd147d062430a2bf7227df010a89.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000011_cam_right_wrist_fail.mp4",
+    "size": 1459044,
+    "sha256": "4351724598d31f2c64063f7f8494fc2bfc48dd147d062430a2bf7227df010a89"
+  },
+  "7ccbaec12ff1a33d129dbd4757d39bd93daddd58ed454c74757cd33a76bd9f2a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000012_cam_head_fail.mp4",
+    "size": 687180,
+    "sha256": "7ccbaec12ff1a33d129dbd4757d39bd93daddd58ed454c74757cd33a76bd9f2a"
+  },
+  "d21ca5f76ab6b909e8e853a11a8a42f95208f85de9e3e28aba8ce30e287a40c1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000012_cam_left_wrist_fail.mp4",
+    "size": 889828,
+    "sha256": "d21ca5f76ab6b909e8e853a11a8a42f95208f85de9e3e28aba8ce30e287a40c1"
+  },
+  "471bb0b1b4bef292680ca9054c23ae6cadc75d5cb9ce11f1252946f62f0fbc4f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000012_cam_right_wrist_fail.mp4",
+    "size": 1420784,
+    "sha256": "471bb0b1b4bef292680ca9054c23ae6cadc75d5cb9ce11f1252946f62f0fbc4f"
+  },
+  "5244a8add04dfd2ce868c4907c772987261f6a21ebdc94382f4914b81d920774.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000013_cam_head_fail.mp4",
+    "size": 708402,
+    "sha256": "5244a8add04dfd2ce868c4907c772987261f6a21ebdc94382f4914b81d920774"
+  },
+  "8d694e9b41b3f3570cb7d50af942c82760e7144e097f40a71d43bf51680ab6bf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000013_cam_left_wrist_fail.mp4",
+    "size": 899881,
+    "sha256": "8d694e9b41b3f3570cb7d50af942c82760e7144e097f40a71d43bf51680ab6bf"
+  },
+  "84d54d357effb005c77764bd0c3be6dc2ff50d1bb007525a364a709a487d2a39.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000013_cam_right_wrist_fail.mp4",
+    "size": 1430956,
+    "sha256": "84d54d357effb005c77764bd0c3be6dc2ff50d1bb007525a364a709a487d2a39"
+  },
+  "3f68eb62ece95d5fc0fd0805cf547e84ef63d258cfcdc0fe4eba9630beccc3d4.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000014_cam_head_fail.mp4",
+    "size": 630963,
+    "sha256": "3f68eb62ece95d5fc0fd0805cf547e84ef63d258cfcdc0fe4eba9630beccc3d4"
+  },
+  "4606ff04b91c804108bad62c11a376c254ebf42a1f5d5107e8606084628199a7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000014_cam_left_wrist_fail.mp4",
+    "size": 702953,
+    "sha256": "4606ff04b91c804108bad62c11a376c254ebf42a1f5d5107e8606084628199a7"
+  },
+  "963115b9b52ed797452ac7c6f28e1c79928bbd6ef2ea5976a6418580fcbaf6ee.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000014_cam_right_wrist_fail.mp4",
+    "size": 1400503,
+    "sha256": "963115b9b52ed797452ac7c6f28e1c79928bbd6ef2ea5976a6418580fcbaf6ee"
+  },
+  "f5334f7192d330e990ce95d878ef5bc694064ce841c08b441e60a710492d4625.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000015_cam_head_fail.mp4",
+    "size": 663574,
+    "sha256": "f5334f7192d330e990ce95d878ef5bc694064ce841c08b441e60a710492d4625"
+  },
+  "0d5ce60bd74afe5d81a2846a0671512eff754a5a2dacf41bcaa815830672ae9e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000015_cam_left_wrist_fail.mp4",
+    "size": 1196651,
+    "sha256": "0d5ce60bd74afe5d81a2846a0671512eff754a5a2dacf41bcaa815830672ae9e"
+  },
+  "11c0a1401ed04bc7795d60b8a63253ea387154b871fe8ce468930b4d541a5cfe.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000015_cam_right_wrist_fail.mp4",
+    "size": 1051398,
+    "sha256": "11c0a1401ed04bc7795d60b8a63253ea387154b871fe8ce468930b4d541a5cfe"
+  },
+  "15c4582f83722d0a8dc6a0b27cbd7d4d411edc5d04adbc067608773c39fda84a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000016_cam_head_fail.mp4",
+    "size": 686543,
+    "sha256": "15c4582f83722d0a8dc6a0b27cbd7d4d411edc5d04adbc067608773c39fda84a"
+  },
+  "b04bd0fd720bdcba8a0e6c1d0bc9c510d4986b1c37a29cd19ae389f174e32c22.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000016_cam_left_wrist_fail.mp4",
+    "size": 899032,
+    "sha256": "b04bd0fd720bdcba8a0e6c1d0bc9c510d4986b1c37a29cd19ae389f174e32c22"
+  },
+  "1848afa5fbf1e47a8cd3b5f135cf70e06fc3d1aaf3bbda3da52d8757333e1ad0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000016_cam_right_wrist_fail.mp4",
+    "size": 1301218,
+    "sha256": "1848afa5fbf1e47a8cd3b5f135cf70e06fc3d1aaf3bbda3da52d8757333e1ad0"
+  },
+  "29edbb28a63a99e3e336ff0a7b4700de8fd8ba6738a3e64c63df67035d941b9b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000017_cam_head_fail.mp4",
+    "size": 530310,
+    "sha256": "29edbb28a63a99e3e336ff0a7b4700de8fd8ba6738a3e64c63df67035d941b9b"
+  },
+  "21c73edcda7eadbad339629f39e095e64c2ab957b707e3f33ead93f0918d9cd4.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000017_cam_left_wrist_fail.mp4",
+    "size": 448734,
+    "sha256": "21c73edcda7eadbad339629f39e095e64c2ab957b707e3f33ead93f0918d9cd4"
+  },
+  "a45af844ace14dde5f55fb1264447275b663cbeddf8e335c793a755c482c4ad2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000017_cam_right_wrist_fail.mp4",
+    "size": 1508324,
+    "sha256": "a45af844ace14dde5f55fb1264447275b663cbeddf8e335c793a755c482c4ad2"
+  },
+  "e35437b29ad479f7dd5d22cf5362c9ab648d4b0094a7bd7372dec0e810e01cee.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000018_cam_head_fail.mp4",
+    "size": 625688,
+    "sha256": "e35437b29ad479f7dd5d22cf5362c9ab648d4b0094a7bd7372dec0e810e01cee"
+  },
+  "4e73e05df4e417f57d67c1d86c644be8c53b63881f818cb610564cedafa9b5e3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 1156554,
+    "sha256": "4e73e05df4e417f57d67c1d86c644be8c53b63881f818cb610564cedafa9b5e3"
+  },
+  "529733a9be696a2068ae237a7117c6a12919635dfe9d67b513f06427b17bf66c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 996036,
+    "sha256": "529733a9be696a2068ae237a7117c6a12919635dfe9d67b513f06427b17bf66c"
+  },
+  "5d783545a79ddc9fa6d323626cfa235a044af5169a1f6f3cfbbf926f8cc4961f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000019_cam_head_fail.mp4",
+    "size": 604984,
+    "sha256": "5d783545a79ddc9fa6d323626cfa235a044af5169a1f6f3cfbbf926f8cc4961f"
+  },
+  "6d80ffc430794121fdd5f3727a06bae7a975b36e6ff45b8193c1baf517851b5b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000019_cam_left_wrist_fail.mp4",
+    "size": 709439,
+    "sha256": "6d80ffc430794121fdd5f3727a06bae7a975b36e6ff45b8193c1baf517851b5b"
+  },
+  "1b6420ff879309d02ef0f190c282cc325cc460fe7bfd5d53218a14f0cd8f243d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/insert_key_20261014T164051/attempt-01/eval_result/RoboDojo/insert_key/Pi_05/arx_x5/0_action_type=joint/insert_key_20261014T164051/episode_0000019_cam_right_wrist_fail.mp4",
+    "size": 1438481,
+    "sha256": "1b6420ff879309d02ef0f190c282cc325cc460fe7bfd5d53218a14f0cd8f243d"
+  },
+  "2074961ce22750420e669fda6f6e16cebac09643bbb454eae6fc3730478b3f50.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000000_cam_head_fail.mp4",
+    "size": 1000114,
+    "sha256": "2074961ce22750420e669fda6f6e16cebac09643bbb454eae6fc3730478b3f50"
+  },
+  "9dbdc473961ef12e9f2b94a8914da9818dd0786ac38f796e37d8fbc069b00747.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000000_cam_left_wrist_fail.mp4",
+    "size": 1666746,
+    "sha256": "9dbdc473961ef12e9f2b94a8914da9818dd0786ac38f796e37d8fbc069b00747"
+  },
+  "eac33357d790ac7b6e78352aa67d3721dcf3c97d1e57806be4b2abf055803532.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000000_cam_right_wrist_fail.mp4",
+    "size": 1385968,
+    "sha256": "eac33357d790ac7b6e78352aa67d3721dcf3c97d1e57806be4b2abf055803532"
+  },
+  "f1cc1bda9d387f98c287d45b05703e23bb2079accf6ba967e5aacacaed60cb0a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000001_cam_head_fail.mp4",
+    "size": 1104276,
+    "sha256": "f1cc1bda9d387f98c287d45b05703e23bb2079accf6ba967e5aacacaed60cb0a"
+  },
+  "13a32946e34e63e75167318944e0d57889c8d79fd51754b788cd4b36234d8a3a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000001_cam_left_wrist_fail.mp4",
+    "size": 1466601,
+    "sha256": "13a32946e34e63e75167318944e0d57889c8d79fd51754b788cd4b36234d8a3a"
+  },
+  "92d810cb69e15dad26138c8364905110ff9a29ff8e99c77adf59077d2e574336.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000001_cam_right_wrist_fail.mp4",
+    "size": 1552065,
+    "sha256": "92d810cb69e15dad26138c8364905110ff9a29ff8e99c77adf59077d2e574336"
+  },
+  "b865f52c6ee935c163f35c2e4ca90d01b62a5f825333b5ba745d7c07f5ef61b0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000002_cam_head_fail.mp4",
+    "size": 1067790,
+    "sha256": "b865f52c6ee935c163f35c2e4ca90d01b62a5f825333b5ba745d7c07f5ef61b0"
+  },
+  "3b1c19d18fa71ad1ce319bce77ee72cb3582c3735a8c8324dfbdd1f40c5e8f33.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000002_cam_left_wrist_fail.mp4",
+    "size": 1442414,
+    "sha256": "3b1c19d18fa71ad1ce319bce77ee72cb3582c3735a8c8324dfbdd1f40c5e8f33"
+  },
+  "7030e41a40eec5d48a7445c739fd8b6f1022a826c808f12c9d02dee5196118d5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000002_cam_right_wrist_fail.mp4",
+    "size": 1512287,
+    "sha256": "7030e41a40eec5d48a7445c739fd8b6f1022a826c808f12c9d02dee5196118d5"
+  },
+  "5528ba71169790351524162190c3746a98887c88f5bf8cb2d255f8c6c1e48068.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000003_cam_head_fail.mp4",
+    "size": 1024487,
+    "sha256": "5528ba71169790351524162190c3746a98887c88f5bf8cb2d255f8c6c1e48068"
+  },
+  "ca8ade6366a82ff256556a7cdb3aba990d2a0dc9a1d38dc188ffef59a522cffe.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000003_cam_left_wrist_fail.mp4",
+    "size": 1424581,
+    "sha256": "ca8ade6366a82ff256556a7cdb3aba990d2a0dc9a1d38dc188ffef59a522cffe"
+  },
+  "12a7d8edcd09674a8c23991b709fc93075fdba65a256bbc999a92106e14d7fc9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000003_cam_right_wrist_fail.mp4",
+    "size": 1414660,
+    "sha256": "12a7d8edcd09674a8c23991b709fc93075fdba65a256bbc999a92106e14d7fc9"
+  },
+  "c78ee8d4707580de403a379da86d41e9ebb62a146e13a30498a6579f862f589d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000004_cam_head_fail.mp4",
+    "size": 1027319,
+    "sha256": "c78ee8d4707580de403a379da86d41e9ebb62a146e13a30498a6579f862f589d"
+  },
+  "98dde3c1976bd9af213357ca05080778bcf4e5e61abe88e0fcb496f49220f8e4.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000004_cam_left_wrist_fail.mp4",
+    "size": 1441305,
+    "sha256": "98dde3c1976bd9af213357ca05080778bcf4e5e61abe88e0fcb496f49220f8e4"
+  },
+  "5ce7317f4d7e45e4cc7fdbfef011f6d227090370f74e3fc364889b6b43edd955.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000004_cam_right_wrist_fail.mp4",
+    "size": 1417055,
+    "sha256": "5ce7317f4d7e45e4cc7fdbfef011f6d227090370f74e3fc364889b6b43edd955"
+  },
+  "5ea3324f4214c796dba0899935db745ae332422d08f2e9330225231b2815344b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000005_cam_head_fail.mp4",
+    "size": 1070914,
+    "sha256": "5ea3324f4214c796dba0899935db745ae332422d08f2e9330225231b2815344b"
+  },
+  "108a7f9340bab6a6a0c90f030134990259252018661e4db11c474ecc3c00d0ab.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000005_cam_left_wrist_fail.mp4",
+    "size": 1566827,
+    "sha256": "108a7f9340bab6a6a0c90f030134990259252018661e4db11c474ecc3c00d0ab"
+  },
+  "045a2f0d32676130fb53c457a7216413d62d04b7d1ea1e4703cc6f4e17ce743c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000005_cam_right_wrist_fail.mp4",
+    "size": 1379979,
+    "sha256": "045a2f0d32676130fb53c457a7216413d62d04b7d1ea1e4703cc6f4e17ce743c"
+  },
+  "9a6cbb8091c416f4d1b33504f58551267549b72e1dfd8e509ec3816c787b176b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000006_cam_head_fail.mp4",
+    "size": 1017565,
+    "sha256": "9a6cbb8091c416f4d1b33504f58551267549b72e1dfd8e509ec3816c787b176b"
+  },
+  "04d532dcc9c3f285c625fe9466dd9c4f14d07911b78d4b2e8e22dd7bd1ef6a3d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000006_cam_left_wrist_fail.mp4",
+    "size": 1450504,
+    "sha256": "04d532dcc9c3f285c625fe9466dd9c4f14d07911b78d4b2e8e22dd7bd1ef6a3d"
+  },
+  "c1d417927f910517994a139ce9d924a3a74a7c550e33a80ecdf8bf4c3083a0f7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000006_cam_right_wrist_fail.mp4",
+    "size": 1410425,
+    "sha256": "c1d417927f910517994a139ce9d924a3a74a7c550e33a80ecdf8bf4c3083a0f7"
+  },
+  "7c5986c92c10f7c22ca69b9191cefd00be8a4b19907ecde508b6a606cebd0a56.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000007_cam_head_fail.mp4",
+    "size": 1053792,
+    "sha256": "7c5986c92c10f7c22ca69b9191cefd00be8a4b19907ecde508b6a606cebd0a56"
+  },
+  "809b186b10a6e44fd64923434e30f46ca726ca75f2c0b96eefd3721139b5d0de.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000007_cam_left_wrist_fail.mp4",
+    "size": 1698368,
+    "sha256": "809b186b10a6e44fd64923434e30f46ca726ca75f2c0b96eefd3721139b5d0de"
+  },
+  "e2121b9695de683b52d5da7d6b976472f854c14281df01370fefa429096defb3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000007_cam_right_wrist_fail.mp4",
+    "size": 1409909,
+    "sha256": "e2121b9695de683b52d5da7d6b976472f854c14281df01370fefa429096defb3"
+  },
+  "d88f4f8272d65667c96fe4b3756c5dd5f75204f4d87363f75c73be462a731629.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000008_cam_head_fail.mp4",
+    "size": 1285105,
+    "sha256": "d88f4f8272d65667c96fe4b3756c5dd5f75204f4d87363f75c73be462a731629"
+  },
+  "bef04d792f603ff7d67bb9221a2362bf731db3a9e8800fd15a02ad228e9c8a6a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000008_cam_left_wrist_fail.mp4",
+    "size": 1950328,
+    "sha256": "bef04d792f603ff7d67bb9221a2362bf731db3a9e8800fd15a02ad228e9c8a6a"
+  },
+  "6e77b4bf029183e8647a662b57815495d827a5bf935f6164be24981ebb7b7810.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000008_cam_right_wrist_fail.mp4",
+    "size": 1652327,
+    "sha256": "6e77b4bf029183e8647a662b57815495d827a5bf935f6164be24981ebb7b7810"
+  },
+  "b162c94d340a3c704aa18d698dfa3d7c8029bc64fb55b03b7e35b44e008bdb5e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000009_cam_head_fail.mp4",
+    "size": 1260345,
+    "sha256": "b162c94d340a3c704aa18d698dfa3d7c8029bc64fb55b03b7e35b44e008bdb5e"
+  },
+  "3315e2a8f95b9ccac87caee759741cd18d648126b0555500f0b0577b989dc33c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000009_cam_left_wrist_fail.mp4",
+    "size": 1824885,
+    "sha256": "3315e2a8f95b9ccac87caee759741cd18d648126b0555500f0b0577b989dc33c"
+  },
+  "3d8c3377648be57489cd11e713f16b1e7a4c87f103e75043d495da24a80ee24a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000009_cam_right_wrist_fail.mp4",
+    "size": 1592547,
+    "sha256": "3d8c3377648be57489cd11e713f16b1e7a4c87f103e75043d495da24a80ee24a"
+  },
+  "5e4ff513caf5d917b2bf6e830cbf521452846af61ce2ac0459cc303805579717.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000010_cam_head_fail.mp4",
+    "size": 1126423,
+    "sha256": "5e4ff513caf5d917b2bf6e830cbf521452846af61ce2ac0459cc303805579717"
+  },
+  "5af687ed06dd89ea209939b51d127ba210a67c4557ecfe122c4f0c4fa922fb26.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 1888687,
+    "sha256": "5af687ed06dd89ea209939b51d127ba210a67c4557ecfe122c4f0c4fa922fb26"
+  },
+  "bce0436e49393a71aa86ac0677cc9c7bd23925e2f7fc3380299fcd77e34b84b0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 1394042,
+    "sha256": "bce0436e49393a71aa86ac0677cc9c7bd23925e2f7fc3380299fcd77e34b84b0"
+  },
+  "4b1051485a6cf57e2e5a6492ebf5da0a311e4fff7b6295a602c31eed0f715c23.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000011_cam_head_fail.mp4",
+    "size": 1143143,
+    "sha256": "4b1051485a6cf57e2e5a6492ebf5da0a311e4fff7b6295a602c31eed0f715c23"
+  },
+  "e5f3cbbbe7b327b6d31b8806cbf4f0b1905d506779e91e48523167d7c97a6c1e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000011_cam_left_wrist_fail.mp4",
+    "size": 1737548,
+    "sha256": "e5f3cbbbe7b327b6d31b8806cbf4f0b1905d506779e91e48523167d7c97a6c1e"
+  },
+  "1d7673705f8093f2bf6c19548a58554de5c9d46e591e0778573876265f72ae93.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000011_cam_right_wrist_fail.mp4",
+    "size": 1393624,
+    "sha256": "1d7673705f8093f2bf6c19548a58554de5c9d46e591e0778573876265f72ae93"
+  },
+  "cdff43cebf0077cd905ac68c6200b2198a69293e8fae54e9d6294a8799185d4b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000012_cam_head_fail.mp4",
+    "size": 1070959,
+    "sha256": "cdff43cebf0077cd905ac68c6200b2198a69293e8fae54e9d6294a8799185d4b"
+  },
+  "57ba973e54eed23fb2a856e13e794c350d7a5d7f89c133af5e7cce64f521f81b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000012_cam_left_wrist_fail.mp4",
+    "size": 1832379,
+    "sha256": "57ba973e54eed23fb2a856e13e794c350d7a5d7f89c133af5e7cce64f521f81b"
+  },
+  "f4bfdc11805b33aedd6d8d91e43e91fc0689eb6e2457945ad404afafc1ec5246.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000012_cam_right_wrist_fail.mp4",
+    "size": 1401333,
+    "sha256": "f4bfdc11805b33aedd6d8d91e43e91fc0689eb6e2457945ad404afafc1ec5246"
+  },
+  "78e6eabba160b01e2d3374e1fe7fe04485821a79f337d831a7d0710b2a0dcafc.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000013_cam_head_fail.mp4",
+    "size": 1058856,
+    "sha256": "78e6eabba160b01e2d3374e1fe7fe04485821a79f337d831a7d0710b2a0dcafc"
+  },
+  "fe654a34a8ec2ed7cd78c6f4f1cfb8ac1c0380ab7fce4f6729b776402f86b719.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000013_cam_left_wrist_fail.mp4",
+    "size": 1666263,
+    "sha256": "fe654a34a8ec2ed7cd78c6f4f1cfb8ac1c0380ab7fce4f6729b776402f86b719"
+  },
+  "03e011a6d3f95248d054128acf5f49ffa3f16d28f47a3b1bf7860fb94f6368ff.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000013_cam_right_wrist_fail.mp4",
+    "size": 1401194,
+    "sha256": "03e011a6d3f95248d054128acf5f49ffa3f16d28f47a3b1bf7860fb94f6368ff"
+  },
+  "126d4000fa241963655c57e5763ba1e6923de033e8a6dd64aa7494a27ac81701.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000014_cam_head_fail.mp4",
+    "size": 1046290,
+    "sha256": "126d4000fa241963655c57e5763ba1e6923de033e8a6dd64aa7494a27ac81701"
+  },
+  "434bdcd63e77f6e508a758afe80e2481dcb4b3163af8c19e1a3465f9e36cf5d1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000014_cam_left_wrist_fail.mp4",
+    "size": 1546415,
+    "sha256": "434bdcd63e77f6e508a758afe80e2481dcb4b3163af8c19e1a3465f9e36cf5d1"
+  },
+  "8eae1f965e2138ff27d68388bfb3dc3cf27a8e856f5c353d10bd578aec02a3bd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000014_cam_right_wrist_fail.mp4",
+    "size": 1370791,
+    "sha256": "8eae1f965e2138ff27d68388bfb3dc3cf27a8e856f5c353d10bd578aec02a3bd"
+  },
+  "ec9922746614fa6aa9d161d2329735f4fb717962f21d22c58f3604b310c30524.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000015_cam_head_fail.mp4",
+    "size": 1031878,
+    "sha256": "ec9922746614fa6aa9d161d2329735f4fb717962f21d22c58f3604b310c30524"
+  },
+  "8f032ababceaf6dfff116decefe719f9ee44dac0db52c9e48c16abce3544e657.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000015_cam_left_wrist_fail.mp4",
+    "size": 1441755,
+    "sha256": "8f032ababceaf6dfff116decefe719f9ee44dac0db52c9e48c16abce3544e657"
+  },
+  "a8422d7011356adadaec482ddf00870eef5269551b685f1af75091a39a1480e3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000015_cam_right_wrist_fail.mp4",
+    "size": 1413160,
+    "sha256": "a8422d7011356adadaec482ddf00870eef5269551b685f1af75091a39a1480e3"
+  },
+  "5105208325d7614d4560ebb17368e755fed0b22305f3c306ebcf7a410fe485d5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000016_cam_head_fail.mp4",
+    "size": 1079479,
+    "sha256": "5105208325d7614d4560ebb17368e755fed0b22305f3c306ebcf7a410fe485d5"
+  },
+  "0a910756cd922e3a5a000ed1ab8c7c9c8811bd8ed8c8149560638ea836192eb5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000016_cam_left_wrist_fail.mp4",
+    "size": 1826465,
+    "sha256": "0a910756cd922e3a5a000ed1ab8c7c9c8811bd8ed8c8149560638ea836192eb5"
+  },
+  "3fcf900461adf596f3e6b2396d688fa8381b2c9e0f88f965432a88e2e2d2d285.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000016_cam_right_wrist_fail.mp4",
+    "size": 1387445,
+    "sha256": "3fcf900461adf596f3e6b2396d688fa8381b2c9e0f88f965432a88e2e2d2d285"
+  },
+  "fbefd043ed728d10c4ac44009f8efb7565affef8b2d8a2d07865b04ecb062b18.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000017_cam_head_fail.mp4",
+    "size": 1060315,
+    "sha256": "fbefd043ed728d10c4ac44009f8efb7565affef8b2d8a2d07865b04ecb062b18"
+  },
+  "13126f12bc4c019ed32fe325d672fd45c8172a5336ed7001f2a002faefb26029.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000017_cam_left_wrist_fail.mp4",
+    "size": 1445917,
+    "sha256": "13126f12bc4c019ed32fe325d672fd45c8172a5336ed7001f2a002faefb26029"
+  },
+  "e81e6f4b2cc658e1bd7e5b4683a8965a1a263312541acb9c61582f5805c01337.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000017_cam_right_wrist_fail.mp4",
+    "size": 1498846,
+    "sha256": "e81e6f4b2cc658e1bd7e5b4683a8965a1a263312541acb9c61582f5805c01337"
+  },
+  "b0d088670586c16ac1bf64cb58b6e82251a06c2935ccad6513a722c6e7c973fb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000018_cam_head_fail.mp4",
+    "size": 1169730,
+    "sha256": "b0d088670586c16ac1bf64cb58b6e82251a06c2935ccad6513a722c6e7c973fb"
+  },
+  "9b9c4fddc73eeb9db7cb64710c4cc8c529563bbdbbfe5ec4db8a19b2d12dc66f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 1481448,
+    "sha256": "9b9c4fddc73eeb9db7cb64710c4cc8c529563bbdbbfe5ec4db8a19b2d12dc66f"
+  },
+  "a213d4046d5137cae511a52e14f95dc48aebbae08aff05918eb50505985b486c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 1680642,
+    "sha256": "a213d4046d5137cae511a52e14f95dc48aebbae08aff05918eb50505985b486c"
+  },
+  "45f0cdc4849c1c9cd0241c925f64671e868d1104cf22f25a6d0c74464466aa0c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000019_cam_head_fail.mp4",
+    "size": 1134082,
+    "sha256": "45f0cdc4849c1c9cd0241c925f64671e868d1104cf22f25a6d0c74464466aa0c"
+  },
+  "c7ff3f429d5d52d8052cf880a474eba80a69176611d6b9fe9e8022a2c870e870.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000019_cam_left_wrist_fail.mp4",
+    "size": 1942544,
+    "sha256": "c7ff3f429d5d52d8052cf880a474eba80a69176611d6b9fe9e8022a2c870e870"
+  },
+  "72be5dc11d300124e5d199e463b60f1996bb87c8c6dd21f4ec6b050f17a19870.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/pick_from_conveyor_by_image_20261014T182057/attempt-01/eval_result/RoboDojo/pick_from_conveyor_by_image/Pi_05/arx_x5/0_action_type=joint/pick_from_conveyor_by_image_20261014T182057/episode_0000019_cam_right_wrist_fail.mp4",
+    "size": 1403895,
+    "sha256": "72be5dc11d300124e5d199e463b60f1996bb87c8c6dd21f4ec6b050f17a19870"
+  },
+  "e05620a273b0e5668739655d548d84b8f70a25e9da357047a24ff4dc5be1169a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000000_cam_head_fail.mp4",
+    "size": 883193,
+    "sha256": "e05620a273b0e5668739655d548d84b8f70a25e9da357047a24ff4dc5be1169a"
+  },
+  "a43ad3b8958bb3a14686338bdd8b9dce63a06c0f5b5add37b57eab0d5586b8c2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000000_cam_left_wrist_fail.mp4",
+    "size": 1717267,
+    "sha256": "a43ad3b8958bb3a14686338bdd8b9dce63a06c0f5b5add37b57eab0d5586b8c2"
+  },
+  "3f8e504582509465d8daae307ef8ce802479a88042013e8be707df4fed3b7baf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000000_cam_right_wrist_fail.mp4",
+    "size": 1358212,
+    "sha256": "3f8e504582509465d8daae307ef8ce802479a88042013e8be707df4fed3b7baf"
+  },
+  "32f57ec90c8aa1962e337525e6e74ca5f62528e624954dae0f8bef85e3c3a857.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000001_cam_head_fail.mp4",
+    "size": 740966,
+    "sha256": "32f57ec90c8aa1962e337525e6e74ca5f62528e624954dae0f8bef85e3c3a857"
+  },
+  "4ab16706eecbea1bf44a8e055d8dc62c2f566ed91520621c08c9183b61f5d24f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000001_cam_left_wrist_fail.mp4",
+    "size": 1612170,
+    "sha256": "4ab16706eecbea1bf44a8e055d8dc62c2f566ed91520621c08c9183b61f5d24f"
+  },
+  "5c0caaaedf945c8a8dbedaf6cfb3e9b1045cd5b77cf9e2aaa4e6888dfa91758a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000001_cam_right_wrist_fail.mp4",
+    "size": 1023620,
+    "sha256": "5c0caaaedf945c8a8dbedaf6cfb3e9b1045cd5b77cf9e2aaa4e6888dfa91758a"
+  },
+  "24495d937a82bdcede35ce3b6a4ad9ea2c805b916247d0681366ccd0bc0e2665.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000002_cam_head_fail.mp4",
+    "size": 847175,
+    "sha256": "24495d937a82bdcede35ce3b6a4ad9ea2c805b916247d0681366ccd0bc0e2665"
+  },
+  "b3701ba32de6b1c63332191d8cc2a02c9bed49b38ee35999eea6a82646b52e68.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000002_cam_left_wrist_fail.mp4",
+    "size": 1706888,
+    "sha256": "b3701ba32de6b1c63332191d8cc2a02c9bed49b38ee35999eea6a82646b52e68"
+  },
+  "065001cc67c73d1bd79aa7639b91073a3cebac25e0a3060bc61918a9ff1f0fd5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000002_cam_right_wrist_fail.mp4",
+    "size": 1341042,
+    "sha256": "065001cc67c73d1bd79aa7639b91073a3cebac25e0a3060bc61918a9ff1f0fd5"
+  },
+  "d88772b1a92a80a75b7898987538c227fb665f6ad197588dee9369a073ae160b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000003_cam_head_fail.mp4",
+    "size": 733849,
+    "sha256": "d88772b1a92a80a75b7898987538c227fb665f6ad197588dee9369a073ae160b"
+  },
+  "916b37a56430094d73905e5fcc0a0f3874166283e10fc27a84887b4f67cb5431.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000003_cam_left_wrist_fail.mp4",
+    "size": 1611546,
+    "sha256": "916b37a56430094d73905e5fcc0a0f3874166283e10fc27a84887b4f67cb5431"
+  },
+  "3e43eb4e1c712d3adf0fcb4a268063ceb7534839bf0a637499cc69390401c08f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000003_cam_right_wrist_fail.mp4",
+    "size": 1035774,
+    "sha256": "3e43eb4e1c712d3adf0fcb4a268063ceb7534839bf0a637499cc69390401c08f"
+  },
+  "f9527ab7b87f59a16bb62b4bcffcff57ea258389fe22f8503619a0e47ffaafa8.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000004_cam_head_fail.mp4",
+    "size": 831647,
+    "sha256": "f9527ab7b87f59a16bb62b4bcffcff57ea258389fe22f8503619a0e47ffaafa8"
+  },
+  "012987c7cf06561fc2fd340c6c755727fbe95383631421e6a1158d3510e56f35.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000004_cam_left_wrist_fail.mp4",
+    "size": 1524020,
+    "sha256": "012987c7cf06561fc2fd340c6c755727fbe95383631421e6a1158d3510e56f35"
+  },
+  "560618afe14ffd4d1ea79e59ff123882202f1a257f48c76701c91d718db3214f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000004_cam_right_wrist_fail.mp4",
+    "size": 1281509,
+    "sha256": "560618afe14ffd4d1ea79e59ff123882202f1a257f48c76701c91d718db3214f"
+  },
+  "86be74525cfc8fd2e2e67d92ae6b46b6a4c25f54509b79a61745f03ed68cb799.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000005_cam_head_fail.mp4",
+    "size": 832401,
+    "sha256": "86be74525cfc8fd2e2e67d92ae6b46b6a4c25f54509b79a61745f03ed68cb799"
+  },
+  "ba6ec4c1506af2702a5d6876a94ee08ebb08a0151b638ce23009e593423b5040.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000005_cam_left_wrist_fail.mp4",
+    "size": 1530925,
+    "sha256": "ba6ec4c1506af2702a5d6876a94ee08ebb08a0151b638ce23009e593423b5040"
+  },
+  "3a0a14d8ccc21f6256e284eddd01c1779d513d9874dcc564c4036811b0debc83.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000005_cam_right_wrist_fail.mp4",
+    "size": 1289634,
+    "sha256": "3a0a14d8ccc21f6256e284eddd01c1779d513d9874dcc564c4036811b0debc83"
+  },
+  "7540d985f6d3df5d080b7512f95936db92ff7f93d79caf99bf45f5953ad8524c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000006_cam_head_fail.mp4",
+    "size": 830090,
+    "sha256": "7540d985f6d3df5d080b7512f95936db92ff7f93d79caf99bf45f5953ad8524c"
+  },
+  "7deb2ca6aaa466d806341ce8555fb44e659e9067d9b17681827ae77f53ca8d25.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000006_cam_left_wrist_fail.mp4",
+    "size": 1531339,
+    "sha256": "7deb2ca6aaa466d806341ce8555fb44e659e9067d9b17681827ae77f53ca8d25"
+  },
+  "bfe24c4e4c748512b9a5b7c06e2e914d005625b2bb80dee7860836bbe2c15395.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000006_cam_right_wrist_fail.mp4",
+    "size": 1291685,
+    "sha256": "bfe24c4e4c748512b9a5b7c06e2e914d005625b2bb80dee7860836bbe2c15395"
+  },
+  "c4d3241ffded79a4136fe989d7f2fb7708122330ca62e066e0ae3b95925744e5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000007_cam_head_success.mp4",
+    "size": 420648,
+    "sha256": "c4d3241ffded79a4136fe989d7f2fb7708122330ca62e066e0ae3b95925744e5"
+  },
+  "af16761f0e9cbed5b849771debad9fa93ae5dfe05bb16dff29e888ea7bda6db5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000007_cam_left_wrist_success.mp4",
+    "size": 723335,
+    "sha256": "af16761f0e9cbed5b849771debad9fa93ae5dfe05bb16dff29e888ea7bda6db5"
+  },
+  "27f5984a6f720402f8d8154fb94816fb56e6c47cfdf554184fb89c56db25bb26.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000007_cam_right_wrist_success.mp4",
+    "size": 711212,
+    "sha256": "27f5984a6f720402f8d8154fb94816fb56e6c47cfdf554184fb89c56db25bb26"
+  },
+  "288ad7696f8f611d79ecef3ac5b92dde21626dfc5973760828f02af1980ecce0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000008_cam_head_fail.mp4",
+    "size": 831356,
+    "sha256": "288ad7696f8f611d79ecef3ac5b92dde21626dfc5973760828f02af1980ecce0"
+  },
+  "4df17acc279fed7700ddb45d53a51212a2f7b0103c0f163013685cc2e76b80f3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000008_cam_left_wrist_fail.mp4",
+    "size": 1539489,
+    "sha256": "4df17acc279fed7700ddb45d53a51212a2f7b0103c0f163013685cc2e76b80f3"
+  },
+  "bee07075e7f89edf54fabe1653c0b73abe48a5de41fb72ffef55e25cf67bef46.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000008_cam_right_wrist_fail.mp4",
+    "size": 1282937,
+    "sha256": "bee07075e7f89edf54fabe1653c0b73abe48a5de41fb72ffef55e25cf67bef46"
+  },
+  "f78badde9e53227a07ff3cf04f7d2a406d64dd492c75413d2bdc59e28a767099.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000009_cam_head_fail.mp4",
+    "size": 857251,
+    "sha256": "f78badde9e53227a07ff3cf04f7d2a406d64dd492c75413d2bdc59e28a767099"
+  },
+  "45c292d8c5c2ca3383df91d37350249f8fa18a5c1ba32974121cf0ca2443aa2f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000009_cam_left_wrist_fail.mp4",
+    "size": 1650438,
+    "sha256": "45c292d8c5c2ca3383df91d37350249f8fa18a5c1ba32974121cf0ca2443aa2f"
+  },
+  "9ec7a9e015c448ecb41f06d69c790f23aba58e0f33faa1a5b30cdaafd704c3e9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000009_cam_right_wrist_fail.mp4",
+    "size": 1315403,
+    "sha256": "9ec7a9e015c448ecb41f06d69c790f23aba58e0f33faa1a5b30cdaafd704c3e9"
+  },
+  "5979010c5608efb1c9fcdcd4d945d314b141a0e8b5fba56d5acea054b256214b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000010_cam_head_fail.mp4",
+    "size": 779608,
+    "sha256": "5979010c5608efb1c9fcdcd4d945d314b141a0e8b5fba56d5acea054b256214b"
+  },
+  "49ff3b592ce11f892c3396097078011a6311faa4aafbff863f7139277e3dfbdd.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 1656004,
+    "sha256": "49ff3b592ce11f892c3396097078011a6311faa4aafbff863f7139277e3dfbdd"
+  },
+  "a2c1f035d5fd5ad8817fc69e4daadae3f6bf23d37b98fb16c5f8c8e5ce3ebe63.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 1028163,
+    "sha256": "a2c1f035d5fd5ad8817fc69e4daadae3f6bf23d37b98fb16c5f8c8e5ce3ebe63"
+  },
+  "2b027a18915e65bb8ec90599e28f67d36f4fbde10bcfd5b9e5e181842bc1196f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000011_cam_head_fail.mp4",
+    "size": 823316,
+    "sha256": "2b027a18915e65bb8ec90599e28f67d36f4fbde10bcfd5b9e5e181842bc1196f"
+  },
+  "655b7a0e6b9f445f7460ca21fadec06f62d21125390d3ebc7eeb2d4430003555.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000011_cam_left_wrist_fail.mp4",
+    "size": 1520554,
+    "sha256": "655b7a0e6b9f445f7460ca21fadec06f62d21125390d3ebc7eeb2d4430003555"
+  },
+  "93919a215dfc43789a6a71533acc64e99636a7dcd0ced2b20dbf904d27a8e9e2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000011_cam_right_wrist_fail.mp4",
+    "size": 1274027,
+    "sha256": "93919a215dfc43789a6a71533acc64e99636a7dcd0ced2b20dbf904d27a8e9e2"
+  },
+  "4d3724294dc2c0841d61948bec17386cfe0fbdfd28a6617e0dee276ec3dab21b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000012_cam_head_fail.mp4",
+    "size": 740617,
+    "sha256": "4d3724294dc2c0841d61948bec17386cfe0fbdfd28a6617e0dee276ec3dab21b"
+  },
+  "b99f65e32760c5bd188edd8cd2ee8753715f8ed87a3b80449181dd139d01bab1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000012_cam_left_wrist_fail.mp4",
+    "size": 1630340,
+    "sha256": "b99f65e32760c5bd188edd8cd2ee8753715f8ed87a3b80449181dd139d01bab1"
+  },
+  "3375c49f7bf5e4f687a1b3bce4eac89d92a7887a3eec9c305c3126291cd858d1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000012_cam_right_wrist_fail.mp4",
+    "size": 1025235,
+    "sha256": "3375c49f7bf5e4f687a1b3bce4eac89d92a7887a3eec9c305c3126291cd858d1"
+  },
+  "0447c573d7be84889549f91457be48bef94deaaf6f96117cec523610dc80c715.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000013_cam_head_fail.mp4",
+    "size": 827568,
+    "sha256": "0447c573d7be84889549f91457be48bef94deaaf6f96117cec523610dc80c715"
+  },
+  "615fb0405c2ea5a903e4509668faaa181a048795ea65719407d76a83d0f5a980.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000013_cam_left_wrist_fail.mp4",
+    "size": 1510500,
+    "sha256": "615fb0405c2ea5a903e4509668faaa181a048795ea65719407d76a83d0f5a980"
+  },
+  "83e48a13871dfce20fce02b24ed9be5a89c760e66733f5a0eec7a74fed54947a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000013_cam_right_wrist_fail.mp4",
+    "size": 1272119,
+    "sha256": "83e48a13871dfce20fce02b24ed9be5a89c760e66733f5a0eec7a74fed54947a"
+  },
+  "145b7b60e00e049aa22b6b621294e8e9f2531bb8e13e611193b547af0f302e84.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000014_cam_head_fail.mp4",
+    "size": 823082,
+    "sha256": "145b7b60e00e049aa22b6b621294e8e9f2531bb8e13e611193b547af0f302e84"
+  },
+  "1ba5336da5b9a4e825e2c67e8826f0d4b610a3cabb57263a4a4ca93e0277ba54.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000014_cam_left_wrist_fail.mp4",
+    "size": 1522360,
+    "sha256": "1ba5336da5b9a4e825e2c67e8826f0d4b610a3cabb57263a4a4ca93e0277ba54"
+  },
+  "e55b45e64e1b48036201bec8ef951a731b2ef18641d257f76dcf0503dcbcdd57.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000014_cam_right_wrist_fail.mp4",
+    "size": 1284398,
+    "sha256": "e55b45e64e1b48036201bec8ef951a731b2ef18641d257f76dcf0503dcbcdd57"
+  },
+  "343b25bcdc1ade9a8ca7a0d996e78cdceebbed19f0ce6c9d70f04817dc3d9d90.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000015_cam_head_fail.mp4",
+    "size": 828314,
+    "sha256": "343b25bcdc1ade9a8ca7a0d996e78cdceebbed19f0ce6c9d70f04817dc3d9d90"
+  },
+  "e16c72677940a9a7957e0c818a163bd0e3065fcec3f7f3320c5ec743c097333a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000015_cam_left_wrist_fail.mp4",
+    "size": 1531049,
+    "sha256": "e16c72677940a9a7957e0c818a163bd0e3065fcec3f7f3320c5ec743c097333a"
+  },
+  "8389fefcbde713ca134dbfcbad2bfd787e620f1a7cc9f6600dc49a8a051b90d6.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000015_cam_right_wrist_fail.mp4",
+    "size": 1288007,
+    "sha256": "8389fefcbde713ca134dbfcbad2bfd787e620f1a7cc9f6600dc49a8a051b90d6"
+  },
+  "29bf1d73bdc027ee0a4748c0dd4cd5c0abaec737ac75459208353f4925a47ddc.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000016_cam_head_fail.mp4",
+    "size": 781543,
+    "sha256": "29bf1d73bdc027ee0a4748c0dd4cd5c0abaec737ac75459208353f4925a47ddc"
+  },
+  "0dd7ecbf6255d97e6e56be727cf1a64d0e663d5641072849419aa4f3aa1a1710.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000016_cam_left_wrist_fail.mp4",
+    "size": 1670201,
+    "sha256": "0dd7ecbf6255d97e6e56be727cf1a64d0e663d5641072849419aa4f3aa1a1710"
+  },
+  "f00d0ffd6692f64a342ee2e0f78aa1df373d0aaf0f1bb0d63a78e035621ce69e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000016_cam_right_wrist_fail.mp4",
+    "size": 1202965,
+    "sha256": "f00d0ffd6692f64a342ee2e0f78aa1df373d0aaf0f1bb0d63a78e035621ce69e"
+  },
+  "4c012c549b868d1629f0274d1838caae35c52a37ea954b91011e2e10437633a9.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000017_cam_head_fail.mp4",
+    "size": 832833,
+    "sha256": "4c012c549b868d1629f0274d1838caae35c52a37ea954b91011e2e10437633a9"
+  },
+  "d0a49a9012f3156325b313d5cf9cb6c92584deafbd75d4fef330e0d4871fb51d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000017_cam_left_wrist_fail.mp4",
+    "size": 1555184,
+    "sha256": "d0a49a9012f3156325b313d5cf9cb6c92584deafbd75d4fef330e0d4871fb51d"
+  },
+  "032880aef874d7369fadd04a84838ea7bbdac5269288ef280304f1a18b2b4f9f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000017_cam_right_wrist_fail.mp4",
+    "size": 1269712,
+    "sha256": "032880aef874d7369fadd04a84838ea7bbdac5269288ef280304f1a18b2b4f9f"
+  },
+  "c884c3626c2598e90d575536028298e685cffa00e203a43240c1599661b0311f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000018_cam_head_fail.mp4",
+    "size": 788666,
+    "sha256": "c884c3626c2598e90d575536028298e685cffa00e203a43240c1599661b0311f"
+  },
+  "61cc136ef7a12ca8b883d719ff09812005e9a4d3a22c8ef23eaa29ca4c53d270.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 1529754,
+    "sha256": "61cc136ef7a12ca8b883d719ff09812005e9a4d3a22c8ef23eaa29ca4c53d270"
+  },
+  "ab9a20f947243e164e5b65dab2f1a9486b64f866b1ca0850be3131f2fbe7c18d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 1086580,
+    "sha256": "ab9a20f947243e164e5b65dab2f1a9486b64f866b1ca0850be3131f2fbe7c18d"
+  },
+  "ccc606d5db64f807258f165fd37c30cdf74481e08c0d0b2df965f6b67081d213.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000019_cam_head_fail.mp4",
+    "size": 827223,
+    "sha256": "ccc606d5db64f807258f165fd37c30cdf74481e08c0d0b2df965f6b67081d213"
+  },
+  "26d275177771a1dc72787ce3c937d3313d630eeb8e85ff29d342454c06c289da.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000019_cam_left_wrist_fail.mp4",
+    "size": 1518665,
+    "sha256": "26d275177771a1dc72787ce3c937d3313d630eeb8e85ff29d342454c06c289da"
+  },
+  "490f95b65b08df348336a0c04be439c7dd7b63dab8887b39d322dd56aaf1c814.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/plug_in_charger_20261014T184104/attempt-01/eval_result/RoboDojo/plug_in_charger/Pi_05/arx_x5/0_action_type=joint/plug_in_charger_20261014T184104/episode_0000019_cam_right_wrist_fail.mp4",
+    "size": 1268785,
+    "sha256": "490f95b65b08df348336a0c04be439c7dd7b63dab8887b39d322dd56aaf1c814"
+  },
+  "34f8dbde412b0208cb28c5809f0dc03c4510ce632292b4b6d10224420a93d9d3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000000_cam_head_fail.mp4",
+    "size": 855912,
+    "sha256": "34f8dbde412b0208cb28c5809f0dc03c4510ce632292b4b6d10224420a93d9d3"
+  },
+  "fe05880b08b66872b47fe534e547b2811e05398b85708a6c0bfacbda2a656e02.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000000_cam_left_wrist_fail.mp4",
+    "size": 2355945,
+    "sha256": "fe05880b08b66872b47fe534e547b2811e05398b85708a6c0bfacbda2a656e02"
+  },
+  "e00223d7e4ec04c69d6aceecfa60a60de1117cc490154a91b269195af3bad0b1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000000_cam_right_wrist_fail.mp4",
+    "size": 877876,
+    "sha256": "e00223d7e4ec04c69d6aceecfa60a60de1117cc490154a91b269195af3bad0b1"
+  },
+  "06a73fb6b75ae3f733e3219b0b358eb518549db71ce8113b39dd757c328ea994.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000001_cam_head_fail.mp4",
+    "size": 870963,
+    "sha256": "06a73fb6b75ae3f733e3219b0b358eb518549db71ce8113b39dd757c328ea994"
+  },
+  "228daf20a9dda8d17986f5fcae357b0e8fc684e738cdcf30352c123624c3bfed.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000001_cam_left_wrist_fail.mp4",
+    "size": 2365093,
+    "sha256": "228daf20a9dda8d17986f5fcae357b0e8fc684e738cdcf30352c123624c3bfed"
+  },
+  "8f44041889faddf6b1fc410f13f40511efb63f89e665af30f6a52f04cd136928.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000001_cam_right_wrist_fail.mp4",
+    "size": 887830,
+    "sha256": "8f44041889faddf6b1fc410f13f40511efb63f89e665af30f6a52f04cd136928"
+  },
+  "56d0a2611b07ab5b9765205148251915d0137f7dff3ffbedce06526bb8849f8d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000002_cam_head_fail.mp4",
+    "size": 954137,
+    "sha256": "56d0a2611b07ab5b9765205148251915d0137f7dff3ffbedce06526bb8849f8d"
+  },
+  "ae69e2b6115b6542347f689ba2f65e90af8c429b77c21d9844976ae3789b1acf.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000002_cam_left_wrist_fail.mp4",
+    "size": 2453769,
+    "sha256": "ae69e2b6115b6542347f689ba2f65e90af8c429b77c21d9844976ae3789b1acf"
+  },
+  "6e8992a57129a2a2b2156324b69ab0a2df968e896fcb47bb24feb3d49c512d35.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000002_cam_right_wrist_fail.mp4",
+    "size": 894443,
+    "sha256": "6e8992a57129a2a2b2156324b69ab0a2df968e896fcb47bb24feb3d49c512d35"
+  },
+  "3893911ed7922154b94750230f849fbae5a3a0bbb08a88d0af96d0ba804c47b1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000003_cam_head_fail.mp4",
+    "size": 854814,
+    "sha256": "3893911ed7922154b94750230f849fbae5a3a0bbb08a88d0af96d0ba804c47b1"
+  },
+  "b2c6dfeca32a98b9d86094b9df69cf511514b1f17ca4788fd0682f61e8957efe.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000003_cam_left_wrist_fail.mp4",
+    "size": 2419763,
+    "sha256": "b2c6dfeca32a98b9d86094b9df69cf511514b1f17ca4788fd0682f61e8957efe"
+  },
+  "7e473a5fc14fdf670f3007588076e2894c6b61ad3a93384a9c576866b982b094.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000003_cam_right_wrist_fail.mp4",
+    "size": 888872,
+    "sha256": "7e473a5fc14fdf670f3007588076e2894c6b61ad3a93384a9c576866b982b094"
+  },
+  "09a97ac3ad22ec3e3eddbc41c4318db59f021856bc4ef76dfac40930873fd6e0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000004_cam_head_fail.mp4",
+    "size": 831675,
+    "sha256": "09a97ac3ad22ec3e3eddbc41c4318db59f021856bc4ef76dfac40930873fd6e0"
+  },
+  "8510572188c0a9e1364be43c30a626730b1e05268cfe9320ed366517108736c1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000004_cam_left_wrist_fail.mp4",
+    "size": 2345906,
+    "sha256": "8510572188c0a9e1364be43c30a626730b1e05268cfe9320ed366517108736c1"
+  },
+  "6e4dc5a389b4b30efd63768b864c68e7c2419399f811a5a03d1992876f14539a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000004_cam_right_wrist_fail.mp4",
+    "size": 883341,
+    "sha256": "6e4dc5a389b4b30efd63768b864c68e7c2419399f811a5a03d1992876f14539a"
+  },
+  "687bbff1570a27ed71866f479840d39639511101273f4fc8db5c633b63fc31f1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000005_cam_head_fail.mp4",
+    "size": 873796,
+    "sha256": "687bbff1570a27ed71866f479840d39639511101273f4fc8db5c633b63fc31f1"
+  },
+  "99d9894c350286547fa83aee9b82439afb7d92ffd6f476f414c6f929e3c89082.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000005_cam_left_wrist_fail.mp4",
+    "size": 2352581,
+    "sha256": "99d9894c350286547fa83aee9b82439afb7d92ffd6f476f414c6f929e3c89082"
+  },
+  "870bfb87a9e31e88cfaf827f6addce8cb3cbbee701196d03a6e39e0b7eeb6619.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000005_cam_right_wrist_fail.mp4",
+    "size": 886637,
+    "sha256": "870bfb87a9e31e88cfaf827f6addce8cb3cbbee701196d03a6e39e0b7eeb6619"
+  },
+  "305f2d0c23d927d25858b4aa6e57e5cedcb115c5536b586a6014746543b7121d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000006_cam_head_fail.mp4",
+    "size": 917113,
+    "sha256": "305f2d0c23d927d25858b4aa6e57e5cedcb115c5536b586a6014746543b7121d"
+  },
+  "d04dd822a36da40c3b68f7f5447d291ae15dda6dccff96d4fff942d180679c44.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000006_cam_left_wrist_fail.mp4",
+    "size": 2480948,
+    "sha256": "d04dd822a36da40c3b68f7f5447d291ae15dda6dccff96d4fff942d180679c44"
+  },
+  "b3c185a08fc357ffb8f2cce93108f9bbe29ffb8cd7e7145496c1125831a12425.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000006_cam_right_wrist_fail.mp4",
+    "size": 886519,
+    "sha256": "b3c185a08fc357ffb8f2cce93108f9bbe29ffb8cd7e7145496c1125831a12425"
+  },
+  "6e709721ca24041c4342b99e8bc58e206f73300e88f3a4e41fafac7673f09f9c.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000007_cam_head_fail.mp4",
+    "size": 958864,
+    "sha256": "6e709721ca24041c4342b99e8bc58e206f73300e88f3a4e41fafac7673f09f9c"
+  },
+  "ac445fd1b4bf60a81731686e1dcaf202a0e7f0d7c43a71d3b6c79ea261f1cc54.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000007_cam_left_wrist_fail.mp4",
+    "size": 2581495,
+    "sha256": "ac445fd1b4bf60a81731686e1dcaf202a0e7f0d7c43a71d3b6c79ea261f1cc54"
+  },
+  "1a2a79884e6d71cbe729d4b973221efc9bccc72a91275745ee7e7cd7f65f69c2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000007_cam_right_wrist_fail.mp4",
+    "size": 897120,
+    "sha256": "1a2a79884e6d71cbe729d4b973221efc9bccc72a91275745ee7e7cd7f65f69c2"
+  },
+  "5d664f97e3f8ac9896a2d4fff9be50c49e5aa9e02a46c72ae6817cd80ddd5617.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000008_cam_head_fail.mp4",
+    "size": 864082,
+    "sha256": "5d664f97e3f8ac9896a2d4fff9be50c49e5aa9e02a46c72ae6817cd80ddd5617"
+  },
+  "5c37c7d92eae9fb11907c501e6648e9fd3314ef7b9308da8b714ec5db7977ec1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000008_cam_left_wrist_fail.mp4",
+    "size": 2511845,
+    "sha256": "5c37c7d92eae9fb11907c501e6648e9fd3314ef7b9308da8b714ec5db7977ec1"
+  },
+  "e34891a3f9b79bca9e282168197d64668541dc230eb3961360e80690c4cfe7a0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000008_cam_right_wrist_fail.mp4",
+    "size": 895557,
+    "sha256": "e34891a3f9b79bca9e282168197d64668541dc230eb3961360e80690c4cfe7a0"
+  },
+  "758ce21dce628ec4b2b4afa3a7518e4b9849695999ff01aaaae33cadd72bb19a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000009_cam_head_fail.mp4",
+    "size": 968085,
+    "sha256": "758ce21dce628ec4b2b4afa3a7518e4b9849695999ff01aaaae33cadd72bb19a"
+  },
+  "aecccbc577b40e333a771a02042c5f795476d9bee23ac41e8ad8efa7ac903ef6.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000009_cam_left_wrist_fail.mp4",
+    "size": 2684491,
+    "sha256": "aecccbc577b40e333a771a02042c5f795476d9bee23ac41e8ad8efa7ac903ef6"
+  },
+  "55cf9b27ab11c1141ad18c8323657c9d046e26a558eadb60bb43b73317856049.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000009_cam_right_wrist_fail.mp4",
+    "size": 891975,
+    "sha256": "55cf9b27ab11c1141ad18c8323657c9d046e26a558eadb60bb43b73317856049"
+  },
+  "58811000d6699bc3418a32a32643556243b2713d761ec2b517b0be0388098ceb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000010_cam_head_fail.mp4",
+    "size": 855257,
+    "sha256": "58811000d6699bc3418a32a32643556243b2713d761ec2b517b0be0388098ceb"
+  },
+  "2efec1ae59f4cfe9a22d55f3d730b3823ec40c8ab7c4f31daeb5171983c55821.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000010_cam_left_wrist_fail.mp4",
+    "size": 2493077,
+    "sha256": "2efec1ae59f4cfe9a22d55f3d730b3823ec40c8ab7c4f31daeb5171983c55821"
+  },
+  "e5c7bb04b118b8d30456e372f2c6a149746b7ce227555d8f696c4f3f17111c06.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000010_cam_right_wrist_fail.mp4",
+    "size": 876587,
+    "sha256": "e5c7bb04b118b8d30456e372f2c6a149746b7ce227555d8f696c4f3f17111c06"
+  },
+  "9c506971352e35cbec64fa21ef7971b781e25aebfa0614d58dfe1e1d60d5caeb.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000011_cam_head_fail.mp4",
+    "size": 940958,
+    "sha256": "9c506971352e35cbec64fa21ef7971b781e25aebfa0614d58dfe1e1d60d5caeb"
+  },
+  "b9317aabe34e277521d097efdb790490dcd82e098f09373f5d78dedc24367ee0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000011_cam_left_wrist_fail.mp4",
+    "size": 2463556,
+    "sha256": "b9317aabe34e277521d097efdb790490dcd82e098f09373f5d78dedc24367ee0"
+  },
+  "1e3136a243ba16b0aa8b9401c11b855287e6eba07a749608a7e8152bcba744c0.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000011_cam_right_wrist_fail.mp4",
+    "size": 897230,
+    "sha256": "1e3136a243ba16b0aa8b9401c11b855287e6eba07a749608a7e8152bcba744c0"
+  },
+  "e40400b71245f87a6ffdea0e2cfb8287c4ae71a13ea51c4d820f0995adb3f5f6.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000012_cam_head_fail.mp4",
+    "size": 860635,
+    "sha256": "e40400b71245f87a6ffdea0e2cfb8287c4ae71a13ea51c4d820f0995adb3f5f6"
+  },
+  "8c25c5292e45d8230e8112ba6f43208cb3fe79431354681351b976f0a7468609.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000012_cam_left_wrist_fail.mp4",
+    "size": 2625582,
+    "sha256": "8c25c5292e45d8230e8112ba6f43208cb3fe79431354681351b976f0a7468609"
+  },
+  "1c47a61596246b74dd7b434ea8270066b965052887fa1f7cf838d4421112da0d.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000012_cam_right_wrist_fail.mp4",
+    "size": 877894,
+    "sha256": "1c47a61596246b74dd7b434ea8270066b965052887fa1f7cf838d4421112da0d"
+  },
+  "2cb316b27ffbbe27de4c14d92c2817c9c7438429367c30a4dedf871eb184cc47.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000013_cam_head_fail.mp4",
+    "size": 945901,
+    "sha256": "2cb316b27ffbbe27de4c14d92c2817c9c7438429367c30a4dedf871eb184cc47"
+  },
+  "2ebaa0fa7c40eac0a1401f6b231e2b32cbe0bdd422723bad407bfc1a0f7c1031.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000013_cam_left_wrist_fail.mp4",
+    "size": 2671614,
+    "sha256": "2ebaa0fa7c40eac0a1401f6b231e2b32cbe0bdd422723bad407bfc1a0f7c1031"
+  },
+  "8fbd767e599687e08a8cab34ecd50adbb3016a4cac97da53a6d0fc97779d9c61.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000013_cam_right_wrist_fail.mp4",
+    "size": 895361,
+    "sha256": "8fbd767e599687e08a8cab34ecd50adbb3016a4cac97da53a6d0fc97779d9c61"
+  },
+  "685ef3ecd36ee27cfbc00c0dc2f6c52c11f6a0bb73e9b52f2fceedf0dc772940.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000014_cam_head_fail.mp4",
+    "size": 821221,
+    "sha256": "685ef3ecd36ee27cfbc00c0dc2f6c52c11f6a0bb73e9b52f2fceedf0dc772940"
+  },
+  "98905c111610f74c988054c346f53948af517e15ae25fa3a46b533ddfadc7a1a.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000014_cam_left_wrist_fail.mp4",
+    "size": 2084275,
+    "sha256": "98905c111610f74c988054c346f53948af517e15ae25fa3a46b533ddfadc7a1a"
+  },
+  "1894250bde612108015b889d170f96c7457b389d899e0ce372f583999a8e2854.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000014_cam_right_wrist_fail.mp4",
+    "size": 885357,
+    "sha256": "1894250bde612108015b889d170f96c7457b389d899e0ce372f583999a8e2854"
+  },
+  "4e211457a7209070ead7da8e92f2b17585d009f704883d3c596fc7ab729bdda5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000015_cam_head_fail.mp4",
+    "size": 890854,
+    "sha256": "4e211457a7209070ead7da8e92f2b17585d009f704883d3c596fc7ab729bdda5"
+  },
+  "f047df440be12270f47541d059181b4a5d0f55f2fafe2f28a779a81444824750.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000015_cam_left_wrist_fail.mp4",
+    "size": 2485668,
+    "sha256": "f047df440be12270f47541d059181b4a5d0f55f2fafe2f28a779a81444824750"
+  },
+  "97c38cf5b1b284d5df74ded1a4ce1de7327b4c9ff950951ebaf44670c17bee7b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000015_cam_right_wrist_fail.mp4",
+    "size": 890493,
+    "sha256": "97c38cf5b1b284d5df74ded1a4ce1de7327b4c9ff950951ebaf44670c17bee7b"
+  },
+  "908a1dc4cf647e9902343545f457f873a615f10945327690717e1c986ed5f334.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000016_cam_head_fail.mp4",
+    "size": 916380,
+    "sha256": "908a1dc4cf647e9902343545f457f873a615f10945327690717e1c986ed5f334"
+  },
+  "ddb5277f5d3a1ff661a22c80610c7bfb4d940f19cdb71a828f0c4b780cd31bfe.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000016_cam_left_wrist_fail.mp4",
+    "size": 2534777,
+    "sha256": "ddb5277f5d3a1ff661a22c80610c7bfb4d940f19cdb71a828f0c4b780cd31bfe"
+  },
+  "6c5d926ecff514ec17b0f931d035aa9ce15a6c5385c6315e22b9707435ebc5af.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000016_cam_right_wrist_fail.mp4",
+    "size": 878367,
+    "sha256": "6c5d926ecff514ec17b0f931d035aa9ce15a6c5385c6315e22b9707435ebc5af"
+  },
+  "ed0ab0af0400e2b24bf05d7373986d6fb9e05f21eb6498e673239a5f26886205.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000017_cam_head_fail.mp4",
+    "size": 748452,
+    "sha256": "ed0ab0af0400e2b24bf05d7373986d6fb9e05f21eb6498e673239a5f26886205"
+  },
+  "5cebc6f16e9d7c6842eacfa67ff86eed4bca54b1fbb7bcce93fe6d61904d5501.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000017_cam_left_wrist_fail.mp4",
+    "size": 2176686,
+    "sha256": "5cebc6f16e9d7c6842eacfa67ff86eed4bca54b1fbb7bcce93fe6d61904d5501"
+  },
+  "dbd1449fba43a6926adcca14e06fcd84b1684e2e47d4dffd23c39c972bc71727.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000017_cam_right_wrist_fail.mp4",
+    "size": 796320,
+    "sha256": "dbd1449fba43a6926adcca14e06fcd84b1684e2e47d4dffd23c39c972bc71727"
+  },
+  "5a17c58354e35b095b5dfa3d02108c8e64c1e6514c7862c213c6ac56887c548f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000018_cam_head_fail.mp4",
+    "size": 862930,
+    "sha256": "5a17c58354e35b095b5dfa3d02108c8e64c1e6514c7862c213c6ac56887c548f"
+  },
+  "b45f5161b342ac6e7414c77931ca748a989cb45ca3ab0f370085baa51c34ec71.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000018_cam_left_wrist_fail.mp4",
+    "size": 2470600,
+    "sha256": "b45f5161b342ac6e7414c77931ca748a989cb45ca3ab0f370085baa51c34ec71"
+  },
+  "2fbf7a08057ecf3f234fd6bbdbf2e1193019168421b5bd26ec9b64a1dd02edc4.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000018_cam_right_wrist_fail.mp4",
+    "size": 895823,
+    "sha256": "2fbf7a08057ecf3f234fd6bbdbf2e1193019168421b5bd26ec9b64a1dd02edc4"
+  },
+  "ab811ae19dede3aaa48563a5793546244e387b9b0358a3f43cfe32b354b40ac1.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000019_cam_head_fail.mp4",
+    "size": 922715,
+    "sha256": "ab811ae19dede3aaa48563a5793546244e387b9b0358a3f43cfe32b354b40ac1"
+  },
+  "caf19f650b99bd6601dd4db8f99684decd275fd93da5934bd84a4e2fc3860928.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000019_cam_left_wrist_fail.mp4",
+    "size": 2579860,
+    "sha256": "caf19f650b99bd6601dd4db8f99684decd275fd93da5934bd84a4e2fc3860928"
+  },
+  "24a4a00f0580be20ec174f5c757c604e6cf036c8223312bde8be5638a7f0b09b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000019_cam_right_wrist_fail.mp4",
+    "size": 892441,
+    "sha256": "24a4a00f0580be20ec174f5c757c604e6cf036c8223312bde8be5638a7f0b09b"
+  },
+  "3535e67752e3a60c26156a53688bd47dc75b2bf6debdfe443909028d754f9c93.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000020_cam_head_fail.mp4",
+    "size": 968644,
+    "sha256": "3535e67752e3a60c26156a53688bd47dc75b2bf6debdfe443909028d754f9c93"
+  },
+  "197b626897ab0bb486fdc70a4a7868088d920a03c7fc46abdeb6d3b43fb693b3.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000020_cam_left_wrist_fail.mp4",
+    "size": 2593106,
+    "sha256": "197b626897ab0bb486fdc70a4a7868088d920a03c7fc46abdeb6d3b43fb693b3"
+  },
+  "1dc06fe7ba6f0d8026343cea8c768b36f91c362607564a5ef15a19ebf165c184.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000020_cam_right_wrist_fail.mp4",
+    "size": 901396,
+    "sha256": "1dc06fe7ba6f0d8026343cea8c768b36f91c362607564a5ef15a19ebf165c184"
+  },
+  "b5b749169f4439452555873c597880b0734629bcb9d1c9a8ebf236afae6a4361.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000021_cam_head_fail.mp4",
+    "size": 457342,
+    "sha256": "b5b749169f4439452555873c597880b0734629bcb9d1c9a8ebf236afae6a4361"
+  },
+  "a29ca4a7b75b4d6c18698f26d75012dbcd954db4417fd2e6236ad91e731d044f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000021_cam_left_wrist_fail.mp4",
+    "size": 1207348,
+    "sha256": "a29ca4a7b75b4d6c18698f26d75012dbcd954db4417fd2e6236ad91e731d044f"
+  },
+  "b1c15170c76708ff1371842b99757e83b3f05e097399d3a2fb7e3d43b7f3ac37.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000021_cam_right_wrist_fail.mp4",
+    "size": 418676,
+    "sha256": "b1c15170c76708ff1371842b99757e83b3f05e097399d3a2fb7e3d43b7f3ac37"
+  },
+  "18b3e493df9ada5858397ca9b53d902e81aaf878ebe62d42a673dc84ce63bfe2.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000022_cam_head_fail.mp4",
+    "size": 806152,
+    "sha256": "18b3e493df9ada5858397ca9b53d902e81aaf878ebe62d42a673dc84ce63bfe2"
+  },
+  "8544048845b637cb82152811a1a7e925ea70576cf19f34a41910b6cdfdecf03b.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000022_cam_left_wrist_fail.mp4",
+    "size": 2481572,
+    "sha256": "8544048845b637cb82152811a1a7e925ea70576cf19f34a41910b6cdfdecf03b"
+  },
+  "cd70ce404f65127110d6eda788c83766b69043f4ae0f687f1ab0529b183b4a72.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000022_cam_right_wrist_fail.mp4",
+    "size": 880681,
+    "sha256": "cd70ce404f65127110d6eda788c83766b69043f4ae0f687f1ab0529b183b4a72"
+  },
+  "4d458c934a8d484cfb662bf7f109a469cd332c0e4e26e480c0a5e24065e7bc8e.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000023_cam_head_fail.mp4",
+    "size": 859916,
+    "sha256": "4d458c934a8d484cfb662bf7f109a469cd332c0e4e26e480c0a5e24065e7bc8e"
+  },
+  "21a10814bc281fae366e00bc13925dac6119e7ac2ec73f2f7b9b42acaf0e2140.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000023_cam_left_wrist_fail.mp4",
+    "size": 2540186,
+    "sha256": "21a10814bc281fae366e00bc13925dac6119e7ac2ec73f2f7b9b42acaf0e2140"
+  },
+  "abfb39a6c8f5a0b4089e2a6f88702a8c4415194342621de9630f551a0d1c6ab5.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000023_cam_right_wrist_fail.mp4",
+    "size": 870590,
+    "sha256": "abfb39a6c8f5a0b4089e2a6f88702a8c4415194342621de9630f551a0d1c6ab5"
+  },
+  "1c8ce88eb2cb2bdddbf7f80b36d7b2f2dbb2f18bde09a06f22aa7e21b88a62d7.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000024_cam_head_fail.mp4",
+    "size": 930610,
+    "sha256": "1c8ce88eb2cb2bdddbf7f80b36d7b2f2dbb2f18bde09a06f22aa7e21b88a62d7"
+  },
+  "f0b38ee24c2c955f4af1e6a1ddc3b69ddde5fc8e3276b164ecf7bf9b2201876f.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000024_cam_left_wrist_fail.mp4",
+    "size": 2577712,
+    "sha256": "f0b38ee24c2c955f4af1e6a1ddc3b69ddde5fc8e3276b164ecf7bf9b2201876f"
+  },
+  "0cb915c70a2fbd026ba428fca4933ac38977536181d242f02d831ad772adc582.mp4": {
+    "path": "/mnt/gyc/benchmark2027/wzy/exp/push_T_20261014T200348/attempt-01/eval_result/RoboDojo/push_T/Pi_05/arx_x5/0_action_type=joint/push_T_20261014T200348/episode_0000024_cam_right_wrist_fail.mp4",
+    "size": 881342,
+    "sha256": "0cb915c70a2fbd026ba428fca4933ac38977536181d242f02d831ad772adc582"
+  }
+}

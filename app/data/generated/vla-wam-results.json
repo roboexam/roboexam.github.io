@@ -1,0 +1,668 @@
+{
+  "schemaVersion": "unibench.dashboard.vla-wam.v1",
+  "bundleVersion": "vla-wam-phase1-v4-20260819-v1",
+  "generatedBy": "scripts/export-vla-wam-results.mjs",
+  "protocol": "vla-phase1-independent-seed-cohort-v4",
+  "pipelineVersion": "1.3.0",
+  "sourceRevision": "dd7f4ff58f03adba4bc58065c4910543fdeb89ca",
+  "models": {
+    "Pi0.5": {
+      "modelId": "pi05",
+      "displayName": "Pi0.5",
+      "family": "VLA",
+      "policy": "Pi_05",
+      "task": "stack_bowls",
+      "resultVersion": "vla13-events100-20260817-v1",
+      "protocol": "vla-phase1-independent-seed-cohort-v4",
+      "pipelineVersion": "1.3.0",
+      "createdAtUtc": "2026-08-19T01:19:51.440096+00:00",
+      "cohort": {
+        "episodes": 100,
+        "uniqueSeeds": 100,
+        "success": 76,
+        "partial": 22,
+        "failure": 2
+      },
+      "values": {
+        "AC": {
+          "availability": "available",
+          "status": "pass",
+          "direction": null,
+          "unit": "episode",
+          "value": 100,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "PASS · 100/100",
+          "aux": "outcome、trajectory、metadata 全部可解析且可追溯"
+        },
+        "N": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "episodes",
+          "value": 100,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "100",
+          "aux": "100 distinct seeds · no missing / duplicate"
+        },
+        "TSR": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "rate",
+          "value": 0.76,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "76.00%",
+          "aux": "76 success / 100 valid episodes"
+        },
+        "SR95": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "rate",
+          "value": [
+            0.6673737186887307,
+            0.8329673818895404
+          ],
+          "sampleStd": null,
+          "n": 100,
+          "primary": "[66.74%, 83.30%]",
+          "aux": "Beta(77, 25) · 95% Beta interval"
+        },
+        "SCORE_DIST": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "distribution",
+          "value": {
+            "0": {
+              "count": 2,
+              "proportion": 0.02
+            },
+            "1": {
+              "count": 76,
+              "proportion": 0.76
+            },
+            "0.15": {
+              "count": 22,
+              "proportion": 0.22
+            }
+          },
+          "sampleStd": null,
+          "n": 100,
+          "primary": "76 success · 22 partial · 2 failure",
+          "aux": "RoboDojo native score: 1 / 0.15 / 0 · N=100"
+        },
+        "SET": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "s",
+          "value": 14.032105263157895,
+          "sampleStd": 2.7181406957891756,
+          "n": 76,
+          "primary": "14.032 ± 2.718 s",
+          "aux": "N=76 · episode-level mean / sample std"
+        },
+        "IPS": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "iterations/s",
+          "value": 5.338907179435055,
+          "sampleStd": 0.27689829235363944,
+          "n": 100,
+          "primary": "5.339 ± 0.277 steps/s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "WT": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "s",
+          "value": 72.53221612675,
+          "sampleStd": 16.54305895478281,
+          "n": 100,
+          "primary": "72.532 ± 16.543 s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LSPARC": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "score",
+          "value": -4.802801518700824,
+          "sampleStd": 1.0356581079719918,
+          "n": 100,
+          "primary": "-4.8028 ± 1.0357",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LPATH": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "m",
+          "value": 1.1818090156277072,
+          "sampleStd": 0.35076987606402277,
+          "n": 100,
+          "primary": "1.1818 ± 0.3508 m",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LSPEED": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "m/s",
+          "value": 0.07438713841014721,
+          "sampleStd": 0.02526123110468703,
+          "n": 100,
+          "primary": "0.07439 ± 0.02526 m/s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LJPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 7.3464484948554905,
+          "sampleStd": 2.030208502545288,
+          "n": 100,
+          "primary": "7.3464 ± 2.0302 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LOPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 4.1526720690913415,
+          "sampleStd": 0.9866340230961147,
+          "n": 100,
+          "primary": "4.1527 ± 0.9866 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RSPARC": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "score",
+          "value": -4.754991750895227,
+          "sampleStd": 1.0421822405056262,
+          "n": 100,
+          "primary": "-4.7550 ± 1.0422",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RPATH": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "m",
+          "value": 1.397357845077455,
+          "sampleStd": 0.44795763221192275,
+          "n": 100,
+          "primary": "1.3974 ± 0.4480 m",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RSPEED": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "m/s",
+          "value": 0.0879086077972953,
+          "sampleStd": 0.024831381252827082,
+          "n": 100,
+          "primary": "0.08791 ± 0.02483 m/s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RJPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 9.128426275338763,
+          "sampleStd": 2.6596418965988367,
+          "n": 100,
+          "primary": "9.1284 ± 2.6596 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "ROPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 4.66203530076634,
+          "sampleStd": 1.2154082901789813,
+          "n": 100,
+          "primary": "4.6620 ± 1.2154 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "TJPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 16.474874770194255,
+          "sampleStd": 3.0236520388544457,
+          "n": 100,
+          "primary": "16.4749 ± 3.0237 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "TOPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 8.81470736985768,
+          "sampleStd": 1.6703091564800514,
+          "n": 100,
+          "primary": "8.8147 ± 1.6703 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "TAE": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 3,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "3",
+          "aux": "2 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "SLIP": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "ENV_COLL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "SELF_COLL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "TMC": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "task category",
+          "value": "M(0)",
+          "sampleStd": null,
+          "n": 1,
+          "primary": "M(0)",
+          "aux": "task-level annotation · benchmark2027 registry · not a model score"
+        },
+        "ROBUSTNESS": {
+          "availability": "input_missing",
+          "status": "input_missing",
+          "direction": null,
+          "unit": "controlled conditions",
+          "value": null,
+          "sampleStd": null,
+          "n": 0,
+          "primary": "N/A",
+          "aux": "no recognized controlled axis has at least two conditions"
+        }
+      },
+      "provenance": {
+        "summarySha256": "33a60f1376c89b8dec522d14ac70e319fefb6870efa44829339f721d8ce28103",
+        "inputManifestSha256": "f3094cd480d9d266370c03301be76c989528b12c45a83d0bda0779180eeb1dc1",
+        "pipelineCommit": "dd7f4ff58f03adba4bc58065c4910543fdeb89ca",
+        "eventSpecVersion": "benchmark2027-vla-phase1-events-v1",
+        "tmcAnnotationVersion": "benchmark2027-robodojo-tmc-v1"
+      }
+    },
+    "FastWAM": {
+      "modelId": "fastwam",
+      "displayName": "FastWAM",
+      "family": "WAM",
+      "policy": "FastWAM",
+      "task": "stack_bowls",
+      "resultVersion": "vla13-events100-20260818-v1",
+      "protocol": "vla-phase1-independent-seed-cohort-v4",
+      "pipelineVersion": "1.3.0",
+      "createdAtUtc": "2026-08-19T03:40:30.872282+00:00",
+      "cohort": {
+        "episodes": 100,
+        "uniqueSeeds": 100,
+        "success": 12,
+        "partial": 31,
+        "failure": 57
+      },
+      "values": {
+        "AC": {
+          "availability": "available",
+          "status": "pass",
+          "direction": null,
+          "unit": "episode",
+          "value": 100,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "PASS · 100/100",
+          "aux": "outcome、trajectory、metadata 全部可解析且可追溯"
+        },
+        "N": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "episodes",
+          "value": 100,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "100",
+          "aux": "100 distinct seeds · no missing / duplicate"
+        },
+        "TSR": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "rate",
+          "value": 0.12,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "12.00%",
+          "aux": "12 success / 100 valid episodes"
+        },
+        "SR95": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "rate",
+          "value": [
+            0.07035018147341375,
+            0.1983450632635714
+          ],
+          "sampleStd": null,
+          "n": 100,
+          "primary": "[7.04%, 19.83%]",
+          "aux": "Beta(13, 89) · 95% Beta interval"
+        },
+        "SCORE_DIST": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "distribution",
+          "value": {
+            "0": {
+              "count": 57,
+              "proportion": 0.57
+            },
+            "1": {
+              "count": 12,
+              "proportion": 0.12
+            },
+            "0.15": {
+              "count": 31,
+              "proportion": 0.31
+            }
+          },
+          "sampleStd": null,
+          "n": 100,
+          "primary": "12 success · 31 partial · 57 failure",
+          "aux": "RoboDojo native score: 1 / 0.15 / 0 · N=100"
+        },
+        "SET": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "s",
+          "value": 14.5,
+          "sampleStd": 2.3615403293767248,
+          "n": 12,
+          "primary": "14.500 ± 2.362 s",
+          "aux": "N=12 · episode-level mean / sample std"
+        },
+        "IPS": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "iterations/s",
+          "value": 4.334117594148875,
+          "sampleStd": 0.2411772952559692,
+          "n": 100,
+          "primary": "4.334 ± 0.241 steps/s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "WT": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "s",
+          "value": 111.82033641979,
+          "sampleStd": 12.466561124208983,
+          "n": 100,
+          "primary": "111.820 ± 12.467 s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LSPARC": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "score",
+          "value": -4.665358621814896,
+          "sampleStd": 1.5563044089584468,
+          "n": 100,
+          "primary": "-4.6654 ± 1.5563",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LPATH": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "m",
+          "value": 1.4739024439625894,
+          "sampleStd": 0.49637587221449425,
+          "n": 100,
+          "primary": "1.4739 ± 0.4964 m",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LSPEED": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "m/s",
+          "value": 0.06430550476310473,
+          "sampleStd": 0.026015801145423397,
+          "n": 100,
+          "primary": "0.06431 ± 0.02602 m/s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LJPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 8.873785811013267,
+          "sampleStd": 3.144194582064064,
+          "n": 100,
+          "primary": "8.8738 ± 3.1442 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "LOPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 5.568248540670099,
+          "sampleStd": 1.6029034270861906,
+          "n": 100,
+          "primary": "5.5682 ± 1.6029 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RSPARC": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "higher",
+          "unit": "score",
+          "value": -4.53646944945304,
+          "sampleStd": 0.9024879521793528,
+          "n": 100,
+          "primary": "-4.5365 ± 0.9025",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RPATH": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "m",
+          "value": 1.676218458126505,
+          "sampleStd": 0.3508717941612737,
+          "n": 100,
+          "primary": "1.6762 ± 0.3509 m",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RSPEED": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "m/s",
+          "value": 0.07688499429371853,
+          "sampleStd": 0.017302861896968783,
+          "n": 100,
+          "primary": "0.07688 ± 0.01730 m/s",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "RJPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 9.87231489350065,
+          "sampleStd": 1.9711111061410285,
+          "n": 100,
+          "primary": "9.8723 ± 1.9711 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "ROPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 5.982559302148667,
+          "sampleStd": 1.0690765579391655,
+          "n": 100,
+          "primary": "5.9826 ± 1.0691 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "TJPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 18.746100704513914,
+          "sampleStd": 4.026160297499245,
+          "n": 100,
+          "primary": "18.7461 ± 4.0262 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "TOPL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "rad",
+          "value": 11.550807842818765,
+          "sampleStd": 2.237101800918058,
+          "n": 100,
+          "primary": "11.5508 ± 2.2371 rad",
+          "aux": "N=100 · episode-level mean / sample std"
+        },
+        "TAE": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "SLIP": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "ENV_COLL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "SELF_COLL": {
+          "availability": "available",
+          "status": "computed",
+          "direction": "lower",
+          "unit": "events",
+          "value": 0,
+          "sampleStd": null,
+          "n": 100,
+          "primary": "0",
+          "aux": "0 affected episodes · telemetry coverage 100% · N=100"
+        },
+        "TMC": {
+          "availability": "available",
+          "status": "computed",
+          "direction": null,
+          "unit": "task category",
+          "value": "M(0)",
+          "sampleStd": null,
+          "n": 1,
+          "primary": "M(0)",
+          "aux": "task-level annotation · benchmark2027 registry · not a model score"
+        },
+        "ROBUSTNESS": {
+          "availability": "input_missing",
+          "status": "input_missing",
+          "direction": null,
+          "unit": "controlled conditions",
+          "value": null,
+          "sampleStd": null,
+          "n": 0,
+          "primary": "N/A",
+          "aux": "no recognized controlled axis has at least two conditions"
+        }
+      },
+      "provenance": {
+        "summarySha256": "8660c6e3733a41988f4d5c7a3390c5582440baddae93717a44f3f077a6b6ff91",
+        "inputManifestSha256": "c78353d56fbe76988600e36495a7a4f1b83ad5977209c21600222f2d8903fb3e",
+        "pipelineCommit": "dd7f4ff58f03adba4bc58065c4910543fdeb89ca",
+        "eventSpecVersion": "benchmark2027-vla-phase1-events-v1",
+        "tmcAnnotationVersion": "benchmark2027-robodojo-tmc-v1"
+      }
+    }
+  }
+}

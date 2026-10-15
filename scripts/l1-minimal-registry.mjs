@@ -1,0 +1,36 @@
+export const l1MinimalRegistry = {
+  schemaVersion: "unibench.dashboard.l1-minimal.v1",
+  bundleVersion: "l1-minimal-cosmos3-retry1-doc-r264-whitelist-v1-20260902",
+  generatedAt: "2026-09-02T21:12:09+08:00",
+  sourceSummary: "/mnt/gyc_ckp/benchmark2027/experiments/data/robodojo_l1/stack_bowls/stack-bowls-l1-golden-seed127-branches-20260901-v1/golden_capture_summary.json",
+  multiTaskSourceSummary: "/mnt/gyc_ckp/benchmark2027/experiments/evaluation/l1/golden_episodes/l1-temporal-halt-golden-triplets-20260901-retry1/golden_capture_summary.json",
+  resultRoot: "/mnt/gyc_ckp/benchmark2027/experiments/evaluation/l1/minimal/l1-minimal-benchmark-cosmos3-nano-20260901-retry1",
+  candidateAuditRoot: "/mnt/gyc_ckp/benchmark2027/experiments/evaluation/l1/candidates/l1-candidate-metric-audit-cosmos3-nano-20260902-v3",
+  mediaBundleRoot: "/mnt/gyc_ckp/benchmark2027/data/generated/dashboard-l1-minimal-media/v0.1-20260901",
+  tasks: [
+    {
+      id: "stack_bowls",
+      name: "Stack Bowls",
+      instruction: "Stack all three bowls into one nested stack.",
+      status: "golden_ready",
+      reviewStatus: "user_accepted",
+      reviewNote: "三条分支已由用户逐条肉眼确认：画面清楚、过程稳定、结果标签正确。",
+    },
+    {
+      id: "arrange_largest_number",
+      name: "Arrange Largest Number",
+      instruction: "Arrange the digit blocks to form the largest possible number.",
+      status: "golden_ready",
+      reviewStatus: "awaiting_user_review",
+      reviewNote: "自动门与 agent 视觉复核已通过；三分支来自同一真实成功轨迹的受控 terminal-halt，等待用户最终视频复核。",
+    },
+    {
+      id: "sort_nesting_dolls_by_size",
+      name: "Sort Nesting Dolls By Size",
+      instruction: "Sort the nesting dolls into ascending size order from left to right.",
+      status: "golden_ready",
+      reviewStatus: "awaiting_user_review",
+      reviewNote: "自动门与 agent 视觉复核已通过；3/4 partial 进展是 task-graph 视觉标注，不是 RoboDojo 原生 graded score，等待用户最终复核。",
+    },
+  ],
+};

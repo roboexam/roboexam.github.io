@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false
+  },
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "proxy.ts",
+    "next-env.d.ts"
+  ],
+  "exclude": [
+    "app/_sites-preview",
+    "node_modules"
+  ]
+}

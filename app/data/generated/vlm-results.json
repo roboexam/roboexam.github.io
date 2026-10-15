@@ -1,0 +1,1019 @@
+{
+  "schemaVersion": "unibench.dashboard.vlm-l1.v2",
+  "bundleVersion": "vlm-l1-pilot1277-v0.2.1-samples-v1-20260829",
+  "generatedBy": "scripts/export-vlm-results.mjs",
+  "protocol": "Native L1 Pilot · deterministic lane · no composite score",
+  "models": {
+    "Qwen3-VL-8B-Instruct": {
+      "modelId": "qwen3-vl-8b-instruct",
+      "displayName": "Qwen3-VL-8B-Instruct",
+      "resultVersion": "pilot1277-v0.2.1-20260829-aihc32",
+      "runId": "qwen3-vl-8b-instruct-native-l1-pilot1277-v0.2.1-20260829-aihc32",
+      "status": "PASS_DETERMINISTIC",
+      "completed": "12 / 12",
+      "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+      "sourceCommit": "ed2c80ba531a6b26576cec1476a755b307663e16",
+      "metricLane": "deterministic",
+      "cohort": {
+        "memberships": 1277,
+        "canonicalPredictions": 1200,
+        "deterministicScored": 1089,
+        "judgePending": 177,
+        "parseFailures": 11,
+        "infrastructureFailures": 0
+      },
+      "judge": {
+        "availability": "judge_pending",
+        "memberships": 177,
+        "status": "JUDGE_PENDING",
+        "note": "Object 100 + non-numeric Spatial 77；预测已冻结，未接入强教师模型，不计 0。"
+      },
+      "values": {
+        "DIRECT": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "accuracy",
+          "primary": "26.00%",
+          "aux": "N=49/50 · parse 98.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "grounding",
+          "scope": "direct referring",
+          "metricName": "Direct Acc@0.5",
+          "metricKind": "binary",
+          "metricRole": "headline",
+          "plannedN": 50,
+          "effectiveN": 49,
+          "rawN": 50,
+          "parseRate": 0.98,
+          "score": 0.26,
+          "mean": 0.26,
+          "median": 0,
+          "std": 0.4386342439892262,
+          "q25": 0,
+          "q75": 0.75,
+          "parseFailureN": 1,
+          "modelFailureN": 1,
+          "infrastructureFailureN": 0
+        },
+        "SITUATIONAL": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "accuracy",
+          "primary": "10.00%",
+          "aux": "N=50/50 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "grounding",
+          "scope": "situational referring",
+          "metricName": "Situational Acc@0.5",
+          "metricKind": "binary",
+          "metricRole": "headline",
+          "plannedN": 50,
+          "effectiveN": 50,
+          "rawN": 50,
+          "parseRate": 1,
+          "score": 0.1,
+          "mean": 0.1,
+          "median": 0,
+          "std": 0.3,
+          "q25": 0,
+          "q75": 0,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        },
+        "OBJ-REF": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "accuracy",
+          "primary": "18.00%",
+          "aux": "N=99/100 · parse 99.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "grounding",
+          "scope": "official_all",
+          "metricName": "Object Referring All",
+          "metricKind": "binary",
+          "metricRole": "headline",
+          "plannedN": 100,
+          "effectiveN": 99,
+          "rawN": 100,
+          "parseRate": 0.99,
+          "score": 0.18,
+          "mean": 0.18,
+          "median": 0,
+          "std": 0.38418745424597095,
+          "q25": 0,
+          "q75": 0,
+          "parseFailureN": 1,
+          "modelFailureN": 1,
+          "infrastructureFailureN": 0
+        },
+        "MRA": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "normalized score",
+          "primary": "33.16%",
+          "aux": "N=19/19 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "spatial_cognition",
+          "scope": "official_metric_family",
+          "metricName": "MRA",
+          "metricKind": "continuous",
+          "metricRole": "core_diagnostic",
+          "plannedN": 19,
+          "effectiveN": 19,
+          "rawN": 19,
+          "parseRate": 1,
+          "score": 0.331578947368421,
+          "mean": 0.331578947368421,
+          "median": 0.1,
+          "std": 0.3947719282652458,
+          "q25": 0,
+          "q75": 0.75,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        },
+        "RoA": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "normalized score",
+          "primary": "0.00%",
+          "aux": "N=4/4 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "spatial_cognition",
+          "scope": "official_metric_family",
+          "metricName": "RoA",
+          "metricKind": "continuous",
+          "metricRole": "cross_layer_diagnostic",
+          "plannedN": 4,
+          "effectiveN": 4,
+          "rawN": 4,
+          "parseRate": 1,
+          "score": 0,
+          "mean": 0,
+          "median": 0,
+          "std": 0,
+          "q25": 0,
+          "q75": 0,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        },
+        "AREA": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "point fraction",
+          "primary": "17.75%",
+          "aux": "N=100/100 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "area",
+          "scope": "area",
+          "metricName": "predicted_point_fraction_inside_gt_polygon",
+          "metricKind": "continuous",
+          "metricRole": "action_grounding_diagnostic",
+          "plannedN": 100,
+          "effectiveN": 100,
+          "rawN": 100,
+          "parseRate": 1,
+          "score": 0.1775,
+          "mean": 0.1775,
+          "median": 0,
+          "std": 0.30268589329534334,
+          "q25": 0,
+          "q75": 0.5,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        },
+        "AFF": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "similarity",
+          "primary": "81.98%",
+          "aux": "N=100/100 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "affordance",
+          "scope": "affordance",
+          "metricName": "exp_neg_mean_nearest_euclidean_distance",
+          "metricKind": "continuous",
+          "metricRole": "action_grounding_diagnostic",
+          "plannedN": 100,
+          "effectiveN": 100,
+          "rawN": 100,
+          "parseRate": 1,
+          "score": 0.819750968850576,
+          "mean": 0.819750968850576,
+          "median": 0.8673940952138877,
+          "std": 0.1922344246122802,
+          "q25": 0.786135254805199,
+          "q75": 0.9273484104596948,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        },
+        "PIO-S1": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "IoU",
+          "primary": "56.63%",
+          "aux": "N=226/229 · parse 98.69%",
+          "status": "OK",
+          "sourceBenchmark": "point_it_out",
+          "split": "s1",
+          "scope": "s1",
+          "metricName": "PIO S1 repo-code bbox IoU",
+          "metricKind": "continuous",
+          "metricRole": "action_grounding_diagnostic",
+          "plannedN": 229,
+          "effectiveN": 226,
+          "rawN": 229,
+          "parseRate": 0.9868995633187773,
+          "score": 0.5662993001990241,
+          "mean": 0.5662993001990241,
+          "median": 0.6430889075291466,
+          "std": 0.3311291487090272,
+          "q25": 0.28042575670724174,
+          "q75": 0.8613009640550859,
+          "parseFailureN": 3,
+          "modelFailureN": 3,
+          "infrastructureFailureN": 0
+        },
+        "PIO-S2": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "IoU",
+          "primary": "33.22%",
+          "aux": "N=269/271 · parse 99.26%",
+          "status": "OK",
+          "sourceBenchmark": "point_it_out",
+          "split": "s2",
+          "scope": "s2",
+          "metricName": "PIO S2 repo-code bbox IoU",
+          "metricKind": "continuous",
+          "metricRole": "action_grounding_diagnostic",
+          "plannedN": 271,
+          "effectiveN": 269,
+          "rawN": 271,
+          "parseRate": 0.992619926199262,
+          "score": 0.3322422230116339,
+          "mean": 0.3322422230116339,
+          "median": 0.19043605115976253,
+          "std": 0.3312344459654209,
+          "q25": 0.020307336885344557,
+          "q75": 0.6252998983585283,
+          "parseFailureN": 2,
+          "modelFailureN": 2,
+          "infrastructureFailureN": 0
+        },
+        "RS-LOC": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "point-in-mask rate",
+          "primary": "48.00%",
+          "aux": "N=95/100 · parse 95.00%",
+          "status": "OK",
+          "sourceBenchmark": "refspatial_bench",
+          "split": "location",
+          "scope": "location",
+          "metricName": "RefSpatial Location point-in-mask",
+          "metricKind": "continuous",
+          "metricRole": "spatial_generalization",
+          "plannedN": 100,
+          "effectiveN": 95,
+          "rawN": 100,
+          "parseRate": 0.95,
+          "score": 0.48,
+          "mean": 0.48,
+          "median": 0,
+          "std": 0.4995998398718718,
+          "q25": 0,
+          "q75": 1,
+          "parseFailureN": 5,
+          "modelFailureN": 5,
+          "infrastructureFailureN": 0
+        },
+        "RS-PLACE": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "point-in-mask rate",
+          "primary": "41.00%",
+          "aux": "N=100/100 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "refspatial_bench",
+          "split": "placement",
+          "scope": "placement",
+          "metricName": "RefSpatial Placement point-in-mask",
+          "metricKind": "continuous",
+          "metricRole": "spatial_generalization",
+          "plannedN": 100,
+          "effectiveN": 100,
+          "rawN": 100,
+          "parseRate": 1,
+          "score": 0.41,
+          "mean": 0.41,
+          "median": 0,
+          "std": 0.49183330509431744,
+          "q25": 0,
+          "q75": 1,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        },
+        "RS-UNSEEN": {
+          "availability": "available",
+          "granularity": "membership_aggregate",
+          "direction": "higher",
+          "unit": "point-in-mask rate",
+          "primary": "27.27%",
+          "aux": "N=77/77 · parse 100.00%",
+          "status": "OK",
+          "sourceBenchmark": "refspatial_bench",
+          "split": "unseen",
+          "scope": "unseen",
+          "metricName": "RefSpatial Unseen point-in-mask",
+          "metricKind": "continuous",
+          "metricRole": "spatial_generalization",
+          "plannedN": 77,
+          "effectiveN": 77,
+          "rawN": 77,
+          "parseRate": 1,
+          "score": 0.2727272727272727,
+          "mean": 0.2727272727272727,
+          "median": 0,
+          "std": 0.44536177141512323,
+          "q25": 0,
+          "q75": 1,
+          "parseFailureN": 0,
+          "modelFailureN": 0,
+          "infrastructureFailureN": 0
+        }
+      },
+      "samples": {
+        "DIRECT": {
+          "metricId": "DIRECT",
+          "evaluationId": "rynnbrain_bench:grounding:1002",
+          "canonicalSampleId": "vlm-canonical-b3dc4a1ee2b325e90108d04a35067c1b55ba1c5160df722e1d8f15445e675ea6",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "grounding",
+          "nativeTask": "direct referring",
+          "question": "Please detect the the white baseball cap with \"LOTTE\" text hanging on the wall to the left of the door frame in this video.",
+          "rawResponse": "<object><frame 2>: (720, 0), (820, 380)</object>",
+          "parsedResponse": {
+            "frame_idx": 2,
+            "points": [
+              [
+                720,
+                0
+              ],
+              [
+                820,
+                380
+              ]
+            ]
+          },
+          "terminalState": "scored",
+          "metricName": "keyframe_aware_Acc@0.5_strict_iou_gt_0.5",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 0.8109473684210526,
+          "nativeScoreDisplay": "81.09%",
+          "correct": true,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 9,
+          "displayedInputCount": 5,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/37fb57a42c637eb5321a6b1962229d264ef8de65005ce16f9093b23ee46b4251.jpg",
+              "sha256": "37fb57a42c637eb5321a6b1962229d264ef8de65005ce16f9093b23ee46b4251",
+              "label": "Frame 0 · 01968.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/5dba54109a993c8dd11e0c69e08a24296bcf192f2d2e2ca3df5c318d0b6c0965.jpg",
+              "sha256": "5dba54109a993c8dd11e0c69e08a24296bcf192f2d2e2ca3df5c318d0b6c0965",
+              "label": "Frame 2 · 02064.jpg",
+              "inputIndex": 2
+            },
+            {
+              "url": "/vlm-l1-samples/658b90488a90692ffbd65e2000c45a744a98689d6fc217c45e6e3d61e349f763.jpg",
+              "sha256": "658b90488a90692ffbd65e2000c45a744a98689d6fc217c45e6e3d61e349f763",
+              "label": "Frame 4 · 02160.jpg",
+              "inputIndex": 4
+            },
+            {
+              "url": "/vlm-l1-samples/f68056ededd02ff0d80b3c941ec5b7e503cb46299beaa513e0a720b7c1bb8825.jpg",
+              "sha256": "f68056ededd02ff0d80b3c941ec5b7e503cb46299beaa513e0a720b7c1bb8825",
+              "label": "Frame 6 · 02256.jpg",
+              "inputIndex": 6
+            },
+            {
+              "url": "/vlm-l1-samples/f7864c44057dc6c1370fa05270ee3d9543a2cea1098f0fbdbbd3d808e9043f23.jpg",
+              "sha256": "f7864c44057dc6c1370fa05270ee3d9543a2cea1098f0fbdbbd3d808e9043f23",
+              "label": "Frame 8 · 02352.jpg",
+              "inputIndex": 8
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "SITUATIONAL": {
+          "metricId": "SITUATIONAL",
+          "evaluationId": "rynnbrain_bench:grounding:1",
+          "canonicalSampleId": "vlm-canonical-79cc4832add325de60fc462919fd7f55e4f6011b88f9b52a62704169c1414564",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "grounding",
+          "nativeTask": "situational referring",
+          "question": "If I want to find the plush toy that adds a comforting touch and is part of the decorative display in front of the photographs, which one should I look for? Please output detection results.",
+          "rawResponse": "<object><frame 0>: (103, 387), (500, 850)</object>",
+          "parsedResponse": {
+            "frame_idx": 0,
+            "points": [
+              [
+                103,
+                387
+              ],
+              [
+                500,
+                850
+              ]
+            ]
+          },
+          "terminalState": "scored",
+          "metricName": "keyframe_aware_Acc@0.5_strict_iou_gt_0.5",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 0.7013469767899857,
+          "nativeScoreDisplay": "70.13%",
+          "correct": true,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 9,
+          "displayedInputCount": 5,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/ff9cfaba785a87b7f83554053d7563b4a810af0bb7e2ee30e11151fbd475818a.jpg",
+              "sha256": "ff9cfaba785a87b7f83554053d7563b4a810af0bb7e2ee30e11151fbd475818a",
+              "label": "Frame 0 · 00000.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/8d1271be9470414b3a3f1a32f75198ae5dfb4a07c0b91210451f2ba07a17f20d.jpg",
+              "sha256": "8d1271be9470414b3a3f1a32f75198ae5dfb4a07c0b91210451f2ba07a17f20d",
+              "label": "Frame 2 · 00030.jpg",
+              "inputIndex": 2
+            },
+            {
+              "url": "/vlm-l1-samples/a4eef1d46d7ac22293546bb3f9b764ceaa75493c8c0848c0ed1ec02b4163efcd.jpg",
+              "sha256": "a4eef1d46d7ac22293546bb3f9b764ceaa75493c8c0848c0ed1ec02b4163efcd",
+              "label": "Frame 4 · 00060.jpg",
+              "inputIndex": 4
+            },
+            {
+              "url": "/vlm-l1-samples/e320edb01dc2db868fd12743381745711432df4976a90596667b74b65111673d.jpg",
+              "sha256": "e320edb01dc2db868fd12743381745711432df4976a90596667b74b65111673d",
+              "label": "Frame 6 · 00090.jpg",
+              "inputIndex": 6
+            },
+            {
+              "url": "/vlm-l1-samples/0aca012c98697bc4b4bbd5c5da169223b4e2878adbeb3d5017617779885b5519.jpg",
+              "sha256": "0aca012c98697bc4b4bbd5c5da169223b4e2878adbeb3d5017617779885b5519",
+              "label": "Frame 8 · 00120.jpg",
+              "inputIndex": 8
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "OBJ-REF": {
+          "metricId": "OBJ-REF",
+          "evaluationId": "rynnbrain_bench:grounding:526",
+          "canonicalSampleId": "vlm-canonical-520907f924e8084be45dfbd8ac3f4e8a5fcc2aa34e4d06b19e6a76fec6669dab",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "grounding",
+          "nativeTask": "situational referring",
+          "question": "If I need a place to sleep that is larger than the clothes hanging on the wall, where should I go? Please respond with detection results.",
+          "rawResponse": "<object><frame 12>: (0, 500), (600, 1000)</object>",
+          "parsedResponse": {
+            "frame_idx": 12,
+            "points": [
+              [
+                0,
+                500
+              ],
+              [
+                600,
+                1000
+              ]
+            ]
+          },
+          "terminalState": "scored",
+          "metricName": "keyframe_aware_Acc@0.5_strict_iou_gt_0.5",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 0.7870973348325614,
+          "nativeScoreDisplay": "78.71%",
+          "correct": true,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 13,
+          "displayedInputCount": 5,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/00c37951aa6b102e38504d9ddd7426646f36b5dffac929a3e9d6ef841da8f699.jpg",
+              "sha256": "00c37951aa6b102e38504d9ddd7426646f36b5dffac929a3e9d6ef841da8f699",
+              "label": "Frame 0 · 00528.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/debdce8f5fff7e4c8da0f66cca581dd0a8ae7025acff649002e1584d5333d869.jpg",
+              "sha256": "debdce8f5fff7e4c8da0f66cca581dd0a8ae7025acff649002e1584d5333d869",
+              "label": "Frame 3 · 00600.jpg",
+              "inputIndex": 3
+            },
+            {
+              "url": "/vlm-l1-samples/34116477154b0a3a3d8c2ea4151fcad9afb7b8d219a4c4e1ad1d0d0cf012facc.jpg",
+              "sha256": "34116477154b0a3a3d8c2ea4151fcad9afb7b8d219a4c4e1ad1d0d0cf012facc",
+              "label": "Frame 6 · 00672.jpg",
+              "inputIndex": 6
+            },
+            {
+              "url": "/vlm-l1-samples/f942867e0bb403d22a79dad67794a301ab08a2bfdcb2bff27c8e16e154a08753.jpg",
+              "sha256": "f942867e0bb403d22a79dad67794a301ab08a2bfdcb2bff27c8e16e154a08753",
+              "label": "Frame 9 · 00744.jpg",
+              "inputIndex": 9
+            },
+            {
+              "url": "/vlm-l1-samples/90887595a8ed74973d203cce491ba582fb133f4317383d623a012b8a77f5861b.jpg",
+              "sha256": "90887595a8ed74973d203cce491ba582fb133f4317383d623a012b8a77f5861b",
+              "label": "Frame 12 · 00816.jpg",
+              "inputIndex": 12
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "MRA": {
+          "metricId": "MRA",
+          "evaluationId": "rynnbrain_bench:spatial_cognition:4555",
+          "canonicalSampleId": "vlm-canonical-af360c299fcce3d09fcbab1fedb81432826220f09da5f81749584a634a19e173",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "spatial_cognition",
+          "nativeTask": "camerall_distance",
+          "question": "What is the overall distance you have walked?",
+          "rawResponse": "4.5 meters",
+          "parsedResponse": {
+            "number": 4.5,
+            "unit": "meters"
+          },
+          "terminalState": "scored",
+          "metricName": "MRA",
+          "score": 0.9999999999999999,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 0.9999999999999999,
+          "nativeScoreDisplay": "100.00%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 26,
+          "displayedInputCount": 5,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/dccdc17aaded2d8717541066220da0f3ec2b69c9775e5b9cf6879fd45e32fa5b.jpg",
+              "sha256": "dccdc17aaded2d8717541066220da0f3ec2b69c9775e5b9cf6879fd45e32fa5b",
+              "label": "Frame 0 · 00000.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/0e02760ad4fe8a7e76859c9a28365e1f27b02fb97a8a67ee8c315e624e701ae1.jpg",
+              "sha256": "0e02760ad4fe8a7e76859c9a28365e1f27b02fb97a8a67ee8c315e624e701ae1",
+              "label": "Frame 6 · 00090.jpg",
+              "inputIndex": 6
+            },
+            {
+              "url": "/vlm-l1-samples/5498fa79c26e9b06a87dae4907026336290056957f983069e46846475856330b.jpg",
+              "sha256": "5498fa79c26e9b06a87dae4907026336290056957f983069e46846475856330b",
+              "label": "Frame 12 · 00180.jpg",
+              "inputIndex": 12
+            },
+            {
+              "url": "/vlm-l1-samples/bcab0bb653d2ccfd32992f6a71b30257d4d9a209fdb2d22b17928703bd1aee48.jpg",
+              "sha256": "bcab0bb653d2ccfd32992f6a71b30257d4d9a209fdb2d22b17928703bd1aee48",
+              "label": "Frame 18 · 00270.jpg",
+              "inputIndex": 18
+            },
+            {
+              "url": "/vlm-l1-samples/bae25fcb38c3944c884a13fcf8314056998feac67847cc01228679a1d0234c32.jpg",
+              "sha256": "bae25fcb38c3944c884a13fcf8314056998feac67847cc01228679a1d0234c32",
+              "label": "Frame 25 · 00369.jpg",
+              "inputIndex": 25
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "RoA": {
+          "metricId": "RoA",
+          "evaluationId": "rynnbrain_bench:spatial_cognition:6664",
+          "canonicalSampleId": "vlm-canonical-520a845dff439c1763782ee22e0ec096e645f625ca5c191d7894c5b1889cddaf",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "spatial_cognition",
+          "nativeTask": "future_direction_to_camera_rotate",
+          "question": "There is one object in the video: <object14> <object> <frame11>; (565, 760), (590, 896) </object>. How many degrees clockwise do you need to turn to face the direction of <object14>?",
+          "rawResponse": "180 degrees",
+          "parsedResponse": {
+            "number": 180,
+            "unit": "degrees"
+          },
+          "terminalState": "scored",
+          "metricName": "RoA",
+          "score": 0,
+          "scoreDisplay": "0.00%",
+          "nativeScore": 0,
+          "nativeScoreDisplay": "0.00%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 23,
+          "displayedInputCount": 5,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/1cc345fb584d9a9c728a4beacc39e6654803ed437b66df4aa155555f0c137d40.jpg",
+              "sha256": "1cc345fb584d9a9c728a4beacc39e6654803ed437b66df4aa155555f0c137d40",
+              "label": "Frame 0 · 00000.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/f9165c46cf33425676bba88d616ef12d41155f0a018bb09dcec2fa4c90a478f7.jpg",
+              "sha256": "f9165c46cf33425676bba88d616ef12d41155f0a018bb09dcec2fa4c90a478f7",
+              "label": "Frame 5 · 00075.jpg",
+              "inputIndex": 5
+            },
+            {
+              "url": "/vlm-l1-samples/9aaa62aa65c5eeedda1b7f2e49b0116f981eb83eff1f7ca3823245664bd9de47.jpg",
+              "sha256": "9aaa62aa65c5eeedda1b7f2e49b0116f981eb83eff1f7ca3823245664bd9de47",
+              "label": "Frame 11 · 00165.jpg",
+              "inputIndex": 11
+            },
+            {
+              "url": "/vlm-l1-samples/fe104cf61814eee9dc60f95a6c480e699018bc301450c7a4464e1ac2300cf8c4.jpg",
+              "sha256": "fe104cf61814eee9dc60f95a6c480e699018bc301450c7a4464e1ac2300cf8c4",
+              "label": "Frame 16 · 00240.jpg",
+              "inputIndex": 16
+            },
+            {
+              "url": "/vlm-l1-samples/2bf94e9622128b35406f43a330a25fa124f681dbb2c0f3a20e1a6a7734b2edf1.jpg",
+              "sha256": "2bf94e9622128b35406f43a330a25fa124f681dbb2c0f3a20e1a6a7734b2edf1",
+              "label": "Frame 22 · 00330.jpg",
+              "inputIndex": 22
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "AREA": {
+          "metricId": "AREA",
+          "evaluationId": "rynnbrain_bench:area:1102",
+          "canonicalSampleId": "vlm-canonical-e61f79c9c21e07e7145d28f870e74ba6a0cc5762882539e8f688e8fb9d104d78",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "area",
+          "nativeTask": "area",
+          "question": "Locate a clear zone on the wall to the left of the wardrobe, above the nightstand",
+          "rawResponse": "<area><frame 0>: (100, 100), (300, 400)</area>",
+          "parsedResponse": {
+            "frame_idx": 0,
+            "points": [
+              [
+                100,
+                100
+              ],
+              [
+                300,
+                400
+              ]
+            ]
+          },
+          "terminalState": "scored",
+          "metricName": "predicted_point_fraction_inside_gt_polygon",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 1,
+          "nativeScoreDisplay": "100.00%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 6,
+          "displayedInputCount": 6,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/93d9f97414c8025e185ecaf628254075a38755b4cc3990d80c6cc31af31232c5.jpg",
+              "sha256": "93d9f97414c8025e185ecaf628254075a38755b4cc3990d80c6cc31af31232c5",
+              "label": "Frame 0 · frame_000.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/b9714b5a06c4a005b3fd1615897b2ba21ae8837fe738b0ac00e794f1a4c5814a.jpg",
+              "sha256": "b9714b5a06c4a005b3fd1615897b2ba21ae8837fe738b0ac00e794f1a4c5814a",
+              "label": "Frame 1 · frame_001.jpg",
+              "inputIndex": 1
+            },
+            {
+              "url": "/vlm-l1-samples/be4d3e6e087fd8fed83be91e45d5feeca3b58a06da0bae9cc6bd936791759927.jpg",
+              "sha256": "be4d3e6e087fd8fed83be91e45d5feeca3b58a06da0bae9cc6bd936791759927",
+              "label": "Frame 2 · frame_002.jpg",
+              "inputIndex": 2
+            },
+            {
+              "url": "/vlm-l1-samples/c0ef0485bd59df43a8b11a9213dca5dba5760d800a35deff11492423a3442bd2.jpg",
+              "sha256": "c0ef0485bd59df43a8b11a9213dca5dba5760d800a35deff11492423a3442bd2",
+              "label": "Frame 3 · frame_003.jpg",
+              "inputIndex": 3
+            },
+            {
+              "url": "/vlm-l1-samples/e85981b94c0273cfce0065772c77eaff41c90905fd373ca39a8f472f791f8506.jpg",
+              "sha256": "e85981b94c0273cfce0065772c77eaff41c90905fd373ca39a8f472f791f8506",
+              "label": "Frame 4 · frame_004.jpg",
+              "inputIndex": 4
+            },
+            {
+              "url": "/vlm-l1-samples/c416a65b8e66928c2606974ea4b5786e4ca3db437976b53b0afe22da4f7ef073.jpg",
+              "sha256": "c416a65b8e66928c2606974ea4b5786e4ca3db437976b53b0afe22da4f7ef073",
+              "label": "Frame 5 · frame_005.jpg",
+              "inputIndex": 5
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "AFF": {
+          "metricId": "AFF",
+          "evaluationId": "rynnbrain_bench:affordance:103",
+          "canonicalSampleId": "vlm-canonical-607c7a12d28b4b61925479c0f9ffd388505263e8063c0141201779ac10545f06",
+          "sourceBenchmark": "rynnbrain_bench",
+          "split": "affordance",
+          "nativeTask": "affordance",
+          "question": "Place the sponge in the sink's dish rack",
+          "rawResponse": "<affordance><frame 5>: (912, 483)</affordance>",
+          "parsedResponse": {
+            "frame_idx": 5,
+            "points": [
+              [
+                912,
+                483
+              ]
+            ]
+          },
+          "terminalState": "scored",
+          "metricName": "exp_neg_mean_nearest_euclidean_distance",
+          "score": 0.9884058326426961,
+          "scoreDisplay": "98.84%",
+          "nativeScore": 0.9884058326426961,
+          "nativeScoreDisplay": "98.84%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 6,
+          "displayedInputCount": 6,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/64eb3fe3174cf9cfa27d12479f51b24dbddafb501af859ef9f40be20285765f3.jpg",
+              "sha256": "64eb3fe3174cf9cfa27d12479f51b24dbddafb501af859ef9f40be20285765f3",
+              "label": "Frame 0 · frame_000.jpg",
+              "inputIndex": 0
+            },
+            {
+              "url": "/vlm-l1-samples/3c28a28d9346ab0ae8a8a50ef4888a7e61475c36890afb04c2d7314ddfee701f.jpg",
+              "sha256": "3c28a28d9346ab0ae8a8a50ef4888a7e61475c36890afb04c2d7314ddfee701f",
+              "label": "Frame 1 · frame_001.jpg",
+              "inputIndex": 1
+            },
+            {
+              "url": "/vlm-l1-samples/bb7b1251d53e821807e08808934a78c116a955fd2b552ecd923ab25f0e65d02d.jpg",
+              "sha256": "bb7b1251d53e821807e08808934a78c116a955fd2b552ecd923ab25f0e65d02d",
+              "label": "Frame 2 · frame_002.jpg",
+              "inputIndex": 2
+            },
+            {
+              "url": "/vlm-l1-samples/6988d178ec436b44143a2bbb5697bd2775bf124c67ad02992602b1545301052e.jpg",
+              "sha256": "6988d178ec436b44143a2bbb5697bd2775bf124c67ad02992602b1545301052e",
+              "label": "Frame 3 · frame_003.jpg",
+              "inputIndex": 3
+            },
+            {
+              "url": "/vlm-l1-samples/ff85a14bed79c66b1a881d5f5bca92cf4a0dad7f387c1b7e1a3d6b32d6f9d61e.jpg",
+              "sha256": "ff85a14bed79c66b1a881d5f5bca92cf4a0dad7f387c1b7e1a3d6b32d6f9d61e",
+              "label": "Frame 4 · frame_004.jpg",
+              "inputIndex": 4
+            },
+            {
+              "url": "/vlm-l1-samples/6197261214be899531ac7424c6a3fc6acb0f04478306112dc62c9d6826c1e75a.jpg",
+              "sha256": "6197261214be899531ac7424c6a3fc6acb0f04478306112dc62c9d6826c1e75a",
+              "label": "Frame 5 · frame_005.jpg",
+              "inputIndex": 5
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "PIO-S1": {
+          "metricId": "PIO-S1",
+          "evaluationId": "point_it_out:s1:147",
+          "canonicalSampleId": "vlm-canonical-32ffff395867140bddbfe7ec06c5b360f638df375558368d65496f717c435844",
+          "sourceBenchmark": "point_it_out",
+          "split": "s1",
+          "nativeTask": "s1",
+          "question": "The pickup truck in the right lane",
+          "rawResponse": "[586,463,733,638]",
+          "parsedResponse": [
+            [
+              0.586,
+              0.463
+            ],
+            [
+              0.733,
+              0.638
+            ]
+          ],
+          "terminalState": "scored",
+          "metricName": "PIO repo-code bbox-vs-tight-bbox IoU",
+          "score": 0.982919960025438,
+          "scoreDisplay": "98.29%",
+          "nativeScore": 0.982919960025438,
+          "nativeScoreDisplay": "98.29%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 1,
+          "displayedInputCount": 1,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/6cc0ac93348b6de236f175fb7b7d10efad36feb2537373d7f714e2164d3f28bc.jpg",
+              "sha256": "6cc0ac93348b6de236f175fb7b7d10efad36feb2537373d7f714e2164d3f28bc",
+              "label": "Input image",
+              "inputIndex": 0
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "PIO-S2": {
+          "metricId": "PIO-S2",
+          "evaluationId": "point_it_out:s2:32",
+          "canonicalSampleId": "vlm-canonical-0aaf639042a8b8536e47196180f7a4185f03cb7955e3039e53df561e9bcc7455",
+          "sourceBenchmark": "point_it_out",
+          "split": "s2",
+          "nativeTask": "s2",
+          "question": "Which gripper should be used to pick up the kettle in order to pour water into the cup?",
+          "rawResponse": "[0, 616, 253, 997]",
+          "parsedResponse": [
+            [
+              0,
+              0.616
+            ],
+            [
+              0.253,
+              0.997
+            ]
+          ],
+          "terminalState": "scored",
+          "metricName": "PIO repo-code bbox-vs-tight-bbox IoU",
+          "score": 0.9774849673202616,
+          "scoreDisplay": "97.75%",
+          "nativeScore": 0.9774849673202616,
+          "nativeScoreDisplay": "97.75%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 1,
+          "displayedInputCount": 1,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/0e5c2c26345ba4c7cc993f7414abdc69122a7a4c35321672c1c4998844dd46be.jpg",
+              "sha256": "0e5c2c26345ba4c7cc993f7414abdc69122a7a4c35321672c1c4998844dd46be",
+              "label": "Input image",
+              "inputIndex": 0
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "RS-LOC": {
+          "metricId": "RS-LOC",
+          "evaluationId": "refspatial_bench:location:0",
+          "canonicalSampleId": "vlm-canonical-53f26bb1ad5d0c00478563d54dbffe06eb14260d8f0c9d7757ce3404154e1963",
+          "sourceBenchmark": "refspatial_bench",
+          "split": "location",
+          "nativeTask": "location",
+          "question": "Please point out the orange box.",
+          "rawResponse": "```json\n{\"point_2d\": [953, 120]}\n\n```",
+          "parsedResponse": [
+            [
+              0.953,
+              0.12
+            ]
+          ],
+          "terminalState": "scored",
+          "metricName": "RoboRefer point-in-mask mean success",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 1,
+          "nativeScoreDisplay": "100.00%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 1,
+          "displayedInputCount": 1,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/93cba22162b77b3f7532b979e377107dde90afd5572ae52ea2fa6efc1e36e474.png",
+              "sha256": "93cba22162b77b3f7532b979e377107dde90afd5572ae52ea2fa6efc1e36e474",
+              "label": "Input image",
+              "inputIndex": 0
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "RS-PLACE": {
+          "metricId": "RS-PLACE",
+          "evaluationId": "refspatial_bench:placement:0",
+          "canonicalSampleId": "vlm-canonical-343caa7317c3741d22163ceecd87a3d9509c4d7c8b41b65b890bfc10a533b200",
+          "sourceBenchmark": "refspatial_bench",
+          "split": "placement",
+          "nativeTask": "placement",
+          "question": "Please point out the free space on the top of the wooden shelf and beside the picture frame.",
+          "rawResponse": "```json\n{\n    \"point_2d\": [815, 466]\n}\n```",
+          "parsedResponse": [
+            [
+              0.815,
+              0.466
+            ]
+          ],
+          "terminalState": "scored",
+          "metricName": "RoboRefer point-in-mask mean success",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 1,
+          "nativeScoreDisplay": "100.00%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 1,
+          "displayedInputCount": 1,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/f58507634746672b23a61e70e39a8d12f5f30c4f5b461fda06de4e8c39051b39.png",
+              "sha256": "f58507634746672b23a61e70e39a8d12f5f30c4f5b461fda06de4e8c39051b39",
+              "label": "Input image",
+              "inputIndex": 0
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        },
+        "RS-UNSEEN": {
+          "metricId": "RS-UNSEEN",
+          "evaluationId": "refspatial_bench:unseen:10",
+          "canonicalSampleId": "vlm-canonical-d06b87d8d523c784fec0a0b024ca4a71ea961b457ae8fd009d9e70044c298760",
+          "sourceBenchmark": "refspatial_bench",
+          "split": "unseen",
+          "nativeTask": "unseen",
+          "question": "Please point out the plant on the far left of the second shelf of the cabinet.",
+          "rawResponse": "{\"point_2d\": [61, 204]}",
+          "parsedResponse": [
+            [
+              0.061,
+              0.204
+            ]
+          ],
+          "terminalState": "scored",
+          "metricName": "RoboRefer point-in-mask mean success",
+          "score": 1,
+          "scoreDisplay": "100.00%",
+          "nativeScore": 1,
+          "nativeScoreDisplay": "100.00%",
+          "correct": null,
+          "promptVersion": "qwen3-vl-native-l1-v0.2.1",
+          "inputCount": 1,
+          "displayedInputCount": 1,
+          "media": [
+            {
+              "url": "/vlm-l1-samples/896af19e9a71b2bd8a1d9e4c97c7e110ab18adc42ddbe847dc4e11388f8f3c1a.png",
+              "sha256": "896af19e9a71b2bd8a1d9e4c97c7e110ab18adc42ddbe847dc4e11388f8f3c1a",
+              "label": "Input image",
+              "inputIndex": 0
+            }
+          ],
+          "note": "说明性真实样例；用于解释输入、输出与单题评分流程，不代表该指标的总体分布。"
+        }
+      },
+      "provenance": {
+        "runManifestSha256": "826d81e979c363d3d383215bd98bb09f6dcd27f52cc479e1ee3143573d33e470",
+        "configSha256": "46cfa068d893d047052f5a501d36ce67d05e3c7c6e2b2f2fa2ca519353bcd54a",
+        "runtimeStatusSha256": "5b31de9c1357d34235146693f032458749a170f46213df9e573fdbe74ca008a7",
+        "gateSha256": "0270b90880bda8a85ddc9d6a54dd6981b56c1a956b03d234c8ed72fc1e1c07f5",
+        "summarySha256": "5b4a58669a018653f20bf1ddbe5579acbda073e6ca423e30f6b9fcc04179e8a1",
+        "publicManifestSha256": "fc5e8b31dfb8d88880c43710c37230673de0340ed9de73e3bc7cc99bc4cf9e42",
+        "predictionsSha256": "1fa774ae84f4eaf397a6976f4161fdbadea8850786dc78ab1c89f0a935c5b190",
+        "itemScoresSha256": "62904e173e9e6efe8451398a4955db780ca56c8b3001985efd45c1cde89dca2b",
+        "scoreRerunByteIdentical": true
+      }
+    }
+  }
+}

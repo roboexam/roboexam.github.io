@@ -1,0 +1,1477 @@
+{
+  "schemaVersion": "unibench.dashboard.vla-wam-samples.v1",
+  "bundleVersion": "vla-wam-formal-samples-20260829-v1",
+  "generatedBy": "scripts/export-vla-wam-samples.mjs",
+  "models": {
+    "Pi0.5": {
+      "modelId": "pi05",
+      "displayName": "Pi0.5",
+      "family": "VLA",
+      "task": "stack_bowls",
+      "resultVersion": "vla13-events100-20260817-v1",
+      "samples": [
+        {
+          "id": "pi05_vla13_run_001_seed_000001",
+          "seed": 1,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 290,
+          "durationSeconds": 11.6,
+          "timing": {
+            "iterationsPerSecond": 5.5603604732050345,
+            "wallTotalSeconds": 52.154892007
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.002264746178636,
+              "ee_sparc": -4.457372168131003,
+              "ee_speed_mean_m_s": 0.08236978048982282,
+              "joint_path_length_rad": 6.450375985112142,
+              "orientation_path_length_rad": 4.232050622072257
+            },
+            "right": {
+              "ee_path_length_m": 0.9752039124738112,
+              "ee_sparc": -4.313354253072262,
+              "ee_speed_mean_m_s": 0.08119886441551184,
+              "joint_path_length_rad": 7.15595618194261,
+              "orientation_path_length_rad": 3.7159591511829317
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 13.606332167054752,
+            "orientation_path_length_rad": 7.948009773255189
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-1/episode_0000000_cam_head_success.mp4",
+            "sha256": "a06009af90fc7e292f546bb3aa4d77e51817d86c93bde6f9a0dc2ec485dc2875",
+            "durationSeconds": 11.64,
+            "frameCount": 291,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_003_seed_000011",
+          "seed": 11,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 470,
+          "durationSeconds": 18.8,
+          "timing": {
+            "iterationsPerSecond": 4.157644181751989,
+            "wallTotalSeconds": 113.044786772
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.4769937577104926,
+              "ee_sparc": -4.667093614833723,
+              "ee_speed_mean_m_s": 0.07405234490957333,
+              "joint_path_length_rad": 8.792681605921626,
+              "orientation_path_length_rad": 4.683786362331357
+            },
+            "right": {
+              "ee_path_length_m": 1.528898513306906,
+              "ee_sparc": -4.486895748712013,
+              "ee_speed_mean_m_s": 0.0785951525304653,
+              "joint_path_length_rad": 9.291746579756383,
+              "orientation_path_length_rad": 5.1218293122031735
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 18.084428185678007,
+            "orientation_path_length_rad": 9.80561567453453
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-11/episode_0000000_cam_head_success.mp4",
+            "sha256": "959a5bf4fd6681120c94e571f16c195e3077f6f98c9b35ffdde8c0290924817e",
+            "durationSeconds": 18.84,
+            "frameCount": 471,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_004_seed_000012",
+          "seed": 12,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 405,
+          "durationSeconds": 16.2,
+          "timing": {
+            "iterationsPerSecond": 5.7179383357148605,
+            "wallTotalSeconds": 70.82972502
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.227843948867665,
+              "ee_sparc": -4.9138580092796325,
+              "ee_speed_mean_m_s": 0.07149444522285034,
+              "joint_path_length_rad": 7.6955375777021935,
+              "orientation_path_length_rad": 4.339286166301532
+            },
+            "right": {
+              "ee_path_length_m": 1.8988810884784018,
+              "ee_sparc": -6.632233573002451,
+              "ee_speed_mean_m_s": 0.11534634270515949,
+              "joint_path_length_rad": 12.372599402427248,
+              "orientation_path_length_rad": 6.202323536561475
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 20.06813698012944,
+            "orientation_path_length_rad": 10.541609702863006
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-12/episode_0000000_cam_head_success.mp4",
+            "sha256": "2720df082add32f1816b78540298de0bf2f9fa330e7a103851c307cee3071538",
+            "durationSeconds": 16.24,
+            "frameCount": 406,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_006_seed_000014",
+          "seed": 14,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 467,
+          "durationSeconds": 18.68,
+          "timing": {
+            "iterationsPerSecond": 5.066950124769593,
+            "wallTotalSeconds": 92.165896348
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.3385862950902634,
+              "ee_sparc": -4.8475149117243825,
+              "ee_speed_mean_m_s": 0.06772522004996792,
+              "joint_path_length_rad": 8.334798834181154,
+              "orientation_path_length_rad": 4.499011892129771
+            },
+            "right": {
+              "ee_path_length_m": 1.5967661208717114,
+              "ee_sparc": -4.540788843826778,
+              "ee_speed_mean_m_s": 0.08266171494095827,
+              "joint_path_length_rad": 9.952694050873518,
+              "orientation_path_length_rad": 5.313072903161841
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 18.28749288505467,
+            "orientation_path_length_rad": 9.812084795291613
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-14/episode_0000000_cam_head_success.mp4",
+            "sha256": "a62cb98728aafe9092e318da4d7cc0a9fa21868975be618d7ec33a5a4a6d1e54",
+            "durationSeconds": 18.72,
+            "frameCount": 468,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_007_seed_000015",
+          "seed": 15,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 390,
+          "durationSeconds": 15.6,
+          "timing": {
+            "iterationsPerSecond": 4.997397701507019,
+            "wallTotalSeconds": 78.040616996
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.6391254967907591,
+              "ee_sparc": -4.999126694794295,
+              "ee_speed_mean_m_s": 0.10213238441991905,
+              "joint_path_length_rad": 9.597964365584719,
+              "orientation_path_length_rad": 5.024789500166901
+            },
+            "right": {
+              "ee_path_length_m": 1.1085098601669805,
+              "ee_sparc": -4.527765155069558,
+              "ee_speed_mean_m_s": 0.06728858756804089,
+              "joint_path_length_rad": 6.771866226139875,
+              "orientation_path_length_rad": 3.9441699992912373
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 16.369830591724593,
+            "orientation_path_length_rad": 8.968959499458139
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-15/episode_0000000_cam_head_success.mp4",
+            "sha256": "c703c1bdb092580085642806900fc96cdf1a1235f081d6aec8c208843ca12eae",
+            "durationSeconds": 15.64,
+            "frameCount": 391,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_000_seed_000000",
+          "seed": 0,
+          "outcome": "half-success",
+          "success": false,
+          "score": 0.15,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 5.651714131448659,
+            "wallTotalSeconds": 88.468735037
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.52742454114698,
+              "ee_sparc": -4.124901007525305,
+              "ee_speed_mean_m_s": 0.0723259249089903,
+              "joint_path_length_rad": 10.389801414513311,
+              "orientation_path_length_rad": 6.152031973379416
+            },
+            "right": {
+              "ee_path_length_m": 1.7540341425384953,
+              "ee_sparc": -7.539888018151747,
+              "ee_speed_mean_m_s": 0.08461792535622868,
+              "joint_path_length_rad": 11.232600588975368,
+              "orientation_path_length_rad": 6.378485053171421
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 21.62240200348868,
+            "orientation_path_length_rad": 12.530517026550836
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-0/episode_0000000_cam_head_fail.mp4",
+            "sha256": "cad1199bfaaab8464779085e569b6d00b8daf23885b9bd19e864e433b7cdd952",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_002_seed_000010",
+          "seed": 10,
+          "outcome": "half-success",
+          "success": false,
+          "score": 0.15,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 5.443334100353143,
+            "wallTotalSeconds": 91.855467767
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.4454301700032217,
+              "ee_sparc": -4.3110655850738056,
+              "ee_speed_mean_m_s": 0.06805540152505066,
+              "joint_path_length_rad": 8.56140357315186,
+              "orientation_path_length_rad": 4.49582598286282
+            },
+            "right": {
+              "ee_path_length_m": 2.09967410654916,
+              "ee_sparc": -6.17072117122022,
+              "ee_speed_mean_m_s": 0.10262191287607031,
+              "joint_path_length_rad": 13.487881648328672,
+              "orientation_path_length_rad": 6.535071624555429
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 22.04928522148053,
+            "orientation_path_length_rad": 11.03089760741825
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-10/episode_0000000_cam_head_fail.mp4",
+            "sha256": "c312e43ee294459ba9ce49f2e3e818509b039d95e860b9127753a9d7a5b4609c",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_076_seed_000210",
+          "seed": 210,
+          "outcome": "half-success",
+          "success": false,
+          "score": 0.15,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 5.578457790731487,
+            "wallTotalSeconds": 89.630506989
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 2,
+              "event_codes": [
+                "workspace_escape"
+              ],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": true,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.1377076842473963,
+              "ee_sparc": -4.188416558440562,
+              "ee_speed_mean_m_s": 0.052958601173896135,
+              "joint_path_length_rad": 7.566060604711035,
+              "orientation_path_length_rad": 4.660183071535364
+            },
+            "right": {
+              "ee_path_length_m": 1.698590562863899,
+              "ee_sparc": -6.153426679044885,
+              "ee_speed_mean_m_s": 0.08189736703638913,
+              "joint_path_length_rad": 14.246637975799993,
+              "orientation_path_length_rad": 7.768680473665855
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 21.81269858051103,
+            "orientation_path_length_rad": 12.428863545201219
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-210/episode_0000000_cam_head_fail.mp4",
+            "sha256": "66b14f027c8574a0a5b5948b5f209737ed4e1ac71bffa1262ae40aa762cab534",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_043_seed_000110",
+          "seed": 110,
+          "outcome": "failure",
+          "success": false,
+          "score": 0,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.954322650533023,
+            "wallTotalSeconds": 100.921969615
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 0.27715942828365964,
+              "ee_sparc": -8.308714171180458,
+              "ee_speed_mean_m_s": 0.007308627600461034,
+              "joint_path_length_rad": 1.8318748404969207,
+              "orientation_path_length_rad": 1.7341606721983949
+            },
+            "right": {
+              "ee_path_length_m": 2.0811687413072497,
+              "ee_sparc": -4.31288239747096,
+              "ee_speed_mean_m_s": 0.10146778712194103,
+              "joint_path_length_rad": 12.918126685047149,
+              "orientation_path_length_rad": 5.2271712215707895
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 14.75000152554407,
+            "orientation_path_length_rad": 6.961331893769184
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-110/episode_0000000_cam_head_fail.mp4",
+            "sha256": "333f650e12d2f85ea1aebf20e0bd61dd66747e5569489b76b22c21413d967b3d",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "pi05_vla13_run_070_seed_000159",
+          "seed": 159,
+          "outcome": "failure",
+          "success": false,
+          "score": 0,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 5.672726677852561,
+            "wallTotalSeconds": 88.141034884
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 1,
+              "event_codes": [
+                "workspace_escape"
+              ],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": true,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.1665232944388046,
+              "ee_sparc": -4.445191656370476,
+              "ee_speed_mean_m_s": 0.05391978133064448,
+              "joint_path_length_rad": 7.722260652169144,
+              "orientation_path_length_rad": 4.904144175385306
+            },
+            "right": {
+              "ee_path_length_m": 2.0021740530839933,
+              "ee_sparc": -6.517305134130792,
+              "ee_speed_mean_m_s": 0.09698064197429253,
+              "joint_path_length_rad": 14.824737492564571,
+              "orientation_path_length_rad": 8.060685979824001
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 22.546998144733713,
+            "orientation_path_length_rad": 12.964830155209306
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/pi05/seed-159/episode_0000000_cam_head_fail.mp4",
+            "sha256": "2d15575e9e58ab3c669d8d8702b5d493287154146f93043560d299d6fe94abc8",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        }
+      ],
+      "provenance": {
+        "episodesSha256": "77eda50fbc9b1462314faa5eaf61056e4456066cbfcbe105b23b59f7e68cf1de",
+        "mediaCatalogSha256": "a9a07d1ce25f9b6d754c47f671e807fa24027b3a4302185eb9d67080a327c074"
+      }
+    },
+    "FastWAM": {
+      "modelId": "fastwam",
+      "displayName": "FastWAM",
+      "family": "WAM",
+      "task": "stack_bowls",
+      "resultVersion": "vla13-events100-20260818-v1",
+      "samples": [
+        {
+          "id": "fastwam_vla13_run_004_seed_000012",
+          "seed": 12,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 407,
+          "durationSeconds": 16.28,
+          "timing": {
+            "iterationsPerSecond": 4.352143854174369,
+            "wallTotalSeconds": 93.517129405
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.5041595111965014,
+              "ee_sparc": -3.9164948200325007,
+              "ee_speed_mean_m_s": 0.0809154912802486,
+              "joint_path_length_rad": 9.204816116310543,
+              "orientation_path_length_rad": 5.4460189844712374
+            },
+            "right": {
+              "ee_path_length_m": 1.9647306161096365,
+              "ee_sparc": -6.7451077606856265,
+              "ee_speed_mean_m_s": 0.11286596951977904,
+              "joint_path_length_rad": 12.610537111020651,
+              "orientation_path_length_rad": 6.9653147738663925
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 21.815353227331194,
+            "orientation_path_length_rad": 12.41133375833763
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-12/episode_0000000_cam_head_success.mp4",
+            "sha256": "16fc04fe2f5865fab2ff6e8123da5929b4d3338ee1d430585575bcdeeb671347",
+            "durationSeconds": 16.32,
+            "frameCount": 408,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_005_seed_000013",
+          "seed": 13,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 336,
+          "durationSeconds": 13.44,
+          "timing": {
+            "iterationsPerSecond": 4.127778756125226,
+            "wallTotalSeconds": 81.399711528
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.4846042918122686,
+              "ee_sparc": -5.264989644288759,
+              "ee_speed_mean_m_s": 0.09946568185102848,
+              "joint_path_length_rad": 8.818592019250147,
+              "orientation_path_length_rad": 4.953709560748592
+            },
+            "right": {
+              "ee_path_length_m": 1.3020749578342052,
+              "ee_sparc": -4.135652424279005,
+              "ee_speed_mean_m_s": 0.08933710082794756,
+              "joint_path_length_rad": 7.973350445852267,
+              "orientation_path_length_rad": 4.7608049162118435
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 16.791942465102416,
+            "orientation_path_length_rad": 9.714514476960435
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-13/episode_0000000_cam_head_success.mp4",
+            "sha256": "87dd0a22ef62dc7b7c592dde2b7a437b633e788654cfd5493323c0e22d4d4bd2",
+            "durationSeconds": 13.48,
+            "frameCount": 337,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_015_seed_000023",
+          "seed": 23,
+          "outcome": "success",
+          "success": true,
+          "score": 1,
+          "stepCount": 309,
+          "durationSeconds": 12.36,
+          "timing": {
+            "iterationsPerSecond": 4.153179553540384,
+            "wallTotalSeconds": 74.400828574
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.230731240285375,
+              "ee_sparc": -4.059600316708807,
+              "ee_speed_mean_m_s": 0.08942440621924812,
+              "joint_path_length_rad": 7.494637360274433,
+              "orientation_path_length_rad": 4.444401612004688
+            },
+            "right": {
+              "ee_path_length_m": 1.352754402558107,
+              "ee_sparc": -4.956489233760058,
+              "ee_speed_mean_m_s": 0.098158845919589,
+              "joint_path_length_rad": 8.191059405725259,
+              "orientation_path_length_rad": 4.715630468832009
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 15.685696765999692,
+            "orientation_path_length_rad": 9.160032080836697
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-23/episode_0000000_cam_head_success.mp4",
+            "sha256": "58f62114188239ae7a2d81a23632edd5615d67ab6b05124244d38331abfd9ca5",
+            "durationSeconds": 12.4,
+            "frameCount": 310,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_000_seed_000000",
+          "seed": 0,
+          "outcome": "half-success",
+          "success": false,
+          "score": 0.15,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.218316098999443,
+            "wallTotalSeconds": 118.530709474
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 3.4908542426044886,
+              "ee_sparc": -3.8405033630844185,
+              "ee_speed_mean_m_s": 0.16474478599693096,
+              "joint_path_length_rad": 25.08791161431575,
+              "orientation_path_length_rad": 13.999180245248587
+            },
+            "right": {
+              "ee_path_length_m": 1.3460704200330267,
+              "ee_sparc": -3.997364846802709,
+              "ee_speed_mean_m_s": 0.057549365894050686,
+              "joint_path_length_rad": 8.495481470846123,
+              "orientation_path_length_rad": 5.518857618529093
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 33.58339308516187,
+            "orientation_path_length_rad": 19.51803786377768
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-0/episode_0000000_cam_head_fail.mp4",
+            "sha256": "90e5744beccdcf038bc8c115bca97d6d8ad239aa54b8bee2f429e8ba7e800514",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_003_seed_000011",
+          "seed": 11,
+          "outcome": "half-success",
+          "success": false,
+          "score": 0.15,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.1297703767688425,
+            "wallTotalSeconds": 121.072106772
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 2.0552899154795377,
+              "ee_sparc": -4.933414382574354,
+              "ee_speed_mean_m_s": 0.09110691933457875,
+              "joint_path_length_rad": 12.467865037414152,
+              "orientation_path_length_rad": 7.028512737478477
+            },
+            "right": {
+              "ee_path_length_m": 2.038512226435075,
+              "ee_sparc": -6.586650949870386,
+              "ee_speed_mean_m_s": 0.09302257392319038,
+              "joint_path_length_rad": 12.953885309072152,
+              "orientation_path_length_rad": 7.748781667069325
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 25.421750346486306,
+            "orientation_path_length_rad": 14.777294404547803
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-11/episode_0000000_cam_head_fail.mp4",
+            "sha256": "085315feeb0cd0fc1b328c82579e00e93b6397494ef5444a3830bd1fd06c2799",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_006_seed_000014",
+          "seed": 14,
+          "outcome": "half-success",
+          "success": false,
+          "score": 0.15,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.183343169898512,
+            "wallTotalSeconds": 119.521631311
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.8194220991991665,
+              "ee_sparc": -4.076975415213094,
+              "ee_speed_mean_m_s": 0.08022361080222569,
+              "joint_path_length_rad": 11.7497593484835,
+              "orientation_path_length_rad": 7.319626517931463
+            },
+            "right": {
+              "ee_path_length_m": 1.9027540475692264,
+              "ee_sparc": -6.425513931690832,
+              "ee_speed_mean_m_s": 0.0859865854240855,
+              "joint_path_length_rad": 12.540892029554467,
+              "orientation_path_length_rad": 7.909024331505429
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 24.290651378037968,
+            "orientation_path_length_rad": 15.228650849436892
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-14/episode_0000000_cam_head_fail.mp4",
+            "sha256": "eaeff375885abbe4fb0bf85b1b1abdcba006530ad6c91315a6baee125380da92",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_001_seed_000001",
+          "seed": 1,
+          "outcome": "failure",
+          "success": false,
+          "score": 0,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.2262331895213245,
+            "wallTotalSeconds": 118.308663431
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.2732530646791114,
+              "ee_sparc": -3.4393494314198545,
+              "ee_speed_mean_m_s": 0.052868071732387015,
+              "joint_path_length_rad": 8.448659886113356,
+              "orientation_path_length_rad": 5.531259082707365
+            },
+            "right": {
+              "ee_path_length_m": 1.7051476555741452,
+              "ee_sparc": -3.8857124676966106,
+              "ee_speed_mean_m_s": 0.0754018802907055,
+              "joint_path_length_rad": 8.803211159164615,
+              "orientation_path_length_rad": 5.261549082923841
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 17.251871045277973,
+            "orientation_path_length_rad": 10.792808165631206
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-1/episode_0000000_cam_head_fail.mp4",
+            "sha256": "bc8eeccc2180e250222cd84c265d0b1a6b48f0b8289b8aefffe72cdacdb39be5",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_002_seed_000010",
+          "seed": 10,
+          "outcome": "failure",
+          "success": false,
+          "score": 0,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.3153322363612645,
+            "wallTotalSeconds": 115.86593398
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 2.0332036753257707,
+              "ee_sparc": -3.6130016956172266,
+              "ee_speed_mean_m_s": 0.08730523249290928,
+              "joint_path_length_rad": 9.864170958680084,
+              "orientation_path_length_rad": 5.687064412990438
+            },
+            "right": {
+              "ee_path_length_m": 1.4984670384939927,
+              "ee_sparc": -3.9331822129684144,
+              "ee_speed_mean_m_s": 0.06522509388444572,
+              "joint_path_length_rad": 9.307711423967898,
+              "orientation_path_length_rad": 5.720650475238031
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 19.171882382647983,
+            "orientation_path_length_rad": 11.407714888228469
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-10/episode_0000000_cam_head_fail.mp4",
+            "sha256": "3b00be240d3073402397a50719103ab84691aafe6643ba4e1c7a316bb8610fa1",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_007_seed_000015",
+          "seed": 15,
+          "outcome": "failure",
+          "success": false,
+          "score": 0,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.321873033294616,
+            "wallTotalSeconds": 115.690580484
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.5526742084030993,
+              "ee_sparc": -4.1524463624592185,
+              "ee_speed_mean_m_s": 0.06457600955213244,
+              "joint_path_length_rad": 9.1439283888637,
+              "orientation_path_length_rad": 5.69133479644996
+            },
+            "right": {
+              "ee_path_length_m": 2.0320983609152785,
+              "ee_sparc": -6.130859366743083,
+              "ee_speed_mean_m_s": 0.09139752853051654,
+              "joint_path_length_rad": 12.35196827800311,
+              "orientation_path_length_rad": 7.09642976842895
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 21.49589666686681,
+            "orientation_path_length_rad": 12.78776456487891
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-15/episode_0000000_cam_head_fail.mp4",
+            "sha256": "02dd35db85c4baa8a160bc9082ef71f745eca7d66d450109eb743beaf22f10ef",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        },
+        {
+          "id": "fastwam_vla13_run_010_seed_000018",
+          "seed": 18,
+          "outcome": "failure",
+          "success": false,
+          "score": 0,
+          "stepCount": 500,
+          "durationSeconds": null,
+          "timing": {
+            "iterationsPerSecond": 4.413169213027567,
+            "wallTotalSeconds": 113.297264588
+          },
+          "events": {
+            "taskAdherence": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "objectSlip": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "environmentCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            },
+            "selfCollision": {
+              "count": 0,
+              "event_codes": [],
+              "event_spec_version": "benchmark2027-vla-phase1-events-v1",
+              "flag": false,
+              "status": "computed"
+            }
+          },
+          "trajectory": {
+            "left": {
+              "ee_path_length_m": 1.7224639657423397,
+              "ee_sparc": -4.2640613247546995,
+              "ee_speed_mean_m_s": 0.07359693694592702,
+              "joint_path_length_rad": 10.378885212689234,
+              "orientation_path_length_rad": 6.211919213744712
+            },
+            "right": {
+              "ee_path_length_m": 1.9308683685469834,
+              "ee_sparc": -4.973668241380043,
+              "ee_speed_mean_m_s": 0.08655636094756351,
+              "joint_path_length_rad": 11.985118821275284,
+              "orientation_path_length_rad": 7.268124114764058
+            }
+          },
+          "totals": {
+            "joint_path_length_rad": 22.36400403396452,
+            "orientation_path_length_rad": 13.48004332850877
+          },
+          "media": {
+            "url": "/api/episode-media/stack_bowls/fastwam/seed-18/episode_0000000_cam_head_fail.mp4",
+            "sha256": "f7b9e9041594fc18949139bb23b68317efbaca9a9d1bfd28acd3dbd82466afb6",
+            "durationSeconds": 20.04,
+            "frameCount": 501,
+            "frameRate": "25/1",
+            "width": 640,
+            "height": 480
+          }
+        }
+      ],
+      "provenance": {
+        "episodesSha256": "140beaa32b29e22441a2c7871aa90115e3d1f78cd8e91553b7eca7aab7012e8e",
+        "mediaCatalogSha256": "36955730f88746325ba5acccd4882e614dd6ffc0b918b08c6bb83462e682844c"
+      }
+    }
+  }
+}

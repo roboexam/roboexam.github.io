@@ -1,0 +1,1901 @@
+{
+  "stack_bowls": {
+    "task": "stack_bowls",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "stack_bowls_20261014T101827",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 30,
+    "successes": 23,
+    "values": {
+      "TSR": {
+        "value": 0.7666666666666667,
+        "n": 30,
+        "unit": "rate",
+        "primary": "76.67%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 30,
+        "n": 30,
+        "unit": "episodes",
+        "primary": "30.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "0.0": 3,
+          "15.0": 4,
+          "100.0": 23
+        },
+        "n": 30,
+        "unit": "episodes",
+        "primary": "0.0: 3.000 / 15.0: 4.000 / 100.0: 23.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 30,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 30,
+          "denominator": 30,
+          "value": 1.0
+        }
+      },
+      "INTENTION_SCORE": {
+        "value": 1.0,
+        "n": 30,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean; fingertip midpoint to mesh vertices, episode minimum < 1 cm",
+        "micro": {
+          "numerator": 30,
+          "denominator": 30,
+          "value": 1.0
+        }
+      },
+      "ACTION_ACCURACY": {
+        "value": 1.0,
+        "n": 30,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 389,
+          "denominator": 389,
+          "value": 1.0
+        }
+      },
+      "SKILL_ACCURACY": {
+        "value": 1.0,
+        "n": 30,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 389,
+          "denominator": 389,
+          "value": 1.0
+        }
+      },
+      "OBJECT_ACCURACY": {
+        "value": 1.0,
+        "n": 30,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 389,
+          "denominator": 389,
+          "value": 1.0
+        }
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.8166666666666667,
+        "n": 30,
+        "unit": "rate",
+        "primary": "81.67%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 49,
+          "denominator": 60,
+          "value": 0.8166666666666667
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.8,
+        "n": 30,
+        "unit": "rate",
+        "primary": "80.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 48,
+          "denominator": 60,
+          "value": 0.8
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.016666666666666666,
+        "n": 30,
+        "unit": "rate",
+        "primary": "1.67%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 1,
+          "denominator": 60,
+          "value": 0.016666666666666666
+        }
+      },
+      "GRASP_STABILITY": {
+        "value": 0.6815079365079365,
+        "n": 30,
+        "unit": "rate",
+        "primary": "68.15%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 73,
+          "denominator": 117,
+          "value": 0.6239316239316239
+        }
+      },
+      "LSPARC": {
+        "value": -4.389956085070411,
+        "n": 30,
+        "unit": "SPARC",
+        "primary": "-4.390",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -4.635060042827529,
+        "n": 30,
+        "unit": "SPARC",
+        "primary": "-4.635",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 2.302725276761658,
+        "n": 30,
+        "unit": "m",
+        "primary": "2.303",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 1.1231541741134274,
+        "n": 30,
+        "unit": "m",
+        "primary": "1.123",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 604.7666666666667,
+        "n": 30,
+        "unit": "steps",
+        "primary": "604.767",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.46085137329104414,
+          "right": 0.4508405063538828
+        },
+        "n": 30,
+        "unit": "m/s",
+        "primary": "left: 0.461 / right: 0.451",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.059748926936162176,
+          "right": 0.006366744804003482
+        },
+        "n": 30,
+        "unit": "m",
+        "primary": "left: 0.060 / right: 0.006",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": 0.8325759606948241,
+        "n": 23,
+        "unit": "rate",
+        "primary": "83.26%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": 0.8554108140336816,
+        "n": 23,
+        "unit": "rate",
+        "primary": "85.54%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": 21.81391304347826,
+        "n": 23,
+        "unit": "s",
+        "primary": "21.814",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": {
+          "1": 1.0,
+          "2": 1.0,
+          "3": 0.8846153846153846,
+          "4": 0.8461538461538461,
+          "5": 0.7307692307692307,
+          "6": 0.7692307692307693
+        },
+        "n": 26,
+        "unit": "rate",
+        "primary": "1: 100.00% / 2: 100.00% / 3: 88.46% / 4: 84.62% / 5: 73.08% / 6: 76.92%",
+        "available": true,
+        "coverage": 0.8666666666666667,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "获取碗",
+      "2": "提起、搬运和对准（release完成口径）",
+      "3": "释放并形成两碗支撑",
+      "4": "获取剩余碗",
+      "5": "提起、搬运和对准（release完成口径）",
+      "6": "释放并形成三碗支撑"
+    }
+  },
+  "build_tower": {
+    "task": "build_tower",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "build_tower_20261014T115831",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 20,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 20,
+        "n": 20,
+        "unit": "episodes",
+        "primary": "20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "10.0": 20
+        },
+        "n": 20,
+        "unit": "episodes",
+        "primary": "10.0: 20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "INTENTION_SCORE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "ACTION_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "SKILL_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "OBJECT_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.3333333333333333,
+        "n": 20,
+        "unit": "rate",
+        "primary": "33.33%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 20,
+          "denominator": 60,
+          "value": 0.3333333333333333
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 60,
+          "value": 0.0
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "GRASP_STABILITY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LSPARC": {
+        "value": -9.0458142533611,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-9.046",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -8.16311640631635,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-8.163",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 6.035309669014998,
+        "n": 20,
+        "unit": "m",
+        "primary": "6.035",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 5.778144345003944,
+        "n": 20,
+        "unit": "m",
+        "primary": "5.778",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 1050.0,
+        "n": 20,
+        "unit": "steps",
+        "primary": "1050.000",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.7948915242506788,
+          "right": 0.8780288245032352
+        },
+        "n": 20,
+        "unit": "m/s",
+        "primary": "left: 0.795 / right: 0.878",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.06766417456581568,
+          "right": 0.11200146617944849
+        },
+        "n": 20,
+        "unit": "m",
+        "primary": "left: 0.068 / right: 0.112",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "底层结构：相关对象抓持建立",
+      "2": "底层结构：相关对象释放",
+      "3": "底层结构：条件达成",
+      "4": "底层及中层结构：相关对象抓持建立",
+      "5": "底层及中层结构：相关对象释放",
+      "6": "底层及中层结构：条件达成",
+      "7": "整塔结构：相关对象抓持建立",
+      "8": "整塔结构：相关对象释放",
+      "9": "整塔结构：条件达成"
+    }
+  },
+  "cover_blocks": {
+    "task": "cover_blocks",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "cover_blocks_20261014T115837",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 20,
+    "successes": 4,
+    "values": {
+      "TSR": {
+        "value": 0.2,
+        "n": 20,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 20,
+        "n": 20,
+        "unit": "episodes",
+        "primary": "20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "5.0": 9,
+          "15.0": 6,
+          "30.0": 1,
+          "100.0": 4
+        },
+        "n": 20,
+        "unit": "episodes",
+        "primary": "5.0: 9.000 / 15.0: 6.000 / 30.0: 1.000 / 100.0: 4.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "INTENTION_SCORE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "ACTION_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "SKILL_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "OBJECT_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 0,
+          "value": null
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "GRASP_STABILITY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LSPARC": {
+        "value": -8.40798284700522,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-8.408",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -6.577024202225757,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-6.577",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 4.570087504351329,
+        "n": 20,
+        "unit": "m",
+        "primary": "4.570",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 2.172330230905593,
+        "n": 20,
+        "unit": "m",
+        "primary": "2.172",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 751.2,
+        "n": 20,
+        "unit": "steps",
+        "primary": "751.200",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.8427433849966147,
+          "right": 0.6322487010426314
+        },
+        "n": 20,
+        "unit": "m/s",
+        "primary": "left: 0.843 / right: 0.632",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.05231548242450948,
+          "right": 0.004707598338433783
+        },
+        "n": 20,
+        "unit": "m",
+        "primary": "left: 0.052 / right: 0.005",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": 0.9235716546695889,
+        "n": 4,
+        "unit": "rate",
+        "primary": "92.36%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": 1.0,
+        "n": 4,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": 22.240000000000002,
+        "n": 4,
+        "unit": "s",
+        "primary": "22.240",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "只覆盖左侧：相关对象抓持建立",
+      "2": "只覆盖左侧：相关对象释放",
+      "3": "只覆盖左侧：条件达成",
+      "4": "覆盖左侧和中间：相关对象抓持建立",
+      "5": "覆盖左侧和中间：相关对象释放",
+      "6": "覆盖左侧和中间：条件达成",
+      "7": "全部覆盖：相关对象抓持建立",
+      "8": "全部覆盖：相关对象释放",
+      "9": "全部覆盖：条件达成",
+      "10": "揭开红色：相关对象抓持建立",
+      "11": "揭开红色：相关对象释放",
+      "12": "揭开红色：条件达成",
+      "13": "再揭开绿色：相关对象抓持建立",
+      "14": "再揭开绿色：相关对象释放",
+      "15": "再揭开绿色：条件达成",
+      "16": "最后揭开蓝色：相关对象抓持建立",
+      "17": "最后揭开蓝色：相关对象释放",
+      "18": "最后揭开蓝色：条件达成"
+    }
+  },
+  "insert_key": {
+    "task": "insert_key",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "insert_key_20261014T164051",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 20,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 20,
+        "n": 20,
+        "unit": "episodes",
+        "primary": "20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "0.0": 2,
+          "15.0": 18
+        },
+        "n": 20,
+        "unit": "episodes",
+        "primary": "0.0: 2.000 / 15.0: 18.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "INTENTION_SCORE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "ACTION_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "SKILL_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "OBJECT_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.5,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 20,
+          "value": 0.0
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.5,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 20,
+          "value": 0.0
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "GRASP_STABILITY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LSPARC": {
+        "value": -4.624629737610884,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-4.625",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -5.75395697243422,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-5.754",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 0.8794200795675059,
+        "n": 20,
+        "unit": "m",
+        "primary": "0.879",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 1.5648593921181881,
+        "n": 20,
+        "unit": "m",
+        "primary": "1.565",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 300.0,
+        "n": 20,
+        "unit": "steps",
+        "primary": "300.000",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.47806004439277666,
+          "right": 0.6709046805163792
+        },
+        "n": 20,
+        "unit": "m/s",
+        "primary": "left: 0.478 / right: 0.671",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.06321645189985622,
+          "right": 0.17688609125964758
+        },
+        "n": 20,
+        "unit": "m",
+        "primary": "left: 0.063 / right: 0.177",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "钥匙提起5cm：相关对象抓持建立",
+      "2": "钥匙提起5cm：条件达成",
+      "3": "钥匙插入且对齐：条件达成"
+    }
+  },
+  "pick_from_conveyor_by_image": {
+    "task": "pick_from_conveyor_by_image",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "pick_from_conveyor_by_image_20261014T182057",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 20,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 20,
+        "n": 20,
+        "unit": "episodes",
+        "primary": "20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "0.0": 20
+        },
+        "n": 20,
+        "unit": "episodes",
+        "primary": "0.0: 20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "INTENTION_SCORE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "ACTION_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "SKILL_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "OBJECT_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 20,
+          "value": 0.0
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 20,
+          "value": 0.0
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "GRASP_STABILITY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LSPARC": {
+        "value": -3.0538989480364873,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-3.054",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -6.367302532581803,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-6.367",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 1.5877496911372808,
+        "n": 20,
+        "unit": "m",
+        "primary": "1.588",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 0.5681320633335065,
+        "n": 20,
+        "unit": "m",
+        "primary": "0.568",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 700.0,
+        "n": 20,
+        "unit": "steps",
+        "primary": "700.000",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.6717377452620727,
+          "right": 0.2226594161709192
+        },
+        "n": 20,
+        "unit": "m/s",
+        "primary": "left: 0.672 / right: 0.223",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.002323094917175947,
+          "right": 0.002169447653360383
+        },
+        "n": 20,
+        "unit": "m",
+        "primary": "left: 0.002 / right: 0.002",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "整任务完成：相关对象抓持建立",
+      "2": "整任务完成：相关对象释放",
+      "3": "整任务完成：条件达成"
+    }
+  },
+  "plug_in_charger": {
+    "task": "plug_in_charger",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "plug_in_charger_20261014T184104",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 20,
+    "successes": 1,
+    "values": {
+      "TSR": {
+        "value": 0.05,
+        "n": 20,
+        "unit": "rate",
+        "primary": "5.00%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 20,
+        "n": 20,
+        "unit": "episodes",
+        "primary": "20.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "0.0": 19,
+          "100.0": 1
+        },
+        "n": 20,
+        "unit": "episodes",
+        "primary": "0.0: 19.000 / 100.0: 1.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "INTENTION_SCORE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "ACTION_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "SKILL_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "OBJECT_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.05,
+        "n": 20,
+        "unit": "rate",
+        "primary": "5.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 1,
+          "denominator": 20,
+          "value": 0.05
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.05,
+        "n": 20,
+        "unit": "rate",
+        "primary": "5.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 1,
+          "denominator": 20,
+          "value": 0.05
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "GRASP_STABILITY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LSPARC": {
+        "value": -5.059512871650864,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-5.060",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -8.03699215481239,
+        "n": 20,
+        "unit": "SPARC",
+        "primary": "-8.037",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 2.062708067394141,
+        "n": 20,
+        "unit": "m",
+        "primary": "2.063",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 1.4560740869101152,
+        "n": 20,
+        "unit": "m",
+        "primary": "1.456",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 389.55,
+        "n": 20,
+        "unit": "steps",
+        "primary": "389.550",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.6547590010707061,
+          "right": 0.6507764742504409
+        },
+        "n": 20,
+        "unit": "m/s",
+        "primary": "left: 0.655 / right: 0.651",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.25826009086530577,
+          "right": 0.2204866278401171
+        },
+        "n": 20,
+        "unit": "m",
+        "primary": "left: 0.258 / right: 0.220",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": 1.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": 1.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": 7.640000000000001,
+        "n": 1,
+        "unit": "s",
+        "primary": "7.640",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "整任务完成：相关对象抓持建立",
+      "2": "整任务完成：条件达成"
+    }
+  },
+  "push_T": {
+    "task": "push_T",
+    "model": "Pi0.5",
+    "split": "indomain",
+    "resultVersion": "push_T_20261014T200348",
+    "protocol": "joint-0/59999; task-specific events; link6 25 Hz motion",
+    "episodes": 25,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "N": {
+        "value": 25,
+        "n": 25,
+        "unit": "episodes",
+        "primary": "25.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "SCORE_DIST": {
+        "value": {
+          "0.0": 25
+        },
+        "n": 25,
+        "unit": "episodes",
+        "primary": "0.0: 25.000",
+        "available": true,
+        "coverage": 1,
+        "detail": "",
+        "micro": null
+      },
+      "TARGET_SELECTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "INTENTION_SCORE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "ACTION_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "SKILL_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "OBJECT_ACCURACY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 25,
+          "value": 0.0
+        }
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "Episode mean",
+        "micro": {
+          "numerator": 0,
+          "denominator": 25,
+          "value": 0.0
+        }
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "GRASP_STABILITY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "",
+        "micro": null
+      },
+      "LSPARC": {
+        "value": -6.04644293822556,
+        "n": 25,
+        "unit": "SPARC",
+        "primary": "-6.046",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RSPARC": {
+        "value": -8.971117732136372,
+        "n": 25,
+        "unit": "SPARC",
+        "primary": "-8.971",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "LPATH": {
+        "value": 2.0567251485128044,
+        "n": 25,
+        "unit": "m",
+        "primary": "2.057",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "RPATH": {
+        "value": 0.18928798769361965,
+        "n": 25,
+        "unit": "m",
+        "primary": "0.189",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EXECUTION_STEPS": {
+        "value": 584.52,
+        "n": 25,
+        "unit": "steps",
+        "primary": "584.520",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      },
+      "PEAK_SPEED": {
+        "value": {
+          "left": 0.4499483290052567,
+          "right": 0.03606615607011059
+        },
+        "n": 25,
+        "unit": "m/s",
+        "primary": "left: 0.450 / right: 0.036",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "EE_DISPLACEMENT": {
+        "value": {
+          "left": 0.17940989167388294,
+          "right": 0.004775448980295828
+        },
+        "n": 25,
+        "unit": "m",
+        "primary": "left: 0.179 / right: 0.005",
+        "available": true,
+        "coverage": null,
+        "detail": "link6 · 25 Hz",
+        "micro": null
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Successful episodes only",
+        "micro": null
+      },
+      "STAGE_COMPLETION": {
+        "value": {
+          "1": 0.0
+        },
+        "n": 25,
+        "unit": "rate",
+        "primary": "1: 0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "",
+        "micro": null
+      }
+    },
+    "stageNames": {
+      "1": "整任务完成：条件达成"
+    }
+  }
+}

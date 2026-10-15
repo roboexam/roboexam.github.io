@@ -1,0 +1,159 @@
+.pearsonMatrix { padding: 0; overflow: hidden; }
+
+.pearsonMatrixHeading { display: flex; justify-content: space-between; gap: 28px; align-items: flex-end; padding: 20px 22px 17px; border-bottom: 1px solid var(--line); }
+.pearsonMatrixHeading h2 { margin: 6px 0 5px; font-size: 16px; }
+.pearsonMatrixHeading > div:first-child > p:last-child { max-width: 720px; margin: 0; color: #75818a; font-size:13px; line-height: 1.55; }
+.pearsonMatrixMeta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; max-width: 430px; }
+.pearsonMatrixMeta span { padding: 5px 7px; border: 1px solid #dce2e5; border-radius: 3px; background: #f7f9fa; color: #68757e; font-size:13px; white-space: nowrap; }
+.pearsonMatrixMeta strong { color: #25343e; }
+
+.pearsonHeadline { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 24px 26px; background: #142436; color: #fff; }
+.pearsonHeadline > div:first-child { max-width: 760px; }
+.pearsonHeadline span { color: #97abc0; font-size:13px; font-weight: 750; letter-spacing: .4px; }
+.pearsonHeadline > div:first-child strong { display: block; margin-top: 8px; color: #fff; font-size: 19px; }
+.pearsonHeadline p { margin: 8px 0 0; color: #bbc8d4; font-size:13px; line-height: 1.65; }
+.pearsonHeadlineValues { display: flex; flex: 0 0 auto; }
+.pearsonHeadlineValues > span { min-width: 118px; padding: 8px 15px; border-left: 1px solid rgba(255,255,255,.16); }
+.pearsonHeadlineValues small, .pearsonHeadlineValues strong, .pearsonHeadlineValues i { display: block; }
+.pearsonHeadlineValues small { color: #a9b8c7; font-size:13px; }
+.pearsonHeadlineValues strong { margin-top: 6px; color: #f2bc5f; font-size: 17px; }
+.pearsonHeadlineValues i { margin-top: 4px; color: #b9c7d4; font-size:13px; font-style: normal; }
+
+.pearsonResultBlock, .pearsonAcwm { padding: 24px 26px 28px; border-top: 1px solid var(--line); }
+.pearsonResultIntro { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 18px; }
+.pearsonResultIntro h3 { margin: 6px 0 0; font-size: 17px; }
+.pearsonResultIntro > p { max-width: 570px; margin: 0; color: #667680; font-size:13px; line-height: 1.65; }
+
+.pearsonSuccessModels { display: grid; gap: 14px; }
+.pearsonSuccessPanel { overflow: hidden; border: 1px solid #d8e0e6; border-radius: 5px; background: #fff; }
+.pearsonSuccessPanel > header { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 56px; padding: 10px 14px; background: #243445; color: #fff; }
+.pearsonSuccessPanel > header strong, .pearsonSuccessPanel > header span { display: block; }
+.pearsonSuccessPanel > header strong { font-size: 13px; }
+.pearsonSuccessPanel > header span { margin-top: 4px; color: #acb9c5; font-size:13px; }
+.pearsonSuccessPanel > header p { margin: 0; color: #b9c6d1; font-size:13px; }
+.pearsonSuccessPanel > header b { margin-left: 5px; color: #f2bc5f; font-size: 14px; }
+.pearsonSuccessGrid { display: grid; grid-template-columns: 82px repeat(4, minmax(0, 1fr)); }
+.pearsonRowLabel { display: flex; align-items: center; padding: 12px; background: #f4f6f8; color: #53626d; font-size:13px; font-weight: 800; }
+.pearsonGroupCell { grid-column: span 2; min-height: 72px; border-left: 1px solid rgba(255,255,255,.76); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.pearsonGroupCell strong { font-size:13px; }
+.pearsonGroupCell small { margin-top: 6px; font-size:13px; }
+.pearsonStripCell { position: relative; min-height: 86px; padding: 12px 8px; border-top: 1px solid rgba(255,255,255,.82); border-left: 1px solid rgba(255,255,255,.76); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.pearsonStripCell strong { font-size: 16px; }
+.pearsonStripCell small { margin-top: 5px; font-size:13px; font-weight: 750; }
+.pearsonStripCell em { margin-top: 6px; font-size:13px; font-style: normal; }
+
+.positiveStrong { background: #a92d3e; color: #fff; }
+.positiveMedium { background: #d66b5e; color: #fff; }
+.positiveWeak { background: #f0b6a3; color: #4e271f; }
+.neutral { background: #f1f3f4; color: #37434b; }
+.negativeWeak { background: #bad7e3; color: #173a4a; }
+.negativeMedium { background: #6ea8c4; color: #fff; }
+.negativeStrong { background: #266b98; color: #fff; }
+
+.pearsonScale { margin-top: 11px; display: grid; grid-template-columns: auto 1fr auto 1fr auto auto; align-items: center; gap: 8px; color: #687680; font-size:13px; }
+.pearsonScale i { height: 7px; background: linear-gradient(90deg, #266b98, #f1f3f4); }
+.pearsonScale i + span + i { background: linear-gradient(90deg, #f1f3f4, #a92d3e); }
+.pearsonScale b { margin-left: 12px; color: #34444f; font-size:13px; }
+
+.pearsonReadGuide, .successPanelExplanation, .matrixExplanation, .acwmExplanation, .figureExplanation { background: #f4f7f8; color: #62717b; }
+.pearsonReadGuide { margin-top: 13px; padding: 12px 14px; border-left: 3px solid #315f7a; }
+.pearsonReadGuide strong, .successPanelExplanation strong, .matrixExplanation strong, .acwmExplanation strong, .figureExplanation strong { color: #2d4f62; font-size:13px; }
+.pearsonReadGuide p, .successPanelExplanation p, .matrixExplanation p, .acwmExplanation p, .figureExplanation p { margin: 5px 0 0; font-size:13px; line-height: 1.65; }
+.successPanelExplanation { padding: 12px 14px; border-top: 1px solid #dce3e7; }
+
+.pearsonVlaDetails { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.pearsonVlaDetails > section { min-width: 0; padding: 24px 22px 26px; overflow-x: auto; }
+.pearsonVlaDetails > section + section { border-left: 1px solid var(--line); }
+.pearsonVlaDetails header { display: flex; align-items: flex-end; justify-content: space-between; gap: 15px; margin-bottom: 14px; }
+.pearsonVlaDetails header h3 { margin: 5px 0 0; font-size: 16px; }
+.pearsonVlaDetails header > p { margin: 0; color: #72808a; font-size:13px; }
+.pearsonMetricTable { min-width: 650px; border-top: 1px solid #cfd9df; }
+.pearsonMetricTableHead, .pearsonMetricTableRow { display: grid; grid-template-columns: 1.55fr .8fr .55fr 1fr 1.15fr; align-items: center; }
+.pearsonMetricTableHead { min-height: 36px; color: #6c7a84; background: #f6f8f9; font-size:13px; font-weight: 750; }
+.pearsonMetricTableHead span, .pearsonMetricTableRow > span { min-width: 0; padding: 8px 9px; }
+.pearsonMetricTableRow { min-height: 62px; border-top: 1px solid #e2e7ea; color: #53616a; font-size:13px; }
+.pearsonMetricTableRow strong, .pearsonMetricTableRow code, .pearsonMetricTableRow small { display: block; }
+.pearsonMetricTableRow strong { color: #263640; font-size:13px; }
+.pearsonMetricTableRow code { margin-top: 4px; color: #87939b; font-size:13px; }
+.pearsonMetricTableRow b { color: #1d3f55; font-size:13px; }
+.pearsonMetricTableRow small { margin-top: 3px; color: #7b8992; font-size:13px; }
+.pearsonMetricTableRow .significant, .pearsonMetricTableRow .significant small { color: #247254; font-weight: 750; }
+
+.pearsonMetricOnlyBlock { background: #f7f9fa; }
+.metricMatrixGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.metricMatrixCard { min-width: 0; overflow: hidden; border: 1px solid #d5dde2; border-radius: 5px; background: #fff; }
+.metricMatrixCard > header { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; padding: 10px 13px; border-bottom: 1px solid #dce3e7; }
+.metricMatrixCard > header strong, .metricMatrixCard > header span { display: block; }
+.metricMatrixCard > header strong { color: #25343e; font-size:13px; }
+.metricMatrixCard > header span, .metricMatrixCard > header small { margin-top: 4px; color: #7c8992; font-size:13px; }
+.metricMatrixScroller { max-width: 100%; overflow-x: auto; outline: none; }
+.metricMatrixScroller:focus-visible { box-shadow: inset 0 0 0 2px #315f7a; }
+.metricMatrixScroller table { width: 100%; min-width: 430px; border-collapse: collapse; table-layout: fixed; }
+.metricMatrixCard:nth-child(n+3) .metricMatrixScroller table { min-width: 620px; }
+.metricMatrixScroller th, .metricMatrixScroller td { height: 46px; padding: 5px; border-top: 1px solid rgba(255,255,255,.7); border-left: 1px solid rgba(255,255,255,.7); text-align: center; font-size:13px; }
+.metricMatrixScroller thead th { height: 40px; background: #edf1f3; color: #53616a; font-weight: 800; }
+.metricMatrixScroller th:first-child { width: 82px; border-left: 0; background: #edf1f3; color: #53616a; }
+.metricMatrixScroller tbody th { text-align: right; }
+.metricMatrixScroller td { font-family: var(--font-geist-mono), monospace; font-weight: 700; }
+.matrixExplanation { min-height: 92px; padding: 12px 13px; border-top: 1px solid #dce3e7; }
+
+.pearsonAcwmModels { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #d8e0e5; }
+.pearsonAcwmModels > section { min-width: 0; padding: 19px; }
+.pearsonAcwmModels > section + section { border-left: 1px solid #d8e0e5; }
+.pearsonAcwmModels header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 13px; border-bottom: 1px solid #dde4e8; }
+.pearsonAcwmModels header strong { font-size: 13px; }
+.pearsonAcwmModels header span { color: #7b8992; font-size:13px; }
+.pearsonPairList p { margin: 0; padding: 10px 0; border-bottom: 1px solid #e7ebed; display: flex; justify-content: space-between; gap: 16px; color: #687780; font-size:13px; }
+.pearsonPairList strong { color: #314957; }
+.pearsonTrajectoryNote { margin: 13px 0 0; padding-left: 10px; border-left: 3px solid #4e8ca9; color: #53656f; font-size:13px; line-height: 1.65; }
+.acwmExplanation { margin-top: 13px; padding: 12px 13px; border-left: 3px solid #4e8ca9; }
+
+.pearsonFigures { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.pearsonFigures > article { min-width: 0; padding: 18px; }
+.pearsonFigures > article + article { border-left: 1px solid var(--line); }
+.pearsonFigures article > header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.pearsonFigures article > header strong, .pearsonFigures article > header span { display: block; }
+.pearsonFigures article > header strong { font-size:13px; }
+.pearsonFigures article > header span { margin-top: 4px; color: #7b8891; font-size:13px; }
+.pearsonFigures article > header a { display: inline-flex; align-items: center; gap: 5px; color: #315f7a; font-size:13px; font-weight: 750; }
+.pearsonFigure { position: relative; display: block; width: 100%; overflow: hidden; border: 1px solid #e0e5e8; background: #f5f7f8; }
+.pearsonFigure img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pearsonFigure > span { position: absolute; top: 9px; right: 9px; display: inline-flex; gap: 6px; align-items: center; padding: 7px 9px; border: 1px solid rgba(49,95,122,.22); border-radius: 4px; background: rgba(255,255,255,.94); color: #315f7a; font-size:13px; font-weight: 750; }
+.figureExplanation { min-height: 142px; padding: 12px 14px; border: 1px solid #e0e5e8; border-top: 0; }
+.figureExplanation strong:not(:first-child) { display: block; margin-top: 10px; color: #704f22; }
+
+.pearsonBoundary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.pearsonBoundary > div { min-width: 0; padding: 14px 16px; border-left: 1px solid var(--line); }
+.pearsonBoundary > div:first-child, .pearsonBoundary > div:nth-child(4) { border-left: 0; }
+.pearsonBoundary > div:nth-child(n+4) { border-top: 1px solid var(--line); }
+.pearsonBoundary strong { font-size:13px; }
+.pearsonBoundary p { margin: 5px 0 0; color: #75818a; font-size:13px; line-height: 1.55; }
+
+@media (max-width: 1020px) {
+  .pearsonMatrixHeading, .pearsonResultIntro { align-items: flex-start; flex-direction: column; }
+  .pearsonMatrixMeta { justify-content: flex-start; max-width: none; }
+  .pearsonVlaDetails, .metricMatrixGrid { grid-template-columns: 1fr; }
+  .pearsonVlaDetails > section + section { border-top: 1px solid var(--line); border-left: 0; }
+}
+
+@media (max-width: 760px) {
+  .pearsonHeadline { align-items: flex-start; flex-direction: column; }
+  .pearsonHeadlineValues { width: 100%; }
+  .pearsonHeadlineValues > span { flex: 1; }
+  .pearsonSuccessGrid { grid-template-columns: 64px repeat(4, minmax(92px, 1fr)); overflow-x: auto; }
+  .pearsonSuccessPanel { overflow-x: auto; }
+  .pearsonSuccessPanel > header { min-width: 432px; }
+  .pearsonAcwmModels, .pearsonFigures, .pearsonBoundary { grid-template-columns: 1fr; }
+  .pearsonAcwmModels > section + section, .pearsonFigures > article + article, .pearsonBoundary > div { border-top: 1px solid var(--line); border-left: 0; }
+  .pearsonBoundary > div:first-child { border-top: 0; }
+  .pearsonScale { grid-template-columns: auto 1fr auto; }
+  .pearsonScale i:nth-of-type(2), .pearsonScale span:nth-of-type(3) { display: none; }
+  .pearsonScale b { grid-column: 1 / -1; margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+  .pearsonMatrixHeading, .pearsonResultBlock, .pearsonAcwm { padding-right: 16px; padding-left: 16px; }
+  .pearsonHeadline { padding: 20px 16px; }
+  .pearsonHeadlineValues > span { min-width: 0; padding: 8px 10px; }
+  .pearsonFigures > article { padding: 14px; }
+}

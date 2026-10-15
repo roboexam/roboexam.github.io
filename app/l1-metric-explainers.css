@@ -1,0 +1,167 @@
+.l1MethodClass {
+  display: inline-flex;
+  margin-top: 15px;
+  padding: 6px 9px;
+  border: 1px solid #b9d7d1;
+  background: #eaf7f4;
+  color: #226e62;
+  font: 700 8px var(--font-geist-mono), monospace;
+  letter-spacing: .06em;
+}
+
+.l1MetricCards dl div {
+  grid-template-columns: 52px 1fr;
+}
+
+.l1MetricCards dd a {
+  color: #176f96;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.l1SampleMetrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  border: 0;
+}
+
+.l1SampleMetrics article,
+.l1SampleMetrics article:last-child {
+  padding: 16px;
+  border: 1px solid #d4e0e8;
+  background: #fff;
+}
+
+.l1SampleMetrics article > header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.l1SampleMetrics article > header > div:first-child {
+  display: block;
+}
+
+.l1SampleMetrics article > header small,
+.l1SampleMetrics article > header strong,
+.l1SampleMetrics article > header span {
+  display: block;
+}
+
+.l1SampleMetrics article > header small {
+  color: #278070;
+  font: 700 7px var(--font-geist-mono), monospace;
+  letter-spacing: .07em;
+}
+
+.l1SampleMetrics article > header strong {
+  margin-top: 6px;
+  color: #173747;
+  font-size: 13px;
+}
+
+.l1SampleMetrics article > header span {
+  margin-top: 2px;
+  color: #7b909c;
+  font: 8px var(--font-geist-mono), monospace;
+}
+
+.l1SampleMetrics article > header > div:last-child {
+  flex: none;
+  text-align: right;
+}
+
+.l1SampleMetrics article > header em {
+  display: block;
+  color: #8396a1;
+  font-size: 7px;
+  font-style: normal;
+}
+
+.l1SampleMetrics article > header b {
+  display: block;
+  margin-top: 2px;
+  color: #19759a;
+  font-size: 23px;
+}
+
+.l1MetricScope {
+  margin: 12px 0 8px;
+  padding: 7px 9px;
+  background: #eef5f7;
+  color: #4c7180 !important;
+  font-size: 8px !important;
+  font-weight: 700;
+}
+
+.l1SampleMetrics article > .l1MetricInputs {
+  display: grid;
+  gap: 4px;
+}
+
+.l1MetricInputs code,
+.l1MetricSubstitution code {
+  display: block;
+  padding: 6px 8px;
+  overflow-wrap: anywhere;
+  background: #f7f9fa;
+  color: #3e5967;
+  font: 8px/1.5 var(--font-geist-mono), monospace;
+}
+
+.l1SampleMetrics article > .l1MetricSubstitution {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 7px;
+}
+
+.l1MetricSubstitution > span {
+  display: grid;
+  place-items: center;
+  background: #173747;
+  color: #fff;
+  font-size: 7px;
+}
+
+.l1MetricResult {
+  margin-top: 8px !important;
+  padding: 9px 10px;
+  background: #eaf7f4;
+  color: #426c65 !important;
+  font-size: 9px !important;
+}
+
+.l1MetricResult b {
+  margin-right: 7px;
+  color: #1d7163;
+  font-size: 8px !important;
+}
+
+.l1SampleMetrics details {
+  margin-top: 9px;
+  border-top: 1px solid #e0e8ed;
+  padding-top: 8px;
+}
+
+.l1SampleMetrics summary {
+  color: #31748c;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.l1SampleMetrics details p {
+  margin-top: 7px;
+  color: #6a808d;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+@media (max-width: 680px) {
+  .l1SampleMetrics article > header {
+    gap: 8px;
+  }
+}

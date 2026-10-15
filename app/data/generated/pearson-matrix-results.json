@@ -1,0 +1,667 @@
+{
+  "schemaVersion": "unibench.dashboard.pearson-matrix.v3",
+  "bundleVersion": "stack-bowls-pearson-20260829-v3",
+  "generatedBy": "scripts/export-pearson-matrix-results.mjs",
+  "task": "stack_bowls",
+  "title": "Stack Bowls Pearson Correlation Analysis",
+  "method": {
+    "correlation": "pairwise-complete Pearson r",
+    "targetUnit": "episode",
+    "targetKind": "strict-binary-success",
+    "binaryOutcome": "success=1; half-success/failure=0",
+    "aggregateSuccessRateIsTarget": false,
+    "groupAggregation": "arithmetic mean of member metric Pearson r values",
+    "ordinalSensitivity": "success=1; half-success=0.5; failure=0",
+    "confidenceInterval": "95% Fisher-z interval",
+    "multiplicity": "Benjamini-Hochberg q-values within each VLA model and outcome over candidate metrics",
+    "causalityClaim": false
+  },
+  "figures": {
+    "metricVsEpisodeSuccess": {
+      "title": "Pearson Correlation with Episode Success",
+      "alt": "Pi0.5 与 FastWAM 的 primary metrics 对逐 episode 严格成功标签的 Pearson 相关",
+      "url": "/analysis/stack-bowls-pearson-20260829/vla-wam-metric-vs-episode-success.png",
+      "sha256": "0ef5c5b52a69ef532c2bec864a439a01f7de32c5e088324d21acb24786e3eca4",
+      "bytes": 261904,
+      "width": 3214,
+      "height": 1597
+    },
+    "metricOnlyMatrices": {
+      "title": "Metric-only Pearson Correlation Matrices",
+      "alt": "Pi0.5、FastWAM、Cosmos Predict 2.5 与 CtrlWorld 的 metric-only Pearson 矩阵，不含 outcome 字段",
+      "url": "/analysis/stack-bowls-pearson-20260829/all-models-metric-only-pearson-matrices.png",
+      "sha256": "7d7a37d718d1f3f08b1de0456ae856bf0769f8acc0e826599b7881188c075f8c",
+      "bytes": 426867,
+      "width": 3301,
+      "height": 2995
+    }
+  },
+  "panels": [
+    {
+      "modelId": "pi05",
+      "displayName": "Pi0.5",
+      "family": "VLA",
+      "episodeCount": 100,
+      "split": "formal100",
+      "relationship": "metric-to-episode-success-and-metric-to-metric",
+      "successCorrelationAvailable": true
+    },
+    {
+      "modelId": "fastwam",
+      "displayName": "FastWAM",
+      "family": "WAM",
+      "episodeCount": 100,
+      "split": "formal100",
+      "relationship": "metric-to-episode-success-and-metric-to-metric",
+      "successCorrelationAvailable": true
+    },
+    {
+      "modelId": "cosmos_predict2_5",
+      "displayName": "Cosmos Predict 2.5",
+      "family": "ACWM",
+      "episodeCount": 73,
+      "split": "heldout73",
+      "relationship": "metric-to-metric",
+      "successCorrelationAvailable": false
+    },
+    {
+      "modelId": "ctrlworld",
+      "displayName": "CtrlWorld",
+      "family": "ACWM",
+      "episodeCount": 73,
+      "split": "heldout73",
+      "relationship": "metric-to-metric",
+      "successCorrelationAvailable": false
+    }
+  ],
+  "vlaFindings": [
+    {
+      "modelId": "pi05",
+      "displayName": "Pi0.5",
+      "family": "VLA",
+      "episodeCount": 100,
+      "cohortSuccessRate": 0.76,
+      "classificationCounts": {
+        "success": 76,
+        "half-success": 22,
+        "failure": 2
+      },
+      "target": {
+        "unit": "episode",
+        "kind": "strict-binary-success",
+        "definition": "success=1; half-success/failure=0",
+        "aggregateSuccessRateIsTarget": false
+      },
+      "groups": [
+        {
+          "groupId": "smoothness",
+          "displayName": "Smoothness",
+          "metricIds": [
+            "left_ee_sparc",
+            "right_ee_sparc"
+          ],
+          "aggregation": "arithmetic-mean-of-member-correlations",
+          "meanR": 0.02431619470068136
+        },
+        {
+          "groupId": "speed",
+          "displayName": "Speed",
+          "metricIds": [
+            "left_ee_speed_mean_m_s",
+            "right_ee_speed_mean_m_s"
+          ],
+          "aggregation": "arithmetic-mean-of-member-correlations",
+          "meanR": 0.2027985347812504
+        }
+      ],
+      "metrics": [
+        {
+          "metricId": "left_ee_sparc",
+          "displayName": "L-SPARC",
+          "r": -0.37372129515333163,
+          "qValue": 0.0001708766794845943,
+          "ci95": [
+            -0.5311500099601196,
+            -0.19134929355203642
+          ],
+          "successMean": -5.019213188901235,
+          "nonSuccessMean": -4.117497896399526,
+          "significant": true,
+          "direction": "negative",
+          "strength": "moderate"
+        },
+        {
+          "metricId": "right_ee_sparc",
+          "displayName": "R-SPARC",
+          "r": 0.42235368455469435,
+          "qValue": 0.00003833979575181163,
+          "ci95": [
+            0.24637426214644956,
+            0.5713719741615917
+          ],
+          "successMean": -4.50887771769173,
+          "nonSuccessMean": -5.534352856039636,
+          "significant": true,
+          "direction": "positive",
+          "strength": "moderate"
+        },
+        {
+          "metricId": "left_ee_speed_mean_m_s",
+          "displayName": "L-Speed",
+          "r": 0.4133534128581804,
+          "qValue": 0.00003833979575181163,
+          "ci95": [
+            0.23610465560801722,
+            0.5639817927856253
+          ],
+          "successMean": 0.08022551980157638,
+          "nonSuccessMean": 0.05589893067062155,
+          "significant": true,
+          "direction": "positive",
+          "strength": "moderate"
+        },
+        {
+          "metricId": "right_ee_speed_mean_m_s",
+          "displayName": "R-Speed",
+          "r": -0.007756343295679584,
+          "qValue": 0.9389501838971844,
+          "ci95": [
+            -0.20386387714360504,
+            0.18894963657858882
+          ],
+          "successMean": 0.0878009180587154,
+          "nonSuccessMean": 0.08824962530279824,
+          "significant": false,
+          "direction": "negative",
+          "strength": "negligible"
+        }
+      ]
+    },
+    {
+      "modelId": "fastwam",
+      "displayName": "FastWAM",
+      "family": "WAM",
+      "episodeCount": 100,
+      "cohortSuccessRate": 0.12,
+      "classificationCounts": {
+        "failure": 57,
+        "half-success": 31,
+        "success": 12
+      },
+      "target": {
+        "unit": "episode",
+        "kind": "strict-binary-success",
+        "definition": "success=1; half-success/failure=0",
+        "aggregateSuccessRateIsTarget": false
+      },
+      "groups": [
+        {
+          "groupId": "smoothness",
+          "displayName": "Smoothness",
+          "metricIds": [
+            "left_ee_sparc",
+            "right_ee_sparc"
+          ],
+          "aggregation": "arithmetic-mean-of-member-correlations",
+          "meanR": -0.020948097418567305
+        },
+        {
+          "groupId": "speed",
+          "displayName": "Speed",
+          "metricIds": [
+            "left_ee_speed_mean_m_s",
+            "right_ee_speed_mean_m_s"
+          ],
+          "aggregation": "arithmetic-mean-of-member-correlations",
+          "meanR": 0.25228357623165054
+        }
+      ],
+      "metrics": [
+        {
+          "metricId": "left_ee_sparc",
+          "displayName": "L-SPARC",
+          "r": -0.02961244843812383,
+          "qValue": 0.9034552778796364,
+          "ci95": [
+            -0.22472347966796605,
+            0.1677815574824106
+          ],
+          "successMean": -4.789534481591644,
+          "nonSuccessMean": -4.648425550027158,
+          "significant": false,
+          "direction": "negative",
+          "strength": "negligible"
+        },
+        {
+          "metricId": "right_ee_sparc",
+          "displayName": "R-SPARC",
+          "r": -0.012283746399010783,
+          "qValue": 0.9034552778796364,
+          "ci95": [
+            -0.20819953059164448,
+            0.18457971605678813
+          ],
+          "successMean": -4.5663398169006335,
+          "nonSuccessMean": -4.53239621752837,
+          "significant": false,
+          "direction": "negative",
+          "strength": "negligible"
+        },
+        {
+          "metricId": "left_ee_speed_mean_m_s",
+          "displayName": "L-Speed",
+          "r": 0.37592293739465266,
+          "qValue": 0.00046416838314526995,
+          "ci95": [
+            0.19381580586918232,
+            0.5329863673100541
+          ],
+          "successMean": 0.0906569440099551,
+          "nonSuccessMean": 0.060712126683988774,
+          "significant": true,
+          "direction": "positive",
+          "strength": "moderate"
+        },
+        {
+          "metricId": "right_ee_speed_mean_m_s",
+          "displayName": "R-Speed",
+          "r": 0.12864421506864848,
+          "qValue": 0.404210949063879,
+          "ci95": [
+            -0.06953081093882015,
+            0.3170510690354267
+          ],
+          "successMean": 0.08288258069662154,
+          "nonSuccessMean": 0.07606714160241358,
+          "significant": false,
+          "direction": "positive",
+          "strength": "weak"
+        }
+      ]
+    }
+  ],
+  "metricOnlyMatrices": [
+    {
+      "modelId": "pi05",
+      "displayName": "Pi0.5",
+      "family": "VLA",
+      "episodeCount": 100,
+      "split": "formal100",
+      "metricIds": [
+        "left_ee_sparc",
+        "right_ee_sparc",
+        "left_ee_speed_mean_m_s",
+        "right_ee_speed_mean_m_s"
+      ],
+      "metricLabels": [
+        "L-SPARC",
+        "R-SPARC",
+        "L-Speed",
+        "R-Speed"
+      ],
+      "values": [
+        [
+          1,
+          -0.2719383270541208,
+          0.13210394611598256,
+          -0.21722458987875815
+        ],
+        [
+          -0.2719383270541208,
+          1,
+          0.21979490340387883,
+          -0.23245740351691044
+        ],
+        [
+          0.13210394611598256,
+          0.21979490340387883,
+          1,
+          -0.7252417581100109
+        ],
+        [
+          -0.21722458987875815,
+          -0.23245740351691044,
+          -0.7252417581100109,
+          1
+        ]
+      ],
+      "outcomeFieldsExcluded": true
+    },
+    {
+      "modelId": "fastwam",
+      "displayName": "FastWAM",
+      "family": "WAM",
+      "episodeCount": 100,
+      "split": "formal100",
+      "metricIds": [
+        "left_ee_sparc",
+        "right_ee_sparc",
+        "left_ee_speed_mean_m_s",
+        "right_ee_speed_mean_m_s"
+      ],
+      "metricLabels": [
+        "L-SPARC",
+        "R-SPARC",
+        "L-Speed",
+        "R-Speed"
+      ],
+      "values": [
+        [
+          1,
+          -0.13428288146536985,
+          0.45194643643485954,
+          -0.4685467294007953
+        ],
+        [
+          -0.13428288146536985,
+          1,
+          -0.15261676130226226,
+          -0.2733641198216959
+        ],
+        [
+          0.45194643643485954,
+          -0.15261676130226226,
+          1,
+          -0.23706999522633893
+        ],
+        [
+          -0.4685467294007953,
+          -0.2733641198216959,
+          -0.23706999522633893,
+          1
+        ]
+      ],
+      "outcomeFieldsExcluded": true
+    },
+    {
+      "modelId": "cosmos_predict2_5",
+      "displayName": "Cosmos Predict 2.5",
+      "family": "ACWM",
+      "episodeCount": 73,
+      "split": "heldout73",
+      "metricIds": [
+        "mse",
+        "masked_mse",
+        "psnr",
+        "ssim",
+        "image_quality",
+        "motion_smoothness",
+        "trajectory_accuracy"
+      ],
+      "metricLabels": [
+        "MSE",
+        "M-MSE",
+        "PSNR",
+        "SSIM",
+        "IQ",
+        "MS",
+        "TA"
+      ],
+      "values": [
+        [
+          1,
+          0.9727423941321132,
+          -0.9927879270174016,
+          -0.9271798435132129,
+          -0.5767460468327297,
+          0.378334738842108,
+          -0.09105998306308576
+        ],
+        [
+          0.9727423941321132,
+          1,
+          -0.9681373376476875,
+          -0.8838054179272729,
+          -0.5313961403757996,
+          0.3034549118174261,
+          -0.08524330236993896
+        ],
+        [
+          -0.9927879270174016,
+          -0.9681373376476875,
+          1,
+          0.9246220683853777,
+          0.5863652811191852,
+          -0.359256127994878,
+          0.11622395134956087
+        ],
+        [
+          -0.9271798435132129,
+          -0.8838054179272729,
+          0.9246220683853777,
+          1,
+          0.7368223618266959,
+          -0.46452007782604715,
+          0.12191839164810722
+        ],
+        [
+          -0.5767460468327297,
+          -0.5313961403757996,
+          0.5863652811191852,
+          0.7368223618266959,
+          1,
+          -0.49097411061924773,
+          0.019148355551011766
+        ],
+        [
+          0.378334738842108,
+          0.3034549118174261,
+          -0.359256127994878,
+          -0.46452007782604715,
+          -0.49097411061924773,
+          1,
+          -0.1430614067656941
+        ],
+        [
+          -0.09105998306308576,
+          -0.08524330236993896,
+          0.11622395134956087,
+          0.12191839164810722,
+          0.019148355551011766,
+          -0.1430614067656941,
+          1
+        ]
+      ],
+      "outcomeFieldsExcluded": true
+    },
+    {
+      "modelId": "ctrlworld",
+      "displayName": "CtrlWorld",
+      "family": "ACWM",
+      "episodeCount": 73,
+      "split": "heldout73",
+      "metricIds": [
+        "mse",
+        "masked_mse",
+        "psnr",
+        "ssim",
+        "image_quality",
+        "motion_smoothness",
+        "trajectory_accuracy"
+      ],
+      "metricLabels": [
+        "MSE",
+        "M-MSE",
+        "PSNR",
+        "SSIM",
+        "IQ",
+        "MS",
+        "TA"
+      ],
+      "values": [
+        [
+          1,
+          0.9978934166080345,
+          -0.9830582408364055,
+          -0.9724401658907295,
+          -0.26608635335771963,
+          0.42021928657840385,
+          -0.3623935269822473
+        ],
+        [
+          0.9978934166080345,
+          1,
+          -0.9813374408178982,
+          -0.9672216089544067,
+          -0.2920750495633515,
+          0.42578701870249674,
+          -0.38201674357849635
+        ],
+        [
+          -0.9830582408364055,
+          -0.9813374408178982,
+          1,
+          0.9470194753572205,
+          0.2804512217063971,
+          -0.4083149760903009,
+          0.39418996300332154
+        ],
+        [
+          -0.9724401658907295,
+          -0.9672216089544067,
+          0.9470194753572205,
+          1,
+          0.2480400581873895,
+          -0.48025302556952904,
+          0.3086014077060904
+        ],
+        [
+          -0.26608635335771963,
+          -0.2920750495633515,
+          0.2804512217063971,
+          0.2480400581873895,
+          1,
+          -0.3741144886389331,
+          0.49454479733410067
+        ],
+        [
+          0.42021928657840385,
+          0.42578701870249674,
+          -0.4083149760903009,
+          -0.48025302556952904,
+          -0.3741144886389331,
+          1,
+          -0.20353039935524325
+        ],
+        [
+          -0.3623935269822473,
+          -0.38201674357849635,
+          0.39418996300332154,
+          0.3086014077060904,
+          0.49454479733410067,
+          -0.20353039935524325,
+          1
+        ]
+      ],
+      "outcomeFieldsExcluded": true
+    }
+  ],
+  "crossModel": {
+    "repeatedSignificantMetricIds": [
+      "left_ee_speed_mean_m_s"
+    ],
+    "pairedSeedSuccess": {
+      "pairedSeedCount": 100,
+      "r": 0.13546074917377293,
+      "pValue": 0.1790196709091956,
+      "contingency": {
+        "pi05_0_fastwam_0": 23,
+        "pi05_0_fastwam_1": 1,
+        "pi05_1_fastwam_0": 65,
+        "pi05_1_fastwam_1": 11
+      }
+    }
+  },
+  "acwmFindings": [
+    {
+      "modelId": "cosmos_predict2_5",
+      "displayName": "Cosmos Predict 2.5",
+      "episodeCount": 73,
+      "successCorrelationAvailable": false,
+      "pixelFidelityPairs": [
+        {
+          "leftMetricId": "mse",
+          "leftDisplayName": "MSE",
+          "rightMetricId": "masked_mse",
+          "rightDisplayName": "M-MSE",
+          "r": 0.9727423941321132,
+          "strength": "strong"
+        },
+        {
+          "leftMetricId": "mse",
+          "leftDisplayName": "MSE",
+          "rightMetricId": "psnr",
+          "rightDisplayName": "PSNR",
+          "r": -0.9927879270174016,
+          "strength": "strong"
+        },
+        {
+          "leftMetricId": "psnr",
+          "leftDisplayName": "PSNR",
+          "rightMetricId": "ssim",
+          "rightDisplayName": "SSIM",
+          "r": 0.9246220683853777,
+          "strength": "strong"
+        }
+      ],
+      "trajectoryMostRelated": {
+        "leftMetricId": "trajectory_accuracy",
+        "leftDisplayName": "TA",
+        "rightMetricId": "motion_smoothness",
+        "rightDisplayName": "MS",
+        "r": -0.1430614067656941,
+        "strength": "weak"
+      }
+    },
+    {
+      "modelId": "ctrlworld",
+      "displayName": "CtrlWorld",
+      "episodeCount": 73,
+      "successCorrelationAvailable": false,
+      "pixelFidelityPairs": [
+        {
+          "leftMetricId": "mse",
+          "leftDisplayName": "MSE",
+          "rightMetricId": "masked_mse",
+          "rightDisplayName": "M-MSE",
+          "r": 0.9978934166080345,
+          "strength": "strong"
+        },
+        {
+          "leftMetricId": "mse",
+          "leftDisplayName": "MSE",
+          "rightMetricId": "psnr",
+          "rightDisplayName": "PSNR",
+          "r": -0.9830582408364055,
+          "strength": "strong"
+        },
+        {
+          "leftMetricId": "psnr",
+          "leftDisplayName": "PSNR",
+          "rightMetricId": "ssim",
+          "rightDisplayName": "SSIM",
+          "r": 0.9470194753572205,
+          "strength": "strong"
+        }
+      ],
+      "trajectoryMostRelated": {
+        "leftMetricId": "trajectory_accuracy",
+        "leftDisplayName": "TA",
+        "rightMetricId": "image_quality",
+        "rightDisplayName": "IQ",
+        "r": 0.49454479733410067,
+        "strength": "moderate"
+      }
+    }
+  ],
+  "provenance": {
+    "resultManifestSha256": "50f9972c79778289a2a3e44eba6f3cc9de87cff0e593f9e06d20913b31d071ec",
+    "analysisSummarySha256": "79ea8238e3e8cef96396a1f99b6f8f663f7d844bdfceb53e3a0d74c8e2f1165b",
+    "sourceSha256": {
+      "pi05": "77eda50fbc9b1462314faa5eaf61056e4456066cbfcbe105b23b59f7e68cf1de",
+      "fastwam": "140beaa32b29e22441a2c7871aa90115e3d1f78cd8e91553b7eca7aab7012e8e",
+      "cosmos_predict2_5": "26d41a3105db304a32520981318953679c4a7dbab440b41191e5897c4ac7ca32",
+      "ctrlworld": "fcafdb45d0dbfa025c04558e903940cfd7405fc46b30f2e9c87dbe91d29cf30c"
+    }
+  }
+}
