@@ -4,8 +4,8 @@
 
 - These rules apply to this repository. The parent `/mnt/gyc/benchmark2027/AGENTS.md` also applies and remains authoritative for shared storage, experiment artifacts, process ownership, deletion, and cleanup.
 - This is a read-only benchmark dashboard built with React 19, TypeScript, vinext/Vite, and a Cloudflare-compatible worker. Preserve the existing package manager, lockfile, and runtime shape.
-- The shared checkout `/mnt/gyc/benchmark2027/third_party/roboexam` is the `main` integration source; this dashboard is deployed from its `third_party/dashboard` subtree. Develop in a separate RoboExam worktree rather than editing the shared deployment checkout.
-- For ACWM changes, first read `/mnt/gyc/benchmark2027/third_party/roboexam/third_party/dashboard/ACWM_DASHBOARD_FRONTEND_ISSUE_EXTREME_HANDOFF.md`. Treat it as audit evidence, not as automatically current truth; revalidate claims against the target branch, formal result files, and runtime.
+- The shared checkout `/mnt/gyc/benchmark2027/roboexam` is the `main` integration source; this dashboard is deployed from its `third_party/dashboard` subtree. Develop in a separate RoboExam worktree rather than editing the shared deployment checkout.
+- For ACWM changes, first read `/mnt/gyc/benchmark2027/roboexam/third_party/dashboard/ACWM_DASHBOARD_FRONTEND_ISSUE_EXTREME_HANDOFF.md`. Treat it as audit evidence, not as automatically current truth; revalidate claims against the target branch, formal result files, and runtime.
 
 ## Collaboration and Git safety
 

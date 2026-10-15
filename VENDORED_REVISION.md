@@ -9,5 +9,5 @@
 
 This directory is committed directly into RoboExam. It is not a Git
 submodule or a separate external repository dependency. Production is deployed
-from `/mnt/gyc/benchmark2027/third_party/roboexam/third_party/dashboard` on the
+from `/mnt/gyc/benchmark2027/roboexam/third_party/dashboard` on the
 RoboExam `main` branch.

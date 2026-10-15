@@ -1,7 +1,7 @@
 # UniEmbodied-Bench 4090 service
 
 The shared source of truth is RoboExam `main` at
-`/mnt/gyc/benchmark2027/third_party/roboexam`; the dashboard project root is
+`/mnt/gyc/benchmark2027/roboexam`; the dashboard project root is
 its `third_party/dashboard` subtree. The service runs on the 4090 machine
 reached through SSH port `6015` and listens on the machine-local port `3100`.
 
@@ -9,7 +9,7 @@ reached through SSH port `6015` and listens on the machine-local port `3100`.
 
 1. Develop and validate in a personal branch and sibling worktree.
 2. Review and merge the branch into the shared
-   `/mnt/gyc/benchmark2027/third_party/roboexam` checkout on `main`.
+   `/mnt/gyc/benchmark2027/roboexam` checkout on `main`.
 3. Build and publish with `bash ops/4090/update.sh` on the 4090.
 4. Check the release with `bash ops/4090/status.sh`,
    `bash ops/4090/fixed-public-status.sh`, and

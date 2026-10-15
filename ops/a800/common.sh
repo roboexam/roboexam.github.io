@@ -5,7 +5,7 @@ set -euo pipefail
 
 REMOTE_SSH_PORT="${UNIBENCH_REMOTE_SSH_PORT:-6015}"
 REMOTE_SSH_TARGET="${UNIBENCH_REMOTE_SSH_TARGET:-root@10.40.0.110}"
-REMOTE_DASHBOARD_DIR="${UNIBENCH_REMOTE_DASHBOARD_DIR:-/mnt/gyc/benchmark2027/third_party/roboexam/third_party/dashboard}"
+REMOTE_DASHBOARD_DIR="${UNIBENCH_REMOTE_DASHBOARD_DIR:-/mnt/gyc/benchmark2027/roboexam/third_party/dashboard}"
 REMOTE_SUPERVISOR_PID_FILE="${UNIBENCH_REMOTE_SUPERVISOR_PID_FILE:-/mnt/gyc_ckp/benchmark2027/runtime/dashboard/supervisor.pid}"
 
 # State stays on local disk. The 1TB project share is a network filesystem and
