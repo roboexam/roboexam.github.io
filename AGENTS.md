@@ -4,8 +4,8 @@
 
 - These rules apply to this repository. The parent `/mnt/gyc/benchmark2027/AGENTS.md` also applies and remains authoritative for shared storage, experiment artifacts, process ownership, deletion, and cleanup.
 - This is a read-only benchmark dashboard built with React 19, TypeScript, vinext/Vite, and a Cloudflare-compatible worker. Preserve the existing package manager, lockfile, and runtime shape.
-- The shared checkout `/mnt/gyc/benchmark2027/dashboard` is the `main` integration and 4090 deployment source. Develop in a personal sibling worktree such as `/mnt/gyc/benchmark2027/dashboard-<owner>`.
-- For ACWM changes, first read `/mnt/gyc/benchmark2027/dashboard/ACWM_DASHBOARD_FRONTEND_ISSUE_EXTREME_HANDOFF.md`. Treat it as audit evidence, not as automatically current truth; revalidate claims against the target branch, formal result files, and runtime.
+- The shared checkout `/mnt/gyc/benchmark2027/third_party/roboexam` is the `main` integration source; this dashboard is deployed from its `third_party/dashboard` subtree. Develop in a separate RoboExam worktree rather than editing the shared deployment checkout.
+- For ACWM changes, first read `/mnt/gyc/benchmark2027/third_party/roboexam/third_party/dashboard/ACWM_DASHBOARD_FRONTEND_ISSUE_EXTREME_HANDOFF.md`. Treat it as audit evidence, not as automatically current truth; revalidate claims against the target branch, formal result files, and runtime.
 
 ## Collaboration and Git safety
 
@@ -47,7 +47,7 @@
 ## Merge and 4090 release
 
 - Commit and validate in the personal worktree. Merge into a clean, coordinated `main` integration checkout only after reviewing the complete branch diff; worktree branches can be merged normally while they remain checked out elsewhere.
-- `ops/4090/common.sh` defaults to `/mnt/gyc/benchmark2027/dashboard`, and `update.sh` additionally requires the script itself to come from that deployment checkout. Merge first and invoke the merged script from shared `main`; never use a feature-worktree copy to preview or deploy unmerged work.
+- `ops/4090/common.sh` resolves the dashboard root from its own location, and `update.sh` additionally requires the script itself to come from that deployment subtree. Merge first and invoke the merged script from the shared RoboExam `main`; never use a feature-worktree copy to preview or deploy unmerged work.
 - Never run `npm run build`, `npm run check`, or a direct `vinext build` in the live shared checkout while the managed service is running. Content-hashed `dist/client` assets must only be replaced through `ops/4090/update.sh`; ordinary validation belongs in a sibling worktree.
 - Treat HTML, the client entry manifest, on-disk hashed assets, and HTTP asset responses as one release unit. A `/login` HTTP 200 without successful client-asset verification is unhealthy because server rendering alone does not prove hydration works.
 - Deploy only when explicitly requested. For the current 4090 service, run `bash ops/4090/update.sh`, then `bash ops/4090/status.sh`, `bash ops/4090/fixed-public-status.sh`, and `bash ops/4090/watchdog-status.sh`. `public-status.sh` checks only the optional Cloudflare Quick Tunnel.

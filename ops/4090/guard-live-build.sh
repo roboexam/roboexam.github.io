@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DEPLOY_CHECKOUT="${UNIBENCH_DEPLOY_CHECKOUT:-/mnt/gyc/benchmark2027/dashboard}"
+GUARD_SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+DEFAULT_DEPLOY_CHECKOUT="$(cd -- "${GUARD_SCRIPT_DIR}/../.." && pwd -P)"
+DEPLOY_CHECKOUT="${UNIBENCH_DEPLOY_CHECKOUT:-${DEFAULT_DEPLOY_CHECKOUT}}"
 SERVICE_PORT="${UNIBENCH_PORT:-3100}"
 TMUX_SESSION="${UNIBENCH_TMUX_SESSION:-unibench-dashboard}"
 

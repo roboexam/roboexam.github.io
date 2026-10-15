@@ -1,14 +1,15 @@
 # UniEmbodied-Bench 4090 service
 
-The shared source of truth is `/mnt/gyc/benchmark2027/dashboard`. The service
-runs on the 4090 machine reached through SSH port `6015` and listens on the
-machine-local port `3100`.
+The shared source of truth is RoboExam `main` at
+`/mnt/gyc/benchmark2027/third_party/roboexam`; the dashboard project root is
+its `third_party/dashboard` subtree. The service runs on the 4090 machine
+reached through SSH port `6015` and listens on the machine-local port `3100`.
 
 ## Team workflow
 
 1. Develop and validate in a personal branch and sibling worktree.
 2. Review and merge the branch into the shared
-   `/mnt/gyc/benchmark2027/dashboard` checkout on `main`.
+   `/mnt/gyc/benchmark2027/third_party/roboexam` checkout on `main`.
 3. Build and publish with `bash ops/4090/update.sh` on the 4090.
 4. Check the release with `bash ops/4090/status.sh`,
    `bash ops/4090/fixed-public-status.sh`, and
@@ -100,7 +101,7 @@ fallback.
 ## Live-build safety
 
 Never run `npm run build`, `npm run check`, or `vinext build` directly in the
-live `/mnt/gyc/benchmark2027/dashboard` checkout while the managed service is
+live RoboExam `third_party/dashboard` subtree while the managed service is
 running. A vinext build replaces content-hashed files under `dist/client`; the
 already-running process can keep emitting the previous filenames, leaving the
 page visible but disabling all client-side buttons.

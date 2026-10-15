@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="${UNIBENCH_PROJECT_DIR:-/mnt/gyc/benchmark2027/dashboard}"
+COMMON_SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+DEFAULT_PROJECT_DIR="$(cd -- "${COMMON_SCRIPT_DIR}/../.." && pwd -P)"
+PROJECT_DIR="${UNIBENCH_PROJECT_DIR:-${DEFAULT_PROJECT_DIR}}"
 RUNTIME_DIR="${UNIBENCH_RUNTIME_DIR:-/mnt/gyc_ckp/benchmark2027/runtime/dashboard}"
 NODE_HOME="${UNIBENCH_NODE_HOME:-/mnt/gyc_ckp/benchmark2027/runtime/node/node-v22.14.0-linux-x64}"
 TRACE_PYTHON_HOME="${UNIBENCH_TRACE_PYTHON_HOME:-/mnt/gyc_ckp/benchmark2027/runtime/python/dashboard-traces}"

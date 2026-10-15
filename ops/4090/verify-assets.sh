@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_DIR="${UNIBENCH_PROJECT_DIR:-/mnt/gyc/benchmark2027/dashboard}"
+VERIFY_SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+DEFAULT_PROJECT_DIR="$(cd -- "${VERIFY_SCRIPT_DIR}/../.." && pwd -P)"
+PROJECT_DIR="${UNIBENCH_PROJECT_DIR:-${DEFAULT_PROJECT_DIR}}"
 SERVICE_PORT="${UNIBENCH_PORT:-3100}"
 NODE_BIN="${UNIBENCH_NODE_BIN:-node}"
 CURL_BIN="${UNIBENCH_CURL_BIN:-curl}"

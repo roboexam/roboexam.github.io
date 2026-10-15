@@ -33,3 +33,29 @@ test("counts independent product commits, not docs, merges or repeat builds", ()
     assert.equal(missingBaseline.count, 0);
   } finally { rmSync(cwd, {recursive:true, force:true}); }
 });
+
+test("continues the audited count from a dashboard vendored in a monorepo", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "dashboard-vendored-"));
+  const cwd = path.join(root, "third_party", "dashboard");
+  const git = (...args) => execFileSync("git", args, { cwd: root, encoding:"utf8", stdio:["ignore","pipe","pipe"] }).trim();
+  const commit = title => { git("add", "."); git("commit", "-m", title); };
+  try {
+    git("init", "-b", "main"); git("config", "user.email", "fixture@example.test"); git("config", "user.name", "Fixture");
+    mkdirSync(path.join(cwd, "app"), { recursive: true });
+    writeFileSync(path.join(cwd, "app", "page.tsx"), "vendored source"); commit("vendor dashboard");
+    const vendoredCommit = git("rev-parse", "HEAD");
+    writeFileSync(path.join(root, "README.md"), "unrelated root change"); commit("change monorepo docs");
+    writeFileSync(path.join(cwd, "app", "page.tsx"), "dashboard update"); commit("update dashboard");
+
+    const result = iterationHistory(cwd, "f".repeat(40), {
+      commit: vendoredCommit,
+      count: 101,
+      baseline: "vendored:test",
+      recent: [{ hash: "legacy", date: "2026-10-14", title: "Imported dashboard history", number: 101 }],
+    });
+    assert.equal(result.count, 102);
+    assert.equal(result.baseline, "vendored:test");
+    assert.deepEqual(result.recent.map(entry => entry.number), [102, 101]);
+    assert.equal(result.recent[0].title, "update dashboard");
+  } finally { rmSync(root, {recursive:true, force:true}); }
+});
