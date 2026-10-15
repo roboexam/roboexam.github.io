@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, statSync } from "node:fs";
 
 const MEDIA_BASELINE_COMMIT = "b23fa25";
+const VENDORED_MEDIA_BASELINE_COMMIT = "45a47e52fdb58cfb6ee0e2a0d9c1c0538428664f";
 const MAX_NEW_FILE_BYTES = 8 * 1024 * 1024; // the curated media index grows with every admission (914 episodes = 550 KB)
 const MAX_DASHBOARD_CLIENT_BYTES = 94_244;
 const MAX_GLOBAL_CSS_BYTES = 34_353;
@@ -38,6 +39,24 @@ function lines(value) {
   return value ? value.split("\n").filter(Boolean) : [];
 }
 
+function commitExists(commit) {
+  try {
+    execFileSync("git", ["cat-file", "-e", `${commit}^{commit}`], { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+const baselineCommit = commitExists(MEDIA_BASELINE_COMMIT)
+  ? MEDIA_BASELINE_COMMIT
+  : VENDORED_MEDIA_BASELINE_COMMIT;
+assert.ok(
+  commitExists(baselineCommit),
+  `repository hygiene baseline is unavailable: ${MEDIA_BASELINE_COMMIT} or ${VENDORED_MEDIA_BASELINE_COMMIT}`,
+);
+const gitPrefix = git(["rev-parse", "--show-prefix"]);
+
 const tracked = lines(git(["ls-files"]));
 const forbiddenTracked = tracked.filter((path) =>
   GENERATED_PREFIXES.some((prefix) => path.startsWith(prefix)),
@@ -55,20 +74,20 @@ const residueNames = tracked.filter((path) =>
 assert.deepEqual(residueNames, [], `residue-style paths are tracked: ${residueNames.join(", ")}`);
 
 const baselineMedia = new Set(
-  lines(git(["ls-tree", "-r", "--name-only", MEDIA_BASELINE_COMMIT, "--", "public/media"])),
+  lines(git(["ls-tree", "-r", "--name-only", baselineCommit, "--", "public/media"])),
 );
 const currentMedia = tracked.filter((path) => path.startsWith("public/media/"));
 const addedMedia = currentMedia.filter((path) => !baselineMedia.has(path));
 assert.deepEqual(addedMedia, [], `new media must not be committed to Git: ${addedMedia.join(", ")}`);
 
 for (const path of currentMedia) {
-  const baselineBlob = git(["rev-parse", `${MEDIA_BASELINE_COMMIT}:${path}`]);
+  const baselineBlob = git(["rev-parse", `${baselineCommit}:${gitPrefix}${path}`]);
   const currentBlob = git(["hash-object", "--", path]);
   assert.equal(currentBlob, baselineBlob, `tracked media changed in place: ${path}`);
 }
 
 const baselineFiles = new Set(
-  lines(git(["ls-tree", "-r", "--name-only", MEDIA_BASELINE_COMMIT])),
+  lines(git(["ls-tree", "-r", "--name-only", baselineCommit, "--", "."])),
 );
 const oversizedNewFiles = tracked
   .filter((path) => !baselineFiles.has(path))
