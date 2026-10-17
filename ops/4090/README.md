@@ -147,6 +147,27 @@ The staging Review page is separate from the admitted Datasets collection:
 new-scene candidates can be visually reviewed before curated admission, without
 changing their original physical, Action, fidelity, timing or selector verdicts.
 
+### Measured full and incremental checks (2026-10-17)
+
+Same frozen inputs and verifier, with all three gates passing:
+
+| Gate | Files | Full byte audit | Incremental check | Incremental video bytes rehashed |
+|---|---:|---:|---:|---:|
+| curated-dataset | 11448 | 384.8 s | 124.9 s | 0 |
+| dataset-episode-media | 4500 | 67.0 s | 27.3 s | 0 |
+| review-candidates | 858 | 11.2 s | 5.2 s | 0 |
+
+Total: 463.0 s full versus 157.4 s incremental; 71,211,425,408 video bytes
+were rehashed in the full run and zero in the incremental run. Both runs also
+checked the current source manifests, generated bundles and file identities.
+These figures cover the three gates, not the entire release. The cold run
+overlapped a worktree build; the hot run followed it, so wall-time ratios are
+observations under those loads, not an isolated benchmark guarantee.
+The normal production build and remaining checks still run.
+
+Evidence:
+    /mnt/gyc_ckp/benchmark2027/experiments/audits/dashboard_pipeline_review_20261017/media_integrity_real_full_hot_measurement.v1.json
+
 ## Media bundle
 
 Dashboard videos and images live in the immutable generated dataset at
