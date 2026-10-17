@@ -105,3 +105,16 @@ test("redirects the retired standalone OOD page while keeping its media route gu
   const invalid = await render("/api/ood-media?file=../../secret", { authenticated: true });
   assert.equal(invalid.status, 404);
 });
+
+test("publishes the pending review page and rejects unlisted media", async () => {
+  const response = await render("/review");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /已验收 clean 候选/);
+  assert.match(html, /尚未正式入库/);
+  assert.doesNotMatch(html, /\/mnt\//);
+  for (const file of ["../../secret", "0".repeat(64)+".mp4"]) {
+    const invalid = await render("/api/review-media?file="+encodeURIComponent(file));
+    assert.equal(invalid.status,404);
+  }
+});

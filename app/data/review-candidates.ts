@@ -21,6 +21,11 @@ export type ReviewCandidate = {
   finalCountKeySha256: string;
   selectionReportSha256: string;
   reviewStatus: "pending_human_video_review";
+  instruction: string;
+  qualification: { functional: boolean; clean: boolean; strongFidelity: boolean;
+    time: { status: string; passed?: boolean | null } };
+  contractId: string;
+  sourceCommit: string | null;
   media: ReviewMedia[];
 };
 export type ReviewTaskChunk = {

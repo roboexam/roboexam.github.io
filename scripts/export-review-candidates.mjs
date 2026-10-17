@@ -13,10 +13,8 @@ import {
 import path from "node:path";
 import { pendingReviewCandidates } from "./review-admission.mjs";
 
-const REVIEW_ROOT =
-  process.env.UNIBENCH_REVIEW_ROOT ??
-  "/mnt/gyc_ckp/benchmark2027/runtime/jobs/robodojo_data_generation/" +
-    "review_export_e1965050c32299e08794f69f3192a42d57c5c959ae08a9ff155363d98786f848";
+const registration = JSON.parse(await readFile(new URL("./pipeline-review-source.json", import.meta.url), "utf8"));
+const REVIEW_ROOT = process.env.UNIBENCH_REVIEW_ROOT ?? registration.root;
 const MEDIA_ROOT =
   process.env.UNIBENCH_REVIEW_MEDIA_ROOT ??
   "/mnt/gyc_ckp/benchmark2027/runtime/staging/robodojo_data_generation";
@@ -29,7 +27,7 @@ const REQUIRED_CHECKS = [
   "manifest_hash_verified",
   "not_present_in_curated_baseline",
   "selector_exit_code_zero",
-  "strict_selected",
+  "clean_selector_passed",
   "three_video_hashes_verified",
   "three_videos_fully_decodable",
 ];
@@ -56,7 +54,7 @@ async function publish(file, value) {
 }
 
 const snapshots = (await readdir(REVIEW_ROOT, { withFileTypes: true }))
-  .filter((entry) => entry.isDirectory() && entry.name.startsWith("snapshot_"))
+  .filter((entry) => entry.isDirectory() && entry.name.startsWith("snapshot_") && (process.env.UNIBENCH_REVIEW_ROOT || entry.name === registration.snapshotId))
   .map((entry) => path.join(REVIEW_ROOT, entry.name))
   .sort();
 assert.ok(snapshots.length > 0, "no complete review snapshot exists");
@@ -88,6 +86,7 @@ assert.equal(
   "benchmark2027.rolling_human_video_review_inventory.v1",
 );
 assert.equal(inventory.snapshot_id, snapshot.complete.snapshot_id);
+if (!process.env.UNIBENCH_REVIEW_ROOT) assert.equal(hash(inventoryBytes), registration.inventorySha256);
 assert.equal(inventory.review_status, "pending_human_video_review");
 assert.equal(inventory.admission_status, "not_authorized_not_admitted");
 assert.equal(inventory.candidate_count, inventory.candidates.length);
@@ -173,6 +172,10 @@ for (const candidate of pendingCandidates) {
     finalCountKeySha256: candidate.final_count_key_sha256,
     selectionReportSha256: candidate.selector.selection_report_sha256,
     reviewStatus: candidate.review_status,
+    instruction: candidate.instruction,
+    qualification: candidate.qualification,
+    contractId: candidate.contractId,
+    sourceCommit: candidate.sourceCommit,
     media,
   };
   if (!grouped.has(candidate.task)) grouped.set(candidate.task, []);

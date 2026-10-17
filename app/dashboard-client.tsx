@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Bot, Eye, GitBranch, Globe, MemoryStick, ShieldCheck, Telescope, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { LeaderboardView } from './components/leaderboard-view';
@@ -50,7 +51,7 @@ export default function DashboardClient() {
     <a className="skipLink" href="#main-content">Skip to content</a>
     <header className="researchNav">
       <button type="button" className="researchBrand" onClick={() => navigate('Overview')} aria-label="RoboExam home"><span className="brandGlyph" aria-hidden="true">r<span>.</span></span>RoboExam</button>
-      <nav aria-label="Primary navigation">{navigation.map(item => <button key={item} type="button" className={`researchNavItem ${page === item ? 'active' : ''}`} aria-current={page === item ? 'page' : undefined} onClick={() => navigate(item)}>{item}</button>)}</nav>
+      <nav aria-label="Primary navigation">{navigation.map(item => <button key={item} type="button" className={`researchNavItem ${page === item ? 'active' : ''}`} aria-current={page === item ? 'page' : undefined} onClick={() => navigate(item)}>{item}</button>)}<Link className="researchNavItem" href="/review">Review</Link></nav>
     </header>
     <main id="main-content" className="researchMain">
       {page === 'Overview' && <div className="content researchOverview">
