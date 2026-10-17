@@ -118,6 +118,35 @@ If a deployment fails after the service has stopped, leave the failure visible,
 fix it in a worktree, and rerun `update.sh`; do not start a partially built
 `dist` directory manually.
 
+## Incremental media integrity
+
+Normal releases still inspect every current manifest/catalog and every media path,
+size and file identity. The three largest media gates reuse a completed byte-hash
+receipt only when the expected SHA-256, resolved path, device, inode, size,
+nanosecond mtime/ctime and verifier-source hash all match. A first run or any
+changed identity hashes the actual bytes. Missing/corrupt caches safely require
+full hashing; wrong or missing media still rejects publication.
+
+Receipts live outside Git at
+/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_media_integrity/v1.
+UNIBENCH_MEDIA_INTEGRITY_CACHE_DIR can select an isolated validation cache.
+Never manually manufacture receipts from a prior log: the verifier must read
+and check the bytes itself. The cache is trusted derived state for normal file
+operations, not protection against a privileged actor forging all metadata.
+
+For a complete byte audit, explicitly run:
+
+    npm run audit:media:full
+
+This sets UNIBENCH_MEDIA_VERIFY_MODE=full for the full prebuild gate. The default
+is incremental; unsupported modes fail. Each gate logs files/bytes rehashed or
+reused, verifier identity, bindings and elapsed time. Cache entries are committed
+only after that gate's manifest and generated-output checks succeed.
+
+The staging Review page is separate from the admitted Datasets collection:
+new-scene candidates can be visually reviewed before curated admission, without
+changing their original physical, Action, fidelity, timing or selector verdicts.
+
 ## Media bundle
 
 Dashboard videos and images live in the immutable generated dataset at
@@ -259,8 +288,8 @@ giving its capability tags and Chinese instruction; without it the task
 publishes untagged and cannot be reached from the capability filters. The
 exporter warns by name when an entry is missing.
 
-This changes no data gate. The exporter still checks every manifest and video
-hash, byte sizes, official reward, task success, failure-semantics witness and
+This changes no data gate. The exporter still checks every manifest and video identity, rehashing new or
+changed files (or all files in explicit full-audit mode), byte sizes, official reward, task success, failure-semantics witness and
 numbering registry entry, and still rejects any catalog row that is not
 `strictly_selected`. The one gate that was removed is the per-task
 `raw_target_met` flag, which recorded stage progress rather than episode

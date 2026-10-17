@@ -1,18 +1,14 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import { createMediaVerifier } from "./media-integrity.mjs";
 import { readFile, writeFile, mkdir, realpath, stat } from "node:fs/promises";
 import path from "node:path";
 import { ROOT, CAMERAS, DOCUMENT_OOD_CONDITIONS, validateRow, validateChunk } from "./curated-dataset-contract.mjs";
 
 const check = process.argv.includes("--check");
+const mediaVerifier = await createMediaVerifier("curated-dataset");
 const read = async (file) => JSON.parse(await readFile(file, "utf8"));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
-async function hashFile(file) {
-  const h = createHash("sha256");
-  for await (const bytes of createReadStream(file)) h.update(bytes);
-  return h.digest("hex");
-}
 const catalogBytes = await readFile(path.join(ROOT, "catalog.json"));
 const catalog = JSON.parse(catalogBytes);
 assert.equal(catalog.schema_version, "benchmark2027.curated_catalog.v2");
@@ -68,7 +64,7 @@ for (const row of catalog.episodes) {
     const physical = await realpath(file);
     assert.ok(physical.startsWith(`${episodePhysicalRoot}/`));
     assert.equal((await stat(file)).size, ref.byte_size);
-    assert.equal(await hashFile(file), ref.sha256);
+    assert.equal(await mediaVerifier.verify(file, ref.sha256, ref.byte_size), ref.sha256);
     const s = ref.semantics;
     media.push({ camera, sha256: ref.sha256, bytes: ref.byte_size, frames: s.frame_count,
       fps: s.fps, duration: s.duration_seconds, url: `/api/curated-media?file=${ref.sha256}.mp4` });
@@ -127,6 +123,7 @@ await publish("app/data/generated/curated-dataset.json", {
   episodeCount: seen.size, mediaCount: catalog.episodes.length * 3, tasks,
 });
 await publish("app/data/generated/curated-media.json", mediaIndex);
+await mediaVerifier.finish({ catalogSha256, episodeCount: seen.size });
 console.log(`Curated dataset ${check ? "verified" : "exported"}: ${tasks.length} tasks, ${seen.size} episodes, ${catalog.episodes.length * 3} videos`);
 if (missingMetadata.length) {
   // Not fatal: the episodes are published either way. But a task with no tags

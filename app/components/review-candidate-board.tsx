@@ -18,6 +18,14 @@ import {
   type ReviewTaskChunk,
 } from "../data/review-candidates";
 
+const newSceneLabels: Record<string, string> = {
+  find_category_outlier: "B01 · 类别异类查找",
+  place_between_references: "B03 · 放在两个参照物之间",
+  mirror_pair_layout: "B04 · 镜像成对布局",
+  hold_water_mug: "B08 · 盛水杯稳定保持",
+};
+const sceneLabel = (id: string) => newSceneLabels[id] ? newSceneLabels[id] + " · " + id : id;
+
 function ReviewTaskWorkspace({ task }: { task: ReviewTask }) {
   const [chunk, setChunk] = useState<ReviewTaskChunk | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -174,7 +182,7 @@ export function ReviewCandidateBoard() {
     return () => cancelAnimationFrame(frame);
   }, []);
   const filtered = dataset.tasks.filter((task) =>
-    task.id.toLowerCase().includes(query.trim().toLowerCase()),
+    sceneLabel(task.id).toLowerCase().includes(query.trim().toLowerCase()),
   );
   const task =
     filtered.find((candidate) => candidate.id === taskId) ?? filtered[0] ?? null;
@@ -184,11 +192,11 @@ export function ReviewCandidateBoard() {
       <section className="reviewHero">
         <div>
           <div className="reviewEyebrow">
-            <ClipboardCheck size={16} /> ID CLEAN · HUMAN REVIEW
+            <ClipboardCheck size={16} /> 新增七场景 · ID CLEAN · HUMAN REVIEW
           </div>
           <h2>数据质检：已验收 clean 候选</h2>
           <p>
-            本轮 400 条 ID clean 采集的已完成部分：每条已通过独立验收及 clean selector。
+            新增七场景中的 B01、B03、B04、B08：本轮 400 条 ID clean 采集的已完成部分，每条已通过独立验收及 clean selector。
             三路原始视频同步播放；任务功能、强保真和正式时间资格分别展示。
           </p>
           <span><AlertTriangle size={15} />待人工质检 · 保留在 staging，尚未正式入库</span>
@@ -227,7 +235,7 @@ export function ReviewCandidateBoard() {
         >
           {filtered.map((row, index) => (
             <option key={row.id} value={row.id}>
-              {index + 1}. {row.id} · {row.count} 条
+              {index + 1}. {sceneLabel(row.id)} · {row.count} 条
             </option>
           ))}
         </select>
@@ -235,7 +243,7 @@ export function ReviewCandidateBoard() {
       {task ? (
         <>
           <div className="reviewTaskHeading">
-            <div><span>当前任务</span><h3>{task.id}</h3></div>
+            <div><span>新增场景</span><h3>{sceneLabel(task.id)}</h3></div>
             <strong>{task.count}<small>条待审核</small></strong>
           </div>
           <ReviewTaskWorkspace key={task.id} task={task} />

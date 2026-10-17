@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import { createMediaVerifier } from "./media-integrity.mjs";
 import {
   mkdir,
   readFile,
@@ -34,16 +34,12 @@ const REQUIRED_CHECKS = [
   "three_videos_fully_decodable",
 ];
 const check = process.argv.includes("--check");
+const mediaVerifier = await createMediaVerifier("review-candidates");
 
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const json = (value) => `${JSON.stringify(value)}\n`;
 const readJson = async (file) => JSON.parse(await readFile(file, "utf8"));
 
-async function hashFile(file) {
-  const digest = createHash("sha256");
-  for await (const bytes of createReadStream(file)) digest.update(bytes);
-  return digest.digest("hex");
-}
 
 async function publish(file, value) {
   const content = json(value);
@@ -138,7 +134,7 @@ for (const candidate of pendingCandidates) {
     const info = await stat(physical);
     assert.ok(info.isFile());
     assert.equal(info.size, source.manifest_byte_size);
-    assert.equal(await hashFile(physical), source.manifest_sha256);
+    assert.equal(await mediaVerifier.verify(physical, source.manifest_sha256, source.manifest_byte_size), source.manifest_sha256);
 
     const relativePath = path.relative(mediaRoot, physical);
     assert.ok(
@@ -232,6 +228,7 @@ await publish("app/data/generated/review-candidates.json", {
 });
 await publish("app/data/generated/review-media.json", mediaIndex);
 
+await mediaVerifier.finish({ inventorySha256: hash(inventoryBytes), snapshotId: inventory.snapshot_id });
 console.log(
   `Review candidates ${check ? "verified" : "exported"}: ` +
     `${tasks.length} tasks, ${episodeIds.size} candidates, ` +

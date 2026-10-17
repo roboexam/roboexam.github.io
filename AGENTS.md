@@ -44,6 +44,14 @@
 - User-visible changes must verify login, the affected model/metric flow, cross-model switching without stale evidence, and representative desktop/mobile layouts before release.
 - `tests/rendered-html.test.mjs` covers the real login route, anonymous redirect, and authenticated capability-matrix SSR. Keep it current when touching product rendering, but do not treat SSR assertions as a substitute for browser interaction, cross-model stale-state, or responsive-layout verification.
 
+## Media verification cost and review scope
+
+- Routine releases use incremental media integrity receipts for curated videos, the episode-media bundle, and staging review videos. Every run still validates current manifests/catalogs, paths, existence, sizes and file identity. Reuse a previous completed SHA-256 check only when expected hash, physical path, device, inode, size, nanosecond mtime/ctime and verifier revision all match.
+- New, replaced or modified files, missing/corrupt receipts, and changed verifier policy require actual byte hashing; missing files, wrong bytes and inconsistent evidence remain rejection conditions. Never seed receipts manually from old logs or success flags. Run npm run audit:media:full for an explicit complete byte audit.
+- Keep receipt caches outside Git under the managed runtime cache. They are disposable trusted derived state, not independent capture acceptance or cryptographic proof against privileged metadata forgery. Preserve full-audit mode and measure cold/hot checks when changing this gate.
+- UI-only changes must not trigger simulation, recapture, full video decoding or repeated hashing of unchanged frozen media. Validate affected flows and actual cross-page clicks before merging; SSR alone missed the installed vinext Link navigation failure.
+- The Review page can display allowlisted staging candidates before admission. Label new scene identities explicitly and keep human-review status, machine acceptance, fidelity, timing and formal dataset membership separate. Do not move candidates into curated merely to show them.
+
 ## Merge and 4090 release
 
 - Commit and validate in the personal worktree. Merge into a clean, coordinated `main` integration checkout only after reviewing the complete branch diff; worktree branches can be merged normally while they remain checked out elsewhere.
