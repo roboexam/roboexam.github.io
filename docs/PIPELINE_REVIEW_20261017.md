@@ -15,6 +15,7 @@ B04/B08 append-only accepted prefix states preserve earlier rejected results.
 The immutable inventory/provenance/COMPLETE records live under
 /mnt/gyc_ckp/benchmark2027/experiments/audits/dashboard_pipeline_review_20261017/.
 scripts/pipeline-review-source.json pins an exact snapshot and inventory hash.
+Legacy UNIBENCH_REVIEW_ROOT service settings cannot override this publication pin.
 The exporter verifies the pin and emits per-task public chunks plus the
 server-only media allowlist. It never reads arbitrary client-supplied paths.
 The public bundle contains stable identities/hashes and controlled media URLs;
