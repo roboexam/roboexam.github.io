@@ -37,9 +37,9 @@ const trackCapabilityTargets: Record<TrackId, string[]> = {
   T4: ['C5', 'C6', 'C7'],
 };
 
-export default function DashboardClient() {
-  const [page, setPage] = useState<Page>('Overview');
-  const [track, setTrack] = useState<TrackId>('T1');
+export default function DashboardClient({ initialPage = 'Overview', initialTrack = 'T1' }: { initialPage?: Page; initialTrack?: TrackId } = {}) {
+  const [page, setPage] = useState<Page>(initialPage);
+  const [track, setTrack] = useState<TrackId>(initialTrack);
   const [activeCapability, setActiveCapability] = useState<CapabilityId>('C1');
   const [detail, setDetail] = useState<MetricSelection | null>(null);
   function navigate(next: Page, nextTrack: TrackId = 'T1') {

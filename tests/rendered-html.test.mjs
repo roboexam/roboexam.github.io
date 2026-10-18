@@ -118,3 +118,18 @@ test("publishes the pending review page and rejects unlisted media", async () =>
     assert.equal(invalid.status,404);
   }
 });
+
+
+test("renders the current Track 1 results and exact selected execution video", async () => {
+  const response = await render("/track-1");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const text of ["Stack Bowls", "DeepSeek v4.1 Flash", "MiMo v2.6 Pro", "Kimi K3", "GPT-6 Astra", "48.33"]) assert.ok(html.includes(text), text);
+  assert.match(html, /api\/t1-media\/t1-stack-bowls-20261018-v1-gpt6-astra-layout136/);
+  assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
+});
+
+test("rejects an unlisted Track 1 video in the built server", async () => {
+  const response = await render("/api/t1-media/unlisted-video", { accept: "video/mp4" });
+  assert.equal(response.status, 404);
+});

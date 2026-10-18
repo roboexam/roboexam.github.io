@@ -1,0 +1,968 @@
+{
+  "schemaVersion": "roboexam.t1-results.v1",
+  "resultVersion": "t1-stack-bowls-20261018-v1",
+  "generatedAt": "2026-10-18T06:36:27.804327+00:00",
+  "task": {
+    "id": "stack_bowls",
+    "label": "Stack Bowls",
+    "layoutIds": [
+      124,
+      136,
+      125,
+      138,
+      134
+    ]
+  },
+  "models": [
+    {
+      "id": "deepseek",
+      "label": "DeepSeek v4.1 Flash",
+      "family": "deepseek",
+      "requestModel": "ciyuan/deepseek-v4.1-flash",
+      "responseModel": "deepseek-v4-1-flash-260910",
+      "answered": 25,
+      "expected": 25,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 40,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 40,
+        "c": 0,
+        "composite": 30
+      },
+      "maxProgress": 0
+    },
+    {
+      "id": "mimo",
+      "label": "MiMo v2.6 Pro",
+      "family": "mimo",
+      "requestModel": "internal-mimo-v2.6-pro",
+      "responseModel": "mimo-v2.6-pro",
+      "answered": 25,
+      "expected": 25,
+      "scores": {
+        "count": 100,
+        "color": 80,
+        "a2": 6.666666666666667,
+        "b1": 40,
+        "c1": 0,
+        "a1": 90,
+        "a": 48.333333333333336,
+        "b": 40,
+        "c": 0,
+        "composite": 29.444444444444446
+      },
+      "maxProgress": 15
+    },
+    {
+      "id": "kimi",
+      "label": "Kimi K3",
+      "family": "kimi",
+      "requestModel": "kimi-k3",
+      "responseModel": "kimi-k3",
+      "answered": 22,
+      "expected": 25,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 16.666666666666664,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 58.333333333333336,
+        "b": 0,
+        "c": 0,
+        "composite": 19.444444444444446
+      },
+      "maxProgress": 0
+    },
+    {
+      "id": "gpt6-astra",
+      "label": "GPT-6 Astra",
+      "family": "gpt6-astra",
+      "requestModel": "ciyuan/gpt-6-astra",
+      "responseModel": "gpt-6-astra",
+      "answered": 25,
+      "expected": 25,
+      "scores": {
+        "count": 100,
+        "color": 80,
+        "a2": 100,
+        "b1": 50,
+        "c1": 0,
+        "a1": 90,
+        "a": 95,
+        "b": 50,
+        "c": 0,
+        "composite": 48.333333333333336
+      },
+      "maxProgress": 15
+    }
+  ],
+  "episodes": [
+    {
+      "id": "t1-stack-bowls-20261018-v1-deepseek-layout124",
+      "modelId": "deepseek",
+      "layoutId": 124,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 50,
+        "c": 0,
+        "composite": 33.33333333333333
+      },
+      "execution": {
+        "steps": 83,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "stationary_executed_actions",
+        "elapsedSeconds": 1320.0973211028613
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-deepseek-layout124",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-deepseek-layout124",
+        "sha256": "d47f744a28d68f1250c63cb32553e885033339e34502e743688352bc36325e0e",
+        "bytes": 276233,
+        "frames": 84,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "b7a5e6f602d5407e6321e29b08ffafb39164ace58b48e0a9bb027937df95af79",
+        "executionSealSha256": "ca05ca24caed1f24208d498f1619cee8024a7a7e13826a4bd07a463074907617",
+        "sameEpisode": false,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-deepseek-layout136",
+      "modelId": "deepseek",
+      "layoutId": 136,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 50,
+        "c": 0,
+        "composite": 33.33333333333333
+      },
+      "execution": {
+        "steps": 500,
+        "progress": 0,
+        "success": null,
+        "state": "budget-censored",
+        "reason": "budget_censored",
+        "elapsedSeconds": 4481.1710738060065
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-deepseek-layout136",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-deepseek-layout136",
+        "sha256": "6a1442a2982ac97e2754ca91152cb0511c40c8a2dfd3195037b5251e2bd5370a",
+        "bytes": 1536399,
+        "frames": 501,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "d7c68f128c0bcc7d05a7afdf893371ff1fe32ebd6475640d76e0b331964be85c",
+        "executionSealSha256": "93783da15278c88fc7400f747e09d1087a71f6e4c1feca5d16ab136fa7d9cc4f",
+        "sameEpisode": false,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-deepseek-layout125",
+      "modelId": "deepseek",
+      "layoutId": 125,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 50,
+        "c": 0,
+        "composite": 33.33333333333333
+      },
+      "execution": {
+        "steps": 368,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "consecutive_physical_action_rejections",
+        "elapsedSeconds": 1750.9051914659794
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-deepseek-layout125",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-deepseek-layout125",
+        "sha256": "5dbb481e5ad23dd1175e985427cc87cde23f2135624e3c87595f4fd6b5d2b412",
+        "bytes": 1620972,
+        "frames": 369,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "c3a76eefbab3938a3a83286261be3ec6d547d2ecdd890334471e9f22f802d2f4",
+        "executionSealSha256": "c83262f82a93e92790d19016524375d880d30601ffda3a84cca4876573f18800",
+        "sameEpisode": false,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-deepseek-layout138",
+      "modelId": "deepseek",
+      "layoutId": 138,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 0,
+        "c": 0,
+        "composite": 16.666666666666664
+      },
+      "execution": {
+        "steps": 103,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "stationary_executed_actions",
+        "elapsedSeconds": 1405.9872356969863
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-deepseek-layout138",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-deepseek-layout138",
+        "sha256": "eadfb9721d68780feae0852f109d00163979bdef458616cb24b5c647d6cee1a4",
+        "bytes": 384686,
+        "frames": 104,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "258d3b23b6007f859411efaf70a0e6bd2220657baf2aab43e631bf5cac59d487",
+        "executionSealSha256": "187c00356592719c50bb7963041cbe30dc630b8be1b8965adb9c550ba484faa6",
+        "sameEpisode": false,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-deepseek-layout134",
+      "modelId": "deepseek",
+      "layoutId": 134,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 50,
+        "c": 0,
+        "composite": 33.33333333333333
+      },
+      "execution": {
+        "steps": 500,
+        "progress": 0,
+        "success": null,
+        "state": "budget-censored",
+        "reason": "budget_censored",
+        "elapsedSeconds": 1362.1481783320196
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-deepseek-layout134",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-deepseek-layout134",
+        "sha256": "a8b67ebee91dc48a08dad63879daf0703ffb754d5909c7c9423707d53db11670",
+        "bytes": 1861559,
+        "frames": 501,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "67e901832411b19987e6f0508bce551bfb0cccada53e07acc733a823cee206e8",
+        "executionSealSha256": "c62802683f78d8fe327f9335de8f0a7f6c68387f4f60ce7e753f8a0ab64e1471",
+        "sameEpisode": false,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-mimo-layout124",
+      "modelId": "mimo",
+      "layoutId": 124,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 50,
+        "c": 0,
+        "composite": 33.33333333333333
+      },
+      "execution": {
+        "steps": 113,
+        "progress": 0,
+        "success": null,
+        "state": "infrastructure-error",
+        "reason": "http_502",
+        "elapsedSeconds": null
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-mimo-layout124",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-mimo-layout124",
+        "sha256": "5e0d33e41e153b2c6b8a81c2015e5efd96a9019d8791ae40bd0f8046fb7b6236",
+        "bytes": 405971,
+        "frames": 114,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "70bdd7ca9595e78f7e5b83870e7d6e11574301e48204f56226622c5d96ad1e15",
+        "executionSealSha256": "70bdd7ca9595e78f7e5b83870e7d6e11574301e48204f56226622c5d96ad1e15",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-mimo-layout136",
+      "modelId": "mimo",
+      "layoutId": 136,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 50,
+        "c": 0,
+        "composite": 33.33333333333333
+      },
+      "execution": {
+        "steps": 339,
+        "progress": 15,
+        "success": null,
+        "state": "infrastructure-error",
+        "reason": "stream_transport_failure",
+        "elapsedSeconds": null
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-mimo-layout136",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-mimo-layout136",
+        "sha256": "81d049478dd557519ee104e38c2b63ea17e025311d6ab2457672cfd51f1c6ce3",
+        "bytes": 1565741,
+        "frames": 340,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "26269ed00a63e3e3930b2db6125f793be04713047b054af75a1a2c6054729183",
+        "executionSealSha256": "26269ed00a63e3e3930b2db6125f793be04713047b054af75a1a2c6054729183",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-mimo-layout125",
+      "modelId": "mimo",
+      "layoutId": 125,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 0,
+        "a2": 33.33333333333333,
+        "b1": 0,
+        "c1": 0,
+        "a1": 50,
+        "a": 41.666666666666664,
+        "b": 0,
+        "c": 0,
+        "composite": 13.888888888888888
+      },
+      "execution": {
+        "steps": 500,
+        "progress": 15,
+        "success": null,
+        "state": "budget-censored",
+        "reason": "budget_censored",
+        "elapsedSeconds": 7756.032742748968
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-mimo-layout125",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-mimo-layout125",
+        "sha256": "8a642c540d3c99ae0f718e29aac841eba7180ed3eb376eb35cb57042fbf90839",
+        "bytes": 3861396,
+        "frames": 501,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "03b3e49d255b63ea7641a70a6c204fa5e769db71b8c12ce146cdd756993e150e",
+        "executionSealSha256": "03b3e49d255b63ea7641a70a6c204fa5e769db71b8c12ce146cdd756993e150e",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-mimo-layout138",
+      "modelId": "mimo",
+      "layoutId": 138,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 0,
+        "c": 0,
+        "composite": 16.666666666666664
+      },
+      "execution": {
+        "steps": 475,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "model_insufficient_control",
+        "elapsedSeconds": 12200.565546758939
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-mimo-layout138",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-mimo-layout138",
+        "sha256": "595261b625165811d937b8c8dd43768fd1bec2c4171c01ef0d16b42a22d672c6",
+        "bytes": 1665069,
+        "frames": 476,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "edc9929b59009bae578bf8a1047e61d98c1e4216ec929eb4d0f363e3b227bf81",
+        "executionSealSha256": "edc9929b59009bae578bf8a1047e61d98c1e4216ec929eb4d0f363e3b227bf81",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-mimo-layout134",
+      "modelId": "mimo",
+      "layoutId": 134,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 100,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 100,
+        "c": 0,
+        "composite": 50
+      },
+      "execution": {
+        "steps": 402,
+        "progress": 15,
+        "success": null,
+        "state": "budget-censored",
+        "reason": "resource_censored",
+        "elapsedSeconds": 21613.40831547184
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-mimo-layout134",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-mimo-layout134",
+        "sha256": "8e44608d7331d02d764e0e249215d9daed2930677b08d91478ed10a7fc772b2c",
+        "bytes": 1738868,
+        "frames": 403,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "2ef994c3b48026f26540b1167a8614946d23746a95c89d8454914bb012068e53",
+        "executionSealSha256": "2ef994c3b48026f26540b1167a8614946d23746a95c89d8454914bb012068e53",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-kimi-layout124",
+      "modelId": "kimi",
+      "layoutId": 124,
+      "answered": 2,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": null,
+        "b1": null,
+        "c1": null,
+        "a1": 100,
+        "a": 100,
+        "b": null,
+        "c": null,
+        "composite": null
+      },
+      "execution": {
+        "steps": 0,
+        "progress": 0,
+        "success": null,
+        "state": "initial-incomplete",
+        "reason": "http_502",
+        "elapsedSeconds": null
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-kimi-layout124",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-kimi-layout124",
+        "sha256": "093a6a3b056295cf3ccd84dad4420819d1b31a2e004a9bf1e579835e12c50bb3",
+        "bytes": 25615,
+        "frames": 1,
+        "fps": 25,
+        "hasMotion": false
+      },
+      "provenance": {
+        "initialSealSha256": "d372f866cb3a312ed07e4d4ad3a287a3e9c917a25c509018cd42eaa284e55c12",
+        "executionSealSha256": "d372f866cb3a312ed07e4d4ad3a287a3e9c917a25c509018cd42eaa284e55c12",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-kimi-layout136",
+      "modelId": "kimi",
+      "layoutId": 136,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 0,
+        "c": 0,
+        "composite": 16.666666666666664
+      },
+      "execution": {
+        "steps": 87,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "no_native_step_progress",
+        "elapsedSeconds": 2783.377291207202
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-kimi-layout136",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-kimi-layout136",
+        "sha256": "febd560e8fcdeb13f991171d44b22cfc891188055c675ae3929042cf2a4ed15e",
+        "bytes": 406978,
+        "frames": 88,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "ebf14863b6adef2953f66c1f39a59865a2d5daed155c1589bb54f11bb63198be",
+        "executionSealSha256": "ebf14863b6adef2953f66c1f39a59865a2d5daed155c1589bb54f11bb63198be",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-kimi-layout125",
+      "modelId": "kimi",
+      "layoutId": 125,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 66.66666666666666,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 83.33333333333333,
+        "b": 0,
+        "c": 0,
+        "composite": 27.777777777777775
+      },
+      "execution": {
+        "steps": 0,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "no_native_step_progress",
+        "elapsedSeconds": 1647.6039259878453
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-kimi-layout125",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-kimi-layout125",
+        "sha256": "988b77fb6f63798b5bb79220de2d2d6e8ab3313233f6f511002eda95314050ee",
+        "bytes": 36403,
+        "frames": 1,
+        "fps": 25,
+        "hasMotion": false
+      },
+      "provenance": {
+        "initialSealSha256": "e0da1051ce6721c977d07c974c69bc533acee310831c6e42e80eb155dac52ec8",
+        "executionSealSha256": "e0da1051ce6721c977d07c974c69bc533acee310831c6e42e80eb155dac52ec8",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-kimi-layout138",
+      "modelId": "kimi",
+      "layoutId": 138,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 0,
+        "c": 0,
+        "composite": 16.666666666666664
+      },
+      "execution": {
+        "steps": 0,
+        "progress": 0,
+        "success": null,
+        "state": "infrastructure-error",
+        "reason": "serial_tool_contract_violation",
+        "elapsedSeconds": null
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-kimi-layout138",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-kimi-layout138",
+        "sha256": "3fd8d37dd3707308d248bfc9c3b606913368a5933d29ea89fa01ab6c6b9a1cff",
+        "bytes": 25555,
+        "frames": 1,
+        "fps": 25,
+        "hasMotion": false
+      },
+      "provenance": {
+        "initialSealSha256": "e71596af2efcccea6bfea859483b71051de04db15e14aa54f21ca08bc10df8e7",
+        "executionSealSha256": "e71596af2efcccea6bfea859483b71051de04db15e14aa54f21ca08bc10df8e7",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-kimi-layout134",
+      "modelId": "kimi",
+      "layoutId": 134,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 0,
+        "b1": 0,
+        "c1": 0,
+        "a1": 100,
+        "a": 50,
+        "b": 0,
+        "c": 0,
+        "composite": 16.666666666666664
+      },
+      "execution": {
+        "steps": 0,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "no_native_step_progress",
+        "elapsedSeconds": 1175.6419794480316
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-kimi-layout134",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-kimi-layout134",
+        "sha256": "68550ceace98a55f408e9142485b4d0a1cbce5cb8777997a06002fa1b419ef47",
+        "bytes": 25767,
+        "frames": 1,
+        "fps": 25,
+        "hasMotion": false
+      },
+      "provenance": {
+        "initialSealSha256": "c88fb0b4b120277cc67baa9e3b11b504c4ed57ac55dc438f09adc26ac684075c",
+        "executionSealSha256": "c88fb0b4b120277cc67baa9e3b11b504c4ed57ac55dc438f09adc26ac684075c",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout124",
+      "modelId": "gpt6-astra",
+      "layoutId": 124,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 100,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 100,
+        "b": 50,
+        "c": 0,
+        "composite": 50
+      },
+      "execution": {
+        "steps": 471,
+        "progress": 0,
+        "success": null,
+        "state": "budget-censored",
+        "reason": "resource_censored",
+        "elapsedSeconds": 963.5435552040581
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout124",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-gpt6-astra-layout124",
+        "sha256": "5de336e1537283df95fab7baf0fb706f7db507c3324c59cd87b76ba34aeda96f",
+        "bytes": 2257206,
+        "frames": 472,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "06e179fcc3c0b2539e3b8373bed1de3baea967ea733b8b66d3e28a49bfadcb62",
+        "executionSealSha256": "958c789c3493c1abcbe93a16c852e2977f35ea6779541070b10649116d8f61aa",
+        "sameEpisode": false,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout136",
+      "modelId": "gpt6-astra",
+      "layoutId": 136,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 100,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 100,
+        "b": 50,
+        "c": 0,
+        "composite": 50
+      },
+      "execution": {
+        "steps": 500,
+        "progress": 15,
+        "success": null,
+        "state": "budget-censored",
+        "reason": "budget_censored",
+        "elapsedSeconds": 703.662996289786
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout136",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-gpt6-astra-layout136",
+        "sha256": "fecf336c9acec74f2aad82a5a216b1d465b6612d652935833b19952eb661cf9d",
+        "bytes": 2170031,
+        "frames": 501,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "a8d29473618da3dda623941781d475f13e911d845b4760a6aeb34728c2f8964d",
+        "executionSealSha256": "a8d29473618da3dda623941781d475f13e911d845b4760a6aeb34728c2f8964d",
+        "sameEpisode": true,
+        "attempt": "independent-attempt"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout125",
+      "modelId": "gpt6-astra",
+      "layoutId": 125,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 0,
+        "a2": 100,
+        "b1": 50,
+        "c1": 0,
+        "a1": 50,
+        "a": 75,
+        "b": 50,
+        "c": 0,
+        "composite": 41.66666666666667
+      },
+      "execution": {
+        "steps": 480,
+        "progress": 15,
+        "success": false,
+        "state": "incomplete",
+        "reason": "model_insufficient_control",
+        "elapsedSeconds": 806.7554316180758
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout125",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-gpt6-astra-layout125",
+        "sha256": "06ad65550203aa512b0e6d7d6b80b8499c0515827200aa97e02f768ad4c3b6ec",
+        "bytes": 4053981,
+        "frames": 481,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "1442b5f0f7936397bc252755432335540b0c4c8ed48cc19b82336f2828432a59",
+        "executionSealSha256": "1442b5f0f7936397bc252755432335540b0c4c8ed48cc19b82336f2828432a59",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout138",
+      "modelId": "gpt6-astra",
+      "layoutId": 138,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 100,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 100,
+        "b": 50,
+        "c": 0,
+        "composite": 50
+      },
+      "execution": {
+        "steps": 432,
+        "progress": 0,
+        "success": false,
+        "state": "incomplete",
+        "reason": "model_repeated_stall",
+        "elapsedSeconds": 834.6914367408026
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout138",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-gpt6-astra-layout138",
+        "sha256": "5bcd73f3854161f4edcf8bc267331d8b32b4bf534c141db6b23122e9b05da438",
+        "bytes": 2048452,
+        "frames": 433,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "5d61a131dd6bbc21743df5f872159776e09a9daa0600bb88a173e9e6464eab9f",
+        "executionSealSha256": "5d61a131dd6bbc21743df5f872159776e09a9daa0600bb88a173e9e6464eab9f",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    },
+    {
+      "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout134",
+      "modelId": "gpt6-astra",
+      "layoutId": 134,
+      "answered": 5,
+      "expected": 5,
+      "scores": {
+        "count": 100,
+        "color": 100,
+        "a2": 100,
+        "b1": 50,
+        "c1": 0,
+        "a1": 100,
+        "a": 100,
+        "b": 50,
+        "c": 0,
+        "composite": 50
+      },
+      "execution": {
+        "steps": 483,
+        "progress": 15,
+        "success": false,
+        "state": "incomplete",
+        "reason": "model_insufficient_control",
+        "elapsedSeconds": 689.2124351318926
+      },
+      "video": {
+        "id": "t1-stack-bowls-20261018-v1-gpt6-astra-layout134",
+        "url": "/api/t1-media/t1-stack-bowls-20261018-v1-gpt6-astra-layout134",
+        "sha256": "800c5a93122683c2daf056e8fddaa40de671ad9b9624f79e57154745770c513b",
+        "bytes": 2028527,
+        "frames": 484,
+        "fps": 25,
+        "hasMotion": true
+      },
+      "provenance": {
+        "initialSealSha256": "e98533360d53d2362c90824cd2dd3d0de613ca00e09b3b0d85817cbc76fb30b8",
+        "executionSealSha256": "e98533360d53d2362c90824cd2dd3d0de613ca00e09b3b0d85817cbc76fb30b8",
+        "sameEpisode": true,
+        "attempt": "recorded-run"
+      }
+    }
+  ],
+  "scorer": {
+    "commit": "da4ab4e9b06a9d1450afb3a382618a8a27f52388",
+    "policy": "semantic-v1",
+    "reportSha256": "dbe0180c90a33e30fb8c6bf7318efbfee1c43cff927dc8c6fe7a9e026c65e294",
+    "notes": [
+      "Initial VQA uses the recorded first answers and their original frozen truth.",
+      "C1 retains the deployed parameter-matching rule; zero is not a manual judgment of planning quality.",
+      "Some initial answers and execution evidence come from separate recorded runs; their seals and source relation remain distinct.",
+      "Observed native progress is separate from final task success; C2/C3 have not been measured."
+    ]
+  },
+  "sourceHashes": {
+    "initial-rescore": "dbe0180c90a33e30fb8c6bf7318efbfee1c43cff927dc8c6fe7a9e026c65e294",
+    "selection": "541e74f44ed0e5b08a2da0c032f44ca809803aa38c4f253441bfb5309dae4d87",
+    "native-progress": "b5855bab397f610dc75fd60fb2c11241bce67246d0b0f108ff15d54152f221b8",
+    "gpt-overview": "5c1c0a437e3acab92a200fc44b64590590548801ca1f5998c0de5583ff80e668",
+    "initial-sources": "f16422c5a69667ec7b5b1e027d57c2511b4055b5fa1d7f3c59bd779fcee320ac",
+    "execution-metadata": "5b974df638bdab6231a0cf9130c03c291b99673048a178a5322c90831c3660ff",
+    "publication-manifest": "43dee92183f4f29461225f643b12b43909b9f5bffaeb9296911f1e93b2955992"
+  }
+}
