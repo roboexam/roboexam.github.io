@@ -15,7 +15,7 @@ export function pendingReviewCandidates(candidates, catalog) {
   return candidates.filter((candidate) => {
     assert.ok(!seen.has(candidate.episode_id), "duplicate review episode ID");
     seen.add(candidate.episode_id);
-    const episode = admitted.get(candidate.episode_id);
+    const episode = admitted.get(candidate.original_episode_id ?? candidate.episode_id);
     if (!episode) return true;
     // Repeated attempts can share an episode ID. A different manifest remains
     // pending and must still pass all original staging/media checks.

@@ -12,6 +12,7 @@ import {
 } from "node:fs/promises";
 import path from "node:path";
 import { pendingReviewCandidates } from "./review-admission.mjs";
+import { assertReviewCandidate, reviewMediaRoot } from "./review-contract.mjs";
 
 const registration = JSON.parse(await readFile(new URL("./pipeline-review-source.json", import.meta.url), "utf8"));
 // A release always consumes its exact committed registration; legacy service
@@ -28,8 +29,6 @@ const REQUIRED_CHECKS = [
   "deduplicated_within_snapshot",
   "manifest_hash_verified",
   "not_present_in_curated_baseline",
-  "selector_exit_code_zero",
-  "clean_selector_passed",
   "three_video_hashes_verified",
   "three_videos_fully_decodable",
 ];
@@ -92,7 +91,7 @@ assert.equal(inventory.candidate_count, snapshot.complete.candidate_count);
 assert.equal(inventory.video_count, inventory.candidate_count * CAMERAS.length);
 assert.equal(inventory.video_count, snapshot.complete.video_count);
 
-const mediaRoot = await realpath(MEDIA_ROOT);
+const mediaRoots = { staging: await realpath(MEDIA_ROOT) };
 const mediaIndex = {};
 const grouped = new Map();
 const episodeIds = new Set();
@@ -110,6 +109,7 @@ for (const candidate of pendingCandidates) {
     assert.equal(candidate.checks[key], true, `${candidate.episode_id}: ${key}`);
   }
 
+  assertReviewCandidate(candidate);
   const media = [];
   for (const camera of CAMERAS) {
     const source = candidate.videos[camera];
@@ -126,6 +126,10 @@ for (const candidate of pendingCandidates) {
     assert.ok(Number.isSafeInteger(source.manifest_frame_count));
     assert.ok(source.manifest_fps > 0);
 
+    const rootId = source.media_root_id ?? "staging";
+    reviewMediaRoot(rootId);
+    mediaRoots[rootId] ??= await realpath(reviewMediaRoot(rootId));
+    const mediaRoot = mediaRoots[rootId];
     const physical = await realpath(source.path);
     assert.ok(
       physical.startsWith(`${mediaRoot}${path.sep}`),
@@ -143,14 +147,10 @@ for (const candidate of pendingCandidates) {
         !path.isAbsolute(relativePath),
     );
     const previous = mediaIndex[source.manifest_sha256];
-    const reference = { relativePath, bytes: source.manifest_byte_size };
-    assert.ok(
-      !previous ||
-        (previous.relativePath === reference.relativePath &&
-          previous.bytes === reference.bytes),
-      `video hash collision: ${source.manifest_sha256}`,
-    );
-    mediaIndex[source.manifest_sha256] = reference;
+    const reference = { rootId, relativePath, bytes: source.manifest_byte_size };
+    assert.ok(!previous || previous.bytes === reference.bytes, "inconsistent media hash/size");
+    // Byte-identical videos may belong to different immutable captures.
+    mediaIndex[source.manifest_sha256] ??= reference;
     media.push({
       camera,
       sha256: source.manifest_sha256,
@@ -171,15 +171,27 @@ for (const candidate of pendingCandidates) {
     selectionReportSha256: candidate.selector.selection_report_sha256,
     reviewStatus: candidate.review_status,
     instruction: candidate.instruction,
-    qualification: candidate.qualification,
+    qualification: {
+      ...candidate.qualification,
+      time: { status: candidate.qualification.time.status,
+        passed: typeof candidate.qualification.time.passed === "boolean" ? candidate.qualification.time.passed : null },
+    },
     contractId: candidate.contractId,
     sourceCommit: candidate.sourceCommit,
+    originalEpisodeId: candidate.original_episode_id ?? candidate.episode_id,
+    machineStatus: candidate.machineStatus ?? "clean_selected",
+    sourceClass: candidate.sourceClass ?? "self_capture",
+    memberships: candidate.memberships ?? [],
+    evidenceCount: candidate.evidence?.length ?? null,
     media,
   };
   if (!grouped.has(candidate.task)) grouped.set(candidate.task, []);
   grouped.get(candidate.task).push(row);
 }
 
+for (const taskId of inventory.task_scope ?? []) {
+  if (!grouped.has(taskId)) grouped.set(taskId, []);
+}
 if (!check) await rm("public/review-data", { recursive: true, force: true });
 const tasks = [];
 for (const [taskId, episodes] of [...grouped].sort(([a], [b]) =>
@@ -198,7 +210,10 @@ for (const [taskId, episodes] of [...grouped].sort(([a], [b]) =>
   const digest = hash(content);
   const dataUrl = `/review-data/${taskId}-${digest.slice(0, 16)}.json`;
   await publish(path.join("public", dataUrl), chunk);
-  tasks.push({ id: taskId, count: episodes.length, dataUrl, sha256: digest });
+  tasks.push({ id: taskId, count: episodes.length, dataUrl, sha256: digest,
+    cleanCount: episodes.filter(row => row.qualification.clean === true).length,
+    technicalCount: episodes.filter(row => row.qualification.clean === null).length,
+    status: episodes.length ? "available" : "no_publishable_candidate" });
 }
 
 if (check) {
@@ -217,7 +232,10 @@ await publish("app/data/generated/review-candidates.json", {
   reviewStatus: "pending_human_video_review",
   admissionStatus: "not_authorized_not_admitted",
   candidateCount: episodeIds.size,
-  mediaCount: Object.keys(mediaIndex).length,
+  mediaCount: [...grouped.values()].reduce((sum, rows) => sum + rows.length * 3, 0),
+  uniqueMediaCount: Object.keys(mediaIndex).length,
+  cleanCandidateCount: [...grouped.values()].flat().filter(row => row.qualification.clean === true).length,
+  technicalCandidateCount: [...grouped.values()].flat().filter(row => row.qualification.clean === null).length,
   generatedAt: inventory.generated_at,
   rolling: {
     previousSnapshotId: inventory.rolling.previous_snapshot_id,

@@ -46,5 +46,5 @@ test("strict-clean review chunks and media allowlist agree", () => {
   assert.equal(candidates, index.candidateCount);
   assert.equal(ids.size, index.candidateCount);
   assert.equal(videos, index.mediaCount);
-  assert.equal(Object.keys(media).length, index.mediaCount);
+  assert.equal(Object.keys(media).length, index.uniqueMediaCount ?? index.mediaCount);
 });

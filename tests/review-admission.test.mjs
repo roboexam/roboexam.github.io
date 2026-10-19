@@ -32,3 +32,10 @@ test("identity collisions and malformed catalogs fail closed", () => {
     ...catalog([row]), schema_version: "unknown",
   }));
 });
+
+test("a publication alias preserves original immutable admission identity", () => {
+  const hash="c".repeat(64);
+  const row={...candidate("episode:publication",hash),original_episode_id:"episode:original"};
+  assert.deepEqual(pendingReviewCandidates([row],catalog([candidate("episode:original",hash)])),[]);
+  assert.deepEqual(pendingReviewCandidates([row],catalog([candidate("episode:original","d".repeat(64))])),[row]);
+});

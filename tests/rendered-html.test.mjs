@@ -110,8 +110,8 @@ test("publishes the pending review page and rejects unlisted media", async () =>
   const response = await render("/review");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /已验收 clean 候选/);
-  assert.match(html, /尚未正式入库/);
+  assert.match(html, /新增构造候选/);
+  assert.match(html, /不自动入库/);
   assert.doesNotMatch(html, /\/mnt\//);
   for (const file of ["../../secret", "0".repeat(64)+".mp4"]) {
     const invalid = await render("/api/review-media?file="+encodeURIComponent(file));
