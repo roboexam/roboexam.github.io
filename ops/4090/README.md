@@ -121,7 +121,7 @@ fix it in a worktree, and rerun `update.sh`; do not start a partially built
 ## Incremental media integrity
 
 Normal releases still inspect every current manifest/catalog and every media path,
-size and file identity. The three largest media gates reuse a completed byte-hash
+size and file identity. Large media gates reuse a completed byte-hash
 receipt only when the expected SHA-256, resolved path, device, inode, size,
 nanosecond mtime/ctime and verifier-source hash all match. A first run or any
 changed identity hashes the actual bytes. Missing/corrupt caches safely require
@@ -149,7 +149,7 @@ changing their original physical, Action, fidelity, timing or selector verdicts.
 
 ### Measured full and incremental checks (2026-10-17)
 
-Same frozen inputs and verifier, with all three gates passing:
+Historical pre-rendition measurements, with the three then-existing gates passing:
 
 | Gate | Files | Full byte audit | Incremental check | Incremental video bytes rehashed |
 |---|---:|---:|---:|---:|
@@ -160,7 +160,9 @@ Same frozen inputs and verifier, with all three gates passing:
 Total: 463.0 s full versus 157.4 s incremental; 71,211,425,408 video bytes
 were rehashed in the full run and zero in the incremental run. Both runs also
 checked the current source manifests, generated bundles and file identities.
-These figures cover the three gates, not the entire release. The cold run
+The video-rendition gate now adds 14,586 files and 9,948,694,734 bytes to the
+same receipt-backed policy. These figures cover the historical three gates,
+not the entire current release. The cold run
 overlapped a worktree build; the hot run followed it, so wall-time ratios are
 observations under those loads, not an isolated benchmark guarantee.
 The normal production build and remaining checks still run.
@@ -176,6 +178,32 @@ Dashboard videos and images live in the immutable generated dataset at
 `bash ops/4090/link-media.sh`. The script validates the canonical storage role,
 refuses to replace an unexpected path, and may be pointed at another verified
 version through `DASHBOARD_MEDIA_BUNDLE_DIR`.
+
+## Review and Datasets video renditions
+
+Review and Datasets preserve their canonical capture URLs, byte sizes and
+SHA-256 identities. Browser playback defaults to a separate 360p/25 fps H.264
+rendition and can switch back to `480p · Original`; a rendition is never
+admission or metric evidence.
+
+Renditions live outside Git at
+`/mnt/gyc_ckp/benchmark2027/data/generated/dashboard-video-renditions/v1`.
+The versioned allowlist is
+`app/data/generated/video-renditions.json`, and
+`/api/video-renditions` serves only entries in that allowlist with byte-range
+and immutable ETag support.
+
+Build missing renditions without modifying source media:
+
+    npm run build:video-renditions -- --jobs 8
+
+Verify exact source coverage, file identity, duration, resolution and hashes:
+
+    npm run check:video-renditions
+
+`UNIBENCH_VIDEO_RENDITION_ROOT` may select another validated copy for recovery
+or isolated testing. A normal release refuses to proceed when any current
+Review, curated Dataset or staging OOD source lacks a verified rendition.
 
 Use `bash ops/4090/start.sh` and `bash ops/4090/stop.sh` to start or stop the
 service without rebuilding it. Runtime logs are stored at

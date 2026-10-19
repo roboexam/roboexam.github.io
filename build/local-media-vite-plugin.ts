@@ -29,6 +29,10 @@ import {
   GET as getReviewMedia,
   HEAD as headReviewMedia,
 } from "../app/api/review-media/route";
+import {
+  GET as getVideoRendition,
+  HEAD as headVideoRendition,
+} from "../app/api/video-renditions/route";
 
 type RouteContext = { params: Promise<{ segments: string[] }> };
 type RouteHandler = (request: Request, context: RouteContext) => Response | Promise<Response>;
@@ -70,6 +74,13 @@ function matchRoute(pathname: string): RouteMatch | null {
   }
   if (pathname === "/api/review-media") {
     return { get: getReviewMedia, head: headReviewMedia, context: context() };
+  }
+  if (pathname === "/api/video-renditions") {
+    return {
+      get: getVideoRendition,
+      head: headVideoRendition,
+      context: context(),
+    };
   }
   return (
     pathMatch(

@@ -78,7 +78,7 @@ test("serves host-mounted media through a dev-only Vite bridge", async () => {
   ]);
   assert.match(vite, /localMedia\(\)/);
   assert.match(bridge, /apply:\s*"serve"/);
-  for (const route of ["curated-media", "ood-media", "review-media", "episode-media", "l1-minimal-media", "l1-phase1-media"]) {
+  for (const route of ["curated-media", "ood-media", "review-media", "video-renditions", "episode-media", "l1-minimal-media", "l1-phase1-media"]) {
     assert.match(bridge, new RegExp(route));
   }
 });
@@ -119,6 +119,9 @@ test("keeps setting-resolved leaderboards and dataset OOD evidence wired", async
   assert.match(styles, /\.regimeRail \{ display: grid; grid-template-columns: repeat\(5/);
   assert.match(styles, /\.syncPlayerWithTrace \{ display: grid; grid-template-columns: repeat\(2/);
   assert.match(player, /"cam_head", "cam_left_wrist", "cam_right_wrist"/);
+  assert.match(player, /360p · Faster/);
+  assert.match(player, /480p · Original/);
+  assert.match(player, /video resolution/);
   assert.match(styles, /\.syncView-cam_head \{ grid-column: 1 \/ -1/);
   assert.doesNotMatch(leaderboard, /LeaderboardRanking|Scorecard pending|No synthetic placement/);
 });

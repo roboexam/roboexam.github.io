@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createHmac } from "node:crypto";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const TEST_SESSION_SECRET = "rendered-html-test-secret";
@@ -12,14 +13,20 @@ function sessionCookie() {
   return `unibench_session=${payload}.${signature}`;
 }
 
-async function render(pathname, { authenticated = false, accept = "text/html" } = {}) {
+async function render(pathname, {
+  authenticated = false,
+  accept = "text/html",
+  headers = {},
+  method = "GET",
+} = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
     new Request(`http://localhost${pathname}`, {
-      headers: { accept, ...(authenticated ? { cookie: sessionCookie() } : {}) },
+      method,
+      headers: { accept, ...(authenticated ? { cookie: sessionCookie() } : {}), ...headers },
     }),
     {
       ASSETS: {
@@ -118,6 +125,47 @@ test("publishes the pending review page and rejects unlisted media", async () =>
     const invalid = await render("/api/review-media?file="+encodeURIComponent(file));
     assert.equal(invalid.status,404);
   }
+});
+
+test("serves compressed video renditions with ranges and immutable identity", async () => {
+  const catalog = JSON.parse(readFileSync(
+    new URL("../app/data/generated/video-renditions.json", import.meta.url),
+    "utf8",
+  ));
+  const [sourceSha256, rendition] = Object.entries(catalog.items)[0];
+  assert.ok(sourceSha256, "rendition catalog is empty");
+  const path =
+    `/api/video-renditions?source=${sourceSha256}` +
+    `&profile=${catalog.profile.id}`;
+
+  for (const invalid of [
+    "/api/video-renditions",
+    "/api/video-renditions?source=bad&profile=web-360p-v1",
+    `/api/video-renditions?source=${"a".repeat(64)}&profile=bad`,
+  ]) {
+    assert.equal((await render(invalid, { accept: "video/mp4" })).status, 404);
+  }
+
+  const metadata = await render(path, { accept: "video/mp4", method: "HEAD" });
+  assert.equal(metadata.status, 200);
+  assert.equal(metadata.headers.get("content-length"), String(rendition.bytes));
+  assert.equal(metadata.headers.get("accept-ranges"), "bytes");
+  assert.equal(metadata.headers.get("etag"), `"${rendition.sha256}"`);
+  assert.equal(metadata.headers.get("x-roboexam-source-sha256"), sourceSha256);
+
+  const partial = await render(path, {
+    accept: "video/mp4",
+    headers: { range: "bytes=0-31" },
+  });
+  assert.equal(partial.status, 206);
+  assert.equal(partial.headers.get("content-length"), "32");
+  assert.equal((await partial.arrayBuffer()).byteLength, 32);
+
+  const unchanged = await render(path, {
+    accept: "video/mp4",
+    headers: { "if-none-match": `"${rendition.sha256}"` },
+  });
+  assert.equal(unchanged.status, 304);
 });
 
 
