@@ -60,8 +60,7 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
             <p className="heroEyebrow">The final exam for Physical AI</p>
             <h1 id="hero-title">RoboExam</h1>
             <div className="heroMaxim">
-              <strong lang="en">“You just can’t differentiate between a robot and the very best of humans.”</strong>
-              <span lang="zh-CN">“你已无法分辨，何者是机器人，何者是人类中的至善者。”</span>
+              <strong lang="en">{"“You just can't differentiate between a robot and the very best of humans.”"}</strong>
               <cite>Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950</cite>
             </div>
             <div className="heroActions"><button type="button" className="primaryAction" onClick={() => navigate('Leaderboards')}>Explore leaderboards <ArrowRight size={19}/></button><button type="button" className="secondaryAction" onClick={() => navigate('Datasets')}>Explore datasets <ArrowUpRight size={18}/></button></div>
