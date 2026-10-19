@@ -45,9 +45,10 @@ test("renders the dashboard introduction without login", async () => {
   const html = await response.text();
   assert.match(html, /RoboExam/);
   assert.match(html, /CVPR 2027 Workshop/);
-  assert.match(html, /知是行之始，行是知之成/);
-  assert.match(html, /Knowledge is the beginning of action\. Action is the completion of knowledge\./);
-  assert.match(html, /王阳明《传习录》/);
+  assert.match(html, /The final exam for Physical AI/);
+  assert.match(html, /You just can’t differentiate between a robot and the very best of humans\./);
+  assert.match(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
+  assert.match(html, /Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950/);
   assert.match(html, /Correlation/);
   assert.match(html, /From model capabilities to task-level evidence\./);
   assert.match(html, /The RoboExam evaluation spectrum/);
