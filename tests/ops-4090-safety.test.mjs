@@ -8,12 +8,36 @@ import path from "node:path";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
+import { hasFunnelRootMapping } from "../ops/4090/check-funnel-mapping.mjs";
 
 const execFileAsync = promisify(execFile);
 const root = fileURLToPath(new URL("../", import.meta.url));
 const guardScript = path.join(root, "ops/4090/guard-live-build.sh");
 const verifyScript = path.join(root, "ops/4090/verify-assets.sh");
 const fixedPublicStatusScript = path.join(root, "ops/4090/fixed-public-status.sh");
+
+test("matches the exact root Funnel handler in both text layouts without borrowing another path", () => {
+  const url = "https://unibench-dashboard.tail4ada12.ts.net";
+  const target = "http://127.0.0.1:3100";
+  const current = `Available on the internet:\n\n${url}/\n|-- proxy ${target}\n\n${url}/official-review\n|-- proxy http://127.0.0.1:18766\n\nFunnel started and running in the background.\n`;
+  const legacy = `${url} (Funnel on)\n|-- / proxy ${target}\n|-- /official-review proxy http://127.0.0.1:18766\n`;
+  for (const status of [current, legacy, `${url}/ (Funnel on)\n|-- proxy ${target}\n`]) {
+    assert.equal(hasFunnelRootMapping(status, url, target), true);
+    assert.equal(hasFunnelRootMapping(status, `${url}/`, target), true);
+  }
+  for (const status of [
+    `https://other.tail4ada12.ts.net/\n|-- proxy ${target}\n`,
+    `${url}.other.example/\n|-- proxy ${target}\n`,
+    `${url}/\n|-- proxy http://127.0.0.1:9999\n\n${url}/official-review\n|-- proxy ${target}\n`,
+    `${url}/official-review\n|-- proxy ${target}\n\n${url}/\n|-- proxy http://127.0.0.1:9999\n`,
+    `${url} (Funnel on)\n|-- / proxy http://127.0.0.1:9999\n|-- /official-review proxy ${target}\n`,
+    `${url}\n|-- /official-review proxy ${target}\n`,
+    `${url}/\n|-- proxy ${target}0\n`,
+    `${url}/?route=official-review\n|-- proxy ${target}\n`,
+    `${url}/\nhttps://other.tail4ada12.ts.net/\n|-- proxy ${target}\n`,
+  ]) assert.equal(hasFunnelRootMapping(status, url, target), false, status);
+  assert.equal(hasFunnelRootMapping(current, `${url}/official-review`, target), false);
+});
 
 test("blocks an in-place build in the live checkout but permits worktrees and deploy builds", async (t) => {
   const fixture = await mkdtemp(path.join(os.tmpdir(), "unibench-build-guard-"));
@@ -245,7 +269,11 @@ test("fixed public gate requires an online node, exact Funnel mapping, and curre
 if [[ "$*" == *"status --json"* ]]; then
   printf '%s\\n' '{"BackendState":"Running","Self":{"Online":true,"KeyExpiry":"2099-01-01T00:00:00Z"}}'
 elif [[ "$*" == *"funnel status"* ]]; then
-  printf '%s\\n' "$UNIBENCH_FIXED_PUBLIC_URL" "|-- / proxy ${"${FAKE_FUNNEL_TARGET:-$UNIBENCH_TAILSCALE_FUNNEL_TARGET}"}"
+  if [[ -n "${"${FAKE_FUNNEL_STATUS_FILE:-}"}" ]]; then
+    cat "$FAKE_FUNNEL_STATUS_FILE"
+  else
+    printf '%s\\n' "$UNIBENCH_FIXED_PUBLIC_URL" "|-- / proxy ${"${FAKE_FUNNEL_TARGET:-$UNIBENCH_TAILSCALE_FUNNEL_TARGET}"}"
+  fi
 else
   exit 2
 fi
@@ -282,6 +310,23 @@ fi
   const healthy = await execFileAsync("bash", [fixedPublicStatusScript], { cwd: root, env });
   assert.match(healthy.stdout, /Fixed public URL: healthy/);
   assert.equal(proxyRequests, 0);
+
+  const statusFile = path.join(fixture, "funnel-status.txt");
+  await writeFile(statusFile, `Available on the internet:\n\n${fixedUrl}/\n|-- proxy ${env.UNIBENCH_TAILSCALE_FUNNEL_TARGET}\n\n${fixedUrl}/official-review\n|-- proxy http://127.0.0.1:18766\n`);
+  const currentLayout = await execFileAsync("bash", [fixedPublicStatusScript], {
+    cwd: root, env: { ...env, FAKE_FUNNEL_STATUS_FILE: statusFile },
+  });
+  assert.match(currentLayout.stdout, /Fixed public URL: healthy/);
+  assert.equal(proxyRequests, 0);
+  for (const status of [
+    `http://wrong.example/\n|-- proxy ${env.UNIBENCH_TAILSCALE_FUNNEL_TARGET}\n`,
+    `${fixedUrl}/\n|-- proxy http://127.0.0.1:9999\n\n${fixedUrl}/official-review\n|-- proxy ${env.UNIBENCH_TAILSCALE_FUNNEL_TARGET}\n`,
+  ]) {
+    await writeFile(statusFile, status);
+    await assert.rejects(execFileAsync("bash", [fixedPublicStatusScript], {
+      cwd: root, env: { ...env, FAKE_FUNNEL_STATUS_FILE: statusFile },
+    }), (error) => error.code === 1 && /mapping is missing or points at the wrong target/.test(error.stderr));
+  }
 
   await assert.rejects(
     execFileAsync("bash", [fixedPublicStatusScript], {
@@ -358,6 +403,8 @@ test("wires deployment convergence, fixed Funnel recovery, and the release watch
   assert.ok(update.indexOf("DEPLOYED_COMMIT_FILE") < update.indexOf("ensure-fixed-funnel.sh"));
   assert.match(fixedPublicStatus, /status --json/);
   assert.match(fixedPublicStatus, /funnel status/);
+  assert.match(fixedPublicStatus, /check-funnel-mapping\.mjs.*FIXED_PUBLIC_URL.*TAILSCALE_FUNNEL_TARGET/);
+  assert.match(ensureFixedFunnel, /check-funnel-mapping\.mjs.*FIXED_PUBLIC_URL.*TAILSCALE_FUNNEL_TARGET/);
   assert.match(fixedPublicStatus, /verify-assets\.sh/);
   assert.match(ensureFixedFunnel, /funnel --bg --https=443/);
   assert.match(ensureFixedFunnel, /TAILSCALE_RESTART_COOLDOWN_SECONDS/);

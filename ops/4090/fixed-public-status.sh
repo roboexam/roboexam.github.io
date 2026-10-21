@@ -49,8 +49,8 @@ if ! funnel_status="$("${TAILSCALE_BIN}" --socket="${TAILSCALE_SOCKET}" funnel s
   echo "Fixed public URL: unable to read Funnel status" >&2
   exit 1
 fi
-if ! grep -Fq "${FIXED_PUBLIC_URL}" <<<"${funnel_status}" || \
-   ! grep -Fq "|-- / proxy ${TAILSCALE_FUNNEL_TARGET}" <<<"${funnel_status}"; then
+if ! printf '%s\n' "${funnel_status}" | "${NODE_HOME}/bin/node" \
+  "${SCRIPT_DIR}/check-funnel-mapping.mjs" "${FIXED_PUBLIC_URL}" "${TAILSCALE_FUNNEL_TARGET}"; then
   echo "Fixed public URL: Funnel mapping is missing or points at the wrong target" >&2
   exit 1
 fi

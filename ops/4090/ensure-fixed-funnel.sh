@@ -50,8 +50,8 @@ start_tailscaled() {
 mapping_is_current() {
   local output
   output="$("${TAILSCALE_BIN}" --socket="${TAILSCALE_SOCKET}" funnel status 2>/dev/null)" || return 1
-  grep -Fq "${FIXED_PUBLIC_URL}" <<<"${output}" && \
-    grep -Fq "|-- / proxy ${TAILSCALE_FUNNEL_TARGET}" <<<"${output}"
+  printf '%s\n' "${output}" | "${NODE_HOME}/bin/node" \
+    "${SCRIPT_DIR}/check-funnel-mapping.mjs" "${FIXED_PUBLIC_URL}" "${TAILSCALE_FUNNEL_TARGET}"
 }
 
 ensure_mapping() {

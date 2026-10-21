@@ -88,4 +88,15 @@ The broad unit suite reports 143 passed and 19 environment-dependent failures: L
 
 Actual HTTP checks verify all 70 media HEAD responses, SHA ETags and byte counts, plus Range playback. Browser checks cover the displayed formula, metric navigation, Escape/focus restoration, task-specific scene choices, scene reset across tasks, real video decoding and complete playback, T1/T2 navigation, and desktop/mobile layouts at 1280 and 390 pixels. A scoped CSS reset prevents the global fixed-height `header` rule from clipping mobile selectors.
 
-Development is isolated on `codex/dashboard-deepseek` in `/Users/hua/roboexam-dashboard-deepseek`, based on canonical 5403 main `5768b5ed`. This delivery is a preview; shared main and the deployed service are unchanged. Deployment uses the repository's managed release workflow after explicit release authorization.
+Development is isolated on `codex/dashboard-deepseek` in `/Users/hua/roboexam-dashboard-deepseek`, based on canonical 5403 main `5768b5ed`. The preview was validated before release. Production deployment uses the repository's managed release workflow after explicit authorization.
+
+
+## Production release preparation
+
+The user authorized main integration and production deployment on 2026-10-21. The managed service runs in a separate container from the 5403 development host, while canonical source, runtime configuration, immutable media and release markers share the same GPFS volume. The active production watchdog runs `deploy-if-needed.sh` and the merged `update.sh` when clean shared main advances; do not launch a duplicate service from 5403.
+
+The shared `runtime/dashboard/dashboard.env` now declares the publication's `T1_BENCHMARK_SOURCE_ROOT` and `T1_BENCHMARK_MEDIA_ROOT`. Its original bytes are preserved in a mode-0600 release-job backup; the change receipt contains only hashes and the two non-secret added paths. Source snapshots and media are already staged in the managed evaluation publication.
+
+A pre-existing Funnel gate expected only `|-- / proxy TARGET`. The current multi-path rendering can declare `/` on the root URL followed by `|-- proxy TARGET`. `ops/4090/check-funnel-mapping.mjs` now verifies both layouts by binding the exact root URL block to the exact target. The health and recovery scripts share this read-only predicate; other paths such as `/official-review` are preserved and cannot satisfy the root check. Node-online and actual HTML/client-asset checks remain required.
+
+Release evidence is recorded under `/mnt/gyc_ckp/benchmark2027/runtime/jobs/roboexam-t1-release-20261021-af481e5e/`; full Linux prebuild checks run in the isolated `/mnt/gyc/benchmark2027/worktrees/roboexam-t1-release-20261021` checkout before main advances. Final acceptance requires matching source/deployed/live markers, a successful production watchdog cycle, and actual public-page, VQA and media checks.
