@@ -2,7 +2,7 @@
 
 import { ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
-import { T1ResultsView } from "./t1/t1-results-view";
+import { T1BenchmarkView } from "./t1/t1-benchmark-view";
 import { evidenceLabels, facetsFor, initialMetricFilters, matchesMetric, protocolLabels, type MetricFilters } from "../data/metric-facets";
 import { tracks, type TrackId } from "../data/metric-plan";
 import { scenarioPlan, scenarioTags, tagsForScenario, type ScenarioTag } from "../data/scenario-plan";
@@ -141,7 +141,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       <div className="t1CurrentBar"><span>{track.title}</span>
         <button type="button" className="t1ProtocolLink" onClick={() => setPreviousT1Protocols(true)}>Previous protocols</button>
       </div>
-      <T1ResultsView/>
+      <T1BenchmarkView/>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       <div className="trackSectionTitle">
         <h2>{track.title}</h2>

@@ -1,0 +1,2997 @@
+{
+  "schemaVersion": "roboexam.t1-benchmark-results.v1",
+  "resultVersion": "t1-robodojo14-deepseek-20261021-v1",
+  "generatedAt": "2026-10-21T11:52:44Z",
+  "scope": {
+    "taskCount": 14,
+    "sceneCount": 70,
+    "processSlotCount": 207,
+    "layoutIds": [
+      100000,
+      100001,
+      100002,
+      100003,
+      100004,
+      100007,
+      100012
+    ],
+    "taskIds": [
+      "arrange_largest_number",
+      "build_tower",
+      "classify_objects_by_language",
+      "cover_blocks",
+      "fold_clothes",
+      "hang_mugs",
+      "imitate_sorting_sequence",
+      "insert_key",
+      "pick_from_conveyor_by_image",
+      "play_stacking_toy",
+      "press_by_number",
+      "push_T",
+      "solve_equation",
+      "store_tools_in_toolbox"
+    ]
+  },
+  "models": [
+    {
+      "id": "deepseek",
+      "label": "DeepSeek Flash",
+      "requestModel": "deepseek-flash",
+      "scores": {
+        "overall": 18.880331302644514,
+        "vqa": 60.10110434214838,
+        "subtask": 1.2142857142857142,
+        "success": 0,
+        "a": 68.83910533910534,
+        "b": 83.95238095238096,
+        "c": 27.51182673495885,
+        "a1": 78.91963591963592,
+        "a2": 41.055555555555564,
+        "a3": 94.64285714285714,
+        "b1": 78.95238095238098,
+        "b3": 100,
+        "b_interaction": 100,
+        "c1": 75.15452782392418,
+        "c2": 3.428571428571429,
+        "c3": 3.9523809523809526
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "arrange_largest_number",
+      "label": "Arrange Largest Number"
+    },
+    {
+      "id": "build_tower",
+      "label": "Build Tower"
+    },
+    {
+      "id": "classify_objects_by_language",
+      "label": "Classify Objects by Language"
+    },
+    {
+      "id": "cover_blocks",
+      "label": "Cover Blocks"
+    },
+    {
+      "id": "fold_clothes",
+      "label": "Fold Clothes"
+    },
+    {
+      "id": "hang_mugs",
+      "label": "Hang Mugs"
+    },
+    {
+      "id": "imitate_sorting_sequence",
+      "label": "Imitate Sorting Sequence"
+    },
+    {
+      "id": "insert_key",
+      "label": "Insert Key"
+    },
+    {
+      "id": "pick_from_conveyor_by_image",
+      "label": "Pick from Conveyor by Image"
+    },
+    {
+      "id": "play_stacking_toy",
+      "label": "Play Stacking Toy"
+    },
+    {
+      "id": "press_by_number",
+      "label": "Press by Number"
+    },
+    {
+      "id": "push_T",
+      "label": "Push T"
+    },
+    {
+      "id": "solve_equation",
+      "label": "Solve Equation"
+    },
+    {
+      "id": "store_tools_in_toolbox",
+      "label": "Store Tools in Toolbox"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100000",
+      "modelId": "deepseek",
+      "taskId": "arrange_largest_number",
+      "layoutId": 100000,
+      "attempt": "attempt_01",
+      "execution": {
+        "steps": 929,
+        "subtask": 15,
+        "success": false,
+        "elapsedSeconds": 2459.698
+      },
+      "scores": {
+        "overall": 27.999999999999996,
+        "vqa": 58.33333333333333,
+        "subtask": 15,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 75,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 75,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 50,
+        "c2": 0,
+        "c3": 50
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100000",
+        "sha256": "82b6a80e1370b0d6fd29f7c8cdeec09e62af8e01363ae5e41f99419ea2c8fdeb",
+        "bytes": 5073344,
+        "frames": 930,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100001",
+      "modelId": "deepseek",
+      "taskId": "arrange_largest_number",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 639,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2844.717
+      },
+      "scores": {
+        "overall": 17.57936507936508,
+        "vqa": 58.597883597883595,
+        "subtask": 0,
+        "success": 0,
+        "a": 75.79365079365078,
+        "b": 100,
+        "c": 0,
+        "a1": 66.66666666666666,
+        "a2": 75,
+        "a3": 85.71428571428571,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 0,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100001",
+        "sha256": "87f37cfe428333192bf4dfeaae0ca563e6865fe983d95b7a58c28ce9e8dc7425",
+        "bytes": 3020901,
+        "frames": 640,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100002",
+      "modelId": "deepseek",
+      "taskId": "arrange_largest_number",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1033,
+        "subtask": 5,
+        "success": false,
+        "elapsedSeconds": 2162.404
+      },
+      "scores": {
+        "overall": 20.833333333333336,
+        "vqa": 57.777777777777786,
+        "subtask": 5,
+        "success": 0,
+        "a": 60,
+        "b": 100,
+        "c": 13.333333333333334,
+        "a1": 100,
+        "a2": 20,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 0,
+        "c2": 20,
+        "c3": 20
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100002",
+        "sha256": "c8327d8a81d29c92f35fc24ab06b1addcffcababdba0563ba8a88629d7a6d5df",
+        "bytes": 4935055,
+        "frames": 1034,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100003",
+      "modelId": "deepseek",
+      "taskId": "arrange_largest_number",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 867,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2660.321
+      },
+      "scores": {
+        "overall": 18.81313131313131,
+        "vqa": 62.7104377104377,
+        "subtask": 0,
+        "success": 0,
+        "a": 88.88888888888889,
+        "b": 75,
+        "c": 24.242424242424242,
+        "a1": 91.66666666666666,
+        "a2": 75,
+        "a3": 100,
+        "b1": 75,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 72.72727272727273,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100003",
+        "sha256": "4b8a4c0a6f6550b22d3e62ed805d7fe805aff2178edb75a9285aed216c9e0c95",
+        "bytes": 3095280,
+        "frames": 868,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100004",
+      "modelId": "deepseek",
+      "taskId": "arrange_largest_number",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 808,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2379.301
+      },
+      "scores": {
+        "overall": 17.777777777777775,
+        "vqa": 59.25925925925925,
+        "subtask": 0,
+        "success": 0,
+        "a": 77.77777777777779,
+        "b": 100,
+        "c": 0,
+        "a1": 100,
+        "a2": 60,
+        "a3": 73.33333333333334,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 0,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-arrange_largest_number-layout100004",
+        "sha256": "a24c1467f8dad1ed04007442df08cea266c39de61d3795ce973edff7680ec60c",
+        "bytes": 3747629,
+        "frames": 809,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100000",
+      "modelId": "deepseek",
+      "taskId": "build_tower",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1050,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2500.2
+      },
+      "scores": {
+        "overall": 18.333333333333336,
+        "vqa": 61.111111111111114,
+        "subtask": 0,
+        "success": 0,
+        "a": 83.33333333333334,
+        "b": 100,
+        "c": 0,
+        "a1": 50,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 0,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100000",
+        "sha256": "e9c918db44a696a3d3cf4af808dbeb2e7a24336f70f68c48c257353d80a6f5b6",
+        "bytes": 4481327,
+        "frames": 1051,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100001",
+      "modelId": "deepseek",
+      "taskId": "build_tower",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1050,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2535.598
+      },
+      "scores": {
+        "overall": 22.666666666666664,
+        "vqa": 75.55555555555556,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 26.666666666666668,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100001",
+        "sha256": "1afd1c7560d317313866710247032a3ecf800fecc8ec17af4c9bd2330c1e6869",
+        "bytes": 4188520,
+        "frames": 1051,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100002",
+      "modelId": "deepseek",
+      "taskId": "build_tower",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1001,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2553.78
+      },
+      "scores": {
+        "overall": 16.9047619047619,
+        "vqa": 56.34920634920635,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 100,
+        "c": 19.047619047619047,
+        "a1": 50,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 57.14285714285714,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100002",
+        "sha256": "74288ad96abbda13d05a165ff9adaf2799035adf08dde5d0a48b876de1fdc780",
+        "bytes": 4443281,
+        "frames": 1002,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100003",
+      "modelId": "deepseek",
+      "taskId": "build_tower",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1050,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2280.567
+      },
+      "scores": {
+        "overall": 15.238095238095237,
+        "vqa": 50.79365079365079,
+        "subtask": 0,
+        "success": 0,
+        "a": 33.33333333333333,
+        "b": 100,
+        "c": 19.047619047619047,
+        "a1": 0,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 57.14285714285714,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100003",
+        "sha256": "e23b634ac2b3d8922e8dad8b3d4fe0d1eec5bfb821a2ec79c784a11be9196ce8",
+        "bytes": 4328299,
+        "frames": 1051,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100004",
+      "modelId": "deepseek",
+      "taskId": "build_tower",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 912,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 3146.984
+      },
+      "scores": {
+        "overall": 15.000000000000002,
+        "vqa": 50.000000000000014,
+        "subtask": 0,
+        "success": 0,
+        "a": 83.33333333333334,
+        "b": 50,
+        "c": 16.666666666666664,
+        "a1": 50,
+        "a2": 100,
+        "a3": 100,
+        "b1": 0,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 50,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-build_tower-layout100004",
+        "sha256": "8f91c0dce7bca68c656a4a46fc5f7ad60e65aff1bbc1d8faa99de358436e381a",
+        "bytes": 4190280,
+        "frames": 913,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100000",
+      "modelId": "deepseek",
+      "taskId": "classify_objects_by_language",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 969,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2257.689
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100000",
+        "sha256": "916b59fbec6d1b0a95a1219f950a4b8919642d937be862cbaf0d7b8ad81878fc",
+        "bytes": 3832109,
+        "frames": 970,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100001",
+      "modelId": "deepseek",
+      "taskId": "classify_objects_by_language",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1024,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2661.545
+      },
+      "scores": {
+        "overall": 16.666666666666664,
+        "vqa": 55.55555555555555,
+        "subtask": 0,
+        "success": 0,
+        "a": 33.33333333333333,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 0,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100001",
+        "sha256": "4b5a378cd2bfeec40fabad32ff8a018df71bedc4d55383da355125cdf124141f",
+        "bytes": 5723571,
+        "frames": 1025,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100002",
+      "modelId": "deepseek",
+      "taskId": "classify_objects_by_language",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 958,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1776.535
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100002",
+        "sha256": "7a18f4d2ab6f8efad6c0ffe01de2d924b7e31abed66379a644bd02d4b7282332",
+        "bytes": 4047309,
+        "frames": 959,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100003",
+      "modelId": "deepseek",
+      "taskId": "classify_objects_by_language",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1039,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1937.123
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100003",
+        "sha256": "07de1ee8d2031c0a57283c041cd5f3437ca6df65c92278917549c8f94810705f",
+        "bytes": 4735167,
+        "frames": 1040,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100004",
+      "modelId": "deepseek",
+      "taskId": "classify_objects_by_language",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 747,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1166.006
+      },
+      "scores": {
+        "overall": 16.41025641025641,
+        "vqa": 54.7008547008547,
+        "subtask": 0,
+        "success": 0,
+        "a": 33.33333333333333,
+        "b": 100,
+        "c": 30.76923076923077,
+        "a1": 0,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 92.3076923076923,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-classify_objects_by_language-layout100004",
+        "sha256": "819e842330ccb55b6c764f2d4c3a2408a02902944ff9562a137e8f3d705e7b78",
+        "bytes": 2953129,
+        "frames": 748,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100000",
+      "modelId": "deepseek",
+      "taskId": "cover_blocks",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 643,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1337.635
+      },
+      "scores": {
+        "overall": 23.111111111111107,
+        "vqa": 77.03703703703702,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 31.11111111111111,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 93.33333333333333,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100000",
+        "sha256": "461501b81842052ba5c401d84bb69b46b13a2ae0dd23deaf0dce2f2126efcbb6",
+        "bytes": 2581466,
+        "frames": 644,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100001",
+      "modelId": "deepseek",
+      "taskId": "cover_blocks",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 717,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2753.649
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100001",
+        "sha256": "ecb1757f226713b742511a44ce5a811d2977039468ff980d32cdeb32f34136a5",
+        "bytes": 3226623,
+        "frames": 718,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100002",
+      "modelId": "deepseek",
+      "taskId": "cover_blocks",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 783,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1514.795
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100002",
+        "sha256": "636216fd4872f6cff80f032b56e16c463ceffe6f37fbacfebf8d6e86f54d8887",
+        "bytes": 3058930,
+        "frames": 784,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100007",
+      "modelId": "deepseek",
+      "taskId": "cover_blocks",
+      "layoutId": 100007,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 776,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2441.84
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100007",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100007",
+        "sha256": "a333b2cc1949863a5a68113f2d28c789e3c53d848ea7735672260573b782a447",
+        "bytes": 3214697,
+        "frames": 777,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100012",
+      "modelId": "deepseek",
+      "taskId": "cover_blocks",
+      "layoutId": 100012,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 466,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1449.342
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100012",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-cover_blocks-layout100012",
+        "sha256": "531db92b42487e916b99d2e4664658fd4c2b23e7d236f2f49c673abbb7989260",
+        "bytes": 1616848,
+        "frames": 467,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100000",
+      "modelId": "deepseek",
+      "taskId": "fold_clothes",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 500,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1049.52
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100000",
+        "sha256": "4ce77c65d603ed21983f7815b1fc7bb6e1a53b00faf497b3a8560fe0f749c6a4",
+        "bytes": 2707941,
+        "frames": 501,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100001",
+      "modelId": "deepseek",
+      "taskId": "fold_clothes",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 500,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 621.951
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 66.66666666666666,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100001",
+        "sha256": "e4730d0791848d157100c433e4817a6a42cfea8dbfb650fe8a75fd94ff53a8a4",
+        "bytes": 3217193,
+        "frames": 501,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100002",
+      "modelId": "deepseek",
+      "taskId": "fold_clothes",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 500,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2380.351
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 0,
+        "a1": 100,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 0,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100002",
+        "sha256": "70fa0c02737b7ca66707fc4a0f3db580ca6df33604d08bd0fabf4d3e7b32e463",
+        "bytes": 2485477,
+        "frames": 501,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100003",
+      "modelId": "deepseek",
+      "taskId": "fold_clothes",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 498,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1583.007
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100003",
+        "sha256": "4813492dc28154db4d1eb966efc8f858478e4d8bf5cdaa70f45ee6b7f7845504",
+        "bytes": 3926336,
+        "frames": 499,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100004",
+      "modelId": "deepseek",
+      "taskId": "fold_clothes",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 500,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1082.359
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 66.66666666666666,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-fold_clothes-layout100004",
+        "sha256": "d0149b7b43bba23cbfecf031db8da6034349bfa72c4368c41cd410dc9e54cad1",
+        "bytes": 3992776,
+        "frames": 501,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100000",
+      "modelId": "deepseek",
+      "taskId": "hang_mugs",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 718,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2180.619
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100000",
+        "sha256": "1d3b940349eaa0349ba3a475cd4d62f0292e2c7ae93a2a768c4e7dccb7510b23",
+        "bytes": 3820565,
+        "frames": 719,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100001",
+      "modelId": "deepseek",
+      "taskId": "hang_mugs",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 783,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2586.959
+      },
+      "scores": {
+        "overall": 17,
+        "vqa": 56.666666666666664,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 100,
+        "c": 20,
+        "a1": 100,
+        "a2": 0,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 60,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100001",
+        "sha256": "382c5ace5313581f8b9dd2f25cc97e0e193f11eb2e97401d17c6a12e28475da7",
+        "bytes": 2792748,
+        "frames": 784,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100002",
+      "modelId": "deepseek",
+      "taskId": "hang_mugs",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 552,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1928.828
+      },
+      "scores": {
+        "overall": 15.357142857142856,
+        "vqa": 51.19047619047619,
+        "subtask": 0,
+        "success": 0,
+        "a": 25,
+        "b": 100,
+        "c": 28.57142857142857,
+        "a1": 50,
+        "a2": 0,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 85.71428571428571,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100002",
+        "sha256": "84174eec5f86c57a9ac0b602ee062e2a50ba9ec23a514ea556d1d32c6c95dffa",
+        "bytes": 2121373,
+        "frames": 553,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100003",
+      "modelId": "deepseek",
+      "taskId": "hang_mugs",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 765,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1748.825
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100003",
+        "sha256": "fe9b4b575f4c60075f3996c6a681dfeb54ceda0ed10866de8f9769a6c1479b39",
+        "bytes": 3788707,
+        "frames": 766,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100004",
+      "modelId": "deepseek",
+      "taskId": "hang_mugs",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 462,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2252.155
+      },
+      "scores": {
+        "overall": 18.333333333333332,
+        "vqa": 61.11111111111111,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-hang_mugs-layout100004",
+        "sha256": "033352593ab8e996b5da6dd81307347474ebcbafdbb4c5dc33ffe170d5fbe876",
+        "bytes": 2124038,
+        "frames": 463,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100000",
+      "modelId": "deepseek",
+      "taskId": "imitate_sorting_sequence",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 25,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 366.966
+      },
+      "scores": {
+        "overall": 13.357142857142856,
+        "vqa": 44.523809523809526,
+        "subtask": 0,
+        "success": 0,
+        "a": 65,
+        "b": 40,
+        "c": 28.57142857142857,
+        "a1": 30,
+        "a2": 100,
+        "a3": null,
+        "b1": 40,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 85.71428571428571,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100000",
+        "sha256": "09c50dd02d220566cc1b0d629adb955046da2e7dedf9daa8cbc65432f74efe0d",
+        "bytes": 177751,
+        "frames": 26,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100001",
+      "modelId": "deepseek",
+      "taskId": "imitate_sorting_sequence",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 54,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 411.568
+      },
+      "scores": {
+        "overall": 10.11111111111111,
+        "vqa": 33.7037037037037,
+        "subtask": 0,
+        "success": 0,
+        "a": 61.111111111111114,
+        "b": 40,
+        "c": 0,
+        "a1": 22.22222222222222,
+        "a2": 100,
+        "a3": null,
+        "b1": 40,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 0,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100001",
+        "sha256": "1a070b6cb137ca880e463505b91fea1a242f7cd339b59ef176bc255fda43f8c6",
+        "bytes": 351615,
+        "frames": 55,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100002",
+      "modelId": "deepseek",
+      "taskId": "imitate_sorting_sequence",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 54,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 331.828
+      },
+      "scores": {
+        "overall": 9.357142857142858,
+        "vqa": 31.19047619047619,
+        "subtask": 0,
+        "success": 0,
+        "a": 65,
+        "b": 0,
+        "c": 28.57142857142857,
+        "a1": 30,
+        "a2": 100,
+        "a3": null,
+        "b1": 0,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 85.71428571428571,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100002",
+        "sha256": "28b28bd42bd9143899ea75d7769d8e6ebf3fdeaa2950361c529b8acf4367aef3",
+        "bytes": 363860,
+        "frames": 55,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100003",
+      "modelId": "deepseek",
+      "taskId": "imitate_sorting_sequence",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 855,
+        "subtask": 5,
+        "success": false,
+        "elapsedSeconds": 1398.496
+      },
+      "scores": {
+        "overall": 8.382509303561934,
+        "vqa": 16.275031011873118,
+        "subtask": 5,
+        "success": 0,
+        "a": 18.181818181818183,
+        "b": 20,
+        "c": 10.64327485380117,
+        "a1": 36.36363636363637,
+        "a2": 0,
+        "a3": null,
+        "b1": 20,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 5.263157894736842,
+        "c2": 20,
+        "c3": 6.666666666666667
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100003",
+        "sha256": "1233632ac59990000c2cd42acc55dfb6ec8cdd1c6acf1e903978392f4dbb2981",
+        "bytes": 2550452,
+        "frames": 856,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100004",
+      "modelId": "deepseek",
+      "taskId": "imitate_sorting_sequence",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 59,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 384.433
+      },
+      "scores": {
+        "overall": 10.743589743589743,
+        "vqa": 35.81196581196581,
+        "subtask": 0,
+        "success": 0,
+        "a": 16.666666666666664,
+        "b": 60,
+        "c": 30.76923076923077,
+        "a1": 33.33333333333333,
+        "a2": 0,
+        "a3": null,
+        "b1": 60,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 92.3076923076923,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-imitate_sorting_sequence-layout100004",
+        "sha256": "bce56653807a4ba48dc037876445f064f1d3376ebecd5be9e18a2689a1a3c16d",
+        "bytes": 335044,
+        "frames": 60,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100000",
+      "modelId": "deepseek",
+      "taskId": "insert_key",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 298,
+        "subtask": 15,
+        "success": false,
+        "elapsedSeconds": 1234.899
+      },
+      "scores": {
+        "overall": 37.166666666666664,
+        "vqa": 88.88888888888889,
+        "subtask": 15,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 66.66666666666666,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 50,
+        "c3": 50
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100000",
+        "sha256": "248d6315f450af1070e7d3f4b4ee2ec6ba1455784ed646ab087cbc3dca4dfc32",
+        "bytes": 1426129,
+        "frames": 299,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100001",
+      "modelId": "deepseek",
+      "taskId": "insert_key",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 245,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1036.756
+      },
+      "scores": {
+        "overall": 23.333333333333332,
+        "vqa": 77.77777777777779,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100001",
+        "sha256": "8ab67748faf951055ad6cbb5ed46df93237beea5bb96df86769119a43370e42d",
+        "bytes": 794451,
+        "frames": 246,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100002",
+      "modelId": "deepseek",
+      "taskId": "insert_key",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 297,
+        "subtask": 15,
+        "success": false,
+        "elapsedSeconds": 1024.446
+      },
+      "scores": {
+        "overall": 37.166666666666664,
+        "vqa": 88.88888888888889,
+        "subtask": 15,
+        "success": 0,
+        "a": 100,
+        "b": 100,
+        "c": 66.66666666666666,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 50,
+        "c3": 50
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100002",
+        "sha256": "7f6834a610fc6b0440f9980c017bded5ecc0726cbd8e2bad3f1431237ab4b8a3",
+        "bytes": 1627193,
+        "frames": 298,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100003",
+      "modelId": "deepseek",
+      "taskId": "insert_key",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 300,
+        "subtask": 15,
+        "success": false,
+        "elapsedSeconds": 928.798
+      },
+      "scores": {
+        "overall": 33.83333333333333,
+        "vqa": 77.77777777777777,
+        "subtask": 15,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 66.66666666666666,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 50,
+        "c3": 50
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100003",
+        "sha256": "e1e965e0d2fa4945dfae304677a3c273ddf74db79c3dc6f515955975eca7f1fc",
+        "bytes": 1260735,
+        "frames": 301,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100004",
+      "modelId": "deepseek",
+      "taskId": "insert_key",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 294,
+        "subtask": 15,
+        "success": false,
+        "elapsedSeconds": 839.236
+      },
+      "scores": {
+        "overall": 33.83333333333333,
+        "vqa": 77.77777777777777,
+        "subtask": 15,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 66.66666666666666,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 50,
+        "c3": 50
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-insert_key-layout100004",
+        "sha256": "969ea68682282386db870ce3e86dc85b0813c76051ca9e1aaf9e1a03297f7c48",
+        "bytes": 1415768,
+        "frames": 295,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100000",
+      "modelId": "deepseek",
+      "taskId": "pick_from_conveyor_by_image",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 678,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1508.88
+      },
+      "scores": {
+        "overall": 17.5,
+        "vqa": 58.333333333333336,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 100,
+        "c": 25,
+        "a1": 50,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 75,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100000",
+        "sha256": "b21a19ae88fc65b6d56ea930ab0c3352a90b240cb75e04a36be11d9beff88163",
+        "bytes": 3969817,
+        "frames": 679,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100001",
+      "modelId": "deepseek",
+      "taskId": "pick_from_conveyor_by_image",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 500,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1390.339
+      },
+      "scores": {
+        "overall": 17.666666666666668,
+        "vqa": 58.88888888888889,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 100,
+        "c": 26.666666666666668,
+        "a1": 50,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100001",
+        "sha256": "480962df5dae433db13ddd400a44d8118bf36a2ca6d32abfa70e2fea9f068393",
+        "bytes": 2265303,
+        "frames": 501,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100002",
+      "modelId": "deepseek",
+      "taskId": "pick_from_conveyor_by_image",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 367,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1739.28
+      },
+      "scores": {
+        "overall": 17.666666666666668,
+        "vqa": 58.88888888888889,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 100,
+        "c": 26.666666666666668,
+        "a1": 50,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100002",
+        "sha256": "a353fd44ccec37aa8685ebe61b2c91054e0f036e90aae8070852feaeafe98648",
+        "bytes": 2258010,
+        "frames": 368,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100003",
+      "modelId": "deepseek",
+      "taskId": "pick_from_conveyor_by_image",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 329,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1275.516
+      },
+      "scores": {
+        "overall": 17.666666666666668,
+        "vqa": 58.88888888888889,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 50,
+        "c": 26.666666666666668,
+        "a1": 100,
+        "a2": null,
+        "a3": null,
+        "b1": 50,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100003",
+        "sha256": "e0001b6e1273c06711b977d3901270ac90c111d77689b56647a67288a4bd822b",
+        "bytes": 1523225,
+        "frames": 330,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100004",
+      "modelId": "deepseek",
+      "taskId": "pick_from_conveyor_by_image",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 453,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1616.74
+      },
+      "scores": {
+        "overall": 12.666666666666664,
+        "vqa": 42.22222222222222,
+        "subtask": 0,
+        "success": 0,
+        "a": 0,
+        "b": 100,
+        "c": 26.666666666666668,
+        "a1": 0,
+        "a2": null,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-pick_from_conveyor_by_image-layout100004",
+        "sha256": "6966706ce9f17568a0999984702d3f2bc170d9e8d228ef1f177be98aa499bd4d",
+        "bytes": 2026524,
+        "frames": 454,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100000",
+      "modelId": "deepseek",
+      "taskId": "play_stacking_toy",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1070,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1927.109
+      },
+      "scores": {
+        "overall": 20.75581395348837,
+        "vqa": 69.18604651162791,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 75,
+        "c": 32.558139534883715,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 50,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 97.67441860465115,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100000",
+        "sha256": "67a62142581ed58177df7c4bb2960286c1231283bccc69905233379bee2c9646",
+        "bytes": 6165686,
+        "frames": 1071,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100001",
+      "modelId": "deepseek",
+      "taskId": "play_stacking_toy",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1128,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 3671.261
+      },
+      "scores": {
+        "overall": 20.725806451612904,
+        "vqa": 69.08602150537635,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 75,
+        "c": 32.25806451612903,
+        "a1": 100,
+        "a2": null,
+        "a3": null,
+        "b1": 50,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 96.7741935483871,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100001",
+        "sha256": "e067b21817bea5b9dbb78bda5857dfb4e546ec4992bdf8f0add71b1b8a9d6fc4",
+        "bytes": 5833526,
+        "frames": 1129,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100002",
+      "modelId": "deepseek",
+      "taskId": "play_stacking_toy",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 1009,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1907.083
+      },
+      "scores": {
+        "overall": 14.974120082815734,
+        "vqa": 49.91373360938579,
+        "subtask": 0,
+        "success": 0,
+        "a": 42.857142857142854,
+        "b": 75,
+        "c": 31.884057971014496,
+        "a1": 42.857142857142854,
+        "a2": null,
+        "a3": null,
+        "b1": 50,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 95.65217391304348,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100002",
+        "sha256": "0a6ade8ccf3a1bb8e0e4b4efa7d96c444422ecbc486ffc32a841cf00a81c3684",
+        "bytes": 4969226,
+        "frames": 1010,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100003",
+      "modelId": "deepseek",
+      "taskId": "play_stacking_toy",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 693,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1980.669
+      },
+      "scores": {
+        "overall": 17.355072463768114,
+        "vqa": 57.850241545893724,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 75,
+        "c": 31.884057971014496,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 50,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 95.65217391304348,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100003",
+        "sha256": "f6febeb15285e978c0f650a5081a7c60db9fd79a27043faa9d68a0cb667b2e9e",
+        "bytes": 3279881,
+        "frames": 694,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100004",
+      "modelId": "deepseek",
+      "taskId": "play_stacking_toy",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 715,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2208.296
+      },
+      "scores": {
+        "overall": 19.121621621621625,
+        "vqa": 63.738738738738746,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 75,
+        "c": 16.216216216216218,
+        "a1": 100,
+        "a2": 100,
+        "a3": 100,
+        "b1": 50,
+        "b3": null,
+        "b_interaction": 100,
+        "c1": 48.64864864864865,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-play_stacking_toy-layout100004",
+        "sha256": "cfc45a01d03d28c098a476609dd36e7c9ea1fff9ad9f6ed41d48f3ea04d0dba0",
+        "bytes": 2806205,
+        "frames": 716,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100000",
+      "modelId": "deepseek",
+      "taskId": "press_by_number",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 496,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1886.626
+      },
+      "scores": {
+        "overall": 16.666666666666664,
+        "vqa": 55.55555555555555,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 66.66666666666666,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 66.66666666666666,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100000",
+        "sha256": "8970e1d85ece575b05ed24b074fec487d9a5b1af918050eafe608f6962446080",
+        "bytes": 2854238,
+        "frames": 497,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100001",
+      "modelId": "deepseek",
+      "taskId": "press_by_number",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 700,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1905.417
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100001",
+        "sha256": "7d43abb7d14884297b2a3f3bbec6b52f89fb134de4c60235a4815e8b7a182da0",
+        "bytes": 3117877,
+        "frames": 701,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100002",
+      "modelId": "deepseek",
+      "taskId": "press_by_number",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 700,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1705.08
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100002",
+        "sha256": "11ec9df49b59bec2ceaf9947206c5846548a1b164f715edb2188d238f8aa7d26",
+        "bytes": 2896318,
+        "frames": 701,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100003",
+      "modelId": "deepseek",
+      "taskId": "press_by_number",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 700,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1285.107
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100003",
+        "sha256": "914d08c6fad70c273475662b50d068454e5f850f7c8c837dbb0c8ed5a734de9a",
+        "bytes": 3692450,
+        "frames": 701,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100004",
+      "modelId": "deepseek",
+      "taskId": "press_by_number",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 514,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1350.488
+      },
+      "scores": {
+        "overall": 20,
+        "vqa": 66.66666666666666,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 100,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-press_by_number-layout100004",
+        "sha256": "3b810009097ac28e50a71b8cab4c5eb91696b8a0071e7027d4a2a394db851795",
+        "bytes": 2379545,
+        "frames": 515,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100000",
+      "modelId": "deepseek",
+      "taskId": "push_T",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 590,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2666.198
+      },
+      "scores": {
+        "overall": 10.999999999999998,
+        "vqa": 36.666666666666664,
+        "subtask": 0,
+        "success": 0,
+        "a": 16.666666666666664,
+        "b": 66.66666666666666,
+        "c": 26.666666666666668,
+        "a1": null,
+        "a2": 0,
+        "a3": 33.33333333333333,
+        "b1": 66.66666666666666,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100000",
+        "sha256": "8678eada370c11ebcec5ed14f21811e8fe157efa14eaecc02a8a3cc6000be4e8",
+        "bytes": 2802348,
+        "frames": 591,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100001",
+      "modelId": "deepseek",
+      "taskId": "push_T",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 533,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1889.914
+      },
+      "scores": {
+        "overall": 20.166666666666664,
+        "vqa": 67.22222222222221,
+        "subtask": 0,
+        "success": 0,
+        "a": 75,
+        "b": 100,
+        "c": 26.666666666666668,
+        "a1": null,
+        "a2": 50,
+        "a3": 100,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100001",
+        "sha256": "e032332525ed5f95ebdb6d28cfb537efd1a4b0d73f1ce029c0b3ae3e4fc8b7eb",
+        "bytes": 2665347,
+        "frames": 534,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100002",
+      "modelId": "deepseek",
+      "taskId": "push_T",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 455,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2167.949
+      },
+      "scores": {
+        "overall": 14.333333333333332,
+        "vqa": 47.77777777777777,
+        "subtask": 0,
+        "success": 0,
+        "a": 50,
+        "b": 66.66666666666666,
+        "c": 26.666666666666668,
+        "a1": null,
+        "a2": 0,
+        "a3": 100,
+        "b1": 66.66666666666666,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100002",
+        "sha256": "7d4eea6d892003fd86ece566d19237ea81e47951093f3ac86919a15e06bb6465",
+        "bytes": 1850573,
+        "frames": 456,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100003",
+      "modelId": "deepseek",
+      "taskId": "push_T",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 482,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1443.834
+      },
+      "scores": {
+        "overall": 14.722222222222223,
+        "vqa": 49.074074074074076,
+        "subtask": 0,
+        "success": 0,
+        "a": 25,
+        "b": 100,
+        "c": 22.22222222222222,
+        "a1": null,
+        "a2": 50,
+        "a3": 0,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 66.66666666666666,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100003",
+        "sha256": "4bea36a4370c3664c42fb7049d32bf6995b3dbdc0d3596845f39c5027464d296",
+        "bytes": 1762092,
+        "frames": 483,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100004",
+      "modelId": "deepseek",
+      "taskId": "push_T",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 549,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2077.259
+      },
+      "scores": {
+        "overall": 14.72222222222222,
+        "vqa": 49.07407407407407,
+        "subtask": 0,
+        "success": 0,
+        "a": 75,
+        "b": 66.66666666666666,
+        "c": 5.555555555555555,
+        "a1": null,
+        "a2": 100,
+        "a3": 50,
+        "b1": 66.66666666666666,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 16.666666666666664,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-push_T-layout100004",
+        "sha256": "26950ffde9d57d91878fab9d749ebfd7755cd61de83aded079cbe356bdae1519",
+        "bytes": 2363202,
+        "frames": 550,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100000",
+      "modelId": "deepseek",
+      "taskId": "solve_equation",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 235,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 704.12
+      },
+      "scores": {
+        "overall": 9.476190476190476,
+        "vqa": 31.587301587301585,
+        "subtask": 0,
+        "success": 0,
+        "a": 90,
+        "b": 0,
+        "c": 4.761904761904762,
+        "a1": 80,
+        "a2": 100,
+        "a3": null,
+        "b1": 0,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 14.285714285714285,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100000",
+        "sha256": "2e4842f77aa485b1a766f1c81e9e62bc25f166ffb1e39e6462c4796a2ba4623c",
+        "bytes": 1032074,
+        "frames": 236,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100001",
+      "modelId": "deepseek",
+      "taskId": "solve_equation",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 282,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 878.771
+      },
+      "scores": {
+        "overall": 14.416666666666666,
+        "vqa": 48.05555555555556,
+        "subtask": 0,
+        "success": 0,
+        "a": 40,
+        "b": 100,
+        "c": 4.166666666666666,
+        "a1": 80,
+        "a2": 0,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 12.5,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100001",
+        "sha256": "f51bba114bd3afed837fe67373d138de8bf893776a4c041d15071c10e0115bb9",
+        "bytes": 1245743,
+        "frames": 283,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100002",
+      "modelId": "deepseek",
+      "taskId": "solve_equation",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 300,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 772.989
+      },
+      "scores": {
+        "overall": 11.666666666666666,
+        "vqa": 38.88888888888889,
+        "subtask": 0,
+        "success": 0,
+        "a": 100,
+        "b": 0,
+        "c": 16.666666666666664,
+        "a1": 100,
+        "a2": 100,
+        "a3": null,
+        "b1": 0,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 50,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100002",
+        "sha256": "83e66d26f7c3382cbea0bc0806dbea5ad0ee1be597e6927d8892582d7f0feec8",
+        "bytes": 1436993,
+        "frames": 301,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100003",
+      "modelId": "deepseek",
+      "taskId": "solve_equation",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 277,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 692.893
+      },
+      "scores": {
+        "overall": 16.833333333333332,
+        "vqa": 56.111111111111114,
+        "subtask": 0,
+        "success": 0,
+        "a": 41.66666666666667,
+        "b": 100,
+        "c": 26.666666666666668,
+        "a1": 83.33333333333334,
+        "a2": 0,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 80,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100003",
+        "sha256": "d0501878dd41ad6dc0ceda5d56d553c7b6ef67b9770ac3ab3a713ea8eef5eda7",
+        "bytes": 1297683,
+        "frames": 278,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100004",
+      "modelId": "deepseek",
+      "taskId": "solve_equation",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 300,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1804.611
+      },
+      "scores": {
+        "overall": 12.916666666666668,
+        "vqa": 43.05555555555556,
+        "subtask": 0,
+        "success": 0,
+        "a": 25,
+        "b": 100,
+        "c": 4.166666666666666,
+        "a1": 50,
+        "a2": 0,
+        "a3": null,
+        "b1": 100,
+        "b3": null,
+        "b_interaction": null,
+        "c1": 12.5,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-solve_equation-layout100004",
+        "sha256": "e23a7f4cc1f0a84954438441174a735cefd244fb3dbc9d9b3db66db56b2ecfe8",
+        "bytes": 1578845,
+        "frames": 301,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100000",
+      "modelId": "deepseek",
+      "taskId": "store_tools_in_toolbox",
+      "layoutId": 100000,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 852,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2589.814
+      },
+      "scores": {
+        "overall": 14.047619047619046,
+        "vqa": 46.82539682539682,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 50,
+        "c": 23.80952380952381,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 0,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 71.42857142857143,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100000",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100000",
+        "sha256": "0066d6d051478104d5782c4594276c3dd740d35a1ed63e988e076ac0ef55f84c",
+        "bytes": 4492879,
+        "frames": 853,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100001",
+      "modelId": "deepseek",
+      "taskId": "store_tools_in_toolbox",
+      "layoutId": 100001,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 728,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1282.794
+      },
+      "scores": {
+        "overall": 19.166666666666668,
+        "vqa": 63.88888888888889,
+        "subtask": 0,
+        "success": 0,
+        "a": 83.33333333333334,
+        "b": 75,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 50,
+        "a3": 100,
+        "b1": 50,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100001",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100001",
+        "sha256": "782e99714fa6106333e9ad1307480ee1b7ae4a5455d0baf8c9731be88a79b90b",
+        "bytes": 3479678,
+        "frames": 729,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100002",
+      "modelId": "deepseek",
+      "taskId": "store_tools_in_toolbox",
+      "layoutId": 100002,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 867,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 1764.48
+      },
+      "scores": {
+        "overall": 17.499999999999996,
+        "vqa": 58.33333333333333,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 75,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 50,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100002",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100002",
+        "sha256": "f6f285bed6db7c9f3eb92840319d9c1ce25cc84405d80073399cb7ccedbddcb2",
+        "bytes": 4499971,
+        "frames": 868,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100003",
+      "modelId": "deepseek",
+      "taskId": "store_tools_in_toolbox",
+      "layoutId": 100003,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 900,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2152.651
+      },
+      "scores": {
+        "overall": 19.166666666666668,
+        "vqa": 63.88888888888889,
+        "subtask": 0,
+        "success": 0,
+        "a": 83.33333333333334,
+        "b": 75,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 50,
+        "a3": 100,
+        "b1": 50,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100003",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100003",
+        "sha256": "39a42d67d525cfcf070db6d5d88a212c2e44e968e9341765332ad2ec6ff61b85",
+        "bytes": 4044383,
+        "frames": 901,
+        "fps": 25
+      }
+    },
+    {
+      "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100004",
+      "modelId": "deepseek",
+      "taskId": "store_tools_in_toolbox",
+      "layoutId": 100004,
+      "attempt": "attempt_02",
+      "execution": {
+        "steps": 848,
+        "subtask": 0,
+        "success": false,
+        "elapsedSeconds": 2066.696
+      },
+      "scores": {
+        "overall": 14.999999999999996,
+        "vqa": 49.99999999999999,
+        "subtask": 0,
+        "success": 0,
+        "a": 66.66666666666666,
+        "b": 50,
+        "c": 33.33333333333333,
+        "a1": 100,
+        "a2": 0,
+        "a3": 100,
+        "b1": 0,
+        "b3": 100,
+        "b_interaction": null,
+        "c1": 100,
+        "c2": 0,
+        "c3": 0
+      },
+      "video": {
+        "id": "t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100004",
+        "url": "/api/t1-benchmark-media/t1-robodojo14-deepseek-20261021-v1-deepseek-store_tools_in_toolbox-layout100004",
+        "sha256": "f108791788cb96577e5cc01d81ffb320aeceeb5e1ecc8a6cee85eb69cafc4f30",
+        "bytes": 4407700,
+        "frames": 849,
+        "fps": 25
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "id": "overall",
+      "label": "Overall",
+      "definition": "Weighted execution and VQA score.",
+      "formula": "0.70 × Subtask + 0.30 × VQA",
+      "aggregation": "Fourteen tasks equally; all component scores use the same seventy scenes.",
+      "unit": "percent"
+    },
+    {
+      "id": "vqa",
+      "label": "VQA",
+      "definition": "Combined perception, task understanding and planning assessment.",
+      "formula": "(A + B + C) / 3",
+      "aggregation": "A and B retain the initial question/subgroup hierarchy. C = (C1 + C2 + C3) / 3. The three dimensions A/B/C and all fourteen tasks are equally weighted.",
+      "unit": "percent"
+    },
+    {
+      "id": "subtask",
+      "label": "Subtask",
+      "definition": "Native intermediate progress under the frozen execution report policy. A normal failed episode with no intermediate scalar receives zero; missing or infrastructure results are not admitted.",
+      "formula": "Mean native progress × 100",
+      "aggregation": "Five scenes equally per task, then fourteen tasks equally.",
+      "unit": "percent"
+    },
+    {
+      "id": "success",
+      "label": "Success",
+      "definition": "Fraction of scenes with a verified successful benchmark outcome.",
+      "formula": "Successful scenes / 70 × 100",
+      "aggregation": "Five scenes equally per task, then fourteen tasks equally.",
+      "unit": "percent"
+    },
+    {
+      "id": "a",
+      "label": "A · Perception",
+      "definition": "Initial perception, using the actual registered A1/A2/A3 subgroups present in each task.",
+      "formula": "Mean applicable A subgroups",
+      "aggregation": "Within each task: layouts equally per question, questions equally per registered subgroup, subgroups equally per dimension; tasks equally.",
+      "unit": "percent"
+    },
+    {
+      "id": "b",
+      "label": "B · Understanding",
+      "definition": "Initial understanding, using registered B1/B3/interaction-semantic subgroups present in each task.",
+      "formula": "Mean applicable B subgroups",
+      "aggregation": "Within each task: layouts equally per question, questions equally per registered subgroup, subgroups equally per dimension; tasks equally.",
+      "unit": "percent"
+    },
+    {
+      "id": "c",
+      "label": "C · Planning",
+      "definition": "Initial full planning and checkpoint reasoning, with equal weight for all three capabilities.",
+      "formula": "(C1 + C2 + C3) / 3",
+      "aggregation": "Each component is first aggregated on the fixed publication scope; the three components are equally weighted.",
+      "unit": "percent"
+    },
+    {
+      "id": "a1",
+      "label": "A1 · Recognition",
+      "definition": "Object identity, counts, attributes and initial state.",
+      "formula": "Mean registered A1 question scores",
+      "aggregation": "Layouts equally per question, registered questions equally within the subgroup, then tasks where that subgroup applies equally. An unregistered subgroup remains null.",
+      "unit": "percent"
+    },
+    {
+      "id": "a2",
+      "label": "A2 · Localization",
+      "definition": "Frozen per-question three-dimensional object-center localization scores, using the registered two-centimetre matching criterion and extra-object penalty.",
+      "formula": "Mean registered A2 question scores",
+      "aggregation": "Layouts equally per question, registered questions equally within the subgroup, then tasks where that subgroup applies equally. An unregistered subgroup remains null.",
+      "unit": "percent"
+    },
+    {
+      "id": "a3",
+      "label": "A3 · Relations",
+      "definition": "Relative positions, arrangements and initial alignment.",
+      "formula": "Mean registered A3 question scores",
+      "aggregation": "Layouts equally per question, registered questions equally within the subgroup, then tasks where that subgroup applies equally. An unregistered subgroup remains null.",
+      "unit": "percent"
+    },
+    {
+      "id": "b1",
+      "label": "B1 · Goal Binding",
+      "definition": "Task goals, selected objects and target binding.",
+      "formula": "Mean registered B1 question scores",
+      "aggregation": "Layouts equally per question, registered questions equally within the subgroup, then tasks where that subgroup applies equally. An unregistered subgroup remains null.",
+      "unit": "percent"
+    },
+    {
+      "id": "b3",
+      "label": "B3 · Constraints",
+      "definition": "Support, handover, orientation and finalization constraints.",
+      "formula": "Mean registered B3 question scores",
+      "aggregation": "Layouts equally per question, registered questions equally within the subgroup, then tasks where that subgroup applies equally. An unregistered subgroup remains null.",
+      "unit": "percent"
+    },
+    {
+      "id": "b_interaction",
+      "label": "B · Interaction Semantics",
+      "definition": "Task-specific interaction parts and regions.",
+      "formula": "Mean registered interaction-semantic question scores",
+      "aggregation": "Layouts equally per question, registered questions equally within the subgroup, then tasks where that subgroup applies equally. An unregistered subgroup remains null.",
+      "unit": "percent"
+    },
+    {
+      "id": "c1",
+      "label": "C1 · Full Plan",
+      "definition": "Initial complete high-level plan, scored by the frozen deterministic plan grader.",
+      "formula": "Action-set F1 × (0.5 + 0.5 × effective pairwise order accuracy)",
+      "aggregation": "Within each task: layouts equally per question, questions equally per registered subgroup, subgroups equally per dimension; tasks equally.",
+      "unit": "percent"
+    },
+    {
+      "id": "c2",
+      "label": "C2 · Completed Milestones",
+      "definition": "Exact equality of the entire completed-milestone set at a reached checkpoint. A violation of the shared single-JSON schema or closed vocabulary makes both C2 and C3 zero. An unreached planned checkpoint receives zero.",
+      "formula": "Slot = 1[predicted completed set = reference completed set]",
+      "aggregation": "Slot scores in [0,1]: all planned slots equally within each scene, five scenes equally within each task, fourteen tasks equally; multiply the final mean by 100. Normal unreached slots remain zero.",
+      "unit": "percent"
+    },
+    {
+      "id": "c3",
+      "label": "C3 · Next Action",
+      "definition": "S, O and P are 0/1 exact-match indicators for skill, object and the entire parameter object. All three indicators must be evaluated against the same single complete legal reference, then the best reference is selected. Shared JSON/schema/vocabulary violations make both C2 and C3 zero; normal unreached checkpoints receive zero.",
+      "formula": "Slot = max over references (S + S×O + S×O×P) / 3",
+      "aggregation": "Slot scores in [0,1]: all planned slots equally within each scene, five scenes equally within each task, fourteen tasks equally; multiply the final mean by 100. Normal unreached slots remain zero.",
+      "unit": "percent"
+    }
+  ],
+  "provenance": {
+    "publicationScopeId": "robodojo14-common-eval5-v1",
+    "sourceHashes": {
+      "initial": "d5b10b8bafcc0e5e7035d4b2446133ef7a2c3cd1fe90c58bb1e8e7ceb57cdf98",
+      "execution": "e8e38a824203226b374a98b30dda2b3a8d66c40a5d911e81e1716649cedb588a",
+      "process": "cabc2284493cc810254a5f55414bedf37c5ff63570fa3755dfb4346b805f4012",
+      "media": "af93124850cf47ddef11e68fc57a456d0d0e3ca8d7657f2e963702a25c0e68ed",
+      "originalInitialSummary": "9ab70c8fce68e7a72e3bb6aaf3e6d487a6b1ea1ed0affc91b2014dc09cfcbc78",
+      "originalInitialGrades": "e9e8350fa5faea60c1e0a123b91c16629eee9ea2dd8f46f9c7b7caabc73693ae",
+      "originalProcessSummary": "90dadeabfb0885d0a988be0b8fd498caf3d45dac794e9a30a6656578f2fde3fd",
+      "originalProcessSlots": "92875a4047d437b54d8b5b05fbd839ffc5f17ec1beec5aed7562f0b2f86a977a"
+    },
+    "initialScorerPolicy": "agentbench.lenient-matching.v2",
+    "processProtocol": "agentbench.native16.c2c3.v1",
+    "processCaptureSha256": "7ec0792e9b604336b66f2c6481ddb265eb813067b00c7956304054370d2708c8",
+    "processScorerSha256": "fb7d90dae01054ea488c512f5ac76ebbdf61e1cc3b6206b44609e01f69151d3b"
+  }
+}

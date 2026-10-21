@@ -40,6 +40,14 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+/.local/
+
+# Browser adapters and their reviewed exports are application source.
+!/app/data/
+!/app/data/generated/
+!/app/data/t1-benchmark-results.ts
+!/app/data/t1-benchmark-media.server.ts
+!/app/data/generated/t1-benchmark-results.json
 /public/media
 /public/episode-media
 /public/vlm-l1-samples

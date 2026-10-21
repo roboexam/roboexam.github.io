@@ -1,0 +1,98 @@
+/* Current formal T1 leaderboard. Historical protocol components stay isolated. */
+.t1Benchmark { display: grid; gap: 30px; min-width: 0; }
+.t1bHeading, .t1bViewerHeading { display: flex; height: auto; padding: 0; border: 0; background: transparent; justify-content: space-between; align-items: end; gap: 24px; }
+.t1bHeading .eyebrow, .t1bViewerHeading .eyebrow { margin: 0 0 7px; }
+.t1bHeading h2 { margin: 0; font-size: clamp(28px, 3vw, 38px); line-height: 1.2; font-weight: 560; letter-spacing: -.035em; }
+.t1bTableScroll { min-width: 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; scrollbar-color: #91a2b9 #edf1f6; }
+.t1bTable { width: 100%; border-spacing: 0; border-collapse: separate; font-variant-numeric: tabular-nums; }
+.t1bTable th, .t1bTable td { min-width: 90px; padding: 0; white-space: nowrap; text-align: center; border-bottom: 1px solid var(--line); background: #fff; }
+.t1bTable thead th { background: #f6f8fc; color: #41536e; font-size: 13px; font-weight: 600; text-transform: none; letter-spacing: 0; }
+.t1bTable th:first-child { position: sticky; left: 0; z-index: 1; min-width: 192px; padding: 20px; text-align: left; border-right: 1px solid var(--line); }
+.t1bTable tbody tr:last-child > * { border-bottom: 0; }
+.t1bTable tbody th { font-weight: 550; }
+.t1bMetricHeading { display: flex; width: 100%; min-height: 64px; align-items: center; justify-content: center; gap: 5px; border: 0; background: transparent; padding: 18px 13px; color: inherit; font-size: 13px; font-weight: inherit; cursor: pointer; }
+.t1bMetricHeading svg { flex: none; color: #7c8ca4; }
+.t1bMetricHeading:hover { color: #2558bd; background: #edf2fb; }
+.t1bModelName { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 0; background: transparent; border: 0; color: #273d5c; font-size: 14px; font-weight: 570; text-align: left; cursor: pointer; }
+.t1bModelName svg { color: #8292a9; }
+.t1bScore { width: 100%; min-height: 84px; padding: 24px 14px; border: 0; background: transparent; color: #334968; font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer; }
+.t1bScore:hover { background: #f4f7fc; color: #2558bd; }
+.t1bTable .t1bOverall { min-width: 112px; background: #eef4ff; }
+.t1bTable .t1bOverall .t1bScore { color: #2558bd; font-size: 24px; font-weight: 650; }
+.t1bSelectedModel > th { box-shadow: inset 3px 0 #4778d7; }
+.t1bViewerSection { min-width: 0; scroll-margin-top: 110px; }
+.t1bViewerHeading { margin-bottom: 20px; }
+.t1bViewerHeading h3 { margin: 0; font-size: 26px; font-weight: 550; line-height: 1.25; letter-spacing: -.025em; }
+.t1bViewerControls { display: flex; align-items: end; gap: 12px; }
+.t1bViewerControls label { display: grid; gap: 7px; min-width: 0; color: var(--muted); font-size: 12px; }
+.t1bViewerControls select { max-width: 260px; min-height: 42px; padding: 9px 32px 9px 12px; border: 1px solid #ccd6e5; border-radius: 7px; background: #fff; color: #344b6a; font-size: 13px; }
+.t1bEpisode { display: grid; grid-template-columns: minmax(0, 1fr) 290px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.t1bPlayer { display: grid; align-content: center; min-width: 0; background: #091523; color: #dce8fa; }
+.t1bPlayerBar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; color: #8fa6c5; font-size: 11px; }
+.t1bPlayerBar span:first-child { color: #bbdfd1; }
+.t1bPlayer video { display: block; width: 100%; height: auto; min-height: 180px; max-height: 460px; aspect-ratio: 4 / 1; object-fit: contain; background: #070f1b; }
+.t1bPlayerCaption { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 9px 16px; padding: 17px 20px; font-size: 12px; }
+.t1bPlayerCaption strong { color: #e6eefb; font-weight: 550; }
+.t1bPlayerCaption span { color: #94aaca; }
+.t1bEpisodeFacts { min-width: 0; background: #fbfcfe; padding: 24px; }
+.t1bEpisodeFacts > .eyebrow { margin: 0 0 7px; font-size: 10px; }
+.t1bEpisodeFacts h4 { margin: 0 0 22px; font-size: 17px; line-height: 1.5; font-weight: 550; color: #2c4567; }
+.t1bFactGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px 16px; margin: 0; }
+.t1bFactGrid dt { margin: 0; color: #76859b; font-size: 12px; }
+.t1bFactGrid dd { margin: 6px 0 0; color: #2c4567; font-size: 25px; line-height: 1.3; font-weight: 550; font-variant-numeric: tabular-nums; }
+.t1bFactGrid dd small { color: #7c8ca2; font-size: 11px; font-weight: 400; white-space: nowrap; }
+.t1bFactGrid .t1bOutcome { font-size: 16px; padding-top: 5px; }
+.t1bFactGrid .t1bElapsed { font-size: 15px; padding-top: 6px; }
+.t1bEpisodeFactsOnly { grid-template-columns: 1fr; }
+.t1bEpisodeFactsOnly .t1bFactGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.t1bMetricDialog .drawerTop { position: static; }
+.t1bMetricSummary { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 24px 0 4px; padding: 22px; border-radius: 10px; background: #f4f7fc; }
+.t1bMetricSummary > div { display: grid; gap: 7px; }
+.t1bMetricSummary span { color: var(--muted); font-size: 13px; }
+.t1bMetricSummary strong { color: #2b456b; font-size: 17px; font-weight: 550; }
+.t1bMetricSummary > div:last-child { text-align: right; }
+.t1bMetricSummary > div:last-child strong { color: #2558bd; font-size: 32px; font-weight: 620; }
+.t1bMetricDialog .t1bFormula { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+.t1bMetricDialog .t1bAppliedFormula { color: #2558bd; background: #eef4ff; }
+.t1bMetricScope { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 20px 0 0; }
+.t1bMetricScope dt { color: var(--muted); font-size: 12px; }
+.t1bMetricScope dd { margin: 6px 0 0; color: #2d466b; font-size: 25px; font-weight: 550; font-variant-numeric: tabular-nums; }
+.t1bRelatedMetrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.t1bRelatedMetrics button { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; border: 1px solid #dbe3f0; border-radius: 8px; padding: 15px; background: #fff; color: #617491; text-align: left; }
+.t1bRelatedMetrics button:hover { border-color: #a6bce3; background: #f4f7fc; }
+.t1bRelatedMetrics button span { color: #4e6384; font-size: 13px; }
+.t1bRelatedMetrics button strong { grid-column: 1; color: #315eac; font-size: 20px; font-weight: 550; }
+.t1bRelatedMetrics button svg { grid-column: 2; grid-row: 1 / 3; }
+.t1bMetricVersion p { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px !important; }
+.t1Benchmark button:focus-visible, .t1Benchmark select:focus-visible, .t1bMetricDialog button:focus-visible, .t1bTableScroll:focus-visible { outline: 3px solid #78a3eb; outline-offset: 3px; }
+@media (max-width: 1180px) {
+  .t1bViewerHeading { align-items: flex-start; flex-direction: column; }
+  .t1bViewerControls { width: 100%; display: grid; grid-template-columns: minmax(130px, 1fr) minmax(200px, 2fr) 110px; }
+  .t1bViewerControls select { max-width: none; width: 100%; }
+  .t1bEpisode { grid-template-columns: 1fr; }
+  .t1bEpisodeFacts { padding: 22px; }
+  .t1bEpisodeFacts h4 { margin-bottom: 17px; }
+  .t1bFactGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .t1Benchmark { gap: 25px; }
+  .t1bHeading { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .t1bHeading h2 { font-size: 28px; }
+  .t1bTable th:first-child { min-width: 150px; max-width: 165px; white-space: normal; padding: 18px 15px; }
+  .t1bModelName { gap: 7px; font-size: 13px; }
+  .t1bMetricHeading { min-height: 58px; padding: 16px 12px; font-size: 12px; }
+  .t1bScore { min-height: 76px; font-size: 16px; }
+  .t1bViewerHeading h3 { font-size: 24px; }
+  .t1bViewerControls { grid-template-columns: minmax(0, 1fr) 112px; gap: 14px 12px; }
+  .t1bViewerControls label:first-child { grid-column: 1 / -1; }
+  .t1bViewerControls select { font-size: 13px; }
+  .t1bPlayerBar { gap: 10px; padding: 13px 14px; font-size: 10px; }
+  .t1bPlayer video { min-height: 125px; }
+  .t1bPlayerCaption { padding: 14px; font-size: 11px; }
+  .t1bEpisodeFacts { padding: 20px; }
+  .t1bFactGrid, .t1bEpisodeFactsOnly .t1bFactGrid { grid-template-columns: 1fr 1fr; }
+  .t1bMetricSummary { padding: 18px; }
+  .t1bMetricScope { gap: 10px; }
+  .t1bMetricScope dd { font-size: 23px; }
+  .t1bRelatedMetrics { grid-template-columns: 1fr; }
+}

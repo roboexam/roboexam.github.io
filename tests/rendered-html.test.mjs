@@ -173,9 +173,31 @@ test("renders the current Track 1 results and exact selected execution video", a
   const response = await render("/track-1");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Stack Bowls", "DeepSeek v4.1 Flash", "MiMo v2.6 Pro", "Kimi K3", "GPT-6 Astra", "48.33"]) assert.ok(html.includes(text), text);
-  assert.match(html, /api\/t1-media\/t1-stack-bowls-20261018-v1-gpt6-astra-layout136/);
+  const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
+  for (const text of ["DeepSeek", "Overall", "VQA", "Subtask", "Success", "C2", "C3", bundle.models[0].scores.overall.toFixed(2)]) assert.ok(html.includes(text), text);
+  assert.match(html, /api\/t1-benchmark-media\/t1-robodojo14-deepseek-20261021-v1-deepseek-/);
+  assert.doesNotMatch(html, /MiMo v2\.6 Pro|Kimi K3|GPT-6 Astra|Process questions C2 and C3 have not been scored/);
   assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
+});
+
+test("rejects an unlisted benchmark video without exposing private paths", async () => {
+  const response = await render("/api/t1-benchmark-media/unlisted-video", { accept: "video/mp4" });
+  assert.equal(response.status, 404);
+  assert.doesNotMatch(await response.text(), /\/bh\/|\/mnt\/|\/Users\//);
+});
+
+test("serves the exact benchmark rollout through the built server with seek support", async () => {
+  const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
+  const video = bundle.episodes[0].video;
+  const head = await render(video.url, { accept: "video/mp4", method: "HEAD" });
+  assert.equal(head.status, 200);
+  assert.equal(head.headers.get("content-length"), String(video.bytes));
+  assert.equal(head.headers.get("etag"), `"${video.sha256}"`);
+  assert.equal(head.headers.get("accept-ranges"), "bytes");
+  const range = await render(video.url, { accept: "video/mp4", headers: { range: "bytes=0-31" } });
+  assert.equal(range.status, 206);
+  assert.equal(range.headers.get("content-range"), `bytes 0-31/${video.bytes}`);
+  assert.equal((await range.arrayBuffer()).byteLength, 32);
 });
 
 test("rejects an unlisted Track 1 video in the built server", async () => {

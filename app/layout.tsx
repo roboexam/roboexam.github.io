@@ -15,6 +15,7 @@ import "./l1-candidate-audit.css";
 import "./worldsync.css";
 import "./dataset-archive.css";
 import "./t1-results.css";
+import "./t1-benchmark.css";
 
 export const metadata: Metadata = {
   title: "RoboExam · Planned CVPR 2027 Workshop",
