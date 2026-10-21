@@ -6,6 +6,7 @@ import { t1LeaderboardResults } from "../../data/t1-leaderboard-results";
 import { T1BenchmarkMetricDialog } from "./t1-benchmark-metric-dialog";
 import { T1BenchmarkTable } from "./t1-benchmark-table";
 import { T1BenchmarkEmptyViewer, T1BenchmarkSceneGallery, T1BenchmarkViewer } from "./t1-benchmark-viewer";
+import { T1BenchmarkEpisodeVqa } from "./t1-benchmark-episode-vqa";
 
 export type T1BenchmarkSelection = { modelId: string; taskId: string; layoutId: number };
 
@@ -77,6 +78,8 @@ export function T1BenchmarkView({ results = t1LeaderboardResults }: { results?: 
         {episode ? <T1BenchmarkViewer key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.video?.id ?? episode.id}`}
           episode={episode} modelLabel={model.label} taskLabel={task.label} resultVersion={playbackVersion}/>
           : <T1BenchmarkEmptyViewer modelLabel={model.label} taskLabel={task.label}/>}
+        {episode && <T1BenchmarkEpisodeVqa key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.attempt}`}
+          episode={episode} modelLabel={model.label} taskLabel={task.label} resultVersion={playbackVersion}/>}
       </>}
     </section>
     {activeMetric && metricModel && <T1BenchmarkMetricDialog key={`${results.resultVersion}:${metricModel.id}:${activeMetric.id}`}

@@ -43,6 +43,9 @@ Task Tracking and Next Action. Peak Progress and Kimi K3 are excluded from the c
 The rollout gallery offers five task-specific scene positions for every model,
 with one selected video in the main player. DeepSeek uses its seventy published
 recordings; the other models retain empty trajectory positions for their future releases.
+Below each selected recording, **VQA results** shows that episode’s saved total
+and capability scores. Expand initial questions or process checkpoints to see
+the exact public question, the model’s first answer and its saved score.
 
 The other regime-based score tables use a strict five-regime Overall:
 `0.2 × ID + 0.2 × Visual OOD + 0.2 × Semantic OOD + 0.2 × Behavioral OOD + 0.2 × Recovery`.

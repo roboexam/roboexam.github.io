@@ -18,6 +18,22 @@ Other models display five empty scene cards and a blank player, without borrowed
 
 The five-rollout revision passes 29 focused adapter/component/media tests, seven built-server checks, TypeScript, lint and the production build. Browser checks at 1280 and 390 pixels cover the five selectable Cover Blocks scenes (including 100007 and 100012), task/model resets, blank MiMo/GLM players, readable cards, and removal of Peak Progress/Kimi. The empty player's width is explicitly constrained to prevent its minimum height and aspect ratio from widening the mobile page. No formal score JSON changed.
 
+## Selected-episode VQA
+
+The block below the main player shows the selected episode's saved VQA, Perception, Understanding and Reasoning scores, plus applicable capability scores. These values come directly from `episode.scores`; they are distinct from the leaderboard's task-level means. No aggregate or question score is recomputed for this feature.
+
+`app/data/generated/t1-benchmark-vqa.json` contains seventy exact episode records, 390 initial question rows (382 first answers and eight eligibility exclusions), and 207 fixed process checkpoints (eight answered and 199 normally unreached). The separate exporter copies exact public prompts, visible first final answers and frozen initial-v2/process grades. Initial scores never come from superseded `initial/graded.json`. The original formal score bundle and raw artifacts are unchanged.
+
+`/api/t1-benchmark-vqa/[id]` lazily returns a single allowlisted record. Its metadata must agree with model, task, layout, final attempt and result version in the formal episode. Invalid IDs return 404; a stale or inconsistent bundle fails closed without private diagnostics. Client selection changes unmount the previous evidence, abort pending requests and reject mismatched responses.
+
+Initial questions expand to the exact question, first answer and saved grade. An excluded question retains a null answer and score. Answered process checkpoints show both Task Tracking and Next Action scores, with the native trigger step and first returned context step kept separate. Unreached checkpoints show their saved zero and state, with no invented question or response. Text is escaped, never rendered as HTML; long prompts and answers support keyboard scrolling.
+
+The display source is frozen at SHA-256 `0db6329871e2adc45de7dc75c867405d71a78f17a1a9e070a1e16a6b17865b44`. `npm run export:t1-benchmark-vqa` projects it; `npm run check:t1-benchmark-vqa` verifies the public sidecar deterministically. Both reuse `T1_BENCHMARK_SOURCE_ROOT`, now with `vqa-details.json` alongside the original initial/execution/process snapshots. The public sidecar is server-only and is not imported into the client bundle.
+
+On 5403, the existing managed publication gained only `source/vqa-details.json` and a separate `vqa-details-publication-receipt.json`; the original publication receipt and seventy clips remain untouched. The source is 571,321 bytes; the public projection is 385,803 bytes. Original formal score JSON hashes are unchanged.
+
+This feature passes 52 focused source/API/component/identity/media tests, eight built-server checks, the pinned sidecar reproduction check, TypeScript, lint (the same four unrelated image warnings), build and repository hygiene. Browser verification covers 1280/390-pixel layouts, actual initial and process answers, rapid scene changes, empty-model removal, excluded initial nulls, and the insert-key trigger158/context192 checkpoint. No model, scorer or simulation was run.
+
 ## Scores and hierarchy
 
 All scores are on a 0–100 scale. Preserve the formal initial report's question → registered subgroup → dimension → task hierarchy for A, B, and C1. Some subgroups apply to a subset of tasks; their diagnostic columns average only those applicable tasks.
@@ -36,7 +52,7 @@ The public bundle records Overall 18.8803313026, VQA 60.1011043421, Subtask 1.21
 
 `scripts/t1-benchmark-result-registry.mjs` freezes scope, question registration, eligibility and four source digests. `scripts/export-t1-benchmark-results.mjs` validates the formal initial-v2 summary against question scores, the entire original 237-slot matrix before selecting the approved 207 slots, verified capture, exact final attempts, and the media catalog. Nonapplicable subgroups stay null. Only admitted normal failures use the original report's zero-progress fallback; missing/infrastructure episodes are rejected.
 
-The browser imports only `app/data/generated/t1-benchmark-results.json` through its typed adapter. It receives no private filesystem paths, raw answers, histories or gold references. The UI derives task scene positions from the current admitted task scope and retrieves clips/facts only through exact selected-model episode joins. It resets dependent state when the parent selection changes. Historical results do not enter the new ranking.
+The browser imports summary scores from `app/data/generated/t1-benchmark-results.json` through its typed adapter. At the user’s request, the selected-episode VQA API additionally returns public questions and the model’s visible first final answers from a separate validated sidecar. Private filesystem paths, hidden reasoning, full histories, requests, credentials and gold references remain excluded. The UI derives task scene positions from the current admitted task scope and retrieves clips/facts only through exact selected-model episode joins. It resets dependent state when the parent selection changes. Historical results do not enter the new ranking.
 
 `/api/t1-benchmark-media/[id]` accepts stable allowlisted IDs and supports HEAD, Range, ETag and If-Range. The Vite host middleware calls the same route during local development because its worker cannot read host files directly. Published clips contain only native three-view sensor footage, never debug reasoning.
 

@@ -106,7 +106,7 @@ test("a model without recordings keeps five blank scene cards and clears all pri
   assert.match(viewer, /Fixture beta, Fixture task A, rollout player/);
   assert.match(viewer, /value="task-b"/);
   assert.match(viewer, /value="alpha"/);
-  assert.doesNotMatch(viewer, /<video|data-episode-id|Selected execution|Subtask score|Failure|not available|missing|coming soon/i);
+  assert.doesNotMatch(viewer, /<video|data-episode-id|data-vqa-episode-id|VQA results|Selected execution|Subtask score|Failure|not available|missing|coming soon/i);
 });
 
 test("video and execution facts preserve selected task identity and a measured zero", () => {
@@ -181,4 +181,69 @@ test("legacy metric details use their saved formula and one-task scope", () => {
   assert.match(html, /<dt>Scenes<\/dt><dd>5<\/dd>/);
   assert.match(html, /legacy-fixture/);
   assert.doesNotMatch(html, /Process slots|synthetic-fixture-v1/);
+});
+
+function vqaDetail() {
+  return {
+    episodeId: fixture.episodes[0].id, resultVersion: fixture.resultVersion,
+    modelId: "alpha", taskId: "task-a", layoutId: 100000, attempt: "attempt_02",
+    initial: [
+      { questionId: "q-first", metricId: "a1", question: "How many <red> objects?", response: '{"count":2,"text":"<script>unsafe()</script>"}', score: 100, status: "scored", formatCompliant: true },
+      { questionId: "q-excluded", metricId: "a2", question: "Excluded fixture question", response: null, score: null, status: "not_graded", formatCompliant: null },
+    ],
+    checkpoints: [
+      { slotId: "task-a/100000/KEY_LIFTED", stageId: "KEY_LIFTED", status: "scored", questionId: "p-first", question: "What is completed, and what comes next?", response: '{"completed":["key lifted"]}', triggerStep: 158, returnStep: 192, scores: { c2: 100, c3: 66.66666666666666 } },
+      { slotId: "task-a/100000/KEY_INSERTED", stageId: "KEY_INSERTED", status: "not_reached", questionId: null, question: null, response: null, triggerStep: null, returnStep: null, scores: { c2: 0, c3: 0 } },
+    ],
+  };
+}
+
+test("episode VQA overview displays the selected scene's saved scores, not the leaderboard mean", () => {
+  const { T1BenchmarkEpisodeVqa } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const selected = { ...fixture.episodes[0], scores: { ...scores, vqa: 58.25, a: 80, b: 70, c: 24.75, c2: 0, c3: 50 } };
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkEpisodeVqa, {
+    episode: selected, modelLabel: "Fixture alpha", taskLabel: "Fixture task A", resultVersion: fixture.resultVersion,
+  }));
+  assert.match(html, /VQA results/);
+  assert.match(html, /VQA: 58\.25 out of 100/);
+  assert.match(html, /Perception: 80\.00 out of 100/);
+  assert.match(html, /Task Tracking/);
+  assert.match(html, /Next Action/);
+  assert.match(html, /data-vqa-episode-id="alpha-task-a-100000"/);
+  assert.doesNotMatch(html, /VQA: 100\.00 out of 100|Fixture beta/);
+});
+
+test("question details preserve first answers as escaped text and keep excluded scores empty", () => {
+  const { T1BenchmarkVqaEvidence } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkVqaEvidence, { detail: vqaDetail() }));
+  assert.match(html, /How many &lt;red&gt; objects\?/);
+  assert.match(html, /&lt;script&gt;unsafe\(\)&lt;\/script&gt;/);
+  assert.doesNotMatch(html, /<script>/);
+  assert.equal([...html.matchAll(/Model first answer<\/h5>/g)].length, 2);
+  const excluded = html.slice(html.indexOf("Excluded fixture question"), html.indexOf("Process checkpoints"));
+  assert.match(excluded, /Not scored/);
+  assert.doesNotMatch(excluded, /0\.00|Model first answer/);
+});
+
+test("process details distinguish trigger/context steps and unreached protocol zeros without inventing answers", () => {
+  const { T1BenchmarkVqaEvidence } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkVqaEvidence, { detail: vqaDetail() }));
+  assert.match(html, /1 answered · 2 checkpoints/);
+  assert.match(html, /Native trigger step<\/dt><dd>158/);
+  assert.match(html, /Returned context step<\/dt><dd>192/);
+  assert.match(html, /Next Action: 66\.67 out of 100/);
+  const unreached = html.slice(html.indexOf('data-vqa-slot-id="task-a/100000/KEY_INSERTED"'));
+  assert.match(unreached, /Not reached/);
+  assert.match(unreached, /Task Tracking: 0\.00 out of 100/);
+  assert.match(unreached, /Next Action: 0\.00 out of 100/);
+  assert.doesNotMatch(unreached, /Model first answer|<pre|Native trigger step/);
+});
+
+test("VQA evidence rejects stale versions, other models/scenes and different attempts", () => {
+  const { sameVqaEpisode } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const detail = vqaDetail();
+  assert.equal(sameVqaEpisode(detail, fixture.episodes[0], fixture.resultVersion), true);
+  for (const patch of [{ modelId: "beta" }, { taskId: "task-b" }, { layoutId: 100001 }, { attempt: "attempt_01" }, { resultVersion: "stale" }, { episodeId: "stale-id" }]) {
+    assert.equal(sameVqaEpisode({ ...detail, ...patch }, fixture.episodes[0], fixture.resultVersion), false, JSON.stringify(patch));
+  }
 });

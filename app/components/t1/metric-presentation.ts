@@ -21,11 +21,11 @@ const presentations: Record<string, { label: string; summary: string }> = {
   color: { label: "Color", summary: "Identify the required object colors." },
 };
 
-export function metricDisplayLabel(metric: T1BenchmarkMetric): string {
+export function metricDisplayLabel(metric: Pick<T1BenchmarkMetric, "id" | "label">): string {
   return presentations[metric.id]?.label ?? metric.label;
 }
 
-export function metricSummary(metric: T1BenchmarkMetric): string {
+export function metricSummary(metric: Pick<T1BenchmarkMetric, "id" | "definition">): string {
   return presentations[metric.id]?.summary ?? metric.definition;
 }
 

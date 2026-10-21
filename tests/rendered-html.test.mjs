@@ -192,7 +192,25 @@ test("renders the current Track 1 results and five exact scene choices", async (
   const renderedVideos = [...html.matchAll(/<video\b[^>]*src="([^"]+)"/g)].map(match => match[1]);
   assert.equal(renderedVideos.length, 6);
   assert.deepEqual(new Set(renderedVideos), new Set(expectedVideos.map(episode => episode.video.url)));
+  const selectedEpisode = expectedVideos.find(episode => episode.layoutId === 100000);
+  const episodeVqa = html.slice(html.indexOf('class="t1bEpisodeVqa"'));
+  assert.match(episodeVqa, /VQA results/);
+  assert.ok(episodeVqa.includes(`data-vqa-episode-id="${selectedEpisode.id}"`));
+  assert.ok(episodeVqa.includes(`VQA: ${selectedEpisode.scores.vqa.toFixed(2)} out of 100`));
   assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
+});
+
+test("serves selected-episode VQA questions, first answers and exact saved scores", async () => {
+  const detailBundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-vqa.json", import.meta.url), "utf8"));
+  const expected = detailBundle.episodes.find(episode => episode.taskId === "arrange_largest_number" && episode.layoutId === 100000);
+  const response = await render(`/api/t1-benchmark-vqa/${expected.episodeId}`, { accept: "application/json" });
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type"), /application\/json/);
+  assert.deepEqual(await response.json(), expected);
+  const otherModelId = expected.episodeId.replace("-deepseek-", "-mimo-");
+  const invalid = await render(`/api/t1-benchmark-vqa/${otherModelId}`, { accept: "application/json" });
+  assert.equal(invalid.status, 404);
+  assert.equal(await invalid.text(), "");
 });
 
 test("rejects an unlisted benchmark video without exposing private paths", async () => {
