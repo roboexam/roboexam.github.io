@@ -1,0 +1,19 @@
+.rawReviewRefresh { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:18px 0; color:var(--text-muted,#738097); font-size:13px; }
+.rawReviewRefresh button { display:flex; align-items:center; gap:8px; border:1px solid #dbe2ea; background:white; border-radius:8px; padding:9px 14px; color:#334155; cursor:pointer; }
+.rawReviewWorkspace { display:grid; grid-template-columns:minmax(190px,260px) minmax(0,1fr); gap:24px; margin-top:22px; align-items:start; }
+.rawReviewFolders { display:flex; flex-direction:column; gap:7px; max-height:700px; overflow:auto; }
+.rawReviewFolders button { display:flex; align-items:center; gap:10px; width:100%; border:1px solid #e0e6ed; background:#fff; border-radius:10px; padding:13px 12px; color:#475569; cursor:pointer; text-align:left; }
+.rawReviewFolders button span { flex:1; overflow-wrap:anywhere; min-width:0; font-size:13px; }
+.rawReviewFolders button b { border-radius:6px; padding:3px 6px; font-size:12px; background:#f1f5f9; }
+.rawReviewFolders button[aria-pressed=true] { border-color:#7cb9b0; background:#ecf8f5; color:#176c5a; }
+.rawReviewFolders button:focus-visible,.rawReviewRefresh button:focus-visible { outline:3px solid #219785; outline-offset:2px; }
+.rawReviewPanel { min-width:0; border:1px solid #e1e7ee; border-radius:14px; padding:22px; background:white; }
+.rawReviewHeading { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; }
+.rawReviewHeading h3 { margin:0; overflow-wrap:anywhere; font-size:17px; }
+.rawReviewHeading span,.rawReviewFootnote { color:#718096; font-size:12px; }
+.rawReviewWarnings { color:#8b5d0c; background:#fff9eb; border-radius:9px; padding:14px 28px; font-size:13px; overflow-wrap:anywhere; }
+.rawReviewDetails { font-size:12px; overflow-wrap:anywhere; margin:18px 0; }
+.rawReviewDetails dt { font-weight:600; margin-top:10px; }.rawReviewDetails dd { margin:3px 0; }
+.rawReviewBoard .reviewHero { overflow-wrap:anywhere; }.rawReviewBoard .reviewStats { min-width:180px; }
+.rawReviewFootnote { line-height:1.7; margin-top:24px; }
+@media(max-width:800px) { .rawReviewWorkspace { grid-template-columns:1fr; gap:14px; }.rawReviewFolders { flex-direction:row; overflow:auto; max-height:none; padding:3px; }.rawReviewFolders button { min-width:170px; width:auto; }.rawReviewPanel { padding:13px; }.rawReviewRefresh { align-items:flex-start; }.rawReviewHeading { align-items:flex-start; } }

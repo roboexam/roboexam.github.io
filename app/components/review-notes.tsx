@@ -1,18 +1,19 @@
 "use client";
 import { useEffect, useState } from "react";
-import type { ReviewCandidate } from "../data/review-candidates";
+type ReviewIdentity = { id: string; manifestSha256: string; seed: number | null; reviewVersion?: string };
 
 const PREFIX = "roboexam-human-review-v1:";
 type Entry = { schemaVersion: string; episodeId: string; manifestSha256: string;
-  task: string; seed: number; reviewer: string; decision: string; notes: string; updatedAt: string };
-export function ReviewNotes({ episode, taskId }: { episode: ReviewCandidate; taskId: string }) {
-  const key = PREFIX + episode.id + ":" + episode.manifestSha256;
+  task: string; seed: number | null; reviewer: string; decision: string; notes: string; updatedAt: string };
+export function ReviewNotes({ episode, taskId }: { episode: ReviewIdentity; taskId: string }) {
+  const key = PREFIX + episode.id + ":" + (episode.reviewVersion ?? episode.manifestSha256);
   const [reviewer, setReviewer] = useState("");
   const [decision, setDecision] = useState("pending");
   const [notes, setNotes] = useState("");
   const [message, setMessage] = useState("");
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
+      setReviewer(""); setDecision("pending"); setNotes(""); setMessage("");
       try {
         const raw = localStorage.getItem(key);
         if (raw) {

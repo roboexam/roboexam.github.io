@@ -114,13 +114,17 @@ test("redirects the retired standalone OOD page while keeping its media route gu
   assert.equal(invalid.status, 404);
 });
 
-test("publishes the pending review page and rejects unlisted media", async () => {
+test("publishes the raw review page and rejects unlisted media", async () => {
   const response = await render("/review");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /新增构造候选/);
-  assert.match(html, /不自动入库/);
-  assert.doesNotMatch(html, /\/mnt\//);
+  assert.match(html, /公盘数据质检/);
+  assert.match(html, /不会改写原始文件/);
+  assert.match(html, /\/mnt\/public_ckp\/UniEmbodied-Bench\/raw/);
+  assert.doesNotMatch(html, /runtime\/staging/);
+  const invalidRaw = await render("/api/raw-review?path=%2Fetc%2Fpasswd");
+  assert.equal(invalidRaw.status, 400);
+  assert.equal((await render("/api/raw-review-media?id=unlisted")).status, 404);
   for (const file of ["../../secret", "0".repeat(64)+".mp4"]) {
     const invalid = await render("/api/review-media?file="+encodeURIComponent(file));
     assert.equal(invalid.status,404);

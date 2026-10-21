@@ -27,13 +27,14 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId }: Props
   const [ready, setReady] = useState<Camera[]>([]);
   const [failed, setFailed] = useState<Camera[]>([]);
   const [time, setTime] = useState(0);
+  const [loadedDuration, setLoadedDuration] = useState(0);
   const [playing, setPlaying] = useState(false);
   const views = cameraOrder.map((camera) => media.find((item) => item.camera === camera)).filter(Boolean) as CameraMedia[];
   const supportsCompressed = views.length > 0 && views.every((item) => /^[a-f0-9]{64}$/.test(item.sha256 ?? ""));
   const [quality, setQuality] = useState<Quality>(supportsCompressed ? compressedProfile : "original");
   const mediaKey = views.map((item) => item.sha256 ?? item.url).join("|");
   const master = views.find((item) => item.camera === "cam_head") ?? views[0];
-  const duration = master?.duration ?? 0;
+  const duration = master?.duration || loadedDuration;
   const masterReady = master ? ready.includes(master.camera) && !failed.includes(master.camera) : false;
 
   function eachVideo(callback: (video: HTMLVideoElement, camera: Camera) => void) {
@@ -92,6 +93,7 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId }: Props
             aria-label={`${title} ${cameraLabels[view.camera]} camera`}
             onLoadedMetadata={() => {
               const video = videos.current[view.camera];
+              if (video && view.camera === master?.camera && Number.isFinite(video.duration)) setLoadedDuration(video.duration);
               if (video && restoreTime.current > 0) {
                 video.currentTime = Math.min(restoreTime.current, video.duration || restoreTime.current);
               }
