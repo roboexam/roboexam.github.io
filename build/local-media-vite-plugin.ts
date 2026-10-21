@@ -1,3 +1,4 @@
+import { GET as getRawReviewTrace } from "../app/api/raw-review-trace/route";
 import { GET as getRawReview } from "../app/api/raw-review/route";
 import { GET as getRawReviewMedia, HEAD as headRawReviewMedia } from "../app/api/raw-review-media/route";
 import type { IncomingHttpHeaders, IncomingMessage, ServerResponse } from "node:http";
@@ -83,6 +84,7 @@ function pathMatch(
 }
 
 function matchRoute(pathname: string): RouteMatch | null {
+  if (pathname === "/api/raw-review-trace") return { get: getRawReviewTrace, head: getRawReviewTrace, context: context() };
   if (pathname === "/api/raw-review") return { get: getRawReview, head: getRawReview, context: context() };
   if (pathname === "/api/raw-review-media") return { get: getRawReviewMedia, head: headRawReviewMedia, context: context() };
   if (pathname === "/api/curated-media") {

@@ -17,3 +17,6 @@
 .rawReviewBoard .reviewHero { overflow-wrap:anywhere; }.rawReviewBoard .reviewStats { min-width:180px; }
 .rawReviewFootnote { line-height:1.7; margin-top:24px; }
 @media(max-width:800px) { .rawReviewWorkspace { grid-template-columns:1fr; gap:14px; }.rawReviewFolders { flex-direction:row; overflow:auto; max-height:none; padding:3px; }.rawReviewFolders button { min-width:170px; width:auto; }.rawReviewPanel { padding:13px; }.rawReviewRefresh { align-items:flex-start; }.rawReviewHeading { align-items:flex-start; } }
+
+.rawReviewPanel .traceMissing p { margin:auto; padding:24px 12px; color:#7b8798; font-size:12px; text-align:center; }
+.rawReviewPanel .actionTracePanel footer span { display:block; margin-top:5px; }

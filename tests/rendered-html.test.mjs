@@ -125,6 +125,8 @@ test("publishes the raw review page and rejects unlisted media", async () => {
   const invalidRaw = await render("/api/raw-review?path=%2Fetc%2Fpasswd");
   assert.equal(invalidRaw.status, 400);
   assert.equal((await render("/api/raw-review-media?id=unlisted")).status, 404);
+  assert.equal((await render("/api/raw-review-trace?id=unlisted")).status, 400);
+  assert.equal((await render("/api/raw-review-trace?id=" + "a".repeat(64))).status, 404);
   for (const file of ["../../secret", "0".repeat(64)+".mp4"]) {
     const invalid = await render("/api/review-media?file="+encodeURIComponent(file));
     assert.equal(invalid.status,404);

@@ -34,7 +34,7 @@ function Episode({ id, tick, task }: { id: string; tick: number; task: RawTask }
   if (!episode) return <p className="reviewLoading">正在读取样本与相机…</p>;
   return <article className="reviewEpisode">
     <p className="reviewInstruction">{episode.instruction}</p>
-    {error ? <p className="reviewError" role="alert">{error}；视频暂停展示，评论仍可保存。</p> : episode.media.length ? <SynchronizedCameraPlayer media={episode.media} title={`${task.name} ${episode.name}`}/> :
+    {error ? <p className="reviewError" role="alert">{error}；视频暂停展示，评论仍可保存。</p> : episode.media.length ? <SynchronizedCameraPlayer media={episode.media} traceId={episode.id} traceSource={episode.trace} title={`${task.name} ${episode.name}`}/> :
       <p className="reviewLoading">此样本没有可播放视频，文件和质检意见仍可查看。</p>}
     <div className="reviewEvidence"><span><ShieldCheck size={15}/>公盘目录记录 · 人工状态独立保存</span>
       <span>seed {episode.seed ?? "未记录"}</span><span>强保真原记录：{episode.strongFidelity === true ? "通过" : episode.strongFidelity === false ? "未通过" : "未提供"}</span>

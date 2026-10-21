@@ -1,3 +1,4 @@
+import type { ActionTraceSource } from "./action-trace";
 export type RawFolder = { id: string; path: string; count: number };
 export type RawTask = { id: string; name: string; count: number; folders: RawFolder[] };
 export type RawCatalog = {
@@ -12,5 +13,5 @@ export type RawEpisode = RawEntry & {
   instruction: string; sourceCommit: string | null;
   media: { camera: "cam_head" | "cam_left_wrist" | "cam_right_wrist"; url: string; contentSha256: string; duration: number }[];
   files: { name: string; bytes: number }[]; warnings: string[];
-  strongFidelity: boolean | null;
+  strongFidelity: boolean | null; trace: ActionTraceSource;
 };

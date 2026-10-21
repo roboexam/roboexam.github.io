@@ -3,11 +3,12 @@
 import { LoaderCircle, Maximize2, Pause, Play } from "lucide-react";
 import { useRef, useState } from "react";
 import { cameraLabels, secondsLabel, type Camera } from "../data/curated-dataset";
+import type { ActionTraceSource } from "../data/action-trace";
 import { ActionTracePanel } from "./action-trace-panel";
 
 type CameraMedia = { camera: Camera; url: string; duration: number; sha256?: string };
 type Mark = { label: string; seconds: number };
-type Props = { media: CameraMedia[]; title: string; marks?: Mark[]; traceId?: string };
+type Props = { media: CameraMedia[]; title: string; marks?: Mark[]; traceId?: string; traceSource?: ActionTraceSource };
 type Quality = "web-360p-v1" | "original";
 
 const cameraOrder: Camera[] = ["cam_head", "cam_left_wrist", "cam_right_wrist"];
@@ -20,7 +21,7 @@ export function SynchronizedCameraPlayer(props: Props) {
   return <SynchronizedCameraPlayback key={mediaKey} {...props}/>;
 }
 
-function SynchronizedCameraPlayback({ media, title, marks = [], traceId }: Props) {
+function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSource }: Props) {
   const stage = useRef<HTMLDivElement>(null);
   const videos = useRef<Partial<Record<Camera, HTMLVideoElement | null>>>({});
   const restoreTime = useRef(0);
@@ -138,6 +139,6 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId }: Props
         <small>All three cameras and published traces share the video PTS clock; video time is not the simulator clock.</small>
       </div>}
     </div>
-    {traceId && <ActionTracePanel episodeId={traceId} currentTime={time}/>}
+    {traceId && <ActionTracePanel episodeId={traceId} currentTime={time} source={traceSource}/>}
   </div>;
 }

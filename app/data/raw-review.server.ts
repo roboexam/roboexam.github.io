@@ -4,6 +4,8 @@ import { open, readdir, realpath, stat } from "node:fs/promises";
 import path from "node:path";
 import { Readable } from "node:stream";
 import type { RawCatalog, RawEntry, RawEpisode, RawTaskEntries } from "./raw-review.ts";
+import { extractRawActionTrace, type TraceExtractor, type TraceInput, type TraceResult } from "./raw-action-trace.server.ts";
+import { validateActionTrace, type ActionTraceSource } from "./action-trace.ts";
 import { parseMediaRange } from "./media-range.ts";
 
 const digest = (text: string | Uint8Array) => createHash("sha256").update(text).digest("hex");
@@ -20,18 +22,22 @@ type LocatedEntry = RawEntry & { relative: string; taskId: string };
 const mediaIdentity = (info: { dev: bigint; ino: bigint; size: bigint; mtimeNs: bigint; ctimeNs: bigint }) =>
   [info.dev, info.ino, info.size, info.mtimeNs, info.ctimeNs].join(":");
 type MediaRef = { relative: string; physical: string; fingerprint: string; bytes: number; contentSha256: string };
+type TraceRef = { input: TraceInput; relative: string; physical: string; identity: string; metadataRelative: string | null };
 type Snapshot = { catalog: RawCatalog; entries: Map<string, LocatedEntry> };
 
 /** Host-only reader. Request parameters are opaque IDs, never paths. No data writes. */
 export function createRawReviewReader({
-  root, approvedRoots = [root], refreshMs = 30000,
-}: { root: string; approvedRoots?: string[]; refreshMs?: number }) {
+  root, approvedRoots = [root], refreshMs = 30000, traceExtractor = extractRawActionTrace,
+}: { root: string; approvedRoots?: string[]; refreshMs?: number; traceExtractor?: TraceExtractor }) {
   root = path.resolve(root);
   const approved = approvedRoots.map(value => path.resolve(value));
   let snapshot: Snapshot | undefined;
   let expires = 0;
   let pending: Promise<Snapshot> | undefined;
   const mediaRefs = new Map<string, MediaRef>();
+  const traceRefs = new Map<string, TraceRef>();
+  const traceCache = new Map<string, TraceResult>();
+  const pendingTraces = new Map<string, Promise<TraceResult>>();
   // Process-local receipts cannot survive a verifier revision. Every new/replaced
   // video is byte-hashed; unchanged videos require exact nanosecond identity.
   const receipts = new Map<string, string>();
@@ -200,10 +206,44 @@ export function createRawReviewReader({
     if (recordedTask && recordedTask !== taskName) warnings.push(`元数据任务 ${recordedTask} 与场景文件夹不一致`);
     const seed = finite(data.scene_seed) ?? finite(data.seed);
     const fidelity = object(object(data.execution).qualified_replay).fidelity_passed;
+    const manifestSha256 = manifest?.hash ?? source?.hash ?? digest(identities.join("|"));
+    const reviewVersion = digest(JSON.stringify([manifest?.hash ?? source?.hash ?? identities, media.map(item => [item.camera, item.contentSha256])]));
+    let trace: ActionTraceSource = { unavailable: "trajectory_missing" };
+    const artifact = object(object(data.artifacts).trajectory_hdf5);
+    const named = text(artifact.path);
+    const hdf5 = names.filter(name => /\.(hdf5|h5)$/i.test(name) && name !== "particle_evidence.hdf5");
+    const selectedHdf5 = named && hdf5.includes(path.basename(named)) ? path.basename(named) : hdf5.length === 1 ? hdf5[0] : null;
+    const parquet = names.includes("data.parquet") && entry.folder === "clean_official" &&
+      provenance.source_root_kind === "robodojo_official_raw" && String(provenance.standard_run_id).startsWith("benchmark2027_standard_lerobot_v8");
+    const trajectory = selectedHdf5 ?? (hdf5.length === 0 && parquet ? "data.parquet" : null);
+    if (hdf5.length > 1 && !selectedHdf5) trace = { unavailable: "ambiguous_trajectory" };
+    if (trajectory) {
+      try {
+        const relative = path.join(entry.relative, trajectory), physical = await resolve(relative);
+        const info = await stat(physical, { bigint: true });
+        if (!info.isFile()) throw new Error("not_file");
+        const identity = mediaIdentity(info);
+        const bindingSha256 = digest(JSON.stringify([entry.id, reviewVersion, trajectory, physical, identity]));
+        const head = object(object(object(data.artifacts).videos).cam_head);
+        const headSemantics = object(head.semantics);
+        const officialHead = object(object(data.videos).cam_head);
+        const probe = object(officialHead.probe);
+        const expectedHash = text((selectedHdf5 ? artifact : object(data.parquet)).sha256);
+        const input: TraceInput = { format: selectedHdf5 ? "hdf5" : "parquet", episodeId: entry.id,
+          originalEpisodeId: text(data.episode_id), taskName, manifestSha256, bindingSha256,
+          expectedTrajectorySha256: expectedHash && /^[a-f0-9]{64}$/.test(expectedHash) ? expectedHash : null,
+          officialState20D: !!parquet, sourceFrames: finite(data.frames), fps: finite(provenance.fps),
+          videoFrames: finite(headSemantics.frame_count) ?? (Number.isSafeInteger(Number(probe.nb_frames)) ? Number(probe.nb_frames) : null),
+          videoDuration: finite(headSemantics.duration_seconds) ?? (Number.isFinite(Number(probe.duration)) ? Number(probe.duration) : null) };
+        if (traceRefs.size > 20000) traceRefs.clear();
+        traceRefs.set(bindingSha256, { input, relative, physical, identity,
+          metadataRelative: manifest ? path.join(entry.relative, "episode_manifest.json") : source ? path.join(entry.relative, "SOURCE.json") : null });
+        trace = { url: `/api/raw-review-trace?id=${bindingSha256}`, bindingSha256, manifestSha256 };
+      } catch { trace = { unavailable: "trajectory_unreadable" }; }
+    }
     return { id: entry.id, taskId: entry.taskId, name: entry.name, folderId: entry.folderId, folder: entry.folder,
       originalEpisodeId: text(data.episode_id), seed,
-      manifestSha256: manifest?.hash ?? source?.hash ?? digest(identities.join("|")),
-      reviewVersion: digest(JSON.stringify([manifest?.hash ?? source?.hash ?? identities, media.map(item => [item.camera, item.contentSha256])])),
+      manifestSha256, reviewVersion, trace,
       identityKind: manifest ? "manifest" : source ? "source" : "file_inventory",
       instruction: text(data.instruction) ?? text(provenance.instruction) ?? "未记录 instruction",
       sourceCommit: text(object(data.pipeline_source).commit) ?? text(object(data.source).commit),
@@ -240,7 +280,50 @@ export function createRawReviewReader({
     return new Response(Readable.toWeb(handle.createReadStream({ start, end, autoClose: true })) as ReadableStream<Uint8Array>,
       { status: range ? 206 : 200, headers });
   }
-  return { catalog, task, episode, serveMedia };
+  async function actionTrace(id: string): Promise<TraceResult | null> {
+    const ref = traceRefs.get(id);
+    if (!ref) return null;
+    let handle;
+    try {
+      if (await resolve(ref.relative) !== ref.physical) return { status: "unavailable", reason: "source_changed" };
+      handle = await open(ref.physical, constants.O_RDONLY | constants.O_NOFOLLOW);
+      if (mediaIdentity(await handle.stat({ bigint: true })) !== ref.identity) return { status: "unavailable", reason: "source_changed" };
+      if (ref.metadataRelative) {
+        const physical = await resolve(ref.metadataRelative);
+        const metadata = await open(physical, constants.O_RDONLY | constants.O_NOFOLLOW);
+        try {
+          if ((await metadata.stat()).size > 32 * 1024 * 1024 || digest(await metadata.readFile()) !== ref.input.manifestSha256)
+            return { status: "unavailable", reason: "source_changed" };
+        } finally { await metadata.close(); }
+      }
+      const sourceInfo = await handle.stat({ bigint: true });
+      const settled = Math.max(Number(sourceInfo.mtimeNs / BigInt(1000000)), Number(sourceInfo.ctimeNs / BigInt(1000000))) < Date.now() - 2000;
+      const cached = settled ? traceCache.get(id) : undefined;
+      if (cached) return cached;
+      const inFlight = pendingTraces.get(id);
+      if (inFlight) return await inFlight;
+      const fd = handle.fd;
+      const promise = (async () => {
+        const result = await traceExtractor(fd, ref.input);
+        if (await resolve(ref.relative) !== ref.physical || mediaIdentity(await stat(ref.physical, { bigint: true })) !== ref.identity ||
+          mediaIdentity(await handle!.stat({ bigint: true })) !== ref.identity) return { status: "unavailable", reason: "source_changed" } as TraceResult;
+        if (ref.metadataRelative) {
+          const bytes = await (await import("node:fs/promises")).readFile(await resolve(ref.metadataRelative));
+          if (digest(bytes) !== ref.input.manifestSha256) return { status: "unavailable", reason: "source_changed" } as TraceResult;
+        }
+        if (result.status === "available") {
+          validateActionTrace(result.trace, ref.input.episodeId, { url: "", bindingSha256: id, manifestSha256: ref.input.manifestSha256 });
+          if (traceCache.size >= 256) traceCache.delete(traceCache.keys().next().value!);
+          traceCache.set(id, result);
+        }
+        return result;
+      })();
+      pendingTraces.set(id, promise);
+      try { return await promise; } finally { pendingTraces.delete(id); }
+    } catch { return { status: "unavailable", reason: "trajectory_unreadable" }; }
+    finally { if (handle) await handle.close(); }
+  }
+  return { catalog, task, episode, serveMedia, actionTrace };
 }
 
 export const rawReview = createRawReviewReader({
