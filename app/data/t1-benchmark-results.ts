@@ -13,6 +13,7 @@ export type T1BenchmarkMetric = {
 
 export type T1BenchmarkEpisode = {
   id: string;
+  resultVersion?: string;
   modelId: string;
   taskId: string;
   layoutId: number;
@@ -31,7 +32,28 @@ export type T1BenchmarkEpisode = {
     bytes: number;
     frames: number | null;
     fps: number | null;
+    hasMotion?: boolean;
   } | null;
+};
+
+export type T1BenchmarkModel = {
+  id: string;
+  label: string;
+  requestModel: string;
+  scores: T1BenchmarkScores;
+  publication?: {
+    resultVersion: string | null;
+    sourceModelId: string;
+    scope: {
+      taskCount: number;
+      sceneCount: number;
+      processSlotCount: number | null;
+    } | null;
+    metricOverrides?: Record<string, T1BenchmarkMetric>;
+    sourceHashes?: Record<string, string>;
+    scorerPolicy?: string;
+    scorerCommit?: string;
+  };
 };
 
 export type T1BenchmarkResults = {
@@ -45,12 +67,7 @@ export type T1BenchmarkResults = {
     layoutIds: number[];
     taskIds: string[];
   };
-  models: {
-    id: string;
-    label: string;
-    requestModel: string;
-    scores: T1BenchmarkScores;
-  }[];
+  models: T1BenchmarkModel[];
   tasks: { id: string; label: string }[];
   episodes: T1BenchmarkEpisode[];
   metrics: T1BenchmarkMetric[];

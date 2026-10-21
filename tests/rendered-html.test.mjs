@@ -174,9 +174,10 @@ test("renders the current Track 1 results and exact selected execution video", a
   assert.equal(response.status, 200);
   const html = await response.text();
   const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
-  for (const text of ["DeepSeek", "Overall", "VQA", "Subtask", "Success", "C2", "C3", bundle.models[0].scores.overall.toFixed(2)]) assert.ok(html.includes(text), text);
+  for (const text of ["DeepSeek", "Overall", "VQA", "Subtask", "Success", "Recognition", "Planning", "Task Tracking", "Next Action", bundle.models[0].scores.overall.toFixed(2)]) assert.ok(html.includes(text), text);
   assert.match(html, /api\/t1-benchmark-media\/t1-robodojo14-deepseek-20261021-v1-deepseek-/);
-  assert.doesNotMatch(html, /MiMo v2\.6 Pro|Kimi K3|GPT-6 Astra|Process questions C2 and C3 have not been scored/);
+  for (const name of ["MiMo v2.6 Pro", "Kimi K3", "GPT-6 Astra", "GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
+  assert.doesNotMatch(html, /DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
   assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
 });
 

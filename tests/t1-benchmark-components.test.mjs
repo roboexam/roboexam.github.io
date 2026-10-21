@@ -38,6 +38,7 @@ function loadComponents() {
     const runtimeRequire = createRequire(filename);
     function requireModule(name) {
       if (name === "../../data/t1-benchmark-results") return { t1BenchmarkResults: fixture };
+      if (name === "../../data/t1-leaderboard-results") return { t1LeaderboardResults: fixture };
       if (!name.startsWith(".")) return runtimeRequire(name);
       const base = resolve(dirname(filename), name);
       const target = [base, `${base}.tsx`, `${base}.ts`].find(existsSync);
@@ -102,4 +103,51 @@ test("metric details expose the real weighting and scoped calculation without pa
   assert.match(html, /Evaluation scope/);
   assert.match(html, /Process slots/);
   assert.match(html, /synthetic-fixture-v1/);
+});
+
+test("public metric headings describe abilities and expose a short explanation", () => {
+  const { metricDisplayLabel, metricDisplayFormula, metricSummary } = loadComponents()(resolve(root, "app/components/t1/metric-presentation.ts"));
+  const labels = { a1: "Recognition", a2: "Localization", a3: "Relations", b1: "Goals", b3: "Constraints", b_interaction: "Interaction", c1: "Planning", c2: "Task Tracking", c3: "Next Action" };
+  for (const [id, label] of Object.entries(labels)) {
+    assert.equal(metricDisplayLabel({ id, label: id }), label);
+    assert.ok(metricSummary({ id }).length > 20);
+  }
+  assert.equal(metricDisplayFormula("(A + B + C1) / 3"), "(Perception + Understanding + Planning) / 3");
+  assert.equal(metricDisplayFormula("(C1 + C2 + C3) / 3"), "(Planning + Task Tracking + Next Action) / 3");
+});
+
+test("unknown scores render empty cells while measured zeros stay visible", () => {
+  const { T1BenchmarkTable } = loadComponents()(component("t1-benchmark-table"));
+  const unknown = { id: "unscored", label: "Fixture unscored", scores: Object.fromEntries(Object.keys(scores).map(id => [id, null])) };
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkTable, {
+    models: [fixture.models[0], unknown], metrics, selectedModelId: "alpha", viewerId: "fixture-viewer", onMetric() {}, onSelectModel() {}, playableModelIds: new Set(["alpha"]),
+  }));
+  const unscoredRow = html.slice(html.indexOf("Fixture unscored"), html.lastIndexOf("</tr>"));
+  assert.match(unscoredRow, /data-metric-id="overall" class="t1bOverall"><\/td>/);
+  assert.match(unscoredRow, /data-metric-id="vqa"><\/td>/);
+  assert.doesNotMatch(unscoredRow, /0\.00|—|N\/A|t1bScore/);
+  assert.match(html, /Subtask: 0\.00/);
+  assert.doesNotMatch(html, /Define A1|Define C2/);
+});
+
+test("an earlier result version never borrows current episode evidence", () => {
+  const { findBenchmarkEpisode } = loadComponents()(component("t1-benchmark-view"));
+  const scoped = structuredClone(fixture);
+  scoped.models[0].publication = { resultVersion: "earlier-fixture", sourceModelId: "alpha", scope: { taskCount: 1, sceneCount: 1, processSlotCount: null } };
+  assert.equal(findBenchmarkEpisode(scoped, { modelId: "alpha", taskId: "task-a", layoutId: 100000 }), undefined);
+  scoped.episodes[0].resultVersion = "earlier-fixture";
+  assert.equal(findBenchmarkEpisode(scoped, { modelId: "alpha", taskId: "task-a", layoutId: 100000 }).id, "alpha-task-a-100000");
+});
+
+test("legacy metric details use their saved formula and one-task scope", () => {
+  const { T1BenchmarkMetricDialog } = loadComponents()(component("t1-benchmark-metric-dialog"));
+  const initialMetric = { ...metrics.find(metric => metric.id === "vqa"), label: "Initial VQA", definition: "Saved initial questions", formula: "(A + B + C1) / 3" };
+  const model = { ...fixture.models[0], publication: { resultVersion: "legacy-fixture", sourceModelId: "alpha", scope: { taskCount: 1, sceneCount: 5, processSlotCount: null }, metricOverrides: { vqa: initialMetric } } };
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkMetricDialog, { metric: initialMetric, model, results: fixture, onClose() {}, onMetric() {} }));
+  assert.match(html, /Initial VQA/);
+  assert.match(html, /\(Perception \+ Understanding \+ Planning\) \/ 3/);
+  assert.match(html, /<dt>Tasks<\/dt><dd>1<\/dd>/);
+  assert.match(html, /<dt>Scenes<\/dt><dd>5<\/dd>/);
+  assert.match(html, /legacy-fixture/);
+  assert.doesNotMatch(html, /Process slots|synthetic-fixture-v1/);
 });

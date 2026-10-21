@@ -37,15 +37,21 @@ import {
   GET as getT1BenchmarkMedia,
   HEAD as headT1BenchmarkMedia,
 } from "../app/api/t1-benchmark-media/[id]/route";
+import {
+  GET as getT1LegacyMedia,
+  HEAD as headT1LegacyMedia,
+} from "../app/api/t1-media/[id]/route";
 
 type RouteContext = { params: Promise<{ segments: string[] }> };
 type RouteHandler = (request: Request, context: RouteContext) => Response | Promise<Response>;
 type RouteMatch = { get: RouteHandler; head: RouteHandler; context: RouteContext };
-const benchmarkContext = (value: RouteContext) => ({
+const stableIdContext = (value: RouteContext) => ({
   params: value.params.then(({ segments }) => ({ id: segments.length === 1 ? segments[0] : ".." })),
 });
-const getBenchmarkMedia: RouteHandler = (request, value) => getT1BenchmarkMedia(request, benchmarkContext(value));
-const headBenchmarkMedia: RouteHandler = (request, value) => headT1BenchmarkMedia(request, benchmarkContext(value));
+const getBenchmarkMedia: RouteHandler = (request, value) => getT1BenchmarkMedia(request, stableIdContext(value));
+const headBenchmarkMedia: RouteHandler = (request, value) => headT1BenchmarkMedia(request, stableIdContext(value));
+const getLegacyMedia: RouteHandler = (request, value) => getT1LegacyMedia(request, stableIdContext(value));
+const headLegacyMedia: RouteHandler = (request, value) => headT1LegacyMedia(request, stableIdContext(value));
 
 const context = (segments: string[] = []): RouteContext => ({
   params: Promise.resolve({ segments }),
@@ -93,6 +99,7 @@ function matchRoute(pathname: string): RouteMatch | null {
   }
   return (
     pathMatch(pathname, "/api/t1-benchmark-media", getBenchmarkMedia, headBenchmarkMedia) ??
+    pathMatch(pathname, "/api/t1-media", getLegacyMedia, headLegacyMedia) ??
     pathMatch(
       pathname,
       "/api/curated-media",

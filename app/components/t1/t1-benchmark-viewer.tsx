@@ -18,15 +18,16 @@ function elapsedText(value: number | null): string {
 
 export function T1BenchmarkViewer({ episode, modelLabel, taskLabel, resultVersion }: Props) {
   const { execution, video } = episode;
+  const videoLabel = video?.hasMotion === false ? "Saved observation" : "Saved rollout";
   const identity = `${episode.modelId}:${episode.taskId}:${episode.layoutId}:${resultVersion}:${video?.id ?? episode.id}`;
   const outcome = execution.success === true ? "Success" : execution.success === false ? "Failure" : "—";
   return <div className={`t1bEpisode${video ? "" : " t1bEpisodeFactsOnly"}`} data-episode-id={episode.id}
     data-model-id={episode.modelId} data-task-id={episode.taskId} data-layout-id={episode.layoutId}
     data-result-version={resultVersion} data-video-id={video?.id}>
     {video && <div className="t1bPlayer">
-      <div className="t1bPlayerBar"><span>Saved rollout</span><span>Head · Left wrist · Right wrist</span></div>
+      <div className="t1bPlayerBar"><span>{videoLabel}</span><span>Head · Left wrist · Right wrist</span></div>
       <video key={identity} src={video.url} controls playsInline preload="metadata"
-        aria-label={`${modelLabel}, ${taskLabel}, scene ${episode.layoutId}, original rollout video`}>
+        aria-label={`${modelLabel}, ${taskLabel}, scene ${episode.layoutId}, ${video?.hasMotion === false ? "saved observation" : "original rollout video"}`}>
         <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>
         Your browser does not support video playback.
       </video>

@@ -2,6 +2,18 @@
 
 The current release is `t1-robodojo14-deepseek-20261021-v1`, using the user-approved common scope of 14 tasks, 70 scenes, and 207 process slots. Original native16 evidence and the previous Stack Bowls publication are unchanged.
 
+## Model restoration and public metric names
+
+The current table has seven rows: DeepSeek Flash, MiMo v2.6 Pro, Kimi K3, GPT-6 Astra, GLM 5.3 Flash, MiniMax H3.1 Preview and Cosmos3-Nano. The old DeepSeek row is excluded at the user's request. `app/data/t1-leaderboard-results.ts` is a presentation adapter over the two existing frozen bundles and the existing model catalog; it never grades or aggregates scores.
+
+MiMo, Kimi and GPT-6 Astra retain their exact saved Initial VQA and capability values. The saved maximum progress appears separately as Peak Progress. Overall, mean Subtask, Success and process metrics remain empty where no corresponding aggregate was saved. The original five-scene scope and initial-only formula are used in those rows' metric dialogs. GLM, MiniMax and Cosmos retain their names with empty current-protocol cells; unrelated historical metrics stay in the existing historical view.
+
+The main capability headings are Recognition, Localization, Relations, Goals, Constraints, Interaction, Planning, Task Tracking and Next Action. Each has a short explanation, and formulas display capability names instead of internal A/B/C codes. Internal IDs and both formal result JSON files remain unchanged.
+
+Fifteen original MiMo/Kimi/Astra video records retain their model, attempt, scene and result version. Local copies occupy 22,315,560 bytes in ignored `.local/t1-stack-bowls/media/`; set `DASHBOARD_T1_MEDIA_ROOT` to that directory for local playback. Kimi's one-frame recordings are presented as saved observations. The existing production media route and publication root are unchanged.
+
+This revision passes 26 focused display/identity/media tests, seven built-server checks, TypeScript, lint and the production build. Browser verification covers the seven rows, legacy VQA formula and five-scene scope, all four recorded models' selections, reset to DeepSeek's own tasks, readable metric explanations on desktop/mobile, and 15 real legacy media HEAD/ETag/size checks. No scoring exporter or model was run for this revision.
+
 ## Scores and hierarchy
 
 All scores are on a 0–100 scale. Preserve the formal initial report's question → registered subgroup → dimension → task hierarchy for A, B, and C1. Some subgroups apply to a subset of tasks; their diagnostic columns average only those applicable tasks.

@@ -9,7 +9,7 @@
 .t1bTable thead th { background: #f6f8fc; color: #41536e; font-size: 13px; font-weight: 600; text-transform: none; letter-spacing: 0; }
 .t1bTable th:first-child { position: sticky; left: 0; z-index: 1; min-width: 192px; padding: 20px; text-align: left; border-right: 1px solid var(--line); }
 .t1bTable tbody tr:last-child > * { border-bottom: 0; }
-.t1bTable tbody th { font-weight: 550; }
+.t1bTable tbody th { height: 84px; font-weight: 550; text-transform: none; }
 .t1bMetricHeading { display: flex; width: 100%; min-height: 64px; align-items: center; justify-content: center; gap: 5px; border: 0; background: transparent; padding: 18px 13px; color: inherit; font-size: 13px; font-weight: inherit; cursor: pointer; }
 .t1bMetricHeading svg { flex: none; color: #7c8ca4; }
 .t1bMetricHeading:hover { color: #2558bd; background: #edf2fb; }

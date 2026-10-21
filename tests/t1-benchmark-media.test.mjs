@@ -154,7 +154,7 @@ test("publisher binds final attempts to the exact SHA-pinned selection file", as
   await assert.rejects(publishWithSelection(value, { dryRun: true, selectionBytes: Buffer.from("{}") }), /selection SHA256 mismatch/);
 });
 
-test("Vite host bridge serves the actual new route over HTTP with GET/HEAD/Range and keeps unknown routes isolated", async () => {
+test("Vite host bridge serves new and legacy T1 allowlists over HTTP with GET/HEAD/Range and keeps unknown routes isolated", async () => {
   // Bundle the existing TS/JSON route graph in memory, as Vite does. No worker,
   // model, real source media, generated fixture bundle or disk build is started.
   const { build } = await import("esbuild");
@@ -169,6 +169,17 @@ test("Vite host bridge serves the actual new route over HTTP with GET/HEAD/Range
   try { await fixture.truncate(video.bytes); await fixture.write(bytes, 0, bytes.length, 0); } finally { await fixture.close(); }
   const previous = process.env.T1_BENCHMARK_MEDIA_ROOT;
   process.env.T1_BENCHMARK_MEDIA_ROOT = directory;
+  const legacyBundle = JSON.parse(await readFile(new URL("../app/data/generated/t1-agent-results.json", import.meta.url), "utf8"));
+  const legacyVideos = legacyBundle.episodes.filter((episode) => ["mimo", "kimi", "gpt6-astra"].includes(episode.modelId)).map((episode) => episode.video);
+  assert.equal(legacyVideos.length, 15);
+  const legacyDirectory = path.join(temporary, "vite-legacy-fixture");
+  await mkdir(legacyDirectory);
+  for (const legacy of legacyVideos) {
+    const fixture = await open(path.join(legacyDirectory, `${legacy.id}.mp4`), "wx");
+    try { await fixture.truncate(legacy.bytes); await fixture.write(bytes, 0, bytes.length, 0); } finally { await fixture.close(); }
+  }
+  const previousLegacy = process.env.DASHBOARD_T1_MEDIA_ROOT;
+  process.env.DASHBOARD_T1_MEDIA_ROOT = legacyDirectory;
   let middleware;
   localMedia().configureServer({ middlewares: { use(value) { middleware = value; } } });
   assert.equal(typeof middleware, "function");
@@ -185,10 +196,22 @@ test("Vite host bridge serves the actual new route over HTTP with GET/HEAD/Range
     assert.equal(range.headers.get("etag"), `"${video.sha256}"`);
     for (const suffix of ["unknown", video.id + "/extra", "%E0%A4%A", "%2e%2e%2fcontext"]) assert.equal((await fetch(`${base}/api/t1-benchmark-media/${suffix}`)).status, 404);
     assert.equal((await fetch(`${base}/api/t1-benchmark-media-other/${video.id}`)).status, 418);
-    assert.equal((await fetch(`${base}/api/t1-media/${video.id}`)).status, 418);
+    for (const legacy of legacyVideos) {
+      const url = `${base}/api/t1-media/${legacy.id}`;
+      const head = await fetch(url, { method: "HEAD" });
+      assert.equal(head.status, 200); assert.equal(head.headers.get("content-length"), String(legacy.bytes));
+      const range = await fetch(url, { headers: { range: "bytes=0-3" } });
+      assert.equal(range.status, 206); assert.equal(await range.text(), "0123");
+      assert.equal(range.headers.get("etag"), `"${legacy.sha256}"`);
+    }
+    for (const suffix of [video.id, "unknown", legacyVideos[0].id + "/extra", "%E0%A4%A", "%2e%2e%2fcontext"]) assert.equal((await fetch(`${base}/api/t1-media/${suffix}`)).status, 404);
+    const excludedDeepseek = legacyBundle.episodes.find((episode) => episode.modelId === "deepseek").video.id;
+    assert.equal((await fetch(`${base}/api/t1-media/${excludedDeepseek}`)).status, 404);
+    assert.equal((await fetch(`${base}/api/t1-media-other/${legacyVideos[0].id}`)).status, 418);
     assert.equal((await fetch(url, { method: "POST" })).status, 418);
   } finally {
     if (previous === undefined) delete process.env.T1_BENCHMARK_MEDIA_ROOT; else process.env.T1_BENCHMARK_MEDIA_ROOT = previous;
+    if (previousLegacy === undefined) delete process.env.DASHBOARD_T1_MEDIA_ROOT; else process.env.DASHBOARD_T1_MEDIA_ROOT = previousLegacy;
     server.closeAllConnections();
     await new Promise((resolve) => server.close(resolve));
   }

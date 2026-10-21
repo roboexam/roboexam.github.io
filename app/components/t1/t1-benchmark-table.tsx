@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import type { T1BenchmarkMetric, T1BenchmarkResults } from "../../data/t1-benchmark-results";
+import { metricDisplayFormula, metricDisplayLabel, metricSummary } from "./metric-presentation";
 
 type Props = {
   models: T1BenchmarkResults["models"];
@@ -8,24 +9,21 @@ type Props = {
   viewerId: string;
   onSelectModel: (modelId: string) => void;
   onMetric: (metricId: string, modelId: string) => void;
+  playableModelIds?: ReadonlySet<string>;
 };
 
 const headlineMetrics = ["overall", "vqa", "subtask", "success"];
 const detailMetrics = ["a1", "a2", "a3", "b1", "b3", "b_interaction", "c1", "c2", "c3"];
-const headlineLabels: Record<string, string> = { overall: "Overall", vqa: "VQA", subtask: "Subtask", success: "Success" };
 
 export function benchmarkScoreText(value: number | null | undefined): string {
   return typeof value === "number" && Number.isFinite(value) ? value.toFixed(2) : "—";
 }
 
 export function benchmarkMetricLabel(metric: T1BenchmarkMetric): string {
-  if (headlineLabels[metric.id]) return headlineLabels[metric.id];
-  if (/^[abc][123]$/.test(metric.id)) return metric.id.toUpperCase();
-  if (metric.id === "b_interaction") return "B interaction";
-  return metric.label;
+  return metricDisplayLabel(metric);
 }
 
-export function T1BenchmarkTable({ models, metrics, selectedModelId, viewerId, onSelectModel, onMetric }: Props) {
+export function T1BenchmarkTable({ models, metrics, selectedModelId, viewerId, onSelectModel, onMetric, playableModelIds }: Props) {
   const definitions = new Map(metrics.map((metric) => [metric.id, metric]));
   const reported = (metric: T1BenchmarkMetric) => models.some((model) => typeof model.scores[metric.id] === "number" && Number.isFinite(model.scores[metric.id]));
   const extraMetrics = metrics.filter((metric) => ![...headlineMetrics, ...detailMetrics, "a", "b", "c"].includes(metric.id) && reported(metric));
@@ -47,21 +45,22 @@ export function T1BenchmarkTable({ models, metrics, selectedModelId, viewerId, o
         <th scope="col">Model</th>
         {columns.map((metric) => <th key={metric.id} scope="col" className={metric.id === "overall" ? "t1bOverall" : undefined}>
           <button type="button" className="t1bMetricHeading" onClick={() => onMetric(metric.id, selectedModelId)}
-            aria-label={`Define ${metric.label}`} title={metric.label}>
+            aria-label={`Define ${benchmarkMetricLabel(metric)}`} title={`${metricSummary(metric)}\n${metricDisplayFormula(metric.formula)}`}>
             <span>{benchmarkMetricLabel(metric)}</span><ArrowUpRight size={13} aria-hidden="true"/>
           </button>
         </th>)}
       </tr></thead>
       <tbody>{models.map((model) => <tr key={model.id} className={model.id === selectedModelId ? "t1bSelectedModel" : undefined}>
-        <th scope="row"><button type="button" className="t1bModelName" aria-controls={viewerId}
+        <th scope="row">{(!playableModelIds || playableModelIds.has(model.id)) ? <button type="button" className="t1bModelName" aria-controls={viewerId}
           aria-pressed={model.id === selectedModelId} onClick={() => onSelectModel(model.id)}>
           {model.label}<ArrowUpRight size={14} aria-hidden="true"/>
-        </button></th>
-        {columns.map((metric) => <td key={metric.id} className={metric.id === "overall" ? "t1bOverall" : undefined}>
+        </button> : <span className="t1bModelName">{model.label}</span>}</th>
+        {columns.map((metric) => <td key={metric.id} data-metric-id={metric.id} className={metric.id === "overall" ? "t1bOverall" : undefined}>
+          {typeof model.scores[metric.id] === "number" && Number.isFinite(model.scores[metric.id]) &&
           <button type="button" className="t1bScore" onClick={() => onMetric(metric.id, model.id)}
-            aria-label={`${model.label}, ${metric.label}: ${benchmarkScoreText(model.scores[metric.id])} out of 100. View scoring formula.`}>
+            aria-label={`${model.label}, ${benchmarkMetricLabel(metric)}: ${benchmarkScoreText(model.scores[metric.id])} out of 100. View scoring formula.`}>
             {benchmarkScoreText(model.scores[metric.id])}
-          </button>
+          </button>}
         </td>)}
       </tr>)}</tbody>
     </table>
