@@ -1,4 +1,5 @@
 import type { T1BenchmarkEpisode } from "../../data/t1-benchmark-results";
+import { Play } from "lucide-react";
 import { benchmarkScoreText } from "./t1-benchmark-table";
 
 type Props = {
@@ -7,6 +8,32 @@ type Props = {
   taskLabel: string;
   resultVersion: string;
 };
+
+export function T1BenchmarkSceneGallery({ scenes, selectedLayoutId, onSelect }: {
+  scenes: { layoutId: number; episode?: T1BenchmarkEpisode }[];
+  selectedLayoutId: number;
+  onSelect: (layoutId: number) => void;
+}) {
+  return <div className="t1bSceneGallery" role="group" aria-label="Rollout scenes">
+    {scenes.map(({ layoutId, episode }, index) => <button type="button" key={layoutId}
+      className="t1bSceneCard" aria-label={`Select scene ${layoutId}`} aria-pressed={selectedLayoutId === layoutId && !!episode?.video}
+      disabled={!episode?.video} onClick={() => onSelect(layoutId)} data-rollout-slot={index + 1} data-layout-id={layoutId}>
+      <span className="t1bScenePreview">
+        {episode?.video && <>
+          <video key={`${episode.id}:${episode.video.id}`} src={episode.video.url} muted playsInline preload="metadata" aria-hidden="true" tabIndex={-1}>
+            <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>
+          </video>
+          <span className="t1bScenePlay"><Play size={17} fill="currentColor" aria-hidden="true"/></span>
+        </>}
+      </span>
+      <span className="t1bSceneCaption"><strong>Rollout {index + 1}</strong><span>Scene {layoutId}</span></span>
+    </button>)}
+  </div>;
+}
+
+export function T1BenchmarkEmptyViewer({ modelLabel, taskLabel }: { modelLabel: string; taskLabel: string }) {
+  return <div className="t1bEmptyPlayer" role="img" aria-label={`${modelLabel}, ${taskLabel}, rollout player`}/>;
+}
 
 function elapsedText(value: number | null): string {
   if (value === null) return "—";

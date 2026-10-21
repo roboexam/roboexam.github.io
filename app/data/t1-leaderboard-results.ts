@@ -2,7 +2,6 @@ import { tracks } from "./metric-plan.ts";
 import { t1AgentResults, type T1Scores } from "./t1-agent-results.ts";
 import {
   t1BenchmarkResults,
-  type T1BenchmarkEpisode,
   type T1BenchmarkMetric,
   type T1BenchmarkResults,
   type T1BenchmarkScores,
@@ -10,15 +9,6 @@ import {
 
 // Presentation only. Every number below is read from a published result bundle;
 // this module does not aggregate episodes or calculate missing metrics.
-const peakMetric: T1BenchmarkMetric = {
-  id: "peak",
-  label: "Peak Progress",
-  definition: "Highest observed native progress in the saved five-layout release. This is distinct from mean subtask progress.",
-  formula: "max(saved per-layout native progress)",
-  aggregation: "The original published maximum, copied without recomputing it.",
-  unit: "percent",
-};
-
 const legacyAggregation = "Original Stack Bowls release: five layouts, with the saved question and subgroup aggregation. Values are copied directly from that release.";
 const legacyMetric = (id: string, label: string, definition: string, formula: string): T1BenchmarkMetric => ({
   id, label, definition, formula, aggregation: legacyAggregation, unit: "percent",
@@ -31,29 +21,27 @@ const legacyOverrides: Record<string, T1BenchmarkMetric> = {
   a1: legacyMetric("a1", "Recognition", "The saved recognition score combines the count and interior-color questions.", "(count + color) / 2"),
   count: legacyMetric("count", "Counting", "The original bowl-count question score.", "Saved count-question mean"),
   color: legacyMetric("color", "Color", "The original bowl interior-color question score.", "Saved color-question mean"),
-  peak: peakMetric,
 };
 
 const emptyScores = (): T1BenchmarkScores => Object.fromEntries([
-  ...t1BenchmarkResults.metrics.map(metric => metric.id), "peak", "count", "color",
+  ...t1BenchmarkResults.metrics.map(metric => metric.id), "count", "color",
 ].map(id => [id, null]));
 
-function legacyScores(original: T1Scores, peak: number | null = null): T1BenchmarkScores {
+function legacyScores(original: T1Scores): T1BenchmarkScores {
   return {
     ...emptyScores(),
     vqa: original.composite,
     a: original.a, b: original.b, c: original.c,
     a1: original.a1, a2: original.a2, b1: original.b1, c1: original.c1,
     count: original.count, color: original.color,
-    peak,
   };
 }
 
-const legacyModels = t1AgentResults.models.filter(model => model.id !== "deepseek").map(model => ({
+const legacyModels = t1AgentResults.models.filter(model => ["mimo", "gpt6-astra"].includes(model.id)).map(model => ({
   id: model.id,
   label: model.label,
   requestModel: model.requestModel,
-  scores: legacyScores(model.scores, model.maxProgress),
+  scores: legacyScores(model.scores),
   publication: {
     resultVersion: t1AgentResults.resultVersion,
     sourceModelId: model.id,
@@ -80,29 +68,12 @@ const placeholders = ["glm-5.3-flash", "minimax-h3.1-preview", "Cosmos3-Nano"].m
   };
 });
 
-const legacyEpisodes: T1BenchmarkEpisode[] = t1AgentResults.episodes.filter(episode => episode.modelId !== "deepseek").map(episode => ({
-  id: episode.id,
-  modelId: episode.modelId,
-  taskId: t1AgentResults.task.id,
-  layoutId: episode.layoutId,
-  attempt: episode.provenance.attempt,
-  resultVersion: t1AgentResults.resultVersion,
-  execution: {
-    steps: episode.execution.steps,
-    subtask: episode.execution.progress,
-    success: episode.execution.success,
-    elapsedSeconds: episode.execution.elapsedSeconds,
-  },
-  scores: legacyScores(episode.scores),
-  video: episode.video,
-}));
-
 export const t1LeaderboardResults: T1BenchmarkResults = {
   ...t1BenchmarkResults,
   models: [
     ...t1BenchmarkResults.models.map(model => ({
       ...model,
-      scores: { ...model.scores, peak: null },
+      scores: { ...model.scores },
       publication: {
         resultVersion: t1BenchmarkResults.resultVersion,
         sourceModelId: model.id,
@@ -118,10 +89,7 @@ export const t1LeaderboardResults: T1BenchmarkResults = {
     ...legacyModels,
     ...placeholders,
   ],
-  tasks: [...t1BenchmarkResults.tasks, { id: t1AgentResults.task.id, label: t1AgentResults.task.label }],
-  episodes: [
-    ...t1BenchmarkResults.episodes.map(episode => ({ ...episode, resultVersion: t1BenchmarkResults.resultVersion })),
-    ...legacyEpisodes,
-  ],
-  metrics: [...t1BenchmarkResults.metrics, peakMetric],
+  tasks: [...t1BenchmarkResults.tasks],
+  episodes: t1BenchmarkResults.episodes.map(episode => ({ ...episode, resultVersion: t1BenchmarkResults.resultVersion })),
+  metrics: [...t1BenchmarkResults.metrics],
 };

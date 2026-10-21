@@ -17,7 +17,6 @@ const presentations: Record<string, { label: string; summary: string }> = {
   c1: { label: "Planning", summary: "Produce a complete plan with the required action order." },
   c2: { label: "Task Tracking", summary: "Identify which milestones have been completed at a checkpoint." },
   c3: { label: "Next Action", summary: "Choose a legal next action, object and target parameters." },
-  peak: { label: "Peak Progress", summary: "Highest recorded native progress across the saved scenes." },
   count: { label: "Counting", summary: "Count the required objects in the scene." },
   color: { label: "Color", summary: "Identify the required object colors." },
 };

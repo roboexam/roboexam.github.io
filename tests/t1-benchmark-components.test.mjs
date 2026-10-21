@@ -18,10 +18,14 @@ function episode(modelId, taskId, layoutId) {
 }
 const fixture = {
   schemaVersion: "roboexam.t1-benchmark-results.v1", resultVersion: "synthetic-fixture-v1", generatedAt: "2026-10-21",
-  scope: { taskCount: 2, sceneCount: 4, processSlotCount: 10, layoutIds: [100000, 100012], taskIds: ["task-a", "task-b"] },
+  scope: { taskCount: 2, sceneCount: 10, processSlotCount: 10, layoutIds: [100000, 100001, 100002, 100003, 100004, 100007, 100012], taskIds: ["task-a", "task-b"] },
   models: ["alpha", "beta"].map((id) => ({ id, label: `Fixture ${id}`, requestModel: id, scores })),
   tasks: [{ id: "task-a", label: "Fixture task A" }, { id: "task-b", label: "Fixture task B" }],
-  episodes: [episode("alpha", "task-a", 100000), episode("alpha", "task-b", 100000), episode("alpha", "task-b", 100012), episode("beta", "task-b", 100000)],
+  episodes: [
+    ...[100000, 100001, 100002, 100003, 100004].map((layoutId) => episode("alpha", "task-a", layoutId)),
+    ...[100000, 100001, 100003, 100007, 100012].map((layoutId) => episode("alpha", "task-b", layoutId)),
+    episode("beta", "task-b", 100000),
+  ],
   metrics, provenance: { sourceHashes: {}, publicationScopeId: "synthetic-only" },
 };
 
@@ -53,19 +57,22 @@ function loadComponents() {
 }
 const component = (name) => resolve(root, "app/components/t1", `${name}.tsx`);
 
-test("repeated scene IDs join on both model and task; parent switches choose a valid first scene", () => {
+test("model switches preserve the shared task scope without borrowing another model's episode", () => {
   const { firstBenchmarkSelection, findBenchmarkEpisode } = loadComponents()(component("t1-benchmark-view"));
   const first = firstBenchmarkSelection(fixture, "alpha");
   assert.deepEqual(first, { modelId: "alpha", taskId: "task-a", layoutId: 100000 });
   assert.equal(findBenchmarkEpisode(fixture, { ...first, taskId: "task-b" }).id, "alpha-task-b-100000");
-  const switched = firstBenchmarkSelection(fixture, "beta");
+  const blank = firstBenchmarkSelection(fixture, "beta", "task-a");
+  assert.deepEqual(blank, { modelId: "beta", taskId: "task-a", layoutId: 100000 });
+  assert.equal(findBenchmarkEpisode(fixture, blank), undefined);
+  const switched = firstBenchmarkSelection(fixture, "beta", "task-b");
   assert.deepEqual(switched, { modelId: "beta", taskId: "task-b", layoutId: 100000 });
   assert.equal(findBenchmarkEpisode(fixture, switched).id, "beta-task-b-100000");
   assert.equal(findBenchmarkEpisode(fixture, { ...switched, taskId: "task-a" }), undefined);
   assert.equal(findBenchmarkEpisode(fixture, { ...switched, layoutId: 100012 }), undefined);
 });
 
-test("current page uses the requested column order and only its exact default video", () => {
+test("current page shows five scene previews and the exact selected main video", () => {
   const { T1BenchmarkView } = loadComponents()(component("t1-benchmark-view"));
   const html = renderToStaticMarkup(React.createElement(T1BenchmarkView, { results: fixture }));
   const headers = [...html.matchAll(/class="t1bMetricHeading"[^>]*[\s\S]*?<span>(.*?)<\/span>/g)].map((match) => match[1]);
@@ -76,11 +83,35 @@ test("current page uses the requested column order and only its exact default vi
   assert.doesNotMatch(html, /not measured|not yet included|missing|incomplete|autoplay/i);
   assert.match(html, /preload="metadata"/);
   assert.match(html, /playsInline=""/i);
+  assert.deepEqual([...html.matchAll(/data-rollout-slot="(\d+)"/g)].map((match) => match[1]), ["1", "2", "3", "4", "5"]);
+  assert.equal([...html.matchAll(/<video\b/g)].length, 6);
+  assert.match(html, /aria-label="Select scene 100000" aria-pressed="true"/);
+  assert.doesNotMatch(html, /Rollout scene<|aria-label="Rollout scene"/);
+});
+
+test("the five scene positions are task-specific rather than the union of every task's IDs", () => {
+  const { benchmarkTaskLayoutIds, firstBenchmarkSelection } = loadComponents()(component("t1-benchmark-view"));
+  assert.deepEqual(benchmarkTaskLayoutIds(fixture, "task-a"), [100000, 100001, 100002, 100003, 100004]);
+  assert.deepEqual(benchmarkTaskLayoutIds(fixture, "task-b"), [100000, 100001, 100003, 100007, 100012]);
+  assert.deepEqual(firstBenchmarkSelection(fixture, "alpha", "task-b"), { modelId: "alpha", taskId: "task-b", layoutId: 100000 });
+});
+
+test("a model without recordings keeps five blank scene cards and clears all prior video and execution facts", () => {
+  const { T1BenchmarkView } = loadComponents()(component("t1-benchmark-view"));
+  const blankResults = { ...fixture, models: [fixture.models[1], fixture.models[0]] };
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkView, { results: blankResults }));
+  const viewer = html.slice(html.indexOf('<section class="t1bViewerSection"'));
+  assert.equal([...viewer.matchAll(/data-rollout-slot=/g)].length, 5);
+  assert.equal([...viewer.matchAll(/disabled=""/g)].length, 5);
+  assert.match(viewer, /Fixture beta, Fixture task A, rollout player/);
+  assert.match(viewer, /value="task-b"/);
+  assert.match(viewer, /value="alpha"/);
+  assert.doesNotMatch(viewer, /<video|data-episode-id|Selected execution|Subtask score|Failure|not available|missing|coming soon/i);
 });
 
 test("video and execution facts preserve selected task identity and a measured zero", () => {
   const { T1BenchmarkViewer } = loadComponents()(component("t1-benchmark-viewer"));
-  const selected = fixture.episodes[2];
+  const selected = fixture.episodes.find((item) => item.id === "alpha-task-b-100012");
   const html = renderToStaticMarkup(React.createElement(T1BenchmarkViewer, {
     episode: selected, modelLabel: "Fixture alpha", taskLabel: "Fixture task B", resultVersion: fixture.resultVersion,
   }));

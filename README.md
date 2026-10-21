@@ -34,12 +34,15 @@ tasks, seventy scenes and 207 process slots. The generated adapter, metric
 dialogs and exact model/task/scene rollout viewer share this publication.
 See [T1 publication and verification](docs/T1_BENCHMARK_PUBLICATION.md).
 
-The T1 table also retains MiMo, Kimi and GPT-6 Astra's saved Stack Bowls scores,
+The T1 table also retains MiMo and GPT-6 Astra's saved Stack Bowls scores,
 plus the existing GLM, MiniMax and Cosmos model names. DeepSeek is represented
 by its new release. A read-only display adapter copies existing values and keeps
 unrecorded columns empty; metric dialogs retain each row's original scope and
 formula. Capability headings use plain names such as Recognition, Planning,
-Task Tracking and Next Action.
+Task Tracking and Next Action. Peak Progress and Kimi K3 are excluded from the current table.
+The rollout gallery offers five task-specific scene positions for every model,
+with one selected video in the main player. DeepSeek uses its seventy published
+recordings; the other models retain empty trajectory positions for their future releases.
 
 The other regime-based score tables use a strict five-regime Overall:
 `0.2 × ID + 0.2 × Visual OOD + 0.2 × Semantic OOD + 0.2 × Behavioral OOD + 0.2 × Recovery`.

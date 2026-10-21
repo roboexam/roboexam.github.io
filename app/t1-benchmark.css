@@ -26,6 +26,19 @@
 .t1bViewerControls { display: flex; align-items: end; gap: 12px; }
 .t1bViewerControls label { display: grid; gap: 7px; min-width: 0; color: var(--muted); font-size: 12px; }
 .t1bViewerControls select { max-width: 260px; min-height: 42px; padding: 9px 32px 9px 12px; border: 1px solid #ccd6e5; border-radius: 7px; background: #fff; color: #344b6a; font-size: 13px; }
+.t1bSceneGallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+.t1bSceneCard { display: grid; min-width: 0; padding: 0; overflow: hidden; border: 1px solid #dbe3ef; border-radius: 9px; background: #fff; color: #415a7b; cursor: pointer; text-align: left; }
+.t1bSceneCard:hover:not(:disabled) { border-color: #83a6e1; }
+.t1bSceneCard[aria-pressed="true"] { border-color: #4778d7; box-shadow: 0 0 0 2px #4778d7; }
+.t1bSceneCard:disabled { color: #8190a6; cursor: default; }
+.t1bScenePreview { position: relative; display: grid; aspect-ratio: 3 / 1; background: #f0f4f9; overflow: hidden; }
+.t1bScenePreview video { display: block; width: 100%; height: 100%; object-fit: contain; background: #091523; pointer-events: none; }
+.t1bScenePlay { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: #07101b20; pointer-events: none; }
+.t1bScenePlay svg { box-sizing: content-box; padding: 8px; border: 1px solid #ffffff65; border-radius: 50%; background: #09152380; }
+.t1bSceneCaption { display: grid; gap: 5px; padding: 12px; }
+.t1bSceneCaption strong { font-size: 13px; font-weight: 550; }
+.t1bSceneCaption > span { font-size: 11px; color: #8190a6; }
+.t1bEmptyPlayer { width: 100%; min-width: 0; box-sizing: border-box; min-height: 220px; aspect-ratio: 4 / 1; border: 1px solid var(--line); border-radius: 12px; background: #f4f7fc; }
 .t1bEpisode { display: grid; grid-template-columns: minmax(0, 1fr) 290px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .t1bPlayer { display: grid; align-content: center; min-width: 0; background: #091523; color: #dce8fa; }
 .t1bPlayerBar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 20px; color: #8fa6c5; font-size: 11px; }
@@ -67,7 +80,7 @@
 .t1Benchmark button:focus-visible, .t1Benchmark select:focus-visible, .t1bMetricDialog button:focus-visible, .t1bTableScroll:focus-visible { outline: 3px solid #78a3eb; outline-offset: 3px; }
 @media (max-width: 1180px) {
   .t1bViewerHeading { align-items: flex-start; flex-direction: column; }
-  .t1bViewerControls { width: 100%; display: grid; grid-template-columns: minmax(130px, 1fr) minmax(200px, 2fr) 110px; }
+  .t1bViewerControls { width: 100%; display: grid; grid-template-columns: minmax(130px, 1fr) minmax(200px, 2fr); }
   .t1bViewerControls select { max-width: none; width: 100%; }
   .t1bEpisode { grid-template-columns: 1fr; }
   .t1bEpisodeFacts { padding: 22px; }
@@ -83,9 +96,11 @@
   .t1bMetricHeading { min-height: 58px; padding: 16px 12px; font-size: 12px; }
   .t1bScore { min-height: 76px; font-size: 16px; }
   .t1bViewerHeading h3 { font-size: 24px; }
-  .t1bViewerControls { grid-template-columns: minmax(0, 1fr) 112px; gap: 14px 12px; }
-  .t1bViewerControls label:first-child { grid-column: 1 / -1; }
+  .t1bViewerControls { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .t1bViewerControls select { font-size: 13px; }
+  .t1bSceneGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .t1bSceneCaption { padding: 10px; }
+  .t1bEmptyPlayer { min-height: 150px; }
   .t1bPlayerBar { gap: 10px; padding: 13px 14px; font-size: 10px; }
   .t1bPlayer video { min-height: 125px; }
   .t1bPlayerCaption { padding: 14px; font-size: 11px; }

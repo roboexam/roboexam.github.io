@@ -4,15 +4,19 @@ The current release is `t1-robodojo14-deepseek-20261021-v1`, using the user-appr
 
 ## Model restoration and public metric names
 
-The current table has seven rows: DeepSeek Flash, MiMo v2.6 Pro, Kimi K3, GPT-6 Astra, GLM 5.3 Flash, MiniMax H3.1 Preview and Cosmos3-Nano. The old DeepSeek row is excluded at the user's request. `app/data/t1-leaderboard-results.ts` is a presentation adapter over the two existing frozen bundles and the existing model catalog; it never grades or aggregates scores.
+The current table has six rows: DeepSeek Flash, MiMo v2.6 Pro, GPT-6 Astra, GLM 5.3 Flash, MiniMax H3.1 Preview and Cosmos3-Nano. The old DeepSeek row, Kimi K3 and Peak Progress are excluded at the user's request. `app/data/t1-leaderboard-results.ts` is a presentation adapter over the two existing frozen bundles and the existing model catalog; it never grades or aggregates scores.
 
-MiMo, Kimi and GPT-6 Astra retain their exact saved Initial VQA and capability values. The saved maximum progress appears separately as Peak Progress. Overall, mean Subtask, Success and process metrics remain empty where no corresponding aggregate was saved. The original five-scene scope and initial-only formula are used in those rows' metric dialogs. GLM, MiniMax and Cosmos retain their names with empty current-protocol cells; unrelated historical metrics stay in the existing historical view.
+MiMo and GPT-6 Astra retain their exact saved Initial VQA and capability values. Overall, mean Subtask, Success and process metrics remain empty where no corresponding aggregate was saved. The original five-scene scope and initial-only formula are used in those rows' metric dialogs. GLM, MiniMax and Cosmos retain their names with empty current-protocol cells; unrelated historical metrics stay in the existing historical view.
 
 The main capability headings are Recognition, Localization, Relations, Goals, Constraints, Interaction, Planning, Task Tracking and Next Action. Each has a short explanation, and formulas display capability names instead of internal A/B/C codes. Internal IDs and both formal result JSON files remain unchanged.
 
-Fifteen original MiMo/Kimi/Astra video records retain their model, attempt, scene and result version. Local copies occupy 22,315,560 bytes in ignored `.local/t1-stack-bowls/media/`; set `DASHBOARD_T1_MEDIA_ROOT` to that directory for local playback. Kimi's one-frame recordings are presented as saved observations. The existing production media route and publication root are unchanged.
+## Five-rollout gallery
 
-This revision passes 26 focused display/identity/media tests, seven built-server checks, TypeScript, lint and the production build. Browser verification covers the seven rows, legacy VQA formula and five-scene scope, all four recorded models' selections, reset to DeepSeek's own tasks, readable metric explanations on desktop/mobile, and 15 real legacy media HEAD/ETag/size checks. No scoring exporter or model was run for this revision.
+Every model offers the fourteen current tasks and five scene cards per task. The cards show the task's admitted scene IDs in scope order, rather than all seven IDs in the cross-task union. DeepSeek's five cards expose their exact original sensor clips and switch a single main player. The model/task/scene/version identity also controls the displayed execution facts. A model change preserves the chosen task and resets the selected scene; a task change resets the scene and player.
+
+Other models display five empty scene cards and a blank player, without borrowed historical footage, invented episode facts or missing-data notes. Their saved leaderboard scores remain available independently. Historical media files and their existing API remain unchanged, but the current gallery does not reference them. No scorer, exporter, model call, simulation or media copy is required for this display revision.
+
+The five-rollout revision passes 29 focused adapter/component/media tests, seven built-server checks, TypeScript, lint and the production build. Browser checks at 1280 and 390 pixels cover the five selectable Cover Blocks scenes (including 100007 and 100012), task/model resets, blank MiMo/GLM players, readable cards, and removal of Peak Progress/Kimi. The empty player's width is explicitly constrained to prevent its minimum height and aspect ratio from widening the mobile page. No formal score JSON changed.
 
 ## Scores and hierarchy
 
@@ -32,7 +36,7 @@ The public bundle records Overall 18.8803313026, VQA 60.1011043421, Subtask 1.21
 
 `scripts/t1-benchmark-result-registry.mjs` freezes scope, question registration, eligibility and four source digests. `scripts/export-t1-benchmark-results.mjs` validates the formal initial-v2 summary against question scores, the entire original 237-slot matrix before selecting the approved 207 slots, verified capture, exact final attempts, and the media catalog. Nonapplicable subgroups stay null. Only admitted normal failures use the original report's zero-progress fallback; missing/infrastructure episodes are rejected.
 
-The browser imports only `app/data/generated/t1-benchmark-results.json` through its typed adapter. It receives no private filesystem paths, raw answers, histories or gold references. The UI derives task/scene choices from actual model episodes and resets dependent state when the parent selection changes. Historical results do not enter the new ranking.
+The browser imports only `app/data/generated/t1-benchmark-results.json` through its typed adapter. It receives no private filesystem paths, raw answers, histories or gold references. The UI derives task scene positions from the current admitted task scope and retrieves clips/facts only through exact selected-model episode joins. It resets dependent state when the parent selection changes. Historical results do not enter the new ranking.
 
 `/api/t1-benchmark-media/[id]` accepts stable allowlisted IDs and supports HEAD, Range, ETag and If-Range. The Vite host middleware calls the same route during local development because its worker cannot read host files directly. Published clips contain only native three-view sensor footage, never debug reasoning.
 

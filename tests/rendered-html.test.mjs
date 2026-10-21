@@ -169,15 +169,29 @@ test("serves compressed video renditions with ranges and immutable identity", as
 });
 
 
-test("renders the current Track 1 results and exact selected execution video", async () => {
+test("renders the current Track 1 results and five exact scene choices", async () => {
   const response = await render("/track-1");
   assert.equal(response.status, 200);
   const html = await response.text();
   const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
   for (const text of ["DeepSeek", "Overall", "VQA", "Subtask", "Success", "Recognition", "Planning", "Task Tracking", "Next Action", bundle.models[0].scores.overall.toFixed(2)]) assert.ok(html.includes(text), text);
   assert.match(html, /api\/t1-benchmark-media\/t1-robodojo14-deepseek-20261021-v1-deepseek-/);
-  for (const name of ["MiMo v2.6 Pro", "Kimi K3", "GPT-6 Astra", "GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
-  assert.doesNotMatch(html, /DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
+  for (const name of ["MiMo v2.6 Pro", "GPT-6 Astra", "GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
+  assert.doesNotMatch(html, /Kimi K3|Peak Progress|DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
+  assert.doesNotMatch(html, /src="\/api\/t1-media\//);
+  assert.match(html, /role="group" aria-label="Rollout scenes"/);
+  const slots = [...html.matchAll(/data-rollout-slot="(\d+)"/g)].map(match => Number(match[1]));
+  assert.deepEqual(slots, [1, 2, 3, 4, 5]);
+  const taskId = "arrange_largest_number";
+  const expectedVideos = bundle.episodes.filter(episode => episode.modelId === bundle.models[0].id && episode.taskId === taskId);
+  assert.equal(expectedVideos.length, 5);
+  for (const episode of expectedVideos) {
+    assert.ok(html.includes(`aria-label="Select scene ${episode.layoutId}"`), `scene ${episode.layoutId}`);
+    assert.ok(html.includes(`src="${episode.video.url}"`), episode.video.id);
+  }
+  const renderedVideos = [...html.matchAll(/<video\b[^>]*src="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(renderedVideos.length, 6);
+  assert.deepEqual(new Set(renderedVideos), new Set(expectedVideos.map(episode => episode.video.url)));
   assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
 });
 
