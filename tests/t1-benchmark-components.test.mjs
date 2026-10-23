@@ -130,7 +130,7 @@ test("metric details expose the real weighting and scoped calculation without pa
     metric: metrics[0], model: fixture.models[0], results: fixture, onClose() {}, onMetric() {},
   }));
   assert.match(html, /Overall = 0\.7 × Subtask \+ 0\.3 × VQA/);
-  assert.match(html, /0\.70 × 0\.00 \+ 0\.30 × 100\.00 = 30\.00/);
+  assert.match(html, /0\.70 × 0\.00 \+ 0\.30 × 100\.00 ≈ 30\.00/);
   assert.match(html, /Evaluation scope/);
   assert.match(html, /Process slots/);
   assert.match(html, /synthetic-fixture-v1/);

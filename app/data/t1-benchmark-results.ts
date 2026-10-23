@@ -77,6 +77,7 @@ export type T1BenchmarkResults = {
     initialScorerPolicy: string;
     processProtocol: string;
     processCaptureSha256: string;
+    processCaptureSha256s?: string[];
     processScorerSha256: string;
     baselineCommit?: string;
     equivalencesSha256?: string;

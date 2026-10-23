@@ -33,11 +33,11 @@ export function T1BenchmarkMetricDialog({ metric, model, results, onClose, onMet
   });
   const hasScores = (ids: string[]) => ids.every((id) => typeof model.scores[id] === "number" && Number.isFinite(model.scores[id]));
   const appliedFormula = metric.id === "overall" && hasScores(["overall", "subtask", "vqa"])
-    ? `0.70 × ${benchmarkScoreText(model.scores.subtask)} + 0.30 × ${benchmarkScoreText(model.scores.vqa)} = ${benchmarkScoreText(model.scores.overall)}`
+    ? `0.70 × ${benchmarkScoreText(model.scores.subtask)} + 0.30 × ${benchmarkScoreText(model.scores.vqa)} ≈ ${benchmarkScoreText(model.scores.overall)}`
     : metric.id === "vqa" && hasScores(["vqa", "a", "b", "c"])
-      ? `(${benchmarkScoreText(model.scores.a)} + ${benchmarkScoreText(model.scores.b)} + ${benchmarkScoreText(model.scores.c)}) / 3 = ${benchmarkScoreText(model.scores.vqa)}`
+      ? `(${benchmarkScoreText(model.scores.a)} + ${benchmarkScoreText(model.scores.b)} + ${benchmarkScoreText(model.scores.c)}) / 3 ≈ ${benchmarkScoreText(model.scores.vqa)}`
       : metric.id === "c" && hasScores(["c", "c1", "c2", "c3"])
-        ? `(${benchmarkScoreText(model.scores.c1)} + ${benchmarkScoreText(model.scores.c2)} + ${benchmarkScoreText(model.scores.c3)}) / 3 = ${benchmarkScoreText(model.scores.c)}`
+        ? `(${benchmarkScoreText(model.scores.c1)} + ${benchmarkScoreText(model.scores.c2)} + ${benchmarkScoreText(model.scores.c3)}) / 3 ≈ ${benchmarkScoreText(model.scores.c)}`
         : null;
 
   useEffect(() => {
