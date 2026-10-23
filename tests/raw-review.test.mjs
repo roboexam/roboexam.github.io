@@ -126,8 +126,52 @@ test("video hashes are checked against metadata and changed bytes do not borrow 
 
 test("API rejects path parameters and unknown/duplicate IDs", async () => {
   const { GET } = await import("../app/api/raw-review/route.ts");
-  for (const query of ["?path=/etc/passwd", "?task=../private", "?episode=x", `?task=${"1".repeat(64)}&task=${"2".repeat(64)}`, `?task=${"1".repeat(64)}&episode=${"2".repeat(64)}`]) {
+  for (const query of ["?path=/etc/passwd", "?task=../private", "?episode=x", "?refresh=anything", "?refresh=1&refresh=1", `?refresh=1&task=${"1".repeat(64)}`, `?task=${"1".repeat(64)}&task=${"2".repeat(64)}`, `?task=${"1".repeat(64)}&episode=${"2".repeat(64)}`]) {
     const response = await GET(request("/api/raw-review" + query));
     assert.equal(response.status, 400);
   }
+});
+
+test("manual refresh bypasses the TTL and publishes one snapshot to both consumers", async t => {
+  const { root, reader } = await fixture(t, { refreshMs: 60000 });
+  const first = await sample(root, "task/id/episode_1");
+  const before = await reader.catalog();
+  await sample(root, "new_task/new_category/new_batch/episode_2");
+  assert.equal((await reader.catalog()).count, 1, "ordinary reads reuse the shared cache");
+  const [datasets, review] = await Promise.all([reader.catalog(true), reader.catalog(true)]);
+  assert.equal(datasets, review, "concurrent refreshes join one scan");
+  assert.equal(datasets.count, 2);
+  assert.notEqual(datasets.version, before.version);
+  const added = datasets.tasks.find(row => row.name === "new_task");
+  assert.equal(added.folders[0].path, "new_category/new_batch");
+  assert.equal((await reader.task(added.id)).version, datasets.version);
+  await rm(first, { recursive: true });
+  assert.equal((await reader.catalog(true)).count, 1);
+});
+
+test("mount aliases resolve approved roots physically without allowing unrelated targets", async t => {
+  const base = await mkdtemp(path.join(tmpdir(), "raw-mount-alias-"));
+  t.after(() => rm(base, { recursive: true, force: true }));
+  const physical = path.join(base, "physical");
+  const source = path.join(base, "sources");
+  const alias = path.join(base, "public_ckp");
+  const sourceAlias = path.join(base, "staging");
+  await sample(physical, "raw/local/id/episode_0");
+  const sourceEpisode = await sample(source, "linked/id/episode_1");
+  await symlink(physical, alias);
+  await symlink(source, sourceAlias);
+  await mkdir(path.join(physical, "raw/linked/id"), { recursive: true });
+  await symlink(sourceEpisode, path.join(physical, "raw/linked/id/episode_1"));
+  await mkdir(path.join(base, "private/episode_secret"), { recursive: true });
+  await symlink(path.join(base, "private"), path.join(physical, "raw/escape"));
+  const reader = createRawReviewReader({ root: path.join(alias, "raw"), approvedRoots: [alias, sourceAlias] });
+  const catalog = await reader.catalog();
+  assert.equal(catalog.count, 2);
+  assert.ok(catalog.warnings.some(warning => warning.includes("escape")));
+  const task = catalog.tasks.find(row => row.name === "linked");
+  const episode = await reader.episode((await reader.task(task.id)).entries[0].id);
+  assert.equal(episode.media.length, 3);
+  const response = await reader.serveMedia(request(episode.media[0].url, { range: "bytes=0-2" }));
+  assert.equal(response.status, 206);
+  assert.equal(await response.text(), "012");
 });

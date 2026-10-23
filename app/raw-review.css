@@ -1,5 +1,10 @@
 .rawReviewRefresh { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:18px 0; color:var(--text-muted,#738097); font-size:13px; }
 .rawReviewRefresh button { display:flex; align-items:center; gap:8px; border:1px solid #dbe2ea; background:white; border-radius:8px; padding:9px 14px; color:#334155; cursor:pointer; }
+.rawReviewRefresh button:disabled { opacity:.6; cursor:wait; }
+.rawReviewCrossLink { display:inline-block; margin:12px 0; color:#176c5a; text-underline-offset:4px; }
+.rawReviewCrossLink:focus-visible { outline:3px solid #219785; outline-offset:3px; }
+.rawReviewBoard .reviewToolbar select { min-width:0; max-width:100%; }
+.rawReviewBoard .reviewTaskHeading small { overflow-wrap:anywhere; }
 .rawReviewWorkspace { display:grid; grid-template-columns:minmax(190px,260px) minmax(0,1fr); gap:24px; margin-top:22px; align-items:start; }
 .rawReviewFolders { display:flex; flex-direction:column; gap:7px; max-height:700px; overflow:auto; }
 .rawReviewFolders button { display:flex; align-items:center; gap:10px; width:100%; border:1px solid #e0e6ed; background:#fff; border-radius:10px; padding:13px 12px; color:#475569; cursor:pointer; text-align:left; }

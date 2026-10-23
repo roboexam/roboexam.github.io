@@ -70,7 +70,7 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
         <CapabilityTrackFlow activeId={activeCapability} onCapability={setActiveCapability} onTrack={nextTrack => navigate('Leaderboards', nextTrack)}/>
       </div>}
       {page === 'Leaderboards' && <LeaderboardView key={track} initialTrack={track} onMetric={setDetail}/>}
-      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading"><h1>Datasets</h1><p>Simulation tasks, reference trajectories, and model rollouts.</p></div><ScenarioBrowser/></div>}
+      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading"><h1>Datasets</h1><p>Live simulation raw captures, synchronized cameras, and source-bound action traces.</p></div><ScenarioBrowser/></div>}
       {page === 'Correlation' && <ExplainabilityView/>}
     </main>
     <footer className="researchFooter"><div><strong>RoboExam</strong><span>Planned CVPR 2027 Workshop</span></div></footer>

@@ -120,7 +120,7 @@ test("publishes the raw review page and rejects unlisted media", async () => {
   const html = await response.text();
   assert.match(html, /公盘数据质检/);
   assert.match(html, /不会改写原始文件/);
-  assert.match(html, /\/mnt\/public_ckp\/UniEmbodied-Bench\/raw/);
+  assert.match(html, /Simulation raw/);
   assert.doesNotMatch(html, /runtime\/staging/);
   const invalidRaw = await render("/api/raw-review?path=%2Fetc%2Fpasswd");
   assert.equal(invalidRaw.status, 400);
@@ -131,6 +131,16 @@ test("publishes the raw review page and rejects unlisted media", async () => {
     const invalid = await render("/api/review-media?file="+encodeURIComponent(file));
     assert.equal(invalid.status,404);
   }
+});
+
+test("Datasets renders the same live raw browser as Review", async () => {
+  const response = await render("/datasets");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Simulation 原始数据/);
+  assert.match(html, /Datasets 与 Review 共用当前公盘目录/);
+  assert.match(html, /Scenario plan/);
+  assert.doesNotMatch(html, /reference episodes|admitted ·|\/mnt\//);
 });
 
 test("serves compressed video renditions with ranges and immutable identity", async () => {

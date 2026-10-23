@@ -1,4 +1,3 @@
-import "../raw-review.css";
 import { RawReviewBoard } from "../components/raw-review-board";
 export default function ReviewPage() {
   return <main className="content reviewPage">

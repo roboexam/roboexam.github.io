@@ -51,7 +51,9 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   }
   assert.doesNotMatch(dashboard, /One robot|Head \+ cameras|Build history|IterationCounter/);
   const scenarios = await readFile(new URL("app/components/scenario-browser.tsx", root), "utf8");
-  assert.match(scenarios, /<DatasetExplorer/);
+  assert.match(scenarios, /<RawDataBrowser/);
+  assert.match(scenarios, /useRawCatalog/);
+  assert.doesNotMatch(scenarios, /curatedDataset|<DatasetExplorer/);
   assert.doesNotMatch(scenarios, /<BaselineExplorer|OodValidationPanel/);
   assert.doesNotMatch(dashboard, /\x27Metrics\x27|Metric guide/);
   assert.match(dashboard, /<ExplainabilityView/);

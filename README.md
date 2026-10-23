@@ -54,7 +54,11 @@ normalization and dimension macro averaging, never raw heterogeneous metrics.
 All five settings must cover every selected unique scene; otherwise Overall
 stays `—` and the model is not ranked.
 
-**Datasets** opens on **Task trajectories**: collection overview, admission counts, task/tag filters, and a five-regime ID / Visual OOD / Semantic OOD / Behavioral OOD / Recovery rail. Each episode keeps its three synchronized camera views; source-bound joint and end-effector traces replay on the same video clock when telemetry is published. OOD validation state stays attached to each episode rather than appearing in a separate browser.
+**Datasets** (`/datasets`, also available from the homepage) and **Review** (`/review`) share the live simulation raw catalog and the same opaque episode/media/trace IDs. Task trajectories lists the actual tasks, nested folders and sample directories, including empty categories and new tasks outside the scenario proposal. The scenario plan's counts and episode links also come from this catalog. Three camera views and source-bound action traces share the video clock when available; links between Datasets and Review preserve the selected task, folder and episode. Review adds browser-local human notes.
+
+The current physical raw root is `/mnt/public_ckp/UniEmbodied-Bench/raw`, a sibling of `simulation`, **not** `simulation/raw` (which is absent on this mount). `simulation/scence` and `simulation/dataset` contain processed scene/purpose datasets and are not substituted for raw captures. Set `DASHBOARD_RAW_ROOT` on the host if the raw collection moves. Both pages use `/api/raw-review`; catalog scans are cached for 30 seconds and coalesced across concurrent requests. The browser checks every 30 seconds after the previous request completes, refreshes on focus/visibility, and the Refresh button explicitly requests a fresh scan. Task and episode requests follow a completed catalog response. Added/removed folders and episodes update without a build or exporter run; changed media and metadata are revalidated when the selected episode refreshes. Counts represent directory records, not deduplicated or admitted trajectories. Mount/scan failures are explicit and hide playback until recovery.
+
+The reader must run on a Node host with the raw mount and approved symlink targets available; the existing Vite host bridge supports local development. A standalone Cloudflare deployment cannot scan host `/mnt` directories. Requests accept stable IDs, never filesystem paths; the configured root and existing approved source roots bound symlink resolution. No raw files are modified.
 
 T1's current publication is separate from **Previous protocols**. T2 keeps **Current plan** separate from **Historical runs**: the September VLM / ACWM designs cannot inherit older scores just because metric names match. Missing values stay blank; original measured zeros stay zero. T4 plans only outcomes and diagnostics observable through video or manual review.
 
@@ -69,6 +73,12 @@ npm run test
 npm run build
 npm run test:render
 ```
+
+`npm run test:raw-browser` checks a built local preview (`RAW_TEST_URL`, default
+`http://127.0.0.1:3327`) using Playwright (`PLAYWRIGHT_MODULE` and optional
+`CHROMIUM_EXECUTABLE`). It checks actual raw video playback, cross-page identity,
+desktop/mobile layouts and directory updates using disposable fixtures under
+the system temporary directory. It does not modify public datasets.
 
 Use the exporter scripts under `scripts/` to publish formal result bundles. Generated bundles retain model, task, split, metric, scorer, and source-hash provenance.
 

@@ -31,6 +31,7 @@ export function createRawReviewReader({
 }: { root: string; approvedRoots?: string[]; refreshMs?: number; traceExtractor?: TraceExtractor }) {
   root = path.resolve(root);
   const approved = approvedRoots.map(value => path.resolve(value));
+  let physicalRoots: Promise<string[]> | undefined;
   let snapshot: Snapshot | undefined;
   let expires = 0;
   let pending: Promise<Snapshot> | undefined;
@@ -75,10 +76,16 @@ export function createRawReviewReader({
     const logical = path.resolve(root, relative);
     if (!within(root, logical)) throw new Error("outside_raw_root");
     const physical = await realpath(logical);
-    if (!approved.some(base => within(base, physical))) throw new Error("unapproved_symlink");
+    // Mount aliases (including /mnt/public_ckp) must be canonicalized on both
+    // sides. Only operator-approved roots grant access; never trust an entry's target.
+    physicalRoots ??= Promise.all(approved.map(async base => {
+      try { return await realpath(base); } catch { return null; }
+    })).then(values => values.filter((value): value is string => value !== null));
+    if (!(await physicalRoots).some(base => within(base, physical))) throw new Error("unapproved_symlink");
     return physical;
   }
   async function scan(): Promise<Snapshot> {
+    physicalRoots = undefined;
     // Fail closed if the mount disappears; do not silently show a historical snapshot.
     await resolve("");
     const entries = new Map<string, LocatedEntry>();
@@ -136,14 +143,14 @@ export function createRawReviewReader({
     return { entries, catalog: { schemaVersion: "roboexam.raw-review.v1", version,
       scannedAt: new Date().toISOString(), refreshSeconds: refreshMs / 1000, tasks, count: entries.size, warnings } };
   }
-  async function current() {
-    if (snapshot && Date.now() < expires) return snapshot;
+  async function current(force = false) {
+    if (!force && snapshot && Date.now() < expires) return snapshot;
     if (!pending) pending = scan().then(value => {
       snapshot = value; expires = Date.now() + refreshMs; return value;
     }).finally(() => { pending = undefined; });
     return pending;
   }
-  async function catalog() { return (await current()).catalog; }
+  async function catalog(force = false) { return (await current(force)).catalog; }
   async function task(id: string): Promise<RawTaskEntries | null> {
     const state = await current();
     if (!state.catalog.tasks.some(item => item.id === id)) return null;
