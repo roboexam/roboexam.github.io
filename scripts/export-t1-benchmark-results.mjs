@@ -4,6 +4,7 @@ import { lstat, readFile, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { t1BenchmarkRegistry as registry } from "./t1-benchmark-result-registry.mjs";
+import { buildFinalResults } from "./export-t1-final-cohort.mjs";
 
 const SHA256 = /^[a-f0-9]{64}$/;
 const SOURCE_NAMES = ["initial", "execution", "process", "media"];
@@ -75,7 +76,7 @@ export const metrics = [
   ["b1", "B1 · Goal Binding", "Task goals, selected objects and target binding.", "Mean registered B1 question scores", subgroupAggregation],
   ["b3", "B3 · Constraints", "Support, handover, orientation and finalization constraints.", "Mean registered B3 question scores", subgroupAggregation],
   ["b_interaction", "B · Interaction Semantics", "Task-specific interaction parts and regions.", "Mean registered interaction-semantic question scores", subgroupAggregation],
-  ["c1", "C1 · Full Plan", "Initial complete high-level plan, scored by the frozen deterministic plan grader.", "Action-set F1 × (0.5 + 0.5 × effective pairwise order accuracy)", aggregateDescription],
+  ["c1", "C1 · Full Plan", "Initial complete high-level plan, scored by the shared v3 deterministic grader and verified semantic-equivalence table.", "Action-set F1 × (0.5 + 0.5 × effective pairwise order accuracy)", aggregateDescription],
   ["c2", "C2 · Completed Milestones", "Exact equality of the entire completed-milestone set at a reached checkpoint. A violation of the shared single-JSON schema or closed vocabulary makes both C2 and C3 zero. An unreached planned checkpoint receives zero.", "Slot = 1[predicted completed set = reference completed set]", processAggregation],
   ["c3", "C3 · Next Action", "S, O and P are 0/1 exact-match indicators for skill, object and the entire parameter object. All three indicators must be evaluated against the same single complete legal reference, then the best reference is selected. Shared JSON/schema/vocabulary violations make both C2 and C3 zero; normal unreached checkpoints receive zero.", "Slot = max over references (S + S×O + S×O×P) / 3", processAggregation],
 ].map(([id, label, definition, formula, aggregation]) => ({ id, label, definition, formula, aggregation, unit: "percent" }));
@@ -226,7 +227,7 @@ export async function readPinned(file, expectedSha256) {
   return bytes;
 }
 
-export async function buildPublishedBundle(sourceRoot = process.env.T1_BENCHMARK_SOURCE_ROOT || new URL("../.local/t1-benchmark/source/", import.meta.url)) {
+export async function buildLegacyPublishedBundle(sourceRoot = process.env.T1_BENCHMARK_SOURCE_ROOT || new URL("../.local/t1-benchmark/source/", import.meta.url)) {
   const root = await realpath(sourceRoot), sources = {};
   fields(registry.sourcePins, SOURCE_NAMES, "pinned source allowlist");
   for (const name of SOURCE_NAMES) {
@@ -238,6 +239,10 @@ export async function buildPublishedBundle(sourceRoot = process.env.T1_BENCHMARK
   return validatePublicationSources(sources);
 }
 
+export async function buildPublishedBundle(sourceRoot) {
+  return buildFinalResults(metrics, sourceRoot);
+}
+
 async function main() {
   const args = process.argv.slice(2);
   assert.ok(args.length === 0 || (args.length === 1 && args[0] === "--check"), "only --check is supported");
@@ -245,7 +250,7 @@ async function main() {
   const output = new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url);
   if (args.includes("--check")) assert.equal(await readFile(output, "utf8"), serialized, "published benchmark bundle is stale");
   else await writeFile(output, serialized);
-  console.log(args.includes("--check") ? "Benchmark bundle matches all four pinned source snapshots." : "Published the fourteen-task benchmark bundle.");
+  console.log(args.includes("--check") ? "Benchmark bundle matches the sealed two-model v3 cohort." : "Published the fourteen-task benchmark bundle.");
 }
 
 if (path.resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) await main();

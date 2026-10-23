@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 import formal from "../app/data/generated/t1-benchmark-results.json" with { type: "json" };
 import { t1BenchmarkRegistry as scoreRegistry } from "./t1-benchmark-result-registry.mjs";
 import { t1BenchmarkVqaRegistry as registry } from "./t1-benchmark-vqa-registry.mjs";
+import { buildFinalVqa } from "./export-t1-final-cohort.mjs";
+import { metrics } from "./export-t1-benchmark-results.mjs";
 
 export const sha256 = value => createHash("sha256").update(value).digest("hex");
 const SHA = /^[a-f0-9]{64}$/;
@@ -143,7 +145,7 @@ export async function readPinned(file, expected) {
   return bytes;
 }
 
-export async function buildVqaBundle(sourceRoot = process.env.T1_BENCHMARK_SOURCE_ROOT || new URL("../.local/t1-benchmark/source/", import.meta.url)) {
+export async function buildLegacyVqaBundle(sourceRoot = process.env.T1_BENCHMARK_SOURCE_ROOT || new URL("../.local/t1-benchmark/source/", import.meta.url)) {
   await readPinned(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), registry.formalBundleSha256);
   const root = await realpath(sourceRoot), values = {};
   const pins = { initial: scoreRegistry.sourcePins.initial, execution: scoreRegistry.sourcePins.execution, process: scoreRegistry.sourcePins.process, "vqa-details": registry.detailsSha256 };
@@ -154,6 +156,10 @@ export async function buildVqaBundle(sourceRoot = process.env.T1_BENCHMARK_SOURC
     values[name] = JSON.parse((await readPinned(file, pin)).toString("utf8"));
   }
   return validateVqaSource(values["vqa-details"], values);
+}
+
+export async function buildVqaBundle(sourceRoot) {
+  return buildFinalVqa(metrics, sourceRoot);
 }
 
 async function main() {

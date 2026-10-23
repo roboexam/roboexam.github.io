@@ -170,6 +170,13 @@ test("an earlier result version never borrows current episode evidence", () => {
   assert.equal(findBenchmarkEpisode(scoped, { modelId: "alpha", taskId: "task-a", layoutId: 100000 }).id, "alpha-task-a-100000");
 });
 
+test("duplicate formal episodes never select an arbitrary attempt", () => {
+  const { findBenchmarkEpisode } = loadComponents()(component("t1-benchmark-view"));
+  const duplicate = structuredClone(fixture);
+  duplicate.episodes.push({ ...duplicate.episodes[0], id: "different-attempt", attempt: "attempt_03" });
+  assert.equal(findBenchmarkEpisode(duplicate, { modelId: "alpha", taskId: "task-a", layoutId: 100000 }), undefined);
+});
+
 test("legacy metric details use their saved formula and one-task scope", () => {
   const { T1BenchmarkMetricDialog } = loadComponents()(component("t1-benchmark-metric-dialog"));
   const initialMetric = { ...metrics.find(metric => metric.id === "vqa"), label: "Initial VQA", definition: "Saved initial questions", formula: "(A + B + C1) / 3" };
@@ -246,4 +253,37 @@ test("VQA evidence rejects stale versions, other models/scenes and different att
   for (const patch of [{ modelId: "beta" }, { taskId: "task-b" }, { layoutId: 100001 }, { attempt: "attempt_01" }, { resultVersion: "stale" }, { episodeId: "stale-id" }]) {
     assert.equal(sameVqaEpisode({ ...detail, ...patch }, fixture.episodes[0], fixture.resultVersion), false, JSON.stringify(patch));
   }
+  assert.equal(sameVqaEpisode(detail, { ...fixture.episodes[0], resultVersion: "different-publication" }, fixture.resultVersion), false);
+});
+
+test("VQA request state is keyed by every episode identity field", () => {
+  const { vqaEpisodeIdentity } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const selected = fixture.episodes[0], original = vqaEpisodeIdentity(selected, fixture.resultVersion);
+  for (const patch of [{ id: "different-episode" }, { modelId: "beta" }, { taskId: "task-b" }, { layoutId: 100001 }, { attempt: "attempt_03" }]) {
+    assert.notEqual(vqaEpisodeIdentity({ ...selected, ...patch }, fixture.resultVersion), original);
+  }
+  assert.notEqual(vqaEpisodeIdentity(selected, "different-version"), original);
+});
+
+test("policy zeros display saved scores without fabricating answers or counting a model call", () => {
+  const { T1BenchmarkVqaEvidence } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const detail = vqaDetail();
+  detail.initial.push({ questionId: "q-policy", metricId: "b1", question: "Policy fixture question", response: null,
+    score: 0, status: "infrastructure_missing", formatCompliant: null, scoreOrigin: "policy_zero", observedScore: null });
+  detail.checkpoints.push({ slotId: "task-a/100000/POLICY_STAGE", stageId: "POLICY_STAGE", status: "reached_reference_blocked",
+    questionId: "p-policy", question: null, response: null, triggerStep: 1099, returnStep: 1100,
+    scores: { c2: 0, c3: 0 }, scoreOrigin: "policy_zero", observedScores: { c2: null, c3: null } });
+  const shared = { ...detail.checkpoints[0], slotId: "task-a/100000/SHARED_STAGE", stageId: "SHARED_STAGE", triggerStep: 161 };
+  detail.checkpoints.push(shared);
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkVqaEvidence, { detail }));
+  assert.match(html, /1 answered · 4 checkpoints/);
+  const policyInitial = html.slice(html.indexOf("Policy fixture question"), html.indexOf("Process checkpoints"));
+  assert.match(policyInitial, /Goals: 0\.00 out of 100/);
+  assert.doesNotMatch(policyInitial, /Model first answer|Not scored|<pre/);
+  const policyCheckpoint = html.slice(html.indexOf('data-vqa-slot-id="task-a/100000/POLICY_STAGE"'), html.indexOf('data-vqa-slot-id="task-a/100000/SHARED_STAGE"'));
+  assert.match(policyCheckpoint, /data-score-origin="policy_zero"/);
+  assert.match(policyCheckpoint, /Checkpoint/);
+  assert.match(policyCheckpoint, /Returned context step<\/dt><dd>1100/);
+  assert.match(policyCheckpoint, /Task Tracking: 0\.00 out of 100/);
+  assert.doesNotMatch(policyCheckpoint, /Answered|Model first answer|<pre/);
 });

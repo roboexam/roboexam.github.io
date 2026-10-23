@@ -35,9 +35,14 @@ function QuestionText({ text }: { text: string }) {
 }
 
 export function sameVqaEpisode(detail: T1BenchmarkVqaEpisode, episode: T1BenchmarkEpisode, resultVersion: string): boolean {
-  return detail.episodeId === episode.id && detail.resultVersion === resultVersion &&
+  return (episode.resultVersion ?? resultVersion) === resultVersion &&
+    detail.episodeId === episode.id && detail.resultVersion === resultVersion &&
     detail.modelId === episode.modelId && detail.taskId === episode.taskId &&
     detail.layoutId === episode.layoutId && detail.attempt === episode.attempt;
+}
+
+export function vqaEpisodeIdentity(episode: T1BenchmarkEpisode, resultVersion: string): string {
+  return JSON.stringify([resultVersion, episode.modelId, episode.taskId, episode.layoutId, episode.attempt, episode.id]);
 }
 
 function VqaScore({ id, value }: { id: string; value: number | null | undefined }) {
@@ -47,11 +52,11 @@ function VqaScore({ id, value }: { id: string; value: number | null | undefined 
 }
 
 export function T1BenchmarkVqaEvidence({ detail }: { detail: T1BenchmarkVqaEpisode }) {
-  const answered = detail.checkpoints.filter((point) => point.status === "scored").length;
+  const answered = new Set(detail.checkpoints.filter((point) => point.status === "scored").map((point) => point.questionId)).size;
   return <div className="t1bVqaEvidence" data-vqa-detail-id={detail.episodeId}>
     <section className="t1bVqaQuestionSection" aria-label="Initial VQA questions">
       <div className="t1bVqaSectionHeading"><h4>Initial VQA</h4><span>{detail.initial.length} questions</span></div>
-      <div className="t1bVqaQuestionList">{detail.initial.map((question, index) => <details className="t1bVqaQuestion" key={question.questionId}>
+      <div className="t1bVqaQuestionList">{detail.initial.map((question, index) => <details className="t1bVqaQuestion" key={question.questionId} data-score-origin={question.scoreOrigin}>
         <summary>
           <span className="t1bVqaQuestionTitle"><span>{label(question.metricId)}</span><strong>{question.question}</strong></span>
           {question.score === null ? <span className="t1bVqaStatus">Not scored</span> : <VqaScore id={question.metricId} value={question.score}/>}
@@ -71,8 +76,8 @@ export function T1BenchmarkVqaEvidence({ detail }: { detail: T1BenchmarkVqaEpiso
         if (point.status === "not_reached") return <div className="t1bVqaUnreached" key={point.slotId} data-vqa-slot-id={point.slotId}>
           <span className="t1bVqaQuestionTitle"><span>Not reached</span><strong>{stageLabel(point.stageId)}</strong></span>{scores}
         </div>;
-        return <details className="t1bVqaQuestion t1bVqaCheckpoint" key={point.slotId} data-vqa-slot-id={point.slotId}>
-          <summary><span className="t1bVqaQuestionTitle"><span>Answered</span><strong>{stageLabel(point.stageId)}</strong></span>{scores}<ChevronDown size={16} aria-hidden="true"/></summary>
+        return <details className="t1bVqaQuestion t1bVqaCheckpoint" key={point.slotId} data-vqa-slot-id={point.slotId} data-score-origin={point.scoreOrigin}>
+          <summary><span className="t1bVqaQuestionTitle"><span>{point.status === "scored" ? "Answered" : "Checkpoint"}</span><strong>{stageLabel(point.stageId)}</strong></span>{scores}<ChevronDown size={16} aria-hidden="true"/></summary>
           <div className="t1bVqaAnswerBody">
             <dl className="t1bVqaAnswerMeta">
               {point.triggerStep !== null && <div><dt>Native trigger step</dt><dd>{point.triggerStep}</dd></div>}
@@ -89,10 +94,11 @@ export function T1BenchmarkVqaEvidence({ detail }: { detail: T1BenchmarkVqaEpiso
 
 export function T1BenchmarkEpisodeVqa({ episode, modelLabel, taskLabel, resultVersion }: Props) {
   const headingId = useId();
-  const [detail, setDetail] = useState<T1BenchmarkVqaEpisode | null>(null);
-  const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState<{ identity: string; detail: T1BenchmarkVqaEpisode | null; failed: boolean } | null>(null);
   const [retry, setRetry] = useState(0);
-  const selectedDetail = detail && sameVqaEpisode(detail, episode, resultVersion) ? detail : null;
+  const identity = vqaEpisodeIdentity(episode, resultVersion);
+  const selectedDetail = loaded?.identity === identity && loaded.detail && sameVqaEpisode(loaded.detail, episode, resultVersion) ? loaded.detail : null;
+  const failed = loaded?.identity === identity && loaded.failed;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -101,13 +107,15 @@ export function T1BenchmarkEpisodeVqa({ episode, modelLabel, taskLabel, resultVe
         if (!response.ok) throw new Error("VQA request failed");
         const record: T1BenchmarkVqaEpisode = await response.json();
         if (!sameVqaEpisode(record, episode, resultVersion)) throw new Error("VQA episode mismatch");
-        if (!controller.signal.aborted) { setDetail(record); setFailed(false); }
+        if (!controller.signal.aborted) setLoaded({ identity, detail: record, failed: false });
       })
-      .catch(() => { if (!controller.signal.aborted) setFailed(true); });
+      .catch(() => { if (!controller.signal.aborted) setLoaded({ identity, detail: null, failed: true }); });
     return () => controller.abort();
-  }, [episode, resultVersion, retry]);
+  }, [episode, identity, resultVersion, retry]);
 
-  return <section className="t1bEpisodeVqa" aria-labelledby={headingId} data-vqa-episode-id={episode.id}>
+  return <section className="t1bEpisodeVqa" aria-labelledby={headingId} data-vqa-episode-id={episode.id}
+    data-model-id={episode.modelId} data-task-id={episode.taskId} data-result-version={resultVersion}
+    data-layout-id={episode.layoutId} data-attempt={episode.attempt}>
     <div className="t1bVqaHeading"><div><p className="eyebrow">Selected episode</p><h3 id={headingId}>VQA results</h3></div>
       <span>{modelLabel} · {taskLabel} · Scene {episode.layoutId}</span></div>
     <dl className="t1bVqaOverview">{["vqa", "a", "b", "c"].map((id) => <div key={id} className={id === "vqa" ? "t1bVqaTotal" : undefined}>
@@ -119,7 +127,7 @@ export function T1BenchmarkEpisodeVqa({ episode, modelLabel, taskLabel, resultVe
       </div>)}</dl>
     </section>)}</div>
     {selectedDetail ? <T1BenchmarkVqaEvidence key={`${resultVersion}:${episode.id}`} detail={selectedDetail}/>
-      : failed ? <div className="t1bVqaLoadError" role="alert">VQA details could not be loaded. <button type="button" onClick={() => { setFailed(false); setRetry((value) => value + 1); }}>Retry</button></div>
+      : failed ? <div className="t1bVqaLoadError" role="alert">VQA details could not be loaded. <button type="button" onClick={() => { setLoaded(null); setRetry((value) => value + 1); }}>Retry</button></div>
       : <div className="t1bVqaLoading" role="status" aria-label="Loading episode VQA details"/>}
   </section>;
 }

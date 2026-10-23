@@ -12,24 +12,28 @@ const { t1AgentResults: old } = await import("../app/data/t1-agent-results.ts");
 const sourceCurrent = structuredClone(current), sourceOld = structuredClone(old);
 const { t1LeaderboardResults: displayed } = await import("../app/data/t1-leaderboard-results.ts");
 
-test("retains six model identities while excluding old DeepSeek and Kimi from the public catalog", () => {
-  assert.deepEqual(displayed.models.map(row => row.id), ["deepseek", "mimo", "gpt6-astra", "glm-5.3-flash", "minimax-h3.1-preview", "Cosmos3-Nano"]);
-  assert.equal(new Set(displayed.models.map(row => row.id)).size, 6);
+test("adds the final GPT model while retaining every other public model identity", () => {
+  assert.deepEqual(displayed.models.map(row => row.id), [...current.models.map(row => row.id), "mimo", "gpt6-astra", "glm-5.3-flash", "minimax-h3.1-preview", "Cosmos3-Nano"]);
+  assert.deepEqual(new Set(current.models.map(row => row.id)), new Set(["gpt-6-1-sol", "deepseek"]));
+  assert.equal(new Set(displayed.models.map(row => row.id)).size, 7);
+  assert.equal(displayed.models.find(row => row.id === "gpt-6-1-sol").label, "GPT-6.1-sol");
   assert.equal(displayed.models.find(row => row.id === "deepseek").requestModel, "deepseek-flash");
   assert.ok(!displayed.models.some(row => row.requestModel === "ciyuan/deepseek-v4.1-flash"));
   assert.ok(!displayed.models.some(row => /qwen/i.test(row.id)));
   assert.ok(!displayed.models.some(row => /kimi/i.test(row.id + row.label + row.requestModel)));
 });
 
-test("the new DeepSeek scores and source publication remain unchanged", () => {
-  const row = displayed.models.find(model => model.id === "deepseek");
-  assert.deepEqual(row.scores, current.models[0].scores);
-  assert.deepEqual(row.publication, {
-    resultVersion: current.resultVersion, sourceModelId: "deepseek",
-    scope: { taskCount: 14, sceneCount: 70, processSlotCount: 207 },
-    sourceHashes: current.provenance.sourceHashes,
-    scorerPolicy: current.provenance.initialScorerPolicy,
-  });
+test("both final models consume their exact saved scores and common source publication", () => {
+  for (const source of current.models) {
+    const row = displayed.models.find(model => model.id === source.id);
+    assert.deepEqual(row.scores, source.scores);
+    assert.deepEqual(row.publication, {
+      resultVersion: current.resultVersion, sourceModelId: source.id,
+      scope: { taskCount: 14, sceneCount: 70, processSlotCount: 207 },
+      sourceHashes: current.provenance.sourceHashes,
+      scorerPolicy: current.provenance.initialScorerPolicy,
+    });
+  }
   assert.deepEqual(displayed.scope, current.scope);
   assert.deepEqual(displayed.provenance, current.provenance);
 });
@@ -70,15 +74,19 @@ test("GLM, MiniMax and Cosmos stay empty rather than borrowing pilot or other-mo
 
 test("other models expose no saved rollouts from the superseded trajectory protocol", () => {
   assert.equal(displayed.episodes.filter(episode => episode.resultVersion === old.resultVersion).length, 0);
-  for (const model of displayed.models.filter(row => row.id !== "deepseek")) {
+  for (const model of displayed.models.filter(row => !current.models.some(source => source.id === row.id))) {
     assert.equal(displayed.episodes.some(episode => episode.modelId === model.id), false, model.id);
   }
   assert.ok(!displayed.episodes.some(row => old.episodes.some(source => source.id === row.id)));
 });
 
-test("current rollouts remain bound to their own seventy records and publication version", () => {
+test("both final models retain seventy exact recordings and five per task", () => {
   const rows = displayed.episodes.filter(episode => episode.resultVersion === current.resultVersion);
-  assert.equal(rows.length, 70);
+  assert.equal(rows.length, 140);
+  for (const model of current.models) {
+    assert.equal(rows.filter(row => row.modelId === model.id).length, 70);
+    for (const task of current.tasks) assert.equal(rows.filter(row => row.modelId === model.id && row.taskId === task.id).length, 5);
+  }
   for (const row of rows) {
     const source = current.episodes.find(episode => episode.id === row.id);
     assert.deepEqual(row, { ...source, resultVersion: current.resultVersion });
@@ -86,7 +94,7 @@ test("current rollouts remain bound to their own seventy records and publication
   assert.deepEqual(displayed.tasks, current.tasks);
   assert.equal(displayed.tasks.length, 14);
   assert.equal(displayed.tasks.some(task => task.id === "stack_bowls"), false);
-  assert.equal(displayed.episodes.length, 70);
+  assert.equal(displayed.episodes.length, 140);
 });
 
 test("importing the presentation adapter never mutates either source object or source JSON", async () => {

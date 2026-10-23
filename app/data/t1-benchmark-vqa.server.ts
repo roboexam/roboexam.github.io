@@ -4,7 +4,7 @@ import type { T1BenchmarkVqaBundle, T1BenchmarkVqaEpisode } from "./t1-benchmark
 
 const ID = /^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/;
 const SHA = /^[a-f0-9]{64}$/;
-const PRIVATE = /(?:\/(?:bh|mnt|Users|root|home)\/|file:\/\/|https?:\/\/|\bsk-[A-Za-z0-9_-]{12,})/i;
+const PRIVATE = /(?:\/(?:bh|mnt|Users|root|home|tmp|private)\/|file:\/\/|https?:\/\/|data:image\/|\bsk-[A-Za-z0-9_-]{12,}|\bBearer\s+[A-Za-z0-9._-]{12,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|["']?(?:api[_-]?key|authorization)["']?\s*[:=]|<\/?think\b)/i;
 
 export class T1BenchmarkVqaInvalid extends Error {
   constructor() { super("Invalid T1 VQA publication"); this.name = "T1BenchmarkVqaInvalid"; }
@@ -24,7 +24,9 @@ function keys(value: Record<string, unknown>, expected: string[]) {
 }
 
 function text(value: unknown, nonempty = true): asserts value is string {
-  requireValid(typeof value === "string" && (!nonempty || value.trim().length > 0) && !PRIVATE.test(value));
+  requireValid(typeof value === "string" && (!nonempty || value.trim().length > 0));
+  const scanned = value.replace(/\\u([0-9a-f]{4})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16))).replace(/\\\//g, "/");
+  requireValid(!PRIVATE.test(scanned));
 }
 
 function identifier(value: unknown): asserts value is string {
@@ -37,6 +39,10 @@ function score(value: unknown) {
 
 function step(value: unknown): asserts value is number {
   requireValid(typeof value === "number" && Number.isSafeInteger(value) && value >= 0);
+}
+
+function nullableStep(value: unknown): asserts value is number | null {
+  if (value !== null) step(value);
 }
 
 function freeze(value: unknown) {
@@ -85,7 +91,8 @@ export function createT1BenchmarkVqaStore(raw: unknown, formal: T1BenchmarkResul
     const questions = new Set<string>();
     for (const value of episode.initial) {
       const question = object(value);
-      keys(question, ["questionId", "metricId", "question", "response", "score", "status", "formatCompliant"]);
+      const fields = ["questionId", "metricId", "question", "response", "score", "status", "formatCompliant"];
+      keys(question, question.status === "infrastructure_missing" ? [...fields, "scoreOrigin", "observedScore"] : fields);
       text(question.questionId);
       identifier(question.metricId);
       text(question.question);
@@ -93,15 +100,21 @@ export function createT1BenchmarkVqaStore(raw: unknown, formal: T1BenchmarkResul
       requireValid(question.formatCompliant === null || typeof question.formatCompliant === "boolean");
       if (question.status === "scored") {
         text(question.response, false); score(question.score);
+      } else if (question.status === "infrastructure_missing") {
+        requireValid(formal.provenance.missingScorePolicy === "zero-unscorable");
+        requireValid(question.score === 0 && question.response === null && question.formatCompliant === null &&
+          question.scoreOrigin === "policy_zero" && question.observedScore === null);
       } else {
-        requireValid(question.status === "not_graded" && question.response === null && question.score === null);
+        requireValid(question.status === "not_graded" && question.score === null);
+        if (question.response !== null) text(question.response, false);
       }
     }
     const slots = new Set<string>();
     const returnedQuestions = new Map<string, string>();
     for (const value of episode.checkpoints) {
       const checkpoint = object(value);
-      keys(checkpoint, ["slotId", "stageId", "status", "questionId", "question", "response", "triggerStep", "returnStep", "scores"]);
+      const fields = ["slotId", "stageId", "status", "questionId", "question", "response", "triggerStep", "returnStep", "scores"];
+      keys(checkpoint, checkpoint.status === "reached_reference_blocked" ? [...fields, "scoreOrigin", "observedScores"] : fields);
       identifier(checkpoint.stageId); text(checkpoint.slotId);
       requireValid(checkpoint.slotId === `${episode.taskId}/${episode.layoutId}/${checkpoint.stageId}` && !slots.has(checkpoint.slotId));
       slots.add(checkpoint.slotId);
@@ -112,6 +125,14 @@ export function createT1BenchmarkVqaStore(raw: unknown, formal: T1BenchmarkResul
         const projection = JSON.stringify([checkpoint.question, checkpoint.response, checkpoint.returnStep, scores.c2, scores.c3]);
         requireValid(!returnedQuestions.has(checkpoint.questionId) || returnedQuestions.get(checkpoint.questionId) === projection);
         returnedQuestions.set(checkpoint.questionId, projection);
+      } else if (checkpoint.status === "reached_reference_blocked") {
+        requireValid(formal.provenance.missingScorePolicy === "zero-unscorable");
+        text(checkpoint.questionId);
+        requireValid(checkpoint.question === null && checkpoint.response === null && scores.c2 === 0 && scores.c3 === 0 && checkpoint.scoreOrigin === "policy_zero");
+        const observed = object(checkpoint.observedScores); keys(observed, ["c2", "c3"]);
+        requireValid(observed.c2 === null && observed.c3 === null);
+        nullableStep(checkpoint.triggerStep); nullableStep(checkpoint.returnStep);
+        if (checkpoint.triggerStep !== null && checkpoint.returnStep !== null) requireValid(checkpoint.returnStep >= checkpoint.triggerStep);
       } else {
         requireValid(checkpoint.status === "not_reached" && scores.c2 === 0 && scores.c3 === 0);
         for (const field of ["questionId", "question", "response", "triggerStep", "returnStep"]) requireValid(checkpoint[field] === null);

@@ -1,3 +1,5 @@
+// Historical DeepSeek v2 archive contract. The active two-model publication uses
+// t1-final-cohort-registry.mjs through the standard export/check CLI commands.
 // Frozen publication scope and source digests; no candidate answers or private references.
 export const t1BenchmarkRegistry = {
   "resultVersion": "t1-robodojo14-deepseek-20261021-v1",

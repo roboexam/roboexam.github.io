@@ -10,7 +10,7 @@ const id = "fixture-v1-deepseek-push_T-layout100000";
 const hash = (letter) => letter.repeat(64);
 const formal = {
   schemaVersion: "roboexam.t1-benchmark-results.v1", resultVersion: "fixture-v1",
-  provenance: { sourceHashes: { initial: hash("a"), process: hash("b") } },
+  provenance: { sourceHashes: { initial: hash("a"), process: hash("b") }, missingScorePolicy: "zero-unscorable" },
   episodes: [
     { id, modelId: "deepseek", taskId: "push_T", layoutId: 100000, attempt: "attempt_02" },
     { id: "old-v1-kimi-stack_bowls-layout124", resultVersion: "old-v1", modelId: "kimi", taskId: "stack_bowls", layoutId: 124, attempt: "attempt_01" },
@@ -113,7 +113,7 @@ test("finite 0–100 scores, status semantics and first-return timing are enforc
     (bundle) => { bundle.episodes[0].initial[0].score = 101; },
     (bundle) => { bundle.episodes[0].initial[0].score = null; },
     (bundle) => { bundle.episodes[0].initial[1].score = 0; },
-    (bundle) => { bundle.episodes[0].initial[1].response = "invented"; },
+    (bundle) => { bundle.episodes[0].initial[1].response = "/bh/private/answer"; },
     (bundle) => { bundle.episodes[0].checkpoints[1].response = "invented"; },
     (bundle) => { bundle.episodes[0].checkpoints[1].scores.c2 = 1; },
     (bundle) => { bundle.episodes[0].checkpoints[0].scores.c3 = -1; },
@@ -125,6 +125,47 @@ test("finite 0–100 scores, status semantics and first-return timing are enforc
     const bundle = fixture(); change(bundle);
     assert.throws(() => subject.createT1BenchmarkVqaStore(bundle, formal));
   }
+});
+
+test("policy-zero records preserve unavailable observed scores and never fabricate a response", () => {
+  const bundle = fixture();
+  bundle.episodes[0].initial.push({ questionId: "q-policy", metricId: "b1", question: "Which objects must be sorted?", response: null,
+    score: 0, status: "infrastructure_missing", formatCompliant: null, scoreOrigin: "policy_zero", observedScore: null });
+  bundle.episodes[0].checkpoints.push({ slotId: "push_T/100000/POLICY_STAGE", stageId: "POLICY_STAGE", status: "reached_reference_blocked",
+    questionId: "q-policy-return", question: null, response: null, triggerStep: 1099, returnStep: 1100,
+    scores: { c2: 0, c3: 0 }, scoreOrigin: "policy_zero", observedScores: { c2: null, c3: null } });
+  const store = subject.createT1BenchmarkVqaStore(bundle, formal);
+  assert.deepEqual(store.getEpisode(id).initial.at(-1), bundle.episodes[0].initial.at(-1));
+  assert.deepEqual(store.getEpisode(id).checkpoints.at(-1), bundle.episodes[0].checkpoints.at(-1));
+  for (const policy of [undefined, "unrecognized"]) {
+    const incompatible = structuredClone(formal); incompatible.provenance.missingScorePolicy = policy;
+    assert.throws(() => subject.createT1BenchmarkVqaStore(bundle, incompatible));
+  }
+  for (const change of [
+    (value) => { value.episodes[0].initial.at(-1).score = 1; },
+    (value) => { value.episodes[0].initial.at(-1).response = "invented answer"; },
+    (value) => { value.episodes[0].initial.at(-1).formatCompliant = false; },
+    (value) => { value.episodes[0].initial.at(-1).observedScore = 0; },
+    (value) => { delete value.episodes[0].initial.at(-1).scoreOrigin; },
+    (value) => { value.episodes[0].initial[0].scoreOrigin = "policy_zero"; },
+    (value) => { value.episodes[0].checkpoints.at(-1).scores.c2 = 1; },
+    (value) => { value.episodes[0].checkpoints.at(-1).question = "invented prompt"; },
+    (value) => { value.episodes[0].checkpoints.at(-1).response = "invented answer"; },
+    (value) => { value.episodes[0].checkpoints.at(-1).observedScores.c3 = 0; },
+    (value) => { value.episodes[0].checkpoints.at(-1).returnStep = 1098; },
+    (value) => { value.episodes[0].checkpoints.at(-1).triggerStep = 1099.5; },
+  ]) {
+    const changed = structuredClone(bundle); change(changed);
+    assert.throws(() => subject.createT1BenchmarkVqaStore(changed, formal));
+  }
+});
+
+test("excluded initial questions may transparently retain their saved answer without a score", () => {
+  const bundle = fixture(); bundle.episodes[0].initial[1].response = "Original ungraded response";
+  bundle.episodes[0].initial[1].formatCompliant = true;
+  const stored = subject.createT1BenchmarkVqaStore(bundle, formal).getEpisode(id).initial[1];
+  assert.equal(stored.response, "Original ungraded response");
+  assert.equal(stored.score, null); assert.equal(stored.status, "not_graded");
 });
 
 test("multiple native events sharing one return retain consistent question/answer and may have distinct trigger steps", () => {
@@ -143,6 +184,9 @@ test("unknown/private fields and secrets or filesystem paths cannot enter the AP
     (bundle) => { bundle.episodes[0].checkpoints[0].rawResponse = {}; },
     (bundle) => { bundle.episodes[0].initial[0].response = "/bh/private/run/context.json"; },
     (bundle) => { bundle.episodes[0].initial[0].response = "sk-fixturesecretmustnotappear"; },
+    (bundle) => { bundle.episodes[0].initial[0].response = "\\u002fhome/private/data"; },
+    (bundle) => { bundle.episodes[0].initial[0].response = "<think>Private reasoning</think>"; },
+    (bundle) => { bundle.episodes[0].initial[0].response = "Bearer fixturesecretmustnotappear"; },
   ]) {
     const bundle = fixture(); change(bundle);
     assert.throws(() => subject.createT1BenchmarkVqaStore(bundle, formal));

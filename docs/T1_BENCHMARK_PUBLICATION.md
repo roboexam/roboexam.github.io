@@ -1,6 +1,12 @@
 # Track 1 benchmark publication
 
-The current release is `t1-robodojo14-deepseek-20261021-v1`, using the user-approved common scope of 14 tasks, 70 scenes, and 207 process slots. Original native16 evidence and the previous Stack Bowls publication are unchanged.
+The current release is `t1-robodojo14-gpt-deepseek-20261023-v3`: GPT-6.1-sol and DeepSeek Flash share the approved v3 matcher and explicit zero-unscorable policy, each on 14 tasks, 70 scenes and 207 fixed process slots. The two formal candidates expose 140 native videos, 780 initial instances, 414 checkpoint slots and 82 real process first answers. The one missing initial answer and one blocked process pair are separately tagged policy zeros, preserving their observed statuses; they are not counted as model answers. Existing Mimo/GPT6-Astra scores and three placeholder models are unchanged.
+
+Current immutable source and media live in `/mnt/gyc_ckp/benchmark2027/experiments/evaluation/track1/t1-robodojo14-gpt-deepseek-20261023-v3/{source,media}`. `prepare-t1-final-cohort.py` verifies exact selected run/attempt/question/video identities against the sealed AgentBench cohort, then projects public questions and visible first answers only. The generic cohort exporter validates the pinned snapshots, independently checks all task/model aggregates and emits the existing typed result/VQA contracts. Public bundles exclude private gold, full requests, history, hidden reasoning and internal paths.
+
+Use `T1_BENCHMARK_SOURCE_ROOT=<publication>/source` for both exporter checks and `T1_BENCHMARK_MEDIA_ROOT=<publication>/media` for native media serving. Regenerate with `npm run export:t1-benchmark` followed by `npm run export:t1-benchmark-vqa`; existing `check:*` commands validate both pins. Source pins are registered in `scripts/t1-final-cohort-registry.mjs`. `publish-t1-benchmark-media.mjs` and the former registries are retained for the historical DeepSeek release; the preparation script owns the new 140-video publication.
+
+The previous `t1-robodojo14-deepseek-20261021-v1` publication and the earlier Stack Bowls data remain unchanged for provenance and rollback. The sections below record that historical release.
 
 ## Model restoration and public metric names
 

@@ -1,3 +1,5 @@
+// Historical DeepSeek v2 archive contract. The active two-model publication uses
+// t1-final-cohort-registry.mjs through the standard export/check CLI commands.
 export const t1BenchmarkVqaRegistry = {
   schemaVersion: "roboexam.t1-benchmark-vqa.v1",
   sourceSchema: "roboexam.t1-benchmark-vqa-source.v1",

@@ -180,8 +180,8 @@ test("renders the current Track 1 results and five exact scene choices", async (
   assert.equal(response.status, 200);
   const html = await response.text();
   const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
-  for (const text of ["DeepSeek", "Overall", "VQA", "Subtask", "Success", "Recognition", "Planning", "Task Tracking", "Next Action", bundle.models[0].scores.overall.toFixed(2)]) assert.ok(html.includes(text), text);
-  assert.match(html, /api\/t1-benchmark-media\/t1-robodojo14-deepseek-20261021-v1-deepseek-/);
+  for (const text of ["GPT-6.1-sol", "DeepSeek", "Overall", "VQA", "Subtask", "Success", "Recognition", "Planning", "Task Tracking", "Next Action", ...bundle.models.map(model => model.scores.overall.toFixed(2))]) assert.ok(html.includes(text), text);
+  assert.ok(html.includes(`/api/t1-benchmark-media/${bundle.resultVersion}-${bundle.models[0].id}-`));
   for (const name of ["MiMo v2.6 Pro", "GPT-6 Astra", "GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
   assert.doesNotMatch(html, /Kimi K3|Peak Progress|DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
   assert.doesNotMatch(html, /src="\/api\/t1-media\//);
@@ -208,15 +208,31 @@ test("renders the current Track 1 results and five exact scene choices", async (
 
 test("serves selected-episode VQA questions, first answers and exact saved scores", async () => {
   const detailBundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-vqa.json", import.meta.url), "utf8"));
-  const expected = detailBundle.episodes.find(episode => episode.taskId === "arrange_largest_number" && episode.layoutId === 100000);
-  const response = await render(`/api/t1-benchmark-vqa/${expected.episodeId}`, { accept: "application/json" });
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type"), /application\/json/);
-  assert.deepEqual(await response.json(), expected);
-  const otherModelId = expected.episodeId.replace("-deepseek-", "-mimo-");
+  for (const modelId of ["gpt-6-1-sol", "deepseek"]) {
+    const expected = detailBundle.episodes.find(episode => episode.modelId === modelId && episode.taskId === "arrange_largest_number" && episode.layoutId === 100000);
+    const response = await render(`/api/t1-benchmark-vqa/${expected.episodeId}`, { accept: "application/json" });
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("content-type"), /application\/json/);
+    assert.deepEqual(await response.json(), expected);
+  }
+  const otherModelId = `${detailBundle.resultVersion}-mimo-arrange_largest_number-layout100000`;
   const invalid = await render(`/api/t1-benchmark-vqa/${otherModelId}`, { accept: "application/json" });
   assert.equal(invalid.status, 404);
   assert.equal(await invalid.text(), "");
+});
+
+test("serves both approved zero assignments without inventing model answers", async () => {
+  const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-vqa.json", import.meta.url), "utf8"));
+  const expected = bundle.episodes.find(episode => episode.modelId === "gpt-6-1-sol" && episode.taskId === "classify_objects_by_language" && episode.layoutId === 100001);
+  const response = await render(`/api/t1-benchmark-vqa/${expected.episodeId}`, { accept: "application/json" });
+  assert.equal(response.status, 200);
+  const actual = await response.json();
+  const initial = actual.initial.filter(question => question.scoreOrigin === "policy_zero");
+  const process = actual.checkpoints.filter(point => point.scoreOrigin === "policy_zero");
+  assert.equal(initial.length, 1); assert.equal(process.length, 1);
+  assert.equal(initial[0].score, 0); assert.equal(initial[0].observedScore, null); assert.equal(initial[0].response, null);
+  assert.deepEqual(process[0].scores, { c2: 0, c3: 0 });
+  assert.deepEqual(process[0].observedScores, { c2: null, c3: null }); assert.equal(process[0].response, null);
 });
 
 test("rejects an unlisted benchmark video without exposing private paths", async () => {

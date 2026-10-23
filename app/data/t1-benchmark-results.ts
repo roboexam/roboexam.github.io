@@ -58,7 +58,7 @@ export type T1BenchmarkModel = {
 
 export type T1BenchmarkResults = {
   schemaVersion: "roboexam.t1-benchmark-results.v1";
-  resultVersion: "t1-robodojo14-deepseek-20261021-v1";
+  resultVersion: string;
   generatedAt: string;
   scope: {
     taskCount: number;
@@ -78,6 +78,9 @@ export type T1BenchmarkResults = {
     processProtocol: string;
     processCaptureSha256: string;
     processScorerSha256: string;
+    baselineCommit?: string;
+    equivalencesSha256?: string;
+    missingScorePolicy?: string;
   };
 };
 

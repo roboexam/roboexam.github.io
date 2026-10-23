@@ -31,7 +31,8 @@ export function benchmarkTaskLayoutIds(results: T1BenchmarkResults, taskId: stri
 }
 
 export function findBenchmarkEpisode(results: T1BenchmarkResults, selection: T1BenchmarkSelection) {
-  return benchmarkModelEpisodes(results, selection.modelId).find((episode) => episode.taskId === selection.taskId && episode.layoutId === selection.layoutId);
+  const matches = benchmarkModelEpisodes(results, selection.modelId).filter((episode) => episode.taskId === selection.taskId && episode.layoutId === selection.layoutId);
+  return matches.length === 1 ? matches[0] : undefined;
 }
 
 export function T1BenchmarkView({ results = t1LeaderboardResults }: { results?: T1BenchmarkResults } = {}) {
@@ -73,9 +74,9 @@ export function T1BenchmarkView({ results = t1LeaderboardResults }: { results?: 
         </div>
       </header>
       {model && task && <>
-        <T1BenchmarkSceneGallery key={`${selection.modelId}:${selection.taskId}`} scenes={scenes}
+        <T1BenchmarkSceneGallery key={`${selection.modelId}:${selection.taskId}:${model.publication?.resultVersion ?? results.resultVersion}`} scenes={scenes}
           selectedLayoutId={selection.layoutId} onSelect={(layoutId) => setSelection({ ...selection, layoutId })}/>
-        {episode ? <T1BenchmarkViewer key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.video?.id ?? episode.id}`}
+        {episode ? <T1BenchmarkViewer key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.attempt}:${episode.video?.id ?? episode.id}`}
           episode={episode} modelLabel={model.label} taskLabel={task.label} resultVersion={playbackVersion}/>
           : <T1BenchmarkEmptyViewer modelLabel={model.label} taskLabel={task.label}/>}
         {episode && <T1BenchmarkEpisodeVqa key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.attempt}`}
