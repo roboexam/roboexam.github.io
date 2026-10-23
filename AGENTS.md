@@ -4,14 +4,14 @@
 
 - These rules apply to this repository. The parent `/mnt/gyc/benchmark2027/AGENTS.md` also applies and remains authoritative for shared storage, experiment artifacts, process ownership, deletion, and cleanup.
 - This is a read-only benchmark dashboard built with React 19, TypeScript, vinext/Vite, and a Cloudflare-compatible worker. Preserve the existing package manager, lockfile, and runtime shape.
-- The shared checkout `/mnt/gyc/benchmark2027/roboexam` is the `main` integration source; this dashboard is deployed from its `third_party/dashboard` subtree. Develop in a separate RoboExam worktree rather than editing the shared deployment checkout.
+- The shared checkout `/mnt/gyc/benchmark2027/roboexam` is the `main` source; this dashboard is deployed from its `third_party/dashboard` subtree. Per the user's 2026-10-23 direction, make routine website changes directly on `main`. Keep separate branches for explicitly requested track experiments; do not automatically create `codex/*` or other website feature branches.
 - For ACWM changes, first read `/mnt/gyc/benchmark2027/roboexam/third_party/dashboard/ACWM_DASHBOARD_FRONTEND_ISSUE_EXTREME_HANDOFF.md`. Treat it as audit evidence, not as automatically current truth; revalidate claims against the target branch, formal result files, and runtime.
 
 ## Collaboration and Git safety
 
 1. Before editing, run `git status --short --branch`, inspect `git worktree list`, and identify the exact files and data sources in scope.
-2. Coordinate the owner and file scope before overlapping edits. If no team-channel target or connector is available, tell the requester and keep all work isolated in the personal worktree.
-3. Branch from the actual local `main`; it may contain integration commits not yet present on `sites/main`. Do not assume the remote branch is newer or authoritative.
+2. Coordinate the owner and file scope before overlapping edits. Preserve other contributors' work and avoid overlapping dirty files. Missing team-channel access does not require creating a feature branch; report a concrete conflict if safe progress on `main` is impossible.
+3. Use the actual local `main`; it may contain integration commits not yet present on `sites/main`. Do not assume the remote branch is newer or authoritative. Create a track branch only when requested.
 4. Never switch the shared integration checkout to a feature branch. Never overwrite, delete, stage, or commit another contributor's dirty or untracked files.
 5. Never use `git reset --hard`, `git clean -fd`, broad `git checkout`/`git restore`, force-push, or remove another worktree/branch. Do not rebase or merge another contributor's branch without coordination.
 6. Keep commits focused. Before committing, review `git status`, `git diff`, and the staged diff; include the affected page, metric/data version, and verification performed in the handoff.
@@ -54,9 +54,9 @@
 
 ## Merge and 4090 release
 
-- Commit and validate in the personal worktree. Merge into a clean, coordinated `main` integration checkout only after reviewing the complete branch diff; worktree branches can be merged normally while they remain checked out elsewhere.
+- Review and commit routine website changes on `main`. When integrating an already existing task branch, review its complete diff and merge into clean `main`, then remove only that task's own merged temporary branch/worktree. Preserve other contributors' branches and worktrees.
 - `ops/4090/common.sh` resolves the dashboard root from its own location, and `update.sh` additionally requires the script itself to come from that deployment subtree. Merge first and invoke the merged script from the shared RoboExam `main`; never use a feature-worktree copy to preview or deploy unmerged work.
-- Never run `npm run build`, `npm run check`, or a direct `vinext build` in the live shared checkout while the managed service is running. Content-hashed `dist/client` assets must only be replaced through `ops/4090/update.sh`; ordinary validation belongs in a sibling worktree.
+- Never run `npm run build`, `npm run check`, or a direct `vinext build` in the live shared checkout while the managed service is running. Content-hashed `dist/client` assets must only be replaced through `ops/4090/update.sh`. If validation would replace live build assets, use a temporary detached worktree without creating a branch, and remove it after validation.
 - Treat HTML, the client entry manifest, on-disk hashed assets, and HTTP asset responses as one release unit. A `/login` HTTP 200 without successful client-asset verification is unhealthy because server rendering alone does not prove hydration works.
 - Deploy only when explicitly requested. For the current 4090 service, run `bash ops/4090/update.sh`, then `bash ops/4090/status.sh`, `bash ops/4090/fixed-public-status.sh`, and `bash ops/4090/watchdog-status.sh`. `public-status.sh` checks only the optional Cloudflare Quick Tunnel.
 - The canonical public URL is the Tailscale Funnel URL. It is publicly reachable and does not require a visitor's Mac to run Tailscale. Diagnose local port 3100, the server-side Tailscale daemon, the exact Funnel mapping, TLS, and hashed assets before attributing a failure to a client.
