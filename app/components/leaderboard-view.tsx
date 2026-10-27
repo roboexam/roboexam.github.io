@@ -8,6 +8,7 @@ import { tracks, type TrackId } from "../data/metric-plan";
 import { scenarioPlan, scenarioTags, tagsForScenario, type ScenarioTag } from "../data/scenario-plan";
 import { admittedSettingScores, calculateOverallScore, type OverallScorecard } from "../data/overall-score";
 import { metricsFor, readResult, type MetricSelection, type ReportMode, type ReportResult } from "../data/track-results";
+import { BaselineRunPlan } from "./baseline-run-plan";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
 type EvalSetting = "id" | "visual" | "semantic" | "behavioral" | "recovery";
@@ -137,6 +138,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         <span>{item.id}</span><strong>{item.title}</strong>
       </button>)}
     </nav>
+    {trackId !== "T1" && <BaselineRunPlan key={trackId} initialTrack={trackId}/>} 
     {trackId === "T1" && !previousT1Protocols ? <section className="trackWorkspace" aria-label="T1 current results">
       <div className="t1CurrentBar"><span>{track.title}</span>
         <button type="button" className="t1ProtocolLink" onClick={() => setPreviousT1Protocols(true)}>Previous protocols</button>

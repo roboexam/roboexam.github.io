@@ -184,15 +184,41 @@ export const tracks: TrackDefinition[] = [
   },
   {
     id: "T2", title: "Physical Foresight", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
-    models: ["Cosmos Predict 2.5", "CtrlWorld", "Pelican-Unify 1.0"].map((id) => ({ id, family: "ACWM", status: id === "Pelican-Unify 1.0" ? "Planned" : "Published" })), metrics: acwmMetrics,
+    models: [
+      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Running · clean24" },
+      { id: "CtrlWorld", family: "ACWM", status: "Running" },
+      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "Running" },
+      { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
+      { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
+      { id: "Wan 2.6 AC adapter", family: "ACWM", status: "Planned" },
+    ], metrics: acwmMetrics,
   },
   {
     id: "T3", title: "Simulation Deployment", subtitle: "Policy models in simulation", question: "Complete long-horizon tasks while preserving safe, stable, interpretable execution.", source: "policy",
-    models: ["Pi0.5", "FastWAM", "Hy-VLA", "Pelican-VLA", "Pelican-Unify", "Lingbo-VA2.0", "Cosmos 3"].map((id) => ({ id, family: ["FastWAM", "Pelican-Unify", "Lingbo-VA2.0", "Cosmos 3"].includes(id) ? "WAM" : "VLA", status: ["Pi0.5", "FastWAM"].includes(id) ? "Published" : "Planned" })), metrics: policyMotion,
+    models: [
+      { id: "Pi0.5", family: "VLA", status: "Running" },
+      { id: "FastWAM", family: "WAM", status: "Planned" },
+      { id: "OpenWAM", family: "WAM", status: "Running" },
+      { id: "HyVLA", family: "VLA", status: "Running" },
+      { id: "G05", family: "VLA", status: "Running" },
+      { id: "DM0.5 / OpenDM", family: "VLA", status: "Running" },
+      { id: "LingBot-VA2.0", family: "WAM", status: "Failed · rerun" },
+      { id: "XVLA", family: "VLA", status: "Running" },
+      { id: "AHA-WAM", family: "WAM", status: "Planned" },
+      { id: "X-WAM", family: "WAM", status: "Planned" },
+    ], metrics: policyMotion,
   },
   {
     id: "T4", title: "Real-World Deployment", subtitle: "Policy models on hardware", question: "Complete standardized hardware tasks while separating task outcome from manual safety review.", source: "real",
-    models: ["Pi0.5", "FastWAM", "Hy-VLA", "Pelican-VLA", "Pelican-Unify", "Lingbo-VA2.0", "Cosmos 3"].map((id) => ({ id, family: ["FastWAM", "Pelican-Unify", "Lingbo-VA2.0", "Cosmos 3"].includes(id) ? "WAM" : "VLA", status: "Pending hardware run" })), metrics: realWorldMetrics,
+    models: [
+      { id: "Pi0.5", family: "VLA", status: "T4 independent · Planned" },
+      { id: "FastWAM", family: "WAM", status: "T4 independent · Planned" },
+      { id: "OpenWAM", family: "WAM", status: "T4 independent · Planned" },
+      { id: "HyVLA", family: "VLA", status: "T4 independent · Planned" },
+      { id: "LingBot-VA2.0", family: "WAM", status: "T4 independent · Planned" },
+      { id: "XVLA", family: "VLA", status: "T4 independent · Planned" },
+      { id: "X-WAM", family: "WAM", status: "T4 independent · Planned" },
+    ], metrics: realWorldMetrics,
   },
 ];
 
