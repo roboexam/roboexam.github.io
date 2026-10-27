@@ -168,6 +168,24 @@ test("dataset discovery and videos cannot escape approved roots through symlinks
   assert.ok(!JSON.stringify({ catalog, episode }).includes(outside));
 });
 
+test("metadata info and episode tables cannot escape approved roots through symlinks", async t => {
+  const f = await fixture(t);
+  const outside = await mkdtemp(path.join(tmpdir(), "real-metadata-private-"));
+  t.after(() => rm(outside, { recursive: true, force: true }));
+  const secret = await dataset(outside, "secret", "v2.1");
+  await mkdir(path.join(f.egoRoot, "metadata_escape", "delivery", "meta"), { recursive: true });
+  await symlink(path.join(secret, "meta", "info.json"), path.join(f.egoRoot, "metadata_escape", "delivery", "meta", "info.json"));
+  const catalog = await f.reader.catalog(true);
+  assert.equal(catalog.datasets.length, 2, "an info.json outside the root is ignored");
+
+  const outsideEpisodes = path.join(outside, "episodes");
+  await mkdir(outsideEpisodes, { recursive: true });
+  await writeFile(path.join(outsideEpisodes, "part.parquet"), "private");
+  await symlink(outsideEpisodes, path.join(f.v3, "meta", "episodes"));
+  const robot = catalog.datasets.find(row => row.kind === "robot");
+  await assert.rejects(() => f.reader.dataset(robot.id), /metadata_file_outside_allowlist/);
+});
+
 test("unsafe v3 chunk indices and invalid windows do not become playable videos", async t => {
   const f = await fixture(t);
   const summary = (await f.reader.catalog()).datasets.find(row => row.kind === "robot");

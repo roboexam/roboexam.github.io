@@ -137,6 +137,7 @@ export function createRealDatasetReader({
   let catalogSnapshot: RealDatasetCatalog | undefined;
   let expires = 0;
   let pending: Promise<RealDatasetCatalog> | undefined;
+  const mountWarnings = new Set<string>();
   const approvedRoots = roots.map(spec => ({ ...spec, root: path.resolve(spec.root) }));
 
   async function resolve(root: string, relative: string) {
@@ -145,18 +146,34 @@ export function createRealDatasetReader({
     if (!within(base, physical)) throw new Error("outside_allowlist");
     return physical;
   }
+  async function resolveMetadata(root: string, candidate: string) {
+    const base = await realpath(root);
+    const physical = await realpath(candidate);
+    if (!within(base, physical)) throw new Error("metadata_outside_allowlist");
+    return physical;
+  }
   async function discover(spec: RootSpec): Promise<DatasetRef[]> {
-    const root = path.resolve(spec.root);
-    try { await stat(root); } catch { return []; }
+    const configuredRoot = path.resolve(spec.root);
+    const compatibilityRoot = configuredRoot.replace("/mnt/public_ckp/UniEmbodied-Bench/real", "/media/datasets/UniEmbodied-Bench/real");
+    let root = configuredRoot;
+    try { await stat(root); }
+    catch {
+      try { await stat(compatibilityRoot); root = compatibilityRoot; mountWarnings.add(`${spec.id}: 使用兼容数据挂载点`); }
+      catch { mountWarnings.add(`${spec.id}: 数据挂载不可用`); return []; }
+    }
     const found: DatasetRef[] = [];
     async function add(infoPath: string, metadataDir: string, format: DatasetRef["format"], name: string) {
       try {
-        const bytes = await (await import("node:fs/promises")).readFile(infoPath);
+        const physicalRoot = await realpath(root);
+        const physicalMetadataDir = await resolveMetadata(physicalRoot, metadataDir);
+        const physicalInfoPath = await resolveMetadata(physicalRoot, infoPath);
+        if (!within(physicalMetadataDir, path.dirname(physicalInfoPath))) throw new Error("metadata_info_mismatch");
+        const bytes = await (await import("node:fs/promises")).readFile(physicalInfoPath);
         const info = JSON.parse(bytes.toString("utf8")) as Json;
-        const relative = path.relative(root, path.dirname(path.dirname(infoPath)));
+        const relative = path.relative(physicalRoot, path.dirname(physicalMetadataDir));
         const id = digest(`real-dataset:${spec.id}:${relative}`);
-        const datasetRoot = path.dirname(metadataDir);
-        const ref = summaryFrom(info, { ...spec, root: datasetRoot }, id, name, format, infoPath, metadataDir, digest(bytes));
+        const datasetRoot = path.dirname(physicalMetadataDir);
+        const ref = summaryFrom(info, { ...spec, root: datasetRoot }, id, name, format, physicalInfoPath, physicalMetadataDir, digest(bytes));
         found.push(ref);
       } catch { /* malformed entries are reported by the catalog as unavailable only when no valid entries exist */ }
     }
@@ -185,13 +202,51 @@ export function createRealDatasetReader({
     }
     await walk(root, 0); return found;
   }
+  async function validateMetadataFiles(ref: DatasetRef) {
+    const metadataRoot = await realpath(ref.metadataDir);
+    const check = async (file: string) => {
+      const physical = await realpath(file);
+      if (!within(metadataRoot, physical)) throw new Error("metadata_file_outside_allowlist");
+      const info = await stat(physical);
+      if (!info.isFile()) throw new Error("metadata_file_not_regular");
+    };
+    if (ref.format === "lerobot-v2") {
+      try { await check(path.join(metadataRoot, "episodes.jsonl")); } catch (error) {
+        if ((error as NodeJS.ErrnoException)?.code !== "ENOENT") throw error;
+      }
+      return;
+    }
+    const episodesRoot = path.join(metadataRoot, "episodes");
+    let physicalEpisodesRoot: string;
+    try { physicalEpisodesRoot = await realpath(episodesRoot); }
+    catch (error) {
+      if ((error as NodeJS.ErrnoException)?.code === "ENOENT") return;
+      throw error;
+    }
+    if (!within(metadataRoot, physicalEpisodesRoot)) throw new Error("metadata_file_outside_allowlist");
+    async function walkMetadata(dir: string) {
+      let children;
+      try { children = await readdir(dir, { withFileTypes: true }); }
+      catch (error) {
+        if ((error as NodeJS.ErrnoException)?.code === "ENOENT") return;
+        throw error;
+      }
+      for (const child of children) {
+        const candidate = path.join(dir, child.name);
+        if (child.isDirectory()) await walkMetadata(candidate);
+        else if (child.isFile() || child.isSymbolicLink()) await check(candidate);
+      }
+    }
+    await walkMetadata(physicalEpisodesRoot);
+  }
   async function scan() {
+    mountWarnings.clear();
     const refs = (await Promise.all(approvedRoots.map(spec => discover(spec)))).flat();
     refs.sort((a,b) => a.name.localeCompare(b.name, "en", { numeric: true }));
     datasetRefs.clear(); episodeRefs.clear(); for (const ref of refs) datasetRefs.set(ref.id, ref);
     const datasets: RealDatasetSummary[] = refs.map(publicSummary);
     const version = digest(JSON.stringify(datasets));
-    const catalog: RealDatasetCatalog = { schemaVersion: "roboexam.real-datasets.v1", version, scannedAt: new Date().toISOString(), refreshSeconds: refreshMs / 1000, datasets, warnings: [] };
+    const catalog: RealDatasetCatalog = { schemaVersion: "roboexam.real-datasets.v1", version, scannedAt: new Date().toISOString(), refreshSeconds: refreshMs / 1000, datasets, warnings: [...mountWarnings] };
     catalogSnapshot = catalog; expires = Date.now() + refreshMs; return catalog;
   }
   async function catalog(force = false) {
@@ -201,6 +256,7 @@ export function createRealDatasetReader({
   }
   async function loadRows(ref: DatasetRef) {
     if (ref.rows) return ref.rows;
+    await validateMetadataFiles(ref);
     const loaded = readMetadata ? await readMetadata(ref) : { rows: await pyarrowRows(ref) };
     if (!Array.isArray(loaded.rows)) throw new Error("metadata_rows");
     ref.rows = loaded.rows; ref.rowSha256 = digest(JSON.stringify(loaded.rows));
