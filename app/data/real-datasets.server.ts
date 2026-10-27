@@ -36,9 +36,13 @@ const natural = (a: string, b: string) => a.localeCompare(b, "en", { numeric: tr
 const safeName = (value: string) => value.length > 0 && value.length <= 512 && !value.split(/[\\/]/).some(part => !part || part === "." || part === ".." || !/^[a-zA-Z0-9_.:@+\-\u4e00-\u9fff ]+$/.test(part));
 const cameraLabel = (key: string) => key.split(".").at(-1) ?? key;
 
-function defaultPython() {
-  return process.env.DASHBOARD_REAL_DATA_PYTHON || process.env.UNIBENCH_TRACE_PYTHON ||
-    "/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_raw_action_traces/v1/python/bin/python";
+function pythonCandidates() {
+  return [...new Set([
+    process.env.DASHBOARD_REAL_DATA_PYTHON,
+    process.env.UNIBENCH_TRACE_PYTHON,
+    "/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_raw_action_traces/v1/python/bin/python",
+    "python3",
+  ].filter((value): value is string => !!value))];
 }
 
 async function pyarrowRows(dataset: DatasetRef) {
@@ -70,10 +74,16 @@ else:
     for line in fh:
       if line.strip(): rows.append(json.loads(line))
 print(json.dumps({"rows":rows},ensure_ascii=False,separators=(",",":")))`;
-  const result = await execFile(defaultPython(), ["-c", source, dataset.metadataDir.replace(/[/\\]meta$/, ""), dataset.format], { maxBuffer: 256 * 1024 * 1024 });
-  const parsed = JSON.parse(result.stdout) as { rows?: unknown };
-  if (!Array.isArray(parsed.rows)) throw new Error("metadata_rows");
-  return parsed.rows.filter((row): row is EpisodeRow => row !== null && typeof row === "object" && !Array.isArray(row));
+  let lastError: unknown;
+  for (const python of pythonCandidates()) {
+    try {
+      const result = await execFile(python, ["-c", source, dataset.metadataDir.replace(/[/\\]meta$/, ""), dataset.format], { maxBuffer: 256 * 1024 * 1024 });
+      const parsed = JSON.parse(result.stdout) as { rows?: unknown };
+      if (!Array.isArray(parsed.rows)) throw new Error("metadata_rows");
+      return parsed.rows.filter((row): row is EpisodeRow => row !== null && typeof row === "object" && !Array.isArray(row));
+    } catch (error) { lastError = error; }
+  }
+  throw lastError instanceof Error ? lastError : new Error("metadata_unavailable");
 }
 
 function rowValue(row: EpisodeRow, key: string) { return row[key]; }
