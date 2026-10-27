@@ -45,6 +45,7 @@ export function BaselineRunPlan({ initialTrack = "ALL" }: { initialTrack?: "ALL"
     <div className="baselinePlanFootnotes">
       {sharedEvaluationJobs.map((item) => <p key={item.job}><strong>共享评测：</strong><code>{item.job}</code> · {item.cards} cards · {item.note}</p>)}
       <p><strong>统一仿真口径：</strong>A800 / RTX 4090，DLSS Off、TAA On、64 spp；A800 为正式口径，4090 用于同 renderer、同 seed 复核。</p>
+      <p><strong>64 卡排期：</strong>训练 + T2/T3 A800 评测的理论聚合下界约 19.0–24.6 天；考虑 8 卡槽、排队、数据转换和重跑，建议预留 28–32 天。严格按 T2→T3→T4 串行建议预留 40–42 天。</p>
       <p><strong>真机约束：</strong>T4 每个 baseline 必须从各自 base / pretrained 独立训练；robot station-hours、reset 和人工接管不折算为 GPUh。</p>
     </div>
   </section>;

@@ -84,8 +84,8 @@ export const baselineRunPlan: BaselineRun[] = [
   },
   {
     id: "E13", track: "T3", baseline: "LingBot-VA2.0",
-    trainingJob: "job-k8zt9ocf3dlm", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "weixiaobao", status: "failed", note: "train22；Failed；需修复 latent pipeline 后重跑。",
+    trainingJob: "job-lp44kdpv85kg", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
+    owner: "yichenguo", status: "running", note: "train22；retry1 Running；8×A800；复用已完成 cache，fresh-base 重跑 50k；旧 job-k8zt9ocf3dlm 在 formal step 24,567 因 stale manifest gate 失败。",
   },
   {
     id: "E14", track: "T3", baseline: "XVLA",
