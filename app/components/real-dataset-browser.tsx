@@ -22,7 +22,7 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
   const media = episode.media;
   const master = media[0];
   const duration = media.length ? Math.min(...media.map(view => view.durationSeconds)) : 0;
-  const canPlay = !!master && ready.includes(master.id) && !failed.includes(master.id);
+  const canPlay = !!master && ready.includes(master.id) && !failed.includes(master.id) && media.every(view => ready.includes(view.id) || failed.includes(view.id));
 
   function seek(seconds: number) {
     const relative = Math.max(0, Math.min(seconds, duration));
@@ -148,11 +148,11 @@ export function RealDatasetBrowser() {
   useEffect(() => {
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout>;
-    async function update() {
+    async function update(force = false) {
       setLoading(true);
       let delay = 30000;
       try {
-        const value = await read<RealDatasetCatalog>(request ? "?refresh=1" : "", controller.signal);
+        const value = await read<RealDatasetCatalog>(force ? "?refresh=1" : "", controller.signal);
         if (value.schemaVersion !== "roboexam.real-datasets.v1") throw new Error("数据目录版本不一致。");
         if (controller.signal.aborted) return;
         delay = Math.max(1000, value.refreshSeconds * 1000) + 100;
@@ -160,7 +160,7 @@ export function RealDatasetBrowser() {
       } catch (reason) { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "无法读取目录。"); }
       finally { if (!controller.signal.aborted) { setLoading(false); timer = setTimeout(() => { void update(); }, delay); } }
     }
-    void update();
+    void update(request > 0);
     return () => { controller.abort(); clearTimeout(timer); };
   }, [request]);
   const datasets = catalog?.datasets.filter(row => (kind === "all" || row.kind === kind) && `${row.name} ${row.robotType}`.toLowerCase().includes(query.trim().toLowerCase())) ?? [];

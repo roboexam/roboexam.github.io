@@ -40,6 +40,7 @@ try {
     const entries = await entriesResponse.json();
     assert.ok(entries.episodes.length > 1, `${dataset.name} requires two actual episodes for switching`);
     await page.locator(".realDatasetList button").filter({ has: page.getByText(dataset.name, { exact: true }) }).click();
+    await page.waitForFunction(name => document.querySelector(".realDatasetPanel .rawReviewHeading h3")?.textContent === name, dataset.name);
     const selected = page.locator(".realDatasetPanel .reviewEpisodeControls select");
     await selected.waitFor();
     assert.equal(await selected.locator("option").count(), entries.episodes.length);
