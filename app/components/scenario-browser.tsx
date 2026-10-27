@@ -4,12 +4,13 @@ import { Search } from 'lucide-react';
 import { useState } from 'react';
 import { matchesScenario, scenarioPlan, scenarioTags, type ScenarioTag } from '../data/scenario-plan';
 import { RawDataBrowser } from './raw-review-board';
+import { RealDatasetBrowser } from './real-dataset-browser';
 import { useRawCatalog } from './use-raw-catalog';
 import { ScenarioTags } from './scenario-tags';
 
 export function ScenarioBrowser() {
   const raw = useRawCatalog();
-  const [view, setView] = useState<'plan' | 'episodes'>('episodes');
+  const [view, setView] = useState<'plan' | 'episodes' | 'real'>('episodes');
   const [episodeTask, setEpisodeTask] = useState<string | undefined>();
   const [query, setQuery] = useState('');
   const [tags, setTags] = useState<ScenarioTag[]>([]);
@@ -21,8 +22,8 @@ export function ScenarioBrowser() {
   const visible = scenarioPlan.filter(scene => matchesScenario(scene,tags,scope,query,physical) && (inventory === 'all' || (inventory === 'local' ? catalog.has(scene.id) : !catalog.has(scene.id))));
   function reset() { setQuery(''); setTags([]); setPhysical('all'); setScope('all'); setInventory('all'); }
   return <div className="scenarioBrowser">
-    <div className="datasetViewSwitch reportSwitch" aria-label="Dataset view"><button type="button" aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>Task trajectories</button><button type="button" aria-pressed={view === 'plan'} onClick={() => setView('plan')}>Scenario plan</button></div>
-    {view === 'episodes' ? <RawDataBrowser key={episodeTask ?? 'default'} state={raw} initialTask={episodeTask}/> : <>
+    <div className="datasetViewSwitch reportSwitch" aria-label="Dataset view"><button type="button" aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>Task trajectories</button><button type="button" aria-pressed={view === 'real'} onClick={() => setView('real')}>Real &amp; Ego</button><button type="button" aria-pressed={view === 'plan'} onClick={() => setView('plan')}>Scenario plan</button></div>
+    {view === 'real' ? <RealDatasetBrowser/> : view === 'episodes' ? <RawDataBrowser key={episodeTask ?? 'default'} state={raw} initialTask={episodeTask}/> : <>
       <div className="scenarioIntro"><h2>Simulation scenarios</h2><p>{scenarioPlan.length} proposed scenarios · {raw.catalog ? raw.catalog.tasks.length : '—'} live raw task folders</p></div>
       <div className="rawReviewRefresh"><span role="status">{raw.error || (raw.catalog ? `最近扫描：${new Date(raw.catalog.scannedAt).toLocaleString()}` : '正在扫描公盘目录…')}</span><button type="button" disabled={raw.loading} onClick={raw.refresh}>{raw.loading ? '扫描中…' : '刷新'}</button></div>
       <div className="scenarioFilters">

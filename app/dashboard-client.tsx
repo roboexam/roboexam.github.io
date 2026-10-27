@@ -72,7 +72,7 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
         <BaselineRunPlan />
       </div>}
       {page === 'Leaderboards' && <LeaderboardView key={track} initialTrack={track} onMetric={setDetail}/>}
-      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading"><h1>Datasets</h1><p>Live simulation raw captures, synchronized cameras, and source-bound action traces.</p></div><ScenarioBrowser/></div>}
+      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading"><h1>Datasets</h1><p>Browse simulation trajectories, real-robot demonstrations, and egocentric recordings with their available cameras and episode instructions.</p></div><ScenarioBrowser/></div>}
       {page === 'Correlation' && <ExplainabilityView/>}
     </main>
     <footer className="researchFooter"><div><strong>RoboExam</strong><span>Planned CVPR 2027 Workshop</span></div></footer>
