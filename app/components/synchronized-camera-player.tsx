@@ -6,18 +6,19 @@ import { cameraLabels, secondsLabel, type Camera } from "../data/curated-dataset
 import type { ActionTraceSource } from "../data/action-trace";
 import { ActionTracePanel } from "./action-trace-panel";
 
-type CameraMedia = { camera: Camera; url: string; duration: number; sha256?: string };
+type CameraMedia = { camera: Camera; url: string; duration: number; sha256?: string; contentSha256?: string };
 type Mark = { label: string; seconds: number };
 type Props = { media: CameraMedia[]; title: string; marks?: Mark[]; traceId?: string; traceSource?: ActionTraceSource };
 type Quality = "web-360p-v1" | "original";
 
 const cameraOrder: Camera[] = ["cam_head", "cam_left_wrist", "cam_right_wrist"];
 const compressedProfile: Quality = "web-360p-v1";
+const sourceSha256 = (item: CameraMedia) => item.sha256 ?? item.contentSha256;
 const renditionUrl = (sha256: string) =>
   `/api/video-renditions?source=${sha256}&profile=${compressedProfile}`;
 
 export function SynchronizedCameraPlayer(props: Props) {
-  const mediaKey = props.media.map((item) => item.sha256 ?? item.url).join("|");
+  const mediaKey = props.media.map((item) => sourceSha256(item) ?? item.url).join("|");
   return <SynchronizedCameraPlayback key={mediaKey} {...props}/>;
 }
 
@@ -31,9 +32,9 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
   const [loadedDuration, setLoadedDuration] = useState(0);
   const [playing, setPlaying] = useState(false);
   const views = cameraOrder.map((camera) => media.find((item) => item.camera === camera)).filter(Boolean) as CameraMedia[];
-  const supportsCompressed = views.length > 0 && views.every((item) => /^[a-f0-9]{64}$/.test(item.sha256 ?? ""));
+  const supportsCompressed = views.length > 0 && views.every((item) => /^[a-f0-9]{64}$/.test(sourceSha256(item) ?? ""));
   const [quality, setQuality] = useState<Quality>(supportsCompressed ? compressedProfile : "original");
-  const mediaKey = views.map((item) => item.sha256 ?? item.url).join("|");
+  const mediaKey = views.map((item) => sourceSha256(item) ?? item.url).join("|");
   const master = views.find((item) => item.camera === "cam_head") ?? views[0];
   const duration = master?.duration || loadedDuration;
   const masterReady = master ? ready.includes(master.camera) && !failed.includes(master.camera) : false;
@@ -89,7 +90,7 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
         {views.map((view) => <figure className={`syncView syncView-${view.camera}`} key={view.camera}>
           <figcaption>{cameraLabels[view.camera]}</figcaption>
           <video key={`${mediaKey}:${view.camera}:${quality}`} ref={(node) => { videos.current[view.camera] = node; }}
-            src={quality === compressedProfile && view.sha256 ? renditionUrl(view.sha256) : view.url}
+            src={quality === compressedProfile && sourceSha256(view) ? renditionUrl(sourceSha256(view)!) : view.url}
             muted playsInline preload="metadata"
             aria-label={`${title} ${cameraLabels[view.camera]} camera`}
             onLoadedMetadata={() => {

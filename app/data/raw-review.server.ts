@@ -1,7 +1,9 @@
 import { createHash } from "node:crypto";
-import { constants } from "node:fs";
-import { open, readdir, realpath, stat } from "node:fs/promises";
+import { execFile as execFileCallback } from "node:child_process";
+import { constants, createReadStream } from "node:fs";
+import { mkdir, open, readdir, realpath, rename, stat, unlink } from "node:fs/promises";
 import path from "node:path";
+import { promisify } from "node:util";
 import { Readable } from "node:stream";
 import type { RawCatalog, RawEntry, RawEpisode, RawTaskEntries } from "./raw-review.ts";
 import { extractRawActionTrace, type TraceExtractor, type TraceInput, type TraceResult } from "./raw-action-trace.server.ts";
@@ -9,6 +11,12 @@ import { validateActionTrace, type ActionTraceSource } from "./action-trace.ts";
 import { parseMediaRange } from "./media-range.ts";
 
 const digest = (text: string | Uint8Array) => createHash("sha256").update(text).digest("hex");
+const execFile = promisify(execFileCallback);
+async function sha256File(file: string) {
+  const hasher = createHash("sha256");
+  for await (const chunk of createReadStream(file)) hasher.update(chunk);
+  return hasher.digest("hex");
+}
 const within = (root: string, file: string) => file === root || file.startsWith(root + path.sep);
 const cameras = ["cam_head", "cam_left_wrist", "cam_right_wrist"] as const;
 const natural = (a: string, b: string) => a.localeCompare(b, "en", { numeric: true });
@@ -22,6 +30,7 @@ type LocatedEntry = RawEntry & { relative: string; taskId: string };
 const mediaIdentity = (info: { dev: bigint; ino: bigint; size: bigint; mtimeNs: bigint; ctimeNs: bigint }) =>
   [info.dev, info.ino, info.size, info.mtimeNs, info.ctimeNs].join(":");
 type MediaRef = { relative: string; physical: string; fingerprint: string; bytes: number; contentSha256: string };
+type RenditionRef = { physical: string; bytes: number; sha256: string; sourceIdentity?: string };
 type TraceRef = { input: TraceInput; relative: string; physical: string; identity: string; metadataRelative: string | null };
 type Snapshot = { catalog: RawCatalog; entries: Map<string, LocatedEntry> };
 
@@ -36,6 +45,8 @@ export function createRawReviewReader({
   let expires = 0;
   let pending: Promise<Snapshot> | undefined;
   const mediaRefs = new Map<string, MediaRef>();
+  const renditionRefs = new Map<string, RenditionRef>();
+  const pendingRenditions = new Map<string, Promise<RenditionRef | null>>();
   const traceRefs = new Map<string, TraceRef>();
   const traceCache = new Map<string, TraceResult>();
   const pendingTraces = new Map<string, Promise<TraceResult>>();
@@ -202,7 +213,11 @@ export function createRawReviewReader({
         const verified = await verifyVideo(relative, physical, Object.keys(video).length ? video : official);
         const key = digest(relative + ":" + physical + ":" + verified.identity + ":" + verified.hash);
         if (mediaRefs.size > 20000) mediaRefs.clear();
-        mediaRefs.set(key, { relative, physical, fingerprint: verified.identity, bytes: verified.bytes, contentSha256: verified.hash });
+        const mediaRef = { relative, physical, fingerprint: verified.identity, bytes: verified.bytes, contentSha256: verified.hash };
+        mediaRefs.set(key, mediaRef);
+        // The raw browser exposes contentSha256. Keep a process-local reverse index so
+        // the shared rendition endpoint can resolve that stable identity safely.
+        renditionRefs.set(verified.hash, { physical, bytes: verified.bytes, sha256: verified.hash, sourceIdentity: verified.identity });
         const duration = finite(semantics.duration_seconds) ?? Number(object(official.probe).duration ?? 0);
         media.push({ camera, contentSha256: verified.hash, url: `/api/raw-review-media?id=${key}`, duration: Number.isFinite(duration) && duration > 0 ? duration : 0 });
       } catch { warnings.push(`${name}：文件不可读、链接目标不在允许范围或视频摘要/大小不符`); }
@@ -287,6 +302,82 @@ export function createRawReviewReader({
     return new Response(Readable.toWeb(handle.createReadStream({ start, end, autoClose: true })) as ReadableStream<Uint8Array>,
       { status: range ? 206 : 200, headers });
   }
+  async function buildRendition(source: string, ref: RenditionRef): Promise<RenditionRef | null> {
+    const cacheRoot = path.resolve(process.env.UNIBENCH_RAW_RENDITION_ROOT ??
+      "/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_raw_video_renditions/v1");
+    const destination = path.join(cacheRoot, "web-360p-v1", `${source}.mp4`);
+    const temporary = `${destination}.${process.pid}.${Date.now()}.tmp.mp4`;
+    try {
+      await mkdir(path.dirname(destination), { recursive: true });
+      const rootReal = await realpath(cacheRoot);
+      try {
+        const existing = await realpath(destination);
+        if (!within(rootReal, existing)) throw new Error("rendition_escape");
+        const information = await stat(existing);
+        if (information.isFile() && information.size > 0)
+          return { physical: existing, bytes: information.size, sha256: await sha256File(existing) };
+      } catch (error) { if (error instanceof Error && error.message === "rendition_escape") throw error; }
+      const before = await stat(ref.physical, { bigint: true });
+      if (!before.isFile() || before.size !== BigInt(ref.bytes) ||
+          (ref.sourceIdentity && mediaIdentity(before) !== ref.sourceIdentity)) throw new Error("source_changed");
+      await execFile(process.env.UNIBENCH_FFMPEG ?? "/usr/bin/ffmpeg", [
+        "-hide_banner", "-loglevel", "error", "-nostdin", "-y", "-i", ref.physical,
+        "-map", "0:v:0", "-an",
+        "-vf", "scale=w='if(gt(ih,360),-2,iw)':h='if(gt(ih,360),360,ih)':flags=lanczos,fps=25",
+        "-c:v", "libx264", "-preset", "veryfast", "-crf", "29",
+        "-maxrate", "700k", "-bufsize", "1400k", "-pix_fmt", "yuv420p",
+        "-movflags", "+faststart", "-map_metadata", "-1", "-threads", "2", temporary,
+      ], { maxBuffer: 4 * 1024 * 1024 });
+      const after = await stat(ref.physical, { bigint: true });
+      if (!after.isFile() || after.size !== BigInt(ref.bytes) ||
+          (ref.sourceIdentity && mediaIdentity(after) !== ref.sourceIdentity)) throw new Error("source_changed");
+      const information = await stat(temporary);
+      if (!information.isFile() || information.size <= 0) throw new Error("rendition_empty");
+      await rename(temporary, destination);
+      const published = await realpath(destination);
+      if (!within(rootReal, published)) throw new Error("rendition_escape");
+      const publishedInfo = await stat(published);
+      return { physical: published, bytes: publishedInfo.size, sha256: await sha256File(published) };
+    } catch {
+      try { await unlink(temporary); } catch { /* best effort cleanup */ }
+      return null;
+    }
+  }
+  async function serveRendition(request: Request, head = false) {
+    const parameters = new URL(request.url).searchParams;
+    const source = parameters.get("source") ?? "";
+    const profile = parameters.get("profile") ?? "";
+    if (!/^[a-f0-9]{64}$/.test(source) || profile !== "web-360p-v1") return new Response(null, { status: 404 });
+    const sourceRef = renditionRefs.get(source);
+    if (!sourceRef) return new Response(null, { status: 404 });
+    let rendition = renditionRefs.get(`${profile}:${source}`) as RenditionRef | undefined;
+    if (!rendition || rendition.physical === sourceRef.physical) {
+      const pending = pendingRenditions.get(source);
+      const promise = pending ?? buildRendition(source, sourceRef);
+      if (!pending) pendingRenditions.set(source, promise);
+      const built = await promise;
+      if (!pending) pendingRenditions.delete(source);
+      rendition = built ?? undefined;
+      if (!rendition) return new Response(null, { status: 503 });
+      renditionRefs.set(`${profile}:${source}`, rendition);
+    }
+    let information;
+    try { information = await stat(rendition.physical); }
+    catch { renditionRefs.delete(`${profile}:${source}`); return new Response(null, { status: 404 }); }
+    const range = parseMediaRange(request.headers.get("range"), information.size);
+    if (range === undefined) return new Response(null, { status: 416,
+      headers: { "content-range": `bytes */${information.size}`, "accept-ranges": "bytes" } });
+    const { start, end } = range ?? { start: 0, end: information.size - 1 };
+    const headers = new Headers({ "content-type": "video/mp4", "content-length": String(end - start + 1),
+      "accept-ranges": "bytes", "content-disposition": "inline", "cache-control": "private, max-age=3600",
+      etag: `"${rendition.sha256}"`, "x-roboexam-source-sha256": source,
+      "x-roboexam-rendition-profile": profile });
+    if (range) headers.set("content-range", `bytes ${start}-${end}/${information.size}`);
+    if (head) return new Response(null, { status: range ? 206 : 200, headers });
+    return new Response(Readable.toWeb(createReadStream(rendition.physical,
+      { start, end })) as ReadableStream<Uint8Array>, { status: range ? 206 : 200, headers });
+  }
+
   async function actionTrace(id: string): Promise<TraceResult | null> {
     const ref = traceRefs.get(id);
     if (!ref) return null;
@@ -330,7 +421,7 @@ export function createRawReviewReader({
     } catch { return { status: "unavailable", reason: "trajectory_unreadable" }; }
     finally { if (handle) await handle.close(); }
   }
-  return { catalog, task, episode, serveMedia, actionTrace };
+  return { catalog, task, episode, serveMedia, serveRendition, actionTrace };
 }
 
 export const rawReview = createRawReviewReader({

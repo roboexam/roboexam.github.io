@@ -8,6 +8,7 @@ import {
   rename,
   stat,
   writeFile,
+  readdir,
 } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -41,6 +42,9 @@ const ROOTS = {
     "/mnt/gyc_ckp/benchmark2027/runtime/staging/robodojo_data_generation",
   "review-cache":
     "/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_review_media/v1",
+  raw:
+    process.env.UNIBENCH_RAW_ROOT ??
+    "/mnt/public_ckp/UniEmbodied-Bench/raw",
 };
 const INDEXES = [
   { file: "app/data/generated/curated-media.json", defaultRoot: "curated" },
@@ -121,10 +125,39 @@ async function atomicWrite(file, value) {
   await rename(temporary, file);
 }
 
+async function loadRawSources(root, sources) {
+  async function walk(relative) {
+    const physical = await realpath(path.join(root, relative));
+    const entries = await readdir(physical, { withFileTypes: true });
+    for (const entry of entries) {
+      if (entry.name.startsWith(".") || entry.name.startsWith("_")) continue;
+      const child = path.join(relative, entry.name);
+      if (entry.isDirectory() || entry.isSymbolicLink()) {
+        try {
+          if ((await stat(await realpath(path.join(root, child)))).isDirectory()) await walk(child);
+        } catch { /* disappearing raw entries are retried on the next build */ }
+        continue;
+      }
+      if (!entry.isFile() || !/\.mp4$/i.test(entry.name) ||
+          !/(^|_)cam_(head|left_wrist|right_wrist)\.mp4$/i.test(entry.name)) continue;
+      const physicalPath = await realpath(path.join(root, child));
+      const info = await stat(physicalPath);
+      if (!info.isFile() || info.size <= 0) continue;
+      const sourceSha256 = await sha256(physicalPath);
+      const previous = sources.get(sourceSha256);
+      if (previous) assert.equal(previous.bytes, info.size, `inconsistent source bytes: ${sourceSha256}`);
+      else sources.set(sourceSha256, { sha256: sourceSha256, bytes: info.size, physicalPath });
+    }
+  }
+  await walk("");
+}
+
 async function loadSources() {
   const physicalRoots = Object.fromEntries(
     await Promise.all(
-      Object.entries(ROOTS).map(async ([id, root]) => [id, await realpath(root)]),
+      Object.entries(ROOTS)
+        .filter(([id]) => id !== "raw" || process.env.UNIBENCH_INCLUDE_RAW_RENDITIONS === "1")
+        .map(async ([id, root]) => [id, await realpath(root)]),
     ),
   );
   const sources = new Map();
@@ -152,6 +185,9 @@ async function loadSources() {
         });
       }
     }
+  }
+  if (process.env.UNIBENCH_INCLUDE_RAW_RENDITIONS === "1") {
+    await loadRawSources(physicalRoots.raw, sources);
   }
   return sources;
 }

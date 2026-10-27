@@ -4,6 +4,7 @@ import path from "node:path";
 import { Readable } from "node:stream";
 import catalog from "../../data/generated/video-renditions.json";
 import { parseMediaRange } from "../../data/media-range";
+import { rawReview } from "../../data/raw-review.server";
 
 const ROOT =
   process.env.UNIBENCH_VIDEO_RENDITION_ROOT ??
@@ -24,7 +25,7 @@ async function serve(request: Request, head: boolean) {
     return new Response(null, { status: 404 });
   }
   const reference = items[source];
-  if (!reference) return new Response(null, { status: 404 });
+  if (!reference) return rawReview.serveRendition(request, head);
 
   let candidate: string;
   try {

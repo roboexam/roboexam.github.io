@@ -55,7 +55,7 @@ export const baselineRunPlan: BaselineRun[] = [
   {
     id: "E7", track: "T3", baseline: "Pi0.5 / XPolicyLab",
     trainingJob: "job-gw5edw7r0hng", trainingCards: "8", evaluationJob: "job-vodyg0t82m89", evaluationCards: "4×A800",
-    owner: "weixiaobao", status: "pilot", note: "train22；训练 Running；Isaac pilot Running（当前 spp8）。",
+    owner: "weixiaobao", status: "pilot", note: "train22；训练 Running；Isaac pilot 已 Succeeded（当前 spp8），需按 TAA+64 spp 正式重跑。",
   },
   {
     id: "E8", track: "T3", baseline: "FastWAM",
