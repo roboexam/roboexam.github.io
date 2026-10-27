@@ -185,7 +185,7 @@ export const tracks: TrackDefinition[] = [
   {
     id: "T2", title: "Physical Foresight", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
     models: [
-      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Running · clean24" },
+      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Planned · clean24" },
       { id: "CtrlWorld", family: "ACWM", status: "Running" },
       { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "Running" },
       { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
