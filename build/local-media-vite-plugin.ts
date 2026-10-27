@@ -1,6 +1,8 @@
 import { GET as getRawReviewTrace } from "../app/api/raw-review-trace/route";
 import { GET as getRawReview } from "../app/api/raw-review/route";
 import { GET as getRawReviewMedia, HEAD as headRawReviewMedia } from "../app/api/raw-review-media/route";
+import { GET as getRealDatasets } from "../app/api/real-datasets/route";
+import { GET as getRealDatasetsMedia, HEAD as headRealDatasetsMedia } from "../app/api/real-datasets-media/route";
 import type { IncomingHttpHeaders, IncomingMessage, ServerResponse } from "node:http";
 import { Readable } from "node:stream";
 import type { Plugin } from "vite";
@@ -84,6 +86,8 @@ function pathMatch(
 }
 
 function matchRoute(pathname: string): RouteMatch | null {
+  if (pathname === "/api/real-datasets") return { get: getRealDatasets, head: getRealDatasets, context: context() };
+  if (pathname === "/api/real-datasets-media") return { get: getRealDatasetsMedia, head: headRealDatasetsMedia, context: context() };
   if (pathname === "/api/raw-review-trace") return { get: getRawReviewTrace, head: getRawReviewTrace, context: context() };
   if (pathname === "/api/raw-review") return { get: getRawReview, head: getRawReview, context: context() };
   if (pathname === "/api/raw-review-media") return { get: getRawReviewMedia, head: headRawReviewMedia, context: context() };
