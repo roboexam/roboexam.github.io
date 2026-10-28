@@ -158,10 +158,7 @@ function TaskPicker({ tasks, value, onChange }: { tasks: CuratedTask[]; value: s
 
 function TaskHeading({ task }: { task: CuratedTask }) {
   const scene = scenarioFor(task.id);
-  return <>
-    <div className="curatedTaskTitle"><div><h3>{task.name}</h3>{scene && <ScenarioTags scene={scene}/>}</div><div className="curatedTaskCounts"><span>{task.clean} clean</span><span>{task.recovery} recovery</span><span>{task.ood} OOD</span></div></div>
-    <div className="curatedInstructionBanner"><div><span>Task instruction</span><strong>{task.instruction || "No English instruction recorded"}</strong></div></div>
-  </>;
+  return <div className="curatedTaskTitle"><div><h3>{task.name}</h3>{scene && <ScenarioTags scene={scene}/>}</div><div className="curatedTaskCounts"><span>{task.clean} clean</span><span>{task.recovery} recovery</span><span>{task.ood} OOD</span></div></div>;
 }
 
 function NoMatch() {

@@ -22,6 +22,7 @@ test('curated task chunks, counts, hashes and media allowlist agree', () => {
     assert.equal(task.count, task.clean + task.recovery + task.ood);
     for (const e of chunk.episodes) {
       assert.ok(!ids.has(e.id)); ids.add(e.id); total++;
+      assert.equal(typeof e.instruction === 'string' && e.instruction.trim().length > 0, true, `${e.id} instruction`);
       for (const m of e.media) { assert.equal(media[m.sha256].bytes, m.bytes); relativePath(media[m.sha256].relativePath); videos++; }
     }
   }

@@ -29,7 +29,7 @@ function Episode({ id, tick, task, review, unavailable }: { id: string; tick: nu
   if (error && !episode) return <p className="reviewError" role="alert">{error}</p>;
   if (!episode) return <p className="reviewLoading">正在读取样本与相机…</p>;
   return <article className="reviewEpisode">
-    <p className="reviewInstruction">{episode.instruction}</p>
+    <div className="episodeInstruction"><span>Instruction · 任务指令</span><p className="reviewInstruction">{episode.instruction}</p></div>
     {error || unavailable ? <p className="reviewError" role="alert">{error || "目录暂时不可读"}；视频暂停展示，评论仍可保存。</p> : episode.media.length ? <SynchronizedCameraPlayer media={episode.media} traceId={episode.id} traceSource={episode.trace} title={`${task.name} ${episode.name}`}/> :
       <p className="reviewLoading">此样本没有可播放视频，文件和质检意见仍可查看。</p>}
     <div className="reviewEvidence"><span><ShieldCheck size={15}/>公盘目录记录 · 人工状态独立保存</span>

@@ -59,7 +59,9 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   const scenarios = await readFile(new URL("app/components/scenario-browser.tsx", root), "utf8");
   assert.match(scenarios, /<RawDataBrowser/);
   assert.match(scenarios, /useRawCatalog/);
-  assert.doesNotMatch(scenarios, /curatedDataset|<DatasetExplorer/);
+  assert.match(scenarios, /curatedDataset/);
+  assert.match(scenarios, /<DatasetExplorer/);
+  assert.match(scenarios, /Evaluation set/);
   assert.doesNotMatch(scenarios, /<BaselineExplorer|OodValidationPanel/);
   assert.doesNotMatch(dashboard, /\x27Metrics\x27|Metric guide/);
   assert.match(dashboard, /<ExplainabilityView/);
@@ -131,6 +133,7 @@ test("keeps setting-resolved leaderboards and dataset OOD evidence wired", async
   }
   assert.doesNotMatch(explorer, /listAllMatching|<TaskRow/);
   assert.match(card, /traceId=\{episode\.id\}/);
+  assert.match(card, /Instruction · 任务指令/);
   assert.match(styles, /\.regimeRail \{ display: grid; grid-template-columns: repeat\(5/);
   assert.match(styles, /\.syncPlayerWithTrace \{ display: grid; grid-template-columns: repeat\(2/);
   assert.match(player, /"cam_head", "cam_left_wrist", "cam_right_wrist"/);

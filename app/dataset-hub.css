@@ -24,6 +24,12 @@
 .datasetSourceContext h2 { margin: 4px 0 0; font-size: 25px; line-height: 1.2; font-weight: 580; }
 .datasetSourceContext p { max-width: 600px; margin: 0; color: #68758a; font-size: 14px; text-align: right; }
 
+.simulationDatasetWorkspace { display: grid; gap: 16px; }
+.datasetSimulationSwitch { width: fit-content; margin: 0; }
+.episodeInstruction { display: grid; grid-template-columns: minmax(130px,auto) minmax(0,1fr); align-items: start; gap: 8px 16px; margin: 0 0 16px; padding: 12px 14px; border: 1px solid #dce5f0; border-radius: 9px; background: #f8faff; }
+.episodeInstruction>span { color: #62758f; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.episodeInstruction>p, .episodeInstruction .reviewInstruction { margin: 0; color: #253b5b; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+
 .datasetSummaryStrip { display: grid; grid-template-columns: repeat(2,minmax(95px,130px)) minmax(280px,1fr); align-items: stretch; min-height: 68px; overflow: hidden; border: 1px solid #e0e6ee; border-radius: 11px; background: #f8fafc; }
 .datasetSummaryStrip>div:not(.datasetSummaryAction) { display: grid; align-content: center; padding: 10px 18px; border-right: 1px solid #e0e6ee; }
 .datasetSummaryStrip strong { color: #243c62; font-size: 20px; line-height: 1.15; font-weight: 620; font-variant-numeric: tabular-nums; }
@@ -87,6 +93,7 @@
   .datasetSourceNav button { flex-basis: 230px; grid-template-columns: 34px minmax(0,1fr); }
   .datasetSourceNav button>b { display: none; }
   .datasetSourceContext h2 { font-size: 22px; }
+  .episodeInstruction { grid-template-columns: 1fr; gap: 5px; }
   .datasetSummaryStrip { grid-template-columns: repeat(2,1fr); }
   .datasetSummaryStrip>div:not(.datasetSummaryAction) { padding: 9px 13px; }
   .datasetSummaryAction { grid-column: 1 / -1; justify-content: space-between; border-top: 1px solid #e0e6ee; padding-left: 13px; }

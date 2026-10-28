@@ -114,7 +114,7 @@ function Episode({ id, dataset }: { id: string; dataset: RealDatasetSummary }) {
   if (error) return <p className="reviewError" role="alert">{error}</p>;
   if (!episode) return <p className="reviewLoading">正在读取样本与相机…</p>;
   return <article className="realEpisode">
-    <p className="reviewInstruction">{episode.instruction || "未记录任务指令"}</p>
+    <div className="episodeInstruction"><span>Instruction · 任务指令</span><p className="reviewInstruction">{episode.instruction || "未记录任务指令"}</p></div>
     <EpisodePlayer key={`${dataset.id}:${episode.id}:${episode.metadataSha256}`} episode={episode} title={`${dataset.name} ${episode.name}`}/>
     <div className="realEpisodeFacts"><span>{episode.frames.toLocaleString()} 帧</span><span>{secondsLabel(episode.durationSeconds)}</span><span>{dataset.fps} FPS</span><span>{episode.media.length} 路相机</span></div>
     {!!episode.warnings.length && <ul className="rawReviewWarnings">{episode.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul>}

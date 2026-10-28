@@ -27,6 +27,7 @@ test('unified explorer preserves curated rows and all pinned OOD identities exac
     }
     for (const e of chunk.episodes) {
       assert.ok(!ids.has(e.id)); ids.add(e.id);
+      assert.equal(typeof e.instruction === 'string' && e.instruction.trim().length > 0, true, `${e.id} instruction`);
       if(e.admissionStatus !== 'staging_not_curated') continue;
       stagingCount++;
       assert.ok(e.reviewScope && e.validatorSha256 && e.reviewSha256 && e.oodCondition);

@@ -139,6 +139,8 @@ test("Datasets renders the unified live dataset workspace", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Task trajectories/);
+  assert.match(html, /Evaluation set/);
+  assert.match(html, /3,998/);
   assert.match(html, /Simulation catalog summary/);
   assert.match(html, /Camera \+ action replay/);
   assert.match(html, /Scenario inventory/);

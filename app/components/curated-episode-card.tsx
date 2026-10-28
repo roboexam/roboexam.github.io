@@ -66,6 +66,7 @@ export function CuratedEpisodeCard({ category, episodes, taskName, loading, head
             <button aria-label={`${title} previous`} disabled={index <= 0} onClick={() => choose(list[index - 1].id)}><ChevronLeft size={17}/></button>
             <button aria-label={`${title} next`} disabled={index >= list.length - 1} onClick={() => choose(list[index + 1].id)}><ChevronRight size={17}/></button>
           </div></div>
+          <div className="episodeInstruction"><span>Instruction · 任务指令</span><p>{episode.instruction || "No instruction recorded"}</p></div>
           <SynchronizedCameraPlayer media={episode.media}
             title={`${taskName} ${title} episode_${episode.index}`}
             traceId={episode.id}
@@ -74,8 +75,7 @@ export function CuratedEpisodeCard({ category, episodes, taskName, loading, head
             <span>{episode.oodCondition ? `${oodKindLabels[oodKind(episode.oodCondition)!]} · ${oodLabel(episode.oodCondition)}` : typeLabels[episode.type]}</span>
             <span>{representative.fps} fps · {representative.frames.toLocaleString()} frames</span>
           </div>
-          <details className="curatedDetails"><summary>Instruction and data identity</summary>
-            <div className="curatedInstruction"><span>Instruction</span><strong>{episode.instruction || "No instruction recorded"}</strong></div>
+          <details className="curatedDetails"><summary>Episode data identity</summary>
             <dl><dt>Scene seed</dt><dd>{episode.seed} (initialization seed, not the episode index)</dd>
               <dt>Episode ID</dt><dd>{episode.id}</dd>
               <dt>Camera SHA-256</dt><dd>{episode.media.map((item) => `${item.camera}: ${item.sha256}`).join(" · ")}</dd>
