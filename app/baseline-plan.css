@@ -32,4 +32,6 @@
 .baselinePlanFootnotes p { margin: 0; color: #69758a; font-size: 12px; line-height: 1.55; }
 .baselinePlanFootnotes strong { color: #3a4860; }
 .baselinePlanFootnotes code { padding: 2px 5px; border-radius: 4px; background: #e9eef5; color: #3c4e69; font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+.trackLeaderboard .baselinePlan { margin-top: 0; border-radius: 16px; box-shadow: none; }
+.trackLeaderboard .baselinePlanHeading h2 { font-size: clamp(24px,2vw,32px); }
 @media(max-width:760px) { .baselinePlan { margin-top: 64px; border-radius: 18px; } .baselinePlanHeading { align-items: flex-start; flex-direction: column; } .baselinePlanStats { gap: 14px; } }

@@ -65,6 +65,7 @@ test("renders the dashboard introduction without login", async () => {
   assert.match(html, /State Grounding/);
   assert.match(html, /Recovery &amp; Safety/);
   assert.match(html, /Leaderboards/);
+  assert.doesNotMatch(html, /当前 baseline 训练与测评计划|RUN REGISTRY/);
   assert.doesNotMatch(html, /拟之而后言|识其境，推其变，成其事，应万变|Where Physical AI|纸上得来终觉浅|Lu You|Reason from observations|Perceive and reason without acting|Fire tests gold|Seneca|Toward human-level Physical AI|One robot|Build history|From profile to evidence|Read abilities first|reducing embodied intelligence to a single success rate|Capability × interface × regime|One syllabus\. Four exams|UniEmbodied-Bench|Unified Embodied Evaluation|Research preview|ICLR 2027/);
 });
 

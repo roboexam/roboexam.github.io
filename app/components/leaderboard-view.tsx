@@ -146,7 +146,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       <strong>Score guide · 分数说明</strong>
       <p lang="en">{scoreGuide.en}</p><p lang="zh-CN">{scoreGuide.zh}</p>
     </section>
-    {trackId !== "T1" && <BaselineRunPlan key={trackId} initialTrack={trackId}/>} 
+    <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>
     {trackId === "T1" && !previousT1Protocols ? <section className="trackWorkspace" aria-label="T1 current results">
       <div className="t1CurrentBar"><span>{track.title}</span>
         <button type="button" className="t1ProtocolLink" onClick={() => { setPreviousT1Protocols(true); setMode("history"); }}>Previous protocols</button>

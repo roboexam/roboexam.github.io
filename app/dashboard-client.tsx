@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { LeaderboardView } from './components/leaderboard-view';
 import { ScenarioBrowser } from './components/scenario-browser';
 import { ExplainabilityView } from './components/explainability-view';
-import { BaselineRunPlan } from './components/baseline-run-plan';
 import { AcwmMetricEvidence } from './components/acwm-metric-evidence';
 import { VlaWamMetricEvidence } from './components/vla-wam-metric-evidence';
 import { l1Phase1ProvisionalBundle } from './data/l1-phase1-provisional';
@@ -69,7 +68,6 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
           <CapabilitySpectrum onCapability={setActiveCapability}/>
         </section>
         <CapabilityTrackFlow activeId={activeCapability} onCapability={setActiveCapability} onTrack={nextTrack => navigate('Leaderboards', nextTrack)}/>
-        <BaselineRunPlan />
       </div>}
       {page === 'Leaderboards' && <LeaderboardView key={track} initialTrack={track} onMetric={setDetail}/>}
       {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading datasetPageHeading"><p className="eyebrow">DATA LIBRARY</p><h1>Datasets</h1><p>Browse simulation, real-robot, and egocentric records in one workspace.</p></div><ScenarioBrowser/></div>}

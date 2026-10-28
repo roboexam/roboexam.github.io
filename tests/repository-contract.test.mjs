@@ -25,9 +25,10 @@ test("uses the public RoboExam shell and direct anonymous routing", async () => 
 });
 
 test("keeps the four leaderboard tracks and metric adapters wired", async () => {
-  const [dashboard, leaderboard, acwm, vlm, policy, realWorld] = await Promise.all([
+  const [dashboard, leaderboard, leaderboardView, acwm, vlm, policy, realWorld] = await Promise.all([
     readFile(new URL("app/dashboard-client.tsx", root), "utf8"),
     readFile(new URL("app/data/metric-plan.ts", root), "utf8"),
+    readFile(new URL("app/components/leaderboard-view.tsx", root), "utf8"),
     readFile(new URL("app/data/acwm-results.ts", root), "utf8"),
     readFile(new URL("app/data/vlm-results.ts", root), "utf8"),
     readFile(new URL("app/data/vla-wam-results.ts", root), "utf8"),
@@ -44,6 +45,9 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
     assert.ok(leaderboard.includes(metric), `missing metric ${metric}`);
   }
   assert.match(dashboard, /<LeaderboardView/);
+  assert.doesNotMatch(dashboard, /BaselineRunPlan/);
+  assert.match(leaderboardView, /<BaselineRunPlan/);
+  assert.match(leaderboardView, /trackId === "T1" \? "ALL" : trackId/);
   assert.match(dashboard, /<ScenarioBrowser/);
   assert.match(dashboard, /<CapabilitySpectrum/);
   for (const capability of ["State Grounding", "Task Memory", "Predictive Imagination", "Action–Effect Reasoning", "Closed-Loop Execution", "Recovery & Safety", "Generalization"]) {
