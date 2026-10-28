@@ -4,7 +4,14 @@ import { ArrowUpRight, X } from "lucide-react";
 import { useEffect, useId, useRef } from "react";
 import type { T1BenchmarkMetric, T1BenchmarkResults } from "../../data/t1-benchmark-results";
 import { benchmarkMetricLabel, benchmarkScoreText } from "./t1-benchmark-table";
-import { metricDisplayFormula, metricSummary } from "./metric-presentation";
+import {
+  metricDisplayFormula,
+  metricDisplayLabel,
+  metricIoContract,
+  metricQaTemplate,
+  metricSummary,
+  metricSummaryZh,
+} from "./metric-presentation";
 
 type Props = {
   metric: T1BenchmarkMetric;
@@ -21,6 +28,12 @@ export function T1BenchmarkMetricDialog({ metric, model, results, onClose, onMet
   const resultVersion = model.publication ? model.publication.resultVersion : results.resultVersion;
   const sourceMetric = model.publication?.metricOverrides?.[metric.id];
   const summary = sourceMetric ? metric.definition : metricSummary(metric);
+  const summaryZh = metricSummaryZh(metric.id);
+  const qaTemplate = metricQaTemplate(metric.id);
+  const ioContract = metricIoContract(metric.id);
+  const representativeLabel = qaTemplate?.representativeMetric
+    ? metricDisplayLabel({ id: qaTemplate.representativeMetric, label: qaTemplate.representativeMetric })
+    : null;
   const relatedIds = metric.id === "overall" ? ["subtask", "vqa"]
     : metric.id === "vqa" ? ["a", "b", sourceMetric ? "c1" : "c"]
     : metric.id === "a" ? ["a1", "a2", "a3"]
@@ -61,11 +74,22 @@ export function T1BenchmarkMetricDialog({ metric, model, results, onClose, onMet
     <div className="t1bMetricSummary"><div><span>Model</span><strong>{model.label}</strong></div>
       {hasScores([metric.id]) && <div><strong>{benchmarkScoreText(model.scores[metric.id])}</strong><span>out of 100</span></div>}
     </div>
-    <section className="detailBlock"><h3>What it measures</h3><p>{summary}</p></section>
-    <section className="detailBlock"><h3>Scoring formula</h3><p className="formula t1bFormula">{metricDisplayFormula(metric.formula)}</p></section>
+    <section className="detailBlock t1bBilingual"><h3>What it measures · 指标说明</h3><p lang="en">{summary}</p><p lang="zh-CN">{summaryZh}</p></section>
+    {qaTemplate && <section className="detailBlock t1bQaTemplate"><h3>QA template example · 问答模板样例</h3>
+      <div className="t1bQaMeta"><span>{qaTemplate.source}</span><code>{qaTemplate.sourceId}</code></div>
+      {representativeLabel && <p className="t1bQaNote">Aggregate metric · representative {representativeLabel} template / 聚合指标 · 采用 {representativeLabel} 代表样例</p>}
+      <h4>Question · 问题</h4><p lang="en">{qaTemplate.question}</p><p lang="zh-CN">{qaTemplate.questionZh}</p>
+      <h4>Answer format · 回答格式</h4><pre>{qaTemplate.answerFormat}</pre>
+      <p className="t1bQaNote">Format example only; it is not a scored answer. / 仅展示格式，不代表本轮评分答案。</p>
+    </section>}
+    {ioContract && <section className="detailBlock"><h3>Input & output · 输入与输出</h3><div className="t1bIoGrid">
+      <article><h4>Input · 输入</h4><p lang="en">{ioContract.input.en}</p><p lang="zh-CN">{ioContract.input.zh}</p></article>
+      <article><h4>Output · 输出</h4><p lang="en">{ioContract.output.en}</p><p lang="zh-CN">{ioContract.output.zh}</p></article>
+    </div></section>}
+    <section className="detailBlock"><h3>Scoring formula · 评分公式</h3><p className="formula t1bFormula">{metricDisplayFormula(metric.formula)}</p></section>
     {appliedFormula && <section className="detailBlock"><h3>{model.label} calculation</h3><p className="formula t1bFormula t1bAppliedFormula">{appliedFormula}</p></section>}
-    <section className="detailBlock"><h3>Aggregation</h3><p>{metric.aggregation}</p></section>
-    {summary !== metric.definition && <section className="detailBlock"><h3>Scoring rule</h3><p>{metric.definition}</p></section>}
+    <section className="detailBlock"><h3>Aggregation · 汇总方式</h3><p>{metric.aggregation}</p></section>
+    {summary !== metric.definition && <section className="detailBlock"><h3>Scoring rule · 评分口径</h3><p>{metric.definition}</p></section>}
     {scope && <section className="detailBlock"><h3>Evaluation scope</h3>
       <dl className="t1bMetricScope"><div><dt>Tasks</dt><dd>{scope.taskCount}</dd></div><div><dt>Scenes</dt><dd>{scope.sceneCount}</dd></div>{scope.processSlotCount !== null && <div><dt>Process slots</dt><dd>{scope.processSlotCount}</dd></div>}</dl>
     </section>}

@@ -131,20 +131,57 @@ test("metric details expose the real weighting and scoped calculation without pa
   }));
   assert.match(html, /Overall = 0\.7 × Subtask \+ 0\.3 × VQA/);
   assert.match(html, /0\.70 × 0\.00 \+ 0\.30 × 100\.00 ≈ 30\.00/);
+  assert.match(html, /综合衡量原生任务执行与视觉问答推理表现/);
+  assert.match(html, /Input &amp; output · 输入与输出/);
+  assert.match(html, /Published Subtask and VQA scores/);
   assert.match(html, /Evaluation scope/);
   assert.match(html, /Process slots/);
   assert.match(html, /synthetic-fixture-v1/);
 });
 
 test("public metric headings describe abilities and expose a short explanation", () => {
-  const { metricDisplayLabel, metricDisplayFormula, metricSummary } = loadComponents()(resolve(root, "app/components/t1/metric-presentation.ts"));
+  const { metricDisplayLabel, metricDisplayFormula, metricSummary, metricSummaryZh } = loadComponents()(resolve(root, "app/components/t1/metric-presentation.ts"));
   const labels = { a1: "Recognition", a2: "Localization", a3: "Relations", b1: "Goals", b3: "Constraints", b_interaction: "Interaction", c1: "Planning", c2: "Task Tracking", c3: "Next Action" };
   for (const [id, label] of Object.entries(labels)) {
     assert.equal(metricDisplayLabel({ id, label: id }), label);
     assert.ok(metricSummary({ id }).length > 20);
+    assert.match(metricSummaryZh(id), /[\u4e00-\u9fff]/);
   }
   assert.equal(metricDisplayFormula("(A + B + C1) / 3"), "(Perception + Understanding + Planning) / 3");
   assert.equal(metricDisplayFormula("(C1 + C2 + C3) / 3"), "(Planning + Task Tracking + Next Action) / 3");
+});
+
+test("every VQA metric exposes a branch-sourced QA template while execution metrics expose input and output", () => {
+  const { metricQaTemplate, metricIoContract, t1VqaMetricIds } = loadComponents()(resolve(root, "app/components/t1/metric-presentation.ts"));
+  assert.equal(t1VqaMetricIds.length, 13);
+  assert.equal(new Set(t1VqaMetricIds).size, 13);
+  for (const id of t1VqaMetricIds) {
+    const template = metricQaTemplate(id);
+    assert.ok(template, id);
+    assert.match(template.source, /ID24/);
+    assert.ok(template.sourceId.length > 8);
+    assert.ok(template.question.length > 20);
+    assert.match(template.questionZh, /[\u4e00-\u9fff]/);
+    assert.ok(template.answerFormat.startsWith("{"));
+  }
+  for (const id of ["overall", "subtask", "success"]) {
+    const contract = metricIoContract(id);
+    assert.ok(contract, id);
+    assert.match(contract.input.zh + contract.output.zh, /[\u4e00-\u9fff]/);
+  }
+});
+
+test("VQA metric details render a bilingual question and answer-format example, not a claimed answer", () => {
+  const { T1BenchmarkMetricDialog } = loadComponents()(component("t1-benchmark-metric-dialog"));
+  const metric = metrics.find((item) => item.id === "a1");
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkMetricDialog, {
+    metric, model: fixture.models[0], results: fixture, onClose() {}, onMetric() {},
+  }));
+  assert.match(html, /QA template example · 问答模板样例/);
+  assert.match(html, /arrange_largest_number\.revised\.total_digit_count/);
+  assert.match(html, /需要把多少个数字块放到垫板上/);
+  assert.match(html, /Answer format · 回答格式/);
+  assert.match(html, /Format example only; it is not a scored answer/);
 });
 
 test("unknown scores render empty cells while measured zeros stay visible", () => {

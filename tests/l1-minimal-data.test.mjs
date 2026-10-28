@@ -117,8 +117,7 @@ test("renders Phase 1 provisional semantics without publishing a Level 1 total",
   assert.match(narratives, /metric\.source_note/);
   assert.doesNotMatch(narratives, /stackBowlsQuestions/);
   assert.match(dashboard, /<LeaderboardView/);
-  assert.match(dashboard, /selection\.trackId === 'T1' && selection\.mode === 'history'/);
-  assert.match(dashboard, /bundle\.run\.predictionSha256/);
+  assert.doesNotMatch(dashboard, /selection\.trackId === 'T1' && selection\.mode === 'history'|PilotEvidence|bundle\.run\.predictionSha256/);
 });
 
 test("publishes the four-layer candidate audit without promoting weak evidence", () => {

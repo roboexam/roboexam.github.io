@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { tracks } from '../app/data/metric-plan.ts';
+import { metricExplanationFor } from '../app/data/metric-explanations.ts';
 import { definitionFor, metricsFor, readResult } from '../app/data/track-results.ts';
-import { l1Phase1ProvisionalBundle as pilot } from '../app/data/l1-phase1-provisional.ts';
 import { acwmDashboardBundle as acwm } from '../app/data/acwm-results.ts';
 import { vlaWamDashboardBundle as policy } from '../app/data/vla-wam-results.ts';
 
@@ -28,17 +28,11 @@ test('T1 exposes only the requested VLM baseline roster without invented scores'
     'minimax-h3.1-preview',
   ]);
   assert.equal(t1.models.some(model => model.family === 'VLA'), false);
-  for (const model of t1.models.slice(1)) {
-    assert.equal(readResult(selection('T1','history',pilot.metrics[0].metricId,model.id)).available, false);
+  for (const model of t1.models) {
+    assert.equal(readResult(selection('T1','history',t1.metrics[0].id,model.id)).available, false);
   }
 });
-test('historical runs retain their values, true zeros, and exact provenance', () => {
-  for (const m of pilot.metrics) {
-    const r = readResult(selection('T1','history',m.metricId,'Cosmos3-Nano'));
-    assert.equal(r.primary, m.score === null ? '—' : `${m.score.toFixed(2)}%`);
-    assert.equal(r.version, pilot.run.id);
-  }
-  assert.equal(readResult(selection('T1','history','l1a.mra','Cosmos3-Nano')).primary, '0.00%');
+test('T2 historical runs retain their values and exact provenance', () => {
   for (const [modelId, model] of Object.entries(acwm.models)) {
     const r = readResult(selection('T2','history','PSNR',modelId));
     assert.equal(r.primary, model.values.PSNR.primary);
@@ -65,7 +59,7 @@ test('hardware and planned models cannot open a simulation result', () => {
   assert.equal(measured.primary, policy.models['Pi0.5'].values.TSR.primary);
   assert.equal(measured.version, policy.models['Pi0.5'].resultVersion);
 });
-test('all displayed metric plans have English definitions and distinct IDs', () => {
+test('all displayed metric plans have bilingual explanations and explicit input/output contracts', () => {
   for (const track of tracks) {
     assert.equal(new Set(track.metrics.map(m => m.id)).size, track.metrics.length);
     assert.doesNotMatch(track.scoreGuide.en, /[\u4e00-\u9fff]/);
@@ -75,6 +69,13 @@ test('all displayed metric plans have English definitions and distinct IDs', () 
       assert.ok(info, `${track.id} ${metric.id} missing definition`);
       for (const key of ['definition','formula','evidence','unit']) assert.ok(info[key], `${metric.id} missing ${key}`);
       assert.doesNotMatch(JSON.stringify(info), /[\u4e00-\u9fff]/);
+      const copy = metricExplanationFor(track.id, metric.id, info);
+      for (const section of ['definition','input','output']) {
+        assert.ok(copy[section].en.length > 8, `${metric.id} missing English ${section}`);
+        assert.ok(copy[section].zh.length > 8, `${metric.id} missing Chinese ${section}`);
+        assert.doesNotMatch(copy[section].en, /[\u4e00-\u9fff]/);
+        assert.match(copy[section].zh, /[\u4e00-\u9fff]/);
+      }
     }
   }
   assert.equal(tracks[1].metrics.length, 18);

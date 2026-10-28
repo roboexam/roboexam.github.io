@@ -119,6 +119,20 @@
 .t1bMetricSummary > div:last-child strong { color: #2558bd; font-size: 32px; font-weight: 620; }
 .t1bMetricDialog .t1bFormula { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
 .t1bMetricDialog .t1bAppliedFormula { color: #2558bd; background: #eef4ff; }
+.t1bMetricDialog .t1bBilingual p { margin: 0; }
+.t1bMetricDialog .t1bBilingual p + p { margin-top: 7px; color: #334c72; }
+.t1bQaTemplate h4, .t1bIoGrid h4 { margin: 16px 0 7px; color: #52647e; font-size: 12px; font-weight: 650; text-transform: uppercase; letter-spacing: .06em; }
+.t1bQaTemplate p { margin: 0; }
+.t1bQaTemplate p[lang="zh-CN"] { margin-top: 6px; color: #334c72; }
+.t1bQaTemplate pre { margin: 0; padding: 14px; overflow-x: auto; border-radius: 7px; background: #f5f7fb; color: #33435e; font: 12px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+.t1bQaMeta { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 12px; color: #546985; font-size: 12px; }
+.t1bQaMeta code { overflow-wrap: anywhere; color: #315eac; }
+.t1bMetricDialog .t1bQaNote { margin-top: 9px; color: #718096; font-size: 12px; }
+.t1bIoGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.t1bIoGrid article { padding: 15px; border: 1px solid #dbe3f0; border-radius: 8px; background: #fafcff; }
+.t1bIoGrid h4 { margin-top: 0; }
+.t1bIoGrid p { margin: 0; }
+.t1bIoGrid p + p { margin-top: 7px; color: #334c72; }
 .t1bMetricScope { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 20px 0 0; }
 .t1bMetricScope dt { color: var(--muted); font-size: 12px; }
 .t1bMetricScope dd { margin: 6px 0 0; color: #2d466b; font-size: 25px; font-weight: 550; font-variant-numeric: tabular-nums; }
@@ -172,6 +186,7 @@
   .t1bEpisodeFacts { padding: 20px; }
   .t1bFactGrid, .t1bEpisodeFactsOnly .t1bFactGrid { grid-template-columns: 1fr 1fr; }
   .t1bMetricSummary { padding: 18px; }
+  .t1bIoGrid { grid-template-columns: 1fr; }
   .t1bMetricScope { gap: 10px; }
   .t1bMetricScope dd { font-size: 23px; }
   .t1bRelatedMetrics { grid-template-columns: 1fr; }

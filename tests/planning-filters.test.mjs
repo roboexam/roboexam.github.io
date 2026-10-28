@@ -10,8 +10,8 @@ const catalog = JSON.parse(readFileSync(new URL('../app/data/generated/explorer-
 const metric = (track,id) => tracks.find(t => t.id === track).metrics.find(m => m.id === id);
 const facet = (track,id) => facetsFor(track,metric(track,id));
 
-test('every report remains reachable and every facet is valid in both protocols', () => {
-  for (const t of tracks) for (const mode of ['plan','history']) {
+test('every current report and the T2 archive remain reachable with valid facets', () => {
+  for (const t of tracks) for (const mode of t.id === 'T2' ? ['plan','history'] : ['plan']) {
     const entries = metricsFor(t.id,mode);
     const all = entries.filter(m => matchesMetric(m,facetsFor(t.id,m,mode),initialMetricFilters));
     assert.equal(all.length,entries.length);

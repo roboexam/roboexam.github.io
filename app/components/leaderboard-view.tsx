@@ -25,7 +25,7 @@ const settings: { id: EvalSetting; short: string; label: string }[] = [
 const defaultMode: ReportMode = "plan";
 
 function reportedScenario(trackId: TrackId, mode: ReportMode) {
-  return ((trackId === "T1" || trackId === "T2") && mode === "history") || trackId === "T3"
+  return (trackId === "T2" && mode === "history") || trackId === "T3"
     ? "stack_bowls"
     : null;
 }
@@ -33,7 +33,6 @@ function reportedScenario(trackId: TrackId, mode: ReportMode) {
 export function LeaderboardView({ initialTrack, onMetric }: Props) {
   const [trackId, setTrackId] = useState<TrackId>(initialTrack);
   const [mode, setMode] = useState<ReportMode>(defaultMode);
-  const [previousT1Protocols, setPreviousT1Protocols] = useState(false);
   const [family, setFamily] = useState("all");
   const [availability, setAvailability] = useState("all");
   const [filters, setFilters] = useState<MetricFilters>(initialMetricFilters);
@@ -42,10 +41,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   const [sceneId, setSceneId] = useState(initialTrack === "T3" ? "stack_bowls" : "all");
 
   const track = tracks.find((item) => item.id === trackId)!;
-  const scoreGuide = trackId === "T1" && previousT1Protocols ? {
-    en: "Previous protocols keep their original development contracts and do not transfer into the current Overall score.",
-    zh: "历史协议保留各自的开发期评分口径，不计入当前 Overall 总分。",
-  } : track.scoreGuide;
+  const scoreGuide = track.scoreGuide;
   const metrics = metricsFor(trackId, mode);
   const entries = metrics.map((metric) => ({ metric, facets: facetsFor(trackId, metric, mode) }));
   const families = [...new Set(track.models.map((model) => model.family))];
@@ -125,7 +121,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   return <div className="content trackLeaderboard">
     <div className="pageHeading">
       <h1>Leaderboards</h1>
-      <p>{trackId === "T1" && !previousT1Protocols ? "Scene understanding and robot execution through a shared harness." : "Validated results only; unavailable settings remain blank. / 仅显示已验证结果，未完成设定保持为空。"}</p>
+      <p>{trackId === "T1" ? "Scene understanding and robot execution through a shared harness." : "Validated results only; unavailable settings remain blank. / 仅显示已验证结果，未完成设定保持为空。"}</p>
     </div>
     <nav className="trackTabs" aria-label="Four benchmark tracks">
       {tracks.map((item) => <button key={item.id} type="button"
@@ -134,7 +130,6 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         onClick={() => {
           const nextMode = defaultMode;
           setTrackId(item.id);
-          setPreviousT1Protocols(false);
           setSceneId(item.id === "T3" ? "stack_bowls" : "all");
           setMode(nextMode);
           reset();
@@ -147,16 +142,12 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       <p lang="en">{scoreGuide.en}</p><p lang="zh-CN">{scoreGuide.zh}</p>
     </section>
     <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>
-    {trackId === "T1" && !previousT1Protocols ? <section className="trackWorkspace" aria-label="T1 current results">
-      <div className="t1CurrentBar"><span>{track.title}</span>
-        <button type="button" className="t1ProtocolLink" onClick={() => { setPreviousT1Protocols(true); setMode("history"); }}>Previous protocols</button>
-      </div>
+    {trackId === "T1" ? <section className="trackWorkspace" aria-label="T1 current results">
       <T1BenchmarkView/>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       <div className="trackSectionTitle">
         <h2>{track.title}</h2>
-        {trackId === "T1" && <button type="button" className="t1ProtocolLink" onClick={() => setPreviousT1Protocols(false)}>Current results</button>}
-        {(trackId === "T1" || trackId === "T2") && <div className="reportSwitch" aria-label="Result protocol">
+        {trackId === "T2" && <div className="reportSwitch" aria-label="Result protocol">
           {(["plan", "history"] as const).map((value) => <button key={value} type="button"
             aria-pressed={mode === value} onClick={() => { setMode(value); reset(); }}>
             {value === "plan" ? "Current plan" : "Historical runs"}

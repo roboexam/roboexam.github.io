@@ -60,7 +60,7 @@ The current physical raw root is `/mnt/public_ckp/UniEmbodied-Bench/raw`, a sibl
 
 The reader must run on a Node host with the raw mount and approved symlink targets available; the existing Vite host bridge supports local development. A standalone Cloudflare deployment cannot scan host `/mnt` directories. Requests accept stable IDs, never filesystem paths; the configured root and existing approved source roots bound symlink resolution. No raw files are modified.
 
-T1's current publication is separate from **Previous protocols**. T2 keeps **Current plan** separate from **Historical runs**: the September VLM / ACWM designs cannot inherit older scores just because metric names match. Missing values stay blank; original measured zeros stay zero. T4 plans only outcomes and diagnostics observable through video or manual review.
+T1 shows its current publication only; archived protocol bundles remain provenance and are not linked from the leaderboard. T2 keeps **Current plan** separate from **Historical runs**: the September ACWM design cannot inherit older scores just because metric names match. Missing values stay blank; original measured zeros stay zero. T4 plans only outcomes and diagnostics observable through video or manual review.
 
 Editorial contracts live in `app/data/metric-plan.ts` and `metric-definitions.ts`; `metric-facets.ts` organizes navigation, and `scenario-plan.ts` records proposal tags separately from generated catalogs. `track-results.ts` binds cells to track, model, and result version. Fonts are served locally.
 

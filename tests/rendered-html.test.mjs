@@ -195,8 +195,9 @@ test("renders the current Track 1 results and five exact scene choices", async (
   const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
   for (const text of ["GPT-6.1-sol", "DeepSeek", "Overall", "VQA", "Subtask", "Success", "Recognition", "Planning", "Task Tracking", "Next Action", ...bundle.models.map(model => model.scores.overall.toFixed(2))]) assert.ok(html.includes(text), text);
   assert.ok(html.includes(`/api/t1-benchmark-media/${bundle.resultVersion}-${bundle.models[0].id}-`));
-  for (const name of ["MiMo v2.6 Pro", "GPT-6 Astra", "GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
-  assert.doesNotMatch(html, /Kimi K3|Peak Progress|DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
+  for (const name of ["GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
+  assert.doesNotMatch(html, /MiMo v2\.6 Pro|GPT-6 Astra|Kimi K3|Peak Progress|DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
+  assert.doesNotMatch(html, /Previous protocols/);
   assert.doesNotMatch(html, /src="\/api\/t1-media\//);
   assert.match(html, /role="group" aria-label="Rollout scenes"/);
   const slots = [...html.matchAll(/data-rollout-slot="(\d+)"/g)].map(match => Number(match[1]));

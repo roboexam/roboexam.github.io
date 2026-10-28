@@ -48,6 +48,8 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   assert.doesNotMatch(dashboard, /BaselineRunPlan/);
   assert.match(leaderboardView, /<BaselineRunPlan/);
   assert.match(leaderboardView, /trackId === "T1" \? "ALL" : trackId/);
+  assert.doesNotMatch(leaderboardView, /Previous protocols|previousT1Protocols|setPreviousT1Protocols/);
+  assert.match(dashboard, /metricExplanationFor/);
   assert.match(dashboard, /<ScenarioBrowser/);
   assert.match(dashboard, /<CapabilitySpectrum/);
   for (const capability of ["State Grounding", "Task Memory", "Predictive Imagination", "Action–Effect Reasoning", "Closed-Loop Execution", "Recovery & Safety", "Generalization"]) {

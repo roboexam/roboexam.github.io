@@ -7,7 +7,7 @@ import { ScenarioBrowser } from './components/scenario-browser';
 import { ExplainabilityView } from './components/explainability-view';
 import { AcwmMetricEvidence } from './components/acwm-metric-evidence';
 import { VlaWamMetricEvidence } from './components/vla-wam-metric-evidence';
-import { l1Phase1ProvisionalBundle } from './data/l1-phase1-provisional';
+import { metricExplanationFor, type BilingualText } from './data/metric-explanations';
 import { tracks, type TrackId } from './data/metric-plan';
 import { scenarioTags } from './data/scenario-plan';
 import { definitionFor, readResult, type MetricSelection } from './data/track-results';
@@ -185,6 +185,7 @@ function MetricDetail({ selection, onClose }: { selection: MetricSelection; onCl
   const current = { ...selection, modelId };
   const result = readResult(current);
   const info = definitionFor(current);
+  const explanation = metricExplanationFor(selection.trackId, selection.metricId, info);
   const track = tracks.find(t => t.id === selection.trackId)!;
   useEffect(() => {
     const node = dialog.current!;
@@ -196,9 +197,8 @@ function MetricDetail({ selection, onClose }: { selection: MetricSelection; onCl
     <div className="drawerTop"><div><p className="eyebrow">{selection.trackId} · {selection.mode === 'history' ? 'HISTORICAL PROTOCOL' : 'METRIC DEFINITION'}</p><h2 id="metric-title">{info.name}</h2><p className="metricIdentifier">{selection.metricId}</p></div><button type="button" className="closeDialog" onClick={onClose} aria-label="Close metric detail"><X size={23}/></button></div>
     <div className="metricContext"><label>Model<select value={modelId} onChange={e => setModelId(e.target.value)} aria-label="Metric model">{track.models.map(m => <option key={m.id}>{m.id}</option>)}</select></label><div className="metricResult"><strong>{result.primary}</strong><span>{result.available ? result.detail : `${result.status} · ${result.detail}`}</span></div></div>
     <nav className="detailTabs" aria-label="Metric details">{(['definition','evidence'] as const).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{t === 'definition' ? 'Definition · 分数定义' : 'Run & evidence · 运行证据'}</button>)}</nav>
-    {tab === 'definition' ? <div className="definitionGrid"><DetailBlock title="What it measures" text={info.definition}/><DetailBlock title="Scoring rule" text={info.formula} formula/><DetailBlock title="Direction & unit" text={`${info.direction} · ${info.unit}`}/><DetailBlock title="Required evidence" text={info.evidence}/>{info.caveat && <DetailBlock title="Interpretation" text={info.caveat}/>}<DetailBlock title="Source" text={info.source ?? 'RoboExam metric plan'}/></div> : <div className="metricEvidencePanel" key={`${selection.trackId}:${modelId}:${result.version}:${selection.mode}:${selection.metricId}`}>
+    {tab === 'definition' ? <div className="definitionGrid"><BilingualDetailBlock title="What it measures · 指标说明" text={explanation.definition}/><BilingualDetailBlock title="Input · 输入" text={explanation.input}/><BilingualDetailBlock title="Output · 输出" text={explanation.output}/><DetailBlock title="Scoring rule · 评分公式" text={info.formula} formula/>{info.caveat && <DetailBlock title="Interpretation · 解读" text={info.caveat}/>}<DetailBlock title="Source · 来源" text={info.source ?? 'RoboExam metric plan'}/></div> : <div className="metricEvidencePanel" key={`${selection.trackId}:${modelId}:${result.version}:${selection.mode}:${selection.metricId}`}>
       {result.version ? <><div className="runProvenance"><DetailBlock title="Result version" text={result.version}/><DetailBlock title="Protocol" text={result.protocol!}/></div>
-        {selection.trackId === 'T1' && selection.mode === 'history' && <PilotEvidence metricId={selection.metricId}/>}
         {selection.trackId === 'T2' && selection.mode === 'history' && <AcwmMetricEvidence id={selection.metricId} model={modelId} formula={info.formula}/>}
         {selection.trackId === 'T3' && <VlaWamMetricEvidence key={`${modelId}:${selection.taskId}:${selection.metricId}`} id={selection.metricId} model={modelId} formula={info.formula} taskId={selection.taskId}/>}
       </> : <div className="pendingEvidence"><strong>No recorded run for this selection</strong><p>{result.detail}</p></div>}
@@ -208,13 +208,6 @@ function MetricDetail({ selection, onClose }: { selection: MetricSelection; onCl
 function DetailBlock({ title, text, formula = false }: { title: string; text: string; formula?: boolean }) {
   return <section className="detailBlock"><h3>{title}</h3><p className={formula ? 'formula' : ''}>{text}</p></section>;
 }
-function PilotEvidence({ metricId }: { metricId: string }) {
-  const bundle = l1Phase1ProvisionalBundle;
-  const sample = bundle.examples.find(e => e.canonicalSampleId === bundle.exampleByMetricId[metricId] && e.metricMemberships.includes(metricId));
-  return <section className="pilotEvidence"><p>This is a provisional development pilot. Human GT review is pending; no generalization claim is made.</p><DetailBlock title="Prediction SHA-256" text={bundle.run.predictionSha256}/><DetailBlock title="Semantic judge" text={bundle.run.judgeModel}/>{sample && <><DetailBlock title="Sample ID" text={sample.canonicalSampleId}/><DetailBlock title="Question" text={sample.question}/><div className="pilotFrames">{sample.media.map(m => <PilotFrame key={m.sha256} url={m.url} frame={m.frameIndex} camera={sample.camera}/>)}</div></>}</section>;
-}
-
-function PilotFrame({ url, frame, camera }: { url: string; frame: number; camera: string }) {
-  const [unavailable, setUnavailable] = useState(false);
-  return <figure>{unavailable ? <div className="pendingEvidence"><p>Input frame unavailable in this checkout.</p></div> : <img src={url} alt={`Pilot input frame ${frame}`} loading="lazy" onError={() => setUnavailable(true)}/>}<figcaption>Input frame {frame} · {camera}</figcaption></figure>;
+function BilingualDetailBlock({ title, text }: { title: string; text: BilingualText }) {
+  return <section className="detailBlock bilingualDetail"><h3>{title}</h3><p lang="en">{text.en}</p><p lang="zh-CN">{text.zh}</p></section>;
 }

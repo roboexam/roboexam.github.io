@@ -19,7 +19,7 @@ const policyMotion = new Set(['INTENTION_SCORE', 'LSPARC', 'RSPARC', 'JERK', 'PE
 export function facetsFor(trackId: TrackId, metric: MetricDefinition, mode: ReportMode = 'plan'): MetricFacets {
   const { id } = metric;
   const group = metric.group.replace(/ · (candidate|pending|diagnostic)$/, '');
-  if (mode === 'history') return { dimension: trackId === 'T1' ? metric.group.split(' · ')[0] : 'Historical ACWM', group, evidence: trackId === 'T1' ? ['answers', 'video'] : ['video'], protocol: 'historical' };
+  if (mode === 'history' && trackId === 'T2') return { dimension: 'Historical ACWM', group, evidence: ['video'], protocol: 'historical' };
   if (trackId === 'T1') {
     const dimension = id.startsWith('l1a.') ? 'A · Scene & state' : id.startsWith('l1b.') ? 'B · Task-conditioned interaction' : 'C · Planning, task progress & next action';
     const alternative = ['l1a.vsr_topological', 'l1a.text_spatial', 'l1b.reference_mcq', 'l1b.situational'].includes(id);

@@ -191,6 +191,8 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
 .metricDialog .detailBlock { padding: 20px 0; min-width: 0; }
 .metricDialog .detailBlock h3 { font-size: var(--text-body); font-weight: 600; margin: 0 0 9px; color: var(--ink); }
 .metricDialog .detailBlock p { font-size: var(--text-body); line-height: 1.75; color: #536075; overflow-wrap: anywhere; }
+.metricDialog .bilingualDetail p { margin: 0; }
+.metricDialog .bilingualDetail p + p { margin-top: 7px; color: #334c72; }
 .metricDialog .detailBlock .formula { font-size: var(--text-body); background: #f5f7fb; color: #33435e; padding: 16px; border-radius: 6px; }
 .metricDialog .metricSample, .metricDialog .formalEvidence { margin-top: 24px; }
 .metricDialog .sampleHeading h3, .metricDialog .formalEvidenceHeader h3 { font-size: var(--text-card); }
@@ -200,11 +202,7 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
 .runProvenance { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .pendingEvidence { padding: 36px 0; }
 .pendingEvidence strong { font-size: var(--text-body); font-weight: 550; }
-.pendingEvidence p, .pilotEvidence>p { font-size: var(--text-body); color: var(--muted); }
-.pilotFrames { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
-.pilotFrames figure { margin: 0; }
-.pilotFrames img { width: 100%; height: auto; }
-.pilotFrames figcaption { font-size: var(--text-small); color: var(--muted); }
+.pendingEvidence p { font-size: var(--text-body); color: var(--muted); }
 @media (max-width: 1100px) {
   .researchHero { grid-template-columns: 1fr; gap: 54px; }
   .heroCopy { max-width: 780px; }
@@ -273,7 +271,6 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
   .metricResult>strong { font-size: var(--text-card); }
   .metricDialog .detailBlock p { font-size: var(--text-body); }
   .metricDialog .detailBlock .formula { font-size: var(--text-small); }
-  .pilotFrames { grid-template-columns: 1fr; }
 }
 @media (max-width: 420px) {
   .spectrumStage { min-height: 330px; }

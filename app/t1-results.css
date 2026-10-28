@@ -1,8 +1,5 @@
 /* Current Track 1 results. All selectors are isolated from other tracks. */
 .t1Results { display: grid; gap: 28px; min-width: 0; }
-.t1CurrentBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 8px; }
-.t1CurrentBar>span { color: var(--muted); font-size: 14px; }
-.t1ProtocolLink { border: 0; background: transparent; color: var(--blue); font-size: 14px; padding: 8px 0; text-decoration: underline; text-underline-offset: 4px; }
 .t1ResultsHeading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
 .t1ResultsHeading .eyebrow, .t1ViewerHeading .eyebrow { margin: 0 0 6px; }
 .t1ResultsHeading h2 { font-size: clamp(30px,3vw,42px); font-weight: 570; line-height: 1.15; margin: 0; }
@@ -84,5 +81,4 @@
   .t1Player video { min-height: 130px; }
   .t1FactGrid { grid-template-columns: 1fr 1fr; }
   .t1MetricDefinitions, .t1Provenance { grid-template-columns: 1fr; }
-  .t1CurrentBar { align-items: flex-start; }
 }
