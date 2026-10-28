@@ -6,6 +6,7 @@ export type TrackDefinition = {
   title: string;
   subtitle: string;
   question: string;
+  scoreGuide: { en: string; zh: string };
   source: Source;
   models: { id: string; family: string; status: string }[];
   metrics: MetricDefinition[];
@@ -89,8 +90,8 @@ const policyMotion: MetricDefinition[] = [
   { id: "COLLISION_RATE", label: "Collision rate", group: "L2 · Contact and stability", direction: "↓", note: "Planned; normal contact is excluded by the safety contract" },
   { id: "SAFETY_STOP_RATE", label: "Safety-stop rate", group: "L2 · Contact and stability", direction: "↓", note: "Planned; requires the runtime safety monitor" },
   { id: "RETRY_COUNT", label: "Retry count", group: "L2 · Contact and stability", direction: "↓", note: "Planned; count registered repeated attempts" },
-  { id: "LSPARC", label: "Left EE SPARC", group: "L2 · Motion smoothness and efficiency", direction: "↑" },
-  { id: "RSPARC", label: "Right EE SPARC", group: "L2 · Motion smoothness and efficiency", direction: "↑" },
+  { id: "LSPARC", label: "Left EE SPARC", group: "L2 · Motion smoothness and efficiency", direction: "→ 0" },
+  { id: "RSPARC", label: "Right EE SPARC", group: "L2 · Motion smoothness and efficiency", direction: "→ 0" },
   { id: "JERK", label: "Integrated squared jerk", group: "L2 · Motion smoothness and efficiency", direction: "↓", note: "Planned; fixed sampling and filtering required" },
   { id: "PEAK_SPEED", label: "Peak end-effector speed", group: "L2 · Motion smoothness and efficiency", direction: "Report", note: "Planned; report with frozen speed limits" },
   { id: "LPATH", label: "Left EE path length", group: "L2 · Motion smoothness and efficiency", direction: "↓" },
@@ -176,6 +177,10 @@ const realWorldMetrics: MetricDefinition[] = [
 export const tracks: TrackDefinition[] = [
   {
     id: "T1", title: "Embodied Agency", subtitle: "VLM agents through a shared harness", question: "Ground observations, track task state, plan, and emit structured next actions.", source: "vlm",
+    scoreGuide: {
+      en: "0–100 score. Current Overall = 70% subtask execution + 30% VQA; higher is better. VQA alone is not execution success.",
+      zh: "0–100 分。当前总分 = 70% 子任务执行 + 30% 视觉问答；越高越好，但 VQA 高分不等于执行成功。",
+    },
     models: [
       { id: "Cosmos3-Nano", family: "VLM", status: "Provisional" },
       ...["deepseek-v4.1-flash", "internal-mimo-v2.6-pro", "kimi-k3", "glm-5.3-flash", "minimax-h3.1-preview"]
@@ -184,10 +189,14 @@ export const tracks: TrackDefinition[] = [
   },
   {
     id: "T2", title: "Physical Foresight", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
+    scoreGuide: {
+      en: "Metrics keep their native units and directions; there is no official cross-metric total yet. JEPA is split-level and Motion Smoothness is not bounded to 0–1.",
+      zh: "各指标保留原始单位与方向，目前没有正式跨指标总分。JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
+    },
     models: [
       { id: "Cosmos Predict 2.5", family: "ACWM", status: "Planned · clean24" },
-      { id: "CtrlWorld", family: "ACWM", status: "Running" },
-      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "Running" },
+      { id: "CtrlWorld", family: "ACWM", status: "AIHC training · ManualTermination" },
+      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "AIHC training · ManualTermination" },
       { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
       { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
       { id: "Wan 2.6 AC adapter", family: "ACWM", status: "Planned" },
@@ -195,21 +204,29 @@ export const tracks: TrackDefinition[] = [
   },
   {
     id: "T3", title: "Simulation Deployment", subtitle: "Policy models in simulation", question: "Complete long-horizon tasks while preserving safe, stable, interpretable execution.", source: "policy",
+    scoreGuide: {
+      en: "Task Success Rate is the headline 0–100% outcome; intermediate 100% metrics are not task success. Compare only the same task, protocol, and episode count N.",
+      zh: "任务成功率是主要的 0–100% 结果；中间指标的 100% 不代表任务成功。模型比较必须使用相同任务、协议和 episode 数 N。",
+    },
     models: [
-      { id: "Pi0.5", family: "VLA", status: "Running" },
+      { id: "Pi0.5", family: "VLA", status: "AIHC training · Running" },
       { id: "FastWAM", family: "WAM", status: "Planned" },
-      { id: "OpenWAM", family: "WAM", status: "Running" },
-      { id: "HyVLA", family: "VLA", status: "Running" },
-      { id: "G05", family: "VLA", status: "Running" },
-      { id: "DM0.5 / OpenDM", family: "VLA", status: "Running" },
-      { id: "LingBot-VA2.0", family: "WAM", status: "Failed · rerun" },
-      { id: "XVLA", family: "VLA", status: "Running" },
+      { id: "OpenWAM", family: "WAM", status: "AIHC training · Running" },
+      { id: "HyVLA", family: "VLA", status: "AIHC training · Running" },
+      { id: "G05", family: "VLA", status: "AIHC training · Running" },
+      { id: "DM0.5 / OpenDM", family: "VLA", status: "AIHC training · Running" },
+      { id: "LingBot-VA2.0", family: "WAM", status: "AIHC training · ManualTermination" },
+      { id: "XVLA", family: "VLA", status: "AIHC training · Succeeded" },
       { id: "AHA-WAM", family: "WAM", status: "Planned" },
       { id: "X-WAM", family: "WAM", status: "Planned" },
     ], metrics: policyMotion,
   },
   {
     id: "T4", title: "Real-World Deployment", subtitle: "Policy models on hardware", question: "Complete standardized hardware tasks while separating task outcome from manual safety review.", source: "real",
+    scoreGuide: {
+      en: "No formal hardware score is published yet. Future headline reporting uses task success; progress, intervention, and safety remain separate evidence.",
+      zh: "目前尚未发布正式真机分数。后续以任务成功率为主要结果，进度、人工干预和安全证据分别报告。",
+    },
     models: [
       { id: "Pi0.5", family: "VLA", status: "T4 independent · Planned" },
       { id: "FastWAM", family: "WAM", status: "T4 independent · Planned" },

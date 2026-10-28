@@ -18,6 +18,8 @@ const clone = x => JSON.parse(JSON.stringify(x));
 
 test("trace contract accepts real partial telemetry and rejects stale episode/manifest/binding", () => {
   const t = trace(); assert.equal(validateActionTrace(t, t.episodeId), t);
+  t.action = { unit: "delta pose", labels: ["ΔX", "ΔY"], t: [.1, .9], left: [[0, 1], [1, 2]], right: null };
+  assert.equal(validateActionTrace(t, t.episodeId), t);
   assert.throws(() => validateActionTrace(t, "episode:ffff"));
   const source = { url: "/api/raw-review-trace?id=x", bindingSha256: hash, manifestSha256: hash };
   assert.throws(() => validateActionTrace(t, t.episodeId, source));
@@ -32,6 +34,10 @@ test("trace contract rejects invalid times, lengths, units, dimensions and non-f
   }
   const empty=trace();empty.jointPosition.left=null;empty.endEffectorPosition.left=null;
   assert.throws(()=>validateActionTrace(empty,empty.episodeId));
+  const invalidAction=trace();invalidAction.action={unit:"command",labels:["A"],left:[[0,1],[1,2]],right:null};
+  assert.throws(()=>validateActionTrace(invalidAction,invalidAction.episodeId));
+  const invalidActionTime=trace();invalidActionTime.action={unit:"command",labels:["A"],t:[.5,.4],left:[[0],[1]],right:null};
+  assert.throws(()=>validateActionTrace(invalidActionTime,invalidActionTime.episodeId));
 });
 async function fixture(t, extractor) {
   const root = await mkdtemp(path.join(tmpdir(), "raw-action-api-"));

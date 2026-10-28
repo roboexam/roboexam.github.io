@@ -10,6 +10,15 @@ const hash = value => createHash("sha256").update(JSON.stringify(value)).digest(
 const request = (query = "", headers = {}) => new Request("http://localhost/api/real-datasets-media" + query, { headers });
 const videoKey = "observation.images.camera_0";
 const chunkKey = "camera_observations.color_images.camera_head";
+const trace = input => ({
+  schemaVersion: "roboexam.action-trace.v1", episodeId: input.episodeId,
+  clock: { dataset: "episode_relative_video_pts", unit: "seconds", sourceFrames: input.sourceFrames, samples: 2 },
+  t: [0, 1], jointPosition: { unit: "rad", left: [[0,1,2,3,4,5],[1,2,3,4,5,6]], right: null },
+  endEffectorPosition: { unit: "m", frame: "source", left: [[0,1,2],[1,2,3]], right: null },
+  action: { unit: "joint command", labels: ["J1"], left: [[0], [1]], right: null },
+  provenance: { manifestSha256: input.manifestSha256, trajectorySha256: null,
+    bindingSha256: input.bindingSha256, datasets: ["action"], bindingMethod: "real_parquet_identity" },
+});
 
 async function dataset(root, name, format, count = 2) {
   const directory = path.join(root, name);
@@ -41,14 +50,19 @@ async function fixture(t, options = {}) {
   const v3 = await dataset(robotRoot, "robot_task/success/lerobot_RoboMIND", "v3.0");
   const v2 = await dataset(egoRoot, "pico_task/delivery", "v2.1");
   const v3File = await media(v3, `videos/${chunkKey}/chunk-000/file-000.mp4`);
+  const v3Data = await media(v3, "data/chunk-000/file-000.parquet", "robot-trace");
   await media(v2, `videos/chunk-000/${videoKey}/episode_000000.mp4`);
   await media(v2, `videos/chunk-000/${videoKey}/episode_000001.mp4`);
+  await media(v2, "data/chunk-000/episode_000000.parquet", "ego-trace-0");
+  await media(v2, "data/chunk-000/episode_000001.parquet", "ego-trace-1");
   const rows = new Map([
     [v3, [
       { episode_index: 0, length: 30, tasks: ["Place the red cup"], platform_episode_id: "robot-0",
+        "data/chunk_index": 0, "data/file_index": 0, dataset_from_index: 0, dataset_to_index: 30,
         [`videos/${chunkKey}/chunk_index`]: 0, [`videos/${chunkKey}/file_index`]: 0,
         [`videos/${chunkKey}/from_timestamp`]: 12.5, [`videos/${chunkKey}/to_timestamp`]: 13.5 },
       { episode_index: 1, length: 30, tasks: ["Place the blue cup"], platform_episode_id: "robot-1",
+        "data/chunk_index": 0, "data/file_index": 0, dataset_from_index: 30, dataset_to_index: 60,
         [`videos/${chunkKey}/chunk_index`]: 0, [`videos/${chunkKey}/file_index`]: 0,
         [`videos/${chunkKey}/from_timestamp`]: 13.5, [`videos/${chunkKey}/to_timestamp`]: 14.5 },
     ]],
@@ -66,7 +80,7 @@ async function fixture(t, options = {}) {
     },
     ...options,
   });
-  return { root, robotRoot, egoRoot, v3, v2, v3File, rows, reader };
+  return { root, robotRoot, egoRoot, v3, v2, v3File, v3Data, rows, reader };
 }
 
 test("discovers both data formats with stable opaque identities and no absolute source paths", async t => {
@@ -126,6 +140,40 @@ test("v2 episodes use their own file with a zero-based duration window", async t
   assert.equal(first.media[0].endSeconds, 1);
   assert.equal(first.media[0].durationSeconds, 1);
   assert.notEqual(first.media[0].id, second.media[0].id);
+});
+
+test("real action traces use opaque source-bound IDs, coalesce reads and reject changed files", async t => {
+  let calls = 0;
+  const f = await fixture(t, { traceExtractor: async (fd, input) => {
+    assert.ok(fd >= 0); calls++; return { status: "available", trace: trace(input) };
+  } });
+  const summary = (await f.reader.catalog()).datasets.find(row => row.kind === "robot");
+  const entries = await f.reader.dataset(summary.id);
+  const episode = await f.reader.episode(entries.episodes[0].id);
+  assert.match(episode.trace.url, /^\/api\/real-datasets-trace\?id=[a-f0-9]{64}$/);
+  const id = new URL("http://localhost" + episode.trace.url).searchParams.get("id");
+  const results = await Promise.all([f.reader.actionTrace(id), f.reader.actionTrace(id)]);
+  assert.equal(results[0].status, "available");
+  assert.equal(results[0].trace.episodeId, episode.id);
+  assert.equal(results[0].trace.action.left.length, 2);
+  assert.equal(calls, 1);
+  await writeFile(f.v3Data, "robot-trace-replaced");
+  assert.equal((await f.reader.actionTrace(id)).reason, "source_changed");
+});
+
+test("real action trace bindings expire when episode metadata changes", async t => {
+  const f = await fixture(t, { traceExtractor: async (_fd, input) =>
+    ({ status: "available", trace: trace(input) }) });
+  const summary = (await f.reader.catalog()).datasets.find(row => row.kind === "robot");
+  const entries = await f.reader.dataset(summary.id);
+  const episode = await f.reader.episode(entries.episodes[0].id);
+  const id = new URL("http://localhost" + episode.trace.url).searchParams.get("id");
+  assert.equal((await f.reader.actionTrace(id)).status, "available");
+  const rows = f.rows.get(f.v3);
+  f.rows.set(f.v3, [{ ...rows[0], tasks: ["Changed instruction"] }, ...rows.slice(1)]);
+  await f.reader.catalog(true);
+  await f.reader.dataset(summary.id);
+  assert.equal((await f.reader.actionTrace(id)).reason, "source_changed");
 });
 
 test("allowlisted media supports seeking, suffix ranges and HEAD while rejecting arbitrary IDs", async t => {
@@ -216,4 +264,8 @@ test("catalog API rejects unknown keys, paths, duplicate IDs and conflicting sel
   ]) {
     assert.equal((await GET(new Request("http://localhost/api/real-datasets" + query))).status, 400, query);
   }
+  const { GET: traceGET } = await import("../app/api/real-datasets-trace/route.ts");
+  for (const query of ["?path=/etc/passwd", "?id=..", `?id=${id}&id=${id}`])
+    assert.equal((await traceGET(new Request("http://localhost/api/real-datasets-trace" + query))).status, 400, query);
+  assert.equal((await traceGET(new Request("http://localhost/api/real-datasets-trace?id=" + id))).status, 404);
 });

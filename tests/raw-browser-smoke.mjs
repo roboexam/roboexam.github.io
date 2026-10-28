@@ -79,7 +79,7 @@ try {
   await page.getByRole("link", { name: "在 Datasets 查看此样本 →" }).click();
   await page.locator(".rawReviewCrossLink").waitFor();
   assert.equal(await page.getByLabel("选择公盘场景").inputValue(), "build_tower");
-  await page.getByRole("button", { name: "Scenario plan", exact: true }).click();
+  await page.getByRole("button", { name: /^Coverage/ }).click();
   const buildTask = catalog.tasks.find(task => task.name === "build_tower");
   assert.equal(await page.getByRole("button", { name: "Browse build_tower episodes", exact: true }).innerText(), String(buildTask.count));
   await page.getByRole("button", { name: "Browse build_tower episodes", exact: true }).click();

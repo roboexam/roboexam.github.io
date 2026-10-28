@@ -4,6 +4,7 @@ import { Camera, ChevronLeft, ChevronRight, Pause, Play, RefreshCw, Search } fro
 import { useEffect, useRef, useState } from "react";
 import type { RealDatasetCatalog, RealDatasetEpisode, RealDatasetSummary, RealEpisodeEntry } from "../data/real-datasets";
 import { secondsLabel } from "../data/curated-dataset";
+import { ActionTracePanel } from "./action-trace-panel";
 
 type DatasetEntries = { dataset: RealDatasetSummary; version: string; episodes: RealEpisodeEntry[] };
 
@@ -19,6 +20,7 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
   const [failed, setFailed] = useState<string[]>([]);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
+  const [rate, setRate] = useState(1);
   const media = episode.media;
   const master = media[0];
   const duration = media.length ? Math.min(...media.map(view => view.durationSeconds)) : 0;
@@ -36,10 +38,18 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
     for (const video of Object.values(videos.current)) video?.pause();
     setPlaying(false);
   }
+  function changeRate(next: number) {
+    for (const video of Object.values(videos.current)) if (video) video.playbackRate = next;
+    setRate(next);
+  }
   async function toggle() {
     if (playing) { pause(); return; }
     seek(time >= duration - .05 ? 0 : time);
-    const outcomes = media.filter(view => ready.includes(view.id) && !failed.includes(view.id)).map(view => videos.current[view.id]?.play());
+    const outcomes = media.filter(view => ready.includes(view.id) && !failed.includes(view.id)).map(view => {
+      const video = videos.current[view.id];
+      if (video) video.playbackRate = rate;
+      return video?.play();
+    });
     await Promise.allSettled(outcomes);
     setPlaying(Boolean(master && !videos.current[master.id]?.paused));
   }
@@ -59,25 +69,33 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
   }
   if (!media.length) return <p className="reviewLoading">此样本暂无可播放视频。</p>;
   return <div className="realPlayer" data-episode-id={episode.id}>
-    <div className="realCameraGrid">{media.map(view => <figure key={view.id}>
-      <figcaption><Camera size={15}/>{view.label}</figcaption>
-      <video ref={node => { videos.current[view.id] = node; }} src={`${view.url}#t=${view.startSeconds},${view.endSeconds}`}
-        preload="metadata" muted playsInline aria-label={`${title} · ${view.label}`}
-        onLoadedMetadata={() => {
-          const video = videos.current[view.id];
-          if (video) video.currentTime = view.startSeconds + Math.min(time, duration);
-        }}
-        onCanPlay={() => setReady(current => current.includes(view.id) ? current : [...current, view.id])}
-        onTimeUpdate={() => update(view.id)} onEnded={pause}
-        onError={() => { pause(); setFailed(current => current.includes(view.id) ? current : [...current, view.id]); }}>
-        <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>
-      </video>
-      {failed.includes(view.id) ? <p role="status">视频暂时不可用</p> : !ready.includes(view.id) && <p role="status">正在加载视频…</p>}
-    </figure>)}</div>
-    <div className="realPlaybackControls">
-      <button type="button" disabled={!canPlay} onClick={() => { void toggle(); }} aria-label={playing ? "暂停所有相机" : "播放所有相机"}>{playing ? <Pause size={17}/> : <Play size={17}/>}</button>
-      <input type="range" min={0} max={duration} step={.02} value={Math.min(time, duration)} disabled={!canPlay} aria-label="样本播放进度" onChange={event => seek(Number(event.target.value))}/>
-      <span>{secondsLabel(time)} / {secondsLabel(duration)}</span>
+    <div className="realReplayLayout">
+      <div className="realMediaPanel">
+        <div className="realCameraGrid">{media.map(view => <figure key={view.id}>
+          <figcaption><Camera size={15}/>{view.label}</figcaption>
+          <video ref={node => { videos.current[view.id] = node; }} src={`${view.url}#t=${view.startSeconds},${view.endSeconds}`}
+            preload="metadata" muted playsInline aria-label={`${title} · ${view.label}`}
+            onLoadedMetadata={() => {
+              const video = videos.current[view.id];
+              if (video) { video.currentTime = view.startSeconds + Math.min(time, duration); video.playbackRate = rate; }
+            }}
+            onCanPlay={() => setReady(current => current.includes(view.id) ? current : [...current, view.id])}
+            onTimeUpdate={() => update(view.id)} onEnded={pause}
+            onError={() => { pause(); setFailed(current => current.includes(view.id) ? current : [...current, view.id]); }}>
+            <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>
+          </video>
+          {failed.includes(view.id) ? <p role="status">视频暂时不可用</p> : !ready.includes(view.id) && <p role="status">正在加载视频…</p>}
+        </figure>)}</div>
+        <div className="realPlaybackControls">
+          <button type="button" disabled={!canPlay} onClick={() => { void toggle(); }} aria-label={playing ? "暂停所有相机" : "播放所有相机"}>{playing ? <Pause size={17}/> : <Play size={17}/>}</button>
+          <input type="range" min={0} max={duration} step={.02} value={Math.min(time, duration)} disabled={!canPlay} aria-label="样本播放进度" onChange={event => seek(Number(event.target.value))}/>
+          <span>{secondsLabel(time)} / {secondsLabel(duration)}</span>
+          <label><span>Speed · 倍速</span><select aria-label="样本播放速度" value={rate} onChange={event => changeRate(Number(event.target.value))}>
+            {[.5, 1, 1.5, 2].map(value => <option value={value} key={value}>{value}×</option>)}
+          </select></label>
+        </div>
+      </div>
+      <ActionTracePanel episodeId={episode.id} currentTime={time} source={episode.trace}/>
     </div>
   </div>;
 }
@@ -136,7 +154,7 @@ function DatasetWorkspace({ dataset, revision }: { dataset: RealDatasetSummary; 
   </section>;
 }
 
-export function RealDatasetBrowser() {
+export function RealDatasetBrowser({ embedded = false }: { embedded?: boolean }) {
   const [catalog, setCatalog] = useState<RealDatasetCatalog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -165,11 +183,14 @@ export function RealDatasetBrowser() {
   }, [request]);
   const datasets = catalog?.datasets.filter(row => (kind === "all" || row.kind === kind) && `${row.name} ${row.robotType}`.toLowerCase().includes(query.trim().toLowerCase())) ?? [];
   const dataset = datasets.find(row => row.id === selectedId) ?? datasets[0];
-  return <div className="reviewBoard realDatasetBrowser">
-    <section className="reviewHero"><div><div className="reviewEyebrow"><Camera size={16}/>REAL ROBOT · EGOCENTRIC</div><h2>Real &amp; Ego 数据</h2><p>浏览真实机器人示范与第一视角记录，查看任务指令、样本时长和已有相机画面。</p><span>Real robot demonstrations · Egocentric recordings</span></div>
+  return <div className={`reviewBoard realDatasetBrowser${embedded ? " datasetEmbedded" : ""}`}>
+    {!embedded && <section className="reviewHero"><div><div className="reviewEyebrow"><Camera size={16}/>REAL ROBOT · EGOCENTRIC</div><h2>Real &amp; Ego 数据</h2><p>浏览真实机器人示范与第一视角记录，查看任务指令、样本时长和已有相机画面。</p><span>Real robot demonstrations · Egocentric recordings</span></div>
       <div className="reviewStats"><div><strong>{catalog?.datasets.length ?? "—"}</strong><small>数据集</small></div><div><strong>{catalog ? catalog.datasets.reduce((sum, row) => sum + row.episodeCount, 0).toLocaleString() : "—"}</strong><small>样本</small></div></div>
-    </section>
-    <div className="rawReviewRefresh"><span role="status">{error || (catalog ? `最近扫描：${new Date(catalog.scannedAt).toLocaleString()}` : "正在读取 Real & Ego 目录…")}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
+    </section>}
+    {embedded ? <section className="datasetSummaryStrip" aria-label="Real and ego catalog summary">
+      <div><strong>{catalog?.datasets.length ?? "—"}</strong><span>Datasets</span></div><div><strong>{catalog ? catalog.datasets.reduce((sum, row) => sum + row.episodeCount, 0).toLocaleString() : "—"}</strong><span>Episodes</span></div>
+      <div className="datasetSummaryAction"><span role="status">{error || (catalog ? `扫描于 ${new Date(catalog.scannedAt).toLocaleString()}` : "正在读取 Real & Ego 目录…")}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
+    </section> : <div className="rawReviewRefresh"><span role="status">{error || (catalog ? `最近扫描：${new Date(catalog.scannedAt).toLocaleString()}` : "正在读取 Real & Ego 目录…")}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>}
     <div className="realDatasetFilters"><div className="reportSwitch" aria-label="数据类型筛选">{([["all", "全部"], ["robot", "Real robot"], ["ego", "Ego"]] as const).map(([value, label]) => <button type="button" key={value} aria-pressed={kind === value} onClick={() => setKind(value)}>{label}</button>)}</div><label className="realSearch"><Search size={17}/><span className="curatedSrOnly">搜索 Real & Ego 数据集</span><input type="search" placeholder="搜索数据集…" value={query} onChange={event => setQuery(event.target.value)}/></label></div>
     {error ? <p className="reviewError" role="alert">{error}</p> : <div className="realDatasetWorkspace"><nav className="realDatasetList" aria-label="Real & Ego 数据集">{datasets.map(row => <button type="button" key={row.id} aria-pressed={dataset?.id === row.id} onClick={() => setSelectedId(row.id)}><strong>{row.name}</strong><span>{row.kind === "ego" ? "Ego" : "Real robot"} · {row.episodeCount.toLocaleString()} 个样本</span><small>{row.format} · {row.cameras.length} 路相机{row.availability === "unavailable" ? " · 暂不可读" : ""}</small></button>)}</nav>
       {dataset ? dataset.availability === "available" ? <DatasetWorkspace key={dataset.id} dataset={dataset} revision={revision}/> : <p className="reviewLoading">此数据集暂时不可读，请稍后刷新。{dataset.warnings.join(" ")}</p> : <p className="reviewLoading">{catalog ? "没有匹配的数据集。" : "正在读取目录…"}</p>}

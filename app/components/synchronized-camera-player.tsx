@@ -31,6 +31,7 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
   const [time, setTime] = useState(0);
   const [loadedDuration, setLoadedDuration] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [rate, setRate] = useState(1);
   const views = cameraOrder.map((camera) => media.find((item) => item.camera === camera)).filter(Boolean) as CameraMedia[];
   const supportsCompressed = views.length > 0 && views.every((item) => /^[a-f0-9]{64}$/.test(sourceSha256(item) ?? ""));
   const [quality, setQuality] = useState<Quality>(supportsCompressed ? compressedProfile : "original");
@@ -49,6 +50,10 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
     eachVideo((video) => { video.currentTime = Math.min(value, video.duration || value); });
     setTime(value);
   }
+  function changeRate(next: number) {
+    eachVideo((video) => { video.playbackRate = next; });
+    setRate(next);
+  }
   async function togglePlayback() {
     if (playing) {
       eachVideo((video) => video.pause());
@@ -58,6 +63,7 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
     const current = videos.current[master?.camera ?? "cam_head"]?.currentTime ?? time;
     eachVideo((video) => {
       if (Math.abs(video.currentTime - current) > .05) video.currentTime = current;
+      video.playbackRate = rate;
     });
     const attempts: Promise<unknown>[] = [];
     eachVideo((video) => attempts.push(video.play()));
@@ -99,6 +105,7 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
               if (video && restoreTime.current > 0) {
                 video.currentTime = Math.min(restoreTime.current, video.duration || restoreTime.current);
               }
+              if (video) video.playbackRate = rate;
               setReady((current) => current.includes(view.camera) ? current : [...current, view.camera]);
             }}
             onTimeUpdate={() => updateFromMaster(view.camera)}
@@ -126,6 +133,10 @@ function SynchronizedCameraPlayback({ media, title, marks = [], traceId, traceSo
         <input type="range" aria-label={`${title} synchronized playback progress`} min={0} max={duration || 0}
           step={.02} value={Math.min(time, duration || 0)} disabled={!masterReady} onChange={(event) => seek(Number(event.target.value))}/>
         <span>{secondsLabel(time)} <em>/ {secondsLabel(duration)}</em></span>
+        <label className="syncQuality"><span>Speed</span><select aria-label={`${title} playback speed`}
+          value={rate} onChange={(event) => changeRate(Number(event.target.value))}>
+          {[.5, 1, 1.5, 2].map((value) => <option value={value} key={value}>{value}×</option>)}
+        </select></label>
         <label className="syncQuality"><span>Resolution</span><select aria-label={`${title} video resolution`}
           value={quality} onChange={(event) => switchQuality(event.target.value as Quality)}>
           {supportsCompressed && <option value={compressedProfile}>360p · Faster</option>}

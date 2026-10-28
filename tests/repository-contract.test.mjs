@@ -80,7 +80,8 @@ test("serves host-mounted media through a dev-only Vite bridge", async () => {
   ]);
   assert.match(vite, /localMedia\(\)/);
   assert.match(bridge, /apply:\s*"serve"/);
-  for (const route of ["curated-media", "ood-media", "review-media", "video-renditions", "episode-media", "l1-minimal-media", "l1-phase1-media"]) {
+  for (const route of ["curated-media", "ood-media", "review-media", "video-renditions", "episode-media",
+    "l1-minimal-media", "l1-phase1-media", "real-datasets", "real-datasets-media", "real-datasets-trace"]) {
     assert.match(bridge, new RegExp(route));
   }
 });

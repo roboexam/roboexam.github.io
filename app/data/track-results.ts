@@ -7,7 +7,10 @@ import { tracks, type MetricDefinition, type TrackId } from './metric-plan.ts';
 
 export type ReportMode = 'plan' | 'history';
 export type MetricSelection = { trackId: TrackId; mode: ReportMode; metricId: string; modelId: string; taskId?: string; setting?: string };
-export type ReportResult = { primary: string; detail: string; status: string; available: boolean; version?: string; protocol?: string };
+export type ReportResult = {
+  primary: string; detail: string; status: string; available: boolean;
+  version?: string; protocol?: string; sampleCount?: number; cohort?: string;
+};
 
 export const protocolNotes: Record<TrackId, string> = {
   T1: 'VLM design · 07 Sep 2026 · Three dimensions, nine subdimensions. Alternatives, audit subsets, and diagnostics remain labeled.',
@@ -51,13 +54,14 @@ export function readResult({ trackId, mode, metricId, modelId, taskId, setting }
     const m = l1Phase1ProvisionalBundle.metrics.find(m => m.metricId === metricId);
     if (!m) return pending;
     const available = m.score !== null && m.state !== 'contract_pending';
-    return { primary: available ? `${m.score!.toFixed(2)}%` : '—', detail: `${m.state.replaceAll('_', ' ')} · N = ${m.scoreBearingN}`, status: m.state, available, version: l1Phase1ProvisionalBundle.run.id, protocol: l1Phase1ProvisionalBundle.run.contractVersion };
+    return { primary: available ? `${m.score!.toFixed(2)}%` : '—', detail: `${m.state.replaceAll('_', ' ')} · N = ${m.scoreBearingN}`, status: m.state, available, version: l1Phase1ProvisionalBundle.run.id, protocol: l1Phase1ProvisionalBundle.run.contractVersion, sampleCount: m.scoreBearingN, cohort: 'development pilot' };
   }
   if (trackId === 'T2') {
     const model = acwmDashboardBundle.models[modelId];
     const m = model?.values[metricId];
     if (!m) return pending;
-    return { primary: m.availability === 'available' ? m.primary : '—', detail: m.availability === 'available' ? m.aux : m.availability.replaceAll('_', ' '), status: m.status, available: m.availability === 'available', version: model.resultVersion, protocol: model.protocol };
+    const cohort = acwmDashboardBundle.primarySplit.split(' ')[0];
+    return { primary: m.availability === 'available' ? m.primary : '—', detail: m.availability === 'available' ? m.aux : m.availability.replaceAll('_', ' '), status: m.status, available: m.availability === 'available', version: model.resultVersion, protocol: model.protocol, sampleCount: m.groups[cohort]?.sampleCount, cohort };
   }
   if (trackId === 'T3' && taskId) {
     if (modelId === 'Pi0.5') return curatedResult(taskId, metricId);
@@ -66,7 +70,7 @@ export function readResult({ trackId, mode, metricId, modelId, taskId, setting }
   const model = vlaWamDashboardBundle.models[modelId];
   const m = model?.values[metricId];
   if (!m) return pending;
-  return { primary: m.availability === 'available' ? m.primary : '—', detail: metricId === 'AC' ? `Outcome, trajectory, and metadata verified · N = ${m.n}` : m.aux, status: m.status, available: m.availability === 'available', version: model.resultVersion, protocol: model.protocol };
+  return { primary: m.availability === 'available' ? m.primary : '—', detail: metricId === 'AC' ? `Outcome, trajectory, and metadata verified · N = ${m.n}` : m.aux, status: m.status, available: m.availability === 'available', version: model.resultVersion, protocol: model.protocol, sampleCount: m.n || undefined, cohort: `${model.cohort.uniqueSeeds}-seed` };
 }
 export function definitionFor(selection: MetricSelection): MetricInfo {
   const { trackId, mode, metricId } = selection;

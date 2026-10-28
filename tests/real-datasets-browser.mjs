@@ -24,9 +24,7 @@ try {
   assert.equal(catalog.schemaVersion, "roboexam.real-datasets.v1");
   assert.ok(catalog.datasets.length > 0, "actual catalog must contain datasets");
   await page.goto(base + "/datasets");
-  await page.waitForFunction(() => [...document.querySelectorAll("button")].some(button =>
-    button.textContent === "Real & Ego" && Object.keys(button).some(key => key.startsWith("__reactProps$"))));
-  await page.getByRole("button", { name: "Real & Ego", exact: true }).click();
+  await page.getByRole("button", { name: /^Real & Ego/ }).click();
   await page.locator(".realDatasetList button").first().waitFor();
   assert.equal(await page.locator(".realDatasetList button").count(), catalog.datasets.length);
 
@@ -53,6 +51,10 @@ try {
     await page.waitForFunction(id => document.querySelector(".realPlayer")?.dataset.episodeId === id, episode.id);
     await page.waitForFunction(() => [...document.querySelectorAll(".realCameraGrid video")].every(video => video.readyState >= 3));
     assert.equal(await page.locator(".realCameraGrid video").count(), episode.media.length);
+    await page.getByRole("combobox", { name: "样本播放速度", exact: true }).selectOption("2");
+    assert.ok(await page.locator(".realCameraGrid video").evaluateAll(videos => videos.every(video => video.playbackRate === 2)));
+    await page.locator(".actionTracePanel").waitFor();
+    assert.equal(await page.locator(".actionTracePanel.traceUnavailable").count(), 0, `${dataset.name} action trace must be available`);
     const mediaResponse = await context.request.get(new URL(episode.media[0].url, base).href, { headers: { range: "bytes=0-31" } });
     assert.equal(mediaResponse.status(), 206);
     assert.equal((await mediaResponse.body()).length, 32);

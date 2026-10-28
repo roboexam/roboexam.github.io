@@ -72,7 +72,7 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
         <BaselineRunPlan />
       </div>}
       {page === 'Leaderboards' && <LeaderboardView key={track} initialTrack={track} onMetric={setDetail}/>}
-      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading"><h1>Datasets</h1><p>Browse simulation trajectories, real-robot demonstrations, and egocentric recordings with their available cameras and episode instructions.</p></div><ScenarioBrowser/></div>}
+      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading datasetPageHeading"><p className="eyebrow">DATA LIBRARY</p><h1>Datasets</h1><p>Browse simulation, real-robot, and egocentric records in one workspace.</p></div><ScenarioBrowser/></div>}
       {page === 'Correlation' && <ExplainabilityView/>}
     </main>
     <footer className="researchFooter"><div><strong>RoboExam</strong><span>Planned CVPR 2027 Workshop</span></div></footer>
@@ -183,7 +183,7 @@ function CapabilityTrackFlow({ activeId, onCapability, onTrack }: { activeId: Ca
 function MetricDetail({ selection, onClose }: { selection: MetricSelection; onClose: () => void }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [modelId, setModelId] = useState(selection.modelId);
-  const [tab, setTab] = useState<'definition' | 'evidence'>('definition');
+  const [tab, setTab] = useState<'definition' | 'evidence'>(() => readResult(selection).available ? 'evidence' : 'definition');
   const current = { ...selection, modelId };
   const result = readResult(current);
   const info = definitionFor(current);
@@ -197,7 +197,7 @@ function MetricDetail({ selection, onClose }: { selection: MetricSelection; onCl
   return <dialog ref={dialog} className="metricDialog" aria-labelledby="metric-title" onCancel={e => { e.preventDefault(); onClose(); }}>
     <div className="drawerTop"><div><p className="eyebrow">{selection.trackId} · {selection.mode === 'history' ? 'HISTORICAL PROTOCOL' : 'METRIC DEFINITION'}</p><h2 id="metric-title">{info.name}</h2><p className="metricIdentifier">{selection.metricId}</p></div><button type="button" className="closeDialog" onClick={onClose} aria-label="Close metric detail"><X size={23}/></button></div>
     <div className="metricContext"><label>Model<select value={modelId} onChange={e => setModelId(e.target.value)} aria-label="Metric model">{track.models.map(m => <option key={m.id}>{m.id}</option>)}</select></label><div className="metricResult"><strong>{result.primary}</strong><span>{result.available ? result.detail : `${result.status} · ${result.detail}`}</span></div></div>
-    <nav className="detailTabs" aria-label="Metric details">{(['definition','evidence'] as const).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{t === 'definition' ? 'Definition' : 'Run & evidence'}</button>)}</nav>
+    <nav className="detailTabs" aria-label="Metric details">{(['definition','evidence'] as const).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{t === 'definition' ? 'Definition · 分数定义' : 'Run & evidence · 运行证据'}</button>)}</nav>
     {tab === 'definition' ? <div className="definitionGrid"><DetailBlock title="What it measures" text={info.definition}/><DetailBlock title="Scoring rule" text={info.formula} formula/><DetailBlock title="Direction & unit" text={`${info.direction} · ${info.unit}`}/><DetailBlock title="Required evidence" text={info.evidence}/>{info.caveat && <DetailBlock title="Interpretation" text={info.caveat}/>}<DetailBlock title="Source" text={info.source ?? 'RoboExam metric plan'}/></div> : <div className="metricEvidencePanel" key={`${selection.trackId}:${modelId}:${result.version}:${selection.mode}:${selection.metricId}`}>
       {result.version ? <><div className="runProvenance"><DetailBlock title="Result version" text={result.version}/><DetailBlock title="Protocol" text={result.protocol!}/></div>
         {selection.trackId === 'T1' && selection.mode === 'history' && <PilotEvidence metricId={selection.metricId}/>}

@@ -4,6 +4,9 @@
 .trackTabs strong { font-size: var(--text-body); font-weight: 550; line-height: 1.4; }
 .trackTabs button.selected { background: #fff; color: #254d94; border-color: #dae2ef; }
 .trackTabs button:hover { background: #fff; }
+.trackScoreGuide { display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1fr); gap: 12px 20px; align-items: start; margin: 14px 0 24px; padding: 16px 18px; border: 1px solid #dce4ef; border-radius: 10px; background: #f8faff; }
+.trackScoreGuide strong { color: #274b83; font-size: var(--text-small); white-space: nowrap; }
+.trackScoreGuide p { margin: 0; color: #53647c; font-size: var(--text-small); line-height: 1.55; }
 .trackWorkspace { min-width: 0; }
 .trackSectionTitle { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 8px; }
 .trackSectionTitle h2 { font-size: var(--text-section); font-weight: 550; line-height: 1.3; margin: 0; }
@@ -126,6 +129,7 @@
 @media (max-width: 700px) {
   .trackTabs { grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; }
   .trackTabs button { padding: 12px; }
+  .trackScoreGuide { grid-template-columns: 1fr; gap: 8px; }
   .trackSectionTitle { gap: 18px; }
   .trackSectionTitle h2 { font-size: var(--text-card); }
   .reportSwitch { width: 100%; }

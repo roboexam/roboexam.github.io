@@ -68,6 +68,8 @@ test('hardware and planned models cannot open a simulation result', () => {
 test('all displayed metric plans have English definitions and distinct IDs', () => {
   for (const track of tracks) {
     assert.equal(new Set(track.metrics.map(m => m.id)).size, track.metrics.length);
+    assert.doesNotMatch(track.scoreGuide.en, /[\u4e00-\u9fff]/);
+    assert.match(track.scoreGuide.zh, /[\u4e00-\u9fff]/);
     for (const metric of track.metrics) {
       const info = definitionFor(selection(track.id,'plan',metric.id,track.models[0].id));
       assert.ok(info, `${track.id} ${metric.id} missing definition`);
@@ -77,6 +79,20 @@ test('all displayed metric plans have English definitions and distinct IDs', () 
   }
   assert.equal(tracks[1].metrics.length, 18);
   assert.equal(tracks[1].metrics.find(m => m.id === 'AF-DIV').direction, 'Report');
+  assert.equal(tracks[2].metrics.find(m => m.id === 'LSPARC').direction, '→ 0');
   assert.ok(tracks[0].metrics.some(m => m.id === 'l1c.semantic_nlcs'));
   assert.ok(tracks[2].metrics.some(m => m.id === 'RECOVERY_FINAL_SR'));
+});
+
+test('leaderboard results expose episode count and cohort instead of hiding protocol differences', () => {
+  const pi = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'Pi0.5', taskId: 'stack_bowls' });
+  const fast = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'FastWAM', taskId: 'stack_bowls' });
+  assert.equal(pi.sampleCount, 30);
+  assert.equal(pi.cohort, 'ID curated');
+  assert.equal(fast.sampleCount, 100);
+  assert.equal(fast.cohort, '100-seed');
+  assert.notEqual(pi.protocol, fast.protocol);
+  const acwmResult = readResult(selection('T2', 'history', 'MS', 'Cosmos Predict 2.5'));
+  assert.equal(acwmResult.sampleCount, 73);
+  assert.equal(acwmResult.cohort, 'heldout73');
 });

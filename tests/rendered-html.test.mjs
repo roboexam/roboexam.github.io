@@ -133,13 +133,15 @@ test("publishes the raw review page and rejects unlisted media", async () => {
   }
 });
 
-test("Datasets renders the same live raw browser as Review", async () => {
+test("Datasets renders the unified live dataset workspace", async () => {
   const response = await render("/datasets");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Simulation 原始数据/);
-  assert.match(html, /Datasets 与 Review 共用当前公盘目录/);
-  assert.match(html, /Scenario plan/);
+  assert.match(html, /Task trajectories/);
+  assert.match(html, /Simulation catalog summary/);
+  assert.match(html, /Camera \+ action replay/);
+  assert.match(html, /Scenario inventory/);
+  assert.doesNotMatch(html, /Simulation 原始数据/);
   assert.doesNotMatch(html, /reference episodes|admitted ·|\/mnt\//);
 });
 

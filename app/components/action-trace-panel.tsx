@@ -7,6 +7,7 @@ import { validateActionTrace, type ActionTrace, type ActionTraceSource } from ".
 
 const jointColors = ["#5f8fe5", "#64c5bc", "#9e7bd5", "#e1a255", "#dc7181", "#7792aa"];
 const xyzColors = ["#dc7181", "#64b98b", "#5f8fe5"];
+const actionColors = ["#5f8fe5", "#64c5bc", "#9e7bd5", "#e1a255", "#dc7181", "#7792aa", "#59a77d"];
 
 export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId: string; currentTime: number; source?: ActionTraceSource }) {
   const [loaded, setLoaded] = useState<{ key: string; trace: ActionTrace } | null>(null);
@@ -50,6 +51,9 @@ export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId
     <header><div><p className="eyebrow">Action replay</p><h5>Joint and end-effector trajectories</h5></div>
       <span>{trace.clock.sourceFrames.toLocaleString()} source frames → {trace.clock.samples} plotted samples · {trace.clock.label ?? "video PTS clock"}</span></header>
     <div className="traceGroups">
+      {trace.action && <TraceGroup title="Recorded action · 记录动作" unit={trace.action.unit}
+        labels={trace.action.labels} colors={actionColors} left={trace.action.left}
+        right={trace.action.right} time={trace.action.t ?? trace.t} currentTime={currentTime}/>}
       <TraceGroup title="Joint position" unit={trace.jointPosition.unit} labels={["J1","J2","J3","J4","J5","J6"]}
         colors={jointColors} left={trace.jointPosition.left} right={trace.jointPosition.right}
         time={trace.t} currentTime={currentTime}/>
@@ -60,6 +64,9 @@ export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId
     <footer>{trace.provenance.bindingMethod === "raw_file_identity" ? <>
       原始轨迹只读抽样 · 元数据 <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> · 文件绑定 <code>{trace.provenance.bindingSha256?.slice(0, 12)}</code>
       <span>曲线使用记录的状态；大型轨迹文件未重复做整文件哈希验收。</span>
+    </> : trace.provenance.bindingMethod === "real_parquet_identity" ? <>
+      真机 Parquet 只读抽样 · 元数据 <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> · 文件绑定 <code>{trace.provenance.bindingSha256?.slice(0, 12)}</code>
+      <span>动作与状态按 episode 视频时间同步；缺失通道保持为空。</span>
     </> : <>Source-bound to manifest <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> and trajectory <code>{trace.provenance.trajectorySha256?.slice(0, 12) ?? "hash unavailable"}</code>.</>}</footer>
   </section>;
 }
@@ -92,7 +99,7 @@ function TraceChart({ title, values, time, labels, colors, currentTime }: {
   currentTime: number;
 }) {
   if (!values) return <figure className="traceChart traceMissing"><figcaption><strong>{title}</strong></figcaption>
-    <p>{labels[0] === "J1" ? "此来源未记录关节角度" : "此来源未记录末端位置"}</p></figure>;
+    <p>{labels[0] === "J1" ? "此来源未记录关节角度" : labels[0] === "X" ? "此来源未记录末端位置" : "此来源未记录该侧动作"}</p></figure>;
   const width = 640, height = 150, top = 14, bottom = 22;
   const flat = values.flat();
   const rawMin = Math.min(...flat), rawMax = Math.max(...flat);

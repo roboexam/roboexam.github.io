@@ -96,8 +96,8 @@ export function RawReviewBoard() {
   return <RawDataBrowser state={state} review/>;
 }
 
-export function RawDataBrowser({ state, review = false, initialTask }: {
-  state: RawCatalogState; review?: boolean; initialTask?: string;
+export function RawDataBrowser({ state, review = false, initialTask, embedded = false }: {
+  state: RawCatalogState; review?: boolean; initialTask?: string; embedded?: boolean;
 }) {
   const { catalog, error, loading, revision: tick, refresh } = state;
   const [taskName, setTaskName] = useState(() => initialTask ||
@@ -105,15 +105,19 @@ export function RawDataBrowser({ state, review = false, initialTask }: {
   const [query, setQuery] = useState("");
   const tasks = catalog?.tasks.filter(row => `${row.name} ${reviewLabels[row.name] ?? ""}`.toLowerCase().includes(query.toLowerCase().trim())) ?? [];
   const task = tasks.find(row => row.name === taskName) ?? tasks[0];
-  return <div className="reviewBoard rawReviewBoard">
-    <section className="reviewHero"><div><div className="reviewEyebrow"><ClipboardCheck size={16}/>SIMULATION RAW · {review ? "HUMAN REVIEW" : "LIVE DATASET"}</div>
+  return <div className={`reviewBoard rawReviewBoard${embedded ? " datasetEmbedded" : ""}`}>
+    {!embedded && <section className="reviewHero"><div><div className="reviewEyebrow"><ClipboardCheck size={16}/>SIMULATION RAW · {review ? "HUMAN REVIEW" : "LIVE DATASET"}</div>
       <h2>{review ? "公盘数据质检" : "Simulation 原始数据"}</h2><p>Datasets 与 Review 共用当前公盘目录，按场景及子文件夹浏览全部样本，三路视频同步查看。每 30 秒检查目录变化，返回页面时也会刷新。
         目录中的 clean、ID、OOD、failure 是组织标签；存在文件不代表通过验收或已获得训练资格。</p>
       <span>数据源：Simulation raw · 实时目录</span></div>
       <div className="reviewStats"><div><strong>{catalog?.tasks.length ?? "—"}</strong><small>场景</small></div>
-        <div><strong>{catalog?.count.toLocaleString() ?? "—"}</strong><small>样本目录（非去重轨迹数）</small></div></div></section>
-    <div className="rawReviewRefresh"><span role="status">{error || (catalog ? `最近扫描：${new Date(catalog.scannedAt).toLocaleString()}` : "正在扫描公盘目录…")}</span>
-      <button type="button" disabled={loading} onClick={refresh}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
+        <div><strong>{catalog?.count.toLocaleString() ?? "—"}</strong><small>样本目录（非去重轨迹数）</small></div></div></section>}
+    {embedded ? <section className="datasetSummaryStrip" aria-label="Simulation catalog summary">
+      <div><strong>{catalog?.tasks.length ?? "—"}</strong><span>Scenes</span></div><div><strong>{catalog?.count.toLocaleString() ?? "—"}</strong><span>Records</span></div>
+      <div className="datasetSummaryAction"><span role="status">{error || (catalog ? `扫描于 ${new Date(catalog.scannedAt).toLocaleString()}` : "正在扫描公盘目录…")}</span>
+        <button type="button" disabled={loading} onClick={refresh}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
+    </section> : <div className="rawReviewRefresh"><span role="status">{error || (catalog ? `最近扫描：${new Date(catalog.scannedAt).toLocaleString()}` : "正在扫描公盘目录…")}</span>
+      <button type="button" disabled={loading} onClick={refresh}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>}
     {error && <p className="reviewError" role="alert">{error}；目录统计为上次扫描结果，恢复后自动更新。</p>}<>
       <section className="reviewToolbar"><label><Search size={17}/><span className="curatedSrOnly">搜索场景</span><input type="search" placeholder="搜索场景…" value={query} onChange={event => setQuery(event.target.value)}/></label>
         <select aria-label="选择公盘场景" value={task?.name ?? ""} onChange={event => { setTaskName(event.target.value); link(event.target.value); }}>

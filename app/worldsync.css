@@ -284,7 +284,8 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
 }
 /* Proposal tables and episode navigation share the same type scale. */
 .scenarioBrowser { min-width: 0; }
-.datasetViewSwitch { width: fit-content; margin: 0 0 32px; }
+.datasetSourcePicker { display: grid; grid-template-columns: auto minmax(260px,420px); align-items: center; gap: 12px; width: fit-content; margin: 0 0 28px; color: var(--muted); font-size: var(--text-small); }
+.datasetSourcePicker select { min-height: 44px; padding: 8px 36px 8px 12px; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; background: #fff; font: inherit; }
 .scenarioIntro, .episodeSummary { margin-bottom: 28px; }
 .scenarioIntro h2, .episodeSummary h2 { margin: 0 0 8px; font-size: var(--text-section); font-weight: 550; }
 .scenarioIntro p, .episodeSummary p { margin: 0; color: var(--muted); font-size: var(--text-body); }
@@ -327,7 +328,8 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
 @media (max-width: 1000px) { .scenarioFilters { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 700px) {
   .scenarioFilters { grid-template-columns: 1fr; }
-  .datasetViewSwitch { width: 100%; }
+  .datasetSourcePicker { grid-template-columns: 1fr; width: 100%; }
+  .datasetSourcePicker select { width: 100%; }
   .scenarioIntro h2, .episodeSummary h2 { font-size: var(--text-card); }
   .tagGuide dl { grid-template-columns: 1fr; }
   .scenarioTable th, .scenarioTable td { padding: 16px; }

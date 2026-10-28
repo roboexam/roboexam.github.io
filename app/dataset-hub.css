@@ -1,0 +1,99 @@
+.datasetView {
+  --dataset-accent: #285bd8;
+  gap: 18px !important;
+}
+.datasetPageHeading { display: grid; grid-template-columns: minmax(220px,.55fr) minmax(320px,1fr); align-items: end; gap: 4px 36px; padding-bottom: 4px; }
+.datasetPageHeading .eyebrow { grid-column: 1 / -1; margin: 0; }
+.datasetPageHeading h1 { margin: 4px 0 0; }
+.datasetPageHeading>p:last-child { max-width: 620px; padding-bottom: 7px; }
+.scenarioBrowser { display: grid; gap: 18px; }
+
+.datasetSourceNav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; padding: 6px; border: 1px solid #dfe5ee; border-radius: 14px; background: #f6f8fb; }
+.datasetSourceNav button { display: grid; grid-template-columns: 38px minmax(0,1fr) auto; align-items: center; gap: 10px; min-width: 0; min-height: 68px; padding: 11px 14px; color: #5d687a; text-align: left; border: 1px solid transparent; border-radius: 10px; background: transparent; }
+.datasetSourceNav button:hover { color: #273a59; background: #fff; }
+.datasetSourceNav button.active { color: #173f91; border-color: #b9ccef; background: #fff; box-shadow: 0 4px 14px #243f7010; }
+.datasetSourceIcon { display: grid; width: 36px; height: 36px; place-items: center; color: #61728b; border: 1px solid #dce3ec; border-radius: 9px; background: #fff; }
+.datasetSourceNav button.active .datasetSourceIcon { color: #285bd8; border-color: #b8ccef; background: #edf3ff; }
+.datasetSourceNav button>span:nth-child(2) { display: grid; min-width: 0; }
+.datasetSourceNav strong { color: inherit; font-size: 14px; font-weight: 650; }
+.datasetSourceNav small { overflow: hidden; color: #7a8799; font-size: 11px; font-weight: 450; text-overflow: ellipsis; white-space: nowrap; }
+.datasetSourceNav b { color: #748197; font-size: 11px; font-weight: 600; white-space: nowrap; }
+
+.datasetSourceContext { display: flex; align-items: end; justify-content: space-between; gap: 28px; padding: 10px 2px 17px; border-bottom: 1px solid #e2e7ee; }
+.datasetSourceContext>div>span { color: #66748b; font-size: 11px; font-weight: 700; letter-spacing: .11em; }
+.datasetSourceContext h2 { margin: 4px 0 0; font-size: 25px; line-height: 1.2; font-weight: 580; }
+.datasetSourceContext p { max-width: 600px; margin: 0; color: #68758a; font-size: 14px; text-align: right; }
+
+.datasetSummaryStrip { display: grid; grid-template-columns: repeat(2,minmax(95px,130px)) minmax(280px,1fr); align-items: stretch; min-height: 68px; overflow: hidden; border: 1px solid #e0e6ee; border-radius: 11px; background: #f8fafc; }
+.datasetSummaryStrip>div:not(.datasetSummaryAction) { display: grid; align-content: center; padding: 10px 18px; border-right: 1px solid #e0e6ee; }
+.datasetSummaryStrip strong { color: #243c62; font-size: 20px; line-height: 1.15; font-weight: 620; font-variant-numeric: tabular-nums; }
+.datasetSummaryStrip span { color: #718096; font-size: 11px; }
+.datasetSummaryAction { display: flex; align-items: center; justify-content: flex-end; gap: 16px; min-width: 0; padding: 10px 12px 10px 18px; }
+.datasetSummaryAction>span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.datasetSummaryAction button { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 7px 12px; color: #355272; white-space: nowrap; border: 1px solid #d5dee9; border-radius: 7px; background: #fff; }
+.datasetSummaryAction button:disabled { cursor: wait; opacity: .55; }
+
+.datasetEmbedded .reviewToolbar { display: grid; grid-template-columns: minmax(220px,.55fr) minmax(300px,1fr); gap: 10px; margin: 0; padding: 12px; }
+.datasetEmbedded .reviewToolbar label { min-width: 0; }
+.datasetEmbedded .reviewTaskHeading { gap: 20px; padding: 15px 2px 10px; }
+.datasetEmbedded .reviewTaskHeading span { font-size: 10px; }
+.datasetEmbedded .reviewTaskHeading h3 { display: inline; margin: 0 10px 0 0; font-size: 18px; }
+.datasetEmbedded .reviewTaskHeading>strong { font-size: 18px; }
+.datasetEmbedded .reviewTaskHeading>strong small { display: inline; margin-left: 5px; }
+.datasetEmbedded .rawReviewWorkspace { grid-template-columns: minmax(190px,230px) minmax(0,1fr); gap: 14px; margin-top: 0; }
+.datasetEmbedded .rawReviewFolders, .datasetEmbedded .realDatasetList { position: sticky; top: 106px; max-height: calc(100vh - 130px); scrollbar-width: thin; }
+.datasetEmbedded .rawReviewFolders button { padding: 10px; border-radius: 8px; }
+.datasetEmbedded .rawReviewPanel { padding: 18px; border-radius: 11px; }
+.datasetEmbedded .rawReviewFootnote { margin: 16px 2px 0; }
+
+.datasetEmbedded .realDatasetFilters { margin: 0; padding: 11px 12px; border: 1px solid #e0e6ee; border-radius: 10px; background: #fff; }
+.datasetEmbedded .realDatasetWorkspace { grid-template-columns: minmax(205px,240px) minmax(0,1fr); gap: 14px; }
+.datasetEmbedded .realDatasetList { gap: 6px; }
+.datasetEmbedded .realDatasetList button { gap: 3px; padding: 11px 12px; border-radius: 8px; }
+.datasetEmbedded .realDatasetList strong { font-size: 13px; }
+.datasetEmbedded .realDatasetPanel { padding: 18px; }
+.datasetEmbedded .realDatasetFacts { margin: 8px 0 13px; }
+.datasetEmbedded .realIdentity { margin: 10px 0 14px; }
+.realReplayLayout { display: grid; grid-template-columns: minmax(360px,.82fr) minmax(500px,1.18fr); gap: 14px; align-items: start; }
+.realMediaPanel { position: sticky; top: 106px; min-width: 0; }
+.realReplayLayout>.actionTracePanel { min-width: 0; margin-top: 0; }
+.realReplayLayout .realCameraGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.realReplayLayout .realCameraGrid figure:first-child { grid-column: 1 / -1; }
+.realReplayLayout .realPlaybackControls { margin-top: 9px; }
+.realReplayLayout .actionTracePanel { padding: 14px; }
+.realReplayLayout .traceGroups { gap: 8px; }
+.realReplayLayout .traceGroup { padding: 9px; }
+.realReplayLayout .traceChart svg { height: 112px; }
+
+@media (max-width: 1280px) {
+  .realReplayLayout { grid-template-columns: 1fr; }
+  .realMediaPanel { position: static; }
+  .realReplayLayout .realCameraGrid { grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+  .realReplayLayout .realCameraGrid figure:first-child { grid-column: auto; }
+}
+@media (max-width: 900px) {
+  .datasetPageHeading { grid-template-columns: 1fr; }
+  .datasetPageHeading>p:last-child { padding: 0; }
+  .datasetSourceNav { display: flex; overflow-x: auto; scroll-snap-type: x proximity; }
+  .datasetSourceNav button { flex: 0 0 260px; scroll-snap-align: start; }
+  .datasetSourceContext { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .datasetSourceContext p { text-align: left; }
+  .datasetEmbedded .rawReviewWorkspace, .datasetEmbedded .realDatasetWorkspace { grid-template-columns: 1fr; }
+  .datasetEmbedded .rawReviewFolders, .datasetEmbedded .realDatasetList { position: static; display: flex; flex-direction: row; max-height: none; overflow-x: auto; }
+  .datasetEmbedded .rawReviewFolders button, .datasetEmbedded .realDatasetList button { flex: 0 0 210px; }
+}
+@media (max-width: 700px) {
+  .datasetSourceNav { margin-inline: -2px; }
+  .datasetSourceNav button { flex-basis: 230px; grid-template-columns: 34px minmax(0,1fr); }
+  .datasetSourceNav button>b { display: none; }
+  .datasetSourceContext h2 { font-size: 22px; }
+  .datasetSummaryStrip { grid-template-columns: repeat(2,1fr); }
+  .datasetSummaryStrip>div:not(.datasetSummaryAction) { padding: 9px 13px; }
+  .datasetSummaryAction { grid-column: 1 / -1; justify-content: space-between; border-top: 1px solid #e0e6ee; padding-left: 13px; }
+  .datasetEmbedded .reviewToolbar { grid-template-columns: 1fr; }
+  .datasetEmbedded .reviewTaskHeading { align-items: flex-start; }
+  .datasetEmbedded .reviewTaskHeading>strong { font-size: 15px; }
+  .datasetEmbedded .realDatasetFilters { align-items: stretch; }
+  .datasetEmbedded .realDatasetFilters>.realSearch { width: 100%; }
+  .realReplayLayout .realCameraGrid { grid-template-columns: 1fr; }
+}

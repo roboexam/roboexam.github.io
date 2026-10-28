@@ -7,7 +7,8 @@ export const pi05Curated = raw as unknown as Record<string, Omit<CuratedTask,'sa
 export function curatedResult(task: string, id: string) {
  const run = pi05Curated[task], m = run?.values[id];
  return {primary: m?.primary ?? '—', detail: m ? `N = ${m.n}${m.coverage == null ? '' : ` · coverage ${(m.coverage * 100).toFixed(1)}%`}${m.detail ? ` · ${m.detail}` : ''}` : 'No validated result for this task and metric.',
- status: m?.available ? 'Computed' : 'N/A', available: m?.available ?? false, version: run?.resultVersion, protocol: run?.protocol};
+ status: m?.available ? 'Computed' : 'N/A', available: m?.available ?? false, version: run?.resultVersion, protocol: run?.protocol,
+ sampleCount: m?.n, cohort: run ? `${run.split === 'indomain' ? 'ID' : run.split} curated` : undefined};
 }
 export function sampleDisplay(value: Scalar | undefined, unit = 'rate'): string {
  if (value == null) return 'N/A';

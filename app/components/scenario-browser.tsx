@@ -1,6 +1,6 @@
 "use client";
 
-import { Search } from 'lucide-react';
+import { Database, Layers3, Search, Video } from 'lucide-react';
 import { useState } from 'react';
 import { matchesScenario, scenarioPlan, scenarioTags, type ScenarioTag } from '../data/scenario-plan';
 import { RawDataBrowser } from './raw-review-board';
@@ -20,12 +20,31 @@ export function ScenarioBrowser() {
   const catalog = new Map(raw.catalog?.tasks.map(task => [task.name, task]) ?? []);
   const physicalSettings = [...new Set(scenarioPlan.map(scene => scene.physical))];
   const visible = scenarioPlan.filter(scene => matchesScenario(scene,tags,scope,query,physical) && (inventory === 'all' || (inventory === 'local' ? catalog.has(scene.id) : !catalog.has(scene.id))));
+  const liveScenarios = scenarioPlan.filter(scene => catalog.has(scene.id)).length;
   function reset() { setQuery(''); setTags([]); setPhysical('all'); setScope('all'); setInventory('all'); }
   return <div className="scenarioBrowser">
-    <div className="datasetViewSwitch reportSwitch" aria-label="Dataset view"><button type="button" aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>Task trajectories</button><button type="button" aria-pressed={view === 'real'} onClick={() => setView('real')}>Real &amp; Ego</button><button type="button" aria-pressed={view === 'plan'} onClick={() => setView('plan')}>Scenario plan</button></div>
-    {view === 'real' ? <RealDatasetBrowser/> : view === 'episodes' ? <RawDataBrowser key={episodeTask ?? 'default'} state={raw} initialTask={episodeTask}/> : <>
-      <div className="scenarioIntro"><h2>Simulation scenarios</h2><p>{scenarioPlan.length} proposed scenarios · {raw.catalog ? raw.catalog.tasks.length : '—'} live raw task folders</p></div>
-      <div className="rawReviewRefresh"><span role="status">{raw.error || (raw.catalog ? `最近扫描：${new Date(raw.catalog.scannedAt).toLocaleString()}` : '正在扫描公盘目录…')}</span><button type="button" disabled={raw.loading} onClick={raw.refresh}>{raw.loading ? '扫描中…' : '刷新'}</button></div>
+    <nav className="datasetSourceNav" aria-label="Dataset source">
+      <button type="button" className={view === 'episodes' ? 'active' : ''} aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>
+        <span className="datasetSourceIcon"><Database size={17}/></span><span><strong>Simulation</strong><small>Trajectories &amp; actions</small></span>
+        <b>{raw.catalog ? `${raw.catalog.tasks.length} / ${raw.catalog.count.toLocaleString()}` : '—'}</b>
+      </button>
+      <button type="button" className={view === 'real' ? 'active' : ''} aria-pressed={view === 'real'} onClick={() => setView('real')}>
+        <span className="datasetSourceIcon"><Video size={17}/></span><span><strong>Real &amp; Ego</strong><small>Camera + action replay</small></span><b>2 sources</b>
+      </button>
+      <button type="button" className={view === 'plan' ? 'active' : ''} aria-pressed={view === 'plan'} onClick={() => setView('plan')}>
+        <span className="datasetSourceIcon"><Layers3 size={17}/></span><span><strong>Coverage</strong><small>Scenario inventory</small></span><b>{liveScenarios} live</b>
+      </button>
+    </nav>
+    <div className="datasetSourceContext">
+      <div><span>{view === 'episodes' ? 'SIMULATION DATA' : view === 'real' ? 'PHYSICAL DATA' : 'BENCHMARK COVERAGE'}</span>
+        <h2>{view === 'episodes' ? 'Task trajectories' : view === 'real' ? 'Real & ego episodes' : 'Scenario plan'}</h2></div>
+      <p>{view === 'episodes' ? 'Inspect camera streams, task folders and aligned robot actions.' : view === 'real' ? 'Replay synchronized robot or ego cameras with recorded actions.' : 'Review live coverage and proposed benchmark scenarios.'}</p>
+    </div>
+    {view === 'real' ? <RealDatasetBrowser embedded/> : view === 'episodes' ? <RawDataBrowser key={episodeTask ?? 'default'} state={raw} initialTask={episodeTask} embedded/> : <>
+      <section className="datasetSummaryStrip" aria-label="Scenario status summary">
+        <div><strong>{scenarioPlan.length}</strong><span>Total scenarios</span></div><div><strong>{liveScenarios}</strong><span>Live folders</span></div>
+        <div className="datasetSummaryAction"><span role="status">{raw.error || (raw.catalog ? `扫描于 ${new Date(raw.catalog.scannedAt).toLocaleString()}` : '正在扫描公盘目录…')}</span><button type="button" disabled={raw.loading} onClick={raw.refresh}>{raw.loading ? '扫描中…' : '刷新'}</button></div>
+      </section>
       <div className="scenarioFilters">
         <label>Physical setting<select aria-label="Physical setting" value={physical} onChange={e => setPhysical(e.target.value)}><option value="all">All settings</option>{physicalSettings.map(p => <option key={p}>{p}</option>)}</select></label>
         <label>Tag scope<select aria-label="Tag scope" value={scope} onChange={e => setScope(e.target.value as 'all' | 'base')}><option value="all">Include candidates & variants</option><option value="base">Base-task assignments only</option></select></label>
