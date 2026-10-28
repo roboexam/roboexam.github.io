@@ -86,6 +86,12 @@ test("serves host-mounted media through a dev-only Vite bridge", async () => {
   }
 });
 
+test("real action traces default to the managed PyArrow runtime", async () => {
+  const reader = await readFile(new URL("app/data/real-action-trace.server.ts", root), "utf8");
+  assert.match(reader, /runtime\/caches\/dashboard_raw_action_traces\/v1\/python\/bin\/python/);
+  assert.doesNotMatch(reader, /process\.env\.UNIBENCH_TRACE_PYTHON/);
+});
+
 test("keeps setting-resolved leaderboards and dataset OOD evidence wired", async () => {
   const [leaderboard, scenarios, explorer, player, card, styles, overall] = await Promise.all([
     readFile(new URL("app/components/leaderboard-view.tsx", root), "utf8"),

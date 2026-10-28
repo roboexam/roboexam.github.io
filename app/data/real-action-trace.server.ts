@@ -31,7 +31,6 @@ export const extractRealActionTrace: RealTraceExtractor = async (fd, input) => {
   try {
     return await new Promise<RealTraceResult>(resolve => {
       const python = process.env.DASHBOARD_REAL_DATA_PYTHON ?? process.env.DASHBOARD_RAW_TRACE_PYTHON ??
-        process.env.UNIBENCH_TRACE_PYTHON ??
         "/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_raw_action_traces/v1/python/bin/python";
       const child = spawn(python, [path.join(process.cwd(), "scripts/read-real-action-trace.py")], {
         stdio: ["pipe", "pipe", "pipe", fd],
