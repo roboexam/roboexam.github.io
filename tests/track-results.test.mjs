@@ -4,6 +4,8 @@ import { tracks } from '../app/data/metric-plan.ts';
 import { baselineRunPlan } from '../app/data/baseline-run-plan.ts';
 import { metricExplanationFor } from '../app/data/metric-explanations.ts';
 import { definitionFor, metricsFor, readResult } from '../app/data/track-results.ts';
+import { scenarioPlan } from '../app/data/scenario-plan.ts';
+import { xvla24IdTaskIds } from '../app/data/xvla-24id.ts';
 import { acwmDashboardBundle as acwm } from '../app/data/acwm-results.ts';
 import { vlaWamDashboardBundle as policy } from '../app/data/vla-wam-results.ts';
 
@@ -115,4 +117,19 @@ test('leaderboard results expose episode count and cohort instead of hiding prot
   const acwmResult = readResult(selection('T2', 'history', 'MS', 'Cosmos Predict 2.5'));
   assert.equal(acwmResult.sampleCount, 73);
   assert.equal(acwmResult.cohort, 'heldout73');
+});
+
+test('XVLA all-scenarios results use fixed 24-task macro aggregates', () => {
+  assert.equal(xvla24IdTaskIds.length, 24);
+  assert.equal(new Set(xvla24IdTaskIds).size, 24);
+  assert.ok(xvla24IdTaskIds.every((id) => scenarioPlan.some((scene) => scene.id === id)));
+  const tsr = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'XVLA', taskId: 'all' });
+  const score = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TASK_SCORE', modelId: 'XVLA', taskId: 'all' });
+  const collision = readResult({ trackId: 'T3', mode: 'plan', metricId: 'COLLISION_RATE', modelId: 'XVLA', taskId: 'all' });
+  assert.equal(tsr.primary, '6.67%');
+  assert.equal(tsr.sampleCount, 24);
+  assert.match(tsr.cohort, /24 tasks/);
+  assert.equal(score.primary, '10.958 score');
+  assert.equal(collision.available, false);
+  assert.equal(collision.primary, 'N/A');
 });

@@ -8,6 +8,7 @@ import { tracks, type TrackId } from "../data/metric-plan";
 import { scenarioPlan, scenarioTags, tagsForScenario, type ScenarioTag } from "../data/scenario-plan";
 import { admittedSettingScores, calculateOverallScore, type OverallScorecard } from "../data/overall-score";
 import { metricsFor, readResult, type MetricSelection, type ReportMode, type ReportResult } from "../data/track-results";
+import { xvla24IdTaskIds } from "../data/xvla-24id";
 import { BaselineRunPlan } from "./baseline-run-plan";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
@@ -37,7 +38,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   const [filters, setFilters] = useState<MetricFilters>(initialMetricFilters);
   const [advanced, setAdvanced] = useState(false);
   const [selectedSceneTags, setSelectedSceneTags] = useState<ScenarioTag[]>([]);
-  const [sceneId, setSceneId] = useState(initialTrack === "T3" ? "stack_bowls" : "all");
+  const [sceneId, setSceneId] = useState("all");
 
   const track = tracks.find((item) => item.id === trackId)!;
   const scoreGuide = track.scoreGuide;
@@ -45,12 +46,15 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   const entries = metrics.map((metric) => ({ metric, facets: facetsFor(trackId, metric, mode) }));
   const families = [...new Set(track.models.map((model) => model.family))];
   const sceneTagEntries = Object.entries(scenarioTags) as [ScenarioTag, (typeof scenarioTags)[ScenarioTag]][];
-  const scenes = scenarioPlan.filter((scene) =>
+  const availableScenes = trackId === "T3"
+    ? scenarioPlan.filter((scene) => xvla24IdTaskIds.includes(scene.id))
+    : scenarioPlan;
+  const scenes = availableScenes.filter((scene) =>
     selectedSceneTags.every((tag) => tagsForScenario(scene).includes(tag)));
   const selectedScenes = scenes.filter((scene) => sceneId === "all" || scene.id === sceneId);
   const selectedSceneIds = new Set(selectedScenes.map((scene) => scene.id));
   const sourceScene = reportedScenario(trackId, mode);
-  const sourceSelected = trackId === "T3" ? sceneId !== "all" && selectedSceneIds.has(sceneId) : sourceScene !== null && selectedSceneIds.has(sourceScene);
+  const sourceSelected = trackId === "T3" ? sceneId === "all" || selectedSceneIds.has(sceneId) : sourceScene !== null && selectedSceneIds.has(sourceScene);
   const dimensions = [...new Set(entries.map((entry) => entry.facets.dimension))];
   const groups = [...new Set(entries
     .filter((entry) => filters.dimension === "all" || entry.facets.dimension === filters.dimension)
@@ -126,7 +130,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         onClick={() => {
           const nextMode = defaultMode;
           setTrackId(item.id);
-          setSceneId(item.id === "T3" ? "stack_bowls" : "all");
+          setSceneId("all");
           setMode(nextMode);
           reset();
         }}>
@@ -159,7 +163,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         </div></div>
         <label>Scenario<select aria-label="Leaderboard scenario" value={sceneId}
           onChange={(event) => setSceneId(event.target.value)}>
-          <option value="all">All scenarios ({scenes.length})</option>
+          <option value="all">{trackId === "T3" ? "all_scenario (24)" : "All scenarios"}</option>
           {scenes.map((scene) => <option value={scene.id} key={scene.id}>{scene.name}</option>)}
         </select></label>
       </div>
