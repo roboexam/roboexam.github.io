@@ -17,6 +17,12 @@ V3 = {
     "left_action": "master.arm_left_position_align.data",
     "right_action": "master.arm_right_position_align.data",
 }
+SIM_V3 = {
+    "joint": "observation.joint",
+    "ee": "observation.ee16",
+    "action": "action.ee16",
+    "action_valid": "action_valid",
+}
 V2 = {
     "left_ee": "observation.state.left_wrist_pose",
     "right_ee": "observation.state.right_wrist_pose",
@@ -91,24 +97,30 @@ def episode_table(handle, request, columns):
 def matrix(table, column, positions, dimension):
     if column not in table.column_names:
         return None
-    values = np.asarray(table[column].to_pylist(), dtype=np.float64)
+    values = np.asarray(
+        [table[column][int(position)].as_py() for position in positions],
+        dtype=np.float64,
+    )
     if values.ndim != 2 or values.shape[1] < dimension:
         raise ValueError("unsupported_trace_dimensions")
-    return rounded(values[positions, :dimension])
+    return rounded(values[:, :dimension])
 
 
 def width(table, column):
     if column not in table.column_names:
         return None
-    values = np.asarray(table[column].to_pylist())
-    if values.ndim != 2:
-        raise ValueError("unsupported_trace_dimensions")
-    return values.shape[1]
+    for value in table[column]:
+        row = value.as_py()
+        if row is not None:
+            if not isinstance(row, list):
+                raise ValueError("unsupported_trace_dimensions")
+            return len(row)
+    raise ValueError("unsupported_trace_dimensions")
 
 
 def extract(handle, request):
     if request["format"] == "lerobot-v3":
-        fields = list(V3.values()) + ["timestamp"]
+        fields = list(V3.values()) + list(SIM_V3.values()) + ["timestamp"]
     else:
         fields = list(V2.values()) + ["timestamp"]
     table, frames, names = episode_table(handle, request, fields)
@@ -123,7 +135,30 @@ def extract(handle, request):
     missing, datasets = [], ["episode_index", "frame_index"]
     if "timestamp" in names:
         datasets.append("timestamp")
-    if request["format"] == "lerobot-v3":
+    if request["format"] == "lerobot-v3" and SIM_V3["ee"] in names:
+        joint = matrix(table, SIM_V3["joint"], positions, 14)
+        left_joint = [row[:6] for row in joint] if joint is not None else None
+        right_joint = [row[7:13] for row in joint] if joint is not None else None
+        ee = matrix(table, SIM_V3["ee"], positions, 16)
+        left_ee = [row[:3] for row in ee] if ee is not None else None
+        right_ee = [row[8:11] for row in ee] if ee is not None else None
+        action_positions, action_time = positions, time
+        if SIM_V3["action_valid"] in table.column_names:
+            valid = np.asarray(table[SIM_V3["action_valid"]].to_pylist(), dtype=bool)
+            action_allowed = valid.shape == (source_frames,) and int(valid.sum()) >= 2
+            if action_allowed:
+                action_positions = sampled_positions(np.flatnonzero(valid))
+                action_time = video_time(table, frames, action_positions, duration)
+        values = matrix(table, SIM_V3["action"], action_positions, 16) if action_allowed else None
+        action = None if values is None else {
+            "unit": "end-effector target",
+            "labels": ["X", "Y", "Z", "Qw", "Qx", "Qy", "Qz", "Grip"],
+            "t": action_time.tolist(),
+            "left": [row[:8] for row in values],
+            "right": [row[8:16] for row in values],
+        }
+        candidates = SIM_V3
+    elif request["format"] == "lerobot-v3":
         left_joint = matrix(table, V3["left_joint"], positions, 6)
         right_joint = matrix(table, V3["right_joint"], positions, 6)
         left_ee = matrix(table, V3["left_ee"], positions, 3)

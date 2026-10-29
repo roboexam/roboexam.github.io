@@ -5,9 +5,10 @@ export type RealDatasetSummary = {
   id: string; name: string; kind: "robot" | "ego"; format: string; robotType: string;
   taskCount: number; episodeCount: number; frameCount: number; fps: number;
   cameras: RealDatasetCamera[]; availability: "available" | "unavailable"; warnings: string[];
+  sourceGroup?: string; relativePath?: string;
 };
 export type RealDatasetCatalog = {
-  schemaVersion: "roboexam.real-datasets.v1"; version: string; scannedAt: string;
+  schemaVersion: "roboexam.real-datasets.v1" | "roboexam.simulation-datasets.v1"; version: string; scannedAt: string;
   refreshSeconds: number; datasets: RealDatasetSummary[]; warnings: string[];
 };
 export type RealEpisodeEntry = {

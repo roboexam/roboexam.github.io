@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { execFile as execFileCallback } from "node:child_process";
 import { constants } from "node:fs";
-import { open, readdir, realpath, stat } from "node:fs/promises";
+import { open, readFile, readdir, realpath, stat } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { Readable } from "node:stream";
@@ -20,7 +20,10 @@ import {
   type RealTraceResult,
 } from "./real-action-trace.server.ts";
 
-type RootSpec = { id: string; kind: "robot" | "ego"; root: string };
+type RootSpec = {
+  id: string; kind: "robot" | "ego"; root: string;
+  label?: string; sourceGroup?: string; indexFile?: string;
+};
 type Json = Record<string, unknown>;
 type EpisodeRow = Record<string, unknown>;
 type DatasetRef = RealDatasetSummary & {
@@ -41,7 +44,10 @@ const int = (value: unknown) => number(value) !== null && Number.isSafeInteger(v
 const within = (root: string, file: string) => file === root || file.startsWith(root + path.sep);
 const natural = (a: string, b: string) => a.localeCompare(b, "en", { numeric: true });
 const safeName = (value: string) => value.length > 0 && value.length <= 512 && !value.split(/[\\/]/).some(part => !part || part === "." || part === ".." || !/^[a-zA-Z0-9_.:@+\-\u4e00-\u9fff ]+$/.test(part));
-const cameraLabel = (key: string) => key.split(".").at(-1) ?? key;
+const cameraLabel = (key: string) => {
+  const name = key.split(".").at(-1) ?? key;
+  return ({ cam_high: "Front / high", cam_left_wrist: "Left wrist", cam_right_wrist: "Right wrist" } as Record<string, string>)[name] ?? name;
+};
 
 function pythonCandidates() {
   return [...new Set([
@@ -65,7 +71,7 @@ if fmt == "lerobot-v3":
       if os.path.isfile(p) and name.endswith(".parquet"): files.append(p)
   files.sort()
   if not files: raise RuntimeError("episodes_missing")
-  keys=[k for k in info.get("features",{}) if k.startswith("camera_observations.color_images.")]
+  keys=[k for k in info.get("features",{}) if k.startswith("camera_observations.color_images.") or k.startswith("observation.images.")]
   keys=[k for k in keys if k.split(".")[-1] not in ("timestamp","is_intervene")]
   cols=["episode_index","length","tasks","platform_episode_id","data/chunk_index","data/file_index","dataset_from_index","dataset_to_index"]
   for key in keys:
@@ -113,7 +119,8 @@ function rowVideo(dataset: DatasetRef, row: EpisodeRow, camera: string) {
 function summaryFrom(info: Json, spec: RootSpec, id: string, name: string, format: DatasetRef["format"], infoPath: string, metadataDir: string, metadataSha256: string): DatasetRef {
   const features = object(info.features);
   const cameraKeys = Object.keys(features).filter(key => format === "lerobot-v3"
-    ? key.startsWith("camera_observations.color_images.") && !key.endsWith(".timestamp") && !key.endsWith(".is_intervene")
+    ? (key.startsWith("camera_observations.color_images.") || key.startsWith("observation.images.")) &&
+      !key.endsWith(".timestamp") && !key.endsWith(".is_intervene")
     : key.startsWith("observation.images."));
   const cameras = [...new Set(cameraKeys)].map(key => ({ key, label: cameraLabel(key) }));
   const fps = number(info.fps) ?? 0;
@@ -125,21 +132,26 @@ function summaryFrom(info: Json, spec: RootSpec, id: string, name: string, forma
   const summary: DatasetRef = { id, name, kind: spec.kind, format, robotType: text(info.robot_type) ?? (spec.kind === "ego" ? "pico_ego" : "unknown"),
     taskCount: int(info.total_tasks) ?? 0, episodeCount: Math.max(0, episodeCount), frameCount: Math.max(0, frameCount), fps: fps > 0 ? fps : 0,
     cameras, availability: "available", warnings: [], root: spec.root, metadataDir, infoPath, metadataSha256,
-    camerasInternal: cameras.map(camera => camera.key), videoPath, dataPath, chunksSize: chunksSize > 0 ? chunksSize : 1000 };
+    sourceGroup: spec.sourceGroup, camerasInternal: cameras.map(camera => camera.key), videoPath, dataPath,
+    chunksSize: chunksSize > 0 ? chunksSize : 1000 };
   return summary;
 }
 function publicSummary(ref: DatasetRef): RealDatasetSummary {
   return { id: ref.id, name: ref.name, kind: ref.kind, format: ref.format, robotType: ref.robotType,
     taskCount: ref.taskCount, episodeCount: ref.episodeCount, frameCount: ref.frameCount, fps: ref.fps,
-    cameras: ref.cameras, availability: ref.availability, warnings: ref.warnings };
+    cameras: ref.cameras, availability: ref.availability, warnings: ref.warnings,
+    sourceGroup: ref.sourceGroup, relativePath: ref.relativePath };
 }
 
 export function createRealDatasetReader({
   roots = [
     { id: "lerobot_data_v3", kind: "robot", root: "/mnt/public_ckp/UniEmbodied-Bench/real/lerobot_data_v3" },
     { id: "tk_pico", kind: "ego", root: "/mnt/public_ckp/UniEmbodied-Bench/real/tk_pico" },
-  ], refreshMs = 30000, readMetadata, traceExtractor = extractRealActionTrace,
-}: { roots?: RootSpec[]; refreshMs?: number; readMetadata?: MetadataReader; traceExtractor?: RealTraceExtractor } = {}) {
+  ], refreshMs = 30000, readMetadata, traceExtractor = extractRealActionTrace, routePrefix = "real-datasets",
+  schemaVersion = "roboexam.real-datasets.v1",
+}: { roots?: RootSpec[]; refreshMs?: number; readMetadata?: MetadataReader; traceExtractor?: RealTraceExtractor;
+  routePrefix?: string; schemaVersion?: RealDatasetCatalog["schemaVersion"] } = {}) {
+  if (!/^[a-z0-9-]+$/.test(routePrefix)) throw new Error("invalid_route_prefix");
   const datasetRefs = new Map<string, DatasetRef>();
   const episodeRefs = new Map<string, { ref: DatasetRef; entry: RealEpisodeEntry }>();
   const mediaRefs = new Map<string, MediaRef>();
@@ -180,14 +192,31 @@ export function createRealDatasetReader({
         const physicalMetadataDir = await resolveMetadata(physicalRoot, metadataDir);
         const physicalInfoPath = await resolveMetadata(physicalRoot, infoPath);
         if (!within(physicalMetadataDir, path.dirname(physicalInfoPath))) throw new Error("metadata_info_mismatch");
-        const bytes = await (await import("node:fs/promises")).readFile(physicalInfoPath);
+        const bytes = await readFile(physicalInfoPath);
         const info = JSON.parse(bytes.toString("utf8")) as Json;
         const relative = path.relative(physicalRoot, path.dirname(physicalMetadataDir));
-        const id = digest(`real-dataset:${spec.id}:${relative}`);
+        const id = digest(`${routePrefix}-dataset:${spec.id}:${relative}`);
         const datasetRoot = path.dirname(physicalMetadataDir);
-        const ref = summaryFrom(info, { ...spec, root: datasetRoot }, id, name, format, physicalInfoPath, physicalMetadataDir, digest(bytes));
+        const displayName = spec.label && !relative ? spec.label : name;
+        const ref = summaryFrom(info, { ...spec, root: datasetRoot }, id, displayName, format, physicalInfoPath, physicalMetadataDir, digest(bytes));
+        ref.relativePath = relative || ".";
         found.push(ref);
       } catch { /* malformed entries are reported by the catalog as unavailable only when no valid entries exist */ }
+    }
+    if (spec.indexFile) {
+      if (!safeName(spec.indexFile)) return [];
+      try {
+        const indexPath = await resolveMetadata(await realpath(root), path.join(root, spec.indexFile));
+        const index = object(JSON.parse((await readFile(indexPath)).toString("utf8")));
+        const groups = Array.isArray(index.groups) ? index.groups : [];
+        for (const item of groups) {
+          const relative = text(object(item).path);
+          if (!relative || !safeName(relative)) continue;
+          const metadataDir = path.join(root, relative, "meta");
+          await add(path.join(metadataDir, "info.json"), metadataDir, "lerobot-v3", relative.split("/").join(" · "));
+        }
+        return found;
+      } catch { return []; }
     }
     if (spec.kind === "ego") {
       const children = (await readdir(root, { withFileTypes: true })).filter(item => item.isDirectory()).sort((a,b) => natural(a.name,b.name));
@@ -205,9 +234,11 @@ export function createRealDatasetReader({
         if (child.name.startsWith(".") || child.name.startsWith("_")) continue;
         const candidate = path.join(dir, child.name);
         if (child.isDirectory()) {
-          if (child.name === "meta" && path.basename(dir) === "lerobot_RoboMIND") {
+          if (child.name === "meta") {
             const infoPath = path.join(candidate, "info.json");
-            try { await stat(infoPath); await add(infoPath, candidate, "lerobot-v3", path.basename(path.dirname(path.dirname(dir)))); } catch { /* skip */ }
+            const relative = path.relative(root, dir);
+            const name = relative ? relative.split(path.sep).join(" · ") : (spec.label ?? spec.id);
+            try { await stat(infoPath); await add(infoPath, candidate, "lerobot-v3", name); } catch { await walk(candidate, depth + 1); }
           } else await walk(candidate, depth + 1);
         }
       }
@@ -258,7 +289,7 @@ export function createRealDatasetReader({
     datasetRefs.clear(); episodeRefs.clear(); for (const ref of refs) datasetRefs.set(ref.id, ref);
     const datasets: RealDatasetSummary[] = refs.map(publicSummary);
     const version = digest(JSON.stringify(datasets));
-    const catalog: RealDatasetCatalog = { schemaVersion: "roboexam.real-datasets.v1", version, scannedAt: new Date().toISOString(), refreshSeconds: refreshMs / 1000, datasets, warnings: [...mountWarnings] };
+    const catalog: RealDatasetCatalog = { schemaVersion, version, scannedAt: new Date().toISOString(), refreshSeconds: refreshMs / 1000, datasets, warnings: [...mountWarnings] };
     catalogSnapshot = catalog; expires = Date.now() + refreshMs; return catalog;
   }
   async function catalog(force = false) {
@@ -284,7 +315,7 @@ export function createRealDatasetReader({
         ? Math.max(...windows.map(window => (window.end as number) - window.start))
         : (ref.fps > 0 ? frames / ref.fps : 0);
       const tasks = Array.isArray(row.tasks) ? row.tasks : [];
-      return { id: digest(`real-episode:${ref.id}:${index}`), index, name: `episode_${String(index).padStart(6, "0")}`, frames: Math.max(0, frames), durationSeconds: Number.isFinite(duration) && duration > 0 ? duration : 0,
+      return { id: digest(`${routePrefix}-episode:${ref.id}:${index}`), index, name: `episode_${String(index).padStart(6, "0")}`, frames: Math.max(0, frames), durationSeconds: Number.isFinite(duration) && duration > 0 ? duration : 0,
         instruction: text(tasks[0]) ?? "未记录 instruction", originalEpisodeId: text(row.platform_episode_id) };
     });
   }
@@ -320,7 +351,7 @@ export function createRealDatasetReader({
         episodeIndex: entry.index, manifestSha256, bindingSha256, sourceFrames: entry.frames, durationSeconds,
       };
       traceRefs.set(bindingSha256, { physical, root: ref.root, bytes: info.size, identity, input });
-      return { url: `/api/real-datasets-trace?id=${bindingSha256}`, bindingSha256, manifestSha256 } as const;
+      return { url: `/api/${routePrefix}-trace?id=${bindingSha256}`, bindingSha256, manifestSha256 } as const;
     } catch {
       return { unavailable: "trajectory_missing" } as const;
     }
@@ -340,10 +371,10 @@ export function createRealDatasetReader({
           const physical = await resolve(ref.root, video.relative); const info = await stat(physical);
           if (!info.isFile() || info.size <= 0) throw new Error("not_file");
           const bytes = info.size; const identity = [info.dev, info.ino, info.size, info.mtimeMs, info.ctimeMs].join(":");
-          const sha = digest(`real-media:${ref.id}:${entry.index}:${camera}:${video.relative}`);
+          const sha = digest(`${routePrefix}-media:${ref.id}:${entry.index}:${camera}:${video.relative}`);
           mediaRefs.set(sha, { physical, root: ref.root, bytes, identity, sha256: sha });
           const end = video.end ?? (video.start + entry.durationSeconds);
-          media.push({ id: sha, camera, label: cameraLabel(camera), url: `/api/real-datasets-media?id=${sha}`, startSeconds: video.start, endSeconds: end, durationSeconds: Math.max(0, end - video.start) });
+          media.push({ id: sha, camera, label: cameraLabel(camera), url: `/api/${routePrefix}-media?id=${sha}`, startSeconds: video.start, endSeconds: end, durationSeconds: Math.max(0, end - video.start) });
         } catch { warnings.push(`${camera}: file unavailable or outside approved root`); }
       }
       const duration = media.length ? Math.min(...media.map(item => item.durationSeconds)) : entry.durationSeconds;

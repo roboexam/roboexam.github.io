@@ -2,19 +2,14 @@
 
 import { Database, Layers3, Search, Video } from 'lucide-react';
 import { useState } from 'react';
-import { curatedDataset } from '../data/curated-dataset';
 import { matchesScenario, scenarioPlan, scenarioTags, type ScenarioTag } from '../data/scenario-plan';
-import { DatasetExplorer } from './dataset-explorer';
-import { RawDataBrowser } from './raw-review-board';
-import { RealDatasetBrowser } from './real-dataset-browser';
+import { RealDatasetBrowser, SimulationDatasetBrowser } from './real-dataset-browser';
 import { useRawCatalog } from './use-raw-catalog';
 import { ScenarioTags } from './scenario-tags';
 
 export function ScenarioBrowser() {
   const raw = useRawCatalog();
   const [view, setView] = useState<'plan' | 'episodes' | 'real'>('episodes');
-  const [simulationView, setSimulationView] = useState<'live' | 'evaluation'>('live');
-  const [episodeTask, setEpisodeTask] = useState<string | undefined>();
   const [query, setQuery] = useState('');
   const [tags, setTags] = useState<ScenarioTag[]>([]);
   const [physical, setPhysical] = useState('all');
@@ -24,13 +19,12 @@ export function ScenarioBrowser() {
   const physicalSettings = [...new Set(scenarioPlan.map(scene => scene.physical))];
   const visible = scenarioPlan.filter(scene => matchesScenario(scene,tags,scope,query,physical) && (inventory === 'all' || (inventory === 'local' ? catalog.has(scene.id) : !catalog.has(scene.id))));
   const liveScenarios = scenarioPlan.filter(scene => catalog.has(scene.id)).length;
-  const evaluationView = view === 'episodes' && simulationView === 'evaluation';
   function reset() { setQuery(''); setTags([]); setPhysical('all'); setScope('all'); setInventory('all'); }
   return <div className="scenarioBrowser">
     <nav className="datasetSourceNav" aria-label="Dataset source">
       <button type="button" className={view === 'episodes' ? 'active' : ''} aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>
         <span className="datasetSourceIcon"><Database size={17}/></span><span><strong>Simulation</strong><small>Trajectories &amp; actions</small></span>
-        <b>{raw.catalog ? `${raw.catalog.tasks.length} / ${raw.catalog.count.toLocaleString()}` : '—'}</b>
+        <b>2 sets</b>
       </button>
       <button type="button" className={view === 'real' ? 'active' : ''} aria-pressed={view === 'real'} onClick={() => setView('real')}>
         <span className="datasetSourceIcon"><Video size={17}/></span><span><strong>Real &amp; Ego</strong><small>Camera + action replay</small></span><b>2 sources</b>
@@ -41,18 +35,10 @@ export function ScenarioBrowser() {
     </nav>
     <div className="datasetSourceContext">
       <div><span>{view === 'episodes' ? 'SIMULATION DATA' : view === 'real' ? 'PHYSICAL DATA' : 'BENCHMARK COVERAGE'}</span>
-        <h2>{evaluationView ? 'Evaluation episodes' : view === 'episodes' ? 'Task trajectories' : view === 'real' ? 'Real & ego episodes' : 'Scenario plan'}</h2></div>
-      <p>{evaluationView ? 'Inspect ID, OOD, and recovery episodes with their recorded task instructions.' : view === 'episodes' ? 'Inspect camera streams, task folders and aligned robot actions.' : view === 'real' ? 'Replay synchronized robot or ego cameras with recorded actions.' : 'Review live coverage and proposed benchmark scenarios.'}</p>
+        <h2>{view === 'episodes' ? 'Training & evaluation episodes' : view === 'real' ? 'Real & ego episodes' : 'Scenario plan'}</h2></div>
+      <p>{view === 'episodes' ? 'Browse clean2400 and the 600-episode evaluation set with instructions, synchronized cameras, and aligned actions.' : view === 'real' ? 'Replay synchronized robot or ego cameras with recorded actions.' : 'Review live coverage and proposed benchmark scenarios.'}</p>
     </div>
-    {view === 'real' ? <RealDatasetBrowser embedded/> : view === 'episodes' ? <div className="simulationDatasetWorkspace">
-      <div className="datasetSimulationSwitch reportSwitch" aria-label="Simulation dataset collection">
-        <button type="button" aria-pressed={simulationView === 'live'} onClick={() => setSimulationView('live')}>Live records</button>
-        <button type="button" aria-pressed={simulationView === 'evaluation'} onClick={() => setSimulationView('evaluation')}>Evaluation set · {curatedDataset.episodeCount.toLocaleString()}</button>
-      </div>
-      {simulationView === 'evaluation'
-        ? <DatasetExplorer key={episodeTask ?? 'evaluation-default'} initialTaskId={episodeTask}/>
-        : <RawDataBrowser key={episodeTask ?? 'default'} state={raw} initialTask={episodeTask} embedded/>}
-    </div> : <>
+    {view === 'real' ? <RealDatasetBrowser embedded/> : view === 'episodes' ? <SimulationDatasetBrowser embedded/> : <>
       <section className="datasetSummaryStrip" aria-label="Scenario status summary">
         <div><strong>{scenarioPlan.length}</strong><span>Total scenarios</span></div><div><strong>{liveScenarios}</strong><span>Live folders</span></div>
         <div className="datasetSummaryAction"><span role="status">{raw.error || (raw.catalog ? `扫描于 ${new Date(raw.catalog.scannedAt).toLocaleString()}` : '正在扫描公盘目录…')}</span><button type="button" disabled={raw.loading} onClick={raw.refresh}>{raw.loading ? '扫描中…' : '刷新'}</button></div>
@@ -69,7 +55,7 @@ export function ScenarioBrowser() {
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
       <div className="scenarioTableWrap" tabIndex={0} role="region" aria-label="Planned scenarios, horizontally scrollable"><table className="scenarioTable"><thead><tr><th scope="col">Scenario</th><th scope="col">Tags</th><th scope="col">Review focus</th><th scope="col">Episodes</th></tr></thead><tbody>{visible.map(scene => {
         const task = catalog.get(scene.id);
-        return <tr key={scene.id} data-scenario-id={scene.id}><th scope="row">{scene.name}</th><td><ScenarioTags scene={scene}/></td><td>{scene.note}{scene.scoped.length > 0 && <details><summary>Tag conditions</summary>{scene.scoped.map(t => <p key={t.tag}><b>{t.tag}{t.scope === 'candidate' ? '?' : '*'}</b> {t.reason}</p>)}</details>}</td><td>{task && !raw.error ? <button type="button" onClick={() => {setEpisodeTask(scene.id);setSimulationView('live');setView('episodes');}} aria-label={`Browse ${task.name} episodes`}>{task.count}</button> : '—'}</td></tr>;
+        return <tr key={scene.id} data-scenario-id={scene.id}><th scope="row">{scene.name}</th><td><ScenarioTags scene={scene}/></td><td>{scene.note}{scene.scoped.length > 0 && <details><summary>Tag conditions</summary>{scene.scoped.map(t => <p key={t.tag}><b>{t.tag}{t.scope === 'candidate' ? '?' : '*'}</b> {t.reason}</p>)}</details>}</td><td>{task && !raw.error ? task.count : '—'}</td></tr>;
       })}</tbody></table>{visible.length === 0 && <div className="emptyMetrics"><p>No scenarios match these filters.</p><button type="button" onClick={reset}>Clear filters</button></div>}</div>
       <details className="tagGuide"><summary>Tag rules & evaluation boundaries</summary><dl>{Object.entries(scenarioTags).map(([code,{label,rule}]) => <div key={code}><dt>{code} · {label}</dt><dd>{rule}</dd></div>)}</dl><p>Multiple tags describe overlapping task requirements. Count each task once for overall coverage; do not add tag-wise scores into a total. ID, visual OOD, semantic OOD, behavioral OOD, and recovery belong to evaluation cohorts.</p><p>History candidates require a current-observation baseline and a full-history comparison under the same task contract. Freeze seeds, initial states, demonstration playback, checker versions, and recovery handover states before claiming reproducibility.</p><p>Source: RoboExam proposal · Simulation batch plan V1. Physical settings follow the task-scene axes v2. Review notes record open checks, not completed validations.</p></details>
     </>}

@@ -74,6 +74,31 @@ class RealActionTraceTests(unittest.TestCase):
         self.assertEqual(trace["endEffectorPosition"]["right"][0], [4, 5, 6])
         self.assertIsNone(trace["jointPosition"]["left"])
 
+    def test_simulation_v3_replays_joint_state_and_end_effector_actions(self):
+        rows = 100
+        self.request.update(datasetKind="robot", episodeIndex=5, sourceFrames=rows,
+                            durationSeconds=4)
+        values = {
+            "episode_index": [5] * rows,
+            "frame_index": list(range(rows)),
+            "timestamp": [index / 25 for index in range(rows)],
+            "observation.joint": [[float(index + offset) for offset in range(14)]
+                                  for index in range(rows)],
+            "observation.ee16": [[float(index + offset) for offset in range(16)]
+                                 for index in range(rows)],
+            "action.ee16": [[float(index + offset) for offset in range(16)]
+                            for index in range(rows)],
+            "action_valid": [True] * (rows - 1) + [False],
+        }
+        pq.write_table(pa.table(values), self.path)
+        trace = self.extract()
+        self.assertEqual(trace["jointPosition"]["left"][0], [0, 1, 2, 3, 4, 5])
+        self.assertEqual(trace["jointPosition"]["right"][0], [7, 8, 9, 10, 11, 12])
+        self.assertEqual(trace["endEffectorPosition"]["right"][0], [8, 9, 10])
+        self.assertEqual(trace["action"]["labels"], ["X", "Y", "Z", "Qw", "Qx", "Qy", "Qz", "Grip"])
+        self.assertEqual(trace["action"]["right"][0], [8, 9, 10, 11, 12, 13, 14, 15])
+        self.assertLess(trace["action"]["t"][-1], trace["t"][-1])
+
     def test_episode_identity_and_frame_count_are_enforced(self):
         self.write_v3()
         self.request["episodeIndex"] = 9

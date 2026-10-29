@@ -107,6 +107,63 @@ test("discovers both data formats with stable opaque identities and no absolute 
   assert.equal(await reader.episode("unknown"), null);
 });
 
+test("generic v3 roots support simulation cameras, grouping and isolated routes", async t => {
+  const root = await mkdtemp(path.join(tmpdir(), "simulation-datasets-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const training = await dataset(root, "clean2400", "v3.0", 2);
+  const infoPath = path.join(training, "meta/info.json");
+  const info = JSON.parse(await (await import("node:fs/promises")).readFile(infoPath, "utf8"));
+  info.features = { [videoKey]: { dtype: "video", shape: [480, 640, 3] } };
+  await writeFile(infoPath, JSON.stringify(info));
+  await media(training, `videos/${videoKey}/chunk-000/file-000.mp4`);
+  const rows = [
+    { episode_index: 0, length: 30, tasks: ["Pick the red object"],
+      "data/chunk_index": 0, "data/file_index": 0,
+      [`videos/${videoKey}/chunk_index`]: 0, [`videos/${videoKey}/file_index`]: 0,
+      [`videos/${videoKey}/from_timestamp`]: 0, [`videos/${videoKey}/to_timestamp`]: 1 },
+    { episode_index: 1, length: 30, tasks: ["Pick the blue object"],
+      "data/chunk_index": 0, "data/file_index": 0,
+      [`videos/${videoKey}/chunk_index`]: 0, [`videos/${videoKey}/file_index`]: 0,
+      [`videos/${videoKey}/from_timestamp`]: 1, [`videos/${videoKey}/to_timestamp`]: 2 },
+  ];
+  const reader = createRealDatasetReader({
+    roots: [{ id: "training", kind: "robot", root: training, label: "Training set · clean2400", sourceGroup: "training" }],
+    routePrefix: "simulation-datasets",
+    schemaVersion: "roboexam.simulation-datasets.v1",
+    readMetadata: async () => ({ rows }),
+  });
+  const catalog = await reader.catalog();
+  assert.equal(catalog.schemaVersion, "roboexam.simulation-datasets.v1");
+  assert.equal(catalog.datasets.length, 1);
+  assert.equal(catalog.datasets[0].name, "Training set · clean2400");
+  assert.equal(catalog.datasets[0].sourceGroup, "training");
+  assert.equal(catalog.datasets[0].relativePath, ".");
+  assert.deepEqual(catalog.datasets[0].cameras.map(camera => camera.key), [videoKey]);
+  const entries = await reader.dataset(catalog.datasets[0].id);
+  assert.deepEqual(entries.episodes.map(row => row.instruction), ["Pick the red object", "Pick the blue object"]);
+  const episode = await reader.episode(entries.episodes[0].id);
+  assert.match(episode.media[0].url, /^\/api\/simulation-datasets-media\?id=[a-f0-9]{64}$/);
+  assert.ok(!JSON.stringify({ catalog, entries, episode }).includes(root));
+});
+
+test("an evaluation index allowlists only declared dataset leaves", async t => {
+  const root = await mkdtemp(path.join(tmpdir(), "simulation-evaluation-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  await dataset(root, "scene_a/id", "v3.0", 5);
+  await dataset(root, "unlisted/id", "v3.0", 5);
+  await writeFile(path.join(root, "EVALUATION_INDEX.json"), JSON.stringify({
+    groups: [{ path: "scene_a/id" }],
+  }));
+  const reader = createRealDatasetReader({
+    roots: [{ id: "evaluation", kind: "robot", root, sourceGroup: "evaluation", indexFile: "EVALUATION_INDEX.json" }],
+    readMetadata: async () => ({ rows: [] }),
+  });
+  const catalog = await reader.catalog();
+  assert.equal(catalog.datasets.length, 1);
+  assert.equal(catalog.datasets[0].relativePath, "scene_a/id");
+  assert.equal(catalog.datasets[0].episodeCount, 5);
+});
+
 test("v3 episodes preserve exact chunk windows and keep adjacent episodes distinct", async t => {
   const { reader } = await fixture(t);
   const summary = (await reader.catalog()).datasets.find(row => row.kind === "robot");
@@ -268,4 +325,9 @@ test("catalog API rejects unknown keys, paths, duplicate IDs and conflicting sel
   for (const query of ["?path=/etc/passwd", "?id=..", `?id=${id}&id=${id}`])
     assert.equal((await traceGET(new Request("http://localhost/api/real-datasets-trace" + query))).status, 400, query);
   assert.equal((await traceGET(new Request("http://localhost/api/real-datasets-trace?id=" + id))).status, 404);
+  const { GET: simulationGET } = await import("../app/api/simulation-datasets/route.ts");
+  const { GET: simulationTraceGET } = await import("../app/api/simulation-datasets-trace/route.ts");
+  assert.equal((await simulationGET(new Request("http://localhost/api/simulation-datasets?path=/etc/passwd"))).status, 400);
+  assert.equal((await simulationGET(new Request("http://localhost/api/simulation-datasets?dataset=../private"))).status, 400);
+  assert.equal((await simulationTraceGET(new Request("http://localhost/api/simulation-datasets-trace?path=/etc/passwd"))).status, 400);
 });
