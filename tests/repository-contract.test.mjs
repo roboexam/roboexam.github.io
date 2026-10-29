@@ -58,10 +58,11 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   assert.doesNotMatch(dashboard, /One robot|Head \+ cameras|Build history|IterationCounter/);
   const scenarios = await readFile(new URL("app/components/scenario-browser.tsx", root), "utf8");
   const simulationDatasets = await readFile(new URL("app/data/simulation-datasets.server.ts", root), "utf8");
-  assert.match(scenarios, /useRawCatalog/);
   assert.match(scenarios, /<SimulationDatasetBrowser/);
+  assert.match(scenarios, /<RealDatasetBrowser/);
   assert.match(scenarios, /Task-aligned simulation episodes/);
   assert.match(scenarios, /100 Training episodes/);
+  assert.doesNotMatch(scenarios, /Coverage|Scenario inventory|useRawCatalog/);
   assert.doesNotMatch(scenarios, /<RawDataBrowser|curatedDataset|<DatasetExplorer/);
   assert.match(simulationDatasets, /policy_mix24_clean2400_sdk_ee20_25hz_instruction_20261029_v2/);
   assert.match(simulationDatasets, /evaluation24_sdk_ee20_25hz_episode_mp4_instruction_20261029_v3/);
@@ -129,6 +130,7 @@ test("keeps setting-resolved leaderboards and dataset OOD evidence wired", async
   assert.doesNotMatch(leaderboard, /EmbodimentRanking/);
   assert.doesNotMatch(leaderboard, /Macro view|equal scene weighting|missing scenes stay missing/);
   assert.doesNotMatch(leaderboard, /Scope & protocol|Scores are macro views|Score \+ validated-scene coverage/);
+  assert.doesNotMatch(leaderboard, /result\.coverage|Coverage/);
   assert.doesNotMatch(leaderboard, /BaselineExplorer|Recorded model evidence|View rollouts/);
   assert.doesNotMatch(scenarios, /OOD validation|Model rollouts/);
   for (const regime of ["id", "visual", "semantic", "behavioral", "recovery"]) {

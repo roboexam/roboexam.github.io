@@ -12,7 +12,6 @@ import { BaselineRunPlan } from "./baseline-run-plan";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
 type EvalSetting = "id" | "visual" | "semantic" | "behavioral" | "recovery";
-type SettingResult = ReportResult & { coverage: string };
 
 const settings: { id: EvalSetting; short: string; label: string }[] = [
   { id: "id", short: "ID", label: "In-distribution" },
@@ -71,8 +70,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       }),
     ]),
   ) as Record<string, OverallScorecard>;
-  function resultFor(modelId: string, metricId: string, setting: EvalSetting): SettingResult {
-    const denominator = selectedScenes.length;
+  function resultFor(modelId: string, metricId: string, setting: EvalSetting): ReportResult {
     if (setting !== "id" || !sourceSelected) {
       const label = settings.find((item) => item.id === setting)!.label;
       return {
@@ -82,11 +80,9 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
           : `No ${label} result is connected to this metric yet.`,
         status: "Pending",
         available: false,
-        coverage: `0/${denominator}`,
       };
     }
-    const result = readResult({ trackId, mode, modelId, metricId, ...(trackId === "T3" ? {taskId: sceneId} : {}) });
-    return { ...result, coverage: `${result.available ? 1 : 0}/${denominator}` };
+    return readResult({ trackId, mode, modelId, metricId, ...(trackId === "T3" ? {taskId: sceneId} : {}) });
   }
 
   const visible = entries.filter(({ metric, facets }) => {
@@ -258,10 +254,9 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
                 <button type="button" className={`trackMetricCell ${result.available ? "" : "pending"}`}
                   onClick={() => selectMetric(metric.id, model.id, setting.id)}
                   aria-label={`${model.id}, ${metric.label}, ${setting.label}: ${result.available ? result.primary : result.status}`}
-                  title={`${result.detail} Coverage ${result.coverage} selected scenes.${result.version ? ` Version ${result.version}.` : ""}${result.protocol ? ` Protocol ${result.protocol}.` : ""}`}>
-                  <strong>{result.primary}</strong><small>{result.available
-                    ? `${result.coverage}${result.sampleCount != null ? ` · N=${result.sampleCount}${result.cohort ? ` · ${result.cohort}` : ""}` : ""}`
-                    : result.coverage}</small>
+                  title={`${result.detail}${result.version ? ` Version ${result.version}.` : ""}${result.protocol ? ` Protocol ${result.protocol}.` : ""}`}>
+                  <strong>{result.primary}</strong>{result.available && result.sampleCount != null &&
+                    <small>N={result.sampleCount}{result.cohort ? ` · ${result.cohort}` : ""}</small>}
                 </button>
               </td>;
             }))}
