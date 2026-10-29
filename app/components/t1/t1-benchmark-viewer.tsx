@@ -1,12 +1,20 @@
 import type { T1BenchmarkEpisode } from "../../data/t1-benchmark-results";
 import { Play } from "lucide-react";
+import type { Ref, SyntheticEvent } from "react";
 import { benchmarkScoreText } from "./t1-benchmark-table";
+
+export type T1BenchmarkPlayback = {
+  currentTime: number;
+  duration: number;
+};
 
 type Props = {
   episode: T1BenchmarkEpisode;
   modelLabel: string;
   taskLabel: string;
   resultVersion: string;
+  videoRef?: Ref<HTMLVideoElement>;
+  onPlaybackChange?: (playback: T1BenchmarkPlayback) => void;
 };
 
 export function T1BenchmarkSceneGallery({ scenes, selectedLayoutId, onSelect }: {
@@ -43,17 +51,25 @@ function elapsedText(value: number | null): string {
   return minutes < 60 ? `${minutes} min ${seconds % 60} s` : `${Math.floor(minutes / 60)} h ${minutes % 60} min`;
 }
 
-export function T1BenchmarkViewer({ episode, modelLabel, taskLabel, resultVersion }: Props) {
+export function T1BenchmarkViewer({ episode, modelLabel, taskLabel, resultVersion, videoRef, onPlaybackChange }: Props) {
   const { execution, video } = episode;
   const videoLabel = video?.hasMotion === false ? "Saved observation" : "Saved rollout";
   const identity = `${episode.modelId}:${episode.taskId}:${episode.layoutId}:${resultVersion}:${episode.attempt}:${video?.id ?? episode.id}`;
   const outcome = execution.success === true ? "Success" : execution.success === false ? "Failure" : "—";
+  const reportPlayback = (event: SyntheticEvent<HTMLVideoElement>) => {
+    const player = event.currentTarget;
+    onPlaybackChange?.({
+      currentTime: Number.isFinite(player.currentTime) ? player.currentTime : 0,
+      duration: Number.isFinite(player.duration) ? player.duration : 0,
+    });
+  };
   return <div className={`t1bEpisode${video ? "" : " t1bEpisodeFactsOnly"}`} data-episode-id={episode.id}
     data-model-id={episode.modelId} data-task-id={episode.taskId} data-layout-id={episode.layoutId}
     data-result-version={resultVersion} data-attempt={episode.attempt} data-video-id={video?.id}>
     {video && <div className="t1bPlayer">
       <div className="t1bPlayerBar"><span>{videoLabel}</span><span>Head · Left wrist · Right wrist</span></div>
-      <video key={identity} src={video.url} controls playsInline preload="metadata"
+      <video key={identity} ref={videoRef} src={video.url} controls playsInline preload="metadata"
+        onDurationChange={reportPlayback} onLoadedMetadata={reportPlayback} onSeeked={reportPlayback} onTimeUpdate={reportPlayback}
         aria-label={`${modelLabel}, ${taskLabel}, scene ${episode.layoutId}, ${video?.hasMotion === false ? "saved observation" : "original rollout video"}`}>
         <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>
         Your browser does not support video playback.

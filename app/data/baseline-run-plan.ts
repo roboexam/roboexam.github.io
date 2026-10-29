@@ -29,13 +29,13 @@ export const baselineRunPlan: BaselineRun[] = [
   },
   {
     id: "E2", track: "T2", baseline: "CtrlWorld",
-    trainingJob: "job-nj6uhd8sy6zk", trainingCards: "16", evaluationJob: "待提交", evaluationCards: "32",
-    owner: "yichenguo", status: "stopped", note: "train22；2026-10-28 AIHC 读回 ManualTermination；两个 8-card replica。",
+    trainingJob: "job-9ttd4kz1tgyk", trainingCards: "16", evaluationJob: "待提交", evaluationCards: "32",
+    owner: "weixiaobao", status: "failed", note: "train22；2026-10-29 最新 clean2400 retry 读回 Failed；当前无评测任务。",
   },
   {
     id: "E3", track: "T2", baseline: "Cosmos3-Nano ACWM",
-    trainingJob: "job-n4rv5tka9dyq", trainingCards: "16", evaluationJob: "待提交", evaluationCards: "32",
-    owner: "weixiaobao", status: "stopped", note: "train22；2026-10-28 AIHC 读回 ManualTermination；AIHC_JOB_KIND=training。",
+    trainingJob: "job-fbqeyxxqukdj", trainingCards: "16", evaluationJob: "job-k5fnlh8pfvrv", evaluationCards: "8",
+    owner: "weixiaobao", status: "running", note: "train22；训练 ManualTermination；2026-10-29 recursive evaluation 正在运行。",
   },
   {
     id: "E4", track: "T2", baseline: "Pelican-Unify 1.0（ACWM）",
@@ -60,7 +60,7 @@ export const baselineRunPlan: BaselineRun[] = [
   {
     id: "E7", track: "T3", baseline: "Pi0.5 / XPolicyLab",
     trainingJob: "job-gw5edw7r0hng", trainingCards: "8", evaluationJob: "job-vodyg0t82m89", evaluationCards: "4×A800",
-    owner: "weixiaobao", status: "running", note: "train22；2026-10-28 AIHC 读回训练 Running；Isaac pilot 已 Succeeded（当前 spp8），需按 TAA+64 spp 正式重跑。",
+    owner: "weixiaobao", status: "running", note: "train22；2026-10-29 训练 Running；Isaac pilot 已 Succeeded（当前 spp8），需按 TAA+64 spp 正式重跑。",
   },
   {
     id: "E8", track: "T3", baseline: "FastWAM",
@@ -70,32 +70,32 @@ export const baselineRunPlan: BaselineRun[] = [
   {
     id: "E9", track: "T3", baseline: "OpenWAM",
     trainingJob: "job-o7g280dz73xi", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "weixiaobao", status: "running", note: "train22；2026-10-28 AIHC 读回 Running；clean24 训练。",
+    owner: "weixiaobao", status: "succeeded", note: "train22；2026-10-29 AIHC 读回 Succeeded；clean24 训练已完成。",
   },
   {
     id: "E10", track: "T3", baseline: "HyVLA",
     trainingJob: "job-7xprj38hacsl", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "weixiaobao", status: "running", note: "train22；2026-10-28 AIHC 读回 Running；PRETRAIN 和真机协议待验。",
+    owner: "weixiaobao", status: "running", note: "train22；2026-10-29 AIHC 读回 Running；PRETRAIN 和真机协议待验。",
   },
   {
     id: "E11", track: "T3", baseline: "G05",
     trainingJob: "job-r2osj4szcsbc", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "weixiaobao", status: "running", note: "train22；2026-10-28 AIHC 读回 Running；仅 RoboDojo 仿真训练，real 为 evaluation-only。",
+    owner: "weixiaobao", status: "running", note: "train22；2026-10-29 AIHC 读回 Running；仅 RoboDojo 仿真训练，real 为 evaluation-only。",
   },
   {
     id: "E12", track: "T3", baseline: "DM0.5 / OpenDM",
     trainingJob: "job-z8vn3y7oemyq", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "weixiaobao", status: "running", note: "train22；2026-10-28 AIHC 读回 Running；仿真 arx_x5，默认 14D joint。",
+    owner: "weixiaobao", status: "running", note: "train22；2026-10-29 AIHC 读回 Running；仿真 arx_x5，默认 14D joint。",
   },
   {
     id: "E13", track: "T3", baseline: "LingBot-VA2.0",
-    trainingJob: "job-lp44kdpv85kg", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "yichenguo", status: "stopped", note: "train22；retry1 于 2026-10-28 读回 ManualTermination；旧任务因 stale manifest gate 失败。",
+    trainingJob: "job-zskd6wiie2qq", trainingCards: "8", evaluationJob: "job-ac055p0mlvxx", evaluationCards: "8",
+    owner: "weixiaobao", status: "stopped", note: "train22；最新训练 Failed；2026-10-29 recursive evaluation 读回 ManualTermination。",
   },
   {
     id: "E14", track: "T3", baseline: "XVLA",
     trainingJob: "job-onz1i7m4ufy1", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "8",
-    owner: "weixiaobao", status: "succeeded", note: "train22；2026-10-28 AIHC 读回 Succeeded；需要继续核验产物与 X-VLA-Pt base provenance。",
+    owner: "weixiaobao", status: "succeeded", note: "train22；2026-10-29 AIHC 读回 Succeeded；需要继续核验产物与 X-VLA-Pt base provenance。",
   },
   {
     id: "E15", track: "T3", baseline: "AHA-WAM（新增）",
@@ -109,13 +109,13 @@ export const baselineRunPlan: BaselineRun[] = [
   },
   {
     id: "E17", track: "T4", baseline: "Pi0.5 / XPolicyLab",
-    trainingJob: "待提交（T4 独立）", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
-    owner: "待定", status: "planned", note: "真机训练不得复用 E7 checkpoint。",
+    trainingJob: "job-vil9lsl4mw7p", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
+    owner: "yichenguo", status: "running", note: "2026-10-29 真机训练正在合并后的 8-card 节点运行；不复用 E7 checkpoint。",
   },
   {
     id: "E18", track: "T4", baseline: "FastWAM",
-    trainingJob: "待提交（T4 独立）", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
-    owner: "待定", status: "planned", note: "独立 base 初始化；真实数据和 action adapter 待验。",
+    trainingJob: "job-9hgxrjabeyli", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
+    owner: "yichenguo", status: "running", note: "2026-10-29 真机 real3 独立训练正在 train22 运行；真实 action adapter 待验。",
   },
   {
     id: "E19", track: "T4", baseline: "OpenWAM",
@@ -124,8 +124,8 @@ export const baselineRunPlan: BaselineRun[] = [
   },
   {
     id: "E20", track: "T4", baseline: "HyVLA",
-    trainingJob: "待提交（T4 独立）", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
-    owner: "待定", status: "planned", note: "独立训练；PRETRAIN、标定和真机数据待验。",
+    trainingJob: "job-hrg119uxrex9", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
+    owner: "yichenguo", status: "running", note: "2026-10-29 真机 real3 独立训练正在 train22 运行；PRETRAIN 与标定待验。",
   },
   {
     id: "E21", track: "T4", baseline: "LingBot-VA2.0",

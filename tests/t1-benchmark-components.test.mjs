@@ -283,6 +283,46 @@ test("process details distinguish trigger/context steps and unreached protocol z
   assert.doesNotMatch(unreached, /Model first answer|<pre|Native trigger step/);
 });
 
+test("process checkpoints map exact native steps to rollout time", () => {
+  const { checkpointTimeSeconds } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const detail = vqaDetail();
+  const selected = { ...fixture.episodes[0], execution: { ...fixture.episodes[0].execution, steps: 249 } };
+  assert.equal(checkpointTimeSeconds(detail.checkpoints[0], selected), 158 / 25);
+  assert.equal(checkpointTimeSeconds(detail.checkpoints[1], selected), null);
+  const noFps = { ...selected, video: { ...selected.video, fps: null } };
+  assert.equal(checkpointTimeSeconds(detail.checkpoints[0], noFps, 10), 10 * 158 / 249);
+});
+
+test("video-synchronized process VQA shows only the checkpoint reached by playback", () => {
+  const { T1BenchmarkVqaEvidence } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const detail = vqaDetail();
+  detail.checkpoints.splice(1, 0, {
+    ...detail.checkpoints[0],
+    slotId: "task-a/100000/KEY_TURNED",
+    stageId: "KEY_TURNED",
+    questionId: "p-future",
+    question: "Future checkpoint question must stay hidden.",
+    response: '{"completed":["key turned"]}',
+    triggerStep: 220,
+    returnStep: 225,
+  });
+  const selected = { ...fixture.episodes[0], execution: { ...fixture.episodes[0].execution, steps: 249 } };
+  const props = { detail, episode: selected, playback: { currentTime: 6.4, duration: 10 }, onSeek() {} };
+  const html = renderToStaticMarkup(React.createElement(T1BenchmarkVqaEvidence, props));
+  assert.match(html, /2 answered · 2 reached · 3 planned/);
+  assert.match(html, /Stage 1 · 0:06\.3/);
+  assert.match(html, /aria-current="step"/);
+  assert.match(html, /Current answered checkpoint/);
+  assert.match(html, /What is completed, and what comes next\?/);
+  assert.doesNotMatch(html, /Future checkpoint question must stay hidden/);
+  assert.match(html, /1 planned stage not reached/);
+
+  const future = renderToStaticMarkup(React.createElement(T1BenchmarkVqaEvidence, {
+    ...props, playback: { currentTime: 9, duration: 10 },
+  }));
+  assert.match(future, /Future checkpoint question must stay hidden/);
+});
+
 test("VQA evidence rejects stale versions, other models/scenes and different attempts", () => {
   const { sameVqaEpisode } = loadComponents()(component("t1-benchmark-episode-vqa"));
   const detail = vqaDetail();

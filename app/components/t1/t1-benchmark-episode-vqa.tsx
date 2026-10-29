@@ -3,8 +3,9 @@
 import { useEffect, useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import type { T1BenchmarkEpisode } from "../../data/t1-benchmark-results";
-import type { T1BenchmarkVqaEpisode } from "../../data/t1-benchmark-vqa";
+import type { T1BenchmarkVqaCheckpoint, T1BenchmarkVqaEpisode } from "../../data/t1-benchmark-vqa";
 import { benchmarkScoreText } from "./t1-benchmark-table";
+import type { T1BenchmarkPlayback } from "./t1-benchmark-viewer";
 import { metricDisplayLabel, metricSummary } from "./metric-presentation";
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
   modelLabel: string;
   taskLabel: string;
   resultVersion: string;
+  playback?: T1BenchmarkPlayback;
+  onSeek?: (seconds: number) => void;
 };
 
 const capabilityGroups = [
@@ -51,8 +54,121 @@ function VqaScore({ id, value }: { id: string; value: number | null | undefined 
   </span>;
 }
 
-export function T1BenchmarkVqaEvidence({ detail }: { detail: T1BenchmarkVqaEpisode }) {
+function CheckpointScores({ point }: { point: T1BenchmarkVqaCheckpoint }) {
+  return <span className="t1bVqaCheckpointScores">
+    <span>Task Tracking <VqaScore id="c2" value={point.scores.c2}/></span>
+    <span>Next Action <VqaScore id="c3" value={point.scores.c3}/></span>
+  </span>;
+}
+
+function CheckpointBody({ point }: { point: T1BenchmarkVqaCheckpoint }) {
+  return <div className="t1bVqaAnswerBody">
+    <dl className="t1bVqaAnswerMeta">
+      {point.triggerStep !== null && <div><dt>Native trigger step</dt><dd>{point.triggerStep}</dd></div>}
+      {point.returnStep !== null && <div><dt>Returned context step</dt><dd>{point.returnStep}</dd></div>}
+    </dl>
+    {point.question !== null && <><h5>Question</h5><QuestionText text={point.question}/></>}
+    {point.response !== null && <><h5>Model first answer</h5><ModelAnswer text={point.response}/></>}
+    {point.status === "reached_reference_blocked" && <p className="t1bVqaPolicyNote">Checkpoint reached; public Q&amp;A is unavailable under the registered zero-score policy.</p>}
+  </div>;
+}
+
+export function checkpointTimeSeconds(
+  point: T1BenchmarkVqaCheckpoint,
+  episode: T1BenchmarkEpisode,
+  duration = 0,
+): number | null {
+  if (point.triggerStep === null) return null;
+  const fps = episode.video?.fps;
+  if (typeof fps === "number" && Number.isFinite(fps) && fps > 0) return point.triggerStep / fps;
+  if (duration > 0 && episode.execution.steps > 0) return duration * point.triggerStep / episode.execution.steps;
+  return null;
+}
+
+function checkpointTimeText(seconds: number): string {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds - minutes * 60;
+  return `${minutes}:${remainder.toFixed(1).padStart(4, "0")}`;
+}
+
+function LegacyProcessCheckpoints({ checkpoints }: { checkpoints: T1BenchmarkVqaCheckpoint[] }) {
+  return <div className="t1bVqaQuestionList">{checkpoints.map((point) => {
+    if (point.status === "not_reached") return <div className="t1bVqaUnreached" key={point.slotId} data-vqa-slot-id={point.slotId}>
+      <span className="t1bVqaQuestionTitle"><span>Not reached</span><strong>{stageLabel(point.stageId)}</strong></span><CheckpointScores point={point}/>
+    </div>;
+    return <details className="t1bVqaQuestion t1bVqaCheckpoint" key={point.slotId} data-vqa-slot-id={point.slotId} data-score-origin={point.scoreOrigin}>
+      <summary><span className="t1bVqaQuestionTitle"><span>{point.status === "scored" ? "Answered" : "Checkpoint"}</span><strong>{stageLabel(point.stageId)}</strong></span><CheckpointScores point={point}/><ChevronDown size={16} aria-hidden="true"/></summary>
+      <CheckpointBody point={point}/>
+    </details>;
+  })}</div>;
+}
+
+function SynchronizedProcessCheckpoints({ detail, episode, playback, onSeek }: {
+  detail: T1BenchmarkVqaEpisode;
+  episode: T1BenchmarkEpisode;
+  playback: T1BenchmarkPlayback;
+  onSeek: (seconds: number) => void;
+}) {
+  const timed = detail.checkpoints.flatMap((point) => {
+    const time = checkpointTimeSeconds(point, episode, playback.duration);
+    return time === null ? [] : [{ point, time }];
+  }).sort((left, right) => left.time - right.time);
+  const unreached = detail.checkpoints.filter((point) => point.status === "not_reached");
+  const active = [...timed].reverse().find((item) => item.time <= playback.currentTime + 0.001);
+  const next = timed.find((item) => item.time > playback.currentTime + 0.001);
+  const fps = episode.video?.fps;
+  const nominalDuration = typeof fps === "number" && fps > 0 && episode.execution.steps > 0
+    ? episode.execution.steps / fps
+    : 0;
+  const duration = playback.duration > 0 ? playback.duration : nominalDuration;
+  const progress = duration > 0 ? Math.min(100, Math.max(0, playback.currentTime / duration * 100)) : 0;
+
+  return <div className="t1bVqaSync">
+    {timed.length > 0 ? <>
+      <div className="t1bVqaTimeline" aria-hidden="true">
+        <span className="t1bVqaTimelineRail"><span style={{ width: `${progress}%` }}/></span>
+        {timed.map(({ point, time }, index) => {
+          const position = episode.execution.steps > 0 && point.triggerStep !== null
+            ? Math.min(100, point.triggerStep / episode.execution.steps * 100)
+            : duration > 0 ? Math.min(100, time / duration * 100) : 0;
+          const state = active?.point.slotId === point.slotId ? " isCurrent" : time <= playback.currentTime ? " isPast" : "";
+          return <span className={`t1bVqaTimelineMarker${state}`} style={{ left: `${position}%` }} key={point.slotId}>{index + 1}</span>;
+        })}
+      </div>
+      <div className="t1bVqaStageNav" role="group" aria-label="Video process checkpoints">
+        {timed.map(({ point, time }, index) => <button type="button" key={point.slotId}
+          className={active?.point.slotId === point.slotId ? "isCurrent" : time <= playback.currentTime ? "isPast" : ""}
+          aria-current={active?.point.slotId === point.slotId ? "step" : undefined}
+          onClick={() => onSeek(time)}>
+          <span>Stage {index + 1} · {checkpointTimeText(time)}</span><strong>{stageLabel(point.stageId)}</strong>
+        </button>)}
+      </div>
+      {active ? <article className="t1bVqaActiveCheckpoint" data-vqa-slot-id={active.point.slotId} data-score-origin={active.point.scoreOrigin}>
+        <header><div><span>{active.point.status === "scored" ? "Current answered checkpoint" : "Current checkpoint"} · {checkpointTimeText(active.time)}</span>
+          <h5>{stageLabel(active.point.stageId)}</h5></div><CheckpointScores point={active.point}/></header>
+        <CheckpointBody point={active.point}/>
+      </article> : <div className="t1bVqaAwaiting" aria-live="polite">
+        <strong>Play to the first checkpoint</strong>
+        {next && <span>Next: {stageLabel(next.point.stageId)} at {checkpointTimeText(next.time)}</span>}
+      </div>}
+    </> : <div className="t1bVqaAwaiting"><strong>No process checkpoint was reached in this rollout.</strong></div>}
+    {unreached.length > 0 && <details className="t1bVqaUnreachedGroup">
+      <summary><span>{unreached.length} planned {unreached.length === 1 ? "stage" : "stages"} not reached</span><ChevronDown size={16} aria-hidden="true"/></summary>
+      <p>No timestamp or Q&amp;A was recorded; fixed-denominator protocol scores remain 0.</p>
+      <div>{unreached.map((point) => <span key={point.slotId} data-vqa-slot-id={point.slotId}>{stageLabel(point.stageId)}</span>)}</div>
+    </details>}
+  </div>;
+}
+
+export function T1BenchmarkVqaEvidence({ detail, episode, playback, onSeek }: {
+  detail: T1BenchmarkVqaEpisode;
+  episode?: T1BenchmarkEpisode;
+  playback?: T1BenchmarkPlayback;
+  onSeek?: (seconds: number) => void;
+}) {
   const answered = new Set(detail.checkpoints.filter((point) => point.status === "scored").map((point) => point.questionId)).size;
+  const reached = detail.checkpoints.filter((point) => point.triggerStep !== null).length;
+  const synchronized = episode !== undefined && playback !== undefined && onSeek !== undefined;
   return <div className="t1bVqaEvidence" data-vqa-detail-id={detail.episodeId}>
     <section className="t1bVqaQuestionSection" aria-label="Initial VQA questions">
       <div className="t1bVqaSectionHeading"><h4>Initial VQA</h4><span>{detail.initial.length} questions</span></div>
@@ -70,29 +186,17 @@ export function T1BenchmarkVqaEvidence({ detail }: { detail: T1BenchmarkVqaEpiso
       </details>)}</div>
     </section>
     <section className="t1bVqaQuestionSection" aria-label="Process VQA checkpoints">
-      <div className="t1bVqaSectionHeading"><h4>Process checkpoints</h4><span>{answered} answered · {detail.checkpoints.length} checkpoints</span></div>
-      <div className="t1bVqaQuestionList">{detail.checkpoints.map((point) => {
-        const scores = <span className="t1bVqaCheckpointScores"><span>Task Tracking <VqaScore id="c2" value={point.scores.c2}/></span><span>Next Action <VqaScore id="c3" value={point.scores.c3}/></span></span>;
-        if (point.status === "not_reached") return <div className="t1bVqaUnreached" key={point.slotId} data-vqa-slot-id={point.slotId}>
-          <span className="t1bVqaQuestionTitle"><span>Not reached</span><strong>{stageLabel(point.stageId)}</strong></span>{scores}
-        </div>;
-        return <details className="t1bVqaQuestion t1bVqaCheckpoint" key={point.slotId} data-vqa-slot-id={point.slotId} data-score-origin={point.scoreOrigin}>
-          <summary><span className="t1bVqaQuestionTitle"><span>{point.status === "scored" ? "Answered" : "Checkpoint"}</span><strong>{stageLabel(point.stageId)}</strong></span>{scores}<ChevronDown size={16} aria-hidden="true"/></summary>
-          <div className="t1bVqaAnswerBody">
-            <dl className="t1bVqaAnswerMeta">
-              {point.triggerStep !== null && <div><dt>Native trigger step</dt><dd>{point.triggerStep}</dd></div>}
-              {point.returnStep !== null && <div><dt>Returned context step</dt><dd>{point.returnStep}</dd></div>}
-            </dl>
-            {point.question !== null && <><h5>Question</h5><QuestionText text={point.question}/></>}
-            {point.response !== null && <><h5>Model first answer</h5><ModelAnswer text={point.response}/></>}
-          </div>
-        </details>;
-      })}</div>
+      <div className="t1bVqaSectionHeading"><h4>Process checkpoints</h4><span>{synchronized
+        ? `${answered} answered · ${reached} reached · ${detail.checkpoints.length} planned`
+        : `${answered} answered · ${detail.checkpoints.length} checkpoints`}</span></div>
+      {synchronized
+        ? <SynchronizedProcessCheckpoints detail={detail} episode={episode} playback={playback} onSeek={onSeek}/>
+        : <LegacyProcessCheckpoints checkpoints={detail.checkpoints}/>}
     </section>
   </div>;
 }
 
-export function T1BenchmarkEpisodeVqa({ episode, modelLabel, taskLabel, resultVersion }: Props) {
+export function T1BenchmarkEpisodeVqa({ episode, modelLabel, taskLabel, resultVersion, playback, onSeek }: Props) {
   const headingId = useId();
   const [loaded, setLoaded] = useState<{ identity: string; detail: T1BenchmarkVqaEpisode | null; failed: boolean } | null>(null);
   const [retry, setRetry] = useState(0);
@@ -126,7 +230,8 @@ export function T1BenchmarkEpisodeVqa({ episode, modelLabel, taskLabel, resultVe
         <dt title={summary(id)}>{label(id)}</dt><dd>{benchmarkScoreText(episode.scores[id])}</dd>
       </div>)}</dl>
     </section>)}</div>
-    {selectedDetail ? <T1BenchmarkVqaEvidence key={`${resultVersion}:${episode.id}`} detail={selectedDetail}/>
+    {selectedDetail ? <T1BenchmarkVqaEvidence key={`${resultVersion}:${episode.id}`} detail={selectedDetail}
+      episode={episode} playback={playback} onSeek={onSeek}/>
       : failed ? <div className="t1bVqaLoadError" role="alert">VQA details could not be loaded. <button type="button" onClick={() => { setLoaded(null); setRetry((value) => value + 1); }}>Retry</button></div>
       : <div className="t1bVqaLoading" role="status" aria-label="Loading episode VQA details"/>}
   </section>;

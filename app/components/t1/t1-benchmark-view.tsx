@@ -5,7 +5,7 @@ import type { T1BenchmarkResults } from "../../data/t1-benchmark-results";
 import { t1LeaderboardResults } from "../../data/t1-leaderboard-results";
 import { T1BenchmarkMetricDialog } from "./t1-benchmark-metric-dialog";
 import { T1BenchmarkTable } from "./t1-benchmark-table";
-import { T1BenchmarkEmptyViewer, T1BenchmarkSceneGallery, T1BenchmarkViewer } from "./t1-benchmark-viewer";
+import { T1BenchmarkEmptyViewer, T1BenchmarkSceneGallery, T1BenchmarkViewer, type T1BenchmarkPlayback } from "./t1-benchmark-viewer";
 import { T1BenchmarkEpisodeVqa } from "./t1-benchmark-episode-vqa";
 
 export type T1BenchmarkSelection = { modelId: string; taskId: string; layoutId: number };
@@ -33,6 +33,31 @@ export function benchmarkTaskLayoutIds(results: T1BenchmarkResults, taskId: stri
 export function findBenchmarkEpisode(results: T1BenchmarkResults, selection: T1BenchmarkSelection) {
   const matches = benchmarkModelEpisodes(results, selection.modelId).filter((episode) => episode.taskId === selection.taskId && episode.layoutId === selection.layoutId);
   return matches.length === 1 ? matches[0] : undefined;
+}
+
+function T1BenchmarkPlaybackView({ episode, modelLabel, taskLabel, resultVersion }: {
+  episode: NonNullable<ReturnType<typeof findBenchmarkEpisode>>;
+  modelLabel: string;
+  taskLabel: string;
+  resultVersion: string;
+}) {
+  const video = useRef<HTMLVideoElement>(null);
+  const [playback, setPlayback] = useState<T1BenchmarkPlayback>({ currentTime: 0, duration: 0 });
+  const seek = (seconds: number) => {
+    const player = video.current;
+    if (!player) return;
+    const duration = Number.isFinite(player.duration) ? player.duration : playback.duration;
+    const currentTime = Math.max(0, duration > 0 ? Math.min(seconds, duration) : seconds);
+    player.currentTime = currentTime;
+    setPlayback({ currentTime, duration });
+  };
+
+  return <>
+    <T1BenchmarkViewer episode={episode} modelLabel={modelLabel} taskLabel={taskLabel} resultVersion={resultVersion}
+      videoRef={video} onPlaybackChange={setPlayback}/>
+    <T1BenchmarkEpisodeVqa episode={episode} modelLabel={modelLabel} taskLabel={taskLabel} resultVersion={resultVersion}
+      playback={playback} onSeek={seek}/>
+  </>;
 }
 
 export function T1BenchmarkView({ results = t1LeaderboardResults }: { results?: T1BenchmarkResults } = {}) {
@@ -76,11 +101,9 @@ export function T1BenchmarkView({ results = t1LeaderboardResults }: { results?: 
       {model && task && <>
         <T1BenchmarkSceneGallery key={`${selection.modelId}:${selection.taskId}:${model.publication?.resultVersion ?? results.resultVersion}`} scenes={scenes}
           selectedLayoutId={selection.layoutId} onSelect={(layoutId) => setSelection({ ...selection, layoutId })}/>
-        {episode ? <T1BenchmarkViewer key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.attempt}:${episode.video?.id ?? episode.id}`}
+        {episode ? <T1BenchmarkPlaybackView key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.attempt}:${episode.video?.id ?? episode.id}`}
           episode={episode} modelLabel={model.label} taskLabel={task.label} resultVersion={playbackVersion}/>
           : <T1BenchmarkEmptyViewer modelLabel={model.label} taskLabel={task.label}/>}
-        {episode && <T1BenchmarkEpisodeVqa key={`${selection.modelId}:${selection.taskId}:${selection.layoutId}:${playbackVersion}:${episode.attempt}`}
-          episode={episode} modelLabel={model.label} taskLabel={task.label} resultVersion={playbackVersion}/>}
       </>}
     </section>
     {activeMetric && metricModel && <T1BenchmarkMetricDialog key={`${results.resultVersion}:${metricModel.id}:${activeMetric.id}`}
