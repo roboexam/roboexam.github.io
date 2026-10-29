@@ -42,10 +42,10 @@ test('metric filters intersect dimensions, evidence, protocol, and search withou
   assert.equal(readResult({trackId:'T4',mode:'plan',metricId:'TSR',modelId:'Pi0.5'}).primary,'—');
 });
 test('all proposed scenarios are unique and cover the local catalog without mutating it', () => {
-  assert.equal(scenarioPlan.length,31);
-  assert.equal(new Set(scenarioPlan.map(s => s.id)).size,31);
+  assert.equal(scenarioPlan.length,39);
+  assert.equal(new Set(scenarioPlan.map(s => s.id)).size,39);
   for (const t of catalog.tasks) assert.ok(scenarioFor(t.id),t.id);
-  assert.equal(scenarioPlan.filter(s => !catalog.tasks.some(t => t.id === s.id)).length,5);
+  assert.equal(scenarioPlan.filter(s => !catalog.tasks.some(t => t.id === s.id)).length,13);
   for (const s of scenarioPlan) {
     const tags = tagsForScenario(s);
     assert.equal(tags.length,new Set(tags).size,s.id);
