@@ -5,6 +5,7 @@ import { mkdtemp, mkdir, writeFile, rm, symlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { createRealDatasetReader } from "../app/data/real-datasets.server.ts";
+import { buildSimulationTaskCatalog } from "../app/data/simulation-datasets.server.ts";
 
 const hash = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const request = (query = "", headers = {}) => new Request("http://localhost/api/real-datasets-media" + query, { headers });
@@ -162,6 +163,52 @@ test("an evaluation index allowlists only declared dataset leaves", async t => {
   assert.equal(catalog.datasets.length, 1);
   assert.equal(catalog.datasets[0].relativePath, "scene_a/id");
   assert.equal(catalog.datasets[0].episodeCount, 5);
+});
+
+test("simulation catalog groups 100 training and five episodes per evaluation split under each task", async t => {
+  const root = await mkdtemp(path.join(tmpdir(), "simulation-task-catalog-"));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const trainingRoot = path.join(root, "training");
+  const evaluationRoot = path.join(root, "evaluation");
+  await mkdir(path.join(trainingRoot, "meta/source_mapping"), { recursive: true });
+  await mkdir(evaluationRoot, { recursive: true });
+  const training = {
+    id: "a".repeat(64), name: "clean2400", kind: "robot", format: "lerobot-v3", robotType: "dual_arm",
+    taskCount: 24, episodeCount: 2400, frameCount: 2400, fps: 25, cameras: [],
+    availability: "available", warnings: [], sourceGroup: "training", relativePath: ".",
+  };
+  const suffixes = ["id", "ood/visual", "ood/semantic", "ood/behavior", "failure"];
+  const datasets = [training];
+  const groups = [];
+  for (let sceneId = 0; sceneId < 24; sceneId++) {
+    const task = sceneId === 18 ? "mirror_pair_layout" : `task_${String(sceneId).padStart(2, "0")}`;
+    for (const episode of [sceneId * 100, sceneId * 100 + 99]) {
+      await writeFile(path.join(trainingRoot, "meta/source_mapping", `episode-${String(episode).padStart(6, "0")}.json`),
+        JSON.stringify({ episode_index: episode, [sceneId % 2 ? "provider" : "source_record"]: { task } }));
+    }
+    for (const suffix of suffixes) {
+      const relativePath = `${task}/${suffix}`;
+      groups.push({ task, path: relativePath });
+      datasets.push({
+        ...training, id: hash(relativePath), name: relativePath, taskCount: 5, episodeCount: 5,
+        frameCount: 5, sourceGroup: "evaluation", relativePath,
+      });
+    }
+  }
+  await writeFile(path.join(evaluationRoot, "EVALUATION_INDEX.json"), JSON.stringify({ groups }));
+  const catalog = {
+    schemaVersion: "roboexam.simulation-datasets.v1", version: "fixture", scannedAt: new Date(0).toISOString(),
+    refreshSeconds: 300, datasets, warnings: [],
+  };
+  const tasks = await buildSimulationTaskCatalog(catalog, trainingRoot, evaluationRoot);
+  assert.equal(tasks.length, 24);
+  assert.equal(tasks[18].id, "mirror_pair_layout");
+  assert.equal(tasks[18].sceneId, 18);
+  assert.equal(tasks[18].episodeCount, 125);
+  assert.deepEqual(tasks[18].splits.map(split => [split.id, split.episodeCount]),
+    [["training", 100], ["id", 5], ["visual", 5], ["semantic", 5], ["behavioral", 5], ["failure", 5]]);
+  assert.ok(tasks.every(task => task.splits[0].datasetId === training.id));
+  assert.ok(!JSON.stringify(tasks).includes(root));
 });
 
 test("v3 episodes preserve exact chunk windows and keep adjacent episodes distinct", async t => {
@@ -329,5 +376,10 @@ test("catalog API rejects unknown keys, paths, duplicate IDs and conflicting sel
   const { GET: simulationTraceGET } = await import("../app/api/simulation-datasets-trace/route.ts");
   assert.equal((await simulationGET(new Request("http://localhost/api/simulation-datasets?path=/etc/passwd"))).status, 400);
   assert.equal((await simulationGET(new Request("http://localhost/api/simulation-datasets?dataset=../private"))).status, 400);
+  for (const query of [
+    "?task=mirror_pair_layout", `?dataset=${id}&task=../../private`,
+    `?episode=${id}&task=mirror_pair_layout`, `?dataset=${id}&task=mirror_pair_layout&task=mirror_pair_layout`,
+    "?refresh=1&task=mirror_pair_layout",
+  ]) assert.equal((await simulationGET(new Request("http://localhost/api/simulation-datasets" + query))).status, 400, query);
   assert.equal((await simulationTraceGET(new Request("http://localhost/api/simulation-datasets-trace?path=/etc/passwd"))).status, 400);
 });

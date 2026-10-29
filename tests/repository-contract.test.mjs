@@ -60,7 +60,8 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   const simulationDatasets = await readFile(new URL("app/data/simulation-datasets.server.ts", root), "utf8");
   assert.match(scenarios, /useRawCatalog/);
   assert.match(scenarios, /<SimulationDatasetBrowser/);
-  assert.match(scenarios, /Training & evaluation episodes/);
+  assert.match(scenarios, /Task-aligned simulation episodes/);
+  assert.match(scenarios, /100 Training episodes/);
   assert.doesNotMatch(scenarios, /<RawDataBrowser|curatedDataset|<DatasetExplorer/);
   assert.match(simulationDatasets, /policy_mix24_clean2400_sdk_ee20_25hz_instruction_20261029_v2/);
   assert.match(simulationDatasets, /evaluation24_sdk_ee20_25hz_episode_mp4_instruction_20261029_v3/);

@@ -7,9 +7,19 @@ export type RealDatasetSummary = {
   cameras: RealDatasetCamera[]; availability: "available" | "unavailable"; warnings: string[];
   sourceGroup?: string; relativePath?: string;
 };
+export type SimulationSplitId =
+  "training" | "id" | "visual" | "semantic" | "behavioral" | "failure";
+export type SimulationTaskSplit = {
+  id: SimulationSplitId; datasetId: string; episodeCount: number;
+};
+export type SimulationTaskSummary = {
+  id: string; name: string; sceneId: number; episodeCount: number;
+  splits: SimulationTaskSplit[];
+};
 export type RealDatasetCatalog = {
   schemaVersion: "roboexam.real-datasets.v1" | "roboexam.simulation-datasets.v1"; version: string; scannedAt: string;
   refreshSeconds: number; datasets: RealDatasetSummary[]; warnings: string[];
+  simulationTasks?: SimulationTaskSummary[];
 };
 export type RealEpisodeEntry = {
   id: string; index: number; name: string; frames: number; durationSeconds: number;

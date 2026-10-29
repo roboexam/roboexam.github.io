@@ -138,15 +138,26 @@ test("Datasets renders the unified live dataset workspace", async () => {
   const response = await render("/datasets");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Training &amp; evaluation episodes/);
-  assert.match(html, /Training · [\s\S]{0,40}2,400/);
-  assert.match(html, /Evaluation · [\s\S]{0,40}600/);
-  assert.match(html, /2 sets/);
+  assert.match(html, /Task-aligned simulation episodes/);
+  assert.match(html, /Choose one task, then browse its 100 Training episodes/);
+  assert.match(html, /24[\s\S]{0,30}Tasks/);
+  assert.match(html, /3,000[\s\S]{0,30}Episodes/);
+  assert.match(html, /24 tasks/);
   assert.match(html, /Simulation catalog summary/);
   assert.match(html, /Camera \+ action replay/);
   assert.match(html, /Scenario inventory/);
+  assert.doesNotMatch(html, /Training · [\s\S]{0,40}2,400|Evaluation · [\s\S]{0,40}600|2 sets/);
   assert.doesNotMatch(html, /Simulation 原始数据/);
   assert.doesNotMatch(html, /reference episodes|admitted ·|\/mnt\//);
+});
+
+test("a task deep link opens the task-first Datasets view", async () => {
+  const response = await render("/?task=mirror_pair_layout");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Task-aligned simulation episodes/);
+  assert.match(html, /24 tasks/);
+  assert.doesNotMatch(html, /The final exam for Physical AI/);
 });
 
 test("serves compressed video renditions with ranges and immutable identity", async () => {

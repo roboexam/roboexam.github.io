@@ -2,7 +2,15 @@
 
 import { Camera, ChevronLeft, ChevronRight, Pause, Play, RefreshCw, Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import type { RealDatasetCatalog, RealDatasetEpisode, RealDatasetSummary, RealEpisodeEntry } from "../data/real-datasets";
+import type {
+  RealDatasetCatalog,
+  RealDatasetEpisode,
+  RealDatasetSummary,
+  RealEpisodeEntry,
+  SimulationSplitId,
+  SimulationTaskSplit,
+  SimulationTaskSummary,
+} from "../data/real-datasets";
 import { secondsLabel } from "../data/curated-dataset";
 import { ActionTracePanel } from "./action-trace-panel";
 
@@ -119,54 +127,51 @@ function Episode({ id, dataset, apiPrefix }: { id: string; dataset: RealDatasetS
     <EpisodePlayer key={`${dataset.id}:${episode.id}:${episode.metadataSha256}`} episode={episode} title={`${dataset.name} ${episode.name}`}/>
     <div className="realEpisodeFacts"><span>{episode.frames.toLocaleString()} 帧</span><span>{secondsLabel(episode.durationSeconds)}</span><span>{dataset.fps} FPS</span><span>{episode.media.length} 路相机</span></div>
     {!!episode.warnings.length && <ul className="rawReviewWarnings">{episode.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul>}
-    <details className="rawReviewDetails"><summary>样本与来源身份</summary><dl><dt>Dataset / schema</dt><dd>{dataset.id} · roboexam.real-datasets.v1</dd><dt>原始 episode</dt><dd>{episode.originalEpisodeId ?? "未记录"}</dd><dt>元数据 SHA-256</dt><dd>{episode.metadataSha256}</dd><dt>Camera views</dt><dd>{episode.media.map(view => `${view.label} (${view.id})`).join(" · ") || "未提供"}</dd></dl></details>
+    <details className="rawReviewDetails"><summary>样本与来源身份</summary><dl><dt>Dataset / schema</dt><dd>{dataset.id} · roboexam.{apiPrefix === "simulation-datasets" ? "simulation" : "real"}-datasets.v1</dd><dt>原始 episode</dt><dd>{episode.originalEpisodeId ?? "未记录"}</dd><dt>元数据 SHA-256</dt><dd>{episode.metadataSha256}</dd><dt>Camera views</dt><dd>{episode.media.map(view => `${view.label} (${view.id})`).join(" · ") || "未提供"}</dd></dl></details>
   </article>;
 }
 
-function readableScene(value: string) {
-  return value.replaceAll("_", " ").replace(/\b\w/g, letter => letter.toUpperCase());
+const simulationSplits: { id: SimulationSplitId; label: string; detail: string }[] = [
+  { id: "training", label: "Training", detail: "训练集 · Policy + ACWM" },
+  { id: "id", label: "ID", detail: "同分布评测" },
+  { id: "visual", label: "Visual OOD", detail: "视觉域外" },
+  { id: "semantic", label: "Semantic OOD", detail: "语义域外" },
+  { id: "behavioral", label: "Behavioral OOD", detail: "行为域外" },
+  { id: "failure", label: "Failure recovery", detail: "失败恢复" },
+];
+
+function splitDefinition(id: SimulationSplitId) {
+  return simulationSplits.find(split => split.id === id)!;
 }
 
-const simulationFamilies: Record<string, string> = {
-  id: "ID · In-distribution",
-  "ood/visual": "V · Visual OOD",
-  "ood/semantic": "S · Semantic OOD",
-  "ood/behavior": "B · Behavioral OOD",
-  failure: "REC · Failure recovery",
-};
-
-function simulationIdentity(dataset: RealDatasetSummary) {
-  if (dataset.sourceGroup === "training") return { scene: "", family: "", title: "Clean2400 · Policy + ACWM" };
-  const parts = (dataset.relativePath ?? "").split("/");
-  const scene = parts.shift() ?? "";
-  const family = parts.join("/");
-  return { scene, family, title: readableScene(scene) };
-}
-
-function DatasetWorkspace({ dataset, revision, apiPrefix, mode }: {
+function DatasetWorkspace({ dataset, revision, apiPrefix, mode, simulation }: {
   dataset: RealDatasetSummary; revision: number; apiPrefix: string; mode: BrowserMode;
+  simulation?: { task: SimulationTaskSummary; split: SimulationTaskSplit };
 }) {
   const [data, setData] = useState<DatasetEntries | null>(null);
   const [selectedId, setSelectedId] = useState("");
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
+  const simulationTaskId = simulation?.task.id ?? "";
   useEffect(() => {
     const controller = new AbortController();
-    void read<DatasetEntries>(apiPrefix, `?dataset=${encodeURIComponent(dataset.id)}`, controller.signal).then(value => {
+    const task = simulationTaskId ? `&task=${encodeURIComponent(simulationTaskId)}` : "";
+    void read<DatasetEntries>(apiPrefix, `?dataset=${encodeURIComponent(dataset.id)}${task}`, controller.signal).then(value => {
       if (value.dataset.id !== dataset.id) throw new Error("数据集身份不一致，请刷新目录。");
       if (!controller.signal.aborted) { setData(value); setError(""); }
     }).catch(reason => { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "无法读取数据集。"); });
     return () => controller.abort();
-  }, [apiPrefix, dataset.id, revision]);
+  }, [apiPrefix, dataset.id, revision, simulationTaskId]);
   if (error) return <p className="reviewError" role="alert">{error}</p>;
   const episodes = data?.episodes.filter(row => `${row.name} ${row.instruction} ${row.originalEpisodeId ?? ""}`.toLowerCase().includes(query.trim().toLowerCase())) ?? [];
   const episode = episodes.find(row => row.id === selectedId) ?? episodes[0];
   const index = episode ? episodes.indexOf(episode) : -1;
-  const simulation = simulationIdentity(dataset);
-  const simulationLabel = dataset.sourceGroup === "training" ? "Training · Policy + ACWM" : simulationFamilies[simulation.family] ?? "Evaluation";
+  const split = simulation ? splitDefinition(simulation.split.id) : null;
+  const visibleFrames = data?.episodes.reduce((sum, row) => sum + row.frames, 0);
+  const visibleEpisodes = data?.episodes.length ?? simulation?.split.episodeCount ?? dataset.episodeCount;
   return <section className="rawReviewPanel realDatasetPanel" aria-label={mode === "simulation" ? "Simulation 样本浏览" : "Real & Ego 样本浏览"}>
-    <div className="rawReviewHeading"><h3>{mode === "simulation" ? simulation.title : dataset.name}</h3><span>{mode === "simulation" ? simulationLabel : dataset.kind === "ego" ? "Ego" : "Real robot"} · {dataset.format}</span></div>
-    <div className="realDatasetFacts"><span>{mode === "simulation" ? `Robot: ${dataset.robotType || "未记录"}` : `Robot / device: ${dataset.robotType || "未记录"}`}</span><span>{dataset.taskCount.toLocaleString()} {mode === "simulation" ? "条 instruction" : "个任务"}</span><span>{dataset.episodeCount.toLocaleString()} 个 episode</span><span>{dataset.frameCount.toLocaleString()} 帧</span><span>{dataset.cameras.length} 路相机</span><span>{dataset.fps} FPS</span></div>
+    <div className="rawReviewHeading"><h3>{simulation?.task.name ?? dataset.name}</h3><span>{split ? `${split.label} · ${split.detail}` : dataset.kind === "ego" ? "Ego" : "Real robot"} · {dataset.format}</span></div>
+    <div className="realDatasetFacts"><span>{mode === "simulation" ? `Robot: ${dataset.robotType || "未记录"}` : `Robot / device: ${dataset.robotType || "未记录"}`}</span>{mode === "real" && <span>{dataset.taskCount.toLocaleString()} 个任务</span>}<span>{visibleEpisodes.toLocaleString()} 个 episode</span><span>{visibleFrames === undefined ? "正在统计帧数" : `${visibleFrames.toLocaleString()} 帧`}</span><span>{dataset.cameras.length} 路相机</span><span>{dataset.fps} FPS</span></div>
     <details className="rawReviewDetails realIdentity"><summary>目录来源与质量状态</summary><dl><dt>Dataset ID</dt><dd>{dataset.id}</dd><dt>Format / schema</dt><dd>{dataset.format} · {mode === "simulation" ? "roboexam.simulation-datasets.v1" : "roboexam.real-datasets.v1"}</dd><dt>可读性</dt><dd>{dataset.availability === "available" ? "Available" : "Unavailable"}</dd><dt>QC</dt><dd>未提供独立审核状态{dataset.warnings.length ? ` · ${dataset.warnings.length} 条目录提示` : ""}</dd></dl></details>
     {!!dataset.warnings.length && <ul className="rawReviewWarnings">{dataset.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul>}
     <label className="realSearch"><Search size={17}/><span className="curatedSrOnly">搜索样本或任务指令</span><input type="search" placeholder="搜索样本或任务指令…" value={query} onChange={event => setQuery(event.target.value)}/></label>
@@ -191,9 +196,10 @@ function DatasetBrowser({ embedded = false, mode }: {
   const [kind, setKind] = useState<"all" | "robot" | "ego">("all");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("");
-  const [collection, setCollection] = useState<"training" | "evaluation">("training");
-  const [scene, setScene] = useState("");
-  const [family, setFamily] = useState("id");
+  const [taskQuery, setTaskQuery] = useState("");
+  const [selectedTaskId, setSelectedTaskId] = useState(() =>
+    typeof window === "undefined" ? "" : new URL(window.location.href).searchParams.get("task") ?? "");
+  const [splitId, setSplitId] = useState<SimulationSplitId>("training");
   useEffect(() => {
     const controller = new AbortController();
     let timer: ReturnType<typeof setTimeout>;
@@ -204,6 +210,7 @@ function DatasetBrowser({ embedded = false, mode }: {
         const value = await read<RealDatasetCatalog>(apiPrefix, force ? "?refresh=1" : "", controller.signal);
         const expectedSchema = mode === "simulation" ? "roboexam.simulation-datasets.v1" : "roboexam.real-datasets.v1";
         if (value.schemaVersion !== expectedSchema) throw new Error("数据目录版本不一致。");
+        if (mode === "simulation" && !Array.isArray(value.simulationTasks)) throw new Error("Simulation 任务目录版本不一致。");
         if (controller.signal.aborted) return;
         delay = Math.max(1000, value.refreshSeconds * 1000) + 100;
         setCatalog(value); setError(""); setRevision(current => current + 1);
@@ -214,38 +221,53 @@ function DatasetBrowser({ embedded = false, mode }: {
     return () => { controller.abort(); clearTimeout(timer); };
   }, [apiPrefix, mode, request]);
   const allDatasets = catalog?.datasets ?? [];
-  const evaluationDatasets = allDatasets.filter(row => row.sourceGroup === "evaluation");
-  const scenes = [...new Set(evaluationDatasets.map(row => simulationIdentity(row).scene).filter(Boolean))].sort();
-  const activeScene = scenes.includes(scene) ? scene : scenes[0] ?? "";
-  const datasets = mode === "simulation"
-    ? allDatasets.filter(row => collection === "training" ? row.sourceGroup === "training" :
-      row.sourceGroup === "evaluation" && simulationIdentity(row).scene === activeScene && simulationIdentity(row).family === family)
-    : allDatasets.filter(row => (kind === "all" || row.kind === kind) &&
+  const simulationTasks = catalog?.simulationTasks ?? [];
+  const filteredTasks = simulationTasks.filter(task =>
+    `${task.name} ${task.id}`.toLowerCase().includes(taskQuery.trim().toLowerCase()));
+  const activeTask = simulationTasks.find(task => task.id === selectedTaskId) ?? simulationTasks[0];
+  const activeSplit = activeTask?.splits.find(split => split.id === splitId) ?? activeTask?.splits[0];
+  const datasets = allDatasets.filter(row => (kind === "all" || row.kind === kind) &&
       `${row.name} ${row.robotType}`.toLowerCase().includes(query.trim().toLowerCase()));
-  const dataset = datasets.find(row => row.id === selectedId) ?? datasets[0];
+  const dataset = mode === "simulation"
+    ? allDatasets.find(row => row.id === activeSplit?.datasetId)
+    : datasets.find(row => row.id === selectedId) ?? datasets[0];
   const episodeCount = allDatasets.reduce((sum, row) => sum + row.episodeCount, 0);
-  const trainingEpisodeCount = allDatasets.filter(row => row.sourceGroup === "training").reduce((sum, row) => sum + row.episodeCount, 0);
-  const evaluationEpisodeCount = evaluationDatasets.reduce((sum, row) => sum + row.episodeCount, 0);
+  function chooseTask(taskId: string) {
+    setSelectedTaskId(taskId);
+    const url = new URL(window.location.href);
+    url.searchParams.set("task", taskId);
+    url.searchParams.delete("episode");
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  }
   return <div className={`reviewBoard realDatasetBrowser${mode === "simulation" ? " simulationDatasetBrowser" : ""}${embedded ? " datasetEmbedded" : ""}`}>
-    {!embedded && <section className="reviewHero"><div><div className="reviewEyebrow"><Camera size={16}/>{mode === "simulation" ? "SIMULATION · POLICY + ACWM" : "REAL ROBOT · EGOCENTRIC"}</div><h2>{mode === "simulation" ? "Simulation 数据" : "Real & Ego 数据"}</h2><p>{mode === "simulation" ? "浏览 clean2400 训练集与 600 条正式评测样本，同步回放三路相机和机器人动作。" : "浏览真实机器人示范与第一视角记录，查看任务指令、样本时长和已有相机画面。"}</p><span>{mode === "simulation" ? "Training and evaluation episodes · Synchronized action replay" : "Real robot demonstrations · Egocentric recordings"}</span></div>
-      <div className="reviewStats"><div><strong>{catalog?.datasets.length ?? "—"}</strong><small>数据集</small></div><div><strong>{catalog ? catalog.datasets.reduce((sum, row) => sum + row.episodeCount, 0).toLocaleString() : "—"}</strong><small>样本</small></div></div>
+    {!embedded && <section className="reviewHero"><div><div className="reviewEyebrow"><Camera size={16}/>{mode === "simulation" ? "SIMULATION · TASK-FIRST" : "REAL ROBOT · EGOCENTRIC"}</div><h2>{mode === "simulation" ? "Simulation 数据" : "Real & Ego 数据"}</h2><p>{mode === "simulation" ? "按任务浏览 Training、ID、三类 OOD 与失败恢复样本，同步回放三路相机和机器人动作。" : "浏览真实机器人示范与第一视角记录，查看任务指令、样本时长和已有相机画面。"}</p><span>{mode === "simulation" ? "24 tasks · 100 training + 25 evaluation episodes per task" : "Real robot demonstrations · Egocentric recordings"}</span></div>
+      <div className="reviewStats"><div><strong>{mode === "simulation" ? catalog?.simulationTasks?.length ?? "—" : catalog?.datasets.length ?? "—"}</strong><small>{mode === "simulation" ? "任务" : "数据集"}</small></div><div><strong>{catalog ? episodeCount.toLocaleString() : "—"}</strong><small>样本</small></div></div>
     </section>}
     {embedded ? <section className="datasetSummaryStrip" aria-label={mode === "simulation" ? "Simulation catalog summary" : "Real and ego catalog summary"}>
-      <div><strong>{mode === "simulation" ? (catalog ? "2" : "—") : catalog?.datasets.length ?? "—"}</strong><span>{mode === "simulation" ? "Training / evaluation" : "Datasets"}</span></div><div><strong>{catalog ? episodeCount.toLocaleString() : "—"}</strong><span>Episodes</span></div>
-      <div className="datasetSummaryAction"><span role="status">{error || (catalog ? `${mode === "simulation" ? `${scenes.length} scenes · ` : ""}扫描于 ${new Date(catalog.scannedAt).toLocaleString()}` : `正在读取 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 目录…`)}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
+      <div><strong>{mode === "simulation" ? catalog?.simulationTasks?.length ?? 24 : catalog?.datasets.length ?? "—"}</strong><span>{mode === "simulation" ? "Tasks" : "Datasets"}</span></div><div><strong>{catalog ? episodeCount.toLocaleString() : mode === "simulation" ? "3,000" : "—"}</strong><span>Episodes</span></div>
+      <div className="datasetSummaryAction"><span role="status">{error || (catalog ? `${mode === "simulation" ? "125 episodes / task · " : ""}扫描于 ${new Date(catalog.scannedAt).toLocaleString()}` : `正在读取 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 目录…`)}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
     </section> : <div className="rawReviewRefresh"><span role="status">{error || (catalog ? `最近扫描：${new Date(catalog.scannedAt).toLocaleString()}` : `正在读取 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 目录…`)}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>}
-    {mode === "simulation" ? <div className="simulationDatasetControls">
-      <div className="reportSwitch" aria-label="Simulation 数据集划分">
-        <button type="button" aria-pressed={collection === "training"} onClick={() => setCollection("training")}>Training · {(catalog ? trainingEpisodeCount : 2400).toLocaleString()} <small>Policy + ACWM</small></button>
-        <button type="button" aria-pressed={collection === "evaluation"} onClick={() => setCollection("evaluation")}>Evaluation · {(catalog ? evaluationEpisodeCount : 600).toLocaleString()} <small>{catalog ? scenes.length : 24} scenes × 5 families</small></button>
+    {mode === "real" && <div className="realDatasetFilters"><div className="reportSwitch" aria-label="数据类型筛选">{([["all", "全部"], ["robot", "Real robot"], ["ego", "Ego"]] as const).map(([value, label]) => <button type="button" key={value} aria-pressed={kind === value} onClick={() => setKind(value)}>{label}</button>)}</div><label className="realSearch"><Search size={17}/><span className="curatedSrOnly">搜索 Real & Ego 数据集</span><input type="search" placeholder="搜索数据集…" value={query} onChange={event => setQuery(event.target.value)}/></label></div>}
+    {error ? <p className="reviewError" role="alert">{error}</p> : mode === "simulation" ? <div className="simulationTaskWorkspace">
+      <aside className="simulationTaskRail">
+        <div className="simulationTaskRailHeading"><span>Task · 任务</span><strong>{simulationTasks.length || 24}</strong></div>
+        <label className="realSearch"><Search size={16}/><span className="curatedSrOnly">搜索 Simulation 任务</span><input type="search" placeholder="搜索任务…" value={taskQuery} onChange={event => setTaskQuery(event.target.value)}/></label>
+        <nav aria-label="Simulation tasks">{filteredTasks.map(task => <button type="button" key={task.id} aria-pressed={activeTask?.id === task.id} onClick={() => chooseTask(task.id)}><b>{String(task.sceneId + 1).padStart(2, "0")}</b><span><strong>{task.name}</strong><small>{task.episodeCount} episodes</small></span></button>)}</nav>
+        {catalog && filteredTasks.length === 0 && <p>没有匹配的任务。</p>}
+      </aside>
+      <div className="simulationTaskStage">
+        {activeTask && <header className="simulationTaskHeader"><div><span>Task {activeTask.sceneId + 1} / {simulationTasks.length}</span><h3>{activeTask.name}</h3></div><strong>{activeTask.episodeCount}<small>episodes</small></strong></header>}
+        {activeTask && <nav className="simulationSplitRail" aria-label={`${activeTask.name} data groups`}>{simulationSplits.map(definition => {
+          const split = activeTask.splits.find(candidate => candidate.id === definition.id);
+          return <button type="button" key={definition.id} disabled={!split} aria-pressed={activeSplit?.id === definition.id} onClick={() => setSplitId(definition.id)}><span><strong>{definition.label}</strong><small>{definition.detail}</small></span><b>{split?.episodeCount ?? "—"}</b></button>;
+        })}</nav>}
+        {dataset && activeTask && activeSplit ? dataset.availability === "available"
+          ? <DatasetWorkspace key={`${dataset.id}:${activeTask.id}:${activeSplit.id}`} dataset={dataset} revision={revision} apiPrefix={apiPrefix} mode={mode} simulation={{ task: activeTask, split: activeSplit }}/>
+          : <p className="reviewLoading">此数据分组暂时不可读，请稍后刷新。{dataset.warnings.join(" ")}</p>
+          : <p className="reviewLoading">{catalog ? "正在建立任务分组…" : "正在读取目录…"}</p>}
       </div>
-      {collection === "evaluation" && <div className="simulationEvaluationFilters">
-        <label>Scenario · 场景<select aria-label="Evaluation scenario" value={activeScene} onChange={event => setScene(event.target.value)}>{scenes.map(value => <option key={value} value={value}>{readableScene(value)}</option>)}</select></label>
-        <div className="reportSwitch" aria-label="Evaluation family">{Object.entries(simulationFamilies).map(([value, label]) => <button type="button" key={value} aria-pressed={family === value} onClick={() => setFamily(value)}>{label}</button>)}</div>
-      </div>}
-    </div> : <div className="realDatasetFilters"><div className="reportSwitch" aria-label="数据类型筛选">{([["all", "全部"], ["robot", "Real robot"], ["ego", "Ego"]] as const).map(([value, label]) => <button type="button" key={value} aria-pressed={kind === value} onClick={() => setKind(value)}>{label}</button>)}</div><label className="realSearch"><Search size={17}/><span className="curatedSrOnly">搜索 Real & Ego 数据集</span><input type="search" placeholder="搜索数据集…" value={query} onChange={event => setQuery(event.target.value)}/></label></div>}
-    {error ? <p className="reviewError" role="alert">{error}</p> : <div className={`realDatasetWorkspace${mode === "simulation" ? " simulationDatasetWorkspace" : ""}`}>
-      {mode === "real" && <nav className="realDatasetList" aria-label="Real & Ego 数据集">{datasets.map(row => <button type="button" key={row.id} aria-pressed={dataset?.id === row.id} onClick={() => setSelectedId(row.id)}><strong>{row.name}</strong><span>{row.kind === "ego" ? "Ego" : "Real robot"} · {row.episodeCount.toLocaleString()} 个样本</span><small>{row.format} · {row.cameras.length} 路相机{row.availability === "unavailable" ? " · 暂不可读" : ""}</small></button>)}</nav>}
+    </div> : <div className="realDatasetWorkspace">
+      <nav className="realDatasetList" aria-label="Real & Ego 数据集">{datasets.map(row => <button type="button" key={row.id} aria-pressed={dataset?.id === row.id} onClick={() => setSelectedId(row.id)}><strong>{row.name}</strong><span>{row.kind === "ego" ? "Ego" : "Real robot"} · {row.episodeCount.toLocaleString()} 个样本</span><small>{row.format} · {row.cameras.length} 路相机{row.availability === "unavailable" ? " · 暂不可读" : ""}</small></button>)}</nav>
       {dataset ? dataset.availability === "available" ? <DatasetWorkspace key={dataset.id} dataset={dataset} revision={revision} apiPrefix={apiPrefix} mode={mode}/> : <p className="reviewLoading">此数据集暂时不可读，请稍后刷新。{dataset.warnings.join(" ")}</p> : <p className="reviewLoading">{catalog ? "没有匹配的数据集。" : "正在读取目录…"}</p>}
     </div>}
     {!!catalog?.warnings.length && <details className="rawReviewWarnings"><summary>目录提示（{catalog.warnings.length}）</summary><ul>{catalog.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul></details>}

@@ -23,8 +23,8 @@ export function ScenarioBrowser() {
   return <div className="scenarioBrowser">
     <nav className="datasetSourceNav" aria-label="Dataset source">
       <button type="button" className={view === 'episodes' ? 'active' : ''} aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>
-        <span className="datasetSourceIcon"><Database size={17}/></span><span><strong>Simulation</strong><small>Trajectories &amp; actions</small></span>
-        <b>2 sets</b>
+        <span className="datasetSourceIcon"><Database size={17}/></span><span><strong>Simulation</strong><small>Tasks, episodes &amp; actions</small></span>
+        <b>24 tasks</b>
       </button>
       <button type="button" className={view === 'real' ? 'active' : ''} aria-pressed={view === 'real'} onClick={() => setView('real')}>
         <span className="datasetSourceIcon"><Video size={17}/></span><span><strong>Real &amp; Ego</strong><small>Camera + action replay</small></span><b>2 sources</b>
@@ -35,8 +35,8 @@ export function ScenarioBrowser() {
     </nav>
     <div className="datasetSourceContext">
       <div><span>{view === 'episodes' ? 'SIMULATION DATA' : view === 'real' ? 'PHYSICAL DATA' : 'BENCHMARK COVERAGE'}</span>
-        <h2>{view === 'episodes' ? 'Training & evaluation episodes' : view === 'real' ? 'Real & ego episodes' : 'Scenario plan'}</h2></div>
-      <p>{view === 'episodes' ? 'Browse clean2400 and the 600-episode evaluation set with instructions, synchronized cameras, and aligned actions.' : view === 'real' ? 'Replay synchronized robot or ego cameras with recorded actions.' : 'Review live coverage and proposed benchmark scenarios.'}</p>
+        <h2>{view === 'episodes' ? 'Task-aligned simulation episodes' : view === 'real' ? 'Real & ego episodes' : 'Scenario plan'}</h2></div>
+      <p>{view === 'episodes' ? 'Choose one task, then browse its 100 Training episodes and five episodes in each ID, OOD, and Failure recovery group.' : view === 'real' ? 'Replay synchronized robot or ego cameras with recorded actions.' : 'Review live coverage and proposed benchmark scenarios.'}</p>
     </div>
     {view === 'real' ? <RealDatasetBrowser embedded/> : view === 'episodes' ? <SimulationDatasetBrowser embedded/> : <>
       <section className="datasetSummaryStrip" aria-label="Scenario status summary">

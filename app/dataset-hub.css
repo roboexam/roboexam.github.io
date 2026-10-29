@@ -24,8 +24,6 @@
 .datasetSourceContext h2 { margin: 4px 0 0; font-size: 25px; line-height: 1.2; font-weight: 580; }
 .datasetSourceContext p { max-width: 600px; margin: 0; color: #68758a; font-size: 14px; text-align: right; }
 
-.simulationDatasetWorkspace { display: grid; gap: 16px; }
-.datasetSimulationSwitch { width: fit-content; margin: 0; }
 .episodeInstruction { display: grid; grid-template-columns: minmax(130px,auto) minmax(0,1fr); align-items: start; gap: 8px 16px; margin: 0 0 16px; padding: 12px 14px; border: 1px solid #dce5f0; border-radius: 9px; background: #f8faff; }
 .episodeInstruction>span { color: #62758f; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 .episodeInstruction>p, .episodeInstruction .reviewInstruction { margin: 0; color: #253b5b; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
