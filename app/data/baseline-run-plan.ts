@@ -89,8 +89,8 @@ export const baselineRunPlan: BaselineRun[] = [
   },
   {
     id: "E13", track: "T3", baseline: "LingBot-VA2.0",
-    trainingJob: "job-zskd6wiie2qq", trainingCards: "8", evaluationJob: "job-ac055p0mlvxx", evaluationCards: "8",
-    owner: "weixiaobao", status: "stopped", note: "train22；最新训练 Failed；2026-10-29 recursive evaluation 读回 ManualTermination。",
+    trainingJob: "job-zskd6wiie2qq", trainingCards: "8", evaluationJob: "job-dfqtiqknppfq", evaluationCards: "8",
+    owner: "weixiaobao", status: "running", note: "train22；训练 Failed；2026-10-29 最新 resumed recursive evaluation 正在运行。",
   },
   {
     id: "E14", track: "T3", baseline: "XVLA",
@@ -125,7 +125,7 @@ export const baselineRunPlan: BaselineRun[] = [
   {
     id: "E20", track: "T4", baseline: "HyVLA",
     trainingJob: "job-hrg119uxrex9", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
-    owner: "yichenguo", status: "running", note: "2026-10-29 真机 real3 独立训练正在 train22 运行；PRETRAIN 与标定待验。",
+    owner: "yichenguo", status: "failed", note: "2026-10-29 真机 real3 独立训练在 train22 读回 Failed；PRETRAIN 与标定待复核。",
   },
   {
     id: "E21", track: "T4", baseline: "LingBot-VA2.0",
