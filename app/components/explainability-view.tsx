@@ -2,11 +2,16 @@
 
 import { ArrowLeftRight, CheckCircle2, Info, ShieldCheck, Target } from "lucide-react";
 import { useMemo, useState, type ReactNode } from "react";
-import { PearsonMatrixSection } from "./pearson-matrix-section";
+import { MetricOnlyMatrix } from "./pearson-matrix-section";
 import {
   type CorrelationRow,
   explainabilityDashboardBundle,
 } from "../data/explainability-results";
+import { tracks, type TrackId } from "../data/metric-plan";
+import {
+  type CurrentCorrelationMetric,
+  trackCorrelationResults,
+} from "../data/track-correlation-results";
 import { vlaWamDashboardBundle } from "../data/vla-wam-results";
 
 const modelNames = ["Pi0.5", "FastWAM"] as const;
@@ -100,7 +105,76 @@ function CorrelationBar({ row }: { row: CorrelationRow }) {
   );
 }
 
+const trackScope: Record<TrackId, string> = {
+  T1: "140 episodes · subtask target",
+  T2: "2 × heldout73 · metric-only",
+  T3: "2 × formal100 · success target",
+  T4: "Hardware results pending",
+};
+
+function CorrelationTrackNav({ active, onChange }: { active: TrackId; onChange: (track: TrackId) => void }) {
+  return <section className="correlationTrackNav band" aria-label="Correlation track">
+    {tracks.map((track) => <button type="button" key={track.id} className={active === track.id ? "selected" : ""} aria-pressed={active === track.id} onClick={() => onChange(track.id)}>
+      <span>{track.id}</span><strong>{track.title}</strong><small>{trackScope[track.id]}</small>
+    </button>)}
+  </section>;
+}
+
+function CurrentCorrelationBar({ metric }: { metric: CurrentCorrelationMetric }) {
+  const width = `${Math.min(Math.abs(metric.r), 1) * 50}%`;
+  const style = metric.r >= 0 ? { left: "50%", width } : { right: "50%", width };
+  return <article className="corrRow" aria-label={`${metric.displayName} r ${metric.r.toFixed(3)}`}>
+    <div className="corrMetric"><strong>{metric.displayName}</strong><code>{metric.metricId}</code></div>
+    <div className="corrPlot"><i className="corrZero"/><span className={metric.r >= 0 ? "corrFill positive" : "corrFill negative"} style={style}/></div>
+    <div className="corrNumbers"><strong>{metric.r > 0 ? "+" : ""}{metric.r.toFixed(3)}</strong><span>n={metric.sampleCount}</span></div>
+    <div className="corrMeta"><span>{metric.r >= 0 ? "Positive association" : "Negative association"}</span></div>
+  </article>;
+}
+
+function Track1Correlation() {
+  const result = trackCorrelationResults.T1;
+  return <section className="pearsonMatrix band" aria-labelledby="t1-current-correlation">
+    <header className="pearsonMatrixHeading">
+      <div><p className="eyebrow">T1 · CURRENT LEADERBOARD COHORT</p><h2 id="t1-current-correlation">VQA dimensions ↔ episode subtask completion</h2><p>Each model is analyzed separately on its current 70-scene leaderboard cohort. Overall, Subtask, and Success are excluded from predictors to avoid outcome leakage.</p></div>
+      <div className="pearsonMatrixMeta"><span><strong>Result version</strong> {result.resultVersion}</span></div>
+    </header>
+    <div className="currentCorrelationModels">
+      {result.models.map((model) => <article key={model.modelId}>
+        <header><div><strong>{model.displayName}</strong><span>{model.episodeCount} episodes · {model.strictSuccessCount} strict success</span></div><small>target: Subtask</small></header>
+        <div>{model.metrics.map((metric) => <CurrentCorrelationBar metric={metric} key={metric.metricId}/>)}</div>
+        <footer>Descriptive Pearson r · up to n={model.episodeCount}; each row shows its paired valid count. A positive value means the VQA dimension is higher in episodes with more completed subtasks; it is not a causal claim.</footer>
+      </article>)}
+    </div>
+    <div className="currentCorrelationNotice"><strong>Why strict Success is not the target</strong><p>{result.strictSuccessReason}</p></div>
+  </section>;
+}
+
+function Track2Correlation() {
+  const result = trackCorrelationResults.T2;
+  return <section className="pearsonMatrix band" aria-labelledby="t2-current-correlation">
+    <div className="pearsonMatrixHeading">
+      <div><p className="eyebrow">T2 · CURRENT LEADERBOARD RESULTS</p><h2 id="t2-current-correlation">Metric redundancy on the published heldout73 cohort</h2><p>The matrices are derived directly from the current per-episode ACWM samples. They compare metrics with each other; no policy-success relationship is implied.</p></div>
+      <div className="pearsonMatrixMeta">{Object.entries(result.resultVersions).map(([model, version]) => <span key={model}><strong>{model}</strong> {version}</span>)}</div>
+    </div>
+    <div className="metricMatrixGrid currentMatrixGrid">
+      {result.matrices.map((matrix) => <MetricOnlyMatrix matrix={matrix} key={matrix.modelId}/>)}
+    </div>
+    <div className="currentCorrelationNotice"><strong>Outcome boundary</strong><p>{result.reason}</p></div>
+  </section>;
+}
+
+function Track4Correlation() {
+  const result = trackCorrelationResults.T4;
+  return <section className="pearsonMatrix band" aria-labelledby="t4-current-correlation">
+    <div className="pearsonMatrixHeading">
+      <div><p className="eyebrow">T4 · HARDWARE EVIDENCE</p><h2 id="t4-current-correlation">Correlation will open after formal paired trials</h2><p>{result.reason} Training status alone is not evaluation evidence, so the dashboard does not manufacture coefficients from planned runs.</p></div>
+      <div className="pearsonMatrixMeta">{result.models.map((model) => <span key={model.id}><strong>{model.id}</strong> {model.status}</span>)}</div>
+    </div>
+  </section>;
+}
+
 export function ExplainabilityView() {
+  const [trackId, setTrackId] = useState<TrackId>("T1");
   const [modelName, setModelName] = useState<ModelName>("Pi0.5");
   const [window, setWindow] = useState<AnalysisWindow>("preOutcome");
   const [significantOnly, setSignificantOnly] = useState(true);
@@ -127,13 +201,18 @@ export function ExplainabilityView() {
   return (
     <div className="content explainabilityView">
       <div className="pageHeading">
-        <p className="eyebrow">Metric evidence</p>
-        <h1>Metric correlation analysis</h1>
-        <p>Inspect how diagnostic signals relate to downstream task success, with uncertainty and protocol limits kept visible.</p>
+        <p className="eyebrow">Leaderboard evidence</p>
+        <h1>Correlation analysis</h1>
+        <p>Track-specific analysis synchronized with the current published leaderboard cohorts. Correlations are shown only when paired episode-level evidence exists.</p>
       </div>
+      <CorrelationTrackNav active={trackId} onChange={setTrackId}/>
+      {trackId === "T1" && <Track1Correlation/>}
+      {trackId === "T2" && <Track2Correlation/>}
+      {trackId === "T4" && <Track4Correlation/>}
+      {trackId === "T3" && <>
       <section className="explainHero band">
         <div className="explainIntro">
-          <p className="eyebrow">BENCHMARK EXPLAINABILITY · ASSOCIATION 01</p>
+          <p className="eyebrow">T3 · CURRENT LEADERBOARD COHORT</p>
           <h2>Metrics <ArrowLeftRight size={22} aria-hidden="true" /> Task Success</h2>
           <p>Which episode-level metrics move with strict task success? The page reports raw association direction, confidence intervals, and multiple-testing results; association is not causation.</p>
         </div>
@@ -206,7 +285,6 @@ export function ExplainabilityView() {
         </div>
       </section>
 
-      <PearsonMatrixSection />
       <section className="eventEvidence band">
         <div className="eventHeading"><div><p className="eyebrow">EVENT EVIDENCE</p><h2>Failure events and success</h2></div><span>telemetry coverage 100%</span></div>
         <div className="eventGrid">
@@ -229,6 +307,7 @@ export function ExplainabilityView() {
         <div><span>03</span><strong>Model boundary</strong><p>Cosmos、CtrlWorld have no task outcome and are excluded from this analysis</p></div>
         <div><span>04</span><strong>Evidence version</strong><p>SHA {model.provenance.correlationSha256.slice(0, 12)}… · pipeline {model.provenance.pipelineCommit.slice(0, 7)}</p></div>
       </section>
+      </>}
     </div>
   );
 }

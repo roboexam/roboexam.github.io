@@ -58,7 +58,7 @@ const figureExplanations: Record<string, { read: string; conclusion: string }> =
   },
 };
 
-function MetricOnlyMatrix({ matrix }: { matrix: PearsonMetricMatrix }) {
+export function MetricOnlyMatrix({ matrix }: { matrix: PearsonMetricMatrix }) {
   const strongest = strongestMatrixPair(matrix);
   return (
     <article className="metricMatrixCard">
