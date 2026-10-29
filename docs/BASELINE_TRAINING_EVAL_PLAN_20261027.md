@@ -1,6 +1,6 @@
 # Benchmark baseline training and evaluation plan (64-card plan)
 
-- 当前精简主计划包含 **24 个 baseline**：T2 6 个、T3 10 个、T4 8 个。
+- 当前精简主计划包含 **25 个 baseline**：T2 7 个、T3 10 个、T4 8 个。
 - 每个 baseline 使用自己的公开 pretrained checkpoint 独立训练；T4 不复用 T3 checkpoint。
 - GPUh = 卡数 × 训练墙钟小时。训练和评测都对齐 80D action；policy 在本项目中使用 camera-EE，进入 RoboDojo 仿真或真机前再还原为 base-EE。
 - Isaac Sim 评测同时保留 A800 和 RTX 4090 两个时间口径；A800 正式口径为 TAA + 64 spp，4090 用于独立复核。
@@ -14,7 +14,8 @@
 | E3 | Cosmos3-Nano ACWM | `job-n4rv5tka9dyq`（train22，Running） | `/mnt/gyc_ckp/benchmark2027/experiments/training/cosmos3_nano/robodojo_ee20_tshape/cosmos3_nano_ee20_tshape_mix24_fd20k_16gpu_20261027_weixiaobao_v1/` | 16×80–160 | 待提交 | 32×12 |
 | E4 | Pelican-Unify 1.0（ACWM） | 待提交 | 待生成 | 16×100–180 | 待提交 | 32×12 |
 | E5 | IRASim / Bridge action-conditioned | 待提交 | 待生成 | 16×80–140 | 待提交 | 32×12 |
-| E6 | Wan 2.6 action-conditioned adapter | 待提交 | 待生成 | 8×20–40 | 待提交 | 32×12 |
+| E6 | Wan-Move | 待提交 | 待生成 | 8×20–40 | 待提交 | 32×12 |
+| E25 | EnerVerse-AC | 待提交 | 待生成 | 待确认 | 待提交 | 32×12 |
 
 ## Track 3：仿真 policy baseline
 
@@ -73,7 +74,7 @@ T3 评测固定 24 tasks、episode 数和 seed，记录 task success、progress�
 
 ## 64 卡总体结论
 
-按当前精简后的 24 个 baseline 重新求和：
+以下仍按已有资源参数的 24 个 baseline 求和；新增 EnerVerse-AC 的训练资源待确认，暂不计入 GPUh 与工期：
 
 - T2 训练约 **8,480–13,280 GPUh**；T3 训练约 **9,509.6–11,251.2 GPUh**；T4 真机训练约 **7,557.6–9,299.2 GPUh**。
 - 三个 track 的训练合计约 **25,547.2–33,830.4 GPUh**。

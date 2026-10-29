@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { tracks } from '../app/data/metric-plan.ts';
+import { baselineRunPlan } from '../app/data/baseline-run-plan.ts';
 import { metricExplanationFor } from '../app/data/metric-explanations.ts';
 import { definitionFor, metricsFor, readResult } from '../app/data/track-results.ts';
 import { acwmDashboardBundle as acwm } from '../app/data/acwm-results.ts';
@@ -43,6 +44,15 @@ test('T2 historical runs retain their values and exact provenance', () => {
   const current = definitionFor(selection('T2','plan','PSNR','CtrlWorld'));
   assert.match(historical.formula, /pooled split MSE/);
   assert.match(current.formula, /mean_future_frame/);
+});
+test('T2 publishes the current Wan-Move and EnerVerse-AC baseline roster', () => {
+  const models = tracks.find(track => track.id === 'T2').models.map(model => model.id);
+  const runs = baselineRunPlan.filter(run => run.track === 'T2');
+  assert.deepEqual(models.slice(-2), ['Wan-Move', 'EnerVerse-AC']);
+  assert.deepEqual(runs.slice(-2).map(run => run.baseline), ['Wan-Move', 'EnerVerse-AC']);
+  assert.equal(runs.length, 7);
+  assert.equal(baselineRunPlan.length, 25);
+  assert.equal(runs.at(-1).trainingCards, '待确认');
 });
 test('hardware and planned models cannot open a simulation result', () => {
   for (const trackId of ['T3','T4']) {

@@ -12,6 +12,7 @@ const statusLabels: Record<BaselineRunStatus, string> = {
   pilot: "Pilot",
   planned: "待提交",
 };
+const trainingCardsLabel = (value: string) => /^\d/.test(value) ? `${value} cards` : value;
 
 export function BaselineRunPlan({ initialTrack = "ALL" }: { initialTrack?: "ALL" | BaselineTrack }) {
   const [track, setTrack] = useState<"ALL" | BaselineTrack>(initialTrack);
@@ -22,7 +23,7 @@ export function BaselineRunPlan({ initialTrack = "ALL" }: { initialTrack?: "ALL"
   return <section className="baselinePlan" aria-labelledby="baseline-plan-title">
     <div className="baselinePlanHeading">
       <div>
-        <p className="eyebrow">RUN REGISTRY · 2026-10-28</p>
+        <p className="eyebrow">RUN REGISTRY · 2026-10-29</p>
         <h2 id="baseline-plan-title">当前 baseline 训练与测评计划</h2>
         <p>AIHC 资源与状态快照。job 出现于这里表示任务已登记，不代表正式 benchmark 分数已发布。</p>
       </div>
@@ -41,7 +42,7 @@ export function BaselineRunPlan({ initialTrack = "ALL" }: { initialTrack?: "ALL"
         <tbody>{runs.map((run) => <tr key={run.id}>
           <td><b>{run.id}</b><small>{run.track}</small></td>
           <td><strong>{run.baseline}</strong></td>
-          <td><code>{run.trainingJob}</code><small>{run.trainingCards} cards</small></td>
+          <td><code>{run.trainingJob}</code><small>{trainingCardsLabel(run.trainingCards)}</small></td>
           <td><code>{run.evaluationJob}</code><small>{run.evaluationCards}</small></td>
           <td>{run.owner}</td>
           <td><span className={`baselineStatus ${run.status}`}>{statusLabels[run.status]}</span></td>
@@ -52,7 +53,7 @@ export function BaselineRunPlan({ initialTrack = "ALL" }: { initialTrack?: "ALL"
     <div className="baselinePlanFootnotes">
       {sharedEvaluationJobs.map((item) => <p key={item.job}><strong>最近评测：</strong><code>{item.job}</code> · {item.cards} card{item.cards === "1" ? "" : "s"} · {item.note}</p>)}
       <p><strong>统一仿真口径：</strong>A800 / RTX 4090，DLSS Off、TAA On、64 spp；A800 为正式口径，4090 用于同 renderer、同 seed 复核。</p>
-      <p><strong>64 卡排期：</strong>当前 24 个 baseline 的 A800 资源下界约 19.4–25.4 天；按 8 卡槽滚动排程约 20.0–26.1 天，加 20%–25% 缓冲约 24.0–32.6 天，建议预留 24–33 天。若 T3 使用独立 8×RTX 4090 槽，滚动排程约 20.1–32.1 天，加缓冲约 24.1–40.2 天；额外配置 64×4090 时可缩短到 18.8–24.5 天。严格按 T2→T3→T4 串行约 38.8–42.5 天，加缓冲后建议预留 47–53 天；8×4090 严格口径约 40.3–51.6 天。</p>
+      <p><strong>64 卡排期：</strong>当前共 25 个 baseline；以下工期仍按已有资源参数的 24 个估算，EnerVerse-AC 待资源确认后再计入。A800 资源下界约 19.4–25.4 天；按 8 卡槽滚动排程约 20.0–26.1 天，加 20%–25% 缓冲约 24.0–32.6 天，建议预留 24–33 天。若 T3 使用独立 8×RTX 4090 槽，滚动排程约 20.1–32.1 天，加缓冲约 24.1–40.2 天；额外配置 64×4090 时可缩短到 18.8–24.5 天。严格按 T2→T3→T4 串行约 38.8–42.5 天，加缓冲后建议预留 47–53 天；8×4090 严格口径约 40.3–51.6 天。</p>
       <p><strong>真机约束：</strong>T4 每个 baseline 必须从各自 base / pretrained 独立训练；robot station-hours、reset 和人工接管不折算为 GPUh。</p>
     </div>
   </section>;

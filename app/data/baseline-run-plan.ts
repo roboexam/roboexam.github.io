@@ -48,9 +48,14 @@ export const baselineRunPlan: BaselineRun[] = [
     owner: "待定", status: "planned", note: "7D action → 80D camera-EE adapter 待验证。",
   },
   {
-    id: "E6", track: "T2", baseline: "Wan 2.6 action-conditioned adapter",
+    id: "E6", track: "T2", baseline: "Wan-Move",
     trainingJob: "待提交", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "32",
     owner: "待定", status: "planned", note: "先确认低层 action 条件接口；无 action 时只作 Level-1 对照。",
+  },
+  {
+    id: "E25", track: "T2", baseline: "EnerVerse-AC",
+    trainingJob: "待提交", trainingCards: "待确认", evaluationJob: "待提交", evaluationCards: "32",
+    owner: "待定", status: "planned", note: "新增 ACWM baseline；训练入口、action conditioning 和 clean24 配置待确认。",
   },
   {
     id: "E7", track: "T3", baseline: "Pi0.5 / XPolicyLab",

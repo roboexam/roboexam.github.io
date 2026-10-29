@@ -199,7 +199,8 @@ export const tracks: TrackDefinition[] = [
       { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "AIHC training · ManualTermination" },
       { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
       { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
-      { id: "Wan 2.6 AC adapter", family: "ACWM", status: "Planned" },
+      { id: "Wan-Move", family: "ACWM", status: "Planned" },
+      { id: "EnerVerse-AC", family: "ACWM", status: "Planned" },
     ], metrics: acwmMetrics,
   },
   {
