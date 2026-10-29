@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { execFile as execFileCallback } from "node:child_process";
 import { constants } from "node:fs";
-import { open, readFile, readdir, realpath, stat } from "node:fs/promises";
+import { mkdir, open, readFile, readdir, realpath, rename, stat, unlink } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { Readable } from "node:stream";
@@ -31,7 +31,11 @@ type DatasetRef = RealDatasetSummary & {
   rows?: EpisodeRow[]; rowSha256?: string; format: "lerobot-v3" | "lerobot-v2";
   camerasInternal: string[]; videoPath: string; dataPath: string; chunksSize: number;
 };
-type MediaRef = { physical: string; root: string; bytes: number; identity: string; sha256: string };
+type MediaRef = {
+  physical: string; root: string; bytes: number; identity: string; sha256: string;
+  startSeconds: number; endSeconds: number;
+};
+type RenditionRef = { physical: string; root: string; bytes: number; etag: string };
 type TraceRef = { physical: string; root: string; bytes: number; identity: string; input: RealTraceInput };
 type MetadataReader = (dataset: DatasetRef) => Promise<{ rows: EpisodeRow[]; metadataSha256?: string }>;
 
@@ -148,13 +152,18 @@ export function createRealDatasetReader({
     { id: "lerobot_data_v3", kind: "robot", root: "/mnt/public_ckp/UniEmbodied-Bench/real/lerobot_data_v3" },
     { id: "tk_pico", kind: "ego", root: "/mnt/public_ckp/UniEmbodied-Bench/real/tk_pico" },
   ], refreshMs = 30000, readMetadata, traceExtractor = extractRealActionTrace, routePrefix = "real-datasets",
-  schemaVersion = "roboexam.real-datasets.v1",
+  schemaVersion = "roboexam.real-datasets.v1", optimizedMedia = false,
+  renditionCacheRoot = process.env.UNIBENCH_DATASET_RENDITION_ROOT ??
+    "/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_dataset_video_renditions/v1",
 }: { roots?: RootSpec[]; refreshMs?: number; readMetadata?: MetadataReader; traceExtractor?: RealTraceExtractor;
-  routePrefix?: string; schemaVersion?: RealDatasetCatalog["schemaVersion"] } = {}) {
+  routePrefix?: string; schemaVersion?: RealDatasetCatalog["schemaVersion"]; optimizedMedia?: boolean;
+  renditionCacheRoot?: string } = {}) {
   if (!/^[a-z0-9-]+$/.test(routePrefix)) throw new Error("invalid_route_prefix");
   const datasetRefs = new Map<string, DatasetRef>();
   const episodeRefs = new Map<string, { ref: DatasetRef; entry: RealEpisodeEntry }>();
   const mediaRefs = new Map<string, MediaRef>();
+  const renditionRefs = new Map<string, RenditionRef>();
+  const pendingRenditions = new Map<string, Promise<RenditionRef | null>>();
   const traceRefs = new Map<string, TraceRef>();
   const traceCache = new Map<string, RealTraceResult>();
   const pendingTraces = new Map<string, Promise<RealTraceResult>>();
@@ -163,6 +172,8 @@ export function createRealDatasetReader({
   let pending: Promise<RealDatasetCatalog> | undefined;
   const mountWarnings = new Set<string>();
   const approvedRoots = roots.map(spec => ({ ...spec, root: path.resolve(spec.root) }));
+  const renditionProfile = "web-360p-v1";
+  const renditionRoot = path.resolve(renditionCacheRoot, routePrefix);
 
   async function resolve(root: string, relative: string) {
     const base = await realpath(root);
@@ -371,10 +382,18 @@ export function createRealDatasetReader({
           const physical = await resolve(ref.root, video.relative); const info = await stat(physical);
           if (!info.isFile() || info.size <= 0) throw new Error("not_file");
           const bytes = info.size; const identity = [info.dev, info.ino, info.size, info.mtimeMs, info.ctimeMs].join(":");
-          const sha = digest(`${routePrefix}-media:${ref.id}:${entry.index}:${camera}:${video.relative}`);
-          mediaRefs.set(sha, { physical, root: ref.root, bytes, identity, sha256: sha });
           const end = video.end ?? (video.start + entry.durationSeconds);
-          media.push({ id: sha, camera, label: cameraLabel(camera), url: `/api/${routePrefix}-media?id=${sha}`, startSeconds: video.start, endSeconds: end, durationSeconds: Math.max(0, end - video.start) });
+          const sha = digest(JSON.stringify([
+            routePrefix, ref.id, entry.index, camera, video.relative, identity, video.start, end,
+          ]));
+          mediaRefs.set(sha, {
+            physical, root: ref.root, bytes, identity, sha256: sha,
+            startSeconds: video.start, endSeconds: end,
+          });
+          const url = `/api/${routePrefix}-media?id=${sha}`;
+          media.push({ id: sha, camera, label: cameraLabel(camera), url,
+            ...(optimizedMedia ? { renditionUrl: `${url}&profile=${renditionProfile}` } : {}),
+            startSeconds: video.start, endSeconds: end, durationSeconds: Math.max(0, end - video.start) });
         } catch { warnings.push(`${camera}: file unavailable or outside approved root`); }
       }
       const duration = media.length ? Math.min(...media.map(item => item.durationSeconds)) : entry.durationSeconds;
@@ -425,24 +444,125 @@ export function createRealDatasetReader({
       await handle?.close();
     }
   }
+  async function buildRendition(id: string, ref: MediaRef): Promise<RenditionRef | null> {
+    const destination = path.join(renditionRoot, renditionProfile, `${id}.mp4`);
+    const temporary = `${destination}.${process.pid}.${Date.now()}.tmp.mp4`;
+    try {
+      await mkdir(path.dirname(destination), { recursive: true });
+      const cacheRoot = await realpath(renditionRoot);
+      try {
+        const existing = await realpath(destination);
+        if (!within(cacheRoot, existing)) throw new Error("rendition_escape");
+        const information = await stat(existing);
+        if (information.isFile() && information.size > 0)
+          return { physical: existing, root: cacheRoot, bytes: information.size, etag: id };
+      } catch (error) {
+        if (error instanceof Error && error.message === "rendition_escape") throw error;
+      }
+      const source = await resolve(ref.root, path.relative(ref.root, ref.physical));
+      const before = await stat(source);
+      const beforeIdentity = [before.dev, before.ino, before.size, before.mtimeMs, before.ctimeMs].join(":");
+      if (!before.isFile() || before.size !== ref.bytes || beforeIdentity !== ref.identity)
+        throw new Error("source_changed");
+      const duration = ref.endSeconds - ref.startSeconds;
+      if (!(duration > 0)) throw new Error("invalid_window");
+      await execFile(process.env.UNIBENCH_FFMPEG ?? "/usr/bin/ffmpeg", [
+        "-hide_banner", "-loglevel", "error", "-nostdin", "-y",
+        "-ss", ref.startSeconds.toFixed(6), "-i", source, "-t", duration.toFixed(6),
+        "-map", "0:v:0", "-an",
+        "-vf", "scale=w='if(gt(ih,360),-2,iw)':h='if(gt(ih,360),360,ih)':flags=lanczos,fps=25",
+        "-c:v", "libx264", "-preset", "veryfast", "-crf", "31",
+        "-maxrate", "450k", "-bufsize", "900k", "-g", "50", "-keyint_min", "25", "-sc_threshold", "0",
+        "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-map_metadata", "-1",
+        "-avoid_negative_ts", "make_zero", "-threads", "2", "-f", "mp4", temporary,
+      ], { maxBuffer: 4 * 1024 * 1024 });
+      const after = await stat(source);
+      const afterIdentity = [after.dev, after.ino, after.size, after.mtimeMs, after.ctimeMs].join(":");
+      if (!after.isFile() || after.size !== ref.bytes || afterIdentity !== ref.identity)
+        throw new Error("source_changed");
+      const information = await stat(temporary);
+      if (!information.isFile() || information.size <= 0) throw new Error("rendition_empty");
+      await rename(temporary, destination);
+      const published = await realpath(destination);
+      if (!within(cacheRoot, published)) throw new Error("rendition_escape");
+      const publishedInfo = await stat(published);
+      return { physical: published, root: cacheRoot, bytes: publishedInfo.size, etag: id };
+    } catch {
+      try { await unlink(temporary); } catch { /* best effort cleanup */ }
+      return null;
+    }
+  }
+  async function renditionFor(id: string, ref: MediaRef) {
+    const cached = renditionRefs.get(id);
+    if (cached) return cached;
+    const inFlight = pendingRenditions.get(id);
+    if (inFlight) return await inFlight;
+    const promise = buildRendition(id, ref);
+    pendingRenditions.set(id, promise);
+    try {
+      const value = await promise;
+      if (value) renditionRefs.set(id, value);
+      return value;
+    } finally {
+      pendingRenditions.delete(id);
+    }
+  }
   async function serveMedia(request: Request, head = false) {
-    const params = new URL(request.url).searchParams; const id = params.get("id") ?? "";
-    if (!/^[a-f0-9]{64}$/.test(id) || params.getAll("id").length !== 1 || [...params.keys()].some(key => key !== "id")) return new Response(null, { status: 404 });
+    const params = new URL(request.url).searchParams;
+    const id = params.get("id") ?? "";
+    const profile = params.get("profile");
+    if (!/^[a-f0-9]{64}$/.test(id) || params.getAll("id").length !== 1 ||
+      params.getAll("profile").length > 1 || [...params.keys()].some(key => key !== "id" && key !== "profile") ||
+      (profile !== null && (!optimizedMedia || profile !== renditionProfile)))
+      return new Response(null, { status: 404 });
     const ref = mediaRefs.get(id); if (!ref) return new Response(null, { status: 404 });
-    let handle; try {
+    let handle;
+    try {
       const candidate = await resolve(ref.root, path.relative(ref.root, ref.physical));
       handle = await open(candidate, constants.O_RDONLY | constants.O_NOFOLLOW); const info = await handle.stat();
       const identity = [info.dev, info.ino, info.size, info.mtimeMs, info.ctimeMs].join(":");
       if (!info.isFile() || info.size !== ref.bytes || identity !== ref.identity) { await handle.close(); return new Response(null, { status: 410 }); }
     } catch { if (handle) await handle.close(); return new Response(null, { status: 404 }); }
-    const range = parseMediaRange(request.headers.get("range"), ref.bytes); if (range === undefined) { await handle.close(); return new Response(null, { status: 416, headers: { "content-range": `bytes */${ref.bytes}`, "accept-ranges": "bytes" } }); }
-    const { start, end } = range ?? { start: 0, end: ref.bytes - 1 };
-    const headers = new Headers({ "content-type": "video/mp4", "content-length": String(end - start + 1), "accept-ranges": "bytes", "content-disposition": "inline", "cache-control": "private, no-store", etag: `"${ref.sha256}"` });
-    if (range) headers.set("content-range", `bytes ${start}-${end}/${ref.bytes}`);
+    let media: RenditionRef = { physical: ref.physical, root: ref.root, bytes: ref.bytes, etag: ref.sha256 };
+    if (profile) {
+      await handle.close();
+      handle = undefined;
+      const rendition = await renditionFor(id, ref);
+      if (!rendition) return new Response(null, { status: 503, headers: { "retry-after": "2" } });
+      media = rendition;
+      try {
+        const candidate = await realpath(media.physical);
+        const root = await realpath(media.root);
+        if (!within(root, candidate)) throw new Error("rendition_escape");
+        handle = await open(candidate, constants.O_RDONLY | constants.O_NOFOLLOW);
+        const information = await handle.stat();
+        if (!information.isFile() || information.size !== media.bytes) throw new Error("rendition_changed");
+      } catch {
+        if (handle) await handle.close();
+        renditionRefs.delete(id);
+        return new Response(null, { status: 404 });
+      }
+    }
+    const etag = `"${media.etag}"`;
+    const requestedRange = request.headers.get("range");
+    const ifRange = request.headers.get("if-range");
+    const range = parseMediaRange(ifRange && ifRange !== etag ? null : requestedRange, media.bytes);
+    if (range === undefined) {
+      await handle.close();
+      return new Response(null, { status: 416, headers: { "content-range": `bytes */${media.bytes}`, "accept-ranges": "bytes" } });
+    }
+    if (!range && request.headers.get("if-none-match") === etag) {
+      await handle.close();
+      return new Response(null, { status: 304, headers: { etag, "cache-control": "private, max-age=31536000, immutable" } });
+    }
+    const { start, end } = range ?? { start: 0, end: media.bytes - 1 };
+    const headers = new Headers({ "content-type": "video/mp4", "content-length": String(end - start + 1), "accept-ranges": "bytes", "content-disposition": "inline", "cache-control": "private, max-age=31536000, immutable", etag });
+    if (profile) headers.set("x-roboexam-rendition-profile", profile);
+    if (range) headers.set("content-range", `bytes ${start}-${end}/${media.bytes}`);
     if (head) { await handle.close(); return new Response(null, { status: range ? 206 : 200, headers }); }
     return new Response(Readable.toWeb(handle.createReadStream({ start, end, autoClose: true })) as ReadableStream<Uint8Array>, { status: range ? 206 : 200, headers });
   }
   return { catalog, dataset, episode, actionTrace, serveMedia };
 }
 
-export const realDatasets = createRealDatasetReader();
+export const realDatasets = createRealDatasetReader({ optimizedMedia: true });

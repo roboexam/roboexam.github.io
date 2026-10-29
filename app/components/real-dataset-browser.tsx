@@ -25,21 +25,27 @@ async function read<T>(apiPrefix: string, query: string, signal: AbortSignal): P
 
 function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title: string }) {
   const videos = useRef<Record<string, HTMLVideoElement | null>>({});
+  const media = episode.media;
+  const supportsFast = media.length > 0 && media.every(view => !!view.renditionUrl);
+  const master = media.find(view => /(?:cam_high|camera_head|camera_0)$/.test(view.camera)) ?? media[0];
   const [ready, setReady] = useState<string[]>([]);
   const [failed, setFailed] = useState<string[]>([]);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
   const [rate, setRate] = useState(1);
-  const media = episode.media;
-  const master = media[0];
+  const [quality, setQuality] = useState<"fast" | "original">(supportsFast ? "fast" : "original");
+  const [loadSecondary, setLoadSecondary] = useState(false);
   const duration = media.length ? Math.min(...media.map(view => view.durationSeconds)) : 0;
-  const canPlay = !!master && ready.includes(master.id) && !failed.includes(master.id) && media.every(view => ready.includes(view.id) || failed.includes(view.id));
+  const canPlay = !!master && ready.includes(master.id) && !failed.includes(master.id);
+  const start = (view: RealDatasetEpisode["media"][number]) => quality === "fast" ? 0 : view.startSeconds;
+  const end = (view: RealDatasetEpisode["media"][number]) => start(view) + view.durationSeconds;
+  const source = (view: RealDatasetEpisode["media"][number]) => quality === "fast" ? view.renditionUrl : view.url;
 
   function seek(seconds: number) {
     const relative = Math.max(0, Math.min(seconds, duration));
     for (const view of media) {
       const video = videos.current[view.id];
-      if (video && ready.includes(view.id) && !failed.includes(view.id)) video.currentTime = view.startSeconds + relative;
+      if (video && ready.includes(view.id) && !failed.includes(view.id)) video.currentTime = start(view) + relative;
     }
     setTime(relative);
   }
@@ -60,19 +66,39 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
       return video?.play();
     });
     await Promise.allSettled(outcomes);
-    setPlaying(Boolean(master && !videos.current[master.id]?.paused));
+    if (master && !videos.current[master.id]?.paused) setPlaying(true);
+    else pause();
+  }
+  function switchQuality(next: "fast" | "original") {
+    if (next === quality) return;
+    pause();
+    setReady([]);
+    setFailed([]);
+    setLoadSecondary(false);
+    setQuality(next);
+  }
+  function markReady(view: RealDatasetEpisode["media"][number]) {
+    setReady(current => current.includes(view.id) ? current : [...current, view.id]);
+    if (view.id === master?.id) setLoadSecondary(true);
+    const video = videos.current[view.id];
+    const masterVideo = master ? videos.current[master.id] : null;
+    if ((playing || (masterVideo && !masterVideo.paused)) && video && view.id !== master?.id && video.paused) {
+      video.currentTime = start(view) + time;
+      video.playbackRate = rate;
+      void video.play().catch(() => {});
+    }
   }
   function update(id: string) {
     if (id !== master?.id) return;
     const current = videos.current[id];
     if (!current) return;
-    const relative = Math.max(0, current.currentTime - master.startSeconds);
-    if (relative >= duration || current.currentTime >= master.endSeconds) { pause(); seek(duration); return; }
+    const relative = Math.max(0, current.currentTime - start(master));
+    if (relative >= duration || current.currentTime >= end(master)) { pause(); seek(duration); return; }
     setTime(relative);
     if (playing) for (const view of media) {
       const video = videos.current[view.id];
-      if (video && view.id !== id && ready.includes(view.id) && !failed.includes(view.id) && Math.abs(video.currentTime - view.startSeconds - relative) > .15) {
-        video.currentTime = view.startSeconds + relative;
+      if (video && view.id !== id && ready.includes(view.id) && !failed.includes(view.id) && Math.abs(video.currentTime - start(view) - relative) > .15) {
+        video.currentTime = start(view) + relative;
       }
     }
   }
@@ -82,18 +108,22 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
       <div className="realMediaPanel">
         <div className="realCameraGrid">{media.map(view => <figure key={view.id}>
           <figcaption><Camera size={15}/>{view.label}</figcaption>
-          <video ref={node => { videos.current[view.id] = node; }} src={`${view.url}#t=${view.startSeconds},${view.endSeconds}`}
-            preload="metadata" muted playsInline aria-label={`${title} · ${view.label}`}
+          <video key={`${view.id}:${quality}`} ref={node => { videos.current[view.id] = node; }}
+            src={(view.id === master?.id || loadSecondary) && source(view) ? `${source(view)}#t=${start(view)},${end(view)}` : undefined}
+            preload={view.id === master?.id || loadSecondary ? "auto" : "none"} muted playsInline aria-label={`${title} · ${view.label}`}
             onLoadedMetadata={() => {
               const video = videos.current[view.id];
-              if (video) { video.currentTime = view.startSeconds + Math.min(time, duration); video.playbackRate = rate; }
+              if (video) { video.currentTime = start(view) + Math.min(time, duration); video.playbackRate = rate; }
             }}
-            onCanPlay={() => setReady(current => current.includes(view.id) ? current : [...current, view.id])}
-            onTimeUpdate={() => update(view.id)} onEnded={pause}
-            onError={() => { pause(); setFailed(current => current.includes(view.id) ? current : [...current, view.id]); }}>
+            onCanPlay={() => markReady(view)}
+            onTimeUpdate={() => update(view.id)} onEnded={() => { if (view.id === master?.id) pause(); }}
+            onError={() => {
+              if (quality === "fast") { switchQuality("original"); return; }
+              pause(); setFailed(current => current.includes(view.id) ? current : [...current, view.id]);
+            }}>
             <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>
           </video>
-          {failed.includes(view.id) ? <p role="status">视频暂时不可用</p> : !ready.includes(view.id) && <p role="status">正在加载视频…</p>}
+          {failed.includes(view.id) ? <p role="status">视频暂时不可用</p> : !ready.includes(view.id) && <p role="status">{view.id === master?.id || loadSecondary ? "正在加载视频…" : "等待主相机…"}</p>}
         </figure>)}</div>
         <div className="realPlaybackControls">
           <button type="button" disabled={!canPlay} onClick={() => { void toggle(); }} aria-label={playing ? "暂停所有相机" : "播放所有相机"}>{playing ? <Pause size={17}/> : <Play size={17}/>}</button>
@@ -101,6 +131,10 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
           <span>{secondsLabel(time)} / {secondsLabel(duration)}</span>
           <label><span>Speed · 倍速</span><select aria-label="样本播放速度" value={rate} onChange={event => changeRate(Number(event.target.value))}>
             {[.5, 1, 1.5, 2].map(value => <option value={value} key={value}>{value}×</option>)}
+          </select></label>
+          <label><span>Resolution · 清晰度</span><select aria-label="视频清晰度" value={quality} onChange={event => switchQuality(event.target.value as "fast" | "original")}>
+            {supportsFast && <option value="fast">360p · 快速</option>}
+            <option value="original">Original · 原始</option>
           </select></label>
         </div>
       </div>

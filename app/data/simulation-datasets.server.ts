@@ -127,6 +127,7 @@ const reader = createRealDatasetReader({
   routePrefix: "simulation-datasets",
   schemaVersion: "roboexam.simulation-datasets.v1",
   refreshMs: 300000,
+  optimizedMedia: true,
 });
 
 let taskSnapshot: {

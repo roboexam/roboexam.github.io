@@ -1,12 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { execFile as execFileCallback } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, writeFile, rm, symlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
+import { promisify } from "node:util";
 import { createRealDatasetReader } from "../app/data/real-datasets.server.ts";
 import { buildSimulationTaskCatalog } from "../app/data/simulation-datasets.server.ts";
 
+const execFile = promisify(execFileCallback);
 const hash = value => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const request = (query = "", headers = {}) => new Request("http://localhost/api/real-datasets-media" + query, { headers });
 const videoKey = "observation.images.camera_0";
@@ -75,6 +78,7 @@ async function fixture(t, options = {}) {
   const reader = createRealDatasetReader({
     roots: [{ id: "robot", kind: "robot", root: robotRoot }, { id: "ego", kind: "ego", root: egoRoot }],
     refreshMs: 0,
+    renditionCacheRoot: path.join(root, "renditions"),
     readMetadata: async source => {
       const directory = typeof source === "string" ? source : path.dirname(source.metadataDir);
       return { rows: rows.get(directory) ?? [], metadataSha256: hash(rows.get(directory) ?? []) };
@@ -295,10 +299,41 @@ test("allowlisted media supports seeking, suffix ranges and HEAD while rejecting
   response = await reader.serveMedia(new Request("http://localhost" + url), true);
   assert.equal(response.status, 200); assert.equal(response.body, null);
   assert.equal(response.headers.get("content-length"), "10");
+  assert.equal(response.headers.get("cache-control"), "private, max-age=31536000, immutable");
   response = await reader.serveMedia(new Request("http://localhost" + url, { headers: { range: "bytes=99-" } }));
   assert.equal(response.status, 416);
   assert.equal((await reader.serveMedia(request("?id=../../etc/passwd"))).status, 404);
   assert.equal((await reader.serveMedia(request("?path=/etc/passwd"))).status, 404);
+});
+
+test("optimized dataset media builds and caches an episode-window 360p rendition", async t => {
+  const f = await fixture(t, { optimizedMedia: true });
+  await execFile(process.env.UNIBENCH_FFMPEG ?? "/usr/bin/ffmpeg", [
+    "-hide_banner", "-loglevel", "error", "-nostdin", "-y",
+    "-f", "lavfi", "-i", "testsrc=size=640x480:rate=30", "-t", "2",
+    "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", f.v3File,
+  ]);
+  const rows = f.rows.get(f.v3);
+  f.rows.set(f.v3, rows.map((row, index) => ({
+    ...row,
+    [`videos/${chunkKey}/from_timestamp`]: index,
+    [`videos/${chunkKey}/to_timestamp`]: index + 1,
+  })));
+  const summary = (await f.reader.catalog()).datasets.find(row => row.kind === "robot");
+  const entries = await f.reader.dataset(summary.id);
+  const episode = await f.reader.episode(entries.episodes[0].id);
+  assert.match(episode.media[0].renditionUrl, /^\/api\/real-datasets-media\?id=[a-f0-9]{64}&profile=web-360p-v1$/);
+  const requestUrl = "http://localhost" + episode.media[0].renditionUrl;
+  const response = await f.reader.serveMedia(new Request(requestUrl, { headers: { range: "bytes=0-1023" } }));
+  assert.equal(response.status, 206);
+  assert.equal((await response.arrayBuffer()).byteLength, 1024);
+  assert.equal(response.headers.get("x-roboexam-rendition-profile"), "web-360p-v1");
+  assert.equal(response.headers.get("cache-control"), "private, max-age=31536000, immutable");
+  const etag = response.headers.get("etag");
+  const cached = await f.reader.serveMedia(new Request(requestUrl, { headers: { "if-none-match": etag } }));
+  assert.equal(cached.status, 304);
+  await writeFile(f.v3File, "changed");
+  assert.equal((await f.reader.serveMedia(new Request(requestUrl))).status, 410);
 });
 
 test("dataset discovery and videos cannot escape approved roots through symlinks", async t => {

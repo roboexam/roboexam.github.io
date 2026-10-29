@@ -48,14 +48,16 @@ try {
     const episode = await episodeResponse.json();
     assert.equal(episode.datasetId, dataset.id);
     assert.ok(episode.media.length > 0, `${dataset.name} episode has real media`);
+    const fastPlayback = episode.media.every(view => view.renditionUrl);
     await page.waitForFunction(id => document.querySelector(".realPlayer")?.dataset.episodeId === id, episode.id);
     await page.waitForFunction(() => [...document.querySelectorAll(".realCameraGrid video")].every(video => video.readyState >= 3));
     assert.equal(await page.locator(".realCameraGrid video").count(), episode.media.length);
+    assert.equal(await page.getByRole("combobox", { name: "视频清晰度", exact: true }).inputValue(), fastPlayback ? "fast" : "original");
     await page.getByRole("combobox", { name: "样本播放速度", exact: true }).selectOption("2");
     assert.ok(await page.locator(".realCameraGrid video").evaluateAll(videos => videos.every(video => video.playbackRate === 2)));
     await page.locator(".actionTracePanel").waitFor();
     assert.equal(await page.locator(".actionTracePanel.traceUnavailable").count(), 0, `${dataset.name} action trace must be available`);
-    const mediaResponse = await context.request.get(new URL(episode.media[0].url, base).href, { headers: { range: "bytes=0-31" } });
+    const mediaResponse = await context.request.get(new URL(fastPlayback ? episode.media[0].renditionUrl : episode.media[0].url, base).href, { headers: { range: "bytes=0-31" } });
     assert.equal(mediaResponse.status(), 206);
     assert.equal((await mediaResponse.body()).length, 32);
     const before = await page.locator(".realCameraGrid video").evaluateAll(videos => videos.map(video => video.currentTime));
@@ -64,8 +66,8 @@ try {
     await page.getByRole("button", { name: "暂停所有相机", exact: true }).click();
     const seek = Math.min(.5, episode.durationSeconds / 2);
     await page.getByRole("slider", { name: "样本播放进度", exact: true }).fill(String(seek));
-    await page.waitForFunction(({ media, seek }) => [...document.querySelectorAll(".realCameraGrid video")].every((video, index) =>
-      Math.abs(video.currentTime - media[index].startSeconds - seek) < .2), { media: episode.media, seek });
+    await page.waitForFunction(({ media, seek, fastPlayback }) => [...document.querySelectorAll(".realCameraGrid video")].every((video, index) =>
+      Math.abs(video.currentTime - (fastPlayback ? 0 : media[index].startSeconds) - seek) < .2), { media: episode.media, seek, fastPlayback });
     await page.screenshot({ path: path.join(screenshots, kind + "-desktop.png"), fullPage: true });
     await page.getByRole("button", { name: "下一条 Real & Ego 样本", exact: true }).click();
     await page.waitForFunction(id => document.querySelector(".realPlayer")?.dataset.episodeId === id, entries.episodes[1].id);

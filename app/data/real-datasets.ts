@@ -29,7 +29,7 @@ export type RealDatasetEntries = { dataset: RealDatasetSummary; version: string;
 export type RealDatasetEpisode = RealEpisodeEntry & {
   datasetId: string; metadataSha256: string;
   media: { id: string; camera: string; label: string; url: string;
-    startSeconds: number; endSeconds: number; durationSeconds: number }[];
+    renditionUrl?: string; startSeconds: number; endSeconds: number; durationSeconds: number }[];
   trace: ActionTraceSource;
   warnings: string[];
 };
