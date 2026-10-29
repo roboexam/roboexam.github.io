@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./overview.css";
 import "./explainability.css";
+import "./track-correlation.css";
 import "./pearson-matrix.css";
 import "./leaderboard.css";
 import "./dataset-explorer.css";
