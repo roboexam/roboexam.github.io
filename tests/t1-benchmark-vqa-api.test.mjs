@@ -12,8 +12,8 @@ const formal = {
   schemaVersion: "roboexam.t1-benchmark-results.v1", resultVersion: "fixture-v1",
   provenance: { sourceHashes: { initial: hash("a"), process: hash("b") }, missingScorePolicy: "zero-unscorable" },
   episodes: [
-    { id, modelId: "deepseek", taskId: "push_T", layoutId: 100000, attempt: "attempt_02" },
-    { id: "old-v1-kimi-stack_bowls-layout124", resultVersion: "old-v1", modelId: "kimi", taskId: "stack_bowls", layoutId: 124, attempt: "attempt_01" },
+    { id, modelId: "deepseek", taskId: "push_T", layoutId: 100000, attempt: "attempt_02", execution: { steps: 1100 } },
+    { id: "old-v1-kimi-stack_bowls-layout124", resultVersion: "old-v1", modelId: "kimi", taskId: "stack_bowls", layoutId: 124, attempt: "attempt_01", execution: { steps: 0 } },
   ],
 };
 const episode = {
@@ -119,6 +119,7 @@ test("finite 0–100 scores, status semantics and first-return timing are enforc
     (bundle) => { bundle.episodes[0].checkpoints[0].scores.c3 = -1; },
     (bundle) => { bundle.episodes[0].checkpoints[0].triggerStep = 193; },
     (bundle) => { bundle.episodes[0].checkpoints[0].returnStep = 192.5; },
+    (bundle) => { bundle.episodes[0].checkpoints[0].returnStep = 1101; },
     (bundle) => { bundle.episodes[0].checkpoints[0].slotId = "other_task/100000/NATIVE_SUCCESS"; },
   ];
   for (const change of changes) {
@@ -154,6 +155,9 @@ test("policy-zero records preserve unavailable observed scores and never fabrica
     (value) => { value.episodes[0].checkpoints.at(-1).observedScores.c3 = 0; },
     (value) => { value.episodes[0].checkpoints.at(-1).returnStep = 1098; },
     (value) => { value.episodes[0].checkpoints.at(-1).triggerStep = 1099.5; },
+    (value) => { value.episodes[0].checkpoints.at(-1).triggerStep = null; },
+    (value) => { value.episodes[0].checkpoints.at(-1).returnStep = null; },
+    (value) => { value.episodes[0].checkpoints.at(-1).returnStep = 1101; },
   ]) {
     const changed = structuredClone(bundle); change(changed);
     assert.throws(() => subject.createT1BenchmarkVqaStore(changed, formal));

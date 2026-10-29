@@ -93,19 +93,25 @@
 .t1bVqaTimelineRail > span { display: block; height: 100%; background: #5b83cf; transition: width .12s linear; }
 .t1bVqaTimelineMarker { position: absolute; top: 1px; display: grid; width: 22px; height: 22px; place-items: center; transform: translateX(-50%); border: 2px solid #d3dce9; border-radius: 50%; background: #fff; color: #75859b; font-size: 10px; font-weight: 650; }
 .t1bVqaTimelineMarker.isPast { border-color: #91abd8; background: #eaf1fc; color: #315eac; }
-.t1bVqaTimelineMarker.isCurrent { border-color: #315eac; background: #315eac; color: #fff; box-shadow: 0 0 0 4px #dce7fa; }
+.t1bVqaTimelineMarker.isLatest { border-color: #315eac; background: #315eac; color: #fff; box-shadow: 0 0 0 4px #dce7fa; }
 .t1bVqaStageNav { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
 .t1bVqaStageNav button { display: grid; min-width: 0; gap: 5px; padding: 11px 12px; border: 1px solid #dce4ef; border-radius: 8px; background: #fff; color: #516985; text-align: left; cursor: pointer; }
 .t1bVqaStageNav button:hover { border-color: #9db7e2; background: #f7f9fd; }
 .t1bVqaStageNav button.isPast { background: #f4f7fc; }
-.t1bVqaStageNav button.isCurrent { border-color: #5b83cf; background: #edf3ff; box-shadow: inset 3px 0 #4778d7; }
+.t1bVqaStageNav button.isLatest { border-color: #5b83cf; background: #edf3ff; box-shadow: inset 3px 0 #4778d7; }
 .t1bVqaStageNav button span { color: #7e8da2; font-size: 10px; font-variant-numeric: tabular-nums; }
 .t1bVqaStageNav button strong { overflow: hidden; color: #405978; font-size: 12px; font-weight: 550; text-overflow: ellipsis; white-space: nowrap; }
 .t1bVqaActiveCheckpoint { overflow: hidden; border: 1px solid #d7e1f0; border-radius: 9px; background: #fff; }
 .t1bVqaActiveCheckpoint > header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 17px 18px; border-bottom: 1px solid #e3e9f2; background: #f7f9fd; }
 .t1bVqaActiveCheckpoint > header > div { display: grid; gap: 5px; min-width: 0; }
-.t1bVqaActiveCheckpoint > header span { color: #7a8aa1; font-size: 10px; }
+.t1bVqaActiveCheckpoint > header > div > span { color: #7a8aa1; font-size: 10px; }
 .t1bVqaActiveCheckpoint > header h5 { margin: 0; color: #304967; font-size: 16px; font-weight: 570; }
+.t1bVqaSeekControls { display: flex; gap: 8px; padding: 15px 18px 0; }
+.t1bVqaSeekControls button { display: grid; gap: 4px; padding: 9px 11px; border: 1px solid #d5dfed; border-radius: 7px; background: #f8faff; color: #4d6381; text-align: left; cursor: pointer; }
+.t1bVqaSeekControls button:hover { border-color: #97b1dc; background: #eef4ff; }
+.t1bVqaSeekControls button span { font-size: 11px; }
+.t1bVqaSeekControls button strong { color: #315eac; font-size: 10px; font-weight: 550; font-variant-numeric: tabular-nums; }
+.t1bVqaTimingNote { margin: 10px 18px 0; color: #78889e; font-size: 11px; line-height: 1.6; }
 .t1bVqaActiveCheckpoint .t1bVqaAnswerBody { padding: 0 18px 19px; }
 .t1bVqaAwaiting { display: flex; justify-content: space-between; gap: 14px; padding: 17px 18px; border: 1px dashed #cfd9e7; border-radius: 9px; background: #fafbfd; color: #77879d; font-size: 12px; }
 .t1bVqaAwaiting strong { color: #4c6380; font-weight: 550; }
@@ -214,6 +220,8 @@
   .t1bVqaStageNav { grid-template-columns: 1fr; }
   .t1bVqaActiveCheckpoint > header { align-items: flex-start; flex-direction: column; padding: 15px 13px; }
   .t1bVqaActiveCheckpoint > header .t1bVqaCheckpointScores { width: 100%; }
+  .t1bVqaSeekControls { flex-direction: column; padding: 13px 13px 0; }
+  .t1bVqaTimingNote { margin-right: 13px; margin-left: 13px; }
   .t1bVqaActiveCheckpoint .t1bVqaAnswerBody { padding: 0 13px 16px; }
   .t1bVqaAwaiting { align-items: flex-start; flex-direction: column; padding: 15px; }
   .t1bPlayerBar { gap: 10px; padding: 13px 14px; font-size: 10px; }

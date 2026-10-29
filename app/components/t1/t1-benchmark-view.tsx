@@ -42,19 +42,39 @@ function T1BenchmarkPlaybackView({ episode, modelLabel, taskLabel, resultVersion
   resultVersion: string;
 }) {
   const video = useRef<HTMLVideoElement>(null);
+  const pendingSeek = useRef<number | null>(null);
   const [playback, setPlayback] = useState<T1BenchmarkPlayback>({ currentTime: 0, duration: 0 });
+  const applySeek = (seconds: number, fallbackDuration: number) => {
+    const player = video.current;
+    if (!player) return;
+    const duration = Number.isFinite(player.duration) ? player.duration : fallbackDuration;
+    const currentTime = Math.max(0, duration > 0 ? Math.min(seconds, duration) : seconds);
+    player.pause();
+    player.currentTime = currentTime;
+    setPlayback({ currentTime, duration });
+  };
   const seek = (seconds: number) => {
     const player = video.current;
     if (!player) return;
-    const duration = Number.isFinite(player.duration) ? player.duration : playback.duration;
-    const currentTime = Math.max(0, duration > 0 ? Math.min(seconds, duration) : seconds);
-    player.currentTime = currentTime;
-    setPlayback({ currentTime, duration });
+    if (player.readyState === 0) {
+      pendingSeek.current = seconds;
+      return;
+    }
+    applySeek(seconds, playback.duration);
+  };
+  const updatePlayback = (next: T1BenchmarkPlayback) => {
+    const requested = pendingSeek.current;
+    if (requested !== null && video.current?.readyState) {
+      pendingSeek.current = null;
+      applySeek(requested, next.duration);
+    } else {
+      setPlayback(next);
+    }
   };
 
   return <>
     <T1BenchmarkViewer episode={episode} modelLabel={modelLabel} taskLabel={taskLabel} resultVersion={resultVersion}
-      videoRef={video} onPlaybackChange={setPlayback}/>
+      videoRef={video} onPlaybackChange={updatePlayback}/>
     <T1BenchmarkEpisodeVqa episode={episode} modelLabel={modelLabel} taskLabel={taskLabel} resultVersion={resultVersion}
       playback={playback} onSeek={seek}/>
   </>;

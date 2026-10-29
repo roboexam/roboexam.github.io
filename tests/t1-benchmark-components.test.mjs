@@ -14,7 +14,7 @@ function episode(modelId, taskId, layoutId) {
   const id = `${modelId}-${taskId}-${layoutId}`;
   return { id, modelId, taskId, layoutId, attempt: "attempt_02", scores,
     execution: { steps: 123, subtask: 0, success: false, elapsedSeconds: 61 },
-    video: { id, url: `/api/t1-benchmark-media/${id}`, sha256: "a".repeat(64), bytes: 100, frames: 250, fps: 25 } };
+    video: { id, url: `/api/t1-benchmark-media/${id}`, sha256: "a".repeat(64), bytes: 100, frames: 124, fps: 25 } };
 }
 const fixture = {
   schemaVersion: "roboexam.t1-benchmark-results.v1", resultVersion: "synthetic-fixture-v1", generatedAt: "2026-10-21",
@@ -285,12 +285,19 @@ test("process details distinguish trigger/context steps and unreached protocol z
 
 test("process checkpoints map exact native steps to rollout time", () => {
   const { checkpointTimeSeconds } = loadComponents()(component("t1-benchmark-episode-vqa"));
+  const { benchmarkStepTime } = loadComponents()(component("t1-benchmark-viewer"));
   const detail = vqaDetail();
-  const selected = { ...fixture.episodes[0], execution: { ...fixture.episodes[0].execution, steps: 249 } };
+  const selected = { ...fixture.episodes[0], execution: { ...fixture.episodes[0].execution, steps: 249 },
+    video: { ...fixture.episodes[0].video, frames: 250 } };
+  assert.equal(benchmarkStepTime(selected, 0), 0);
+  assert.equal(benchmarkStepTime(selected, 249), 249 / 25);
+  for (const step of [-1, 1.5, 250]) assert.equal(benchmarkStepTime(selected, step), null);
   assert.equal(checkpointTimeSeconds(detail.checkpoints[0], selected), 158 / 25);
   assert.equal(checkpointTimeSeconds(detail.checkpoints[1], selected), null);
   const noFps = { ...selected, video: { ...selected.video, fps: null } };
-  assert.equal(checkpointTimeSeconds(detail.checkpoints[0], noFps, 10), 10 * 158 / 249);
+  assert.equal(checkpointTimeSeconds(detail.checkpoints[0], noFps), null);
+  assert.equal(checkpointTimeSeconds(detail.checkpoints[0], { ...selected, video: { ...selected.video, frames: 249 } }), null);
+  assert.equal(checkpointTimeSeconds({ ...detail.checkpoints[0], triggerStep: 250 }, selected), null);
 });
 
 test("video-synchronized process VQA shows only the checkpoint reached by playback", () => {
@@ -306,13 +313,18 @@ test("video-synchronized process VQA shows only the checkpoint reached by playba
     triggerStep: 220,
     returnStep: 225,
   });
-  const selected = { ...fixture.episodes[0], execution: { ...fixture.episodes[0].execution, steps: 249 } };
+  const selected = { ...fixture.episodes[0], execution: { ...fixture.episodes[0].execution, steps: 249 },
+    video: { ...fixture.episodes[0].video, frames: 250 } };
   const props = { detail, episode: selected, playback: { currentTime: 6.4, duration: 10 }, onSeek() {} };
   const html = renderToStaticMarkup(React.createElement(T1BenchmarkVqaEvidence, props));
   assert.match(html, /2 answered · 2 reached · 3 planned/);
   assert.match(html, /Stage 1 · 0:06\.3/);
-  assert.match(html, /aria-current="step"/);
-  assert.match(html, /Current answered checkpoint/);
+  assert.match(html, /latest reached checkpoint/);
+  assert.match(html, /Latest reached checkpoint/);
+  assert.match(html, /View milestone trigger/);
+  assert.match(html, /Step 158 · 0:06\.3/);
+  assert.match(html, /View returned context/);
+  assert.match(html, /Step 192 · 0:07\.7/);
   assert.match(html, /What is completed, and what comes next\?/);
   assert.doesNotMatch(html, /Future checkpoint question must stay hidden/);
   assert.match(html, /1 planned stage not reached/);

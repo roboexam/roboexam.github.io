@@ -59,6 +59,19 @@ test("native trigger and first returned context steps bind to the same selected 
   const other = setup(); other.details.episodes[0].checkpoints[0].returnStep = 101; assert.throws(() => validate(other), /beyond/);
 });
 
+test("blocked checkpoint timing is either absent or a complete bounded trigger-return pair", () => {
+  const valid = setup(), point = valid.details.episodes.flatMap(row => row.checkpoints).find(row => row.status === "reached_reference_blocked");
+  point.triggerStep = 90; point.returnStep = 95; assert.ok(validate(valid));
+  for (const change of [
+    row => { row.triggerStep = null; }, row => { row.returnStep = null; },
+    row => { row.returnStep = 89; }, row => { row.returnStep = 101; },
+  ]) {
+    const input = setup(), blocked = input.details.episodes.flatMap(row => row.checkpoints).find(row => row.status === "reached_reference_blocked");
+    blocked.triggerStep = 90; blocked.returnStep = 95; change(blocked);
+    assert.throws(() => validate(input));
+  }
+});
+
 test("published questions and saved first answers cover both formal candidates with final source hashes", () => {
   assert.equal(published.episodes.length, 140); assert.equal(published.resultVersion, formal.resultVersion);
   assert.deepEqual(published.episodes.map(row => row.episodeId), formal.episodes.map(row => row.id));
@@ -68,4 +81,24 @@ test("published questions and saved first answers cover both formal candidates w
   assert.equal(questions.filter(row => row.scoreOrigin === "policy_zero").length, 1); assert.equal(points.filter(row => row.scoreOrigin === "policy_zero").length, 1);
   assert.equal(points.filter(row => row.status === "scored").length, 82);
   for (const modelId of ["gpt-6-1-sol", "deepseek"]) for (const task of formal.tasks) assert.equal(published.episodes.filter(row => row.modelId === modelId && row.taskId === task.id).length, 5);
+});
+
+test("published checkpoint timing maps exactly onto all 140 constant-frame-rate videos", () => {
+  const episodes = new Map(formal.episodes.map(row => [row.id, row]));
+  assert.equal(episodes.size, 140);
+  for (const episode of episodes.values()) {
+    assert.equal(episode.video.frames, episode.execution.steps + 1);
+    assert.equal(episode.video.fps, 25);
+  }
+  const points = published.episodes.flatMap(row => row.checkpoints.map(point => ({ point, episode: episodes.get(row.episodeId) })));
+  assert.deepEqual(Object.fromEntries(["scored", "reached_reference_blocked", "not_reached"].map(status =>
+    [status, points.filter(({ point }) => point.status === status).length])), { scored: 82, reached_reference_blocked: 1, not_reached: 331 });
+  for (const { point, episode } of points) {
+    if (point.status === "not_reached") {
+      assert.equal(point.triggerStep, null); assert.equal(point.returnStep, null);
+    } else {
+      assert.ok(Number.isSafeInteger(point.triggerStep) && Number.isSafeInteger(point.returnStep));
+      assert.ok(point.triggerStep <= point.returnStep && point.returnStep <= episode.execution.steps);
+    }
+  }
 });

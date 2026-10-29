@@ -80,6 +80,7 @@ export function createT1BenchmarkVqaStore(raw: unknown, formal: T1BenchmarkResul
     requireValid(!episodes.has(episode.episodeId));
     const source = allowed.get(episode.episodeId);
     requireValid(source);
+    requireValid(Number.isSafeInteger(source.execution.steps) && source.execution.steps >= 0);
     for (const field of ["modelId", "taskId", "attempt"] as const) {
       identifier(episode[field]);
       requireValid(episode[field] === source[field]);
@@ -121,7 +122,8 @@ export function createT1BenchmarkVqaStore(raw: unknown, formal: T1BenchmarkResul
       const scores = object(checkpoint.scores); keys(scores, ["c2", "c3"]); score(scores.c2); score(scores.c3);
       if (checkpoint.status === "scored") {
         text(checkpoint.questionId); text(checkpoint.question); text(checkpoint.response, false);
-        step(checkpoint.triggerStep); step(checkpoint.returnStep); requireValid(checkpoint.returnStep >= checkpoint.triggerStep);
+        step(checkpoint.triggerStep); step(checkpoint.returnStep);
+        requireValid(checkpoint.returnStep >= checkpoint.triggerStep && checkpoint.returnStep <= source.execution.steps);
         const projection = JSON.stringify([checkpoint.question, checkpoint.response, checkpoint.returnStep, scores.c2, scores.c3]);
         requireValid(!returnedQuestions.has(checkpoint.questionId) || returnedQuestions.get(checkpoint.questionId) === projection);
         returnedQuestions.set(checkpoint.questionId, projection);
@@ -132,7 +134,10 @@ export function createT1BenchmarkVqaStore(raw: unknown, formal: T1BenchmarkResul
         const observed = object(checkpoint.observedScores); keys(observed, ["c2", "c3"]);
         requireValid(observed.c2 === null && observed.c3 === null);
         nullableStep(checkpoint.triggerStep); nullableStep(checkpoint.returnStep);
-        if (checkpoint.triggerStep !== null && checkpoint.returnStep !== null) requireValid(checkpoint.returnStep >= checkpoint.triggerStep);
+        requireValid((checkpoint.triggerStep === null) === (checkpoint.returnStep === null));
+        if (checkpoint.triggerStep !== null && checkpoint.returnStep !== null) {
+          requireValid(checkpoint.returnStep >= checkpoint.triggerStep && checkpoint.returnStep <= source.execution.steps);
+        }
       } else {
         requireValid(checkpoint.status === "not_reached" && scores.c2 === 0 && scores.c3 === 0);
         for (const field of ["questionId", "question", "response", "triggerStep", "returnStep"]) requireValid(checkpoint[field] === null);

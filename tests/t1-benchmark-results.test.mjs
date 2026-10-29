@@ -84,7 +84,7 @@ test("unapproved missing categories and arbitrary zero assignments cannot silent
 });
 
 test("nonfinite scores, media mismatch and private public strings are rejected", () => {
-  for (const change of [s => { s.initial[0].score = NaN; }, s => { s.slots[0].C3_score = Infinity; }, s => { s.episodes[0].video.url = "https://private.example/video.mp4"; }, s => { s.episodes[0].video.sha256 = "bad"; }]) { const source = fixture().source; change(source); assert.throws(() => validate(source)); }
+  for (const change of [s => { s.initial[0].score = NaN; }, s => { s.slots[0].C3_score = Infinity; }, s => { s.episodes[0].video.url = "https://private.example/video.mp4"; }, s => { s.episodes[0].video.sha256 = "bad"; }, s => { s.episodes[0].video.frames = s.episodes[0].steps; }]) { const source = fixture().source; change(source); assert.throws(() => validate(source)); }
 });
 
 test("frozen file reader rejects drift and escaped source roots", async () => {

@@ -8,6 +8,14 @@ export type T1BenchmarkPlayback = {
   duration: number;
 };
 
+export function benchmarkStepTime(episode: T1BenchmarkEpisode, step: number | null): number | null {
+  const { video } = episode;
+  if (!video || typeof step !== "number" || !Number.isSafeInteger(step) || step < 0 || step > episode.execution.steps ||
+      typeof video.frames !== "number" || !Number.isSafeInteger(video.frames) || video.frames !== episode.execution.steps + 1 ||
+      typeof video.fps !== "number" || !Number.isFinite(video.fps) || video.fps <= 0) return null;
+  return Math.min(step / video.fps, (video.frames - 1) / video.fps);
+}
+
 type Props = {
   episode: T1BenchmarkEpisode;
   modelLabel: string;
