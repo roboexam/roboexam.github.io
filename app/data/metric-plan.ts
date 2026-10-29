@@ -235,7 +235,6 @@ export const tracks: TrackDefinition[] = [
       { id: "HyVLA", family: "VLA", status: "T4 independent · Planned" },
       { id: "LingBot-VA2.0", family: "WAM", status: "T4 independent · Planned" },
       { id: "XVLA", family: "VLA", status: "T4 independent · Planned" },
-      { id: "X-WAM", family: "WAM", status: "T4 independent · Planned" },
     ], metrics: realWorldMetrics,
   },
 ];

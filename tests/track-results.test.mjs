@@ -51,8 +51,17 @@ test('T2 publishes the current Wan-Move and EnerVerse-AC baseline roster', () =>
   assert.deepEqual(models.slice(-2), ['Wan-Move', 'EnerVerse-AC']);
   assert.deepEqual(runs.slice(-2).map(run => run.baseline), ['Wan-Move', 'EnerVerse-AC']);
   assert.equal(runs.length, 7);
-  assert.equal(baselineRunPlan.length, 25);
+  assert.equal(baselineRunPlan.length, 24);
   assert.equal(runs.at(-1).trainingCards, '待确认');
+});
+test('T4 keeps RGB-only XVLA and excludes depth-dependent X-WAM', () => {
+  const models = tracks.find(track => track.id === 'T4').models.map(model => model.id);
+  const runs = baselineRunPlan.filter(run => run.track === 'T4');
+  assert.ok(models.includes('XVLA'));
+  assert.equal(models.includes('X-WAM'), false);
+  assert.ok(runs.some(run => run.baseline === 'XVLA'));
+  assert.equal(runs.some(run => run.baseline === 'X-WAM'), false);
+  assert.equal(runs.length, 7);
 });
 test('hardware and planned models cannot open a simulation result', () => {
   for (const trackId of ['T3','T4']) {

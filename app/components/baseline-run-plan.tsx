@@ -53,7 +53,7 @@ export function BaselineRunPlan({ initialTrack = "ALL" }: { initialTrack?: "ALL"
     <div className="baselinePlanFootnotes">
       {sharedEvaluationJobs.map((item) => <p key={item.job}><strong>最近评测：</strong><code>{item.job}</code> · {item.cards} card{item.cards === "1" ? "" : "s"} · {item.note}</p>)}
       <p><strong>统一仿真口径：</strong>A800 / RTX 4090，DLSS Off、TAA On、64 spp；A800 为正式口径，4090 用于同 renderer、同 seed 复核。</p>
-      <p><strong>64 卡排期：</strong>当前共 25 个 baseline；以下工期仍按已有资源参数的 24 个估算，EnerVerse-AC 待资源确认后再计入。A800 资源下界约 19.4–25.4 天；按 8 卡槽滚动排程约 20.0–26.1 天，加 20%–25% 缓冲约 24.0–32.6 天，建议预留 24–33 天。若 T3 使用独立 8×RTX 4090 槽，滚动排程约 20.1–32.1 天，加缓冲约 24.1–40.2 天；额外配置 64×4090 时可缩短到 18.8–24.5 天。严格按 T2→T3→T4 串行约 38.8–42.5 天，加缓冲后建议预留 47–53 天；8×4090 严格口径约 40.3–51.6 天。</p>
+      <p><strong>64 卡排期：</strong>当前共 24 个 baseline；已有资源参数覆盖 23 个，EnerVerse-AC 待确认。A800 理论资源下界约 19.0–24.6 天；按 8 卡槽滚动并计入计划缓冲，建议预留 24–33 天。</p>
       <p><strong>真机约束：</strong>T4 每个 baseline 必须从各自 base / pretrained 独立训练；robot station-hours、reset 和人工接管不折算为 GPUh。</p>
     </div>
   </section>;

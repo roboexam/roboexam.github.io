@@ -138,11 +138,6 @@ export const baselineRunPlan: BaselineRun[] = [
     owner: "待定", status: "planned", note: "需确认 real camera 和控制频率。",
   },
   {
-    id: "E23", track: "T4", baseline: "X-WAM",
-    trainingJob: "待提交（T4 独立）", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
-    owner: "待定", status: "planned", note: "adapter 支持 EVAL_ENV_TYPE=real；仍需安全接管验收。",
-  },
-  {
     id: "E24", track: "T4", baseline: "Pelican-Unify（policy）",
     trainingJob: "待提交（T4 独立）", trainingCards: "8", evaluationJob: "待提交", evaluationCards: "robot station",
     owner: "待定", status: "planned", note: "独立 base 初始化；XPolicyLab adapter、action schema 和真机部署待验收。",
