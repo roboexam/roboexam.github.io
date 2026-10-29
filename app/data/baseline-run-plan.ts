@@ -35,7 +35,7 @@ export const baselineRunPlan: BaselineRun[] = [
   {
     id: "E3", track: "T2", baseline: "Cosmos3-Nano ACWM",
     trainingJob: "job-fbqeyxxqukdj", trainingCards: "16", evaluationJob: "job-k5fnlh8pfvrv", evaluationCards: "8",
-    owner: "weixiaobao", status: "running", note: "train22；训练 ManualTermination；2026-10-29 recursive evaluation 正在运行。",
+    owner: "weixiaobao", status: "succeeded", note: "train22；训练 ManualTermination；2026-10-29 recursive evaluation 已完成。",
   },
   {
     id: "E4", track: "T2", baseline: "Pelican-Unify 1.0（ACWM）",
@@ -90,7 +90,7 @@ export const baselineRunPlan: BaselineRun[] = [
   {
     id: "E13", track: "T3", baseline: "LingBot-VA2.0",
     trainingJob: "job-zskd6wiie2qq", trainingCards: "8", evaluationJob: "job-dfqtiqknppfq", evaluationCards: "8",
-    owner: "weixiaobao", status: "running", note: "train22；训练 Failed；2026-10-29 最新 resumed recursive evaluation 正在运行。",
+    owner: "weixiaobao", status: "succeeded", note: "train22；训练 Failed；2026-10-29 resumed recursive evaluation 已完成。",
   },
   {
     id: "E14", track: "T3", baseline: "XVLA",

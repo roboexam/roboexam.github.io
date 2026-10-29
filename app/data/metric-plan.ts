@@ -127,7 +127,7 @@ export const tracks: TrackDefinition[] = [
     models: [
       { id: "Cosmos Predict 2.5", family: "ACWM", status: "Planned · clean24" },
       { id: "CtrlWorld", family: "ACWM", status: "AIHC training · Failed" },
-      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "AIHC evaluation · Running" },
+      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "AIHC evaluation · Succeeded" },
       { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
       { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
       { id: "Wan-Move", family: "ACWM", status: "Planned" },
@@ -147,7 +147,7 @@ export const tracks: TrackDefinition[] = [
       { id: "HyVLA", family: "VLA", status: "AIHC training · Running" },
       { id: "G05", family: "VLA", status: "AIHC training · Running" },
       { id: "DM0.5 / OpenDM", family: "VLA", status: "AIHC training · Running" },
-      { id: "LingBot-VA2.0", family: "WAM", status: "AIHC evaluation · Running" },
+      { id: "LingBot-VA2.0", family: "WAM", status: "AIHC evaluation · Succeeded" },
       { id: "XVLA", family: "VLA", status: "AIHC training · Succeeded" },
       { id: "AHA-WAM", family: "WAM", status: "Planned" },
       { id: "X-WAM", family: "WAM", status: "Planned" },
