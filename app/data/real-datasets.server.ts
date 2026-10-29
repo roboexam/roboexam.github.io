@@ -398,6 +398,9 @@ export function createRealDatasetReader({
       }
       const duration = media.length ? Math.min(...media.map(item => item.durationSeconds)) : entry.durationSeconds;
       const trace = await bindTrace(ref, row, entry, duration);
+      const primary = media.find(item => /(?:cam_high|camera_head|camera_0)$/.test(item.camera)) ?? media[0];
+      const primaryRef = primary ? mediaRefs.get(primary.id) : undefined;
+      if (optimizedMedia && primary && primaryRef) void renditionFor(primary.id, primaryRef);
       return { ...entry, datasetId: ref.id, metadataSha256: ref.metadataSha256, media, trace, warnings };
     }
     return null;
