@@ -34,6 +34,37 @@ export const metricInfo: Record<string, MetricInfo> = {
     "originType": "Benchmark outcome",
     "caveat": "Always report N and the success interval; partial progress is reported separately."
   },
+  "TASK_SCORE": {
+    "name": "Subtask Completion Score",
+    "definition": "Task-native progress score awarded from the registered subtask predicates reached during an episode.",
+    "formula": "task-specific weighted score over completed registered subtasks",
+    "direction": "Higher is better",
+    "evidence": "Task score contract, subtask predicate states, and episode result",
+    "unit": "score",
+    "source": "RoboDojo task-native score protocol",
+    "originType": "Progress outcome",
+    "caveat": "Weights are task-specific; compare models only on the same task and frozen score contract."
+  },
+  "FIRST_TARGET_SELECTION": {
+    "name": "First Target Selection Accuracy",
+    "definition": "Whether the first registered target selection in an episode chooses a legal target for the current task state.",
+    "formula": "episodes with a correct first target selection / evaluable episodes",
+    "direction": "Higher is better",
+    "evidence": "First target-selection event, legal target set, and current task state",
+    "unit": "rate",
+    "source": "RoboDojo target-selection metrics",
+    "originType": "Action-correctness outcome"
+  },
+  "ALL_TARGET_SELECTION": {
+    "name": "All Target Selection Accuracy",
+    "definition": "Fraction of all registered target selections that choose a legal target for the current task state.",
+    "formula": "correct target-selection events / evaluable target-selection events",
+    "direction": "Higher is better",
+    "evidence": "All target-selection events, legal target sets, and task-state timeline",
+    "unit": "rate",
+    "source": "RoboDojo target-selection metrics",
+    "originType": "Action-correctness outcome"
+  },
   "SR95": {
     "name": "Success-Rate 95% Interval",
     "definition": "Beta posterior interval for the measured task success rate.",
@@ -85,6 +116,28 @@ export const metricInfo: Record<string, MetricInfo> = {
     "unit": "s / episode",
     "source": "Policy runtime contract",
     "originType": "Efficiency diagnostic"
+  },
+  "SPARC": {
+    "name": "SPARC",
+    "definition": "Spectral arc length of the end-effector speed profiles, aggregated across the registered arms and episodes.",
+    "formula": "mean of valid per-arm spectral arc length values",
+    "direction": "Closer to zero is usually smoother",
+    "evidence": "Timestamped end-effector position traces and fixed sampling contract",
+    "unit": "SPARC",
+    "source": "RoboDojo trajectory metrics",
+    "originType": "Trajectory diagnostic",
+    "caveat": "Report the arm and episode aggregation contract; a stationary failed rollout is not evidence of good control."
+  },
+  "PATH_LENGTH": {
+    "name": "End-Effector Path Length",
+    "definition": "Total distance traveled by the registered end effectors over the episode.",
+    "formula": "sum over arms and timesteps of ||x_t − x_(t−1)||₂",
+    "direction": "Report by task outcome",
+    "evidence": "Timestamped end-effector position traces and arm-registration metadata",
+    "unit": "m",
+    "source": "RoboDojo trajectory metrics",
+    "originType": "Trajectory diagnostic",
+    "caveat": "Interpret with task success and path efficiency; shorter motion alone is not necessarily better."
   },
   "LSPARC": {
     "name": "Left EE SPARC",
@@ -670,23 +723,25 @@ export const metricInfo: Record<string, MetricInfo> = {
   },
   "GRASP_STABILITY": {
     "name": "Grasp Stability Rate",
-    "definition": "Fraction of established grasps that remain stable until legal release or timeout.",
-    "formula": "stable established grasps / established grasps",
+    "definition": "Fraction of evaluable grasp attempts that establish a grasp rather than being classified as invalid.",
+    "formula": "established_grasp_count / (established_grasp_count + grasp_invalid_count)",
     "direction": "Higher is better",
-    "evidence": "Contact state, relative object motion, release event, and hold window",
+    "evidence": "Registered grasp, grasp-invalid, and undetermined grasp events",
     "unit": "rate",
-    "source": "Policy metric plan · L2.2",
-    "originType": "Planned report item"
+    "source": "RoboDojo grasp-event metrics",
+    "originType": "Action-correctness outcome",
+    "caveat": "Undetermined grasp attempts are excluded from the denominator. This measures grasp establishment, not transport retention."
   },
   "DROP_RATE": {
     "name": "Transport Drop Rate",
-    "definition": "Fraction of established transport operations that lose the object before legal release.",
-    "formula": "transport drops / established transports",
+    "definition": "Fraction of resolved transport endings classified as a drop rather than a legal release.",
+    "formula": "drop_count / (release_count + drop_count)",
     "direction": "Lower is better",
-    "evidence": "Object identity, grasp state, transport window, and drop event",
+    "evidence": "Registered release and drop events for established transports",
     "unit": "rate",
-    "source": "Policy metric plan · L2.2",
-    "originType": "Planned report item"
+    "source": "RoboDojo transport-event metrics",
+    "originType": "Closed-loop outcome",
+    "caveat": "Censored holds are excluded from the denominator. Under this denominator, transport stability equals 1 − drop rate."
   },
   "CONTACT_LOSS": {
     "name": "Contact Loss Rate",

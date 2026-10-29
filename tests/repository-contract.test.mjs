@@ -41,7 +41,7 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   }
   assert.match(leaderboard, /VLM agents through a shared harness/);
   assert.doesNotMatch(dashboard, /Perceive and reason without acting/);
-  for (const metric of ["l1a.object_facts.counting", "l1c.next_action_accuracy", "PSNR", "CEE", "TARGET_SELECTION", "RECOVERY_SR", "HUMAN_INTERVENTION"]) {
+  for (const metric of ["l1a.object_facts.counting", "l1c.next_action_accuracy", "PSNR", "CEE", "FIRST_TARGET_SELECTION", "ROBUSTNESS", "HUMAN_INTERVENTION"]) {
     assert.ok(leaderboard.includes(metric), `missing metric ${metric}`);
   }
   assert.match(dashboard, /<LeaderboardView/);

@@ -14,7 +14,7 @@ export type EvidenceKind = keyof typeof evidenceLabels;
 export type ProtocolState = keyof typeof protocolLabels;
 export type MetricFacets = { dimension: string; group: string; evidence: EvidenceKind[]; protocol: ProtocolState };
 
-const policyMotion = new Set(['INTENTION_SCORE', 'LSPARC', 'RSPARC', 'JERK', 'PEAK_SPEED', 'LPATH', 'RPATH', 'TOTAL_PATH', 'EE_DISPLACEMENT', 'PATH_EFFICIENCY', 'TIME_EFFICIENCY', 'ACTION_EFFICIENCY', 'SET', 'LOCAL_TIME', 'IPS', 'WT', 'SPEED_LIMIT_VIOLATION', 'ACCEL_LIMIT_VIOLATION', 'FORCE_LIMIT_VIOLATION', 'ACTION_JITTER']);
+const policyMotion = new Set(['INTENTION_SCORE', 'SPARC', 'LSPARC', 'RSPARC', 'JERK', 'PEAK_SPEED', 'PATH_LENGTH', 'LPATH', 'RPATH', 'TOTAL_PATH', 'EE_DISPLACEMENT', 'PATH_EFFICIENCY', 'TIME_EFFICIENCY', 'ACTION_EFFICIENCY', 'SET', 'LOCAL_TIME', 'IPS', 'WT', 'SPEED_LIMIT_VIOLATION', 'ACCEL_LIMIT_VIOLATION', 'FORCE_LIMIT_VIOLATION', 'ACTION_JITTER']);
 
 export function facetsFor(trackId: TrackId, metric: MetricDefinition, mode: ReportMode = 'plan'): MetricFacets {
   const { id } = metric;
@@ -38,7 +38,7 @@ export function facetsFor(trackId: TrackId, metric: MetricDefinition, mode: Repo
   };
   const dimension = group.startsWith('L2') ? 'L2 · Closed-loop effectiveness' : group.startsWith('L3') ? 'L3 · Stateful execution' : group;
   const context = ['AC', 'N', 'SR95'].includes(id);
-  const paired = group === 'X · Generalization' || ['INSTRUCTION_PRIDE', 'INSTRUCTION_SR'].includes(id);
+  const paired = group === 'X · Generalization' || id === 'ROBUSTNESS' || ['INSTRUCTION_PRIDE', 'INSTRUCTION_SR'].includes(id);
   return { dimension, group, evidence: context ? ['artifacts'] : [...((group === 'L2 · Motion smoothness and efficiency' || policyMotion.has(id)) ? ['motion' as const] : ['state' as const]), ...(paired ? ['paired' as const] : [])], protocol: ['INSTRUCTION_PRIDE', 'ACTION_EFFICIENCY'].includes(id) ? 'pending' : 'planned' };
 }
 
