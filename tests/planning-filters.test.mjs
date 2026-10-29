@@ -27,9 +27,9 @@ test('protocol and evidence facets preserve documented metric requirements', () 
   assert.ok(facet('T1','l1c.epr').evidence.includes('symbolic'));
   assert.equal(facet('T1','l1b.situational').protocol,'alternative');
   assert.equal(facet('T1','l1c.cpe').protocol,'pending');
-  assert.equal(facet('T3','INSTRUCTION_PRIDE').protocol,'pending');
-  assert.equal(facet('T3','ACTION_EFFICIENCY').protocol,'pending');
-  assert.ok(facet('T3','LJPL').evidence.includes('motion'));
+  assert.equal(facet('T3','ROBUSTNESS').protocol,'planned');
+  assert.ok(facet('T3','ROBUSTNESS').evidence.includes('paired'));
+  assert.ok(facet('T3','SPARC').evidence.includes('motion'));
   assert.ok(facet('T4','RECOVERY_SR').evidence.includes('manual'));
 });
 test('metric filters intersect dimensions, evidence, protocol, and search without manufacturing results', () => {

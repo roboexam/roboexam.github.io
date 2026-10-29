@@ -99,9 +99,9 @@ test('all displayed metric plans have bilingual explanations and explicit input/
   }
   assert.equal(tracks[1].metrics.length, 18);
   assert.equal(tracks[1].metrics.find(m => m.id === 'AF-DIV').direction, 'Report');
-  assert.equal(tracks[2].metrics.find(m => m.id === 'LSPARC').direction, '→ 0');
+  assert.equal(tracks[2].metrics.find(m => m.id === 'SPARC').direction, '→ 0');
   assert.ok(tracks[0].metrics.some(m => m.id === 'l1c.semantic_nlcs'));
-  assert.ok(tracks[2].metrics.some(m => m.id === 'RECOVERY_FINAL_SR'));
+  assert.ok(tracks[2].metrics.some(m => m.id === 'GOAL_RETENTION'));
 });
 
 test('leaderboard results expose episode count and cohort instead of hiding protocol differences', () => {
