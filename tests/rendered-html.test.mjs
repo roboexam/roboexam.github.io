@@ -145,7 +145,7 @@ test("Datasets renders the unified live dataset workspace", async () => {
   assert.match(html, /24 tasks/);
   assert.match(html, /Simulation catalog summary/);
   assert.match(html, /Camera \+ action replay/);
-  assert.match(html, /Scenario inventory/);
+  assert.doesNotMatch(html, /Scenario inventory|BENCHMARK COVERAGE/);
   assert.doesNotMatch(html, /Training · [\s\S]{0,40}2,400|Evaluation · [\s\S]{0,40}600|2 sets/);
   assert.doesNotMatch(html, /Simulation 原始数据/);
   assert.doesNotMatch(html, /reference episodes|admitted ·|\/mnt\//);
