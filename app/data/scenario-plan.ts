@@ -50,6 +50,14 @@ export const scenarioPlan: Scenario[] = [
   scene('build_tower','Build Tower',['R','P','M'],'Rigid objects','Verify staged support geometry; avoid broad material-stability claims.'),
   scene('fill_pen_holder','Fill Pen Holder',['F','P','M'],'Precision insertion','Final depth and pose do not verify continuous support by the other hand.'),
   scene('put_bottles_into_dustbin','Put Bottles into Dustbin',['R','M'],'Rigid objects','Handover is optional per episode and not independently checked.'),
+  scene('clear_keyboard_then_close_laptop','Clear Keyboard, Then Close Laptop',['F','S','M'],'Rigid objects','Clear all keyboard objects before closing the laptop.'),
+  scene('find_category_outlier','Find Category Outlier',['G'],'Rigid objects','Select the object whose category differs from the remaining objects.'),
+  scene('hold_button_until_cue','Hold Button Until Cue',['F','S'],'Rigid objects','Maintain button contact until the registered release cue.'),
+  scene('hold_water_mug','Hold Water Mug',['F','P'],'Rigid objects','Establish and retain a stable mug grasp for the registered interval.'),
+  scene('mirror_pair_layout','Mirror Pair Layout',['G','R','P','M'],'Rigid objects','Place paired objects in the registered mirrored arrangement.'),
+  scene('pack_mixed_objects_into_box_v1','Pack Mixed Objects into Box',['G','R','M'],'Rigid objects','Place all registered mixed objects inside the target box.'),
+  scene('place_between_references','Place Between References',['G','R','P'],'Rigid objects','Place the target inside the registered region between two references.'),
+  scene('set_button_colors','Set Button Colors',['G','F','S','M'],'Rigid objects','Set each registered button to its instructed color state.'),
 ];
 export function scenarioFor(id: string) { return scenarioPlan.find(scene => scene.id === id); }
 export function tagsForScenario(scene: Scenario, scope: 'all' | 'base' = 'all'): ScenarioTag[] {

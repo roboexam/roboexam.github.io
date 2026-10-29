@@ -1,0 +1,4442 @@
+{
+  "arrange_largest_number": {
+    "task": "arrange_largest_number",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 13,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.17647058823529413,
+        "n": 51,
+        "unit": "rate",
+        "primary": "17.65%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.1111111111111111,
+        "n": 9,
+        "unit": "rate",
+        "primary": "11.11%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 28,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 28,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 28,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.899175012942253,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.899 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.12787909712015963,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.128 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 5.914646964862837,
+        "n": 5,
+        "unit": "m",
+        "primary": "5.915 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "95dd784efbf3eb074193236b44bd94903d73f7956baf0a9a62a96fbe13134e30"
+  },
+  "build_tower": {
+    "task": "build_tower",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 10.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "10.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 83,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.6933333333333334,
+        "n": 75,
+        "unit": "rate",
+        "primary": "69.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.09615384615384616,
+        "n": 52,
+        "unit": "rate",
+        "primary": "9.62%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.2,
+        "n": 20,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.05,
+        "n": 20,
+        "unit": "rate",
+        "primary": "5.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.15,
+        "n": 20,
+        "unit": "rate",
+        "primary": "15.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.2084860481830155,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.208 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.13809144124122735,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.138 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 8.669660279651294,
+        "n": 5,
+        "unit": "m",
+        "primary": "8.670 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 0.25,
+        "n": 4,
+        "unit": "rate",
+        "primary": "25.00%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 0.25,
+        "n": 4,
+        "unit": "rate",
+        "primary": "25.00%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "685248246fda7e020267de132eb80081a96a441dee626384733168aa37b0f754"
+  },
+  "classify_objects_by_language": {
+    "task": "classify_objects_by_language",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 3,
+    "incompleteEpisodes": 2,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 3,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 14,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.4117647058823529,
+        "n": 17,
+        "unit": "rate",
+        "primary": "41.18%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.42857142857142855,
+        "n": 7,
+        "unit": "rate",
+        "primary": "42.86%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 12,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 12,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 12,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -6.09343888833511,
+        "n": 3,
+        "unit": "SPARC",
+        "primary": "-6.093 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.16451921616035878,
+        "n": 3,
+        "unit": "m",
+        "primary": "0.165 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 4.197170469289204,
+        "n": 3,
+        "unit": "m",
+        "primary": "4.197 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "5ffeb9230078dafab898d58fec2f702707e133d91ea88bfdc51227231e449c2c"
+  },
+  "clear_keyboard_then_close_laptop": {
+    "task": "clear_keyboard_then_close_laptop",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 6.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "6.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 2,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 7,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.1111111111111111,
+        "n": 9,
+        "unit": "rate",
+        "primary": "11.11%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.06666666666666667,
+        "n": 15,
+        "unit": "rate",
+        "primary": "6.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.06666666666666667,
+        "n": 15,
+        "unit": "rate",
+        "primary": "6.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.3310723897626415,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.331 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.1947674293261519,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.195 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.978288305959892,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.978 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 0.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "52e05d6f40a666cf317057ece1f2dce4decc3f431b36008f05e6e3cf6d1bb558"
+  },
+  "cover_blocks": {
+    "task": "cover_blocks",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.9230769230769231,
+        "n": 26,
+        "unit": "rate",
+        "primary": "92.31%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.7352941176470589,
+        "n": 34,
+        "unit": "rate",
+        "primary": "73.53%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.52,
+        "n": 25,
+        "unit": "rate",
+        "primary": "52.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.17142857142857143,
+        "n": 35,
+        "unit": "rate",
+        "primary": "17.14%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.02857142857142857,
+        "n": 35,
+        "unit": "rate",
+        "primary": "2.86%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.14285714285714285,
+        "n": 35,
+        "unit": "rate",
+        "primary": "14.29%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.165565364505086,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.166 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.13892663286741322,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.139 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 5.4584040654985495,
+        "n": 5,
+        "unit": "m",
+        "primary": "5.458 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 1.0,
+        "n": 6,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 0.16666666666666666,
+        "n": 6,
+        "unit": "rate",
+        "primary": "16.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "0491b54a9e43a8c0bafe29a336679c56927c4624cb86ef7bd82904c7341a3726"
+  },
+  "find_category_outlier": {
+    "task": "find_category_outlier",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 4,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.5909090909090909,
+        "n": 22,
+        "unit": "rate",
+        "primary": "59.09%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.6666666666666666,
+        "n": 15,
+        "unit": "rate",
+        "primary": "66.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.2,
+        "n": 10,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.436774085932845,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.437 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.14929253195588293,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.149 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.6540402532013525,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.654 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "f1512f6f5a444617034235abb8fa3ac9abd717999ba299e012eac3b9865f5053"
+  },
+  "fold_clothes": {
+    "task": "fold_clothes",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 14.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "14.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 31,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.9117647058823529,
+        "n": 34,
+        "unit": "rate",
+        "primary": "91.18%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.27586206896551724,
+        "n": 29,
+        "unit": "rate",
+        "primary": "27.59%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.15,
+        "n": 20,
+        "unit": "rate",
+        "primary": "15.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.15,
+        "n": 20,
+        "unit": "rate",
+        "primary": "15.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 20,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -3.8206774644688446,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-3.821 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.13106140685943202,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.131 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 4.63567961946563,
+        "n": 5,
+        "unit": "m",
+        "primary": "4.636 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 1.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.6,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.6,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "7f234b6c95db291810fc56baa73ff9a2c0e3b685b0a88d274faad0177b001b81"
+  },
+  "hang_mugs": {
+    "task": "hang_mugs",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 25.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "25.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 29,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.75,
+        "n": 28,
+        "unit": "rate",
+        "primary": "75.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.1,
+        "n": 20,
+        "unit": "rate",
+        "primary": "10.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.35,
+        "n": 20,
+        "unit": "rate",
+        "primary": "35.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.3,
+        "n": 20,
+        "unit": "rate",
+        "primary": "30.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.05,
+        "n": 20,
+        "unit": "rate",
+        "primary": "5.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -3.8646514911023413,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-3.865 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.1640276803033053,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.164 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 3.925359278519774,
+        "n": 5,
+        "unit": "m",
+        "primary": "3.925 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 1.0,
+        "n": 7,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 0.8571428571428571,
+        "n": 7,
+        "unit": "rate",
+        "primary": "85.71%",
+        "available": true,
+        "coverage": null,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "00aee297d819e1a35a2d2d91efb1462ae52cf4a4c138e225d13c8f00c351bab0"
+  },
+  "hold_button_until_cue": {
+    "task": "hold_button_until_cue",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 1.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.6,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.326484652398408,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.326 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.20097192484713794,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.201 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.2606030066493186,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.261 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "e9ba7d43718400a9bb6270a66a35eb838903257c928cfb51fcdc25aca4aa35b9"
+  },
+  "hold_water_mug": {
+    "task": "hold_water_mug",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 1.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.6,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.075779159554841,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.076 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.16255596983262618,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.163 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 0.8611621326687455,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.861 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "8df042083fae5a1c32bd49476e8a602f36f960a95b34b39b197d4516bc5238f7"
+  },
+  "imitate_sorting_sequence": {
+    "task": "imitate_sorting_sequence",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "1.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 68,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.44047619047619047,
+        "n": 84,
+        "unit": "rate",
+        "primary": "44.05%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.4166666666666667,
+        "n": 36,
+        "unit": "rate",
+        "primary": "41.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.03333333333333333,
+        "n": 30,
+        "unit": "rate",
+        "primary": "3.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.03333333333333333,
+        "n": 30,
+        "unit": "rate",
+        "primary": "3.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 30,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -7.231081203944307,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-7.231 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.15340856299624314,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.153 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 14.17202429508931,
+        "n": 5,
+        "unit": "m",
+        "primary": "14.172 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 0.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "fcb6a68cf297360f227cba3863760261634bd5eda24c47627d7877d792e62f5b"
+  },
+  "insert_key": {
+    "task": "insert_key",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 9.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "9.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 6,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.45454545454545453,
+        "n": 11,
+        "unit": "rate",
+        "primary": "45.45%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.6,
+        "n": 5,
+        "unit": "rate",
+        "primary": "60.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.2,
+        "n": 15,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.2,
+        "n": 15,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -3.731445739623594,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-3.731 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.1474677927899268,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.147 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.7826092565624496,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.783 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 0.0,
+        "n": 3,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.6,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "4218ed47e361d7aeb0c443415ee216ee73cd071ad9a610bd7e88ea430914d514"
+  },
+  "match_and_pick_from_conveyor": {
+    "task": "match_and_pick_from_conveyor",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.08333333333333333,
+        "n": 12,
+        "unit": "rate",
+        "primary": "8.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.3,
+        "n": 20,
+        "unit": "rate",
+        "primary": "30.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.8333333333333334,
+        "n": 6,
+        "unit": "rate",
+        "primary": "83.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -3.9775976337847907,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-3.978 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.14676423789374665,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.147 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 2.006021458376976,
+        "n": 5,
+        "unit": "m",
+        "primary": "2.006 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "5097ae75f8ff53ef31f6f75307730db4e88495bd93981aa0b203f08ac661f5a9"
+  },
+  "mirror_pair_layout": {
+    "task": "mirror_pair_layout",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 6.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "6.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 4,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.9,
+        "n": 10,
+        "unit": "rate",
+        "primary": "90.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.3333333333333333,
+        "n": 24,
+        "unit": "rate",
+        "primary": "33.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.25,
+        "n": 8,
+        "unit": "rate",
+        "primary": "25.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.06666666666666667,
+        "n": 15,
+        "unit": "rate",
+        "primary": "6.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.06666666666666667,
+        "n": 15,
+        "unit": "rate",
+        "primary": "6.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.13598173810558,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.136 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.16271186215620312,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.163 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 2.8410287917730273,
+        "n": 5,
+        "unit": "m",
+        "primary": "2.841 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 0.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "d218224a396fea77fad72897055ef3ba5a9524928c98175adf0bdb011df0feb3"
+  },
+  "pack_mixed_objects_into_box_v1": {
+    "task": "pack_mixed_objects_into_box_v1",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 2,
+    "values": {
+      "TSR": {
+        "value": 0.4,
+        "n": 5,
+        "unit": "rate",
+        "primary": "40.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 60.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "60.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 0.8,
+        "n": 5,
+        "unit": "rate",
+        "primary": "80.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.9090909090909091,
+        "n": 22,
+        "unit": "rate",
+        "primary": "90.91%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.5142857142857142,
+        "n": 35,
+        "unit": "rate",
+        "primary": "51.43%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.05555555555555555,
+        "n": 18,
+        "unit": "rate",
+        "primary": "5.56%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.56,
+        "n": 25,
+        "unit": "rate",
+        "primary": "56.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.56,
+        "n": 25,
+        "unit": "rate",
+        "primary": "56.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.50570033975568,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.506 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.03698650259757934,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.037 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 6.520387706107037,
+        "n": 5,
+        "unit": "m",
+        "primary": "6.520 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": 42.04,
+        "n": 2,
+        "unit": "s",
+        "primary": "42.040 s",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": 0.8761667644323532,
+        "n": 2,
+        "unit": "rate",
+        "primary": "87.62%",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": 0.8801652892561984,
+        "n": 2,
+        "unit": "rate",
+        "primary": "88.02%",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 1.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 14,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "1faaa2138f46228d2a75886a0abefd2b3e7f7901e61b22f4a22dc8b94d2805a3"
+  },
+  "place_between_references": {
+    "task": "place_between_references",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 4,
+    "values": {
+      "TSR": {
+        "value": 0.8,
+        "n": 5,
+        "unit": "rate",
+        "primary": "80.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 80.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "80.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.8333333333333334,
+        "n": 6,
+        "unit": "rate",
+        "primary": "83.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.75,
+        "n": 8,
+        "unit": "rate",
+        "primary": "75.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.0,
+        "n": 6,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.8,
+        "n": 10,
+        "unit": "rate",
+        "primary": "80.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.8,
+        "n": 10,
+        "unit": "rate",
+        "primary": "80.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 10,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -3.4053865739494578,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-3.405 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.04112089085783317,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.041 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 2.677153638972395,
+        "n": 5,
+        "unit": "m",
+        "primary": "2.677 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": 9.566,
+        "n": 4,
+        "unit": "s",
+        "primary": "9.566 s",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": 0.9105570167562772,
+        "n": 4,
+        "unit": "rate",
+        "primary": "91.06%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": 0.9578578415389631,
+        "n": 4,
+        "unit": "rate",
+        "primary": "95.79%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 8,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "4e551efeb9fbeca2b2e490855513688e87a1cc045596e4e74cb35c26aa85f6fd"
+  },
+  "play_stacking_toy": {
+    "task": "play_stacking_toy",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 0.3333333333333333,
+        "n": 3,
+        "unit": "rate",
+        "primary": "33.33%",
+        "available": true,
+        "coverage": 0.6,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 12,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.3157894736842105,
+        "n": 19,
+        "unit": "rate",
+        "primary": "31.58%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.0,
+        "n": 6,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.413576924058206,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.414 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.14661096620106065,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.147 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 3.715060076334089,
+        "n": 5,
+        "unit": "m",
+        "primary": "3.715 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "6b4d03a13e4e4705132c640542ba5d86ad7bfc0283306f78a2078f89462b6257"
+  },
+  "pour_liquid_into_cup": {
+    "task": "pour_liquid_into_cup",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.7142857142857143,
+        "n": 7,
+        "unit": "rate",
+        "primary": "71.43%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.26666666666666666,
+        "n": 15,
+        "unit": "rate",
+        "primary": "26.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.426922480057144,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.427 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.16563705977647866,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.166 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.122196659488903,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.122 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "67a04f0b5362a64202e4ea7e1869d70ce4a9aacf0a830adf022c321772ffc9f9"
+  },
+  "press_by_number": {
+    "task": "press_by_number",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 118,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.0,
+        "n": 22,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.484416228706036,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.484 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.12377053533587896,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.124 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 5.069158561743482,
+        "n": 5,
+        "unit": "m",
+        "primary": "5.069 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "3d5fd5c308596f79f691db6983175d552ec16e360d375a2b583c6d7ccd8da28c"
+  },
+  "push_T": {
+    "task": "push_T",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 4,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 16,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.0,
+        "n": 6,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -5.2185748407318835,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-5.219 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.12409178734568829,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.124 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.8261031410996167,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.826 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "3fc15af725e67e0a3bc7001a13cf8859631150e35b42b309a9f274215be549ef"
+  },
+  "set_button_colors": {
+    "task": "set_button_colors",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 2,
+    "values": {
+      "TSR": {
+        "value": 0.4,
+        "n": 5,
+        "unit": "rate",
+        "primary": "40.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 49.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "49.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 29,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.0,
+        "n": 19,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.7333333333333333,
+        "n": 15,
+        "unit": "rate",
+        "primary": "73.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.5333333333333333,
+        "n": 15,
+        "unit": "rate",
+        "primary": "53.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.2,
+        "n": 15,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -2.8418746063689535,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-2.842 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.07969928421188732,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.080 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 3.014161021410952,
+        "n": 5,
+        "unit": "m",
+        "primary": "3.014 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": 6.640000000000001,
+        "n": 2,
+        "unit": "s",
+        "primary": "6.640 s",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": 0.8875653506513634,
+        "n": 2,
+        "unit": "rate",
+        "primary": "88.76%",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": 0.8826923076923077,
+        "n": 2,
+        "unit": "rate",
+        "primary": "88.27%",
+        "available": true,
+        "coverage": 0.4,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 0.42857142857142855,
+        "n": 7,
+        "unit": "rate",
+        "primary": "42.86%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 0.7272727272727273,
+        "n": 11,
+        "unit": "rate",
+        "primary": "72.73%",
+        "available": true,
+        "coverage": null,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "0f81bbad577906717dd43f145d99241637785609e4dcd0f74c33089a5ad6ab75"
+  },
+  "solve_equation": {
+    "task": "solve_equation",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 0.25,
+        "n": 4,
+        "unit": "rate",
+        "primary": "25.00%",
+        "available": true,
+        "coverage": 0.8,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 0.2,
+        "n": 10,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.3333333333333333,
+        "n": 15,
+        "unit": "rate",
+        "primary": "33.33%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.2,
+        "n": 5,
+        "unit": "rate",
+        "primary": "20.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.5,
+        "n": 10,
+        "unit": "rate",
+        "primary": "50.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.4,
+        "n": 10,
+        "unit": "rate",
+        "primary": "40.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.1,
+        "n": 10,
+        "unit": "rate",
+        "primary": "10.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -3.762080708215647,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-3.762 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.10970690562741582,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.110 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 1.0686893547257779,
+        "n": 5,
+        "unit": "m",
+        "primary": "1.069 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 0.8,
+        "n": 5,
+        "unit": "rate",
+        "primary": "80.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "9ec4cd20d013595d3598e99791cff40416e4bd750b19e5f0156fde2b0d964dce"
+  },
+  "stack_bowls": {
+    "task": "stack_bowls",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 3.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "3.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 18,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.2631578947368421,
+        "n": 38,
+        "unit": "rate",
+        "primary": "26.32%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.7,
+        "n": 10,
+        "unit": "rate",
+        "primary": "70.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.06666666666666667,
+        "n": 15,
+        "unit": "rate",
+        "primary": "6.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.06666666666666667,
+        "n": 15,
+        "unit": "rate",
+        "primary": "6.67%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 15,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.858008967000886,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.858 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.12894473715609706,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.129 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 3.4558373114383714,
+        "n": 5,
+        "unit": "m",
+        "primary": "3.456 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": 0.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": 1.0,
+        "n": 1,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 0.2,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "06a82bd32f7073ac844298a0ad9bc9183b9acdbf2fe2ca7c4aef44c1b34a59a4"
+  },
+  "store_tools_in_toolbox": {
+    "task": "store_tools_in_toolbox",
+    "model": "XVLA",
+    "split": "indomain",
+    "resultVersion": "benchmark-wzy-xvla-24id-dlaa-20261029t101834",
+    "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+    "expectedEpisodes": 5,
+    "episodes": 5,
+    "incompleteEpisodes": 0,
+    "successes": 0,
+    "values": {
+      "TSR": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "official successes / valid episodes"
+      },
+      "TASK_SCORE": {
+        "value": 0.0,
+        "n": 5,
+        "unit": "score",
+        "primary": "0.000 score",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "task-native subtask score"
+      },
+      "FIRST_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 5,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "evaluable episodes"
+      },
+      "ALL_TARGET_SELECTION": {
+        "value": 1.0,
+        "n": 16,
+        "unit": "rate",
+        "primary": "100.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "evaluable target selections"
+      },
+      "GRASP_STABILITY": {
+        "value": 0.6363636363636364,
+        "n": 22,
+        "unit": "rate",
+        "primary": "63.64%",
+        "available": true,
+        "coverage": null,
+        "detail": "established / (established + invalid)"
+      },
+      "DROP_RATE": {
+        "value": 0.6428571428571429,
+        "n": 14,
+        "unit": "rate",
+        "primary": "64.29%",
+        "available": true,
+        "coverage": null,
+        "detail": "drops / (releases + drops)"
+      },
+      "LOCAL_SUCCESS_ONCE": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "LOCAL_SUCCESS_AT_END": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "DROP_AFTER_SUCCESS": {
+        "value": 0.0,
+        "n": 25,
+        "unit": "rate",
+        "primary": "0.00%",
+        "available": true,
+        "coverage": null,
+        "detail": "registered local subtasks"
+      },
+      "SPARC": {
+        "value": -4.5203490746081645,
+        "n": 5,
+        "unit": "SPARC",
+        "primary": "-4.520 SPARC",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "EE_DISPLACEMENT": {
+        "value": 0.06940189665556186,
+        "n": 5,
+        "unit": "m",
+        "primary": "0.069 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "episode mean"
+      },
+      "PATH_LENGTH": {
+        "value": 5.733165473767585,
+        "n": 5,
+        "unit": "m",
+        "primary": "5.733 m",
+        "available": true,
+        "coverage": 1.0,
+        "detail": "mean episode path length"
+      },
+      "SET": {
+        "value": null,
+        "n": 0,
+        "unit": "s",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes only"
+      },
+      "PATH_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference path"
+      },
+      "TIME_EFFICIENCY": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "successful episodes with frozen reference time"
+      },
+      "STAGE_TRANSITION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "evaluable stage transitions"
+      },
+      "GOAL_RETENTION": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": 0.0,
+        "detail": "completed goals with retention evidence"
+      },
+      "COLLISION_RATE": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "Current logs do not contain the complete collision telemetry contract."
+      },
+      "ROBUSTNESS": {
+        "value": null,
+        "n": 0,
+        "unit": "rate",
+        "primary": "N/A",
+        "available": false,
+        "coverage": null,
+        "detail": "A matched nominal / perturbed cohort is not present."
+      }
+    },
+    "sourceSummarySha256": "5f183c9a39fd171aff6592a0db1c88afc69a1e75348032e62c5dee97a9f47ed4"
+  }
+}

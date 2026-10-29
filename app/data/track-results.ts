@@ -1,4 +1,5 @@
 import { curatedResult } from './pi05-curated.ts';
+import { xvla24IdResult } from './xvla-24id.ts';
 import { acwmDashboardBundle } from './acwm-results.ts';
 import { vlaWamDashboardBundle } from './vla-wam-results.ts';
 import { metricInfo, type MetricInfo } from './metric-definitions.ts';
@@ -38,6 +39,7 @@ export function readResult({ trackId, mode, metricId, modelId, taskId, setting }
   }
   if (trackId === 'T3' && taskId) {
     if (modelId === 'Pi0.5') return curatedResult(taskId, metricId);
+    if (modelId === 'XVLA') return xvla24IdResult(taskId, metricId);
     if (taskId !== 'stack_bowls') return pending;
   }
   const model = vlaWamDashboardBundle.models[modelId];
