@@ -126,10 +126,10 @@ test('XVLA all-scenarios results use fixed 24-task macro aggregates', () => {
   const tsr = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'XVLA', taskId: 'all' });
   const score = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TASK_SCORE', modelId: 'XVLA', taskId: 'all' });
   const collision = readResult({ trackId: 'T3', mode: 'plan', metricId: 'COLLISION_RATE', modelId: 'XVLA', taskId: 'all' });
-  assert.equal(tsr.primary, '6.67%');
+  assert.equal(tsr.primary, '5.83%');
   assert.equal(tsr.sampleCount, 24);
   assert.match(tsr.cohort, /24 tasks/);
-  assert.equal(score.primary, '10.958 score');
+  assert.equal(score.primary, '9.750 score');
   assert.equal(collision.available, false);
   assert.equal(collision.primary, 'N/A');
 });

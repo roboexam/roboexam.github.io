@@ -31,6 +31,9 @@ export type XvlaSample = {
   units: Record<string, string>;
   videos: XvlaVideo[];
   reportSha256: string | null;
+  promptVersion: "v1" | "v3";
+  prompt: string | null;
+  sourceBatch: string;
 };
 export type XvlaTask = {
   task: string;
@@ -38,6 +41,8 @@ export type XvlaTask = {
   split: "indomain";
   resultVersion: string;
   protocol: string;
+  promptVersion: "v1" | "v3";
+  sourceBatch: string;
   expectedEpisodes: number;
   episodes: number;
   incompleteEpisodes: number;
@@ -93,7 +98,7 @@ export function xvla24IdResult(taskId: string, metricId: string) {
     status: metric?.available ? "Computed" : "N/A",
     available: metric?.available ?? false,
     version: task?.resultVersion ?? xvlaResultVersion,
-    protocol: task?.protocol ?? "XVLA 24-task DLAa ID cohort; task-macro aggregate",
+    protocol: task?.protocol ?? "XVLA final 24-task DLAa ID cohort; task-macro aggregate",
     sampleCount: metric?.n,
     cohort: isOverall
       ? `ID · ${xvlaTaskCount} tasks · ${xvlaValidEpisodes}/${xvlaExpectedEpisodes} valid episodes`

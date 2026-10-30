@@ -53,7 +53,7 @@ export function Xvla24IdEvidence({
         <div>
           <span>XVLA ID EPISODE WALKTHROUGH</span>
           <h3>XVLA · {taskId}</h3>
-          <p>{sample.sourceEpisode} · layout {sample.layoutId} · {sample.metricsAvailable ? (sample.success ? "success" : "failure") : "incomplete"}</p>
+          <p>{sample.sourceEpisode} · layout {sample.layoutId} · prompt {sample.promptVersion} · {sample.metricsAvailable ? (sample.success ? "success" : "failure") : "incomplete"}</p>
         </div>
         <div className="sampleTools">
           <label className="episodeSelect"><span>Choose ID sample</span>
@@ -78,6 +78,8 @@ export function Xvla24IdEvidence({
         <div className="sampleCalculation">
           <div className="calculationSteps">
             <article><span>Sample</span><strong>{sample.sourceEpisode}</strong><p>layout {sample.layoutId} · {sample.status}</p></article>
+            <article><span>Source</span><strong>prompt {sample.promptVersion}</strong><p>{sample.sourceBatch}</p></article>
+            {sample.prompt && <article><span>Instruction</span><p>{sample.prompt}</p></article>}
             <article><span>Scoring rule</span><p>{formula}</p></article>
             <article><span>ID result</span><strong>{xvlaSampleDisplay(sample.values[metricId], sample.units[metricId])}</strong><p>{metric?.detail ?? "Metric not available for this ID."}</p></article>
             <article><span>Evidence</span><p>{sample.reportSha256 ? `Report SHA ${sample.reportSha256.slice(0, 12)}` : "No completed metric report"}</p></article>
@@ -97,6 +99,7 @@ export function Xvla24IdEvidence({
         <article><span>Cohort</span><strong>{task.episodes} / {task.expectedEpisodes} valid IDs</strong><p>{task.incompleteEpisodes} incomplete</p></article>
         <article><span>Success</span><strong>{task.successes} / {task.episodes}</strong></article>
         <article><span>Protocol</span><p>{task.protocol}</p></article>
+        <article><span>Source</span><strong>prompt {task.promptVersion}</strong><p>{task.sourceBatch}</p></article>
       </div>
     </section>
   </>;

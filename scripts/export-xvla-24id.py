@@ -11,7 +11,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = Path("/mnt/gyc/benchmark2027/wzy/exp/benchmark-wzy-xvla-24id-dlaa-20261029t101834")
+V1_SOURCE = Path("/mnt/gyc/benchmark2027/wzy/exp/benchmark-wzy-xvla-24id-dlaa-20261029t101834")
+V3_SOURCE = Path("/mnt/gyc/benchmark2027/wzy/exp/benchmark-wzy-xvla-8tasks-id-promptv3-dlaa-20261029")
+V3_TASKS = frozenset({
+    "arrange_largest_number", "clear_keyboard_then_close_laptop",
+    "find_category_outlier", "hold_button_until_cue", "hold_water_mug",
+    "mirror_pair_layout", "place_between_references", "set_button_colors",
+})
+SOURCE_ROOTS = (V1_SOURCE, V3_SOURCE)
 MEDIA_ROOT = Path(os.environ.get(
     "XVLA_24ID_MEDIA_ROOT",
     "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029",
@@ -19,7 +26,7 @@ MEDIA_ROOT = Path(os.environ.get(
 FULL_OUT = ROOT / "app/data/generated/xvla-24id.json"
 AGG_OUT = ROOT / "app/data/generated/xvla-24id-aggregates.json"
 MEDIA_OUT = ROOT / "scripts/xvla-24id-media.json"
-RESULT_VERSION = "benchmark-wzy-xvla-24id-dlaa-20261029t101834"
+RESULT_VERSION = "benchmark-wzy-xvla-final-24id-v3v1-20261030"
 CAMERAS = ("cam_head", "cam_left_wrist", "cam_right_wrist")
 PROFILE = {"id": "web-360p-v1", "maxHeight": 360, "maxFps": 25, "crf": 29, "preset": "veryfast"}
 METRICS = (
@@ -72,7 +79,8 @@ def probe(path: Path) -> dict:
 
 def transcode(source: Path) -> dict:
     source = source.resolve()
-    require(source.is_relative_to(SOURCE.resolve()), f"video escaped source root: {source}")
+    require(any(source.is_relative_to(root.resolve()) for root in SOURCE_ROOTS),
+            f"video escaped source roots: {source}")
     source_digest = sha256(source)
     source_probe = probe(source)
     target_height = min(PROFILE["maxHeight"], source_probe["height"])
@@ -201,8 +209,10 @@ def aggregate_values(task: dict) -> dict:
 def locate_videos(row: dict) -> dict[str, Path]:
     if not row.get("metrics_available"):
         return {}
-    metrics = (SOURCE / row["metrics_file"]).resolve()
-    require(metrics.is_relative_to(SOURCE.resolve()) and metrics.is_file(), f"missing metric file: {metrics}")
+    source_root = Path(row.get("source_root", V1_SOURCE)).resolve()
+    metrics_ref = Path(row["metrics_file"])
+    metrics = (metrics_ref if metrics_ref.is_absolute() else source_root / metrics_ref).resolve()
+    require(metrics.is_relative_to(source_root) and metrics.is_file(), f"missing metric file: {metrics}")
     episode_root = metrics.parent.parent
     outcome = "success" if row["official_success_rate"] == 1 else "fail"
     found = {}
@@ -211,6 +221,136 @@ def locate_videos(row: dict) -> dict[str, Path]:
         require(len(matches) == 1, f"expected one {camera} video for {row['task']} {row['episode']}")
         found[camera] = matches[0]
     return found
+
+
+def local_subtasks(actions_path: Path) -> dict:
+    catalogs = set()
+    completed = set()
+    active = set()
+    lost_after_completed = set()
+    with actions_path.open() as stream:
+        for line in stream:
+            row = json.loads(line)
+            if row.get("kind") == "subtask_catalog":
+                catalogs.add(row["id"])
+            elif row.get("kind") == "subtask":
+                subtask = row.get("subtask")
+                if row.get("event") == "completed":
+                    completed.add(subtask)
+                    active.add(subtask)
+                elif row.get("event") == "lost":
+                    if subtask in completed:
+                        lost_after_completed.add(subtask)
+                    active.discard(subtask)
+    registered = len(catalogs)
+    return {
+        "registered_count": registered,
+        "completed_once_count": len(completed),
+        "active_at_end_count": len(active),
+        "lost_after_completed_count": len(lost_after_completed),
+        "dropped_by_end_count": len(completed - active),
+        "completed_once_rate": ratio(len(completed), registered),
+        "active_at_end_rate": ratio(len(active), registered),
+        "drop_after_success_rate": ratio(len(lost_after_completed), registered),
+        "completed_goal_retention": ratio(len(active), len(completed)),
+    }
+
+
+def mean(values):
+    values = [value for value in values if value is not None]
+    return sum(values) / len(values) if values else None
+
+
+def build_v3_task(task_name: str) -> tuple[dict, Path]:
+    source_files = sorted(V3_SOURCE.glob(f"lane-*/rank-*/{task_name}/episode_*/source.json"))
+    require(len(source_files) == 5, f"expected five v3 source episodes for {task_name}")
+    rows = []
+    for source_path in source_files:
+        episode_dir = source_path.parent
+        episode = episode_dir.name
+        result = json.loads((episode_dir / "episode-result.json").read_text())
+        source = json.loads(source_path.read_text())
+        metrics_files = list(episode_dir.glob("attempt-01/eval_result/**/Metrics/metrics_summary.json"))
+        require(len(metrics_files) == 1, f"expected one v3 metric report for {task_name} {episode}")
+        metrics_path = metrics_files[0]
+        metrics = json.loads(metrics_path.read_text())
+        action_files = list(metrics_path.parent.glob("*.actions.jsonl"))
+        require(len(action_files) == 1, f"expected one v3 action log for {task_name} {episode}")
+        aggregate = metrics["aggregate"]
+        episode_metric = metrics["episodes"][0]
+        official = metrics["official_task_result"]
+        detail = next(iter(official["details"].values()))
+        local = local_subtasks(action_files[0])
+        rows.append({
+            "task": task_name, "episode": episode, "layout_id": detail["layout_id"],
+            "status": result["status"], "official_success_rate": official["success_rate"],
+            "task_score": official["score"], "metrics_available": True,
+            "metrics_file": str(metrics_path), "source_root": str(V3_SOURCE),
+            "prompt": source["prompt"], "prompt_version": "v3",
+            "first_selection_correct": episode_metric["selection"]["first_selection_correct"],
+            "first_selection_evaluable_count": aggregate["first_selection_evaluable_episodes"],
+            "all_selection_correct_count": aggregate["sequential_correct_count"],
+            "all_selection_evaluable_count": aggregate["sequential_evaluable_count"],
+            "established_grasp_count": aggregate["established_grasp_count"],
+            "grasp_invalid_count": aggregate["grasp_invalid_count"],
+            "release_count": aggregate["release_count"], "drop_count": aggregate["drop_count"],
+            "sparc_mean": aggregate["sparc_mean"],
+            "end_displacement_mean_m": aggregate["end_displacement_mean_m"],
+            "path_length_sum_m": aggregate["path_length_sum_m"],
+            "time_to_success_s": episode_metric["efficiency"]["time_to_success_s"],
+            "path_efficiency": episode_metric["efficiency"]["path_efficiency"],
+            "time_efficiency": episode_metric["efficiency"]["time_efficiency"],
+            "stage_transition_correct_count": aggregate["reasonable_transition_count"],
+            "stage_transition_denominator": aggregate["stage_transition_denominator"],
+            "local_subtasks": local,
+        })
+    rows.sort(key=lambda row: row["episode"])
+    den = {
+        "all_selection_correct_count": sum(row["all_selection_correct_count"] for row in rows),
+        "all_selection_evaluable_count": sum(row["all_selection_evaluable_count"] for row in rows),
+        "established_grasp_count": sum(row["established_grasp_count"] for row in rows),
+        "grasp_invalid_count": sum(row["grasp_invalid_count"] for row in rows),
+        "release_count": sum(row["release_count"] for row in rows),
+        "drop_count": sum(row["drop_count"] for row in rows),
+        "stage_transition_correct_count": sum(row["stage_transition_correct_count"] for row in rows),
+        "stage_transition_denominator": sum(row["stage_transition_denominator"] for row in rows),
+        "local_registered_count": sum(row["local_subtasks"]["registered_count"] for row in rows),
+        "local_completed_once_count": sum(row["local_subtasks"]["completed_once_count"] for row in rows),
+        "local_active_at_end_count": sum(row["local_subtasks"]["active_at_end_count"] for row in rows),
+        "local_lost_after_completed_count": sum(row["local_subtasks"]["lost_after_completed_count"] for row in rows),
+        "local_dropped_by_end_count": sum(row["local_subtasks"]["dropped_by_end_count"] for row in rows),
+    }
+    successes = sum(row["official_success_rate"] == 1 for row in rows)
+    aggregate = {
+        "task_success_rate": successes / len(rows), "task_success_count": successes,
+        "task_score": mean([row["task_score"] for row in rows]),
+        "first_selection_accuracy": ratio(sum(row["first_selection_correct"] is True for row in rows),
+                                            sum(row["first_selection_evaluable_count"] for row in rows)),
+        "all_selection_accuracy": ratio(den["all_selection_correct_count"], den["all_selection_evaluable_count"]),
+        "grasp_stability": ratio(den["established_grasp_count"], den["established_grasp_count"] + den["grasp_invalid_count"]),
+        "drop_rate": ratio(den["drop_count"], den["release_count"] + den["drop_count"]),
+        "local_success_once": ratio(den["local_completed_once_count"], den["local_registered_count"]),
+        "local_success_at_end": ratio(den["local_active_at_end_count"], den["local_registered_count"]),
+        "drop_after_success": ratio(den["local_lost_after_completed_count"], den["local_registered_count"]),
+        "completed_goal_retention": ratio(den["local_active_at_end_count"], den["local_completed_once_count"]),
+        "sparc_mean": mean([row["sparc_mean"] for row in rows]),
+        "end_displacement_mean_m": mean([row["end_displacement_mean_m"] for row in rows]),
+        "path_length_sum_m": sum(row["path_length_sum_m"] for row in rows),
+        "path_length_mean_m": mean([row["path_length_sum_m"] for row in rows]),
+        "time_to_success_s": mean([row["time_to_success_s"] for row in rows]),
+        "path_efficiency_mean": mean([row["path_efficiency"] for row in rows]),
+        "time_efficiency_mean": mean([row["time_efficiency"] for row in rows]),
+        "stage_transition_accuracy": ratio(den["stage_transition_correct_count"], den["stage_transition_denominator"]),
+    }
+    task = {
+        "schema_version": 1, "task": task_name, "expected_episode_count": 5,
+        "valid_episode_count": 5, "incomplete_episode_count": 0,
+        "metric_denominators": den,
+        "first_selection_evaluable_episode_count": sum(row["first_selection_evaluable_count"] for row in rows),
+        "efficiency_evaluable_episode_count": sum(row["path_efficiency"] is not None for row in rows),
+        "aggregate": aggregate, "episodes": rows,
+    }
+    return task, V3_SOURCE / "summary.json"
 
 
 def check_existing() -> None:
@@ -226,7 +366,9 @@ def check_existing() -> None:
         require(key == item["sha256"] + ".mp4" and path.is_file(), f"invalid media item {key}")
         require(path.resolve().is_relative_to(MEDIA_ROOT.resolve()), f"media path escaped root {key}")
         require(path.stat().st_size == item["size"] and sha256(path) == item["sha256"], f"media identity mismatch {key}")
-    print("Verified existing XVLA export: 24 tasks, 120 IDs, 354 videos")
+    require({task["promptVersion"] for task in full.values()} == {"v1", "v3"}, "prompt version mix missing")
+    require(sum(task["promptVersion"] == "v3" for task in full.values()) == 8, "v3 task count mismatch")
+    print("Verified existing XVLA final export: 24 tasks, 120 IDs, 354 videos")
 
 
 def main() -> None:
@@ -238,18 +380,26 @@ def main() -> None:
         check_existing()
         return
     require(1 <= args.jobs <= 12, "--jobs must be between 1 and 12")
-    summary_path = SOURCE / "summary/summary.json"
+    summary_path = V1_SOURCE / "summary/summary.json"
     summary = json.loads(summary_path.read_text())
     task_names = list(summary["tasks"])
     require(len(task_names) == 24 and summary["overall"]["expected_episode_count"] == 120, "unexpected cohort shape")
     require(summary["overall"]["valid_episode_count"] == 118, "unexpected valid episode count")
 
+    previous = json.loads(FULL_OUT.read_text()) if FULL_OUT.exists() else {}
     data = {}
     futures = {}
     with ThreadPoolExecutor(max_workers=args.jobs) as pool:
         for task_name in task_names:
-            task_path = SOURCE / "summary" / f"{task_name}.json"
-            task = json.loads(task_path.read_text())
+            if task_name in V3_TASKS:
+                task, task_path = build_v3_task(task_name)
+                prompt_version = "v3"
+                source_batch = V3_SOURCE.name
+            else:
+                task_path = V1_SOURCE / "summary" / f"{task_name}.json"
+                task = json.loads(task_path.read_text())
+                prompt_version = "v1"
+                source_batch = V1_SOURCE.name
             require(task["task"] == task_name and task["expected_episode_count"] == 5, f"task identity mismatch {task_name}")
             samples = []
             for row in task["episodes"]:
@@ -263,15 +413,26 @@ def main() -> None:
                     "values": {**values, "COLLISION_RATE": None, "ROBUSTNESS": None},
                     "units": {metric: UNITS.get(metric, "rate") for metric in (*METRICS, "COLLISION_RATE", "ROBUSTNESS")},
                     "videos": [],
-                    "reportSha256": sha256(SOURCE / row["metrics_file"]) if row.get("metrics_file") else None,
+                    "reportSha256": sha256((Path(row["metrics_file"]) if Path(row["metrics_file"]).is_absolute()
+                                             else Path(row.get("source_root", V1_SOURCE)) / row["metrics_file"]))
+                    if row.get("metrics_file") else None,
+                    "promptVersion": prompt_version,
+                    "prompt": row.get("prompt"),
+                    "sourceBatch": source_batch,
                 }
-                for camera, source in locate_videos(row).items():
-                    future = pool.submit(transcode, source)
-                    futures[future] = (sample, camera)
+                previous_sample = next((item for item in previous.get(task_name, {}).get("samples", [])
+                                        if item.get("sourceEpisode") == row["episode"]), None)
+                if prompt_version == "v1" and previous_sample and len(previous_sample.get("videos", [])) == 3:
+                    sample["videos"] = previous_sample["videos"]
+                else:
+                    for camera, source in locate_videos(row).items():
+                        future = pool.submit(transcode, source)
+                        futures[future] = (sample, camera)
                 samples.append(sample)
             data[task_name] = {
                 "task": task_name, "model": "XVLA", "split": "indomain", "resultVersion": RESULT_VERSION,
-                "protocol": "XVLA 24-task DLAa ID cohort; five registered layouts per task",
+                "protocol": "XVLA final 24-task DLAa ID cohort; v3 prompt reruns for 8 changed tasks and v1 runs for 16 unchanged tasks; five registered layouts per task",
+                "promptVersion": prompt_version, "sourceBatch": source_batch,
                 "expectedEpisodes": task["expected_episode_count"], "episodes": task["valid_episode_count"],
                 "incompleteEpisodes": task["incomplete_episode_count"], "successes": task["aggregate"]["task_success_count"],
                 "values": aggregate_values(task), "samples": samples,
@@ -305,7 +466,7 @@ def main() -> None:
         text = json.dumps(document, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
         require("/mnt/" not in text or path == MEDIA_OUT, f"server path leaked into browser data: {path.name}")
         path.write_text(text)
-    print("Exported XVLA: 24 tasks, 120 IDs, 118 valid IDs, 354 web videos")
+    print("Exported XVLA final: 24 tasks, 120 IDs, 118 valid IDs, 354 web videos")
 
 
 if __name__ == "__main__":

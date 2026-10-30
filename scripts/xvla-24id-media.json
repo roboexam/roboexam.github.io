@@ -1,92 +1,92 @@
 {
-  "8b32b3ecb98d5ed384b52d936f2348a123273aa7750dffe6f58fb56cebd4d67f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8b32b3ecb98d5ed384b52d936f2348a123273aa7750dffe6f58fb56cebd4d67f.mp4",
-    "size": 615432,
-    "sha256": "8b32b3ecb98d5ed384b52d936f2348a123273aa7750dffe6f58fb56cebd4d67f",
+  "c2477a5e0b1473222a08a51703e1adf514ad0585542c768c244f9d69afc66c6a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c2477a5e0b1473222a08a51703e1adf514ad0585542c768c244f9d69afc66c6a.mp4",
+    "size": 449384,
+    "sha256": "c2477a5e0b1473222a08a51703e1adf514ad0585542c768c244f9d69afc66c6a",
     "profile": "web-360p-v1"
   },
-  "3724127ba62770e21b3ee1552a220b5b50b5e00192527ebfa332aa2ce1f34d4f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3724127ba62770e21b3ee1552a220b5b50b5e00192527ebfa332aa2ce1f34d4f.mp4",
-    "size": 914133,
-    "sha256": "3724127ba62770e21b3ee1552a220b5b50b5e00192527ebfa332aa2ce1f34d4f",
+  "2cf48ae783bc678b89d1c4f8b7e626b61437d46a859835c66c80380891cae90c.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2cf48ae783bc678b89d1c4f8b7e626b61437d46a859835c66c80380891cae90c.mp4",
+    "size": 413536,
+    "sha256": "2cf48ae783bc678b89d1c4f8b7e626b61437d46a859835c66c80380891cae90c",
     "profile": "web-360p-v1"
   },
-  "9b21acb121416fd1b5e68bb6331010e3628c610c2a83fe3492607c5fac232ab4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9b21acb121416fd1b5e68bb6331010e3628c610c2a83fe3492607c5fac232ab4.mp4",
-    "size": 875014,
-    "sha256": "9b21acb121416fd1b5e68bb6331010e3628c610c2a83fe3492607c5fac232ab4",
+  "88669c61e43da768d12af68ad177f94400e1ef600e21618e8ca9496cc5640b5a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/88669c61e43da768d12af68ad177f94400e1ef600e21618e8ca9496cc5640b5a.mp4",
+    "size": 965297,
+    "sha256": "88669c61e43da768d12af68ad177f94400e1ef600e21618e8ca9496cc5640b5a",
     "profile": "web-360p-v1"
   },
-  "e5a7b7b1645dd27e2952e70c8139c969b2563a8e13c60812b0781d75be03e51a.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e5a7b7b1645dd27e2952e70c8139c969b2563a8e13c60812b0781d75be03e51a.mp4",
-    "size": 553322,
-    "sha256": "e5a7b7b1645dd27e2952e70c8139c969b2563a8e13c60812b0781d75be03e51a",
+  "bff085fd388da2208348b0f50af47b1633247e7cfde9dccefa94a990a20916f2.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/bff085fd388da2208348b0f50af47b1633247e7cfde9dccefa94a990a20916f2.mp4",
+    "size": 643418,
+    "sha256": "bff085fd388da2208348b0f50af47b1633247e7cfde9dccefa94a990a20916f2",
     "profile": "web-360p-v1"
   },
-  "9a1b95e8c0994eb29203593142c8de2b8364132c1008be89d8e337584fa4a2c3.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9a1b95e8c0994eb29203593142c8de2b8364132c1008be89d8e337584fa4a2c3.mp4",
-    "size": 1140034,
-    "sha256": "9a1b95e8c0994eb29203593142c8de2b8364132c1008be89d8e337584fa4a2c3",
+  "913f78caaf38c7c66175124e93078f9bd11b9408f4b356da8b7b9ee295ed0abd.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/913f78caaf38c7c66175124e93078f9bd11b9408f4b356da8b7b9ee295ed0abd.mp4",
+    "size": 976770,
+    "sha256": "913f78caaf38c7c66175124e93078f9bd11b9408f4b356da8b7b9ee295ed0abd",
     "profile": "web-360p-v1"
   },
-  "56b55aff09a1971c773c78df4555f4a73b1d3a10ff04fbe5ee8deb3a7d70ce85.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/56b55aff09a1971c773c78df4555f4a73b1d3a10ff04fbe5ee8deb3a7d70ce85.mp4",
-    "size": 545736,
-    "sha256": "56b55aff09a1971c773c78df4555f4a73b1d3a10ff04fbe5ee8deb3a7d70ce85",
+  "9eacda1d31740009e0359547aecabfc2224c8c9c1783807cbfa362377a92e418.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9eacda1d31740009e0359547aecabfc2224c8c9c1783807cbfa362377a92e418.mp4",
+    "size": 721116,
+    "sha256": "9eacda1d31740009e0359547aecabfc2224c8c9c1783807cbfa362377a92e418",
     "profile": "web-360p-v1"
   },
-  "8d0ffdf85788f5a62e0d6fd1a3f7c4acb21f3655f459a25ddea09a066c13fb9c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8d0ffdf85788f5a62e0d6fd1a3f7c4acb21f3655f459a25ddea09a066c13fb9c.mp4",
-    "size": 428464,
-    "sha256": "8d0ffdf85788f5a62e0d6fd1a3f7c4acb21f3655f459a25ddea09a066c13fb9c",
+  "b67d5c9deddfecb742f006b47de51727d3afd8e9f3198368e2a54cc0dfa96dbf.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b67d5c9deddfecb742f006b47de51727d3afd8e9f3198368e2a54cc0dfa96dbf.mp4",
+    "size": 453397,
+    "sha256": "b67d5c9deddfecb742f006b47de51727d3afd8e9f3198368e2a54cc0dfa96dbf",
     "profile": "web-360p-v1"
   },
-  "738132752839cd9028f859307d7349674641923b3551bb26eaaa2f7aec298457.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/738132752839cd9028f859307d7349674641923b3551bb26eaaa2f7aec298457.mp4",
-    "size": 462582,
-    "sha256": "738132752839cd9028f859307d7349674641923b3551bb26eaaa2f7aec298457",
+  "9cd7c3ded4915e39ee80a20b97b855715f5121deee3702bad12e1ceffd852eff.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9cd7c3ded4915e39ee80a20b97b855715f5121deee3702bad12e1ceffd852eff.mp4",
+    "size": 556742,
+    "sha256": "9cd7c3ded4915e39ee80a20b97b855715f5121deee3702bad12e1ceffd852eff",
     "profile": "web-360p-v1"
   },
-  "29c91e8b682b06baf3f326393ced47f95b3377893f2fcf2f5c234a7657d4ce3c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/29c91e8b682b06baf3f326393ced47f95b3377893f2fcf2f5c234a7657d4ce3c.mp4",
-    "size": 774277,
-    "sha256": "29c91e8b682b06baf3f326393ced47f95b3377893f2fcf2f5c234a7657d4ce3c",
+  "2ada5a650268bd5f3339799aa19cc6064bce6787647646f58ffd6352ad6a354f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2ada5a650268bd5f3339799aa19cc6064bce6787647646f58ffd6352ad6a354f.mp4",
+    "size": 720844,
+    "sha256": "2ada5a650268bd5f3339799aa19cc6064bce6787647646f58ffd6352ad6a354f",
     "profile": "web-360p-v1"
   },
-  "3c365ee4b6d17bbd4236f3e26da7b688367247de1b3fb35d599c9b1b2740e269.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3c365ee4b6d17bbd4236f3e26da7b688367247de1b3fb35d599c9b1b2740e269.mp4",
-    "size": 567723,
-    "sha256": "3c365ee4b6d17bbd4236f3e26da7b688367247de1b3fb35d599c9b1b2740e269",
+  "41458e101d017f4a3b19efe19a29acaef41c378ca20a0057a93c2100f1af97ac.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/41458e101d017f4a3b19efe19a29acaef41c378ca20a0057a93c2100f1af97ac.mp4",
+    "size": 451514,
+    "sha256": "41458e101d017f4a3b19efe19a29acaef41c378ca20a0057a93c2100f1af97ac",
     "profile": "web-360p-v1"
   },
-  "d12417c38d96f299959cb417302f26695a180ab6cc7dd88daffd76a1dec428a1.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d12417c38d96f299959cb417302f26695a180ab6cc7dd88daffd76a1dec428a1.mp4",
-    "size": 1220570,
-    "sha256": "d12417c38d96f299959cb417302f26695a180ab6cc7dd88daffd76a1dec428a1",
+  "8dd9f070a7a79575ad958d2a5b58b1684a9093f18bf5b9fa71986c2fa2306a24.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8dd9f070a7a79575ad958d2a5b58b1684a9093f18bf5b9fa71986c2fa2306a24.mp4",
+    "size": 703050,
+    "sha256": "8dd9f070a7a79575ad958d2a5b58b1684a9093f18bf5b9fa71986c2fa2306a24",
     "profile": "web-360p-v1"
   },
-  "5a8ed857257b8ed2b71114129a4fd5bb77689ae332873976c15fda7f71e57e36.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/5a8ed857257b8ed2b71114129a4fd5bb77689ae332873976c15fda7f71e57e36.mp4",
-    "size": 556970,
-    "sha256": "5a8ed857257b8ed2b71114129a4fd5bb77689ae332873976c15fda7f71e57e36",
+  "f6a3323d9546d68366181c834c2c2ba5f8cc0d1d9d0ed649e2e4a73b5a93c25a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/f6a3323d9546d68366181c834c2c2ba5f8cc0d1d9d0ed649e2e4a73b5a93c25a.mp4",
+    "size": 495734,
+    "sha256": "f6a3323d9546d68366181c834c2c2ba5f8cc0d1d9d0ed649e2e4a73b5a93c25a",
     "profile": "web-360p-v1"
   },
-  "71d1a5ada2f02212cf92b96e77660bcc05c96da0e8045fabde24dfbb97e0451d.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/71d1a5ada2f02212cf92b96e77660bcc05c96da0e8045fabde24dfbb97e0451d.mp4",
-    "size": 536589,
-    "sha256": "71d1a5ada2f02212cf92b96e77660bcc05c96da0e8045fabde24dfbb97e0451d",
+  "423f70378fae3c311d939fafcfb028afe9454fd20d17f851b3094d35e1ce4af4.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/423f70378fae3c311d939fafcfb028afe9454fd20d17f851b3094d35e1ce4af4.mp4",
+    "size": 431220,
+    "sha256": "423f70378fae3c311d939fafcfb028afe9454fd20d17f851b3094d35e1ce4af4",
     "profile": "web-360p-v1"
   },
-  "7bce68fd71cc13d4b5d86e6720685dbfa499a185a7d79820a934360df936933c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7bce68fd71cc13d4b5d86e6720685dbfa499a185a7d79820a934360df936933c.mp4",
-    "size": 959140,
-    "sha256": "7bce68fd71cc13d4b5d86e6720685dbfa499a185a7d79820a934360df936933c",
+  "f0b345b108b05d57f09c2be2c2c2d01f7893b0915a7f532d2176f0d9cd20911d.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/f0b345b108b05d57f09c2be2c2c2d01f7893b0915a7f532d2176f0d9cd20911d.mp4",
+    "size": 493654,
+    "sha256": "f0b345b108b05d57f09c2be2c2c2d01f7893b0915a7f532d2176f0d9cd20911d",
     "profile": "web-360p-v1"
   },
-  "b1687d3e14f9501d55e0af4f7a24d2f9dcb4bc2ef931488287e1faac5d309759.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b1687d3e14f9501d55e0af4f7a24d2f9dcb4bc2ef931488287e1faac5d309759.mp4",
-    "size": 660640,
-    "sha256": "b1687d3e14f9501d55e0af4f7a24d2f9dcb4bc2ef931488287e1faac5d309759",
+  "aa1e15da866eec8101c891b2bafb50c60d67f5b9ff53393667877e8e842a4bc5.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/aa1e15da866eec8101c891b2bafb50c60d67f5b9ff53393667877e8e842a4bc5.mp4",
+    "size": 735010,
+    "sha256": "aa1e15da866eec8101c891b2bafb50c60d67f5b9ff53393667877e8e842a4bc5",
     "profile": "web-360p-v1"
   },
   "0d255775c546db921a421d92721447bd3016700bf7b6e43e536b3843209e1555.mp4": {
@@ -233,94 +233,94 @@
     "sha256": "85f66e58c5278417b887de7450c677d62aaa3e081f85c31676f96a791b2de745",
     "profile": "web-360p-v1"
   },
-  "54122e8d7ff5baa1b5593e39935ba8741bd1481390bfbd784b8081d3ce0a2a9f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/54122e8d7ff5baa1b5593e39935ba8741bd1481390bfbd784b8081d3ce0a2a9f.mp4",
-    "size": 400888,
-    "sha256": "54122e8d7ff5baa1b5593e39935ba8741bd1481390bfbd784b8081d3ce0a2a9f",
+  "46ac8eb6c56d923009f3bfc5b99294d32dab454c823e35bcc0099a6d83dcf5bb.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/46ac8eb6c56d923009f3bfc5b99294d32dab454c823e35bcc0099a6d83dcf5bb.mp4",
+    "size": 349577,
+    "sha256": "46ac8eb6c56d923009f3bfc5b99294d32dab454c823e35bcc0099a6d83dcf5bb",
     "profile": "web-360p-v1"
   },
-  "c8d0b046774e49a4602222404f0ee7c46144792a28bd1e32c5a20293623d2b88.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c8d0b046774e49a4602222404f0ee7c46144792a28bd1e32c5a20293623d2b88.mp4",
-    "size": 327517,
-    "sha256": "c8d0b046774e49a4602222404f0ee7c46144792a28bd1e32c5a20293623d2b88",
+  "7f0e9a07e9365f0b9264a8c7c19d1ccdcd31b2279462c7046b6bc76ce592c1f4.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7f0e9a07e9365f0b9264a8c7c19d1ccdcd31b2279462c7046b6bc76ce592c1f4.mp4",
+    "size": 1043958,
+    "sha256": "7f0e9a07e9365f0b9264a8c7c19d1ccdcd31b2279462c7046b6bc76ce592c1f4",
     "profile": "web-360p-v1"
   },
-  "418a836800a67da2431113fd83a15b5ad103748a9be8ed66c2001f93f5828e90.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/418a836800a67da2431113fd83a15b5ad103748a9be8ed66c2001f93f5828e90.mp4",
-    "size": 1182994,
-    "sha256": "418a836800a67da2431113fd83a15b5ad103748a9be8ed66c2001f93f5828e90",
+  "877520f7a470dfe0f19924671bbd60012573889832c971e8b87298355af86ed7.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/877520f7a470dfe0f19924671bbd60012573889832c971e8b87298355af86ed7.mp4",
+    "size": 373355,
+    "sha256": "877520f7a470dfe0f19924671bbd60012573889832c971e8b87298355af86ed7",
     "profile": "web-360p-v1"
   },
-  "0877cf6a0313706a27b1de8e4ed71b8af800ed6f63a785177aee11bbfc622b58.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/0877cf6a0313706a27b1de8e4ed71b8af800ed6f63a785177aee11bbfc622b58.mp4",
-    "size": 383619,
-    "sha256": "0877cf6a0313706a27b1de8e4ed71b8af800ed6f63a785177aee11bbfc622b58",
+  "c3c2188fa061f6c099ff9db0091bf475f4e7ac3ef343a22015ef8fc6d395afc2.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c3c2188fa061f6c099ff9db0091bf475f4e7ac3ef343a22015ef8fc6d395afc2.mp4",
+    "size": 388136,
+    "sha256": "c3c2188fa061f6c099ff9db0091bf475f4e7ac3ef343a22015ef8fc6d395afc2",
     "profile": "web-360p-v1"
   },
-  "667c46b828e6c978b7adcdf74604720ec9244cacb06839e5f453c42997c7b797.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/667c46b828e6c978b7adcdf74604720ec9244cacb06839e5f453c42997c7b797.mp4",
-    "size": 1039218,
-    "sha256": "667c46b828e6c978b7adcdf74604720ec9244cacb06839e5f453c42997c7b797",
+  "ffec6ad47d931e50568c9a24891ac7cfe090efd70cfb721945a89c61859af987.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ffec6ad47d931e50568c9a24891ac7cfe090efd70cfb721945a89c61859af987.mp4",
+    "size": 429391,
+    "sha256": "ffec6ad47d931e50568c9a24891ac7cfe090efd70cfb721945a89c61859af987",
     "profile": "web-360p-v1"
   },
-  "2984ee86e45fefd066e8e5c517105e358dd2d77bbe6978c3f7966ed2c6b4d2e2.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2984ee86e45fefd066e8e5c517105e358dd2d77bbe6978c3f7966ed2c6b4d2e2.mp4",
-    "size": 333880,
-    "sha256": "2984ee86e45fefd066e8e5c517105e358dd2d77bbe6978c3f7966ed2c6b4d2e2",
+  "c6894519b6a8a9e3943af1aa1e7d7fc32664c8e9dccfbb91093a9fc2b48333b7.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c6894519b6a8a9e3943af1aa1e7d7fc32664c8e9dccfbb91093a9fc2b48333b7.mp4",
+    "size": 869517,
+    "sha256": "c6894519b6a8a9e3943af1aa1e7d7fc32664c8e9dccfbb91093a9fc2b48333b7",
     "profile": "web-360p-v1"
   },
-  "e05c43140b6edc2104dac191293437c27e74eaa9fe88b0be3cfb46f6067e474d.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e05c43140b6edc2104dac191293437c27e74eaa9fe88b0be3cfb46f6067e474d.mp4",
-    "size": 419162,
-    "sha256": "e05c43140b6edc2104dac191293437c27e74eaa9fe88b0be3cfb46f6067e474d",
+  "e01964226c4a92820ab56f2c5bd561301cb7012bbb29f1ed7b110f35fd4e44a9.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e01964226c4a92820ab56f2c5bd561301cb7012bbb29f1ed7b110f35fd4e44a9.mp4",
+    "size": 376078,
+    "sha256": "e01964226c4a92820ab56f2c5bd561301cb7012bbb29f1ed7b110f35fd4e44a9",
     "profile": "web-360p-v1"
   },
-  "1151644aa046c4f28a7b05af2e7fdcdf76ce2ee51a3247a4320fee350f6645a0.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1151644aa046c4f28a7b05af2e7fdcdf76ce2ee51a3247a4320fee350f6645a0.mp4",
-    "size": 924724,
-    "sha256": "1151644aa046c4f28a7b05af2e7fdcdf76ce2ee51a3247a4320fee350f6645a0",
+  "f631fc6d1ea1844f17b7f3137160c7f05d9c404c7caab9b230d0897ad87aa298.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/f631fc6d1ea1844f17b7f3137160c7f05d9c404c7caab9b230d0897ad87aa298.mp4",
+    "size": 793051,
+    "sha256": "f631fc6d1ea1844f17b7f3137160c7f05d9c404c7caab9b230d0897ad87aa298",
     "profile": "web-360p-v1"
   },
-  "4c8adafccc98b9be9e0493432ba14cd9983084d9056501bd65fb72b053856676.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4c8adafccc98b9be9e0493432ba14cd9983084d9056501bd65fb72b053856676.mp4",
-    "size": 644075,
-    "sha256": "4c8adafccc98b9be9e0493432ba14cd9983084d9056501bd65fb72b053856676",
+  "3865e3884e9ba52c652138cdfeaea2b2cca24fc5b9ddef37d717d04905fb2d8f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3865e3884e9ba52c652138cdfeaea2b2cca24fc5b9ddef37d717d04905fb2d8f.mp4",
+    "size": 304099,
+    "sha256": "3865e3884e9ba52c652138cdfeaea2b2cca24fc5b9ddef37d717d04905fb2d8f",
     "profile": "web-360p-v1"
   },
-  "59532e62bb62201dff8fc2607ecf0b00af5c5b03ef71d9ff969fb6b8ed87c434.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/59532e62bb62201dff8fc2607ecf0b00af5c5b03ef71d9ff969fb6b8ed87c434.mp4",
-    "size": 379276,
-    "sha256": "59532e62bb62201dff8fc2607ecf0b00af5c5b03ef71d9ff969fb6b8ed87c434",
+  "05c0f572cc1049ef73f1e9fd8a801264641b99e9344c679c76bb25c5e4d2c5f2.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/05c0f572cc1049ef73f1e9fd8a801264641b99e9344c679c76bb25c5e4d2c5f2.mp4",
+    "size": 447423,
+    "sha256": "05c0f572cc1049ef73f1e9fd8a801264641b99e9344c679c76bb25c5e4d2c5f2",
     "profile": "web-360p-v1"
   },
-  "d999089c3f000649735d8cf81ea84821f328e58669a91f8fb91ccf4705dbee12.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d999089c3f000649735d8cf81ea84821f328e58669a91f8fb91ccf4705dbee12.mp4",
-    "size": 979457,
-    "sha256": "d999089c3f000649735d8cf81ea84821f328e58669a91f8fb91ccf4705dbee12",
+  "9842d0c2b6ad93d7c3df751ffb2cde8c90de13abaf7f7c56f1f1176da9e3615f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9842d0c2b6ad93d7c3df751ffb2cde8c90de13abaf7f7c56f1f1176da9e3615f.mp4",
+    "size": 649899,
+    "sha256": "9842d0c2b6ad93d7c3df751ffb2cde8c90de13abaf7f7c56f1f1176da9e3615f",
     "profile": "web-360p-v1"
   },
-  "931ce5db4903eaa737fc411a1826074247537d2396212dd377cc1bb68b419752.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/931ce5db4903eaa737fc411a1826074247537d2396212dd377cc1bb68b419752.mp4",
-    "size": 324507,
-    "sha256": "931ce5db4903eaa737fc411a1826074247537d2396212dd377cc1bb68b419752",
+  "26bf256d9449c07549d97ddaeeaa9fcc31cec2d0c2e536ba3a73f32cb0d82aa7.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/26bf256d9449c07549d97ddaeeaa9fcc31cec2d0c2e536ba3a73f32cb0d82aa7.mp4",
+    "size": 525524,
+    "sha256": "26bf256d9449c07549d97ddaeeaa9fcc31cec2d0c2e536ba3a73f32cb0d82aa7",
     "profile": "web-360p-v1"
   },
-  "76e430acae07f05a1e69cf68cef21972017a27ccfdd62332cb0db96c83ef2ea4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/76e430acae07f05a1e69cf68cef21972017a27ccfdd62332cb0db96c83ef2ea4.mp4",
-    "size": 397189,
-    "sha256": "76e430acae07f05a1e69cf68cef21972017a27ccfdd62332cb0db96c83ef2ea4",
+  "d27607348922b2a31c668f6711feb03c596810bac1c92ec26c34b08c46f26f7c.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d27607348922b2a31c668f6711feb03c596810bac1c92ec26c34b08c46f26f7c.mp4",
+    "size": 352465,
+    "sha256": "d27607348922b2a31c668f6711feb03c596810bac1c92ec26c34b08c46f26f7c",
     "profile": "web-360p-v1"
   },
-  "cdea10f23b59307fa3b3d85199da3032d017c20cf2f7e6a8c25dbb14edf55989.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/cdea10f23b59307fa3b3d85199da3032d017c20cf2f7e6a8c25dbb14edf55989.mp4",
-    "size": 366966,
-    "sha256": "cdea10f23b59307fa3b3d85199da3032d017c20cf2f7e6a8c25dbb14edf55989",
+  "e2b634f502828bfdbde8b5a9d539d9102363d39d348bcab7afd9b149437d3062.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e2b634f502828bfdbde8b5a9d539d9102363d39d348bcab7afd9b149437d3062.mp4",
+    "size": 1135749,
+    "sha256": "e2b634f502828bfdbde8b5a9d539d9102363d39d348bcab7afd9b149437d3062",
     "profile": "web-360p-v1"
   },
-  "41523693e5698c4bced95f76812e05937aeebc46ebdabb89bd2083ee5c6826e9.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/41523693e5698c4bced95f76812e05937aeebc46ebdabb89bd2083ee5c6826e9.mp4",
-    "size": 1363653,
-    "sha256": "41523693e5698c4bced95f76812e05937aeebc46ebdabb89bd2083ee5c6826e9",
+  "4bb395a56ac5d0ec9dc230d0d87bb80343ace7c99974b0c2a810bf22b377ab36.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4bb395a56ac5d0ec9dc230d0d87bb80343ace7c99974b0c2a810bf22b377ab36.mp4",
+    "size": 357658,
+    "sha256": "4bb395a56ac5d0ec9dc230d0d87bb80343ace7c99974b0c2a810bf22b377ab36",
     "profile": "web-360p-v1"
   },
   "49bb9900b0b8ffcf7c0bf5078b8d1a364b6bde44ace47b4b3c2e9ae774ca7aa6.mp4": {
@@ -413,94 +413,94 @@
     "sha256": "b8e168669bf0602b027597cc06f613a495d6e22a73a30b297ba5a0fa82b487d2",
     "profile": "web-360p-v1"
   },
-  "2ee49a57457123593cb12837435a196f0bd354780beaa8b620528354ff52ee43.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2ee49a57457123593cb12837435a196f0bd354780beaa8b620528354ff52ee43.mp4",
-    "size": 234987,
-    "sha256": "2ee49a57457123593cb12837435a196f0bd354780beaa8b620528354ff52ee43",
+  "15039f24f938259bdf36b89c9a78979cfd1c62e9712a017f557ddb3f08d395e0.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/15039f24f938259bdf36b89c9a78979cfd1c62e9712a017f557ddb3f08d395e0.mp4",
+    "size": 251442,
+    "sha256": "15039f24f938259bdf36b89c9a78979cfd1c62e9712a017f557ddb3f08d395e0",
     "profile": "web-360p-v1"
   },
-  "3078ff9aa950c43f7e2838b76ce50461c72d91ec2adaa0e305a06418ed0b6509.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3078ff9aa950c43f7e2838b76ce50461c72d91ec2adaa0e305a06418ed0b6509.mp4",
-    "size": 285774,
-    "sha256": "3078ff9aa950c43f7e2838b76ce50461c72d91ec2adaa0e305a06418ed0b6509",
+  "2ec973c95713aa2e1a8ed0025ba88d1a88550eeab5721a1b529ff97ed72562f3.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2ec973c95713aa2e1a8ed0025ba88d1a88550eeab5721a1b529ff97ed72562f3.mp4",
+    "size": 243243,
+    "sha256": "2ec973c95713aa2e1a8ed0025ba88d1a88550eeab5721a1b529ff97ed72562f3",
     "profile": "web-360p-v1"
   },
-  "a534e8c79ea26a1307ce329a644d659e8bb635884c8bf410b7444c015ea94873.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a534e8c79ea26a1307ce329a644d659e8bb635884c8bf410b7444c015ea94873.mp4",
-    "size": 264541,
-    "sha256": "a534e8c79ea26a1307ce329a644d659e8bb635884c8bf410b7444c015ea94873",
+  "676887acfcd48adc0fab9a2b5b54d927984f39807494cca7bf0815b13d4f7bf3.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/676887acfcd48adc0fab9a2b5b54d927984f39807494cca7bf0815b13d4f7bf3.mp4",
+    "size": 346881,
+    "sha256": "676887acfcd48adc0fab9a2b5b54d927984f39807494cca7bf0815b13d4f7bf3",
     "profile": "web-360p-v1"
   },
-  "504088419a9880172ab6623fa7c45a86914dee06b9ea2a8922aab3b72c352da2.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/504088419a9880172ab6623fa7c45a86914dee06b9ea2a8922aab3b72c352da2.mp4",
-    "size": 242283,
-    "sha256": "504088419a9880172ab6623fa7c45a86914dee06b9ea2a8922aab3b72c352da2",
+  "eda2c4743164f27520131ce0babe646c5a5a29b5d13f1522cd174cc308927194.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/eda2c4743164f27520131ce0babe646c5a5a29b5d13f1522cd174cc308927194.mp4",
+    "size": 214268,
+    "sha256": "eda2c4743164f27520131ce0babe646c5a5a29b5d13f1522cd174cc308927194",
     "profile": "web-360p-v1"
   },
-  "4c16d793494c9518ad5a1128efeb67a26b9871a6ad2d3a1cbbae594573e9b3ae.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4c16d793494c9518ad5a1128efeb67a26b9871a6ad2d3a1cbbae594573e9b3ae.mp4",
-    "size": 394627,
-    "sha256": "4c16d793494c9518ad5a1128efeb67a26b9871a6ad2d3a1cbbae594573e9b3ae",
+  "45052fd7c19216e2c00d31f1add6f7fc697d81c9313085db4c15f6d5a3ca6414.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/45052fd7c19216e2c00d31f1add6f7fc697d81c9313085db4c15f6d5a3ca6414.mp4",
+    "size": 299998,
+    "sha256": "45052fd7c19216e2c00d31f1add6f7fc697d81c9313085db4c15f6d5a3ca6414",
     "profile": "web-360p-v1"
   },
-  "3663fe06c93ec4619bcb48c81d95a8522191756651d12d4a46df875a7cc9aa18.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3663fe06c93ec4619bcb48c81d95a8522191756651d12d4a46df875a7cc9aa18.mp4",
-    "size": 173643,
-    "sha256": "3663fe06c93ec4619bcb48c81d95a8522191756651d12d4a46df875a7cc9aa18",
+  "da41a2310603dc56d704e57da4dde0930055c9c7d0ce0360cf4e9ec492c55f0e.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/da41a2310603dc56d704e57da4dde0930055c9c7d0ce0360cf4e9ec492c55f0e.mp4",
+    "size": 164672,
+    "sha256": "da41a2310603dc56d704e57da4dde0930055c9c7d0ce0360cf4e9ec492c55f0e",
     "profile": "web-360p-v1"
   },
-  "c5e6f3c43cfccb5fe0fb831b57cad81a334b2a2b43324b67b734202cc4e1379e.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c5e6f3c43cfccb5fe0fb831b57cad81a334b2a2b43324b67b734202cc4e1379e.mp4",
-    "size": 223378,
-    "sha256": "c5e6f3c43cfccb5fe0fb831b57cad81a334b2a2b43324b67b734202cc4e1379e",
+  "26a91c8a0805ea832c5d04adc37540683a3fb080d0b4a4670bbc2381825c8523.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/26a91c8a0805ea832c5d04adc37540683a3fb080d0b4a4670bbc2381825c8523.mp4",
+    "size": 128139,
+    "sha256": "26a91c8a0805ea832c5d04adc37540683a3fb080d0b4a4670bbc2381825c8523",
     "profile": "web-360p-v1"
   },
-  "131febd01f2c3a4dca0237b58d758b88e7e33e2992ea9be9e3205b6bafaa66f4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/131febd01f2c3a4dca0237b58d758b88e7e33e2992ea9be9e3205b6bafaa66f4.mp4",
-    "size": 235491,
-    "sha256": "131febd01f2c3a4dca0237b58d758b88e7e33e2992ea9be9e3205b6bafaa66f4",
+  "90ffcf3c156b4935fc5e75c52b819240e344f6ae8bff7a62f460334069fd7165.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/90ffcf3c156b4935fc5e75c52b819240e344f6ae8bff7a62f460334069fd7165.mp4",
+    "size": 116385,
+    "sha256": "90ffcf3c156b4935fc5e75c52b819240e344f6ae8bff7a62f460334069fd7165",
     "profile": "web-360p-v1"
   },
-  "e0f254a7543981000e3aa52887ab4c1a6302d981656899ce92311ad52d5f7063.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e0f254a7543981000e3aa52887ab4c1a6302d981656899ce92311ad52d5f7063.mp4",
-    "size": 195480,
-    "sha256": "e0f254a7543981000e3aa52887ab4c1a6302d981656899ce92311ad52d5f7063",
+  "4f1192a6432ba1cd8a7d562c99fc2887922c9dc803b7bad1264c279100d1dc8d.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4f1192a6432ba1cd8a7d562c99fc2887922c9dc803b7bad1264c279100d1dc8d.mp4",
+    "size": 158168,
+    "sha256": "4f1192a6432ba1cd8a7d562c99fc2887922c9dc803b7bad1264c279100d1dc8d",
     "profile": "web-360p-v1"
   },
-  "0ab69d282a25c92b5b2fb616f9c3636db4ad6e951e36196062e88ef6f7ee59ef.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/0ab69d282a25c92b5b2fb616f9c3636db4ad6e951e36196062e88ef6f7ee59ef.mp4",
-    "size": 259775,
-    "sha256": "0ab69d282a25c92b5b2fb616f9c3636db4ad6e951e36196062e88ef6f7ee59ef",
+  "ea25a6d959fb1bbc0581ada80f5e58bf6deccdf21ed1ec6e6d23314b72855437.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ea25a6d959fb1bbc0581ada80f5e58bf6deccdf21ed1ec6e6d23314b72855437.mp4",
+    "size": 228965,
+    "sha256": "ea25a6d959fb1bbc0581ada80f5e58bf6deccdf21ed1ec6e6d23314b72855437",
     "profile": "web-360p-v1"
   },
-  "b53ea411e957ebba5bb437fbae8ae4474b45b1af6cf03c64441cbb43fedb2ad7.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b53ea411e957ebba5bb437fbae8ae4474b45b1af6cf03c64441cbb43fedb2ad7.mp4",
-    "size": 266769,
-    "sha256": "b53ea411e957ebba5bb437fbae8ae4474b45b1af6cf03c64441cbb43fedb2ad7",
+  "1e29dbab0b17992bd31183e52f9812d16141f137a226bf04851ca6f8e05e93af.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1e29dbab0b17992bd31183e52f9812d16141f137a226bf04851ca6f8e05e93af.mp4",
+    "size": 239923,
+    "sha256": "1e29dbab0b17992bd31183e52f9812d16141f137a226bf04851ca6f8e05e93af",
     "profile": "web-360p-v1"
   },
-  "26a704ca658e6133f4e0b4df85dbdb80bd2bbb8583fd9f235d7f4e63ecb60433.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/26a704ca658e6133f4e0b4df85dbdb80bd2bbb8583fd9f235d7f4e63ecb60433.mp4",
-    "size": 364949,
-    "sha256": "26a704ca658e6133f4e0b4df85dbdb80bd2bbb8583fd9f235d7f4e63ecb60433",
+  "02a8889c9dee76c53525621494c8647457d29e1f54d45150d6e38581ae7dca53.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/02a8889c9dee76c53525621494c8647457d29e1f54d45150d6e38581ae7dca53.mp4",
+    "size": 279418,
+    "sha256": "02a8889c9dee76c53525621494c8647457d29e1f54d45150d6e38581ae7dca53",
     "profile": "web-360p-v1"
   },
-  "a2cd7188799f896c59a6e697830ae42a9ae1cd728b9e795f9fe1fba118bf4bac.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a2cd7188799f896c59a6e697830ae42a9ae1cd728b9e795f9fe1fba118bf4bac.mp4",
-    "size": 216427,
-    "sha256": "a2cd7188799f896c59a6e697830ae42a9ae1cd728b9e795f9fe1fba118bf4bac",
+  "d18e5733360afae36ae614af0804916516bd398cde85f5eb2f22686beb982926.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d18e5733360afae36ae614af0804916516bd398cde85f5eb2f22686beb982926.mp4",
+    "size": 243183,
+    "sha256": "d18e5733360afae36ae614af0804916516bd398cde85f5eb2f22686beb982926",
     "profile": "web-360p-v1"
   },
-  "4892c253a7b99738b4437e61e50881423f1d1eb60195736fa3474b6f0fed5ed8.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4892c253a7b99738b4437e61e50881423f1d1eb60195736fa3474b6f0fed5ed8.mp4",
-    "size": 329516,
-    "sha256": "4892c253a7b99738b4437e61e50881423f1d1eb60195736fa3474b6f0fed5ed8",
+  "8cc23f7fe8fac423cd0ee0aad7e97743e301990866794eec9edbfb2ce28d0d40.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8cc23f7fe8fac423cd0ee0aad7e97743e301990866794eec9edbfb2ce28d0d40.mp4",
+    "size": 387002,
+    "sha256": "8cc23f7fe8fac423cd0ee0aad7e97743e301990866794eec9edbfb2ce28d0d40",
     "profile": "web-360p-v1"
   },
-  "470a1f36fac674de4da2a2710e2977d6985ac600ab712886ff9039463dd1e2a6.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/470a1f36fac674de4da2a2710e2977d6985ac600ab712886ff9039463dd1e2a6.mp4",
-    "size": 158969,
-    "sha256": "470a1f36fac674de4da2a2710e2977d6985ac600ab712886ff9039463dd1e2a6",
+  "ba8dc58fd127b2b3a26070e00b414f53335f8cffccf21ed98bcdab5b112e96c4.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ba8dc58fd127b2b3a26070e00b414f53335f8cffccf21ed98bcdab5b112e96c4.mp4",
+    "size": 172724,
+    "sha256": "ba8dc58fd127b2b3a26070e00b414f53335f8cffccf21ed98bcdab5b112e96c4",
     "profile": "web-360p-v1"
   },
   "2967280bb4d27e2932ab9dbfdc05668d0069465d650d66cf375a354e7f29b9a8.mp4": {
@@ -683,184 +683,184 @@
     "sha256": "669434b3079ad1e000a22f00f8ee236cbf7a8e4041ebb62738fb03529771c63b",
     "profile": "web-360p-v1"
   },
-  "b7c33ea0ce254f8d92e6b9ddddb32e6b5ffeb988667e50def90b6efbe43cd913.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b7c33ea0ce254f8d92e6b9ddddb32e6b5ffeb988667e50def90b6efbe43cd913.mp4",
-    "size": 245318,
-    "sha256": "b7c33ea0ce254f8d92e6b9ddddb32e6b5ffeb988667e50def90b6efbe43cd913",
+  "0279fb16c0a4c74f44e5b52da649079a412ea6e89a01519ab274d2acd7992968.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/0279fb16c0a4c74f44e5b52da649079a412ea6e89a01519ab274d2acd7992968.mp4",
+    "size": 283119,
+    "sha256": "0279fb16c0a4c74f44e5b52da649079a412ea6e89a01519ab274d2acd7992968",
     "profile": "web-360p-v1"
   },
-  "1e66a5b3de090a2dcd7ca0e9046d49914d68d9e8be12eb277df29ea0fea206c4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1e66a5b3de090a2dcd7ca0e9046d49914d68d9e8be12eb277df29ea0fea206c4.mp4",
-    "size": 223872,
-    "sha256": "1e66a5b3de090a2dcd7ca0e9046d49914d68d9e8be12eb277df29ea0fea206c4",
+  "86be77bac86984f5bd8f0948184a2b578efb75578c3ded1f9ca9fb7bc9df11f9.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/86be77bac86984f5bd8f0948184a2b578efb75578c3ded1f9ca9fb7bc9df11f9.mp4",
+    "size": 221539,
+    "sha256": "86be77bac86984f5bd8f0948184a2b578efb75578c3ded1f9ca9fb7bc9df11f9",
     "profile": "web-360p-v1"
   },
-  "736593324f2c06c39bc189a793a3c40e41b81d4cf29e5f90775d50466a15f544.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/736593324f2c06c39bc189a793a3c40e41b81d4cf29e5f90775d50466a15f544.mp4",
-    "size": 387747,
-    "sha256": "736593324f2c06c39bc189a793a3c40e41b81d4cf29e5f90775d50466a15f544",
+  "1fc8cffa598bc84f2c18d18fd8d3c04a5f0cb07777fcbf0e542116da9e070c5f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1fc8cffa598bc84f2c18d18fd8d3c04a5f0cb07777fcbf0e542116da9e070c5f.mp4",
+    "size": 503598,
+    "sha256": "1fc8cffa598bc84f2c18d18fd8d3c04a5f0cb07777fcbf0e542116da9e070c5f",
     "profile": "web-360p-v1"
   },
-  "3833af7fc793e57aeb959b3e7510a7b7ccd7e173a79e9c38b716725ebaa47b4c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3833af7fc793e57aeb959b3e7510a7b7ccd7e173a79e9c38b716725ebaa47b4c.mp4",
-    "size": 254341,
-    "sha256": "3833af7fc793e57aeb959b3e7510a7b7ccd7e173a79e9c38b716725ebaa47b4c",
+  "06ebafa90cc843cb66855ed36f04ee25b898a708d2fc61f8cdfff51908bbaf79.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/06ebafa90cc843cb66855ed36f04ee25b898a708d2fc61f8cdfff51908bbaf79.mp4",
+    "size": 262383,
+    "sha256": "06ebafa90cc843cb66855ed36f04ee25b898a708d2fc61f8cdfff51908bbaf79",
     "profile": "web-360p-v1"
   },
-  "1671b36278058434cb06a3cb76ba295428ef3180124bb57962f6bfbd3757f164.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1671b36278058434cb06a3cb76ba295428ef3180124bb57962f6bfbd3757f164.mp4",
-    "size": 238175,
-    "sha256": "1671b36278058434cb06a3cb76ba295428ef3180124bb57962f6bfbd3757f164",
+  "1c15b601818f7faf7a39bcc136687c5d92891dbd30878d56eda4e21793756de9.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1c15b601818f7faf7a39bcc136687c5d92891dbd30878d56eda4e21793756de9.mp4",
+    "size": 227786,
+    "sha256": "1c15b601818f7faf7a39bcc136687c5d92891dbd30878d56eda4e21793756de9",
     "profile": "web-360p-v1"
   },
-  "d51113352d93604bb2f801351e4fdfe82da71ccab59e7a7475138ded0124fc9d.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d51113352d93604bb2f801351e4fdfe82da71ccab59e7a7475138ded0124fc9d.mp4",
-    "size": 433429,
-    "sha256": "d51113352d93604bb2f801351e4fdfe82da71ccab59e7a7475138ded0124fc9d",
+  "70e3a2b5b3249255376e4551a849a3f3c933b209e1ae777ae404f823cc88b9d9.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/70e3a2b5b3249255376e4551a849a3f3c933b209e1ae777ae404f823cc88b9d9.mp4",
+    "size": 409886,
+    "sha256": "70e3a2b5b3249255376e4551a849a3f3c933b209e1ae777ae404f823cc88b9d9",
     "profile": "web-360p-v1"
   },
-  "0f1208b25d0f6e23e28b42daa4ada60f1e62a4fd5a41658566919b86bb03bc0b.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/0f1208b25d0f6e23e28b42daa4ada60f1e62a4fd5a41658566919b86bb03bc0b.mp4",
-    "size": 251099,
-    "sha256": "0f1208b25d0f6e23e28b42daa4ada60f1e62a4fd5a41658566919b86bb03bc0b",
+  "65f52305a7938059443e7c075551f43fe93002085cc0e81051e2d1433079bd02.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/65f52305a7938059443e7c075551f43fe93002085cc0e81051e2d1433079bd02.mp4",
+    "size": 274689,
+    "sha256": "65f52305a7938059443e7c075551f43fe93002085cc0e81051e2d1433079bd02",
     "profile": "web-360p-v1"
   },
-  "ccac31811eb9090e35539447f0dee2c13a124273e4fb4681c9159e007c00f0bd.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ccac31811eb9090e35539447f0dee2c13a124273e4fb4681c9159e007c00f0bd.mp4",
-    "size": 329357,
-    "sha256": "ccac31811eb9090e35539447f0dee2c13a124273e4fb4681c9159e007c00f0bd",
+  "4b73b5453722e3d5a855b2979e31d8e0ecce7c1b80a5d9f95015b8611a3eb7e8.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4b73b5453722e3d5a855b2979e31d8e0ecce7c1b80a5d9f95015b8611a3eb7e8.mp4",
+    "size": 374128,
+    "sha256": "4b73b5453722e3d5a855b2979e31d8e0ecce7c1b80a5d9f95015b8611a3eb7e8",
     "profile": "web-360p-v1"
   },
-  "14781127f6ba606995f2978349a7ba5cf6e6e157130436e9cd01bae5a258f2d0.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/14781127f6ba606995f2978349a7ba5cf6e6e157130436e9cd01bae5a258f2d0.mp4",
-    "size": 198364,
-    "sha256": "14781127f6ba606995f2978349a7ba5cf6e6e157130436e9cd01bae5a258f2d0",
+  "abb625e680eebf0b0c0eed1c109a39ef88a77cdd99812f26e5f58f2465add5fb.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/abb625e680eebf0b0c0eed1c109a39ef88a77cdd99812f26e5f58f2465add5fb.mp4",
+    "size": 200712,
+    "sha256": "abb625e680eebf0b0c0eed1c109a39ef88a77cdd99812f26e5f58f2465add5fb",
     "profile": "web-360p-v1"
   },
-  "c063d828973077ae613ad60dceccd53d6b9e54f4f1aae4f011a22fccc99d9ea6.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c063d828973077ae613ad60dceccd53d6b9e54f4f1aae4f011a22fccc99d9ea6.mp4",
-    "size": 253275,
-    "sha256": "c063d828973077ae613ad60dceccd53d6b9e54f4f1aae4f011a22fccc99d9ea6",
+  "07f80ff597d990e14f30215d0463ce09c5c1168d877a2584702eca34d2b0dec8.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/07f80ff597d990e14f30215d0463ce09c5c1168d877a2584702eca34d2b0dec8.mp4",
+    "size": 274960,
+    "sha256": "07f80ff597d990e14f30215d0463ce09c5c1168d877a2584702eca34d2b0dec8",
     "profile": "web-360p-v1"
   },
-  "ce3bf9010302256f9715b63c65e14ca8975d951119f7e1efad4ca4f860c1454d.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ce3bf9010302256f9715b63c65e14ca8975d951119f7e1efad4ca4f860c1454d.mp4",
-    "size": 330298,
-    "sha256": "ce3bf9010302256f9715b63c65e14ca8975d951119f7e1efad4ca4f860c1454d",
+  "468d8e96e123b42a20287ca1f060c5977c583d7ccff45ce77afd09a73b8cbf4f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/468d8e96e123b42a20287ca1f060c5977c583d7ccff45ce77afd09a73b8cbf4f.mp4",
+    "size": 381463,
+    "sha256": "468d8e96e123b42a20287ca1f060c5977c583d7ccff45ce77afd09a73b8cbf4f",
     "profile": "web-360p-v1"
   },
-  "955cbc5aef2fd819c72a757bb18d30f263549348d2da4379d1912819adf5114b.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/955cbc5aef2fd819c72a757bb18d30f263549348d2da4379d1912819adf5114b.mp4",
-    "size": 199969,
-    "sha256": "955cbc5aef2fd819c72a757bb18d30f263549348d2da4379d1912819adf5114b",
+  "58583603970f1ee21325b77a3338114bd16b5479d7c38d5d0dca3456baea632a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/58583603970f1ee21325b77a3338114bd16b5479d7c38d5d0dca3456baea632a.mp4",
+    "size": 205141,
+    "sha256": "58583603970f1ee21325b77a3338114bd16b5479d7c38d5d0dca3456baea632a",
     "profile": "web-360p-v1"
   },
-  "3308b2335923121fae7889d4bfc616d27c0db6ad6209058696859bcee4681b9f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3308b2335923121fae7889d4bfc616d27c0db6ad6209058696859bcee4681b9f.mp4",
-    "size": 241440,
-    "sha256": "3308b2335923121fae7889d4bfc616d27c0db6ad6209058696859bcee4681b9f",
+  "baea47dafd49d0007ce23a22f460ef99def97aeaa713b5937f7a8a91fed0d3ba.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/baea47dafd49d0007ce23a22f460ef99def97aeaa713b5937f7a8a91fed0d3ba.mp4",
+    "size": 400200,
+    "sha256": "baea47dafd49d0007ce23a22f460ef99def97aeaa713b5937f7a8a91fed0d3ba",
     "profile": "web-360p-v1"
   },
-  "3b776fb3836f0242eac1c84e52cd36480b86a05a825d648c11f2f08653c105e5.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3b776fb3836f0242eac1c84e52cd36480b86a05a825d648c11f2f08653c105e5.mp4",
-    "size": 216848,
-    "sha256": "3b776fb3836f0242eac1c84e52cd36480b86a05a825d648c11f2f08653c105e5",
+  "ec0f4c2d33126cd18b00b5707bc2674631d2893e289f940e3caa618ed80c0eee.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ec0f4c2d33126cd18b00b5707bc2674631d2893e289f940e3caa618ed80c0eee.mp4",
+    "size": 352947,
+    "sha256": "ec0f4c2d33126cd18b00b5707bc2674631d2893e289f940e3caa618ed80c0eee",
     "profile": "web-360p-v1"
   },
-  "807e680b6eec5bc2869bb892e8a000b0b74a557b29f48cc499f1f180bc501f83.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/807e680b6eec5bc2869bb892e8a000b0b74a557b29f48cc499f1f180bc501f83.mp4",
-    "size": 379119,
-    "sha256": "807e680b6eec5bc2869bb892e8a000b0b74a557b29f48cc499f1f180bc501f83",
+  "66abac407995b165af502c00fd729e505fbfabea9d3ac35f7115251a6cec58aa.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/66abac407995b165af502c00fd729e505fbfabea9d3ac35f7115251a6cec58aa.mp4",
+    "size": 795667,
+    "sha256": "66abac407995b165af502c00fd729e505fbfabea9d3ac35f7115251a6cec58aa",
     "profile": "web-360p-v1"
   },
-  "285d15738a8bd8387efb10b40b5eab586d4434a04e29a3392a24c8ef08c0324e.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/285d15738a8bd8387efb10b40b5eab586d4434a04e29a3392a24c8ef08c0324e.mp4",
-    "size": 310058,
-    "sha256": "285d15738a8bd8387efb10b40b5eab586d4434a04e29a3392a24c8ef08c0324e",
+  "cb7ea0daf1a4659fdc23d21e0434a4c8fd46cc75a72ffcbf865bd8d036a564a0.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/cb7ea0daf1a4659fdc23d21e0434a4c8fd46cc75a72ffcbf865bd8d036a564a0.mp4",
+    "size": 568360,
+    "sha256": "cb7ea0daf1a4659fdc23d21e0434a4c8fd46cc75a72ffcbf865bd8d036a564a0",
     "profile": "web-360p-v1"
   },
-  "43ec3e2a78e872d3892b2e11e10d481f42857252c083844af450c79753ca1f6c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/43ec3e2a78e872d3892b2e11e10d481f42857252c083844af450c79753ca1f6c.mp4",
-    "size": 236044,
-    "sha256": "43ec3e2a78e872d3892b2e11e10d481f42857252c083844af450c79753ca1f6c",
+  "cbcfab69adb79c63d3b62fb7e15f448d506c98665e2ecdeb5522d1bdf907359a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/cbcfab69adb79c63d3b62fb7e15f448d506c98665e2ecdeb5522d1bdf907359a.mp4",
+    "size": 569908,
+    "sha256": "cbcfab69adb79c63d3b62fb7e15f448d506c98665e2ecdeb5522d1bdf907359a",
     "profile": "web-360p-v1"
   },
-  "a9e949c30ae9ee81e461f161e105883138ba74eeb6d98a999a54a159c9ae5bb7.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a9e949c30ae9ee81e461f161e105883138ba74eeb6d98a999a54a159c9ae5bb7.mp4",
-    "size": 564970,
-    "sha256": "a9e949c30ae9ee81e461f161e105883138ba74eeb6d98a999a54a159c9ae5bb7",
+  "a216835bae8b0875fa56e57746b474fb61e44950cfc9f6dcb32d72d9583fbc1a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a216835bae8b0875fa56e57746b474fb61e44950cfc9f6dcb32d72d9583fbc1a.mp4",
+    "size": 970708,
+    "sha256": "a216835bae8b0875fa56e57746b474fb61e44950cfc9f6dcb32d72d9583fbc1a",
     "profile": "web-360p-v1"
   },
-  "c063a18f54601311454883e676dd66b10b8ae458cf8c208bbdbf56dfeaaac6fc.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c063a18f54601311454883e676dd66b10b8ae458cf8c208bbdbf56dfeaaac6fc.mp4",
-    "size": 295505,
-    "sha256": "c063a18f54601311454883e676dd66b10b8ae458cf8c208bbdbf56dfeaaac6fc",
+  "d527a6cb266b06ab07c99e1a623e0f1ace96787819ab1e816dd13848747f3fcd.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d527a6cb266b06ab07c99e1a623e0f1ace96787819ab1e816dd13848747f3fcd.mp4",
+    "size": 302095,
+    "sha256": "d527a6cb266b06ab07c99e1a623e0f1ace96787819ab1e816dd13848747f3fcd",
     "profile": "web-360p-v1"
   },
-  "f5be1820028f6d8c16ac9c72d8d744dcb324c4bf738056971aaf7166e131b00b.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/f5be1820028f6d8c16ac9c72d8d744dcb324c4bf738056971aaf7166e131b00b.mp4",
-    "size": 535481,
-    "sha256": "f5be1820028f6d8c16ac9c72d8d744dcb324c4bf738056971aaf7166e131b00b",
+  "3a9b8a794be8d93d2a321c47739cbfb56c428722b020b3d4b782be9cdee81fe7.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3a9b8a794be8d93d2a321c47739cbfb56c428722b020b3d4b782be9cdee81fe7.mp4",
+    "size": 657730,
+    "sha256": "3a9b8a794be8d93d2a321c47739cbfb56c428722b020b3d4b782be9cdee81fe7",
     "profile": "web-360p-v1"
   },
-  "b41297e03e69fc41b09377bbe3d1635a5b88bbeeaecf6dd92561bd46d20dbe64.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b41297e03e69fc41b09377bbe3d1635a5b88bbeeaecf6dd92561bd46d20dbe64.mp4",
-    "size": 242351,
-    "sha256": "b41297e03e69fc41b09377bbe3d1635a5b88bbeeaecf6dd92561bd46d20dbe64",
+  "c77a0e3b76f9f5734287d6279f20577c49b5047db0331860dafd21b1be704706.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c77a0e3b76f9f5734287d6279f20577c49b5047db0331860dafd21b1be704706.mp4",
+    "size": 244906,
+    "sha256": "c77a0e3b76f9f5734287d6279f20577c49b5047db0331860dafd21b1be704706",
     "profile": "web-360p-v1"
   },
-  "fc04a8fd720a3da643e4dc5fd974ad6fb954bb1e09e4456b366ec5af31d0e107.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/fc04a8fd720a3da643e4dc5fd974ad6fb954bb1e09e4456b366ec5af31d0e107.mp4",
-    "size": 315030,
-    "sha256": "fc04a8fd720a3da643e4dc5fd974ad6fb954bb1e09e4456b366ec5af31d0e107",
+  "7a85d406d06c26026048c4345e552b12bff3a6757dfa8a1dc08b7bb728722c94.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7a85d406d06c26026048c4345e552b12bff3a6757dfa8a1dc08b7bb728722c94.mp4",
+    "size": 433863,
+    "sha256": "7a85d406d06c26026048c4345e552b12bff3a6757dfa8a1dc08b7bb728722c94",
     "profile": "web-360p-v1"
   },
-  "9c3b75e3b72de76d16bbbaa771abece94a10818d86724209d8aafa037caaa060.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9c3b75e3b72de76d16bbbaa771abece94a10818d86724209d8aafa037caaa060.mp4",
-    "size": 239154,
-    "sha256": "9c3b75e3b72de76d16bbbaa771abece94a10818d86724209d8aafa037caaa060",
+  "f4415bb0d69294548904cb89e26058425452ed6994a945c146201fcc16d90ef1.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/f4415bb0d69294548904cb89e26058425452ed6994a945c146201fcc16d90ef1.mp4",
+    "size": 350620,
+    "sha256": "f4415bb0d69294548904cb89e26058425452ed6994a945c146201fcc16d90ef1",
     "profile": "web-360p-v1"
   },
-  "4d85793246cab8495cb32b8589c254bea9fe271efe3e6b077243dc8769bf6d39.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4d85793246cab8495cb32b8589c254bea9fe271efe3e6b077243dc8769bf6d39.mp4",
-    "size": 601315,
-    "sha256": "4d85793246cab8495cb32b8589c254bea9fe271efe3e6b077243dc8769bf6d39",
+  "ff74cc8fb363f086714d6e03c26ef5671e2a24ce16dc4b6a448b37475a93a9b2.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ff74cc8fb363f086714d6e03c26ef5671e2a24ce16dc4b6a448b37475a93a9b2.mp4",
+    "size": 1373559,
+    "sha256": "ff74cc8fb363f086714d6e03c26ef5671e2a24ce16dc4b6a448b37475a93a9b2",
     "profile": "web-360p-v1"
   },
-  "73f4587042c570dc8574eba72e27b818eca91990c845891934f7a450ed92ae0a.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/73f4587042c570dc8574eba72e27b818eca91990c845891934f7a450ed92ae0a.mp4",
-    "size": 296347,
-    "sha256": "73f4587042c570dc8574eba72e27b818eca91990c845891934f7a450ed92ae0a",
+  "ed36349b98958ca069ca626f8ef256acb8ef2fab262433e652a2d56654e55d41.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ed36349b98958ca069ca626f8ef256acb8ef2fab262433e652a2d56654e55d41.mp4",
+    "size": 320362,
+    "sha256": "ed36349b98958ca069ca626f8ef256acb8ef2fab262433e652a2d56654e55d41",
     "profile": "web-360p-v1"
   },
-  "291f045f1354fe08e85aef63e1763ed5dd0bb3f5cdd71946f1a70436eb98d6ff.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/291f045f1354fe08e85aef63e1763ed5dd0bb3f5cdd71946f1a70436eb98d6ff.mp4",
-    "size": 565574,
-    "sha256": "291f045f1354fe08e85aef63e1763ed5dd0bb3f5cdd71946f1a70436eb98d6ff",
+  "e08f1b49f48ada92ae0cade5e6440faffadbcd14a86c9d51453bab9baac8c294.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e08f1b49f48ada92ae0cade5e6440faffadbcd14a86c9d51453bab9baac8c294.mp4",
+    "size": 899342,
+    "sha256": "e08f1b49f48ada92ae0cade5e6440faffadbcd14a86c9d51453bab9baac8c294",
     "profile": "web-360p-v1"
   },
-  "7bd0d832ad5d335f16534d756e1bfa8f13ad104fa5d6e799e85b34bdd846fc60.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7bd0d832ad5d335f16534d756e1bfa8f13ad104fa5d6e799e85b34bdd846fc60.mp4",
-    "size": 243414,
-    "sha256": "7bd0d832ad5d335f16534d756e1bfa8f13ad104fa5d6e799e85b34bdd846fc60",
+  "1f4c5290d450f5f8a96065b3fc4abecea758d2d23c99b7400833f15ef571ce88.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1f4c5290d450f5f8a96065b3fc4abecea758d2d23c99b7400833f15ef571ce88.mp4",
+    "size": 251447,
+    "sha256": "1f4c5290d450f5f8a96065b3fc4abecea758d2d23c99b7400833f15ef571ce88",
     "profile": "web-360p-v1"
   },
-  "64e4e1ce0758c16a24d0fcf9a781ee3b85a9f35191457e7a709755e1366fa348.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/64e4e1ce0758c16a24d0fcf9a781ee3b85a9f35191457e7a709755e1366fa348.mp4",
-    "size": 306661,
-    "sha256": "64e4e1ce0758c16a24d0fcf9a781ee3b85a9f35191457e7a709755e1366fa348",
+  "440a7b49bf51aedd76a7f54f117ad5a257c898fae38a77f8fdfc29363c0ce186.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/440a7b49bf51aedd76a7f54f117ad5a257c898fae38a77f8fdfc29363c0ce186.mp4",
+    "size": 310112,
+    "sha256": "440a7b49bf51aedd76a7f54f117ad5a257c898fae38a77f8fdfc29363c0ce186",
     "profile": "web-360p-v1"
   },
-  "3074883f2e9ee6e586a78f5c9e84fe19b22e434d2758731ff48e31e634ffd41c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3074883f2e9ee6e586a78f5c9e84fe19b22e434d2758731ff48e31e634ffd41c.mp4",
-    "size": 233740,
-    "sha256": "3074883f2e9ee6e586a78f5c9e84fe19b22e434d2758731ff48e31e634ffd41c",
+  "d4624cc8fe6f34c24da5b3a92bb0064b12b4c1e2f1b4154249efc22223dbfb1a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d4624cc8fe6f34c24da5b3a92bb0064b12b4c1e2f1b4154249efc22223dbfb1a.mp4",
+    "size": 249975,
+    "sha256": "d4624cc8fe6f34c24da5b3a92bb0064b12b4c1e2f1b4154249efc22223dbfb1a",
     "profile": "web-360p-v1"
   },
-  "0127ddad6913518709c1bbaeaf5fdbbd65356481d1866c4763e15b40a2320dbf.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/0127ddad6913518709c1bbaeaf5fdbbd65356481d1866c4763e15b40a2320dbf.mp4",
-    "size": 554263,
-    "sha256": "0127ddad6913518709c1bbaeaf5fdbbd65356481d1866c4763e15b40a2320dbf",
+  "73537e89f2833281daf2720f90c330ec6930bf6aea41cb8bee52d73dc38e4b69.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/73537e89f2833281daf2720f90c330ec6930bf6aea41cb8bee52d73dc38e4b69.mp4",
+    "size": 573397,
+    "sha256": "73537e89f2833281daf2720f90c330ec6930bf6aea41cb8bee52d73dc38e4b69",
     "profile": "web-360p-v1"
   },
   "86d362549c12d198a73d86f6788bd4feb59ddc127d6650c7d26a98ce213f87c6.mp4": {
@@ -1133,94 +1133,94 @@
     "sha256": "8c0a06e12449aac2427a2208889c7c5f864ea738efda2090a64244309c4ccc7b",
     "profile": "web-360p-v1"
   },
-  "c483789d197ce3d87b5be63fed2f6118828d652ff8f92c5eed1f93b9cfdeb3bd.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c483789d197ce3d87b5be63fed2f6118828d652ff8f92c5eed1f93b9cfdeb3bd.mp4",
-    "size": 365336,
-    "sha256": "c483789d197ce3d87b5be63fed2f6118828d652ff8f92c5eed1f93b9cfdeb3bd",
+  "5edd3e43c1e33938c4ddd20fc7d9844a3c0e3dcb5f5b1673063f7dde3b52c614.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/5edd3e43c1e33938c4ddd20fc7d9844a3c0e3dcb5f5b1673063f7dde3b52c614.mp4",
+    "size": 294243,
+    "sha256": "5edd3e43c1e33938c4ddd20fc7d9844a3c0e3dcb5f5b1673063f7dde3b52c614",
     "profile": "web-360p-v1"
   },
-  "a4e3580ecb4cbead40dc38a28cf13fc329b991e118ea847af11b3126f830fbd4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a4e3580ecb4cbead40dc38a28cf13fc329b991e118ea847af11b3126f830fbd4.mp4",
-    "size": 297624,
-    "sha256": "a4e3580ecb4cbead40dc38a28cf13fc329b991e118ea847af11b3126f830fbd4",
+  "83372b0aff42672bcb7944fad3654f31fdfd935a342a7a3b308861e4f1b2d8be.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/83372b0aff42672bcb7944fad3654f31fdfd935a342a7a3b308861e4f1b2d8be.mp4",
+    "size": 294454,
+    "sha256": "83372b0aff42672bcb7944fad3654f31fdfd935a342a7a3b308861e4f1b2d8be",
     "profile": "web-360p-v1"
   },
-  "825487a74b17dfd25d47fa1822ad80b1dcb9a577a70efcd8f306150e138f2ecd.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/825487a74b17dfd25d47fa1822ad80b1dcb9a577a70efcd8f306150e138f2ecd.mp4",
-    "size": 626287,
-    "sha256": "825487a74b17dfd25d47fa1822ad80b1dcb9a577a70efcd8f306150e138f2ecd",
+  "a7b833f7873d1be4f5b8489f61c64efa7d4156b38d754f87f0a090c055fae226.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a7b833f7873d1be4f5b8489f61c64efa7d4156b38d754f87f0a090c055fae226.mp4",
+    "size": 732260,
+    "sha256": "a7b833f7873d1be4f5b8489f61c64efa7d4156b38d754f87f0a090c055fae226",
     "profile": "web-360p-v1"
   },
-  "44e953799a2813ad85aa66c4cb52eb4600845d8bfd480f75958ec259b775d7fb.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/44e953799a2813ad85aa66c4cb52eb4600845d8bfd480f75958ec259b775d7fb.mp4",
-    "size": 292268,
-    "sha256": "44e953799a2813ad85aa66c4cb52eb4600845d8bfd480f75958ec259b775d7fb",
+  "d32edebdfa956ae0dae56fc23e3ba1a35f9052b035fe7742296839c63ba8e285.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d32edebdfa956ae0dae56fc23e3ba1a35f9052b035fe7742296839c63ba8e285.mp4",
+    "size": 331344,
+    "sha256": "d32edebdfa956ae0dae56fc23e3ba1a35f9052b035fe7742296839c63ba8e285",
     "profile": "web-360p-v1"
   },
-  "cef462ccd419a28641cecfa3ffa8d3f9ead08433216729452b0f563b4a8a5675.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/cef462ccd419a28641cecfa3ffa8d3f9ead08433216729452b0f563b4a8a5675.mp4",
-    "size": 282723,
-    "sha256": "cef462ccd419a28641cecfa3ffa8d3f9ead08433216729452b0f563b4a8a5675",
+  "bff51327d1b600f1200e772fb9be7c0981620ea6203577c98057460a5f39d520.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/bff51327d1b600f1200e772fb9be7c0981620ea6203577c98057460a5f39d520.mp4",
+    "size": 249833,
+    "sha256": "bff51327d1b600f1200e772fb9be7c0981620ea6203577c98057460a5f39d520",
     "profile": "web-360p-v1"
   },
-  "1d67294bce66b993d8eb5961d3a20bbec6abdcd595ac4e8de00ca213e774c68f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/1d67294bce66b993d8eb5961d3a20bbec6abdcd595ac4e8de00ca213e774c68f.mp4",
-    "size": 660460,
-    "sha256": "1d67294bce66b993d8eb5961d3a20bbec6abdcd595ac4e8de00ca213e774c68f",
+  "4289bd833b1da34cfcf4d53c047df2173bf05cd97d6d883ec42e0bb9da43db94.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4289bd833b1da34cfcf4d53c047df2173bf05cd97d6d883ec42e0bb9da43db94.mp4",
+    "size": 623951,
+    "sha256": "4289bd833b1da34cfcf4d53c047df2173bf05cd97d6d883ec42e0bb9da43db94",
     "profile": "web-360p-v1"
   },
-  "2f665b29fee54ac255fc339ed26215d7cddf70cec63c3a89bbd2cd5f47ca6412.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2f665b29fee54ac255fc339ed26215d7cddf70cec63c3a89bbd2cd5f47ca6412.mp4",
-    "size": 379855,
-    "sha256": "2f665b29fee54ac255fc339ed26215d7cddf70cec63c3a89bbd2cd5f47ca6412",
+  "015802598bd061f8aa1d1f7cde225461f28aadbc12f07b82925d5999bd28b41d.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/015802598bd061f8aa1d1f7cde225461f28aadbc12f07b82925d5999bd28b41d.mp4",
+    "size": 303442,
+    "sha256": "015802598bd061f8aa1d1f7cde225461f28aadbc12f07b82925d5999bd28b41d",
     "profile": "web-360p-v1"
   },
-  "a86d4fbe2992ce52bca4da88fa618a6d8284c0c40ffbaa1268e556601d472902.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a86d4fbe2992ce52bca4da88fa618a6d8284c0c40ffbaa1268e556601d472902.mp4",
-    "size": 558603,
-    "sha256": "a86d4fbe2992ce52bca4da88fa618a6d8284c0c40ffbaa1268e556601d472902",
+  "82208c1664ab630970ce3fc8162aecde324c773cb4c9ab3443512759815b53d0.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/82208c1664ab630970ce3fc8162aecde324c773cb4c9ab3443512759815b53d0.mp4",
+    "size": 730952,
+    "sha256": "82208c1664ab630970ce3fc8162aecde324c773cb4c9ab3443512759815b53d0",
     "profile": "web-360p-v1"
   },
-  "9b29a8a46afe652566c8b8de04d72860d9970581e68ad6dd710b8da8c6af1d5f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9b29a8a46afe652566c8b8de04d72860d9970581e68ad6dd710b8da8c6af1d5f.mp4",
-    "size": 455758,
-    "sha256": "9b29a8a46afe652566c8b8de04d72860d9970581e68ad6dd710b8da8c6af1d5f",
+  "8bede29e204a4a529000fd3e1e2f1535618e514d233e5f4db393d93466317d3a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8bede29e204a4a529000fd3e1e2f1535618e514d233e5f4db393d93466317d3a.mp4",
+    "size": 275632,
+    "sha256": "8bede29e204a4a529000fd3e1e2f1535618e514d233e5f4db393d93466317d3a",
     "profile": "web-360p-v1"
   },
-  "abc36256fd56c4a5375ccbdcc3e2d7177be1cbe4009fb0928834d531008966b1.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/abc36256fd56c4a5375ccbdcc3e2d7177be1cbe4009fb0928834d531008966b1.mp4",
-    "size": 282597,
-    "sha256": "abc36256fd56c4a5375ccbdcc3e2d7177be1cbe4009fb0928834d531008966b1",
+  "35aacfaf657b7abd3f3592553605539504faf8d5164b9511e7a812eff102c6ca.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/35aacfaf657b7abd3f3592553605539504faf8d5164b9511e7a812eff102c6ca.mp4",
+    "size": 328163,
+    "sha256": "35aacfaf657b7abd3f3592553605539504faf8d5164b9511e7a812eff102c6ca",
     "profile": "web-360p-v1"
   },
-  "3628843bead39a768a9052686fd5abde499aa449baed8a4d960777608dbf0b9b.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3628843bead39a768a9052686fd5abde499aa449baed8a4d960777608dbf0b9b.mp4",
-    "size": 610982,
-    "sha256": "3628843bead39a768a9052686fd5abde499aa449baed8a4d960777608dbf0b9b",
+  "b5b56ebdb9b773e2aa4f58935788f016b89175a7342f1b35ac38a83f889254a2.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b5b56ebdb9b773e2aa4f58935788f016b89175a7342f1b35ac38a83f889254a2.mp4",
+    "size": 602653,
+    "sha256": "b5b56ebdb9b773e2aa4f58935788f016b89175a7342f1b35ac38a83f889254a2",
     "profile": "web-360p-v1"
   },
-  "4cf3442722f394e060727c260474727d6287af9890748161ab8347dceff852b0.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4cf3442722f394e060727c260474727d6287af9890748161ab8347dceff852b0.mp4",
-    "size": 269652,
-    "sha256": "4cf3442722f394e060727c260474727d6287af9890748161ab8347dceff852b0",
+  "796a83c178df64142e9b8693f50813756ecac25b6eda5732e95e815e9de76f7f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/796a83c178df64142e9b8693f50813756ecac25b6eda5732e95e815e9de76f7f.mp4",
+    "size": 266282,
+    "sha256": "796a83c178df64142e9b8693f50813756ecac25b6eda5732e95e815e9de76f7f",
     "profile": "web-360p-v1"
   },
-  "9203bc364a374352ef53c1c87f07b2f7d5838ec69eece1b44703a1566ab96fa8.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9203bc364a374352ef53c1c87f07b2f7d5838ec69eece1b44703a1566ab96fa8.mp4",
-    "size": 301475,
-    "sha256": "9203bc364a374352ef53c1c87f07b2f7d5838ec69eece1b44703a1566ab96fa8",
+  "35be8d983f1d48232cd6e9c16b229d999950d151f08ae4bd53f97d871bafc0d8.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/35be8d983f1d48232cd6e9c16b229d999950d151f08ae4bd53f97d871bafc0d8.mp4",
+    "size": 297380,
+    "sha256": "35be8d983f1d48232cd6e9c16b229d999950d151f08ae4bd53f97d871bafc0d8",
     "profile": "web-360p-v1"
   },
-  "19a0f092de9cb862992f06b7ceac45eb01ab48f835fcbf1a6fbc0e4c783e6184.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/19a0f092de9cb862992f06b7ceac45eb01ab48f835fcbf1a6fbc0e4c783e6184.mp4",
-    "size": 290037,
-    "sha256": "19a0f092de9cb862992f06b7ceac45eb01ab48f835fcbf1a6fbc0e4c783e6184",
+  "797e54edc895dfa573d874088b6e93663d3b55ca3e432ad5afa4c92d876fccbf.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/797e54edc895dfa573d874088b6e93663d3b55ca3e432ad5afa4c92d876fccbf.mp4",
+    "size": 290209,
+    "sha256": "797e54edc895dfa573d874088b6e93663d3b55ca3e432ad5afa4c92d876fccbf",
     "profile": "web-360p-v1"
   },
-  "9b251c3bcd503eaec948dfaae8f9ae8fe0b495472fa07e1127755afb87e6d386.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9b251c3bcd503eaec948dfaae8f9ae8fe0b495472fa07e1127755afb87e6d386.mp4",
-    "size": 776427,
-    "sha256": "9b251c3bcd503eaec948dfaae8f9ae8fe0b495472fa07e1127755afb87e6d386",
+  "bad6bf3c10945dfdb4033bd0a41eac38d4d976d947f73ad36faa1db323282433.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/bad6bf3c10945dfdb4033bd0a41eac38d4d976d947f73ad36faa1db323282433.mp4",
+    "size": 746972,
+    "sha256": "bad6bf3c10945dfdb4033bd0a41eac38d4d976d947f73ad36faa1db323282433",
     "profile": "web-360p-v1"
   },
   "0ad3e086f8cf6da3a4c5a126e73fb7e00aebdf9fb12c19d6f1368ddf4f73596c.mp4": {
@@ -1313,94 +1313,94 @@
     "sha256": "ce7015008403dbf625a32de7e142c50db08379bcc9f5893c274faa76151b167b",
     "profile": "web-360p-v1"
   },
-  "dfb6f4746966914e1e14e1c964ad16024e9b0fd21373ee752af8c2ca9e321e8f.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/dfb6f4746966914e1e14e1c964ad16024e9b0fd21373ee752af8c2ca9e321e8f.mp4",
-    "size": 132043,
-    "sha256": "dfb6f4746966914e1e14e1c964ad16024e9b0fd21373ee752af8c2ca9e321e8f",
+  "ab10f16940ca1b04a5449e1b51e07891ede5065e1238d226a3096a75c12f0f4a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ab10f16940ca1b04a5449e1b51e07891ede5065e1238d226a3096a75c12f0f4a.mp4",
+    "size": 132492,
+    "sha256": "ab10f16940ca1b04a5449e1b51e07891ede5065e1238d226a3096a75c12f0f4a",
     "profile": "web-360p-v1"
   },
-  "9318d98b504709b6c00d4cf0723d1642684ce89ffe42fb5c69c79fa2b05b4700.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9318d98b504709b6c00d4cf0723d1642684ce89ffe42fb5c69c79fa2b05b4700.mp4",
-    "size": 87169,
-    "sha256": "9318d98b504709b6c00d4cf0723d1642684ce89ffe42fb5c69c79fa2b05b4700",
+  "aa685407d32e2fda39d3243b312b5a11e621e403c1c1dc1431143ee24e1619d1.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/aa685407d32e2fda39d3243b312b5a11e621e403c1c1dc1431143ee24e1619d1.mp4",
+    "size": 89715,
+    "sha256": "aa685407d32e2fda39d3243b312b5a11e621e403c1c1dc1431143ee24e1619d1",
     "profile": "web-360p-v1"
   },
-  "9dd07fc670f8c179df1b255f70be0d39216c7f8a48b3457a121dcf441d448cb4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9dd07fc670f8c179df1b255f70be0d39216c7f8a48b3457a121dcf441d448cb4.mp4",
-    "size": 298197,
-    "sha256": "9dd07fc670f8c179df1b255f70be0d39216c7f8a48b3457a121dcf441d448cb4",
+  "5747479358592040490c4e5c3edc2f740776142070e83b26e18185727efffafd.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/5747479358592040490c4e5c3edc2f740776142070e83b26e18185727efffafd.mp4",
+    "size": 365476,
+    "sha256": "5747479358592040490c4e5c3edc2f740776142070e83b26e18185727efffafd",
     "profile": "web-360p-v1"
   },
-  "17489a198cf92a9d78fa72ef58481d8a9f4fdddfcac43a0e985206c1299a8458.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/17489a198cf92a9d78fa72ef58481d8a9f4fdddfcac43a0e985206c1299a8458.mp4",
-    "size": 132061,
-    "sha256": "17489a198cf92a9d78fa72ef58481d8a9f4fdddfcac43a0e985206c1299a8458",
+  "7a8a869276bc9df4c78eb9badb8a979702958cb91b37ba491d342e7a38c60217.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7a8a869276bc9df4c78eb9badb8a979702958cb91b37ba491d342e7a38c60217.mp4",
+    "size": 350902,
+    "sha256": "7a8a869276bc9df4c78eb9badb8a979702958cb91b37ba491d342e7a38c60217",
     "profile": "web-360p-v1"
   },
-  "25ff87936925be1ccd83296b5b8652b7d1d096baacafef8592528df7f5b7a88d.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/25ff87936925be1ccd83296b5b8652b7d1d096baacafef8592528df7f5b7a88d.mp4",
-    "size": 223367,
-    "sha256": "25ff87936925be1ccd83296b5b8652b7d1d096baacafef8592528df7f5b7a88d",
+  "8fd7e8490131a4d9881e46b562c0c1b2038b90a305945b2721f7497b74462631.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8fd7e8490131a4d9881e46b562c0c1b2038b90a305945b2721f7497b74462631.mp4",
+    "size": 479826,
+    "sha256": "8fd7e8490131a4d9881e46b562c0c1b2038b90a305945b2721f7497b74462631",
     "profile": "web-360p-v1"
   },
-  "e2974fbfded894b2d215cc6d9894df496a5b92e13a22404eced3c3b76d79a7ff.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e2974fbfded894b2d215cc6d9894df496a5b92e13a22404eced3c3b76d79a7ff.mp4",
-    "size": 77939,
-    "sha256": "e2974fbfded894b2d215cc6d9894df496a5b92e13a22404eced3c3b76d79a7ff",
+  "dfc4812bbc855c60072ad6a1a1d48b0a68814cc60273ecc1686529d1b4dedab5.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/dfc4812bbc855c60072ad6a1a1d48b0a68814cc60273ecc1686529d1b4dedab5.mp4",
+    "size": 433453,
+    "sha256": "dfc4812bbc855c60072ad6a1a1d48b0a68814cc60273ecc1686529d1b4dedab5",
     "profile": "web-360p-v1"
   },
-  "8ce09db618ad78bab999b6f4d7b0c0de63f2c136f0ecd989bcc6920f2e96a7e7.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8ce09db618ad78bab999b6f4d7b0c0de63f2c136f0ecd989bcc6920f2e96a7e7.mp4",
-    "size": 442695,
-    "sha256": "8ce09db618ad78bab999b6f4d7b0c0de63f2c136f0ecd989bcc6920f2e96a7e7",
+  "06e1d6a3da93a924e1c6e14e591d79a537bdf366e26c6a084549846f6f739a39.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/06e1d6a3da93a924e1c6e14e591d79a537bdf366e26c6a084549846f6f739a39.mp4",
+    "size": 290333,
+    "sha256": "06e1d6a3da93a924e1c6e14e591d79a537bdf366e26c6a084549846f6f739a39",
     "profile": "web-360p-v1"
   },
-  "a76dab5a5c98cadcbdb9e5e6ab5278c5b84bfc352c002a788750fae44f743652.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a76dab5a5c98cadcbdb9e5e6ab5278c5b84bfc352c002a788750fae44f743652.mp4",
-    "size": 414121,
-    "sha256": "a76dab5a5c98cadcbdb9e5e6ab5278c5b84bfc352c002a788750fae44f743652",
+  "20d30649f6856de3d06d2bc9ede97caef0a4d9292b1dc55c038b080691fc92f6.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/20d30649f6856de3d06d2bc9ede97caef0a4d9292b1dc55c038b080691fc92f6.mp4",
+    "size": 213509,
+    "sha256": "20d30649f6856de3d06d2bc9ede97caef0a4d9292b1dc55c038b080691fc92f6",
     "profile": "web-360p-v1"
   },
-  "36abfda0236f0db373bf20e7be3ed8b181af6670666fce83c739d29a8e9a05f0.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/36abfda0236f0db373bf20e7be3ed8b181af6670666fce83c739d29a8e9a05f0.mp4",
-    "size": 650970,
-    "sha256": "36abfda0236f0db373bf20e7be3ed8b181af6670666fce83c739d29a8e9a05f0",
+  "106043979954681c4e113a89673498cf4a260ff32136f1957a06a4ebca44c1d0.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/106043979954681c4e113a89673498cf4a260ff32136f1957a06a4ebca44c1d0.mp4",
+    "size": 777875,
+    "sha256": "106043979954681c4e113a89673498cf4a260ff32136f1957a06a4ebca44c1d0",
     "profile": "web-360p-v1"
   },
-  "3d862722573c0f4a4cb2edce2b1e8df28fe88117ea0492be5f486e960a3caab5.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3d862722573c0f4a4cb2edce2b1e8df28fe88117ea0492be5f486e960a3caab5.mp4",
-    "size": 197728,
-    "sha256": "3d862722573c0f4a4cb2edce2b1e8df28fe88117ea0492be5f486e960a3caab5",
+  "5aed673df53852570ceeee5fb08ba240502aeb53f52216cc94307d71f1b6958f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/5aed673df53852570ceeee5fb08ba240502aeb53f52216cc94307d71f1b6958f.mp4",
+    "size": 338417,
+    "sha256": "5aed673df53852570ceeee5fb08ba240502aeb53f52216cc94307d71f1b6958f",
     "profile": "web-360p-v1"
   },
-  "69a65f175171c9e977ac501452de3708393c30361df8a896dd2018c8e891090d.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/69a65f175171c9e977ac501452de3708393c30361df8a896dd2018c8e891090d.mp4",
-    "size": 293929,
-    "sha256": "69a65f175171c9e977ac501452de3708393c30361df8a896dd2018c8e891090d",
+  "dcd17b66599b6731bbe627d1b403aa1574df5994cac77e2596ef71a2c1d0883b.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/dcd17b66599b6731bbe627d1b403aa1574df5994cac77e2596ef71a2c1d0883b.mp4",
+    "size": 693710,
+    "sha256": "dcd17b66599b6731bbe627d1b403aa1574df5994cac77e2596ef71a2c1d0883b",
     "profile": "web-360p-v1"
   },
-  "a76df9ba827eebdf40d1882618b1d777fd0ef31e4284cd4b418c877a25afb462.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a76df9ba827eebdf40d1882618b1d777fd0ef31e4284cd4b418c877a25afb462.mp4",
-    "size": 357936,
-    "sha256": "a76df9ba827eebdf40d1882618b1d777fd0ef31e4284cd4b418c877a25afb462",
+  "4f47452e3b057dc1c7597059f6c9c9eb49485e32b8eae9b4fa9c484a34ed9e19.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/4f47452e3b057dc1c7597059f6c9c9eb49485e32b8eae9b4fa9c484a34ed9e19.mp4",
+    "size": 576937,
+    "sha256": "4f47452e3b057dc1c7597059f6c9c9eb49485e32b8eae9b4fa9c484a34ed9e19",
     "profile": "web-360p-v1"
   },
-  "3885ced41a75b7c2071058d632713fa3734ffdd460cc1bc00c1ff50095562a03.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3885ced41a75b7c2071058d632713fa3734ffdd460cc1bc00c1ff50095562a03.mp4",
-    "size": 129218,
-    "sha256": "3885ced41a75b7c2071058d632713fa3734ffdd460cc1bc00c1ff50095562a03",
+  "cb0bde5c88fbfa3ba6295acb9ad1dd212aa1639495afb1da6b060fc915c8d70b.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/cb0bde5c88fbfa3ba6295acb9ad1dd212aa1639495afb1da6b060fc915c8d70b.mp4",
+    "size": 125485,
+    "sha256": "cb0bde5c88fbfa3ba6295acb9ad1dd212aa1639495afb1da6b060fc915c8d70b",
     "profile": "web-360p-v1"
   },
-  "441f785e82a51784a772b0620e3d62294e6fe942f832c7a6422d7d8440c46fcc.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/441f785e82a51784a772b0620e3d62294e6fe942f832c7a6422d7d8440c46fcc.mp4",
-    "size": 80997,
-    "sha256": "441f785e82a51784a772b0620e3d62294e6fe942f832c7a6422d7d8440c46fcc",
+  "c99e44ad206262368983ba0d3f07ab6bf2d4d4f0bf0025caeb8104214cf50edc.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/c99e44ad206262368983ba0d3f07ab6bf2d4d4f0bf0025caeb8104214cf50edc.mp4",
+    "size": 79235,
+    "sha256": "c99e44ad206262368983ba0d3f07ab6bf2d4d4f0bf0025caeb8104214cf50edc",
     "profile": "web-360p-v1"
   },
-  "322f6d4fa79bad60e8d4a282561e916cc590428d3f4e69218e31ff5d01d03487.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/322f6d4fa79bad60e8d4a282561e916cc590428d3f4e69218e31ff5d01d03487.mp4",
-    "size": 231936,
-    "sha256": "322f6d4fa79bad60e8d4a282561e916cc590428d3f4e69218e31ff5d01d03487",
+  "e0c60be1a8ced98902b52994a80c7c745cd0e5bba659932b32b494c19546a86e.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e0c60be1a8ced98902b52994a80c7c745cd0e5bba659932b32b494c19546a86e.mp4",
+    "size": 229201,
+    "sha256": "e0c60be1a8ced98902b52994a80c7c745cd0e5bba659932b32b494c19546a86e",
     "profile": "web-360p-v1"
   },
   "7c36418ce8b96a3c0085d69d4372e1b0eb2858254b1d63c2099704043ec7bb4f.mp4": {
@@ -1763,94 +1763,94 @@
     "sha256": "fe68d06477795c6af4f9dd6376a3bc53f2b3c0d5e181e444e2f0591c50d56cf3",
     "profile": "web-360p-v1"
   },
-  "2e43fba765ac56439de161fd5ef79f3de4c43d27f2d92d808befc73d8a24c347.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2e43fba765ac56439de161fd5ef79f3de4c43d27f2d92d808befc73d8a24c347.mp4",
-    "size": 384795,
-    "sha256": "2e43fba765ac56439de161fd5ef79f3de4c43d27f2d92d808befc73d8a24c347",
+  "d6bc158702a78f3eaeecf0ec96130fc93c38dfd2865f5931d3ed928a915f63e1.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/d6bc158702a78f3eaeecf0ec96130fc93c38dfd2865f5931d3ed928a915f63e1.mp4",
+    "size": 384693,
+    "sha256": "d6bc158702a78f3eaeecf0ec96130fc93c38dfd2865f5931d3ed928a915f63e1",
     "profile": "web-360p-v1"
   },
-  "df6a5cc3c2286ae8849b9e13a9b6abd9184b735bbb874c3f7d6293199f1a35d4.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/df6a5cc3c2286ae8849b9e13a9b6abd9184b735bbb874c3f7d6293199f1a35d4.mp4",
-    "size": 311036,
-    "sha256": "df6a5cc3c2286ae8849b9e13a9b6abd9184b735bbb874c3f7d6293199f1a35d4",
+  "7e3a86e661363e7353363034f50b090215b72742c78b040263433bdb74c15de4.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7e3a86e661363e7353363034f50b090215b72742c78b040263433bdb74c15de4.mp4",
+    "size": 296517,
+    "sha256": "7e3a86e661363e7353363034f50b090215b72742c78b040263433bdb74c15de4",
     "profile": "web-360p-v1"
   },
-  "3fd1e02113924437d94f51dc5dc55a0b07c2eae0ddc1ef5be840eab800601ca3.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/3fd1e02113924437d94f51dc5dc55a0b07c2eae0ddc1ef5be840eab800601ca3.mp4",
-    "size": 601885,
-    "sha256": "3fd1e02113924437d94f51dc5dc55a0b07c2eae0ddc1ef5be840eab800601ca3",
+  "ec19eb9fdb044ed18549730451370ded2026d53a84e7cc367f64cfd7b663167d.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ec19eb9fdb044ed18549730451370ded2026d53a84e7cc367f64cfd7b663167d.mp4",
+    "size": 628875,
+    "sha256": "ec19eb9fdb044ed18549730451370ded2026d53a84e7cc367f64cfd7b663167d",
     "profile": "web-360p-v1"
   },
-  "a74b99a5bcff1fcff2179f7b49a5af175c77b69153151b95a1f0c4ed7df661b5.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a74b99a5bcff1fcff2179f7b49a5af175c77b69153151b95a1f0c4ed7df661b5.mp4",
-    "size": 371342,
-    "sha256": "a74b99a5bcff1fcff2179f7b49a5af175c77b69153151b95a1f0c4ed7df661b5",
+  "67d3c00ad2d5f925cdb2fc248a0695dc9b09ac75361517567be3548b20770b3e.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/67d3c00ad2d5f925cdb2fc248a0695dc9b09ac75361517567be3548b20770b3e.mp4",
+    "size": 390329,
+    "sha256": "67d3c00ad2d5f925cdb2fc248a0695dc9b09ac75361517567be3548b20770b3e",
     "profile": "web-360p-v1"
   },
-  "ad47ce143bab624cf81309d3d89f08ef98d5f44ab05a2e9009bdbcf7d6e4d9ff.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ad47ce143bab624cf81309d3d89f08ef98d5f44ab05a2e9009bdbcf7d6e4d9ff.mp4",
-    "size": 328811,
-    "sha256": "ad47ce143bab624cf81309d3d89f08ef98d5f44ab05a2e9009bdbcf7d6e4d9ff",
+  "e3d185ff6b7fcb47c72da7b20e18bf33b00ca3a948a0d76e98c04fecd651283d.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e3d185ff6b7fcb47c72da7b20e18bf33b00ca3a948a0d76e98c04fecd651283d.mp4",
+    "size": 317109,
+    "sha256": "e3d185ff6b7fcb47c72da7b20e18bf33b00ca3a948a0d76e98c04fecd651283d",
     "profile": "web-360p-v1"
   },
-  "9de1b9a9589b19f71858f19f613164d53213d2942f5cbf48a583c3ab50e6a1d8.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/9de1b9a9589b19f71858f19f613164d53213d2942f5cbf48a583c3ab50e6a1d8.mp4",
-    "size": 572452,
-    "sha256": "9de1b9a9589b19f71858f19f613164d53213d2942f5cbf48a583c3ab50e6a1d8",
+  "2a037f12eccc61b9ca979a1d946dfa3880643d894732fbe967218a19dbc39185.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/2a037f12eccc61b9ca979a1d946dfa3880643d894732fbe967218a19dbc39185.mp4",
+    "size": 610608,
+    "sha256": "2a037f12eccc61b9ca979a1d946dfa3880643d894732fbe967218a19dbc39185",
     "profile": "web-360p-v1"
   },
-  "ccbe057dfec07d14976104736a63311a7fd73f138a5bb35d2955cc8581811c04.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ccbe057dfec07d14976104736a63311a7fd73f138a5bb35d2955cc8581811c04.mp4",
-    "size": 44742,
-    "sha256": "ccbe057dfec07d14976104736a63311a7fd73f138a5bb35d2955cc8581811c04",
+  "30972a3f418fc9e14949674b6a583944e058ce24af0343ef5a3e9a999b79540a.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/30972a3f418fc9e14949674b6a583944e058ce24af0343ef5a3e9a999b79540a.mp4",
+    "size": 385024,
+    "sha256": "30972a3f418fc9e14949674b6a583944e058ce24af0343ef5a3e9a999b79540a",
     "profile": "web-360p-v1"
   },
-  "5f453bca9f229d8e16435d968a2924d3e1374046a24cfd63e065ff6b548ef83e.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/5f453bca9f229d8e16435d968a2924d3e1374046a24cfd63e065ff6b548ef83e.mp4",
-    "size": 74762,
-    "sha256": "5f453bca9f229d8e16435d968a2924d3e1374046a24cfd63e065ff6b548ef83e",
+  "ed29cf632a6aed14d3ebc9abaa6ad4b7b911dd13fe8cdf689543dff9afcb31e2.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ed29cf632a6aed14d3ebc9abaa6ad4b7b911dd13fe8cdf689543dff9afcb31e2.mp4",
+    "size": 315425,
+    "sha256": "ed29cf632a6aed14d3ebc9abaa6ad4b7b911dd13fe8cdf689543dff9afcb31e2",
     "profile": "web-360p-v1"
   },
-  "ce9c34e5f07a0dc5f08620ef949985a7617cfc218b99b4781c271e2e2ffdc606.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/ce9c34e5f07a0dc5f08620ef949985a7617cfc218b99b4781c271e2e2ffdc606.mp4",
-    "size": 27386,
-    "sha256": "ce9c34e5f07a0dc5f08620ef949985a7617cfc218b99b4781c271e2e2ffdc606",
+  "8d055dda47a8afcdd67ed1c054a9edc289afad4badcf97560d697f63395911d7.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8d055dda47a8afcdd67ed1c054a9edc289afad4badcf97560d697f63395911d7.mp4",
+    "size": 600625,
+    "sha256": "8d055dda47a8afcdd67ed1c054a9edc289afad4badcf97560d697f63395911d7",
     "profile": "web-360p-v1"
   },
-  "7a839a9919e35a67f699ea5902650db0ea4ea1f28bd170b3c2559fedf3355794.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/7a839a9919e35a67f699ea5902650db0ea4ea1f28bd170b3c2559fedf3355794.mp4",
-    "size": 149604,
-    "sha256": "7a839a9919e35a67f699ea5902650db0ea4ea1f28bd170b3c2559fedf3355794",
+  "8abf8307330e293f717b05b09a62ff42bbe3036b8d22b281be8074ddb503d36f.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/8abf8307330e293f717b05b09a62ff42bbe3036b8d22b281be8074ddb503d36f.mp4",
+    "size": 386611,
+    "sha256": "8abf8307330e293f717b05b09a62ff42bbe3036b8d22b281be8074ddb503d36f",
     "profile": "web-360p-v1"
   },
-  "626f9a3894329f558ab25eb46353d41d62bccbe993ed30f50ba1be81c98185ae.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/626f9a3894329f558ab25eb46353d41d62bccbe993ed30f50ba1be81c98185ae.mp4",
-    "size": 157043,
-    "sha256": "626f9a3894329f558ab25eb46353d41d62bccbe993ed30f50ba1be81c98185ae",
+  "a5a212de199022451853eb0c85889c5879c0e217bc812c0a412459cd459f2418.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a5a212de199022451853eb0c85889c5879c0e217bc812c0a412459cd459f2418.mp4",
+    "size": 248199,
+    "sha256": "a5a212de199022451853eb0c85889c5879c0e217bc812c0a412459cd459f2418",
     "profile": "web-360p-v1"
   },
-  "a87c0afe01333f28be72171fabffc107f9fe892491a7750123f346500af3c19b.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/a87c0afe01333f28be72171fabffc107f9fe892491a7750123f346500af3c19b.mp4",
-    "size": 191084,
-    "sha256": "a87c0afe01333f28be72171fabffc107f9fe892491a7750123f346500af3c19b",
+  "e90f7c84d03cb21964ecf56b665194adcddf5447b2a5c05611f0a198112ecdc5.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e90f7c84d03cb21964ecf56b665194adcddf5447b2a5c05611f0a198112ecdc5.mp4",
+    "size": 662093,
+    "sha256": "e90f7c84d03cb21964ecf56b665194adcddf5447b2a5c05611f0a198112ecdc5",
     "profile": "web-360p-v1"
   },
-  "6d5578c695bf30c3334b4b52c4e43f449d7a17a052653e7dd4b5f43974a68493.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/6d5578c695bf30c3334b4b52c4e43f449d7a17a052653e7dd4b5f43974a68493.mp4",
-    "size": 368579,
-    "sha256": "6d5578c695bf30c3334b4b52c4e43f449d7a17a052653e7dd4b5f43974a68493",
+  "b8e10cec73bc7cb581a6ab4fa76c6afb1e638bf70d089310452bd73ee6d239e0.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/b8e10cec73bc7cb581a6ab4fa76c6afb1e638bf70d089310452bd73ee6d239e0.mp4",
+    "size": 48432,
+    "sha256": "b8e10cec73bc7cb581a6ab4fa76c6afb1e638bf70d089310452bd73ee6d239e0",
     "profile": "web-360p-v1"
   },
-  "63f7bb378f8c70f359cfa902e9da6145195eeb14f73b38bd7c63be04792ba00c.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/63f7bb378f8c70f359cfa902e9da6145195eeb14f73b38bd7c63be04792ba00c.mp4",
-    "size": 309492,
-    "sha256": "63f7bb378f8c70f359cfa902e9da6145195eeb14f73b38bd7c63be04792ba00c",
+  "0fcf854077e11b61a82e7724730d60e7d3744a058c1223caa304c2d9d023f13d.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/0fcf854077e11b61a82e7724730d60e7d3744a058c1223caa304c2d9d023f13d.mp4",
+    "size": 89041,
+    "sha256": "0fcf854077e11b61a82e7724730d60e7d3744a058c1223caa304c2d9d023f13d",
     "profile": "web-360p-v1"
   },
-  "e6646a790e0b9a78cc73e790b894778842b78ab74837efc686fcbe3c22387200.mp4": {
-    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/e6646a790e0b9a78cc73e790b894778842b78ab74837efc686fcbe3c22387200.mp4",
-    "size": 572914,
-    "sha256": "e6646a790e0b9a78cc73e790b894778842b78ab74837efc686fcbe3c22387200",
+  "061e0dbda273b6874f87216bd6b0bb42f02d452e20ec4df167a4d389d562f986.mp4": {
+    "path": "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/web-360p-v1/061e0dbda273b6874f87216bd6b0bb42f02d452e20ec4df167a4d389d562f986.mp4",
+    "size": 31544,
+    "sha256": "061e0dbda273b6874f87216bd6b0bb42f02d452e20ec4df167a4d389d562f986",
     "profile": "web-360p-v1"
   },
   "43b0d5ca7f783572897bcfe4a51be8c6e7a21720dc4f872de5252924dbab3423.mp4": {

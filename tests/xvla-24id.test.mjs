@@ -15,6 +15,9 @@ test("XVLA 24-task ID export preserves task, sample, metric, and video identity"
   assert.equal(Object.values(data).reduce((sum, task) => sum + task.samples.filter((sample) => sample.metricsAvailable).length, 0), 118);
   assert.equal(Object.values(data).reduce((sum, task) => sum + task.samples.flatMap((sample) => sample.videos).length, 0), 354);
   assert.equal(Object.keys(media).length, 354);
+  assert.equal(Object.values(data).filter((task) => task.promptVersion === "v3").length, 8);
+  assert.equal(Object.values(data).filter((task) => task.promptVersion === "v1").length, 16);
+  assert.equal(new Set(Object.values(data).map((task) => task.resultVersion)).size, 1);
   const ids = tracks.find((track) => track.id === "T3").metrics.map((metric) => metric.id);
   assert.equal(ids.length, 19);
   for (const task of Object.values(data)) {
@@ -29,7 +32,7 @@ test("XVLA 24-task ID export preserves task, sample, metric, and video identity"
 
 test("XVLA result routing is task-specific and preserves unavailable metrics", () => {
   const selection = { trackId: "T3", mode: "plan", modelId: "XVLA", setting: "id" };
-  assert.equal(readResult({ ...selection, taskId: "place_between_references", metricId: "TSR" }).primary, "80.00%");
+  assert.equal(readResult({ ...selection, taskId: "place_between_references", metricId: "TSR" }).primary, "40.00%");
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "FIRST_TARGET_SELECTION" }).primary, "100.00%");
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "COLLISION_RATE" }).available, false);
   assert.equal(readResult({ ...selection, taskId: "not_a_task", metricId: "TSR" }).available, false);
