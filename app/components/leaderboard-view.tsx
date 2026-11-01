@@ -75,11 +75,11 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
     ]),
   ) as Record<string, OverallScorecard>;
   function resultFor(modelId: string, metricId: string, setting: EvalSetting): ReportResult {
-    if (setting !== "id" || !sourceSelected) {
+    if (setting === "recovery" || !sourceSelected) {
       const label = settings.find((item) => item.id === setting)!.label;
       return {
         primary: "—",
-        detail: setting === "id"
+        detail: !sourceSelected
           ? "No validated result for the selected scene scope."
           : `No ${label} result is connected to this metric yet.`,
         status: "Pending",

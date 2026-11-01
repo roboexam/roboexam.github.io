@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { xvla24Id, xvlaSampleDisplay, type XvlaSample } from "../data/xvla-24id";
+import { xvlaSampleDisplay, xvlaTaskFor, type XvlaSample, type XvlaSetting } from "../data/xvla-24id";
 
 const cameraLabels: Record<string, string> = {
   cam_head: "Head camera",
@@ -13,10 +13,12 @@ export function Xvla24IdEvidence({
   taskId,
   metricId,
   formula,
+  setting = "id",
 }: {
   taskId: string;
   metricId: string;
   formula: string;
+  setting?: XvlaSetting;
 }) {
   const [sampleId, setSampleId] = useState("");
   const [camera, setCamera] = useState("cam_head");
@@ -24,7 +26,7 @@ export function Xvla24IdEvidence({
   const [error, setError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`/api/xvla-24id-results/${encodeURIComponent(taskId)}`, { signal: controller.signal })
+    fetch(`/api/xvla-24id-results/${encodeURIComponent(taskId)}?setting=${encodeURIComponent(setting)}`, { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Missing XVLA cohort");
         return response.json();
@@ -34,9 +36,9 @@ export function Xvla24IdEvidence({
         if (reason.name !== "AbortError") setError(true);
       });
     return () => controller.abort();
-  }, [taskId]);
+  }, [taskId, setting]);
 
-  const task = xvla24Id[taskId];
+  const task = xvlaTaskFor(taskId, setting);
   if (!task) return null;
   if (!samples?.length) {
     return <section className="metricSample"><p>{error
@@ -51,13 +53,13 @@ export function Xvla24IdEvidence({
     <section className="metricSample vlaSample">
       <div className="sampleHeading">
         <div>
-          <span>XVLA ID EPISODE WALKTHROUGH</span>
+          <span>XVLA {setting === "id" ? "ID" : setting.toUpperCase()} EPISODE WALKTHROUGH</span>
           <h3>XVLA · {taskId}</h3>
           <p>{sample.sourceEpisode} · layout {sample.layoutId} · prompt {sample.promptVersion} · {sample.metricsAvailable ? (sample.success ? "success" : "failure") : "incomplete"}</p>
         </div>
         <div className="sampleTools">
-          <label className="episodeSelect"><span>Choose ID sample</span>
-            <select aria-label="XVLA ID sample" value={sample.id} onChange={(event) => setSampleId(event.target.value)}>
+          <label className="episodeSelect"><span>Choose {setting === "id" ? "ID" : "OOD"} sample</span>
+            <select aria-label="XVLA sample" value={sample.id} onChange={(event) => setSampleId(event.target.value)}>
               {samples.map((item) => <option key={item.id} value={item.id}>
                 {item.sourceEpisode} · layout {item.layoutId} · {item.metricsAvailable ? (item.success ? "success" : "failure") : "incomplete"}
               </option>)}
@@ -81,7 +83,7 @@ export function Xvla24IdEvidence({
             <article><span>Source</span><strong>prompt {sample.promptVersion}</strong><p>{sample.sourceBatch}</p></article>
             {sample.prompt && <article><span>Instruction</span><p>{sample.prompt}</p></article>}
             <article><span>Scoring rule</span><p>{formula}</p></article>
-            <article><span>ID result</span><strong>{xvlaSampleDisplay(sample.values[metricId], sample.units[metricId])}</strong><p>{metric?.detail ?? "Metric not available for this ID."}</p></article>
+            <article><span>{setting === "id" ? "ID" : "OOD"} result</span><strong>{xvlaSampleDisplay(sample.values[metricId], sample.units[metricId])}</strong><p>{metric?.detail ?? "Metric not available for this sample."}</p></article>
             <article><span>Evidence</span><p>{sample.reportSha256 ? `Report SHA ${sample.reportSha256.slice(0, 12)}` : "No completed metric report"}</p></article>
           </div>
         </div>
@@ -89,7 +91,7 @@ export function Xvla24IdEvidence({
     </section>
     <section className="formalEvidence">
       <div className="formalEvidenceHeader">
-        <div><span>FORMAL AGGREGATE EVIDENCE</span><h3>XVLA · {taskId} · ID</h3><p>{task.resultVersion}</p></div>
+        <div><span>FORMAL AGGREGATE EVIDENCE</span><h3>XVLA · {taskId} · {setting === "id" ? "ID" : `${setting.toUpperCase()} OOD`}</h3><p>{task.resultVersion}</p></div>
         <div className={metric?.available ? "formalEvidenceValue" : "formalEvidenceValue unavailable"}>
           <strong>{metric?.primary ?? "N/A"}</strong>
           <span>N = {metric?.n ?? 0}{metric?.coverage == null ? "" : ` · coverage ${(metric.coverage * 100).toFixed(1)}%`}</span>

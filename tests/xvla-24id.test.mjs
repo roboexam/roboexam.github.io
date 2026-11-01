@@ -4,6 +4,8 @@ import test from "node:test";
 import data from "../app/data/generated/xvla-24id.json" with { type: "json" };
 import aggregates from "../app/data/generated/xvla-24id-aggregates.json" with { type: "json" };
 import media from "../scripts/xvla-24id-media.json" with { type: "json" };
+import ood from "../app/data/generated/xvla-ood.json" with { type: "json" };
+import oodMedia from "../scripts/xvla-ood-media.json" with { type: "json" };
 import { readResult } from "../app/data/track-results.ts";
 import { tracks } from "../app/data/metric-plan.ts";
 import { HEAD } from "../app/api/xvla-24id-media/[file]/route.ts";
@@ -36,6 +38,18 @@ test("XVLA result routing is task-specific and preserves unavailable metrics", (
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "FIRST_TARGET_SELECTION" }).primary, "100.00%");
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "COLLISION_RATE" }).available, false);
   assert.equal(readResult({ ...selection, taskId: "not_a_task", metricId: "TSR" }).available, false);
+});
+
+test("XVLA final OOD export preserves 349 validated task/split/layout cells", () => {
+  assert.deepEqual(Object.keys(ood).sort(), ["behavior", "semantic", "visual"]);
+  assert.equal(Object.values(ood).every((split) => Object.keys(split).length === 24), true);
+  assert.equal(Object.values(ood).flatMap(Object.values).reduce((sum, task) => sum + task.samples.length, 0), 349);
+  assert.equal(Object.values(ood).flatMap(Object.values).reduce((sum, task) => sum + task.samples.flatMap((sample) => sample.videos).length, 0), 1047);
+  assert.equal(Object.keys(oodMedia).length > 0, true);
+  const selection = { trackId: "T3", mode: "plan", modelId: "XVLA" };
+  assert.equal(readResult({ ...selection, taskId: "cover_blocks", metricId: "TSR", setting: "visual" }).available, true);
+  assert.equal(readResult({ ...selection, taskId: "classify_objects_by_language", metricId: "TSR", setting: "semantic" }).available, false);
+  assert.equal(readResult({ ...selection, taskId: "all", metricId: "TSR", setting: "behavioral" }).available, true);
 });
 
 test("XVLA compressed media route serves an exact registered range", async () => {

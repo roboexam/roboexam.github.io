@@ -3,9 +3,11 @@ import { realpath, stat } from "node:fs/promises";
 import { Readable } from "node:stream";
 
 import registry from "../../../../scripts/xvla-24id-media.json" with { type: "json" };
+import oodRegistry from "../../../../scripts/xvla-ood-media.json" with { type: "json" };
 
 type RouteContext = { params: Promise<{ file: string }> };
 const MEDIA_ROOT = "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-preview-20261029/";
+const OOD_MEDIA_ROOT = "/mnt/gyc_ckp/benchmark2027/runtime/staging/dashboard-xvla-ood-20261101/";
 
 function parseRange(value: string | null, size: number) {
   if (!value) return null;
@@ -29,10 +31,10 @@ function parseRange(value: string | null, size: number) {
 
 export async function resolveMedia(file: string) {
   if (!/^[a-f0-9]{64}\.mp4$/.test(file)) return null;
-  const item = (registry as Record<string, { path: string; size: number; sha256: string }>)[file];
+  const item = ({ ...registry, ...oodRegistry } as Record<string, { path: string; size: number; sha256: string }>)[file];
   if (!item || file !== `${item.sha256}.mp4`) return null;
   const candidate = await realpath(item.path);
-  if (candidate !== item.path || !candidate.startsWith(MEDIA_ROOT)) return null;
+  if (candidate !== item.path || (!candidate.startsWith(MEDIA_ROOT) && !candidate.startsWith(OOD_MEDIA_ROOT))) return null;
   const info = await stat(candidate);
   return info.isFile() && info.size === item.size ? { candidate, size: info.size } : null;
 }
