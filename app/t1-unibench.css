@@ -1,0 +1,53 @@
+/* Track 1 UniBench-24 board: settings ID / V-OOD / S-OOD / B-OOD / Recovery. */
+.t1Unibench { gap: 34px; }
+.t1Unibench .t1bHeading { align-items: end; }
+.t1uVersion { margin: 0; color: #74859d; font-size: 12px; font-variant-numeric: tabular-nums; }
+.t1uBoardWrap { max-height: none; }
+.t1uBoard .metricGroupHead { min-width: 420px; }
+.t1uGroupTitle { display: grid; gap: 3px; justify-items: start; padding: 14px 18px; text-align: left; }
+.t1uGroupTitle strong { font-size: 14px; font-weight: 560; color: #253b60; }
+.t1uGroupTitle span { color: var(--muted); font-size: 10px; font-weight: 400; white-space: normal; }
+.t1uBoard tbody th { padding: 0; min-width: 220px; }
+.t1uModelButton { display: grid; gap: 5px; width: 100%; padding: 18px 20px; border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer; }
+.t1uModelButton strong { font-size: 14px; font-weight: 560; }
+.t1uModelButton span { color: var(--muted); font-size: 11px; }
+.t1uModelButton:hover { background: #eef4ff; }
+.t1uSelected > th { box-shadow: inset 3px 0 #4778d7; }
+.t1uCell { text-align: center; }
+.t1uCell > span { display: grid; gap: 2px; place-items: center; min-height: 64px; padding: 12px 8px; color: #274366; font-weight: 550; }
+.t1uCell small { color: #8795ac; font-size: 10px; font-weight: 400; }
+.t1uPending { color: #9aa7ba; font-weight: 400; }
+.t1uValue { color: #334968; }
+.t1uSection { display: grid; gap: 16px; min-width: 0; }
+.t1uSectionHeading { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 16px; }
+.t1uSectionHeading .eyebrow { margin: 0 0 7px; }
+.t1uSectionHeading h3 { margin: 0; font-size: 24px; font-weight: 550; letter-spacing: -.025em; }
+.t1uSplitTabs button[aria-pressed="true"] { background: #eef4ff; color: #2558bd; }
+.t1uBreakdown td, .t1uTaskMatrix td { padding: 14px 10px; }
+.t1uBreakdown tbody th, .t1uTaskMatrix tbody th { height: auto; padding: 14px 20px; font-size: 13px; }
+.t1uTaskMatrix td { padding: 0; }
+.t1uTaskCell { display: grid; gap: 3px; place-items: center; width: 100%; min-height: 54px; padding: 8px; border: 0; background: transparent; color: #274366; cursor: pointer; }
+.t1uTaskCell strong { font-size: 14px; font-weight: 560; }
+.t1uTaskCell small { color: #8795ac; font-size: 10px; }
+.t1uTaskCell:hover { outline: 2px solid #83a6e1; outline-offset: -2px; }
+.t1uTaskMatrix td[data-level="1"] { background: #f2f7ff; }
+.t1uTaskMatrix td[data-level="2"] { background: #e4eefe; }
+.t1uTaskMatrix td[data-level="3"] { background: #d3e3fd; }
+.t1uTaskMatrix td[data-level="4"] { background: #bcd4fb; }
+.t1uNote { margin: 0; color: #6b7c94; font-size: 12px; line-height: 1.6; }
+.t1uNotes { padding: 22px 26px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe; }
+.t1uNotes h3 { margin: 0; font-size: 16px; font-weight: 560; color: #304967; }
+.t1uNotes ul { margin: 0; padding-left: 18px; color: #53647c; font-size: 13px; line-height: 1.7; }
+.t1uExplorerAnchor { scroll-margin-top: 110px; }
+.t1uReplaySwitch { display: inline-flex; gap: 4px; }
+.t1uReplaySwitch button { padding: 3px 9px; border: 1px solid #ffffff40; border-radius: 5px; background: transparent; color: inherit; font-size: 11px; cursor: pointer; }
+.t1uReplaySwitch button[aria-pressed="true"] { background: #ffffff30; }
+.t1uVqaOverview { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.t1uInstruction { max-width: 60%; text-align: right; }
+.t1uCheckpoint { grid-template-columns: minmax(0, 1fr) auto 0 !important; }
+.t1bFactGrid dd.t1uEndReason { font-size: 13px; font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .t1uVqaOverview { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .t1uInstruction { max-width: none; text-align: left; }
+  .t1Unibench .t1bHeading { flex-direction: column; align-items: start; }
+}

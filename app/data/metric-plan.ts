@@ -109,8 +109,8 @@ export const tracks: TrackDefinition[] = [
   {
     id: "T1", title: "Embodied Agency", subtitle: "VLM agents through a shared harness", question: "Ground observations, track task state, plan, and emit structured next actions.", source: "vlm",
     scoreGuide: {
-      en: "0–100 score. Current Overall = 70% subtask execution + 30% VQA; higher is better. VQA alone is not execution success.",
-      zh: "0–100 分。当前总分 = 70% 子任务执行 + 30% 视觉问答；越高越好，但 VQA 高分不等于执行成功。",
+      en: "0–100 score; higher is better. Overall = 70% × mean Subtask over ID, V-OOD, S-OOD, B-OOD and Recovery + 30% × mean VQA over ID and the three OOD settings. Each setting score = 70% Subtask + 30% VQA (Recovery: Subtask only). VQA alone is not execution success.",
+      zh: "0–100 分，越高越好。总分 = 70% × ID、视觉/语义/行为 OOD 与失败恢复五种设定的子任务平均分 + 30% × ID 与三种 OOD 的 VQA 平均分。每个设定的分数 = 70% 子任务 + 30% VQA（失败恢复只计子任务）。VQA 高分不等于执行成功。",
     },
     models: [
       { id: "Cosmos3-Nano", family: "VLM", status: "Provisional" },

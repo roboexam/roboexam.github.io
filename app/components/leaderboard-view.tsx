@@ -2,7 +2,7 @@
 
 import { ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
 import { useState } from "react";
-import { T1BenchmarkView } from "./t1/t1-benchmark-view";
+import { T1UnibenchView } from "./t1/t1-unibench-view";
 import { evidenceLabels, facetsFor, initialMetricFilters, matchesMetric, protocolLabels, type MetricFilters } from "../data/metric-facets";
 import { tracks, type TrackId } from "../data/metric-plan";
 import { scenarioPlan, scenarioTags, tagsForScenario, type ScenarioTag } from "../data/scenario-plan";
@@ -143,7 +143,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
     </section>
     <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>
     {trackId === "T1" ? <section className="trackWorkspace" aria-label="T1 current results">
-      <T1BenchmarkView/>
+      <T1UnibenchView/>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       <div className="trackSectionTitle">
         <h2>{track.title}</h2>
