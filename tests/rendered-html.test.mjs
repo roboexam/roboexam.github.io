@@ -202,35 +202,23 @@ test("serves compressed video renditions with ranges and immutable identity", as
 });
 
 
-test("renders the current Track 1 results and five exact scene choices", async () => {
+test("renders the UniBench-24 Track 1 board across five settings with selectable rollouts", async () => {
   const response = await render("/track-1");
   assert.equal(response.status, 200);
   const html = await response.text();
-  const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
-  for (const text of ["GPT-6.1-sol", "DeepSeek", "Overall", "VQA", "Subtask", "Success", "Recognition", "Planning", "Task Tracking", "Next Action", ...bundle.models.map(model => model.scores.overall.toFixed(2))]) assert.ok(html.includes(text), text);
-  assert.ok(html.includes(`/api/t1-benchmark-media/${bundle.resultVersion}-${bundle.models[0].id}-`));
-  for (const name of ["GLM 5.3 Flash", "MiniMax H3.1 Preview", "Cosmos3-Nano"]) assert.ok(html.includes(name), name);
-  assert.doesNotMatch(html, /MiMo v2\.6 Pro|GPT-6 Astra|Kimi K3|Peak Progress|DeepSeek v4\.1 Flash|Process questions C2 and C3 have not been scored/);
-  assert.doesNotMatch(html, /Previous protocols/);
-  assert.doesNotMatch(html, /src="\/api\/t1-media\//);
-  assert.match(html, /role="group" aria-label="Rollout scenes"/);
-  const slots = [...html.matchAll(/data-rollout-slot="(\d+)"/g)].map(match => Number(match[1]));
-  assert.deepEqual(slots, [1, 2, 3, 4, 5]);
-  const taskId = "arrange_largest_number";
-  const expectedVideos = bundle.episodes.filter(episode => episode.modelId === bundle.models[0].id && episode.taskId === taskId);
-  assert.equal(expectedVideos.length, 5);
-  for (const episode of expectedVideos) {
-    assert.ok(html.includes(`aria-label="Select scene ${episode.layoutId}"`), `scene ${episode.layoutId}`);
-    assert.ok(html.includes(`src="${episode.video.url}"`), episode.video.id);
+  const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-unibench-results.json", import.meta.url), "utf8"));
+  for (const model of bundle.models) {
+    assert.ok(html.includes(model.label), model.label);
+    if (model.overall) assert.ok(html.includes(`<strong>${model.overall.overall.toFixed(1)}</strong>`), `${model.id} overall`);
   }
-  const renderedVideos = [...html.matchAll(/<video\b[^>]*src="([^"]+)"/g)].map(match => match[1]);
-  assert.equal(renderedVideos.length, 6);
-  assert.deepEqual(new Set(renderedVideos), new Set(expectedVideos.map(episode => episode.video.url)));
-  const selectedEpisode = expectedVideos.find(episode => episode.layoutId === 100000);
-  const episodeVqa = html.slice(html.indexOf('class="t1bEpisodeVqa"'));
-  assert.match(episodeVqa, /VQA results/);
-  assert.ok(episodeVqa.includes(`data-vqa-episode-id="${selectedEpisode.id}"`));
-  assert.ok(episodeVqa.includes(`VQA: ${selectedEpisode.scores.vqa.toFixed(2)} out of 100`));
+  for (const text of ["Overall", "VQA", "Subtask", "In-distribution", "Visual OOD", "Semantic OOD", "Behavioral OOD", "Failure recovery"]) assert.ok(html.includes(text), text);
+  for (const label of ["Rollout model", "Rollout setting", "Rollout task", "Episode VQA", "Per-task subtask scores"]) assert.ok(html.includes(`aria-label="${label}"`), label);
+  const first = bundle.episodes.find(episode => episode.modelId === bundle.models[0].id && episode.split === "ID" && episode.taskId === bundle.tasks[0].id);
+  assert.ok(first, "first ID episode");
+  assert.ok(html.includes(`<video src="${first.video.url}"`), first.video.id);
+  assert.ok(html.includes(`data-episode-id="${first.id}"`));
+  assert.doesNotMatch(html, /src="\/api\/t1-(benchmark-)?media\//);
+  assert.doesNotMatch(html, /MiMo/);
   assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
 });
 
