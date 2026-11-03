@@ -35,15 +35,15 @@ export const metricInfo: Record<string, MetricInfo> = {
     "caveat": "Always report N and the success interval; partial progress is reported separately."
   },
   "TASK_SCORE": {
-    "name": "Subtask Completion Score",
-    "definition": "Task-native progress score awarded from the registered subtask predicates reached during an episode.",
-    "formula": "task-specific weighted score over completed registered subtasks",
+    "name": "Subtask Completion Rate",
+    "definition": "Percentage of registered subtask progress completed during an episode, normalized to a common 0–100% scale.",
+    "formula": "completed registered subtask progress / total registered subtask progress",
     "direction": "Higher is better",
     "evidence": "Task score contract, subtask predicate states, and episode result",
-    "unit": "score",
+    "unit": "percentage",
     "source": "RoboDojo task-native score protocol",
     "originType": "Progress outcome",
-    "caveat": "Weights are task-specific; compare models only on the same task and frozen score contract."
+    "caveat": "Subtask weights remain task-specific; the displayed value is normalized to a percentage. Compare models only under the same frozen task contract."
   },
   "FIRST_TARGET_SELECTION": {
     "name": "First Target Selection Accuracy",

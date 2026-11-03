@@ -23,13 +23,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -217,7 +217,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -301,7 +301,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -385,7 +385,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -469,7 +469,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -553,7 +553,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -634,11 +634,11 @@
         "TASK_SCORE": {
           "value": 0.04,
           "n": 5,
-          "unit": "score",
-          "primary": "0.040 score",
+          "unit": "percentage",
+          "primary": "4.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -826,7 +826,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -910,7 +910,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -994,7 +994,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1078,7 +1078,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1162,7 +1162,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1243,11 +1243,11 @@
         "TASK_SCORE": {
           "value": null,
           "n": 0,
-          "unit": "score",
+          "unit": "percentage",
           "primary": "N/A",
           "available": false,
           "coverage": null,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": null,
@@ -1429,13 +1429,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -1623,7 +1623,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1707,7 +1707,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1791,7 +1791,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1875,7 +1875,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -1959,7 +1959,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2040,11 +2040,11 @@
         "TASK_SCORE": {
           "value": 0.03,
           "n": 5,
-          "unit": "score",
-          "primary": "0.030 score",
+          "unit": "percentage",
+          "primary": "3.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -2232,7 +2232,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2316,7 +2316,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2400,7 +2400,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2484,7 +2484,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2568,7 +2568,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2647,13 +2647,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.5,
@@ -2841,7 +2841,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -2925,7 +2925,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3009,7 +3009,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3093,7 +3093,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3177,7 +3177,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3256,13 +3256,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -3450,7 +3450,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3534,7 +3534,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3618,7 +3618,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3702,7 +3702,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3786,7 +3786,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -3867,11 +3867,11 @@
         "TASK_SCORE": {
           "value": 0.09,
           "n": 5,
-          "unit": "score",
-          "primary": "0.090 score",
+          "unit": "percentage",
+          "primary": "9.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -4059,7 +4059,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4143,7 +4143,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4227,7 +4227,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4311,7 +4311,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4395,7 +4395,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4474,13 +4474,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -4668,7 +4668,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4752,7 +4752,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4836,7 +4836,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -4920,7 +4920,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5004,7 +5004,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5083,13 +5083,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -5277,7 +5277,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5361,7 +5361,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5445,7 +5445,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5529,7 +5529,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5613,7 +5613,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5692,13 +5692,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.25,
@@ -5886,7 +5886,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -5970,7 +5970,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6054,7 +6054,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6138,7 +6138,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6222,7 +6222,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6301,13 +6301,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -6495,7 +6495,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6579,7 +6579,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6663,7 +6663,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6747,7 +6747,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6831,7 +6831,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -6910,13 +6910,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -7104,7 +7104,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7188,7 +7188,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7272,7 +7272,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7356,7 +7356,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7440,7 +7440,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7519,13 +7519,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -7713,7 +7713,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7797,7 +7797,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7881,7 +7881,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -7965,7 +7965,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8049,7 +8049,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8130,11 +8130,11 @@
         "TASK_SCORE": {
           "value": 0.35,
           "n": 5,
-          "unit": "score",
-          "primary": "0.350 score",
+          "unit": "percentage",
+          "primary": "35.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -8322,7 +8322,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8406,7 +8406,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8490,7 +8490,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8574,7 +8574,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8658,7 +8658,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -8737,13 +8737,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.6666666666666666,
@@ -8931,7 +8931,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9015,7 +9015,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9099,7 +9099,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9183,7 +9183,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9267,7 +9267,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9346,13 +9346,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -9540,7 +9540,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9624,7 +9624,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9708,7 +9708,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9792,7 +9792,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9876,7 +9876,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -9955,13 +9955,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -10149,7 +10149,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10233,7 +10233,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10317,7 +10317,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10401,7 +10401,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10485,7 +10485,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10566,11 +10566,11 @@
         "TASK_SCORE": {
           "value": 0.06,
           "n": 5,
-          "unit": "score",
-          "primary": "0.060 score",
+          "unit": "percentage",
+          "primary": "6.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.8,
@@ -10758,7 +10758,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10842,7 +10842,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -10926,7 +10926,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11010,7 +11010,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11094,7 +11094,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11173,13 +11173,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -11367,7 +11367,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11451,7 +11451,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11535,7 +11535,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11619,7 +11619,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11703,7 +11703,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -11784,11 +11784,11 @@
         "TASK_SCORE": {
           "value": 0.49000000000000005,
           "n": 5,
-          "unit": "score",
-          "primary": "0.490 score",
+          "unit": "percentage",
+          "primary": "49.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -11976,7 +11976,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12060,7 +12060,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12144,7 +12144,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12228,7 +12228,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12312,7 +12312,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12391,13 +12391,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -12585,7 +12585,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12669,7 +12669,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12753,7 +12753,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12837,7 +12837,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -12921,7 +12921,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13000,13 +13000,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -13194,7 +13194,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13278,7 +13278,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13362,7 +13362,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13446,7 +13446,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13530,7 +13530,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13609,13 +13609,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -13803,7 +13803,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13887,7 +13887,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -13971,7 +13971,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14055,7 +14055,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14139,7 +14139,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14220,13 +14220,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -14414,7 +14414,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14498,7 +14498,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14582,7 +14582,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14666,7 +14666,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14750,7 +14750,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -14831,11 +14831,11 @@
         "TASK_SCORE": {
           "value": 0.04,
           "n": 5,
-          "unit": "score",
-          "primary": "0.040 score",
+          "unit": "percentage",
+          "primary": "4.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -15023,7 +15023,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15107,7 +15107,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15191,7 +15191,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15275,7 +15275,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15359,7 +15359,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15440,11 +15440,11 @@
         "TASK_SCORE": {
           "value": null,
           "n": 0,
-          "unit": "score",
+          "unit": "percentage",
           "primary": "N/A",
           "available": false,
           "coverage": null,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": null,
@@ -15626,13 +15626,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -15820,7 +15820,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15904,7 +15904,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -15988,7 +15988,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16072,7 +16072,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16156,7 +16156,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16237,11 +16237,11 @@
         "TASK_SCORE": {
           "value": 0.02,
           "n": 5,
-          "unit": "score",
-          "primary": "0.020 score",
+          "unit": "percentage",
+          "primary": "2.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -16429,7 +16429,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16513,7 +16513,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16597,7 +16597,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16681,7 +16681,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16765,7 +16765,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -16844,13 +16844,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -17038,7 +17038,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17122,7 +17122,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17206,7 +17206,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17290,7 +17290,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17374,7 +17374,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17453,13 +17453,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -17647,7 +17647,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17731,7 +17731,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17815,7 +17815,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17899,7 +17899,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -17983,7 +17983,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18064,11 +18064,11 @@
         "TASK_SCORE": {
           "value": 0.03,
           "n": 5,
-          "unit": "score",
-          "primary": "0.030 score",
+          "unit": "percentage",
+          "primary": "3.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -18256,7 +18256,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18340,7 +18340,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18424,7 +18424,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18508,7 +18508,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18592,7 +18592,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18671,13 +18671,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -18865,7 +18865,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -18949,7 +18949,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19033,7 +19033,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19117,7 +19117,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19201,7 +19201,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19280,13 +19280,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -19474,7 +19474,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19558,7 +19558,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19642,7 +19642,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19726,7 +19726,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19810,7 +19810,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -19891,11 +19891,11 @@
         "TASK_SCORE": {
           "value": 0.02,
           "n": 5,
-          "unit": "score",
-          "primary": "0.020 score",
+          "unit": "percentage",
+          "primary": "2.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.6,
@@ -20083,7 +20083,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20167,7 +20167,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20251,7 +20251,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20335,7 +20335,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20419,7 +20419,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20500,11 +20500,11 @@
         "TASK_SCORE": {
           "value": 0.09,
           "n": 5,
-          "unit": "score",
-          "primary": "0.090 score",
+          "unit": "percentage",
+          "primary": "9.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -20692,7 +20692,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20776,7 +20776,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20860,7 +20860,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -20944,7 +20944,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21028,7 +21028,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21107,13 +21107,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -21301,7 +21301,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21385,7 +21385,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21469,7 +21469,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21553,7 +21553,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21637,7 +21637,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21716,13 +21716,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -21910,7 +21910,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -21994,7 +21994,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22078,7 +22078,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22162,7 +22162,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22246,7 +22246,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22327,11 +22327,11 @@
         "TASK_SCORE": {
           "value": 0.15,
           "n": 5,
-          "unit": "score",
-          "primary": "0.150 score",
+          "unit": "percentage",
+          "primary": "15.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.6,
@@ -22519,7 +22519,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22603,7 +22603,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22687,7 +22687,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22771,7 +22771,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22855,7 +22855,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -22936,11 +22936,11 @@
         "TASK_SCORE": {
           "value": 0.2,
           "n": 5,
-          "unit": "score",
-          "primary": "0.200 score",
+          "unit": "percentage",
+          "primary": "20.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -23128,7 +23128,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23212,7 +23212,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23296,7 +23296,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23380,7 +23380,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23464,7 +23464,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23543,13 +23543,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -23737,7 +23737,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23821,7 +23821,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23905,7 +23905,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -23989,7 +23989,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24073,7 +24073,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24152,13 +24152,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -24346,7 +24346,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24430,7 +24430,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24514,7 +24514,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24598,7 +24598,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24682,7 +24682,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -24761,13 +24761,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -24955,7 +24955,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25039,7 +25039,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25123,7 +25123,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25207,7 +25207,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25291,7 +25291,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25370,13 +25370,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -25564,7 +25564,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25648,7 +25648,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25732,7 +25732,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25816,7 +25816,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25900,7 +25900,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -25981,11 +25981,11 @@
         "TASK_SCORE": {
           "value": 0.32,
           "n": 5,
-          "unit": "score",
-          "primary": "0.320 score",
+          "unit": "percentage",
+          "primary": "32.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -26173,7 +26173,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26257,7 +26257,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26341,7 +26341,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26425,7 +26425,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26509,7 +26509,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26588,13 +26588,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -26782,7 +26782,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26866,7 +26866,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -26950,7 +26950,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27034,7 +27034,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27118,7 +27118,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27199,11 +27199,11 @@
         "TASK_SCORE": {
           "value": 0.03,
           "n": 5,
-          "unit": "score",
-          "primary": "0.030 score",
+          "unit": "percentage",
+          "primary": "3.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -27391,7 +27391,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27475,7 +27475,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27559,7 +27559,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27643,7 +27643,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27727,7 +27727,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -27806,13 +27806,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -28000,7 +28000,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28084,7 +28084,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28168,7 +28168,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28252,7 +28252,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28336,7 +28336,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28417,13 +28417,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -28611,7 +28611,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28695,7 +28695,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28779,7 +28779,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28863,7 +28863,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -28947,7 +28947,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29028,11 +29028,11 @@
         "TASK_SCORE": {
           "value": 0.1,
           "n": 5,
-          "unit": "score",
-          "primary": "0.100 score",
+          "unit": "percentage",
+          "primary": "10.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -29220,7 +29220,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29304,7 +29304,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29388,7 +29388,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29472,7 +29472,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29556,7 +29556,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29637,11 +29637,11 @@
         "TASK_SCORE": {
           "value": 0.025,
           "n": 4,
-          "unit": "score",
-          "primary": "0.025 score",
+          "unit": "percentage",
+          "primary": "2.50",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -29829,7 +29829,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29913,7 +29913,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -29997,7 +29997,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30081,7 +30081,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30160,13 +30160,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -30354,7 +30354,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30438,7 +30438,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30522,7 +30522,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30606,7 +30606,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30690,7 +30690,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -30769,13 +30769,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -30963,7 +30963,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31047,7 +31047,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31131,7 +31131,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31215,7 +31215,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31299,7 +31299,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31378,13 +31378,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -31572,7 +31572,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31656,7 +31656,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31740,7 +31740,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31824,7 +31824,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31908,7 +31908,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -31989,11 +31989,11 @@
         "TASK_SCORE": {
           "value": 0.08,
           "n": 5,
-          "unit": "score",
-          "primary": "0.080 score",
+          "unit": "percentage",
+          "primary": "8.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -32181,7 +32181,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32265,7 +32265,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32349,7 +32349,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32433,7 +32433,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32517,7 +32517,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32598,11 +32598,11 @@
         "TASK_SCORE": {
           "value": 0.06,
           "n": 5,
-          "unit": "score",
-          "primary": "0.060 score",
+          "unit": "percentage",
+          "primary": "6.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -32790,7 +32790,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32874,7 +32874,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -32958,7 +32958,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33042,7 +33042,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33126,7 +33126,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33205,13 +33205,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -33399,7 +33399,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33483,7 +33483,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33567,7 +33567,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33651,7 +33651,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33735,7 +33735,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -33814,13 +33814,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -34008,7 +34008,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34092,7 +34092,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34176,7 +34176,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34260,7 +34260,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34344,7 +34344,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34423,13 +34423,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -34617,7 +34617,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34701,7 +34701,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34785,7 +34785,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34869,7 +34869,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -34953,7 +34953,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35034,11 +35034,11 @@
         "TASK_SCORE": {
           "value": 0.15,
           "n": 5,
-          "unit": "score",
-          "primary": "0.150 score",
+          "unit": "percentage",
+          "primary": "15.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -35226,7 +35226,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35310,7 +35310,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35394,7 +35394,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35478,7 +35478,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35562,7 +35562,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35641,13 +35641,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -35835,7 +35835,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -35919,7 +35919,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36003,7 +36003,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36087,7 +36087,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36171,7 +36171,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36250,13 +36250,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.5,
@@ -36444,7 +36444,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36528,7 +36528,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36612,7 +36612,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36696,7 +36696,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36780,7 +36780,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -36861,11 +36861,11 @@
         "TASK_SCORE": {
           "value": 0.85,
           "n": 5,
-          "unit": "score",
-          "primary": "0.850 score",
+          "unit": "percentage",
+          "primary": "85.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -37053,7 +37053,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37137,7 +37137,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37221,7 +37221,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37305,7 +37305,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37389,7 +37389,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37468,13 +37468,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -37662,7 +37662,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37746,7 +37746,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37830,7 +37830,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37914,7 +37914,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -37998,7 +37998,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38077,13 +38077,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -38271,7 +38271,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38355,7 +38355,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38439,7 +38439,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38523,7 +38523,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38607,7 +38607,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38688,11 +38688,11 @@
         "TASK_SCORE": {
           "value": 0.6,
           "n": 5,
-          "unit": "score",
-          "primary": "0.600 score",
+          "unit": "percentage",
+          "primary": "60.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -38880,7 +38880,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -38964,7 +38964,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39048,7 +39048,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39132,7 +39132,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39216,7 +39216,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39295,13 +39295,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -39489,7 +39489,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39573,7 +39573,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39657,7 +39657,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39741,7 +39741,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39825,7 +39825,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -39904,13 +39904,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -40098,7 +40098,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40182,7 +40182,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40266,7 +40266,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40350,7 +40350,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40434,7 +40434,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40515,11 +40515,11 @@
         "TASK_SCORE": {
           "value": 0.49000000000000005,
           "n": 5,
-          "unit": "score",
-          "primary": "0.490 score",
+          "unit": "percentage",
+          "primary": "49.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -40707,7 +40707,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40791,7 +40791,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40875,7 +40875,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -40959,7 +40959,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41043,7 +41043,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41124,11 +41124,11 @@
         "TASK_SCORE": {
           "value": 0.6666666666666667,
           "n": 5,
-          "unit": "score",
-          "primary": "0.667 score",
+          "unit": "percentage",
+          "primary": "66.67",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 0.0,
@@ -41316,7 +41316,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41400,7 +41400,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41484,7 +41484,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41568,7 +41568,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41652,7 +41652,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -41733,11 +41733,11 @@
         "TASK_SCORE": {
           "value": 0.45999999999999996,
           "n": 5,
-          "unit": "score",
-          "primary": "0.460 score",
+          "unit": "percentage",
+          "primary": "46.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -41925,7 +41925,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42009,7 +42009,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42093,7 +42093,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42177,7 +42177,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42261,7 +42261,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42340,13 +42340,13 @@
           "detail": "official successes / available episodes"
         },
         "TASK_SCORE": {
-          "value": 0.0,
+          "value": 0,
           "n": 5,
-          "unit": "score",
-          "primary": "0.000 score",
+          "unit": "percentage",
+          "primary": "0.00",
           "available": true,
           "coverage": 1.0,
-          "detail": "mean task-native subtask score"
+          "detail": "mean registered-subtask completion rate"
         },
         "FIRST_TARGET_SELECTION": {
           "value": 1.0,
@@ -42534,7 +42534,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42618,7 +42618,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42702,7 +42702,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42786,7 +42786,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",
@@ -42870,7 +42870,7 @@
           },
           "units": {
             "TSR": "rate",
-            "TASK_SCORE": "score",
+            "TASK_SCORE": "percentage",
             "FIRST_TARGET_SELECTION": "rate",
             "ALL_TARGET_SELECTION": "rate",
             "GRASP_STABILITY": "rate",

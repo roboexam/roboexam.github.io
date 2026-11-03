@@ -150,5 +150,6 @@ export function xvlaResult(taskId: string, metricId: string, setting: XvlaSettin
 export function xvlaSampleDisplay(value: XvlaScalar | undefined, unit = "rate") {
   if (value == null) return "N/A";
   if (unit === "rate") return `${(value * 100).toFixed(2)}%`;
+  if (unit === "percentage") return (value * 100).toFixed(2);
   return `${value.toFixed(3)} ${unit}`;
 }

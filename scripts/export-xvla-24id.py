@@ -131,7 +131,7 @@ def episode_values(row: dict) -> dict:
     local = row["local_subtasks"]
     return {
         "TSR": row["official_success_rate"],
-        "TASK_SCORE": row["task_score"],
+        "TASK_SCORE": row["task_score"] / 100 if row["task_score"] is not None else None,
         "FIRST_TARGET_SELECTION": int(row["first_selection_correct"]) if row.get("first_selection_correct") is not None else None,
         "ALL_TARGET_SELECTION": ratio(row["all_selection_correct_count"], row["all_selection_evaluable_count"]),
         "GRASP_STABILITY": ratio(row["established_grasp_count"], row["established_grasp_count"] + row["grasp_invalid_count"]),
@@ -151,7 +151,7 @@ def episode_values(row: dict) -> dict:
 
 
 UNITS = {
-    "TASK_SCORE": "score", "SPARC": "SPARC", "EE_DISPLACEMENT": "m",
+    "TASK_SCORE": "percentage", "SPARC": "SPARC", "EE_DISPLACEMENT": "m",
     "PATH_LENGTH": "m", "SET": "s",
 }
 
@@ -161,6 +161,8 @@ def display(value, unit: str) -> str:
         return "N/A"
     if unit == "rate":
         return f"{value * 100:.2f}%"
+    if unit == "percentage":
+        return f"{value * 100:.2f}"
     return f"{value:.3f} {unit}" if unit else f"{value:.3f}"
 
 
@@ -172,7 +174,7 @@ def aggregate_values(task: dict) -> dict:
     success = aggregate["task_success_count"]
     specs = {
         "TSR": (aggregate["task_success_rate"], valid, "rate", "official successes / valid episodes"),
-        "TASK_SCORE": (aggregate["task_score"], valid, "score", "task-native subtask score"),
+        "TASK_SCORE": (aggregate["task_score"] / 100 if aggregate["task_score"] is not None else None, valid, "percentage", "normalized registered-subtask completion rate"),
         "FIRST_TARGET_SELECTION": (aggregate["first_selection_accuracy"], task["first_selection_evaluable_episode_count"], "rate", "evaluable episodes"),
         "ALL_TARGET_SELECTION": (aggregate["all_selection_accuracy"], den["all_selection_evaluable_count"], "rate", "evaluable target selections"),
         "GRASP_STABILITY": (aggregate["grasp_stability"], den["established_grasp_count"] + den["grasp_invalid_count"], "rate", "established / (established + invalid)"),

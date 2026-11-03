@@ -27,7 +27,7 @@ METRICS = (
     "EE_DISPLACEMENT", "PATH_LENGTH", "SET", "PATH_EFFICIENCY", "TIME_EFFICIENCY",
     "STAGE_TRANSITION", "GOAL_RETENTION",
 )
-UNITS = {"TASK_SCORE": "score", "SPARC": "SPARC", "EE_DISPLACEMENT": "m", "PATH_LENGTH": "m", "SET": "s"}
+UNITS = {"TASK_SCORE": "percentage", "SPARC": "SPARC", "EE_DISPLACEMENT": "m", "PATH_LENGTH": "m", "SET": "s"}
 
 OVERRIDES = {
     ("clear_keyboard_then_close_laptop", "semantic", 0): "keyboard-preauth-readonly-semantic0-20261031T120927",
@@ -233,6 +233,8 @@ def display(value, unit: str) -> str:
         return "N/A"
     if unit == "rate":
         return f"{value * 100:.2f}%"
+    if unit == "percentage":
+        return f"{value * 100:.2f}"
     return f"{value:.3f} {unit}" if unit else f"{value:.3f}"
 
 
@@ -240,7 +242,7 @@ def aggregate(rows: list[dict]) -> dict:
     counts = {name: sum(row["counts"][name] for row in rows) for name in rows[0]["counts"]} if rows else {}
     specs = {
         "TSR": (mean([row["values"]["TSR"] for row in rows]), len(rows), "rate", "official successes / available episodes"),
-        "TASK_SCORE": (mean([row["values"]["TASK_SCORE"] for row in rows]), len(rows), "score", "mean task-native subtask score"),
+        "TASK_SCORE": (mean([row["values"]["TASK_SCORE"] for row in rows]), len(rows), "percentage", "mean registered-subtask completion rate"),
         "FIRST_TARGET_SELECTION": (mean([row["values"]["FIRST_TARGET_SELECTION"] for row in rows]), sum(row["values"]["FIRST_TARGET_SELECTION"] is not None for row in rows), "rate", "evaluable episodes"),
         "ALL_TARGET_SELECTION": (ratio(counts.get("allCorrect", 0), counts.get("allEvaluable", 0)), counts.get("allEvaluable", 0), "rate", "evaluable target selections"),
         "GRASP_STABILITY": (ratio(counts.get("established", 0), counts.get("established", 0) + counts.get("invalid", 0)), counts.get("established", 0) + counts.get("invalid", 0), "rate", "established / (established + invalid)"),
@@ -369,6 +371,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--collect-check", action="store_true")
+    parser.add_argument("--dashboard-only", action="store_true")
     parser.add_argument("--jobs", type=int, default=12)
     args = parser.parse_args()
     if args.check:
@@ -378,6 +381,11 @@ def main() -> None:
     tasks, records = collect_records()
     if args.collect_check:
         print(f"Verified source selection: {len(tasks)} tasks, {len(records)} records, {len(EXPECTED_MISSING)} missing")
+        return
+    if args.dashboard_only:
+        require(FINAL.exists(), f"final cohort is missing: {FINAL}")
+        build_dashboard(tasks, records, args.jobs)
+        print(f"Refreshed dashboard export for {RESULT_VERSION}: 349 records, 1047 web video references")
         return
     require(not FINAL.exists(), f"final cohort already exists: {FINAL}")
     write_final(records)

@@ -68,7 +68,7 @@ const acwmMetrics: MetricDefinition[] = [
 ];
 const policyMotion: MetricDefinition[] = [
   { id: "TSR", label: "Task success rate", group: "Outcome", direction: "↑" },
-  { id: "TASK_SCORE", label: "Subtask completion score", group: "Outcome", direction: "↑", note: "Task-native score derived from completed registered subtasks" },
+  { id: "TASK_SCORE", label: "Subtask completion rate", group: "Outcome", direction: "↑", note: "Percentage of registered subtask progress completed" },
   { id: "FIRST_TARGET_SELECTION", label: "First target selection accuracy", group: "L1 · Action correctness", direction: "↑" },
   { id: "ALL_TARGET_SELECTION", label: "All target selection accuracy", group: "L1 · Action correctness", direction: "↑" },
   { id: "GRASP_STABILITY", label: "Grasp stability rate", group: "L1 · Action correctness", direction: "↑", note: "Established grasps divided by established plus invalid grasp attempts" },

@@ -39,6 +39,7 @@ test("XVLA result routing is task-specific and preserves unavailable metrics", (
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "FIRST_TARGET_SELECTION" }).primary, "100.00%");
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "COLLISION_RATE" }).available, false);
   assert.equal(readResult({ ...selection, taskId: "not_a_task", metricId: "TSR" }).available, false);
+  assert.equal(readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE" }).primary, "9.75");
 });
 
 test("XVLA final OOD export preserves 349 validated task/split/layout cells", () => {
@@ -53,6 +54,11 @@ test("XVLA final OOD export preserves 349 validated task/split/layout cells", ()
     readResult({ ...selection, taskId: "all", metricId: "TSR", setting }).primary,
   ]));
   assert.deepEqual(overall, { id: "5.83%", visual: "2.61%", semantic: "1.74%", behavioral: "8.33%" });
+  const completionRates = Object.fromEntries(["id", "visual", "semantic", "behavioral"].map((setting) => [
+    setting,
+    readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE", setting }).primary,
+  ]));
+  assert.deepEqual(completionRates, { id: "9.75", visual: "4.61", semantic: "3.91", behavioral: "14.51" });
   assert.equal(readResult({ ...selection, taskId: "cover_blocks", metricId: "TSR", setting: "visual" }).available, true);
   assert.equal(readResult({ ...selection, taskId: "classify_objects_by_language", metricId: "TSR", setting: "semantic" }).available, false);
   assert.equal(readResult({ ...selection, taskId: "all", metricId: "TSR", setting: "behavioral" }).available, true);
