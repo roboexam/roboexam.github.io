@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import data from "../app/data/generated/xvla-24id.json" with { type: "json" };
@@ -47,9 +48,19 @@ test("XVLA final OOD export preserves 349 validated task/split/layout cells", ()
   assert.equal(Object.values(ood).flatMap(Object.values).reduce((sum, task) => sum + task.samples.flatMap((sample) => sample.videos).length, 0), 1047);
   assert.equal(Object.keys(oodMedia).length > 0, true);
   const selection = { trackId: "T3", mode: "plan", modelId: "XVLA" };
+  const overall = Object.fromEntries(["id", "visual", "semantic", "behavioral"].map((setting) => [
+    setting,
+    readResult({ ...selection, taskId: "all", metricId: "TSR", setting }).primary,
+  ]));
+  assert.deepEqual(overall, { id: "5.83%", visual: "2.61%", semantic: "1.74%", behavioral: "8.33%" });
   assert.equal(readResult({ ...selection, taskId: "cover_blocks", metricId: "TSR", setting: "visual" }).available, true);
   assert.equal(readResult({ ...selection, taskId: "classify_objects_by_language", metricId: "TSR", setting: "semantic" }).available, false);
   assert.equal(readResult({ ...selection, taskId: "all", metricId: "TSR", setting: "behavioral" }).available, true);
+});
+
+test("Track 3 leaderboard forwards each column setting to the result adapter", () => {
+  const source = readFileSync(new URL("../app/components/leaderboard-view.tsx", import.meta.url), "utf8");
+  assert.match(source, /readResult\(\{ trackId, mode, modelId, metricId, setting,/);
 });
 
 test("XVLA compressed media route serves an exact registered range", async () => {

@@ -86,7 +86,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         available: false,
       };
     }
-    return readResult({ trackId, mode, modelId, metricId, ...(trackId === "T3" ? {taskId: sceneId} : {}) });
+    return readResult({ trackId, mode, modelId, metricId, setting, ...(trackId === "T3" ? {taskId: sceneId} : {}) });
   }
 
   const visible = entries.filter(({ metric, facets }) => {
