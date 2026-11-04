@@ -1,38 +1,47 @@
-import { ArrowRight, Play, Trophy } from "lucide-react";
+import { ArrowRight, ExternalLink, Play, Trophy } from "lucide-react";
 import { t1UnibenchResults } from "../data/t1-unibench-results";
 import type { TrackId } from "../data/metric-plan";
 
-const samples = [
+const programPaths = [
   {
-    label: "Closed-loop rollout",
-    title: "Stack Bowls",
-    meta: "Pi0.5 · In-distribution",
-    description: "A policy completes a three-object manipulation sequence from visual observations.",
-    outcome: "Success",
-    tone: "success",
-    video: "/samples/stack-bowls-policy.mp4",
-    poster: "/samples/stack-bowls-policy.webp",
+    label: "Open research program",
+    title: "Papers, posters, and demonstrations",
+    description: "A peer-reviewed program for original research, benchmark and system papers, negative results, and reproducibility studies from any platform.",
+    facts: ["5–8-page archival papers", "Accepted-paper posters", "Best Paper presentation"],
   },
   {
-    label: "Reference execution",
-    title: "Arrange Largest Number",
-    meta: "Oracle · In-distribution",
-    description: "A successful reference trace grounds the expected sequence and subtask boundaries.",
-    outcome: "Reference",
-    tone: "reference",
-    video: "/samples/arrange-number-reference.mp4",
-    poster: "/samples/arrange-number-reference.webp",
+    label: "RoboExam challenge",
+    title: "Evidence-linked embodied evaluation",
+    description: "A shared challenge for tracing a declared baseline, failure evidence, a bounded update, and an organizer-run held-out retest.",
+    facts: ["Four independent tracks", "Preliminary + official verification", "Paper submission optional"],
   },
-  {
-    label: "Failure evidence",
-    title: "Stack Bowls",
-    meta: "FastWAM · In-distribution",
-    description: "The failed rollout remains visible so scores can be read alongside actual behavior.",
-    outcome: "Failure",
-    tone: "failure",
-    video: "/samples/stack-bowls-failure.mp4",
-    poster: "/samples/stack-bowls-failure.webp",
-  },
+] as const;
+
+const researchPrinciples = [
+  ["01", "Trace both feedback loops", "Identify the failure behind an update and record how the revised agent changes the evaluator's next test."],
+  ["02", "Test whether gains transfer", "Compare frozen versions under matched budgets on held-out tasks, then revisit earlier tasks to measure retention."],
+  ["03", "Compare evidence across platforms", "Use papers, demonstrations, and challenge runs to develop a common language for interventions, failures, and independent checks."],
+] as const;
+
+const speakers = [
+  ["Sergey Levine", "UC Berkeley", "General-purpose agents, reinforcement learning, and robotic learning.", "https://people.eecs.berkeley.edu/~svlevine/"],
+  ["Peter Stone", "The University of Texas at Austin", "Long-horizon agents, multi-agent systems, and robot learning.", "https://www.cs.utexas.edu/~pstone/"],
+  ["Chelsea Finn", "Stanford University", "Robot learning, meta-learning, and adaptation through interaction.", "https://profiles.stanford.edu/chelsea-finn"],
+  ["Kate Saenko", "Boston University / Meta FAIR", "Out-of-distribution learning, domain adaptation, and vision-language models.", "https://ai.bu.edu/ksaenko.html"],
+  ["Jeannette Bohg", "Stanford University", "Robust sensorimotor coordination and physical-robot manipulation.", "https://web.stanford.edu/~bohg/"],
+  ["Marios Savvides", "Carnegie Mellon University", "Robust machine perception and multimodal representation learning.", "https://www.mariossavvides.com/"],
+  ["Katerina Fragkiadaki", "Carnegie Mellon University", "Video and world models, embodied perception, and action.", "https://www.cs.cmu.edu/~katef/"],
+] as const;
+
+const eventProgram = [
+  ["13:00–13:10", "Opening remarks", "Learning from failure"],
+  ["13:10–14:10", "Four invited talks", "Foundation models, world models, and deployment"],
+  ["14:10–14:30", "Best Paper", "Presentation and award"],
+  ["14:30–15:15", "Posters and demonstrations", "Accepted papers and interactive work"],
+  ["15:15–15:30", "Coffee break", "Transition back to talks"],
+  ["15:30–16:15", "Three invited talks", "Diagnosis, memory, post-training, and safety"],
+  ["16:15–16:55", "RoboExam results", "Four track reports and awards"],
+  ["16:55–17:30", "Closing panel", "Which improvements transfer?"],
 ] as const;
 
 const trackCards: {
@@ -67,40 +76,76 @@ const trackCards: {
   },
 ];
 
-const improvementSteps = [
-  ["01", "Execute", "Freeze the baseline and record task-level outputs, actions, and outcomes."],
-  ["02", "Diagnose", "Connect scores to traces, failure types, and the evidence needed to explain them."],
-  ["03", "Improve", "Declare a bounded update to the policy, memory, verifier, world model, or harness."],
-  ["04", "Retest", "Measure held-out gain, transfer, retention, recovery, and safety under matched conditions."],
+const samples = [
+  {
+    label: "Closed-loop rollout",
+    title: "Stack Bowls",
+    meta: "Pi0.5 · In-distribution",
+    description: "A policy completes a three-object manipulation sequence from visual observations.",
+    outcome: "Success",
+    tone: "success",
+    video: "/samples/stack-bowls-policy.mp4",
+    poster: "/samples/stack-bowls-policy.webp",
+  },
+  {
+    label: "Reference execution",
+    title: "Arrange Largest Number",
+    meta: "Oracle · In-distribution",
+    description: "A successful reference trace grounds the expected sequence and subtask boundaries.",
+    outcome: "Reference",
+    tone: "reference",
+    video: "/samples/arrange-number-reference.mp4",
+    poster: "/samples/arrange-number-reference.webp",
+  },
+  {
+    label: "Failure evidence",
+    title: "Stack Bowls",
+    meta: "FastWAM · In-distribution",
+    description: "The failed rollout remains visible so scores can be read alongside actual behavior.",
+    outcome: "Failure",
+    tone: "failure",
+    video: "/samples/stack-bowls-failure.mp4",
+    poster: "/samples/stack-bowls-failure.webp",
+  },
 ] as const;
 
 const scheduleLanes = [
   {
     id: "challenge",
-    title: "Benchmark challenge",
+    title: "RoboExam challenge",
     description: "Development access, remote qualification, and organizer-run held-out verification.",
     items: [
       ["Dec 15, 2026", "Development release", "Public data, manifests, interfaces, and worked examples."],
       ["Feb 22–28, 2027", "Interface checks", "Participant onboarding and submission compatibility checks."],
       ["Mar 1–28", "Preliminary evaluation", "Remote simulation and designated real-robot evaluation."],
       ["Mar 29–31", "Qualification review", "Up to ten eligible teams per track advance to verification."],
-      ["Apr 1–May 1", "Held-out verification", "Frozen submissions run on internal scenes and robot stations."],
+      ["Apr 1–May 1", "Official verification", "Frozen submissions run on internal scenes and robot stations."],
       ["May 24", "Final leaderboard", "Audited rankings and track awards are released."],
     ],
   },
   {
     id: "research",
     title: "Research submissions",
-    description: "An independent archival paper track for embodied AI, world models, and verifiable improvement.",
+    description: "An independent archival paper program for embodied AI, world models, and verifiable improvement.",
     items: [
-      ["Jan 15, 2027", "Call opens", "Scope, topics, and submission guidance are published."],
-      ["Feb 1", "Submission portal opens", "Complete papers can be submitted; no separate abstract deadline."],
+      ["Jan 15, 2027", "Call for papers", "Scope, topics, and submission guidance are published."],
+      ["Feb 1", "OpenReview opens", "Complete papers can be submitted; no separate abstract deadline."],
       ["Mar 5 · AoE", "Paper deadline", "5–8-page archival submissions close."],
       ["Mar 24", "Decisions", "Peer-review decisions are released."],
       ["Apr 23 · AoE", "Camera-ready", "Final accepted manuscripts are due."],
-      ["Jun 20–21", "Public presentations", "Accepted posters and the Best Paper presentation."],
+      ["Jun 20–21", "Workshop program", "Accepted posters, invited talks, challenge results, and the closing panel."],
     ],
   },
+] as const;
+
+const organizers = [
+  ["Shanghang Zhang", "Peking University", "Program Chair"],
+  ["Karl Henrik Johansson", "KTH Royal Institute of Technology", "Secondary organizer"],
+  ["Danica Kragić", "KTH Royal Institute of Technology", "Organizer"],
+  ["Amanda Prorok", "University of Cambridge", "Organizer"],
+  ["Xiaobao Wei", "Peking University", "RoboExam coordination"],
+  ["Jixian Wu", "New York University", "Evaluation operations"],
+  ["Fangyuan Zhao", "Peking University", "Challenge protocols"],
 ] as const;
 
 const rankedT1 = t1UnibenchResults.models
@@ -110,18 +155,22 @@ const rankedT1 = t1UnibenchResults.models
 
 export function PublicHome() {
   return <div className="content publicHome">
-    <section className="publicHero" aria-labelledby="public-hero-title">
+    <section className="publicHero workshopHero" aria-labelledby="public-hero-title">
       <div className="publicHeroCopy">
-        <p className="publicEyebrow">RoboExam · Physical AI benchmark</p>
-        <h1 id="public-hero-title">Evidence for robots that reason, predict, act, and recover.</h1>
+        <p className="publicEyebrow">EmbodiVSI · 2027 workshop initiative</p>
+        <h1 id="public-hero-title">Beyond Passive Evaluation.</h1>
+        <p className="workshopHeroTitle">Verifiable Self-Improvement for Physical Intelligence</p>
         <p className="publicHeroLead">
-          RoboExam evaluates embodied systems across scene understanding, action-conditioned prediction,
-          simulated control, and real-world deployment. Matched ID, OOD, and recovery settings reveal not
-          only whether a system succeeds, but where and why it fails.
+          EmbodiVSI brings together computer vision, robotics, and machine learning researchers to ask
+          how evaluators and embodied agents can improve together—and how independent tests can verify
+          that the resulting gains transfer beyond a single benchmark.
         </p>
+        <div className="workshopMeta" aria-label="Proposed workshop format">
+          <span>Seattle</span><span>June 20–21, 2027</span><span>Half-day format</span><span>Program subject to confirmation</span>
+        </div>
         <div className="publicHeroActions">
-          <a className="primary" href="/leaderboards">View leaderboards <ArrowRight size={18}/></a>
-          <a href="#evaluation-design">Evaluation design</a>
+          <a className="primary" href="#program">Explore the workshop <ArrowRight size={18}/></a>
+          <a href="/leaderboards">RoboExam leaderboards</a>
         </div>
       </div>
       <figure className="publicHeroSample">
@@ -131,28 +180,106 @@ export function PublicHome() {
             <source src="/samples/stack-bowls-policy.mp4" type="video/mp4"/>
             <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio" default/>
           </video>
-          <span className="publicPlayCue"><Play size={15} fill="currentColor"/> Episode evidence</span>
+          <span className="publicPlayCue"><Play size={15} fill="currentColor"/> Challenge evidence</span>
         </div>
         <figcaption>
-          <span><b>T3</b> Simulation deployment</span>
-          <strong>Stack three bowls</strong>
-          <small>Policy rollout · head camera</small>
-          <em>Success</em>
+          <span><b>RoboExam · T3</b> Simulation deployment</span>
+          <strong>Evidence behind an improvement claim</strong>
+          <small>Task rollout · outcome · trace</small>
+          <em>Verified</em>
         </figcaption>
       </figure>
     </section>
 
-    <section className="publicStats" aria-label="Benchmark scope">
-      <article><strong>24</strong><span>simulation tasks</span></article>
-      <article><strong>4</strong><span>independent tracks</span></article>
-      <article><strong>5</strong><span>matched evaluation settings</span></article>
-      <article><strong>3</strong><span>real-robot task families</span></article>
+    <section className="publicStats" aria-label="Workshop scope">
+      <article><strong>2</strong><span>independent participation paths</span></article>
+      <article><strong>7</strong><span>tentative invited speakers</span></article>
+      <article><strong>4.5h</strong><span>proposed half-day program</span></article>
+      <article><strong>4</strong><span>RoboExam challenge tracks</span></article>
     </section>
 
-    <section className="publicSection" aria-labelledby="sample-title">
+    <section id="program" className="publicSection anchorSection" aria-labelledby="program-title">
       <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">Episode samples</p><h2 id="sample-title">See the task, rollout, and outcome.</h2></div>
-        <p>Each result stays connected to the episode evidence behind it. Play these lightweight samples to inspect successful, reference, and failed behavior.</p>
+        <div><p className="publicEyebrow">Two ways to participate</p><h2 id="program-title">One workshop, an open research program, and a shared challenge.</h2></div>
+        <p>Authors may submit a paper, enter any RoboExam track, or do both. Paper decisions and challenge rankings remain independent.</p>
+      </div>
+      <div className="programPathGrid">
+        {programPaths.map((path, index) => <article key={path.label}>
+          <span>0{index + 1}</span>
+          <p>{path.label}</p>
+          <h3>{path.title}</h3>
+          <div>{path.description}</div>
+          <ul>{path.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul>
+        </article>)}
+      </div>
+    </section>
+
+    <section id="focus" className="publicEvidence anchorSection" aria-labelledby="focus-title">
+      <div className="publicEvidenceIntro">
+        <p className="publicEyebrow">Scientific focus</p>
+        <h2 id="focus-title">What should count as genuine improvement?</h2>
+        <p>The workshop moves beyond a single final score. It studies how a failure changes both the learning system and the evaluator, then asks whether the update transfers, retains earlier skills, and remains within its declared budget.</p>
+        <div className="publicScope" aria-label="Workshop topics">
+          <span>Evaluator learning</span><span>World models</span><span>Robot learning</span>
+          <span>OOD transfer</span><span>Safe deployment</span>
+        </div>
+      </div>
+      <ol className="publicCycle">
+        {researchPrinciples.map(([number, title, description]) => <li key={number}>
+          <span>{number}</span><div><strong>{title}</strong><p>{description}</p></div>
+        </li>)}
+      </ol>
+      <div className="publicRegimes">
+        <span>Failure diagnosis</span><span>Bounded intervention</span><span>Held-out transfer</span>
+        <span>Capability retention</span><span>Independent verification</span>
+      </div>
+    </section>
+
+    <section id="speakers" className="publicSection anchorSection" aria-labelledby="speakers-title">
+      <div className="publicSectionHeading">
+        <div><p className="publicEyebrow">Tentative invited speakers</p><h2 id="speakers-title">Perspectives across vision, learning, and robotics.</h2></div>
+        <p>All seven speakers have accepted tentative invitations. Final appearance times remain subject to venue confirmation and scheduling.</p>
+      </div>
+      <div className="speakerGrid">
+        {speakers.map(([name, affiliation, focus, href]) => <a href={href} target="_blank" rel="noreferrer" key={name}>
+          <span>Tentative <ExternalLink size={14}/></span>
+          <h3>{name}</h3>
+          <b>{affiliation}</b>
+          <p>{focus}</p>
+        </a>)}
+      </div>
+    </section>
+
+    <section className="publicSection workshopEventSection" aria-labelledby="event-program-title">
+      <div className="publicSectionHeading">
+        <div><p className="publicEyebrow">Proposed half-day program</p><h2 id="event-program-title">From research talks to evidence-backed results.</h2></div>
+        <p>A 4.5-hour afternoon program in Seattle local time, with invited talks, posters, demonstrations, challenge reports, and an audience panel.</p>
+      </div>
+      <ol className="eventProgram">
+        {eventProgram.map(([time, title, description]) => <li key={time}>
+          <time>{time}</time><div><strong>{title}</strong><p>{description}</p></div>
+        </li>)}
+      </ol>
+    </section>
+
+    <section id="challenge" className="publicSection anchorSection" aria-labelledby="track-title">
+      <div className="publicSectionHeading">
+        <div><p className="publicEyebrow">RoboExam improvement challenge</p><h2 id="track-title">A shared challenge inside a broader research program.</h2></div>
+        <p>Four independently ranked tracks connect reasoning, physical prediction, simulation, and real-robot deployment to task-level evidence.</p>
+      </div>
+      <div className="publicTrackGrid">
+        {trackCards.map((track) => <a key={track.id} href={`/leaderboards?track=${track.id}`}>
+          <span>{track.id}</span>
+          <h3>{track.title}</h3>
+          <p>{track.question}</p>
+          <small>{track.contract}</small>
+          <b>Open leaderboard <ArrowRight size={16}/></b>
+        </a>)}
+      </div>
+      <div className="challengeSampleHeading">
+        <p className="publicEyebrow">Representative challenge evidence</p>
+        <h3>See the task, rollout, and outcome.</h3>
+        <p>These lightweight clips illustrate the evaluation protocol; they are not additional leaderboard entries.</p>
       </div>
       <div className="publicSampleGrid">
         {samples.map((sample) => <article className="publicSampleCard" key={`${sample.label}:${sample.title}`}>
@@ -174,29 +301,13 @@ export function PublicHome() {
       </div>
     </section>
 
-    <section className="publicSection" aria-labelledby="track-title">
-      <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">Evaluation interfaces</p><h2 id="track-title">One benchmark, four questions.</h2></div>
-        <p>The tracks share tasks and evidence conventions while preserving the input, output, and scoring contract appropriate to each system.</p>
-      </div>
-      <div className="publicTrackGrid">
-        {trackCards.map((track) => <a key={track.id} href={`/leaderboards?track=${track.id}`}>
-          <span>{track.id}</span>
-          <h3>{track.title}</h3>
-          <p>{track.question}</p>
-          <small>{track.contract}</small>
-          <b>Open leaderboard <ArrowRight size={16}/></b>
-        </a>)}
-      </div>
-    </section>
-
-    <section className="publicSection publicSchedule" aria-labelledby="schedule-title">
+    <section id="dates" className="publicSection publicSchedule anchorSection" aria-labelledby="schedule-title">
       <div className="publicSectionHeading">
         <div>
-          <p className="publicEyebrow">Provisional 2027 schedule</p>
-          <h2 id="schedule-title">Two tracks, one shared research cycle.</h2>
+          <p className="publicEyebrow">Provisional 2027 dates</p>
+          <h2 id="schedule-title">Independent routes, one shared workshop.</h2>
         </div>
-        <p>Benchmark participation and research submissions run independently. Joining the benchmark does not require a paper, and paper decisions do not affect leaderboard rankings.</p>
+        <p>Research submissions and challenge participation follow separate processes, then meet in the workshop program.</p>
       </div>
       <div className="scheduleGrid">
         {scheduleLanes.map((lane) => <article className={`scheduleLane ${lane.id}`} key={lane.id}>
@@ -212,36 +323,15 @@ export function PublicHome() {
           </ol>
         </article>)}
       </div>
-      <p className="scheduleNote"><b>Planning status:</b> dates, submission rules, evaluation limits, and venue-dependent activities remain provisional until formally confirmed.</p>
-    </section>
-
-    <section id="evaluation-design" className="publicEvidence" aria-labelledby="evidence-title">
-      <div className="publicEvidenceIntro">
-        <p className="publicEyebrow">Verifiable improvement</p>
-        <h2 id="evidence-title">A final score is the start of the diagnosis.</h2>
-        <p>RoboExam is designed to compare a declared baseline with a bounded update under frozen, held-out conditions. The report keeps gains, regressions, budgets, and failure evidence together.</p>
-        <div className="publicScope" aria-label="Research scope">
-          <span>Embodied reasoning</span><span>World models</span><span>Robot learning</span>
-          <span>Failure diagnosis</span><span>Sim-to-real</span><span>Safety &amp; recovery</span>
-        </div>
-      </div>
-      <ol className="publicCycle">
-        {improvementSteps.map(([number, title, description]) => <li key={number}>
-          <span>{number}</span><div><strong>{title}</strong><p>{description}</p></div>
-        </li>)}
-      </ol>
-      <div className="publicRegimes">
-        <span>In-distribution</span><span>Visual OOD</span><span>Semantic OOD</span>
-        <span>Behavioral OOD</span><span>Failure recovery</span>
-      </div>
+      <p className="scheduleNote"><b>Planning status:</b> dates, submission rules, speakers, and venue-dependent activities remain provisional until formally confirmed.</p>
     </section>
 
     <section className="publicSection publicLeaderboardPreview" aria-labelledby="results-title">
       <div className="publicResultsIntro">
-        <p className="publicEyebrow">Current results</p>
-        <h2 id="results-title">Compare methods under one evidence contract.</h2>
-        <p>The public board separates task execution from VQA and reports incomplete settings as unavailable rather than silently filling gaps.</p>
-        <a href="/leaderboards?track=T1">Explore all tracks <ArrowRight size={18}/></a>
+        <p className="publicEyebrow">RoboExam challenge results</p>
+        <h2 id="results-title">Results, with the evidence attached.</h2>
+        <p>Validated challenge runs identify their task scope, evaluation condition, protocol version, and supporting evidence. Planned or incomplete jobs are not ranked.</p>
+        <a href="/leaderboards?track=T1">Explore challenge leaderboards <ArrowRight size={18}/></a>
       </div>
       <div className="publicRanking" aria-label="Track 1 leaderboard snapshot">
         <header><span>Track 1 snapshot</span><span>Overall</span></header>
@@ -251,6 +341,18 @@ export function PublicHome() {
           <b>{model.overall!.overall!.toFixed(1)}</b>
         </article>)}
         <footer><Trophy size={17}/><span>Scores are shown out of 100; higher is better.</span></footer>
+      </div>
+    </section>
+
+    <section id="organizers" className="publicSection anchorSection organizerSection" aria-labelledby="organizers-title">
+      <div className="publicSectionHeading">
+        <div><p className="publicEyebrow">Organizing team</p><h2 id="organizers-title">Research leadership and evaluation operations.</h2></div>
+        <p>The team combines experience in foundation models, control, robot manipulation, multi-robot systems, world models, and benchmark operations.</p>
+      </div>
+      <div className="organizerGrid">
+        {organizers.map(([name, affiliation, role]) => <article key={name}>
+          <span>{role}</span><h3>{name}</h3><p>{affiliation}</p>
+        </article>)}
       </div>
     </section>
   </div>;

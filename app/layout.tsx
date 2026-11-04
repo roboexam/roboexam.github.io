@@ -4,11 +4,11 @@ import "./worldsync.css";
 import "./public-home.css";
 
 export const metadata: Metadata = {
-  title: "RoboExam — Benchmarking Embodied Intelligence",
-  description: "RoboExam evaluates embodied systems across reasoning, physical prediction, simulation, and real-world robot deployment, with task-level evidence for generalization, recovery, and verified improvement.",
+  title: "EmbodiVSI 2027 — Verifiable Self-Improvement for Physical Intelligence",
+  description: "EmbodiVSI is a 2027 workshop initiative on how evaluators and embodied agents improve together, combining an open research program with the four-track RoboExam challenge.",
   icons: {
-    icon: "/roboexam-mark.png",
-    shortcut: "/roboexam-mark.png",
+    icon: "/brand-candidates/evidence-loop.webp",
+    shortcut: "/brand-candidates/evidence-loop.webp",
   },
 };
 

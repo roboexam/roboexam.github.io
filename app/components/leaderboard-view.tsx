@@ -138,9 +138,10 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
 
   return <div className="content trackLeaderboard">
     <div className="pageHeading">
-      <h1>Leaderboards</h1>
+      <p className="eyebrow">EmbodiVSI · RoboExam improvement challenge</p>
+      <h1>Challenge Leaderboards</h1>
       <p>{trackId === "T1"
-        ? "Scene understanding and robot execution through a shared harness."
+        ? "The workshop's shared challenge connects scene understanding and robot execution through a common evidence harness."
         : "Validated results only; unavailable settings remain blank. / 仅显示已验证结果，未完成设定保持为空。"}</p>
     </div>
 

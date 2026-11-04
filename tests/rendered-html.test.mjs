@@ -45,29 +45,32 @@ test("does not publish the retired login page", async () => {
   assert.equal(response.status, 404);
 });
 
-test("renders the public benchmark introduction without internal surfaces", async () => {
+test("renders the public workshop program without internal surfaces", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /RoboExam/);
-  assert.match(html, /Evidence for robots that reason, predict, act, and recover\./);
-  assert.match(html, /See the task, rollout, and outcome\./);
-  assert.match(html, /One benchmark, four questions\./);
-  assert.match(html, /Provisional 2027 schedule/);
-  assert.match(html, /Benchmark challenge/);
+  assert.match(html, /EmbodiVSI/);
+  assert.match(html, /Beyond Passive Evaluation\./);
+  assert.match(html, /One workshop, an open research program, and a shared challenge\./);
+  assert.match(html, /Tentative invited speakers/);
+  assert.match(html, /Sergey Levine/);
+  assert.match(html, /Proposed half-day program/);
+  assert.match(html, /RoboExam improvement challenge/);
+  assert.match(html, /Provisional 2027 dates/);
+  assert.match(html, /RoboExam challenge/);
   assert.match(html, /Research submissions/);
   assert.match(html, /Dec 15, 2026/);
   assert.match(html, /Mar 5 · AoE/);
-  assert.match(html, /A final score is the start of the diagnosis\./);
+  assert.match(html, /What should count as genuine improvement\?/);
   assert.match(html, /Embodied Agency/);
   assert.match(html, /Physical Foresight/);
   assert.match(html, /Simulation Deployment/);
   assert.match(html, /Real-World Deployment/);
-  assert.match(html, /Visual OOD/);
-  assert.match(html, /Failure recovery/);
+  assert.match(html, /OOD transfer/);
+  assert.match(html, /Failure diagnosis/);
   assert.match(html, /samples\/stack-bowls-policy\.mp4/);
   assert.match(html, /Leaderboards/);
-  assert.doesNotMatch(html, /CVPR|Workshop|workshop|Correlation|Review|Datasets|当前 baseline 训练与测评计划|RUN REGISTRY/);
+  assert.doesNotMatch(html, /Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
 });
 
 test("does not require an authentication cookie", async () => {
@@ -138,7 +141,7 @@ test("an obsolete task query remains on the public overview", async () => {
   const response = await render("/?task=mirror_pair_layout");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Evidence for robots that reason, predict, act, and recover\./);
+  assert.match(html, /Beyond Passive Evaluation\./);
   assert.doesNotMatch(html, /Task-aligned simulation episodes/);
 });
 

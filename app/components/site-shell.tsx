@@ -10,20 +10,23 @@ export function SiteShell({ active, children }: Props) {
   return <div className="researchShell">
     <a className="skipLink" href="#main-content">Skip to content</a>
     <header className="researchNav">
-      <Link className="researchBrand" href="/" aria-label="RoboExam home">
-        <span className="brandGlyph brandGlyphImage" aria-hidden="true"/>RoboExam
+      <Link className="researchBrand" href="/" aria-label="EmbodiVSI home">
+        <span className="brandGlyph brandGlyphImage" aria-hidden="true"/>EmbodiVSI
       </Link>
       <nav aria-label="Primary navigation">
         <Link className={`researchNavItem ${active === "Overview" ? "active" : ""}`}
-          aria-current={active === "Overview" ? "page" : undefined} href="/">Overview</Link>
+          aria-current={active === "Overview" ? "page" : undefined} href="/">Home</Link>
+        <Link className="researchNavItem" href="/#program">Program</Link>
+        <Link className="researchNavItem" href="/#speakers">Speakers</Link>
+        <Link className="researchNavItem" href="/#dates">Dates</Link>
         <Link className={`researchNavItem ${active === "Leaderboards" ? "active" : ""}`}
           aria-current={active === "Leaderboards" ? "page" : undefined} href="/leaderboards">Leaderboards</Link>
       </nav>
     </header>
     <main id="main-content" className="researchMain">{children}</main>
     <footer className="researchFooter">
-      <div><strong>RoboExam</strong><span>Evidence for Physical AI.</span></div>
-      <span>Reason · Predict · Act · Recover</span>
+      <div><strong>EmbodiVSI</strong><span>Verifiable Self-Improvement for Physical Intelligence.</span></div>
+      <span>Open research program · RoboExam challenge</span>
     </footer>
   </div>;
 }
