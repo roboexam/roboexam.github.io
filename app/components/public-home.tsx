@@ -74,6 +74,35 @@ const improvementSteps = [
   ["04", "Retest", "Measure held-out gain, transfer, retention, recovery, and safety under matched conditions."],
 ] as const;
 
+const scheduleLanes = [
+  {
+    id: "challenge",
+    title: "Benchmark challenge",
+    description: "Development access, remote qualification, and organizer-run held-out verification.",
+    items: [
+      ["Dec 15, 2026", "Development release", "Public data, manifests, interfaces, and worked examples."],
+      ["Feb 22–28, 2027", "Interface checks", "Participant onboarding and submission compatibility checks."],
+      ["Mar 1–28", "Preliminary evaluation", "Remote simulation and designated real-robot evaluation."],
+      ["Mar 29–31", "Qualification review", "Up to ten eligible teams per track advance to verification."],
+      ["Apr 1–May 1", "Held-out verification", "Frozen submissions run on internal scenes and robot stations."],
+      ["May 24", "Final leaderboard", "Audited rankings and track awards are released."],
+    ],
+  },
+  {
+    id: "research",
+    title: "Research submissions",
+    description: "An independent archival paper track for embodied AI, world models, and verifiable improvement.",
+    items: [
+      ["Jan 15, 2027", "Call opens", "Scope, topics, and submission guidance are published."],
+      ["Feb 1", "Submission portal opens", "Complete papers can be submitted; no separate abstract deadline."],
+      ["Mar 5 · AoE", "Paper deadline", "5–8-page archival submissions close."],
+      ["Mar 24", "Decisions", "Peer-review decisions are released."],
+      ["Apr 23 · AoE", "Camera-ready", "Final accepted manuscripts are due."],
+      ["Jun 20–21", "Public presentations", "Accepted posters and the Best Paper presentation."],
+    ],
+  },
+] as const;
+
 const rankedT1 = t1UnibenchResults.models
   .filter((model) => model.overall?.overall != null)
   .sort((left, right) => right.overall!.overall! - left.overall!.overall!)
@@ -159,6 +188,31 @@ export function PublicHome() {
           <b>Open leaderboard <ArrowRight size={16}/></b>
         </a>)}
       </div>
+    </section>
+
+    <section className="publicSection publicSchedule" aria-labelledby="schedule-title">
+      <div className="publicSectionHeading">
+        <div>
+          <p className="publicEyebrow">Provisional 2027 schedule</p>
+          <h2 id="schedule-title">Two tracks, one shared research cycle.</h2>
+        </div>
+        <p>Benchmark participation and research submissions run independently. Joining the benchmark does not require a paper, and paper decisions do not affect leaderboard rankings.</p>
+      </div>
+      <div className="scheduleGrid">
+        {scheduleLanes.map((lane) => <article className={`scheduleLane ${lane.id}`} key={lane.id}>
+          <header>
+            <span className="scheduleIcon" aria-hidden="true"/>
+            <div><h3>{lane.title}</h3><p>{lane.description}</p></div>
+          </header>
+          <ol>
+            {lane.items.map(([date, title, description]) => <li key={`${lane.id}:${date}`}>
+              <time>{date}</time>
+              <div><strong>{title}</strong><p>{description}</p></div>
+            </li>)}
+          </ol>
+        </article>)}
+      </div>
+      <p className="scheduleNote"><b>Planning status:</b> dates, submission rules, evaluation limits, and venue-dependent activities remain provisional until formally confirmed.</p>
     </section>
 
     <section id="evaluation-design" className="publicEvidence" aria-labelledby="evidence-title">

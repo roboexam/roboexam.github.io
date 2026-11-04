@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   title: "RoboExam · Physical AI Benchmark",
   description: "Evaluate embodied reasoning, physical foresight, simulated control, and real-world robot deployment with task-level evidence.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/roboexam-mark.png",
+    shortcut: "/roboexam-mark.png",
   },
 };
 

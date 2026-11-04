@@ -53,6 +53,11 @@ test("renders the public benchmark introduction without internal surfaces", asyn
   assert.match(html, /Evidence for robots that reason, predict, act, and recover\./);
   assert.match(html, /See the task, rollout, and outcome\./);
   assert.match(html, /One benchmark, four questions\./);
+  assert.match(html, /Provisional 2027 schedule/);
+  assert.match(html, /Benchmark challenge/);
+  assert.match(html, /Research submissions/);
+  assert.match(html, /Dec 15, 2026/);
+  assert.match(html, /Mar 5 · AoE/);
   assert.match(html, /A final score is the start of the diagnosis\./);
   assert.match(html, /Embodied Agency/);
   assert.match(html, /Physical Foresight/);

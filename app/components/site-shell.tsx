@@ -11,7 +11,7 @@ export function SiteShell({ active, children }: Props) {
     <a className="skipLink" href="#main-content">Skip to content</a>
     <header className="researchNav">
       <Link className="researchBrand" href="/" aria-label="RoboExam home">
-        <span className="brandGlyph" aria-hidden="true">r<span>.</span></span>RoboExam
+        <span className="brandGlyph brandGlyphImage" aria-hidden="true"/>RoboExam
       </Link>
       <nav aria-label="Primary navigation">
         <Link className={`researchNavItem ${active === "Overview" ? "active" : ""}`}
