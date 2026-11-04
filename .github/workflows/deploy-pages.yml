@@ -28,6 +28,15 @@ jobs:
         env:
           GITHUB_PAGES: "true"
           UNIBENCH_DEPLOY_BUILD: "1"
+      - name: Remove non-public benchmark artifacts
+        run: |
+          rm -rf \
+            dist/client/analysis \
+            dist/client/curated-data \
+            dist/client/curated-traces \
+            dist/client/episode-data \
+            dist/client/explorer-data \
+            dist/client/review-data
       - run: touch dist/client/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

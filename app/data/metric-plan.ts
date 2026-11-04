@@ -113,9 +113,11 @@ export const tracks: TrackDefinition[] = [
       zh: "0–100 分，越高越好。总分 = 70% × ID、视觉/语义/行为 OOD 与失败恢复五种设定的子任务平均分 + 30% × ID 与三种 OOD 的 VQA 平均分。每个设定的分数 = 70% 子任务 + 30% VQA（失败恢复只计子任务）。VQA 高分不等于执行成功。",
     },
     models: [
-      { id: "Cosmos3-Nano", family: "VLM", status: "Provisional" },
-      ...["deepseek-v4.1-flash", "internal-mimo-v2.6-pro", "kimi-k3", "glm-5.3-flash", "minimax-h3.1-preview"]
-        .map(id => ({ id, family: "Commercial VLM", status: "Planned" })),
+      { id: "gpt-6-1-sol", family: "VLM", status: "Validated · 5 settings" },
+      { id: "deepseek-v4-1-flash", family: "VLM", status: "Validated · 5 settings" },
+      { id: "glm-5-3-flash", family: "VLM", status: "Validated · 5 settings" },
+      { id: "claude-opus-5-5", family: "VLM", status: "Validated · ID" },
+      { id: "qwen3-8-27b", family: "VLM", status: "Validated · ID" },
     ], metrics: t1Metrics,
   },
   {
@@ -125,13 +127,8 @@ export const tracks: TrackDefinition[] = [
       zh: "各指标保留原始单位与方向，目前没有正式跨指标总分。JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
     },
     models: [
-      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Planned · clean24" },
-      { id: "CtrlWorld", family: "ACWM", status: "AIHC training · Failed" },
-      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "AIHC evaluation · Succeeded" },
-      { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
-      { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
-      { id: "Wan-Move", family: "ACWM", status: "Planned" },
-      { id: "EnerVerse-AC", family: "ACWM", status: "Planned" },
+      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Published result" },
+      { id: "CtrlWorld", family: "ACWM", status: "Published result" },
     ], metrics: acwmMetrics,
   },
   {
@@ -152,14 +149,7 @@ export const tracks: TrackDefinition[] = [
       en: "No formal hardware score is published yet. Future headline reporting uses task success; progress, intervention, and safety remain separate evidence.",
       zh: "目前尚未发布正式真机分数。后续以任务成功率为主要结果，进度、人工干预和安全证据分别报告。",
     },
-    models: [
-      { id: "Pi0.5", family: "VLA", status: "AIHC training · Running" },
-      { id: "FastWAM", family: "WAM", status: "AIHC training · Running" },
-      { id: "OpenWAM", family: "WAM", status: "T4 independent · Planned" },
-      { id: "HyVLA", family: "VLA", status: "AIHC training · Failed" },
-      { id: "LingBot-VA2.0", family: "WAM", status: "T4 independent · Planned" },
-      { id: "XVLA", family: "VLA", status: "T4 independent · Planned" },
-    ], metrics: realWorldMetrics,
+    models: [], metrics: realWorldMetrics,
   },
 ];
 

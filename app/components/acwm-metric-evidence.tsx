@@ -47,7 +47,9 @@ const metricSteps: Record<string, { input: string; compute: string; aggregate: s
 };
 
 function SampleVideoPair({ sample }: { sample: AcwmSampleResult | undefined }) {
-  if (!sample?.media) return <div className="sampleUnavailable"><strong>No publishable video sample is available</strong><p>The value still comes from the formal result bundle; no video from another model or seed is substituted.</p></div>;
+  if (!sample?.media || !sample.media.prediction.url.startsWith("/samples/") || !sample.media.groundTruth.url.startsWith("/samples/")) {
+    return <div className="sampleUnavailable"><strong>No publishable video sample is available</strong><p>The value still comes from the formal result bundle; no private or substitute video is shown.</p></div>;
+  }
   return <div className="acwmVideoPair">
     <div className="sampleVideo"><video key={sample.media.prediction.sha256} controls muted playsInline preload="metadata" src={sample.media.prediction.url}/><div><b>Predicted future</b><span>SHA-256: {sample.media.prediction.sha256.slice(0, 12)}…</span></div></div>
     <div className="sampleVideo"><video key={sample.media.groundTruth.sha256} controls muted playsInline preload="metadata" src={sample.media.groundTruth.url}/><div><b>Ground-truth future</b><span>SHA-256: {sample.media.groundTruth.sha256.slice(0, 12)}…</span></div></div>

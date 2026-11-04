@@ -180,7 +180,7 @@ export function PublicHome() {
         <p>The tracks share tasks and evidence conventions while preserving the input, output, and scoring contract appropriate to each system.</p>
       </div>
       <div className="publicTrackGrid">
-        {trackCards.map((track) => <a key={track.id} href={`/leaderboards#${track.id}`}>
+        {trackCards.map((track) => <a key={track.id} href={`/leaderboards?track=${track.id}`}>
           <span>{track.id}</span>
           <h3>{track.title}</h3>
           <p>{track.question}</p>
@@ -241,7 +241,7 @@ export function PublicHome() {
         <p className="publicEyebrow">Current results</p>
         <h2 id="results-title">Compare methods under one evidence contract.</h2>
         <p>The public board separates task execution from VQA and reports incomplete settings as unavailable rather than silently filling gaps.</p>
-        <a href="/leaderboards#T1">Explore all tracks <ArrowRight size={18}/></a>
+        <a href="/leaderboards?track=T1">Explore all tracks <ArrowRight size={18}/></a>
       </div>
       <div className="publicRanking" aria-label="Track 1 leaderboard snapshot">
         <header><span>Track 1 snapshot</span><span>Overall</span></header>

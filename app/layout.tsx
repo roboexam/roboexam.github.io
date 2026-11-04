@@ -4,8 +4,8 @@ import "./worldsync.css";
 import "./public-home.css";
 
 export const metadata: Metadata = {
-  title: "RoboExam · Physical AI Benchmark",
-  description: "Evaluate embodied reasoning, physical foresight, simulated control, and real-world robot deployment with task-level evidence.",
+  title: "RoboExam — Benchmarking Embodied Intelligence",
+  description: "RoboExam evaluates embodied systems across reasoning, physical prediction, simulation, and real-world robot deployment, with task-level evidence for generalization, recovery, and verified improvement.",
   icons: {
     icon: "/roboexam-mark.png",
     shortcut: "/roboexam-mark.png",
