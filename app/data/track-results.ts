@@ -1,5 +1,4 @@
-import { curatedResult } from './pi05-curated.ts';
-import { xvlaResult, type XvlaSetting } from './xvla-24id.ts';
+import { isPolicyBaselineModel, policyBaselineResult, type PolicySetting } from './policy-baselines.ts';
 import { acwmDashboardBundle } from './acwm-results.ts';
 import { vlaWamDashboardBundle } from './vla-wam-results.ts';
 import { metricInfo, type MetricInfo } from './metric-definitions.ts';
@@ -26,7 +25,7 @@ export function metricsFor(trackId: TrackId, mode: ReportMode): MetricDefinition
 }
 export function readResult({ trackId, mode, metricId, modelId, taskId, setting }: MetricSelection): ReportResult {
   const pending = { primary: '—', detail: 'No validated result for this metric and protocol.', status: 'Pending', available: false };
-  if (trackId === 'T3' && (setting === 'recovery' || (modelId !== 'XVLA' && setting && setting !== 'id'))) return pending;
+  if (trackId === 'T3' && setting === 'recovery') return pending;
   if (trackId === 'T4') return { ...pending, detail: 'Hardware trial and manual review pending.' };
   // A matching metric name is not evidence of a matching input/scorer contract.
   if (trackId === 'T1' || (trackId === 'T2' && mode !== 'history')) return pending;
@@ -38,9 +37,8 @@ export function readResult({ trackId, mode, metricId, modelId, taskId, setting }
     return { primary: m.availability === 'available' ? m.primary : '—', detail: m.availability === 'available' ? m.aux : m.availability.replaceAll('_', ' '), status: m.status, available: m.availability === 'available', version: model.resultVersion, protocol: model.protocol, sampleCount: m.groups[cohort]?.sampleCount, cohort };
   }
   if (trackId === 'T3' && taskId) {
-    if (modelId === 'Pi0.5') return curatedResult(taskId, metricId);
-    if (modelId === 'XVLA') return xvlaResult(taskId, metricId, (setting ?? 'id') as XvlaSetting);
-    if (taskId !== 'stack_bowls') return pending;
+    if (isPolicyBaselineModel(modelId)) return policyBaselineResult(modelId, taskId, metricId, (setting ?? 'id') as PolicySetting);
+    return pending;
   }
   const model = vlaWamDashboardBundle.models[modelId];
   const m = model?.values[metricId];

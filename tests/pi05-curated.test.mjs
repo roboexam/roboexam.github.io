@@ -25,8 +25,8 @@ test('seven complete cohorts preserve sample identity, outcomes and exact three-
  assert.doesNotMatch(JSON.stringify(pi05Curated),/\/mnt\//);
 });
 test('task and model routing cannot inherit another cohort or unsupported metric',()=>{
- assert.equal(readResult(selection('push_T')).primary,'0.00%');
- assert.equal(readResult(selection('stack_bowls')).primary,'76.67%');
+ assert.equal(readResult(selection('push_T')).available,false);
+ assert.equal(readResult(selection('stack_bowls')).available,false);
  for(const task of ['build_tower','cover_blocks','insert_key','pick_from_conveyor_by_image','plug_in_charger','push_T']){
   assert.equal(readResult(selection(task,'TSR','FastWAM')).available,false);
   assert.equal(readResult(selection(task,'TARGET_SELECTION')).available,false);
@@ -36,7 +36,7 @@ test('task and model routing cannot inherit another cohort or unsupported metric
  for(const k of ['JERK','ACTION_EXACT_MATCH','STAGE_TRANSITION','PARAMETER_ACCURACY','ATTRIBUTE_GROUNDING'])
   assert.equal(readResult(selection('stack_bowls',k)).available,false);
  assert.equal(readResult(selection('cover_blocks','LOCAL_SUCCESS_ONCE')).available,false);
- assert.equal(readResult(selection('insert_key','LOCAL_SUCCESS_ONCE')).available,true);
+ assert.equal(readResult(selection('insert_key','LOCAL_SUCCESS_ONCE')).available,false);
  assert.equal(pi05Curated.insert_key.values.LOCAL_SUCCESS_ONCE.coverage,0.5);
 });
 test('first selection and action type use their declared source fields',async()=>{

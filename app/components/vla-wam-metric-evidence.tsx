@@ -1,12 +1,10 @@
-import { Pi05CuratedEvidence } from "./pi05-curated-evidence";
 import { vlaWamDashboardBundle } from "../data/vla-wam-results";
 import { VlaWamSampleEvidence } from "./vla-wam-sample-evidence";
-import { Xvla24IdEvidence } from "./xvla-24id-evidence";
-import type { XvlaSetting } from "../data/xvla-24id";
+import { PolicyBaselineEvidence } from "./policy-baseline-evidence";
+import { isPolicyBaselineModel, type PolicySetting } from "../data/policy-baselines";
 
-export function VlaWamMetricEvidence({ id, model, formula, taskId, setting = "id" }: { id: string; model: string; formula: string; taskId?: string; setting?: XvlaSetting }) {
-  if (model === "Pi0.5" && taskId) return <Pi05CuratedEvidence key={`${taskId}:${id}`} taskId={taskId} metricId={id} formula={formula}/>;
-  if (model === "XVLA" && taskId) return <Xvla24IdEvidence key={`${taskId}:${setting}:${id}`} taskId={taskId} metricId={id} formula={formula} setting={setting}/>;
+export function VlaWamMetricEvidence({ id, model, formula, taskId, setting = "id" }: { id: string; model: string; formula: string; taskId?: string; setting?: PolicySetting }) {
+  if (isPolicyBaselineModel(model) && taskId) return <PolicyBaselineEvidence key={`${model}:${taskId}:${setting}:${id}`} model={model} taskId={taskId} metricId={id} formula={formula} setting={setting}/>;
   const modelResult = vlaWamDashboardBundle.models[model];
   const metric = modelResult?.values[id];
   if (!modelResult) return null;

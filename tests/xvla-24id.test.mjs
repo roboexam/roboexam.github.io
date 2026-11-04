@@ -42,7 +42,7 @@ test("XVLA result routing is task-specific and preserves unavailable metrics", (
   assert.equal(readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE" }).primary, "9.75");
 });
 
-test("XVLA final OOD export preserves 349 validated task/split/layout cells", () => {
+test("legacy XVLA OOD export remains intact while routing uses the complete policy baseline", () => {
   assert.deepEqual(Object.keys(ood).sort(), ["behavior", "semantic", "visual"]);
   assert.equal(Object.values(ood).every((split) => Object.keys(split).length === 24), true);
   assert.equal(Object.values(ood).flatMap(Object.values).reduce((sum, task) => sum + task.samples.length, 0), 349);
@@ -53,14 +53,14 @@ test("XVLA final OOD export preserves 349 validated task/split/layout cells", ()
     setting,
     readResult({ ...selection, taskId: "all", metricId: "TSR", setting }).primary,
   ]));
-  assert.deepEqual(overall, { id: "5.83%", visual: "2.61%", semantic: "1.74%", behavioral: "8.33%" });
+  assert.deepEqual(overall, { id: "5.83%", visual: "2.50%", semantic: "1.67%", behavioral: "8.33%" });
   const completionRates = Object.fromEntries(["id", "visual", "semantic", "behavioral"].map((setting) => [
     setting,
     readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE", setting }).primary,
   ]));
-  assert.deepEqual(completionRates, { id: "9.75", visual: "4.61", semantic: "3.91", behavioral: "14.51" });
+  assert.deepEqual(completionRates, { id: "9.75", visual: "4.42", semantic: "3.75", behavioral: "14.49" });
   assert.equal(readResult({ ...selection, taskId: "cover_blocks", metricId: "TSR", setting: "visual" }).available, true);
-  assert.equal(readResult({ ...selection, taskId: "classify_objects_by_language", metricId: "TSR", setting: "semantic" }).available, false);
+  assert.equal(readResult({ ...selection, taskId: "classify_objects_by_language", metricId: "TSR", setting: "semantic" }).available, true);
   assert.equal(readResult({ ...selection, taskId: "all", metricId: "TSR", setting: "behavioral" }).available, true);
 });
 

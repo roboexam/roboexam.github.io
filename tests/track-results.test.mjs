@@ -5,7 +5,7 @@ import { baselineRunPlan } from '../app/data/baseline-run-plan.ts';
 import { metricExplanationFor } from '../app/data/metric-explanations.ts';
 import { definitionFor, metricsFor, readResult } from '../app/data/track-results.ts';
 import { scenarioPlan } from '../app/data/scenario-plan.ts';
-import { xvla24IdTaskIds } from '../app/data/xvla-24id.ts';
+import { policyTaskIds } from '../app/data/policy-baselines.ts';
 import { acwmDashboardBundle as acwm } from '../app/data/acwm-results.ts';
 import { vlaWamDashboardBundle as policy } from '../app/data/vla-wam-results.ts';
 
@@ -107,22 +107,21 @@ test('all displayed metric plans have bilingual explanations and explicit input/
 });
 
 test('leaderboard results expose episode count and cohort instead of hiding protocol differences', () => {
-  const pi = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'Pi0.5', taskId: 'stack_bowls' });
-  const fast = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'FastWAM', taskId: 'stack_bowls' });
-  assert.equal(pi.sampleCount, 30);
-  assert.equal(pi.cohort, 'ID curated');
-  assert.equal(fast.sampleCount, 100);
-  assert.equal(fast.cohort, '100-seed');
-  assert.notEqual(pi.protocol, fast.protocol);
+  const id = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'G05', taskId: 'stack_bowls', setting: 'id' });
+  const visual = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'HyVLA', taskId: 'stack_bowls', setting: 'visual' });
+  assert.equal(id.sampleCount, 5);
+  assert.equal(id.cohort, 'id · 5/5 episodes');
+  assert.equal(visual.sampleCount, 5);
+  assert.equal(visual.cohort, 'visual · 5/5 episodes');
   const acwmResult = readResult(selection('T2', 'history', 'MS', 'Cosmos Predict 2.5'));
   assert.equal(acwmResult.sampleCount, 73);
   assert.equal(acwmResult.cohort, 'heldout73');
 });
 
-test('XVLA all-scenarios results use fixed 24-task macro aggregates', () => {
-  assert.equal(xvla24IdTaskIds.length, 24);
-  assert.equal(new Set(xvla24IdTaskIds).size, 24);
-  assert.ok(xvla24IdTaskIds.every((id) => scenarioPlan.some((scene) => scene.id === id)));
+test('policy baselines use fixed 24-task macro aggregates', () => {
+  assert.equal(policyTaskIds.length, 24);
+  assert.equal(new Set(policyTaskIds).size, 24);
+  assert.ok(policyTaskIds.every((id) => scenarioPlan.some((scene) => scene.id === id)));
   const tsr = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'XVLA', taskId: 'all' });
   const score = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TASK_SCORE', modelId: 'XVLA', taskId: 'all' });
   const collision = readResult({ trackId: 'T3', mode: 'plan', metricId: 'COLLISION_RATE', modelId: 'XVLA', taskId: 'all' });

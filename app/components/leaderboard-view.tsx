@@ -8,7 +8,7 @@ import { tracks, type TrackId } from "../data/metric-plan";
 import { scenarioPlan, scenarioTags, tagsForScenario, type ScenarioTag } from "../data/scenario-plan";
 import { admittedSettingScores, calculateOverallScore, type OverallScorecard } from "../data/overall-score";
 import { metricsFor, readResult, type MetricSelection, type ReportMode, type ReportResult } from "../data/track-results";
-import { xvla24IdTaskIds } from "../data/xvla-24id";
+import { policyTaskIds } from "../data/policy-baselines";
 import { BaselineRunPlan } from "./baseline-run-plan";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
@@ -47,7 +47,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   const families = [...new Set(track.models.map((model) => model.family))];
   const sceneTagEntries = Object.entries(scenarioTags) as [ScenarioTag, (typeof scenarioTags)[ScenarioTag]][];
   const availableScenes = trackId === "T3"
-    ? scenarioPlan.filter((scene) => xvla24IdTaskIds.includes(scene.id))
+    ? scenarioPlan.filter((scene) => policyTaskIds.includes(scene.id))
     : scenarioPlan;
   const scenes = availableScenes.filter((scene) =>
     selectedSceneTags.every((tag) => tagsForScenario(scene).includes(tag)));
