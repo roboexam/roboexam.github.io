@@ -5,7 +5,7 @@ import "./public-home.css";
 
 export const metadata: Metadata = {
   title: "EmbodiVSI 2027 — Verifiable Self-Improvement for Physical Intelligence",
-  description: "EmbodiVSI connects agentic evaluation and multi-agent co-evolution with RoboExam's shared task registry across VLM reasoning, physical foresight, simulation, and real-robot deployment.",
+  description: "EmbodiVSI connects dual recursive self-improvement and open-ended multi-agent capability evolution with RoboExam's shared task registry across reasoning, world models, simulation, and real-robot deployment.",
   icons: {
     icon: "/workshop-assets/embodivsi-mark.webp",
     shortcut: "/workshop-assets/embodivsi-mark.webp",

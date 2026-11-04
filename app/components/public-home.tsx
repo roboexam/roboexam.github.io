@@ -50,25 +50,25 @@ const organizers = [
   {
     name: "Karl Henrik Johansson",
     affiliation: "KTH Royal Institute of Technology",
-    role: "Advisory organizer",
+    role: "Organizer",
     photo: "/people/karl-henrik-johansson.jpg",
   },
   {
     name: "Amanda Prorok",
     affiliation: "University of Cambridge",
-    role: "Advisory organizer",
+    role: "Organizer",
     photo: "/people/amanda-prorok.jpg",
   },
   {
     name: "Danica Kragić",
     affiliation: "KTH Royal Institute of Technology",
-    role: "Advisory organizer",
+    role: "Organizer",
     photo: "/people/danica-kragic.jpg",
   },
   {
     name: "Mengyu Wang",
     affiliation: "Harvard University",
-    role: "Advisory organizer",
+    role: "Organizer",
     photo: "/people/mengyu-wang.jpg",
   },
   {
@@ -105,8 +105,9 @@ export function PublicHome() {
         <h1 id="public-hero-title">Beyond Passive Evaluation.</h1>
         <p className="workshopHeroTitle">Verifiable Self-Improvement for Physical Intelligence</p>
         <p className="publicHeroLead">
-          An open research program on agentic evaluation and multi-agent co-evolution, with RoboExam
-          linking VLM reasoning, physical foresight, simulation, and X-Humanoid-aligned deployment.
+          An open research program on dual recursive self-improvement and open-ended multi-agent
+          capability evolution, with RoboExam linking reasoning, world models, simulation, and
+          X-Humanoid-aligned deployment.
         </p>
         <div className="workshopMeta" aria-label="Proposed workshop format">
           <span>Seattle</span><span>June 20 or 21, 2027</span><span>Half-day</span>
