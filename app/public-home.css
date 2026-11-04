@@ -531,11 +531,13 @@
   display: block;
   width: 58px;
   height: 58px;
+  border: 1px solid #cfe7ed;
   border-radius: 14px;
   background: center / cover no-repeat;
+  box-shadow: 0 6px 18px #27a9c21a;
 }
-.scheduleLane.challenge .scheduleIcon { background-image: url("/brand-candidates/eye-check.webp"); }
-.scheduleLane.research .scheduleIcon { background-image: url("/brand-candidates/evidence-loop.webp"); }
+.scheduleLane.challenge .scheduleIcon { background-image: url("/workshop-assets/roboexam-challenge.webp"); }
+.scheduleLane.research .scheduleIcon { background-image: url("/workshop-assets/research-program.webp"); }
 .scheduleLane h3 { margin: 0; font-size: 20px; font-weight: 650; }
 .scheduleLane header p {
   margin: 5px 0 0;

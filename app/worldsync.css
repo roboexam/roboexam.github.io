@@ -41,7 +41,12 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
 .researchBrand { display: flex; align-items: center; gap: 11px; padding: 0; border: 0; background: transparent; color: var(--ink); font-size: var(--text-card); font-weight: 650; letter-spacing: -.045em; text-decoration: none; }
 .brandGlyph { display: inline-flex; align-items: baseline; justify-content: center; width: 37px; height: 37px; border-radius: 10px; background: var(--ink); color: #fff; font-size: var(--text-card); line-height: 30px; font-weight: 700; }
 .brandGlyph span { color: #94b7ff; }
-.brandGlyphImage { flex: 0 0 37px; background: url("/brand-candidates/evidence-loop.webp") center / cover no-repeat; }
+.brandGlyphImage {
+  flex: 0 0 37px;
+  border: 1px solid #bce8f1;
+  background: url("/workshop-assets/embodivsi-mark.webp") center / cover no-repeat;
+  box-shadow: 0 4px 14px #32bcd31f;
+}
 .researchNav nav { display: flex; gap: 5px; align-items: center; }
 .researchNavItem { min-height: 44px; padding: 9px 16px; border: 0; border-radius: 999px; background: none; color: #596477; font-size: var(--text-body); font-weight: 500; white-space: nowrap; text-decoration: none; }
 .researchNavItem:hover { color: var(--ink); background: #f5f6f9; }
