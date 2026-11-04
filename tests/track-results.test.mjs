@@ -118,7 +118,7 @@ test('leaderboard results expose episode count and cohort instead of hiding prot
   assert.equal(acwmResult.cohort, 'heldout73');
 });
 
-test('policy baselines use fixed 24-task macro aggregates', () => {
+test('policy baselines use the official fixed 24-task, 120-episode summaries', () => {
   assert.equal(policyTaskIds.length, 24);
   assert.equal(new Set(policyTaskIds).size, 24);
   assert.ok(policyTaskIds.every((id) => scenarioPlan.some((scene) => scene.id === id)));
@@ -126,7 +126,7 @@ test('policy baselines use fixed 24-task macro aggregates', () => {
   const score = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TASK_SCORE', modelId: 'XVLA', taskId: 'all' });
   const collision = readResult({ trackId: 'T3', mode: 'plan', metricId: 'COLLISION_RATE', modelId: 'XVLA', taskId: 'all' });
   assert.equal(tsr.primary, '5.83%');
-  assert.equal(tsr.sampleCount, 24);
+  assert.equal(tsr.sampleCount, 120);
   assert.match(tsr.cohort, /24 tasks/);
   assert.equal(score.primary, '9.75');
   assert.equal(collision.available, false);

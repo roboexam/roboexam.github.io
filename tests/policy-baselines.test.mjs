@@ -14,6 +14,7 @@ test("policy benchmark publishes exactly three complete 24-task baselines", () =
   assert.deepEqual(tracks.find((track) => track.id === "T3").models.map((model) => model.id), policyBaselineModelIds);
   assert.equal(policyTaskIds.length, 24);
   assert.deepEqual(Object.keys(data.models), Object.keys(aggregates.models));
+  assert.deepEqual(Object.keys(data.overall), policyBaselineModelIds);
   for (const model of policyBaselineModelIds) {
     assert.deepEqual(Object.keys(data.models[model]).sort(), ["behavior", "id", "semantic", "visual"]);
     assert.equal(Object.values(data.models[model]).every((setting) => Object.keys(setting).length === 24), true);
@@ -23,6 +24,23 @@ test("policy benchmark publishes exactly three complete 24-task baselines", () =
   assert.equal(tasks.reduce((sum, task) => sum + task.samples.length, 0), 1440);
   assert.equal(tasks.reduce((sum, task) => sum + task.samples.flatMap((sample) => sample.videos).length, 0), 4320);
   assert.doesNotMatch(JSON.stringify(data), /\/mnt\//);
+});
+
+test("all-scenario rows use the official 120-episode ID and OOD summaries", () => {
+  const expected = {
+    id: { once: "41.02%", end: "39.11%", drop: "5.08%", retention: "96.77%" },
+    visual: { once: "33.40%", end: "30.56%", drop: "14.42%", retention: "95.24%" },
+    semantic: { once: "40.21%", end: "38.97%", drop: "6.90%", retention: "100.00%" },
+    behavioral: { once: "29.00%", end: "28.49%", drop: "6.67%", retention: "100.00%" },
+  };
+  for (const [setting, values] of Object.entries(expected)) {
+    const selection = { trackId: "T3", mode: "plan", modelId: "G05", taskId: "all", setting };
+    assert.equal(readResult({ ...selection, metricId: "LOCAL_SUCCESS_ONCE" }).primary, values.once);
+    assert.equal(readResult({ ...selection, metricId: "LOCAL_SUCCESS_AT_END" }).primary, values.end);
+    assert.equal(readResult({ ...selection, metricId: "DROP_AFTER_SUCCESS" }).primary, values.drop);
+    assert.equal(readResult({ ...selection, metricId: "GOAL_RETENTION" }).primary, values.retention);
+    assert.equal(readResult({ ...selection, metricId: "TSR" }).sampleCount, 120);
+  }
 });
 
 test("all-scenario TSR keeps ID and three OOD settings separate for every baseline", () => {

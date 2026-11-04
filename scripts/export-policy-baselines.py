@@ -15,8 +15,8 @@ AGG_OUT = ROOT / "app/data/generated/policy-baselines-aggregates.json"
 MEDIA_OUT = ROOT / "scripts/policy-baseline-media.json"
 MODELS = ("G05", "HyVLA", "XVLA")
 SETTINGS = ("id", "visual", "semantic", "behavior")
-RESULT_VERSION = "benchmark-policy-20261104-event-metrics-v2"
-PROTOCOL = "Benchmark Policy v2 · 24 tasks · five frozen episodes per ID/OOD split · DLAA · event metrics"
+RESULT_VERSION = "benchmark-policy-20261104-official-overall-v3"
+PROTOCOL = "Benchmark Policy v3 · 24 tasks · five frozen episodes per ID/OOD split · DLAA · official model-level summaries"
 METRICS = (
     "TSR", "TASK_SCORE", "FIRST_TARGET_SELECTION", "ALL_TARGET_SELECTION",
     "GRASP_STABILITY", "DROP_RATE", "LOCAL_SUCCESS_ONCE", "LOCAL_SUCCESS_AT_END",
@@ -160,11 +160,13 @@ def build() -> tuple[dict, dict, dict]:
         "sourceDataset": Path(source_manifest["source_dataset"]).name,
         "sourceManifestSha256": sha256(SOURCE / "manifest.json"),
         "models": {},
+        "overall": {},
     }
     media_candidates: list[tuple[str, Path]] = []
 
     for model in MODELS:
         full["models"][model] = {}
+        full["overall"][model] = {}
         for setting in SETTINGS:
             full["models"][model][setting] = {}
             for task in tasks:
@@ -208,6 +210,25 @@ def build() -> tuple[dict, dict, dict]:
                     "values": aggregate_metrics(task_result, samples), "samples": samples,
                 }
 
+            setting_samples = [
+                sample
+                for entry in full["models"][model][setting].values()
+                for sample in entry["samples"]
+            ]
+            if setting == "id":
+                overall_result = read_json(SOURCE / model / "overall.json")
+            else:
+                overall_result = read_json(SOURCE / model / "ood-overall.json")["by_split"][setting]
+            require(int(overall_result["episode_count"]) == len(setting_samples) == 120, f"invalid official overall cohort: {model}/{setting}")
+            full["overall"][model][setting] = {
+                "model": model, "split": setting,
+                "resultVersion": RESULT_VERSION, "protocol": PROTOCOL,
+                "taskCount": 24, "expectedEpisodes": 120, "episodes": 120,
+                "incompleteEpisodes": 0,
+                "successes": int(overall_result["task_success_count"]),
+                "values": aggregate_metrics(overall_result, setting_samples),
+            }
+
     def hashed(item):
         camera, path = item
         return camera, path, sha256(path)
@@ -229,10 +250,10 @@ def build() -> tuple[dict, dict, dict]:
                         digest = hashes[str(path)]
                         video.update({"url": f"/api/policy-baseline-media/{digest}.mp4", "sha256": digest, "size": path.stat().st_size})
 
-    aggregates = {**{key: value for key, value in full.items() if key != "models"}, "models": {
+    aggregates = {**{key: value for key, value in full.items() if key not in ("models", "overall")}, "models": {
         model: {setting: {task: {key: value for key, value in entry.items() if key != "samples"} for task, entry in tasks_data.items()} for setting, tasks_data in settings.items()}
         for model, settings in full["models"].items()
-    }}
+    }, "overall": full["overall"]}
     return full, aggregates, registry
 
 
@@ -249,10 +270,12 @@ def check_existing() -> None:
     require(full.get("resultVersion") == RESULT_VERSION == aggregates.get("resultVersion"), "stale result version")
     require(full.get("sourceManifestSha256") == sha256(SOURCE / "manifest.json") == aggregates.get("sourceManifestSha256"), "stale source manifest")
     require(set(full["models"]) == set(MODELS) == set(aggregates["models"]), "model mismatch")
+    require(set(full.get("overall", {})) == set(MODELS) == set(aggregates.get("overall", {})), "official overall model mismatch")
     require(all(len(full["models"][model][setting]) == 24 for model in MODELS for setting in SETTINGS), "task count mismatch")
     samples = [sample for model in MODELS for setting in SETTINGS for task in full["models"][model][setting].values() for sample in task["samples"]]
     require(len(samples) == 1440, "episode count mismatch")
     require(sum(len(sample["videos"]) for sample in samples) == 4320, "video reference count mismatch")
+    require(all(full["overall"][model][setting]["episodes"] == 120 for model in MODELS for setting in SETTINGS), "official overall episode count mismatch")
     event_metrics = ("LOCAL_SUCCESS_ONCE", "LOCAL_SUCCESS_AT_END", "DROP_AFTER_SUCCESS", "GOAL_RETENTION")
     require(all(metric in sample["values"] for sample in samples for metric in event_metrics), "event metrics missing")
     require(any(sample["values"][metric] is not None for sample in samples for metric in event_metrics), "event metrics are all unavailable")

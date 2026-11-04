@@ -28,10 +28,23 @@ export type PolicyTask = {
   successes: number;
   values: Record<string, PolicyMetric>;
 };
+type PolicyOverall = {
+  model: PolicyBaselineModel;
+  split: StoredSetting;
+  resultVersion: string;
+  protocol: string;
+  taskCount: number;
+  expectedEpisodes: number;
+  episodes: number;
+  incompleteEpisodes: number;
+  successes: number;
+  values: Record<string, PolicyMetric>;
+};
 type PolicyBundle = {
   resultVersion: string;
   sourceDataset: string;
   models: Record<PolicyBaselineModel, Record<StoredSetting, Record<string, PolicyTask>>>;
+  overall: Record<PolicyBaselineModel, Record<StoredSetting, PolicyOverall>>;
 };
 
 export const policyBaselines = raw as unknown as PolicyBundle;
@@ -61,30 +74,20 @@ export function policyBaselineResult(model: PolicyBaselineModel, taskId: string,
   const tasks = Object.values(policyBaselines.models[model][split]);
   const isOverall = taskId === "all";
   const task = isOverall ? undefined : policyBaselines.models[model][split]?.[taskId];
-  const taskMetrics = tasks.map((item) => item.values[metricId]).filter((item): item is PolicyMetric => item !== undefined);
-  const available = taskMetrics.filter((item): item is PolicyMetric & { value: number } => item.value !== null && Number.isFinite(item.value));
-  const overallValue = available.length ? available.reduce((sum, item) => sum + item.value, 0) / available.length : null;
-  const metric = isOverall ? (taskMetrics[0] ? {
-    value: overallValue,
-    n: available.length,
-    unit: taskMetrics[0].unit,
-    primary: policySampleDisplay(overallValue, taskMetrics[0].unit),
-    available: overallValue !== null,
-    coverage: tasks.length ? available.length / tasks.length : null,
-    detail: overallValue === null ? taskMetrics[0].detail : `arithmetic mean of per-task aggregates over ${available.length} available tasks`,
-  } : undefined) : task?.values[metricId];
+  const overall = isOverall ? policyBaselines.overall[model][split] : undefined;
+  const metric = isOverall ? overall?.values[metricId] : task?.values[metricId];
   const episodes = tasks.reduce((sum, item) => sum + item.episodes, 0);
   const expectedEpisodes = tasks.reduce((sum, item) => sum + item.expectedEpisodes, 0);
   return {
     primary: metric?.primary ?? "N/A",
-    detail: metric ? `${isOverall ? "Tasks" : "N"} = ${metric.n}${metric.coverage == null ? "" : ` · coverage ${(metric.coverage * 100).toFixed(1)}%`} · ${metric.detail}` : "No validated policy-baseline result for this task and metric.",
+    detail: metric ? `N = ${metric.n}${metric.coverage == null ? "" : ` · coverage ${(metric.coverage * 100).toFixed(1)}%`} · ${metric.detail}` : "No validated policy-baseline result for this task and metric.",
     status: metric?.available ? "Computed" : "N/A",
     available: metric?.available ?? false,
-    version: task?.resultVersion ?? policyBaselines.resultVersion,
-    protocol: task?.protocol ?? `Benchmark Policy v1 · ${split} cohort · task-macro aggregate`,
+    version: task?.resultVersion ?? overall?.resultVersion ?? policyBaselines.resultVersion,
+    protocol: task?.protocol ?? overall?.protocol ?? `Benchmark Policy · ${split} cohort`,
     sampleCount: metric?.n,
     cohort: isOverall
-      ? `${split} · ${tasks.length} tasks · ${episodes}/${expectedEpisodes} episodes`
+      ? `${split} · ${overall?.taskCount ?? tasks.length} tasks · ${overall?.episodes ?? episodes}/${overall?.expectedEpisodes ?? expectedEpisodes} episodes`
       : task ? `${split} · ${task.episodes}/${task.expectedEpisodes} episodes` : undefined,
   };
 }
