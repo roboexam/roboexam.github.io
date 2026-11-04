@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-html-link-for-pages -- Native anchors preserve hash scrolling in the static Vinext build. */
 import type { ReactNode } from "react";
 import Link from "next/link";
 
@@ -17,9 +16,6 @@ export function SiteShell({ active, children }: Props) {
       <nav aria-label="Primary navigation">
         <Link className={`researchNavItem ${active === "Overview" ? "active" : ""}`}
           aria-current={active === "Overview" ? "page" : undefined} href="/">Home</Link>
-        <a className="researchNavItem" href="/#program">Program</a>
-        <a className="researchNavItem" href="/#speakers">Speakers</a>
-        <a className="researchNavItem" href="/#organizers">Organizers</a>
         <Link className={`researchNavItem ${active === "Leaderboards" ? "active" : ""}`}
           aria-current={active === "Leaderboards" ? "page" : undefined} href="/leaderboards">Leaderboards</Link>
       </nav>

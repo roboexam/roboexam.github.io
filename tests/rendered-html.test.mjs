@@ -64,6 +64,8 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /people\/jixian-wu\.jpg/);
   assert.match(html, /Leaderboards/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 7);
+  assert.ok(html.indexOf('id="organizers"') < html.indexOf('id="speakers"'));
+  assert.doesNotMatch(html, /href="\/#(?:program|speakers|organizers)"/);
   assert.doesNotMatch(html, /heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|samples\/stack-bowls-policy\.mp4|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
 });
 

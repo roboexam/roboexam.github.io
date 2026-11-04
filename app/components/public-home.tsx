@@ -127,6 +127,19 @@ export function PublicHome() {
       </ol>
     </section>
 
+    <section id="organizers" className="publicSection organizerSection" aria-labelledby="organizers-title">
+      <div className="publicSectionHeading compactHeading">
+        <div><p className="publicEyebrow">Organizing team</p><h2 id="organizers-title">Organizers</h2></div>
+        <p>Research leadership and benchmark operations.</p>
+      </div>
+      <div className="organizerPhotoGrid">
+        {organizers.map((person) => <article key={person.name}>
+          <img src={person.photo} alt={`Portrait of ${person.name}`} width="96" height="96" loading="lazy"/>
+          <div><span>{person.role}</span><h3>{person.name}</h3><p>{person.affiliation}</p></div>
+        </article>)}
+      </div>
+    </section>
+
     <section id="speakers" className="publicSection" aria-labelledby="speakers-title">
       <div className="publicSectionHeading compactHeading">
         <div><p className="publicEyebrow">Tentative invited speakers</p><h2 id="speakers-title">Invited speakers</h2></div>
@@ -148,19 +161,6 @@ export function PublicHome() {
         <h2 id="leaderboard-callout-title">Four tracks. Independent rankings.</h2>
       </div>
       <a href="/leaderboards">Open leaderboards <ArrowRight size={18}/></a>
-    </section>
-
-    <section id="organizers" className="publicSection organizerSection" aria-labelledby="organizers-title">
-      <div className="publicSectionHeading compactHeading">
-        <div><p className="publicEyebrow">Organizing team</p><h2 id="organizers-title">Organizers</h2></div>
-        <p>Research leadership and benchmark operations.</p>
-      </div>
-      <div className="organizerPhotoGrid">
-        {organizers.map((person) => <article key={person.name}>
-          <img src={person.photo} alt={`Portrait of ${person.name}`} width="96" height="96" loading="lazy"/>
-          <div><span>{person.role}</span><h3>{person.name}</h3><p>{person.affiliation}</p></div>
-        </article>)}
-      </div>
     </section>
   </div>;
 }
