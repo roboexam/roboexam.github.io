@@ -5,8 +5,8 @@ const programCards = [
   {
     number: "01",
     title: "Invited talks",
-    description: "Seven perspectives on foundation models, world models, robot learning, and deployment.",
-    meta: "7 tentative speakers",
+    description: "Ten confirmed perspectives on foundation models, world models, robot learning, and deployment.",
+    meta: "10 confirmed speakers",
   },
   {
     number: "02",
@@ -17,71 +17,82 @@ const programCards = [
   {
     number: "03",
     title: "RoboExam challenge",
-    description: "Four independent tracks from embodied reasoning to held-out simulation and real-robot verification.",
-    meta: "X-Humanoid aligned",
+    description: "Four model-interface tracks connected through a shared task-and-intervention registry.",
+    meta: "10 finalists per track",
   },
 ] as const;
 
 const agenda = [
   ["13:00", "Opening", "Learning from failure"],
-  ["13:10", "Invited talks I", "Foundation models and deployment"],
-  ["14:10", "Papers & posters", "Best Paper and demonstrations"],
+  ["13:10", "Invited talks I", "Learner–evaluator co-adaptation"],
+  ["14:10", "Best Paper", "Presentation and award"],
+  ["14:25", "Posters & demos", "Accepted papers and demonstrations"],
   ["15:15", "Coffee break", "Networking"],
-  ["15:30", "Invited talks II", "World models, adaptation, and safety"],
-  ["16:15", "RoboExam & panel", "Results, awards, and closing discussion"],
+  ["15:30", "Invited talks II", "Cross-agent transfer and retention"],
+  ["16:30", "RoboExam", "Results and awards"],
+  ["16:45", "Synthesis panel", "Audience case vote and reporting guidance"],
 ] as const;
 
 const speakers = [
   ["Sergey Levine", "UC Berkeley", "https://people.eecs.berkeley.edu/~svlevine/"],
+  ["Daniela Rus", "MIT CSAIL", "https://www.csail.mit.edu/person/daniela-rus"],
   ["Peter Stone", "The University of Texas at Austin", "https://www.cs.utexas.edu/~pstone/"],
+  ["Cynthia Breazeal", "MIT Media Lab", "https://www.media.mit.edu/people/cynthiab/overview/"],
   ["Chelsea Finn", "Stanford University", "https://profiles.stanford.edu/chelsea-finn"],
   ["Kate Saenko", "Boston University / Meta FAIR", "https://ai.bu.edu/ksaenko.html"],
   ["Jeannette Bohg", "Stanford University", "https://web.stanford.edu/~bohg/"],
   ["Marios Savvides", "Carnegie Mellon University", "https://www.mariossavvides.com/"],
   ["Katerina Fragkiadaki", "Carnegie Mellon University", "https://www.cs.cmu.edu/~katef/"],
+  ["Xiaozhu Ju", "X-Humanoid", "https://openreview.net/profile?id=~Xiaozhu_Ju1"],
 ] as const;
 
 const organizers = [
   {
-    name: "Shanghang Zhang",
-    affiliation: "Peking University",
-    role: "Program Chair",
-    photo: "/people/shanghang-zhang.jpg",
-  },
-  {
     name: "Karl Henrik Johansson",
     affiliation: "KTH Royal Institute of Technology",
-    role: "Secondary organizer",
+    role: "Advisory organizer",
     photo: "/people/karl-henrik-johansson.jpg",
-  },
-  {
-    name: "Danica Kragić",
-    affiliation: "KTH Royal Institute of Technology",
-    role: "Organizer",
-    photo: "/people/danica-kragic.jpg",
   },
   {
     name: "Amanda Prorok",
     affiliation: "University of Cambridge",
-    role: "Organizer",
+    role: "Advisory organizer",
     photo: "/people/amanda-prorok.jpg",
+  },
+  {
+    name: "Danica Kragić",
+    affiliation: "KTH Royal Institute of Technology",
+    role: "Advisory organizer",
+    photo: "/people/danica-kragic.jpg",
+  },
+  {
+    name: "Mengyu Wang",
+    affiliation: "Harvard University",
+    role: "Advisory organizer",
+    photo: "/people/mengyu-wang.jpg",
+  },
+  {
+    name: "Shanghang Zhang",
+    affiliation: "Peking University",
+    role: "Primary organizer",
+    photo: "/people/shanghang-zhang.jpg",
   },
   {
     name: "Xiaobao Wei",
     affiliation: "Peking University",
-    role: "RoboExam coordination",
+    role: "Secondary organizer",
     photo: "/people/xiaobao-wei.jpg",
   },
   {
     name: "Jixian Wu",
     affiliation: "New York University",
-    role: "Evaluation operations",
+    role: "Organizer",
     photo: "/people/jixian-wu.jpg",
   },
   {
     name: "Fangyuan Zhao",
     affiliation: "Peking University",
-    role: "Challenge protocols",
+    role: "Organizer",
     photo: "/people/fangyuan-zhao.jpg",
   },
 ] as const;
@@ -94,11 +105,11 @@ export function PublicHome() {
         <h1 id="public-hero-title">Beyond Passive Evaluation.</h1>
         <p className="workshopHeroTitle">Verifiable Self-Improvement for Physical Intelligence</p>
         <p className="publicHeroLead">
-          An open research program and the RoboExam challenge, connecting X-Humanoid-aligned data,
-          world models, policy learning, and held-out sim-to-real evaluation.
+          An open research program on agentic evaluation and multi-agent co-evolution, with RoboExam
+          linking VLM reasoning, physical foresight, simulation, and X-Humanoid-aligned deployment.
         </p>
         <div className="workshopMeta" aria-label="Proposed workshop format">
-          <span>Seattle</span><span>June 20–21, 2027</span><span>Half-day</span>
+          <span>Seattle</span><span>June 20 or 21, 2027</span><span>Half-day</span>
         </div>
         <div className="publicHeroActions">
           <a className="primary" href="#program">View program <ArrowRight size={18}/></a>
@@ -142,13 +153,13 @@ export function PublicHome() {
 
     <section id="speakers" className="publicSection" aria-labelledby="speakers-title">
       <div className="publicSectionHeading compactHeading">
-        <div><p className="publicEyebrow">Tentative invited speakers</p><h2 id="speakers-title">Invited speakers</h2></div>
-        <p>Seven tentative speakers across vision, learning, and robotics.</p>
+        <div><p className="publicEyebrow">Confirmed invited speakers</p><h2 id="speakers-title">Invited speakers</h2></div>
+        <p>Ten confirmed in-person speakers across vision, learning, and robotics.</p>
       </div>
       <div className="speakerGrid">
         {speakers.map(([name, affiliation, href], index) =>
           <a href={href} target="_blank" rel="noreferrer" key={name}>
-            <span>0{index + 1}<ExternalLink size={14}/></span>
+            <span>{String(index + 1).padStart(2, "0")}<ExternalLink size={14}/></span>
             <h3>{name}</h3>
             <b>{affiliation}</b>
           </a>)}
@@ -159,6 +170,7 @@ export function PublicHome() {
       <div>
         <p className="publicEyebrow">RoboExam</p>
         <h2 id="leaderboard-callout-title">Four tracks. Independent rankings.</h2>
+        <p>T1 VLM reasoning · T2 action-conditioned prediction · T3 simulation · T4 real-robot deployment</p>
       </div>
       <a href="/leaderboards">Open leaderboards <ArrowRight size={18}/></a>
     </section>

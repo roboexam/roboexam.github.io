@@ -23,7 +23,7 @@ export function SiteShell({ active, children }: Props) {
     <main id="main-content" className="researchMain">{children}</main>
     <footer className="researchFooter">
       <div><strong>EmbodiVSI</strong><span>Verifiable Self-Improvement for Physical Intelligence.</span></div>
-      <span>Open research program · RoboExam challenge</span>
+      <span>Open research program · RoboExam shared task registry</span>
     </footer>
   </div>;
 }
