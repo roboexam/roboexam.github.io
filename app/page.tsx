@@ -1,13 +1,8 @@
-import DashboardClient from "./dashboard-client";
+import { PublicHome } from "./components/public-home";
+import { SiteShell } from "./components/site-shell";
 
 export const dynamic = "force-static";
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ task?: string | string[] }>;
-}) {
-  const task = (await searchParams).task;
-  const taskLink = typeof task === "string" && /^[A-Za-z0-9_+-]{1,128}$/.test(task);
-  return <DashboardClient initialPage={taskLink ? "Datasets" : "Overview"}/>;
+export default function Page() {
+  return <SiteShell active="Overview"><PublicHome/></SiteShell>;
 }

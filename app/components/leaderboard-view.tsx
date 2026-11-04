@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { T1UnibenchView } from "./t1/t1-unibench-view";
 import { evidenceLabels, facetsFor, initialMetricFilters, matchesMetric, protocolLabels, type MetricFilters } from "../data/metric-facets";
 import { tracks, type TrackId } from "../data/metric-plan";
@@ -9,7 +9,6 @@ import { scenarioPlan, scenarioTags, tagsForScenario, type ScenarioTag } from ".
 import { admittedSettingScores, calculateOverallScore, type OverallScorecard } from "../data/overall-score";
 import { metricsFor, readResult, type MetricSelection, type ReportMode, type ReportResult } from "../data/track-results";
 import { policyTaskIds } from "../data/policy-baselines";
-import { BaselineRunPlan } from "./baseline-run-plan";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
 type EvalSetting = "id" | "visual" | "semantic" | "behavioral" | "recovery";
@@ -39,6 +38,19 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   const [advanced, setAdvanced] = useState(false);
   const [selectedSceneTags, setSelectedSceneTags] = useState<ScenarioTag[]>([]);
   const [sceneId, setSceneId] = useState("all");
+
+  useEffect(() => {
+    function syncTrackFromHash() {
+      const requested = window.location.hash.slice(1) as TrackId;
+      if (tracks.some((item) => item.id === requested)) setTrackId(requested);
+    }
+    const frame = window.requestAnimationFrame(syncTrackFromHash);
+    window.addEventListener("hashchange", syncTrackFromHash);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", syncTrackFromHash);
+    };
+  }, []);
 
   const track = tracks.find((item) => item.id === trackId)!;
   const scoreGuide = track.scoreGuide;
@@ -130,6 +142,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         onClick={() => {
           const nextMode = defaultMode;
           setTrackId(item.id);
+          window.history.replaceState(null, "", `#${item.id}`);
           setSceneId("all");
           setMode(nextMode);
           reset();
@@ -141,9 +154,8 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       <strong>Score guide · 分数说明</strong>
       <p lang="en">{scoreGuide.en}</p><p lang="zh-CN">{scoreGuide.zh}</p>
     </section>
-    <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>
     {trackId === "T1" ? <section className="trackWorkspace" aria-label="T1 current results">
-      <T1UnibenchView/>
+      <T1UnibenchView showEpisodeEvidence={false}/>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       <div className="trackSectionTitle">
         <h2>{track.title}</h2>

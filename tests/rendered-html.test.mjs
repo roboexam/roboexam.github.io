@@ -40,33 +40,29 @@ async function render(pathname, {
   );
 }
 
-test("redirects the obsolete login page to the homepage", async () => {
+test("does not publish the retired login page", async () => {
   const response = await render("/login");
-  assert.equal(response.status, 307);
-  assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, "/");
+  assert.equal(response.status, 404);
 });
 
-test("renders the dashboard introduction without login", async () => {
+test("renders the public benchmark introduction without internal surfaces", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /RoboExam/);
-  assert.match(html, /CVPR 2027 Workshop/);
-  assert.match(html, /The final exam for Physical AI/);
-  assert.match(html, /You just can&#x27;t differentiate between a robot and the very best of humans\./);
-  assert.doesNotMatch(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
-  assert.match(html, /Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950/);
-  assert.match(html, /Correlation/);
-  assert.match(html, /From model capabilities to task-level evidence\./);
-  assert.match(html, /The RoboExam evaluation spectrum/);
-  assert.doesNotMatch(html, /Measures C[1-7]|Other capabilities|VLM agents · shared harness|Action-conditioned world models|Policies in simulation|Policies on real robots/);
+  assert.match(html, /Evidence for robots that reason, predict, act, and recover\./);
+  assert.match(html, /See the task, rollout, and outcome\./);
+  assert.match(html, /One benchmark, four questions\./);
+  assert.match(html, /A final score is the start of the diagnosis\./);
   assert.match(html, /Embodied Agency/);
-  assert.match(html, /Seven capabilities/);
-  assert.match(html, /State Grounding/);
-  assert.match(html, /Recovery &amp; Safety/);
+  assert.match(html, /Physical Foresight/);
+  assert.match(html, /Simulation Deployment/);
+  assert.match(html, /Real-World Deployment/);
+  assert.match(html, /Visual OOD/);
+  assert.match(html, /Failure recovery/);
+  assert.match(html, /samples\/stack-bowls-policy\.mp4/);
   assert.match(html, /Leaderboards/);
-  assert.doesNotMatch(html, /当前 baseline 训练与测评计划|RUN REGISTRY/);
-  assert.doesNotMatch(html, /拟之而后言|识其境，推其变，成其事，应万变|Where Physical AI|纸上得来终觉浅|Lu You|Reason from observations|Perceive and reason without acting|Fire tests gold|Seneca|Toward human-level Physical AI|One robot|Build history|From profile to evidence|Read abilities first|reducing embodied intelligence to a single success rate|Capability × interface × regime|One syllabus\. Four exams|UniEmbodied-Bench|Unified Embodied Evaluation|Research preview|ICLR 2027/);
+  assert.doesNotMatch(html, /CVPR|Workshop|workshop|Correlation|Review|Datasets|当前 baseline 训练与测评计划|RUN REGISTRY/);
 });
 
 test("does not require an authentication cookie", async () => {
@@ -107,22 +103,16 @@ test("serves metric-specific GT and the actual Cosmos response for Figure 2", as
 });
 
 
-test("redirects the retired standalone OOD page while keeping its media route guarded", async () => {
+test("does not publish the retired OOD page while keeping its media route guarded", async () => {
   const response = await render("/ood");
-  assert.equal(response.status, 307);
-  assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, "/");
+  assert.equal(response.status, 404);
   const invalid = await render("/api/ood-media?file=../../secret", { authenticated: true });
   assert.equal(invalid.status, 404);
 });
 
-test("publishes the raw review page and rejects unlisted media", async () => {
+test("does not publish the review page and rejects unlisted media", async () => {
   const response = await render("/review");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /公盘数据质检/);
-  assert.match(html, /不会改写原始文件/);
-  assert.match(html, /Simulation raw/);
-  assert.doesNotMatch(html, /runtime\/staging/);
+  assert.equal(response.status, 404);
   const invalidRaw = await render("/api/raw-review?path=%2Fetc%2Fpasswd");
   assert.equal(invalidRaw.status, 400);
   assert.equal((await render("/api/raw-review-media?id=unlisted")).status, 404);
@@ -134,30 +124,17 @@ test("publishes the raw review page and rejects unlisted media", async () => {
   }
 });
 
-test("Datasets renders the unified live dataset workspace", async () => {
+test("does not publish a standalone Datasets page", async () => {
   const response = await render("/datasets");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /Task-aligned simulation episodes/);
-  assert.match(html, /Choose one task, then browse its 100 Training episodes/);
-  assert.match(html, /24[\s\S]{0,30}Tasks/);
-  assert.match(html, /3,000[\s\S]{0,30}Episodes/);
-  assert.match(html, /24 tasks/);
-  assert.match(html, /Simulation catalog summary/);
-  assert.match(html, /Camera \+ action replay/);
-  assert.doesNotMatch(html, /Scenario inventory|BENCHMARK COVERAGE/);
-  assert.doesNotMatch(html, /Training · [\s\S]{0,40}2,400|Evaluation · [\s\S]{0,40}600|2 sets/);
-  assert.doesNotMatch(html, /Simulation 原始数据/);
-  assert.doesNotMatch(html, /reference episodes|admitted ·|\/mnt\//);
+  assert.equal(response.status, 404);
 });
 
-test("a task deep link opens the task-first Datasets view", async () => {
+test("an obsolete task query remains on the public overview", async () => {
   const response = await render("/?task=mirror_pair_layout");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Task-aligned simulation episodes/);
-  assert.match(html, /24 tasks/);
-  assert.doesNotMatch(html, /The final exam for Physical AI/);
+  assert.match(html, /Evidence for robots that reason, predict, act, and recover\./);
+  assert.doesNotMatch(html, /Task-aligned simulation episodes/);
 });
 
 test("serves compressed video renditions with ranges and immutable identity", async () => {
@@ -202,8 +179,8 @@ test("serves compressed video renditions with ranges and immutable identity", as
 });
 
 
-test("renders the UniBench-24 Track 1 board across five settings with selectable rollouts", async () => {
-  const response = await render("/track-1");
+test("renders the public UniBench-24 Track 1 score tables across five settings", async () => {
+  const response = await render("/leaderboards");
   assert.equal(response.status, 200);
   const html = await response.text();
   const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-unibench-results.json", import.meta.url), "utf8"));
@@ -212,12 +189,8 @@ test("renders the UniBench-24 Track 1 board across five settings with selectable
     if (model.overall) assert.ok(html.includes(`<strong>${model.overall.overall.toFixed(1)}</strong>`), `${model.id} overall`);
   }
   for (const text of ["Overall", "VQA", "Subtask", "In-distribution", "Visual OOD", "Semantic OOD", "Behavioral OOD", "Failure recovery"]) assert.ok(html.includes(text), text);
-  for (const label of ["Rollout model", "Rollout setting", "Rollout task", "Episode VQA", "Per-task subtask scores"]) assert.ok(html.includes(`aria-label="${label}"`), label);
-  const first = bundle.episodes.find(episode => episode.modelId === bundle.models[0].id && episode.split === "ID" && episode.taskId === bundle.tasks[0].id);
-  assert.ok(first, "first ID episode");
-  assert.ok(html.includes(`<video src="${first.video.url}"`), first.video.id);
-  assert.ok(html.includes(`data-episode-id="${first.id}"`));
-  assert.doesNotMatch(html, /src="\/api\/t1-(benchmark-)?media\//);
+  assert.match(html, /aria-label="Per-task subtask scores"/);
+  assert.doesNotMatch(html, /Rollout model|Rollout setting|Rollout task|Episode VQA|data-episode-id|src="\/api\/t1-/);
   assert.doesNotMatch(html, /MiMo/);
   assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
 });
@@ -257,18 +230,11 @@ test("rejects an unlisted benchmark video without exposing private paths", async
   assert.doesNotMatch(await response.text(), /\/bh\/|\/mnt\/|\/Users\//);
 });
 
-test("serves the exact benchmark rollout through the built server with seek support", async () => {
+test("does not expose private benchmark rollout media from the public copy", async () => {
   const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-benchmark-results.json", import.meta.url), "utf8"));
   const video = bundle.episodes[0].video;
   const head = await render(video.url, { accept: "video/mp4", method: "HEAD" });
-  assert.equal(head.status, 200);
-  assert.equal(head.headers.get("content-length"), String(video.bytes));
-  assert.equal(head.headers.get("etag"), `"${video.sha256}"`);
-  assert.equal(head.headers.get("accept-ranges"), "bytes");
-  const range = await render(video.url, { accept: "video/mp4", headers: { range: "bytes=0-31" } });
-  assert.equal(range.status, 206);
-  assert.equal(range.headers.get("content-range"), `bytes 0-31/${video.bytes}`);
-  assert.equal((await range.arrayBuffer()).byteLength, 32);
+  assert.equal(head.status, 404);
 });
 
 test("rejects an unlisted Track 1 video in the built server", async () => {

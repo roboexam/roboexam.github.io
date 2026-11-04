@@ -38,11 +38,11 @@ button, a, input, select, summary, [tabindex] { outline-offset: 4px; }
 .skipLink { position: fixed; z-index: 100; top: 12px; left: 12px; transform: translateY(-150%); background: #fff; padding: 12px 18px; color: var(--blue); }
 .skipLink:focus { transform: none; }
 .researchNav { position: sticky; top: 0; z-index: 30; height: 88px; padding: 0 max(32px, calc((100vw - 1824px) / 2)); display: flex; justify-content: space-between; gap: 30px; background: #ffffffed; backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-.researchBrand { display: flex; align-items: center; gap: 11px; padding: 0; border: 0; background: transparent; color: var(--ink); font-size: var(--text-card); font-weight: 650; letter-spacing: -.045em; }
+.researchBrand { display: flex; align-items: center; gap: 11px; padding: 0; border: 0; background: transparent; color: var(--ink); font-size: var(--text-card); font-weight: 650; letter-spacing: -.045em; text-decoration: none; }
 .brandGlyph { display: inline-flex; align-items: baseline; justify-content: center; width: 37px; height: 37px; border-radius: 10px; background: var(--ink); color: #fff; font-size: var(--text-card); line-height: 30px; font-weight: 700; }
 .brandGlyph span { color: #94b7ff; }
 .researchNav nav { display: flex; gap: 5px; align-items: center; }
-.researchNavItem { min-height: 44px; padding: 9px 16px; border: 0; border-radius: 999px; background: none; color: #596477; font-size: var(--text-body); font-weight: 500; white-space: nowrap; }
+.researchNavItem { min-height: 44px; padding: 9px 16px; border: 0; border-radius: 999px; background: none; color: #596477; font-size: var(--text-body); font-weight: 500; white-space: nowrap; text-decoration: none; }
 .researchNavItem:hover { color: var(--ink); background: #f5f6f9; }
 .researchNavItem.active { color: var(--ink); background: #edf0f5; }
 .researchShell .researchOverview { padding-top: 0; gap: 0; }
