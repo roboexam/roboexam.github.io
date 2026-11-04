@@ -40,6 +40,33 @@ test("all-scenario TSR keeps ID and three OOD settings separate for every baseli
   }
 });
 
+test("new event metrics preserve episode availability and task-level macro means", () => {
+  const metricIds = ["LOCAL_SUCCESS_ONCE", "LOCAL_SUCCESS_AT_END", "DROP_AFTER_SUCCESS", "GOAL_RETENTION"];
+  const available = Object.fromEntries(metricIds.map((metric) => [metric, 0]));
+  for (const model of Object.values(data.models)) {
+    for (const setting of Object.values(model)) {
+      for (const task of Object.values(setting)) {
+        for (const metric of metricIds) {
+          const values = task.samples.map((sample) => sample.values[metric]).filter((value) => value !== null);
+          assert.equal(task.values[metric].n, values.length);
+          assert.equal(task.values[metric].available, values.length > 0);
+          if (values.length) {
+            available[metric] += 1;
+            const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+            assert.ok(Math.abs(task.values[metric].value - mean) < 1e-12);
+          } else {
+            assert.equal(task.values[metric].value, null);
+          }
+        }
+      }
+    }
+  }
+  assert.ok(available.LOCAL_SUCCESS_ONCE > 0);
+  assert.ok(available.LOCAL_SUCCESS_AT_END > 0);
+  assert.ok(available.DROP_AFTER_SUCCESS > 0);
+  assert.ok(available.GOAL_RETENTION > 0);
+});
+
 test("policy baseline media is allowlisted, seekable, and rejects paths", async () => {
   const [file] = Object.keys(media);
   assert.ok(file);

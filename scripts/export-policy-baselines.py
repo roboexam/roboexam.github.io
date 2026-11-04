@@ -15,8 +15,8 @@ AGG_OUT = ROOT / "app/data/generated/policy-baselines-aggregates.json"
 MEDIA_OUT = ROOT / "scripts/policy-baseline-media.json"
 MODELS = ("G05", "HyVLA", "XVLA")
 SETTINGS = ("id", "visual", "semantic", "behavior")
-RESULT_VERSION = "benchmark-policy-20261104"
-PROTOCOL = "Benchmark Policy v1 · 24 tasks · five frozen episodes per ID/OOD split · DLAA"
+RESULT_VERSION = "benchmark-policy-20261104-event-metrics-v2"
+PROTOCOL = "Benchmark Policy v2 · 24 tasks · five frozen episodes per ID/OOD split · DLAA · event metrics"
 METRICS = (
     "TSR", "TASK_SCORE", "FIRST_TARGET_SELECTION", "ALL_TARGET_SELECTION",
     "GRASP_STABILITY", "DROP_RATE", "LOCAL_SUCCESS_ONCE", "LOCAL_SUCCESS_AT_END",
@@ -73,6 +73,7 @@ def episode_values(document: dict) -> dict:
     transition = metrics["stage_transition"]
     motion = metrics["kinematics"]["both_arms"]
     efficiency = metrics["efficiency"]
+    events = document.get("event_metrics", {})
     release = int(grasp["release_count"])
     drop = int(grasp["drop_count"])
     return {
@@ -82,9 +83,9 @@ def episode_values(document: dict) -> dict:
         "ALL_TARGET_SELECTION": number(selection["sequential_accuracy"]),
         "GRASP_STABILITY": number(grasp["stability"]),
         "DROP_RATE": ratio(drop, release + drop),
-        "LOCAL_SUCCESS_ONCE": None,
-        "LOCAL_SUCCESS_AT_END": None,
-        "DROP_AFTER_SUCCESS": None,
+        "LOCAL_SUCCESS_ONCE": number(events.get("local_success_once")),
+        "LOCAL_SUCCESS_AT_END": number(events.get("local_success_at_end")),
+        "DROP_AFTER_SUCCESS": number(events.get("drop_after_success")),
         "SPARC": number(motion["sparc_mean"]),
         "EE_DISPLACEMENT": number(motion["end_displacement_mean_m"]),
         "PATH_LENGTH": number(motion["path_length_sum_m"]),
@@ -92,7 +93,7 @@ def episode_values(document: dict) -> dict:
         "PATH_EFFICIENCY": number(efficiency["path_efficiency"]),
         "TIME_EFFICIENCY": number(efficiency["time_efficiency"]),
         "STAGE_TRANSITION": number(transition["accuracy"]),
-        "GOAL_RETENTION": None,
+        "GOAL_RETENTION": number(events.get("completed_goal_retention")),
         "COLLISION_RATE": None,
         "ROBUSTNESS": None,
     }
@@ -119,9 +120,9 @@ def aggregate_metrics(task_result: dict, samples: list[dict]) -> dict:
         "ALL_TARGET_SELECTION": (number(task_result["all_selection_accuracy"]), den["ALL_TARGET_SELECTION"], "rate", "evaluable target selections"),
         "GRASP_STABILITY": (number(task_result["grasp_stability"]), den["GRASP_STABILITY"], "rate", "established / (established + invalid)"),
         "DROP_RATE": (number(task_result["drop_rate"]), den["DROP_RATE"], "rate", "drops / (releases + drops)"),
-        "LOCAL_SUCCESS_ONCE": (None, 0, "rate", "local subtask events are not published in this cohort"),
-        "LOCAL_SUCCESS_AT_END": (None, 0, "rate", "local subtask events are not published in this cohort"),
-        "DROP_AFTER_SUCCESS": (None, 0, "rate", "local subtask events are not published in this cohort"),
+        "LOCAL_SUCCESS_ONCE": (number(task_result["local_success_once"]), int(task_result["local_success_once_available_episode_count"]), "rate", "episode-macro mean of registered subtasks completed at least once"),
+        "LOCAL_SUCCESS_AT_END": (number(task_result["local_success_at_end"]), int(task_result["local_success_at_end_available_episode_count"]), "rate", "episode-macro mean of registered subtasks still active at episode end"),
+        "DROP_AFTER_SUCCESS": (number(task_result["drop_after_success"]), int(task_result["drop_after_success_available_episode_count"]), "rate", "episode-macro mean of completed subtasks later lost"),
         "SPARC": (number(task_result["sparc_mean"]), n, "SPARC", "episode mean"),
         "EE_DISPLACEMENT": (number(task_result["end_displacement_mean_m"]), n, "m", "episode mean"),
         "PATH_LENGTH": (number(task_result["path_length_mean_m"]), n, "m", "mean episode path length"),
@@ -129,7 +130,7 @@ def aggregate_metrics(task_result: dict, samples: list[dict]) -> dict:
         "PATH_EFFICIENCY": (number(task_result["path_efficiency_mean"]), int(task_result["path_efficiency_available_count"]), "rate", "successful episodes with frozen reference path"),
         "TIME_EFFICIENCY": (number(task_result["time_efficiency_mean"]), int(task_result["time_efficiency_available_count"]), "rate", "successful episodes with frozen reference time"),
         "STAGE_TRANSITION": (number(task_result["stage_transition_accuracy"]), den["STAGE_TRANSITION"], "rate", "evaluable stage transitions"),
-        "GOAL_RETENTION": (None, 0, "rate", "goal-retention events are not published in this cohort"),
+        "GOAL_RETENTION": (number(task_result["completed_goal_retention"]), int(task_result["completed_goal_retention_available_episode_count"]), "rate", "final completed goal remains active at episode end"),
         "COLLISION_RATE": (None, 0, "rate", "collision evidence is not published in this cohort"),
         "ROBUSTNESS": (None, 0, "rate", "paired nominal/perturbed robustness is not published in this cohort"),
     }
@@ -153,7 +154,13 @@ def build() -> tuple[dict, dict, dict]:
     require(tuple(source_manifest["models"]) == MODELS, "unexpected model roster")
     tasks = sorted(path.name for path in (SOURCE / MODELS[0] / "id").iterdir() if path.is_dir())
     require(len(tasks) == 24, "expected 24 tasks")
-    full = {"schemaVersion": "unibench.policy-baselines.v1", "resultVersion": RESULT_VERSION, "sourceDataset": Path(source_manifest["source_dataset"]).name, "models": {}}
+    full = {
+        "schemaVersion": "unibench.policy-baselines.v2",
+        "resultVersion": RESULT_VERSION,
+        "sourceDataset": Path(source_manifest["source_dataset"]).name,
+        "sourceManifestSha256": sha256(SOURCE / "manifest.json"),
+        "models": {},
+    }
     media_candidates: list[tuple[str, Path]] = []
 
     for model in MODELS:
@@ -239,11 +246,16 @@ def write_outputs(full: dict, aggregates: dict, registry: dict) -> None:
 
 def check_existing() -> None:
     full, aggregates, registry = read_json(FULL_OUT), read_json(AGG_OUT), read_json(MEDIA_OUT)
+    require(full.get("resultVersion") == RESULT_VERSION == aggregates.get("resultVersion"), "stale result version")
+    require(full.get("sourceManifestSha256") == sha256(SOURCE / "manifest.json") == aggregates.get("sourceManifestSha256"), "stale source manifest")
     require(set(full["models"]) == set(MODELS) == set(aggregates["models"]), "model mismatch")
     require(all(len(full["models"][model][setting]) == 24 for model in MODELS for setting in SETTINGS), "task count mismatch")
     samples = [sample for model in MODELS for setting in SETTINGS for task in full["models"][model][setting].values() for sample in task["samples"]]
     require(len(samples) == 1440, "episode count mismatch")
     require(sum(len(sample["videos"]) for sample in samples) == 4320, "video reference count mismatch")
+    event_metrics = ("LOCAL_SUCCESS_ONCE", "LOCAL_SUCCESS_AT_END", "DROP_AFTER_SUCCESS", "GOAL_RETENTION")
+    require(all(metric in sample["values"] for sample in samples for metric in event_metrics), "event metrics missing")
+    require(any(sample["values"][metric] is not None for sample in samples for metric in event_metrics), "event metrics are all unavailable")
     require("/mnt/" not in FULL_OUT.read_text() and "/mnt/" not in AGG_OUT.read_text(), "private path leaked")
     for key, item in registry.items():
         path = Path(item["path"])
