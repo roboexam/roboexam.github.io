@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- Native anchors preserve hash scrolling in the static Vinext build. */
 import type { ReactNode } from "react";
 import Link from "next/link";
 

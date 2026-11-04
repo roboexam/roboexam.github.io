@@ -105,17 +105,6 @@ export function PublicHome() {
           <a href="/leaderboards">Leaderboards</a>
         </div>
       </div>
-      <aside className="heroPeople" aria-label="Organizing team preview">
-        <div className="heroPortraitGrid">
-          {organizers.slice(0, 4).map((person) =>
-            <img key={person.name} src={person.photo} alt="" width="512" height="512"/>)}
-        </div>
-        <div className="heroEventBrief">
-          <p>Seattle · 2027</p>
-          <strong>Talks, posters, demonstrations, and RoboExam results.</strong>
-          <span>Program subject to confirmation</span>
-        </div>
-      </aside>
     </section>
 
     <section id="program" className="publicSection programSection" aria-labelledby="program-title">
@@ -153,6 +142,14 @@ export function PublicHome() {
       </div>
     </section>
 
+    <section className="leaderboardCallout" aria-labelledby="leaderboard-callout-title">
+      <div>
+        <p className="publicEyebrow">RoboExam</p>
+        <h2 id="leaderboard-callout-title">Four tracks. Independent rankings.</h2>
+      </div>
+      <a href="/leaderboards">Open leaderboards <ArrowRight size={18}/></a>
+    </section>
+
     <section id="organizers" className="publicSection organizerSection" aria-labelledby="organizers-title">
       <div className="publicSectionHeading compactHeading">
         <div><p className="publicEyebrow">Organizing team</p><h2 id="organizers-title">Organizers</h2></div>
@@ -160,18 +157,10 @@ export function PublicHome() {
       </div>
       <div className="organizerPhotoGrid">
         {organizers.map((person) => <article key={person.name}>
-          <img src={person.photo} alt={`Portrait of ${person.name}`} width="512" height="512" loading="lazy"/>
+          <img src={person.photo} alt={`Portrait of ${person.name}`} width="96" height="96" loading="lazy"/>
           <div><span>{person.role}</span><h3>{person.name}</h3><p>{person.affiliation}</p></div>
         </article>)}
       </div>
-    </section>
-
-    <section className="leaderboardCallout" aria-labelledby="leaderboard-callout-title">
-      <div>
-        <p className="publicEyebrow">RoboExam</p>
-        <h2 id="leaderboard-callout-title">Four tracks. Independent rankings.</h2>
-      </div>
-      <a href="/leaderboards">Open leaderboards <ArrowRight size={18}/></a>
     </section>
   </div>;
 }
