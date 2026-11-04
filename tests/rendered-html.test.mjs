@@ -51,6 +51,11 @@ test("renders the public workshop program without internal surfaces", async () =
   const html = await response.text();
   assert.match(html, /EmbodiVSI/);
   assert.match(html, /Beyond Passive Evaluation\./);
+  assert.match(html, /X-Humanoid ecosystem alignment/);
+  assert.match(html, /RoboMIND \/ LeRobot compatible/);
+  assert.match(html, /Humanoid/);
+  assert.match(html, /Dual-arm/);
+  assert.match(html, /Held-out sim \+ real verification/);
   assert.match(html, /One workshop, an open research program, and a shared challenge\./);
   assert.match(html, /Tentative invited speakers/);
   assert.match(html, /Sergey Levine/);

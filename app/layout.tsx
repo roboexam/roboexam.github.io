@@ -5,7 +5,7 @@ import "./public-home.css";
 
 export const metadata: Metadata = {
   title: "EmbodiVSI 2027 — Verifiable Self-Improvement for Physical Intelligence",
-  description: "EmbodiVSI is a 2027 workshop initiative on how evaluators and embodied agents improve together, combining an open research program with the four-track RoboExam challenge.",
+  description: "EmbodiVSI connects an open research program with RoboExam: an X-Humanoid-aligned, four-track benchmark for cross-embodiment reasoning, world models, and verified sim-to-real deployment.",
   icons: {
     icon: "/workshop-assets/embodivsi-mark.webp",
     shortcut: "/workshop-assets/embodivsi-mark.webp",

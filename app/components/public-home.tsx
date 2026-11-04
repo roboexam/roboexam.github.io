@@ -11,16 +11,40 @@ const programPaths = [
   },
   {
     label: "RoboExam challenge",
-    title: "Evidence-linked embodied evaluation",
-    description: "A shared challenge for tracing a declared baseline, failure evidence, a bounded update, and an organizer-run held-out retest.",
-    facts: ["Four independent tracks", "Preliminary + official verification", "Paper submission optional"],
+    title: "Cross-embodiment, evidence-linked evaluation",
+    description: "A shared challenge connecting simulation, humanoid and dual-arm trajectories, egocentric observations, and organizer-run held-out verification.",
+    facts: ["Four independent tracks", "RoboMIND / LeRobot compatible", "Paper submission optional"],
   },
 ] as const;
 
 const researchPrinciples = [
   ["01", "Trace both feedback loops", "Identify the failure behind an update and record how the revised agent changes the evaluator's next test."],
   ["02", "Test whether gains transfer", "Compare frozen versions under matched budgets on held-out tasks, then revisit earlier tasks to measure retention."],
-  ["03", "Compare evidence across platforms", "Use papers, demonstrations, and challenge runs to develop a common language for interventions, failures, and independent checks."],
+  ["03", "Bridge embodiments, not just datasets", "Compare the same capability claim across simulation, humanoid and dual-arm systems, and egocentric evidence."],
+] as const;
+
+const ecosystemBridge = [
+  {
+    step: "01",
+    label: "Open inputs",
+    title: "RoboMIND / LeRobot compatible",
+    description: "Instruction-conditioned RGB, state, and action traces enter one evidence contract instead of platform-specific score sheets.",
+    tags: ["Humanoid", "Dual-arm", "Ego"],
+  },
+  {
+    step: "02",
+    label: "Capability loop",
+    title: "Understand, predict, then act",
+    description: "Embodied agency and physical foresight are evaluated before policies move into closed-loop simulation and real hardware.",
+    tags: ["VLM", "World model", "VLA"],
+  },
+  {
+    step: "03",
+    label: "Independent check",
+    title: "Qualify, freeze, and verify",
+    description: "A scalable simulation stage is followed by held-out organizer execution under matched interfaces and declared budgets.",
+    tags: ["Simulation", "Real robot", "Retest"],
+  },
 ] as const;
 
 const speakers = [
@@ -157,19 +181,19 @@ export function PublicHome() {
   return <div className="content publicHome">
     <section className="publicHero workshopHero" aria-labelledby="public-hero-title">
       <div className="publicHeroCopy">
-        <p className="publicEyebrow">EmbodiVSI · 2027 workshop initiative</p>
+        <p className="publicEyebrow">EmbodiVSI · RoboExam × X-Humanoid ecosystem</p>
         <h1 id="public-hero-title">Beyond Passive Evaluation.</h1>
-        <p className="workshopHeroTitle">Verifiable Self-Improvement for Physical Intelligence</p>
+        <p className="workshopHeroTitle">From cross-embodiment data to verified capability gains</p>
         <p className="publicHeroLead">
-          EmbodiVSI brings together computer vision, robotics, and machine learning researchers to ask
-          how evaluators and embodied agents can improve together—and how independent tests can verify
-          that the resulting gains transfer beyond a single benchmark.
+          RoboExam connects X-Humanoid-aligned embodied data with a four-track loop for scene understanding,
+          physical prediction, simulation deployment, and held-out real-robot verification. The goal is not
+          only to improve a score, but to show that the gain transfers across tasks, embodiments, and conditions.
         </p>
         <div className="workshopMeta" aria-label="Proposed workshop format">
-          <span>Seattle</span><span>June 20–21, 2027</span><span>Half-day format</span><span>Program subject to confirmation</span>
+          <span>Seattle</span><span>June 20–21, 2027</span><span>Open research + challenge</span><span>Program subject to confirmation</span>
         </div>
         <div className="publicHeroActions">
-          <a className="primary" href="#program">Explore the workshop <ArrowRight size={18}/></a>
+          <a className="primary" href="#ecosystem">Explore the benchmark <ArrowRight size={18}/></a>
           <a href="/leaderboards">RoboExam leaderboards</a>
         </div>
       </div>
@@ -191,11 +215,39 @@ export function PublicHome() {
       </figure>
     </section>
 
-    <section className="publicStats" aria-label="Workshop scope">
-      <article><strong>2</strong><span>independent participation paths</span></article>
-      <article><strong>7</strong><span>tentative invited speakers</span></article>
-      <article><strong>4.5h</strong><span>proposed half-day program</span></article>
-      <article><strong>4</strong><span>RoboExam challenge tracks</span></article>
+    <section className="publicStats" aria-label="RoboExam benchmark scope">
+      <article><strong>24</strong><span>simulation tasks</span></article>
+      <article><strong>3</strong><span>real-world task families</span></article>
+      <article><strong>4</strong><span>independently ranked tracks</span></article>
+      <article><strong>2</strong><span>evaluation and verification stages</span></article>
+    </section>
+
+    <section id="ecosystem" className="publicSection ecosystemSection anchorSection" aria-labelledby="ecosystem-title">
+      <div className="publicSectionHeading">
+        <div>
+          <p className="publicEyebrow">X-Humanoid ecosystem alignment</p>
+          <h2 id="ecosystem-title">One evidence bridge from open embodied data to verified deployment.</h2>
+        </div>
+        <div className="ecosystemIntro">
+          <p>RoboExam complements the open X-Humanoid stack without restricting participation to one robot, simulator, or model family.</p>
+          <a href="https://huggingface.co/X-Humanoid" target="_blank" rel="noreferrer">
+            Explore X-Humanoid resources <ExternalLink size={15}/>
+          </a>
+        </div>
+      </div>
+      <div className="ecosystemFlow" aria-label="X-Humanoid to RoboExam verification flow">
+        <span>X-Humanoid open assets</span><ArrowRight aria-hidden="true"/>
+        <span>RoboExam · T1–T4</span><ArrowRight aria-hidden="true"/>
+        <span>Held-out sim + real verification</span>
+      </div>
+      <div className="ecosystemGrid">
+        {ecosystemBridge.map((item) => <article key={item.step}>
+          <div><span>{item.step}</span><p>{item.label}</p></div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <ul>{item.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+        </article>)}
+      </div>
     </section>
 
     <section id="program" className="publicSection anchorSection" aria-labelledby="program-title">
@@ -218,10 +270,10 @@ export function PublicHome() {
       <div className="publicEvidenceIntro">
         <p className="publicEyebrow">Scientific focus</p>
         <h2 id="focus-title">What should count as genuine improvement?</h2>
-        <p>The workshop moves beyond a single final score. It studies how a failure changes both the learning system and the evaluator, then asks whether the update transfers, retains earlier skills, and remains within its declared budget.</p>
+        <p>The workshop moves beyond a single final score. It studies how a failure changes both the learning system and the evaluator, then asks whether the update transfers across tasks and embodiments, retains earlier skills, and remains within its declared budget.</p>
         <div className="publicScope" aria-label="Workshop topics">
           <span>Evaluator learning</span><span>World models</span><span>Robot learning</span>
-          <span>OOD transfer</span><span>Safe deployment</span>
+          <span>Cross-embodiment transfer</span><span>OOD transfer</span><span>Safe deployment</span>
         </div>
       </div>
       <ol className="publicCycle">
@@ -264,8 +316,8 @@ export function PublicHome() {
 
     <section id="challenge" className="publicSection anchorSection" aria-labelledby="track-title">
       <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">RoboExam improvement challenge</p><h2 id="track-title">A shared challenge inside a broader research program.</h2></div>
-        <p>Four independently ranked tracks connect reasoning, physical prediction, simulation, and real-robot deployment to task-level evidence.</p>
+        <div><p className="publicEyebrow">RoboExam improvement challenge</p><h2 id="track-title">Four tracks, one sim-to-real evidence chain.</h2></div>
+        <p>Following the cross-embodiment spirit of X-Humanoid, the tracks connect reasoning, physical prediction, simulation, and real-robot deployment without collapsing them into one opaque score.</p>
       </div>
       <div className="publicTrackGrid">
         {trackCards.map((track) => <a key={track.id} href={`/leaderboards?track=${track.id}`}>
