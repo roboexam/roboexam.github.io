@@ -49,7 +49,7 @@ export const publicResults = {
       {
         name: "Ctrl-World",
         checkpoint: "instructionv2 · 50k",
-        composite: 49.67,
+        composite: 50.76,
         psnr: 21.334,
         ssim: 0.775,
         jepa: 0.291,
@@ -63,7 +63,7 @@ export const publicResults = {
       {
         name: "LingBot-VA",
         checkpoint: "instructionv2 · 50k",
-        composite: 55.31,
+        composite: 58.17,
         psnr: 23.673,
         ssim: 0.839,
         jepa: 0.659,
@@ -77,7 +77,7 @@ export const publicResults = {
       {
         name: "Motus",
         checkpoint: "instructionv3 · 40k",
-        composite: 45.30,
+        composite: 41.45,
         psnr: 18.030,
         ssim: 0.762,
         jepa: 0.407,
