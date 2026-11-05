@@ -196,13 +196,13 @@ const compactLeaderboards = [
     id: "T4",
     title: "Real-World Deployment",
     metric: "Task success rate ↑",
-    status: "Pending",
-    tone: "measured",
+    status: publicResults.t4.status,
+    tone: "proposal",
     rows: publicResults.t4.models.map((model) => ({
       rank: null,
       name: model.name,
       score: model.score === null ? "—" : String(model.score),
-      details: undefined,
+      details: model.estimated ? [publicResults.t4.estimateNote] : undefined,
     })),
   },
 ] as const;
@@ -298,7 +298,7 @@ export function PublicHome() {
     <section id="leaderboard-preview" className="publicSection leaderboardPreview"
       aria-labelledby="leaderboard-preview-title">
       <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">Four tracks in one compact view.</h2></div>
+        <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">One Exam. Four Dimensions of Physical Intelligence.</h2></div>
       </div>
       <div className="trackLeaderboardGrid">
         {compactLeaderboards.map((track) => <article className={`leaderboardTrackCard ${track.tone}`} key={track.id}>

@@ -80,14 +80,18 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /G05/);
   assert.match(html, /HyVLA/);
   assert.match(html, /XVLA/);
-  assert.match(html, /Four tracks in one compact view\./);
+  assert.match(html, /One Exam\. Four Dimensions of Physical Intelligence\./);
   assert.match(html, /href="#main-content">Home<\/a>/);
   assert.doesNotMatch(html, /href="#results">Results<\/a>/);
   assert.doesNotMatch(html, /href="#scenes">Scenes<\/a>/);
   assert.match(html, /Real-World Deployment/);
-  for (const method of ["Pi0.5 / XPolicyLab", "FastWAM", "OpenWAM", "HyVLA", "LingBot-VLA", "LingBot-VA", "XVLA", "AHA-WAM"]) {
+  for (const method of ["Pi0.5", "FastWAM", "OpenWAM"]) {
     assert.match(html, new RegExp(method));
   }
+  assert.doesNotMatch(html, /Pi0\.5 \/ XPolicyLab/);
+  assert.match(html, /Pilot estimate/);
+  assert.match(html, /Illustrative estimate · excluded from ranking/);
+  assert.match(html, />76\.0%<|>30\.0%<|>12\.0%</);
   assert.match(html, /<p>Overall score<\/p>/);
   assert.match(html, /<p>Native metrics<\/p>/);
   assert.match(html, /<p>Task success · macro ↑<\/p>/);

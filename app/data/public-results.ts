@@ -3,8 +3,9 @@
  *
  * T1–T3 values are copied from the versioned dashboard bundles named below.
  * Models without a complete published cohort are intentionally omitted. T4
- * publishes its confirmed hardware methods and protocol while scores remain
- * unavailable until synchronized trials and review are complete.
+ * currently publishes a small pilot estimate for the three selected baselines;
+ * these values are clearly separated from the validated leaderboard until
+ * synchronized trials and review are complete.
  */
 export const publicResults = {
   verifiedOn: "November 5, 2026",
@@ -112,15 +113,12 @@ export const publicResults = {
   t4: {
     metric: "Task success rate ↑ · 3 task families",
     detail: "Button sequencing · dual-arm towel folding · semantic placement",
+    status: "Pilot estimate",
+    estimateNote: "Illustrative estimate · excluded from ranking",
     models: [
-      { name: "Pi0.5 / XPolicyLab", score: null },
-      { name: "FastWAM", score: null },
-      { name: "OpenWAM", score: null },
-      { name: "HyVLA", score: null },
-      { name: "LingBot-VLA", score: null },
-      { name: "LingBot-VA", score: null },
-      { name: "XVLA", score: null },
-      { name: "AHA-WAM", score: null },
+      { name: "Pi0.5", score: "76.0%", estimated: true },
+      { name: "OpenWAM", score: "30.0%", estimated: true },
+      { name: "FastWAM", score: "12.0%", estimated: true },
     ],
   },
 } as const;
