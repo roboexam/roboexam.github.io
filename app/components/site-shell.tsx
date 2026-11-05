@@ -14,7 +14,6 @@ export function SiteShell({ children }: Props) {
       </Link>
       <nav aria-label="Primary navigation">
         <a className="researchNavItem" href="#main-content">Home</a>
-        <a className="researchNavItem" href="#results">Results</a>
       </nav>
     </header>
     <main id="main-content" className="researchMain">{children}</main>

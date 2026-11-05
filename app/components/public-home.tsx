@@ -7,7 +7,7 @@ const programCards = [
     number: "01",
     title: "Invited talks",
     description: "Perspectives on foundation models, world models, robot learning, and deployment.",
-    meta: "8 confirmed · 2 tentative",
+    meta: "Invited perspectives",
   },
   {
     number: "02",
@@ -162,10 +162,8 @@ const compactLeaderboards = [
   {
     id: "T1",
     title: "Embodied Agency",
-    metric: "Final overall score",
     status: "Final",
     tone: "final",
-    detail: "All five settings complete",
     rows: publicResults.t1.models.map((model) => ({
       rank: model.rank,
       name: model.name,
@@ -175,40 +173,30 @@ const compactLeaderboards = [
   {
     id: "T2",
     title: "Physical Foresight",
-    metric: "PSNR snapshot ↑",
-    status: "Measured",
+    status: "Pending",
     tone: "measured",
-    detail: "Native metric view · no combined total",
-    rows: [...publicResults.t2.models]
-      .sort((left, right) => right.psnr - left.psnr)
-      .map((model, index) => ({
-        rank: index + 1,
-        name: model.name,
-        score: `${model.psnr.toFixed(2)} dB`,
-      })),
+    rows: publicResults.t2.models.map((model) => ({
+      rank: null,
+      name: model.name,
+      score: "—",
+    })),
   },
   {
     id: "T3",
     title: "Simulation Deployment",
-    metric: "ID task success ↑",
-    status: "Measured",
+    status: "Pending",
     tone: "measured",
-    detail: "480 completed episodes per model",
-    rows: [...publicResults.t3.models]
-      .sort((left, right) => right.taskSuccess[0] - left.taskSuccess[0])
-      .map((model, index) => ({
-        rank: index + 1,
-        name: model.name,
-        score: `${model.taskSuccess[0].toFixed(2)}%`,
-      })),
+    rows: publicResults.t3.models.map((model) => ({
+      rank: null,
+      name: model.name,
+      score: "—",
+    })),
   },
   {
     id: "T4",
     title: "Real-World Deployment",
-    metric: publicResults.t4.metric,
-    status: "Confirmed",
+    status: "Pending",
     tone: "measured",
-    detail: publicResults.t4.detail,
     rows: publicResults.t4.models.map((model) => ({
       rank: null,
       name: model.name,
@@ -382,7 +370,6 @@ export function PublicHome() {
     <section id="organizers" className="publicSection organizerSection" aria-labelledby="organizers-title">
       <div className="publicSectionHeading compactHeading">
         <div><p className="publicEyebrow">Organizing team</p><h2 id="organizers-title">Organizers</h2></div>
-        <p>Research leadership and benchmark operations.</p>
       </div>
       <div className="organizerPhotoGrid">
         {organizers.map((person) => <article key={person.name}>
@@ -394,8 +381,7 @@ export function PublicHome() {
 
     <section id="speakers" className="publicSection" aria-labelledby="speakers-title">
       <div className="publicSectionHeading compactHeading">
-        <div><p className="publicEyebrow">Invited speakers</p><h2 id="speakers-title">Vision, learning, and robotics.</h2></div>
-        <p>Eight confirmed speakers and two tentative speakers.</p>
+        <div><p className="publicEyebrow">Invited speakers</p><h2 id="speakers-title">Perspectives on Physical Intelligence</h2></div>
       </div>
       <div className="speakerGrid">
         {speakers.map(([name, affiliation, href], index) =>
@@ -411,13 +397,13 @@ export function PublicHome() {
       aria-labelledby="leaderboard-preview-title">
       <div className="publicSectionHeading">
         <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">Four tracks in one compact view.</h2></div>
-        <p>All four tracks use confirmed task designs and track-specific metrics. T1–T3 show completed dashboard results; T4 lists the confirmed real-robot methods and protocol.</p>
+        <p>Overall scores follow each track’s official protocol. Pending scores are shown as —.</p>
       </div>
       <div className="trackLeaderboardGrid">
         {compactLeaderboards.map((track) => <article className={`leaderboardTrackCard ${track.tone}`} key={track.id}>
           <header>
             <span>{track.id}</span>
-            <div><h3>{track.title}</h3><p>{track.metric}</p></div>
+            <div><h3>{track.title}</h3><p>Overall score</p></div>
             <b>{track.status}</b>
           </header>
           <ol>
@@ -427,7 +413,6 @@ export function PublicHome() {
               <b>{row.score}</b>
             </li>)}
           </ol>
-          <footer>{track.detail}</footer>
         </article>)}
       </div>
     </section>

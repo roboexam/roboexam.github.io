@@ -54,7 +54,8 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /Talks, papers, and evidence-backed results\./);
   assert.equal((html.match(/<b>X-Humanoid<\/b>/g) ?? []).length, 1);
   assert.match(html, /RoboExam competition/);
-  assert.match(html, /Eight confirmed speakers and two tentative speakers\./);
+  assert.match(html, /Perspectives on Physical Intelligence/);
+  assert.doesNotMatch(html, /Vision, learning, and robotics\.|Eight confirmed speakers and two tentative speakers\.|8 confirmed · 2 tentative/);
   assert.match(html, /Sergey Levine/);
   assert.match(html, /Chelsea Finn/);
   assert.match(html, /Organizing team/);
@@ -78,13 +79,15 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /XVLA/);
   assert.match(html, /Four tracks in one compact view\./);
   assert.match(html, /href="#main-content">Home<\/a>/);
+  assert.doesNotMatch(html, /href="#results">Results<\/a>/);
   assert.doesNotMatch(html, /href="#scenes">Scenes<\/a>/);
   assert.match(html, /Real-World Deployment/);
   for (const method of ["Pi0.5 / XPolicyLab", "FastWAM", "OpenWAM", "HyVLA", "LingBot-VLA", "LingBot-VA", "XVLA", "AHA-WAM"]) {
     assert.match(html, new RegExp(method));
   }
   assert.match(html, /Confirmed protocols, traceable results/);
-  assert.match(html, /All four tracks use confirmed task designs and track-specific metrics/);
+  assert.equal((html.match(/<p>Overall score<\/p>/g) ?? []).length, 4);
+  assert.doesNotMatch(html, /All five settings complete|Native metric view|480 completed episodes per model|Research leadership and benchmark operations/);
   assert.doesNotMatch(html, /proposal-only score mock-up|Example VLA|Example WAM|illustrative values/);
   assert.doesNotMatch(html, /Baseline slot|Placeholder rows|Claude Opus|Qwen3\.8/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);
