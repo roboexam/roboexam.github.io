@@ -144,6 +144,7 @@ const compactLeaderboards = [
   {
     id: "T1",
     title: "Embodied Agency",
+    metric: "Overall score",
     status: "Final",
     tone: "final",
     rows: publicResults.t1.models.map((model) => ({
@@ -155,28 +156,36 @@ const compactLeaderboards = [
   {
     id: "T2",
     title: "Physical Foresight",
-    status: "Pending",
+    metric: "PSNR ↑",
+    status: "Measured",
     tone: "measured",
-    rows: publicResults.t2.models.map((model) => ({
-      rank: null,
+    rows: [...publicResults.t2.models]
+      .sort((left, right) => right.psnr - left.psnr)
+      .map((model, index) => ({
+      rank: index + 1,
       name: model.name,
-      score: "—",
+      score: `${model.psnr.toFixed(2)} dB`,
     })),
   },
   {
     id: "T3",
     title: "Simulation Deployment",
-    status: "Pending",
+    metric: "Task success · macro ↑",
+    status: "Measured",
     tone: "measured",
-    rows: publicResults.t3.models.map((model) => ({
+    rows: [...publicResults.t3.models]
+      .map((model) => ({
       rank: null,
       name: model.name,
-      score: "—",
-    })),
+      score: `${(model.taskSuccess.reduce((sum, score) => sum + score, 0) / model.taskSuccess.length).toFixed(2)}%`,
+    }))
+      .sort((left, right) => Number.parseFloat(right.score) - Number.parseFloat(left.score))
+      .map((row, index) => ({ ...row, rank: index + 1 })),
   },
   {
     id: "T4",
     title: "Real-World Deployment",
+    metric: "Task success rate ↑",
     status: "Pending",
     tone: "measured",
     rows: publicResults.t4.models.map((model) => ({
@@ -282,13 +291,12 @@ export function PublicHome() {
       aria-labelledby="leaderboard-preview-title">
       <div className="publicSectionHeading">
         <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">Four tracks in one compact view.</h2></div>
-        <p>Overall scores follow each track’s official protocol. Pending scores are shown as —.</p>
       </div>
       <div className="trackLeaderboardGrid">
         {compactLeaderboards.map((track) => <article className={`leaderboardTrackCard ${track.tone}`} key={track.id}>
           <header>
             <span>{track.id}</span>
-            <div><h3>{track.title}</h3><p>Overall score</p></div>
+            <div><h3>{track.title}</h3><p>{track.metric}</p></div>
             <b>{track.status}</b>
           </header>
           <ol>
