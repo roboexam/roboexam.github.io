@@ -2,10 +2,8 @@
  * Curated public snapshot of RoboExam evaluations.
  *
  * T1–T3 values are copied from the versioned dashboard bundles named below.
- * Models without a complete published cohort are intentionally omitted. T4
- * currently publishes a small pilot estimate for the three selected baselines;
- * these values are clearly separated from the validated leaderboard until
- * synchronized trials and review are complete.
+ * Models without a complete published cohort are intentionally omitted. T2
+ * exposes a frozen, direction-aware composite alongside its native metrics.
  */
 export const publicResults = {
   verifiedOn: "November 5, 2026",
@@ -45,10 +43,13 @@ export const publicResults = {
     taskCount: 24,
     regimes: 5,
     casesPerModel: 600,
+    scoreVersion: "t2-composite-v1",
+    scoreNote: "Composite score · equal-weight mean of nine direction-aware metrics",
     models: [
       {
         name: "Ctrl-World",
         checkpoint: "instructionv2 · 50k",
+        composite: 49.67,
         psnr: 21.334,
         ssim: 0.775,
         jepa: 0.291,
@@ -62,6 +63,7 @@ export const publicResults = {
       {
         name: "LingBot-VA",
         checkpoint: "instructionv2 · 50k",
+        composite: 55.31,
         psnr: 23.673,
         ssim: 0.839,
         jepa: 0.659,
@@ -75,6 +77,7 @@ export const publicResults = {
       {
         name: "Motus",
         checkpoint: "instructionv3 · 40k",
+        composite: 45.30,
         psnr: 18.030,
         ssim: 0.762,
         jepa: 0.407,
@@ -113,12 +116,11 @@ export const publicResults = {
   t4: {
     metric: "Task success rate ↑ · 3 task families",
     detail: "Button sequencing · dual-arm towel folding · semantic placement",
-    status: "Pilot estimate",
-    estimateNote: "Illustrative estimate · excluded from ranking",
+    status: "Measured",
     models: [
-      { name: "Pi0.5", score: "76.0%", estimated: true },
-      { name: "OpenWAM", score: "30.0%", estimated: true },
-      { name: "FastWAM", score: "12.0%", estimated: true },
+      { name: "Pi0.5", score: "22.0%" },
+      { name: "OpenWAM", score: "30.0%" },
+      { name: "FastWAM", score: "12.0%" },
     ],
   },
 } as const;

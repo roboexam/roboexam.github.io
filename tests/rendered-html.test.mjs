@@ -89,15 +89,14 @@ test("renders the public workshop program without internal surfaces", async () =
     assert.match(html, new RegExp(method));
   }
   assert.doesNotMatch(html, /Pi0\.5 \/ XPolicyLab/);
-  assert.match(html, /Pilot estimate/);
-  assert.match(html, /Illustrative estimate · excluded from ranking/);
-  assert.match(html, />76\.0%<|>30\.0%<|>12\.0%</);
+  assert.doesNotMatch(html, /Pilot estimate|Illustrative estimate · excluded from ranking/);
+  assert.match(html, />22\.0%<|>30\.0%<|>12\.0%</);
   assert.match(html, /<p>Overall score<\/p>/);
-  assert.match(html, /<p>Native metrics<\/p>/);
+  assert.match(html, /<p>Composite score · 0–100 ↑<\/p>/);
   assert.match(html, /<p>Task success · macro ↑<\/p>/);
   assert.match(html, /<p>Task success rate ↑<\/p>/);
   assert.doesNotMatch(html, /Overall scores follow each track’s official protocol|All five settings complete|Native metric view|480 completed episodes per model|Research leadership and benchmark operations/);
-  assert.match(html, /PSNR 23\.67 dB/);
+  assert.match(html, />55\.31</);
   assert.match(html, /SSIM 0\.839 · JEPA 0\.659 · JEDi 1\.041/);
   assert.match(html, /Motion smoothness 1\.667 ↑ · M-MSE 0\.0226 ↓ · Subject consistency 0\.618 ↑/);
   assert.match(html, /EE pos MAE 13\.54 mm ↓ · EE rot MAE 7\.39° ↓/);

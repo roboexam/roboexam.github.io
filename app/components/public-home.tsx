@@ -160,17 +160,17 @@ const compactLeaderboards = [
   {
     id: "T2",
     title: "Physical Foresight",
-    metric: "Native metrics",
+    metric: "Composite score · 0–100 ↑",
     status: "Measured",
     tone: "measured",
     rows: [...publicResults.t2.models]
-      .sort((left, right) => right.psnr - left.psnr)
+      .sort((left, right) => right.composite - left.composite)
       .map((model, index) => ({
         rank: index + 1,
         name: model.name,
-        score: `PSNR ${model.psnr.toFixed(2)} dB`,
+        score: model.composite.toFixed(2),
         details: [
-          `SSIM ${model.ssim.toFixed(3)} · JEPA ${model.jepa.toFixed(3)} · JEDi ${model.jedi.toFixed(3)} ↓`,
+          `PSNR ${model.psnr.toFixed(2)} dB · SSIM ${model.ssim.toFixed(3)} · JEPA ${model.jepa.toFixed(3)} · JEDi ${model.jedi.toFixed(3)} ↓`,
           `Motion smoothness ${model.motionSmoothness.toFixed(3)} ↑ · M-MSE ${model.motionMse.toFixed(4)} ↓ · Subject consistency ${model.subjectConsistency.toFixed(3)} ↑`,
           `EE pos MAE ${model.positionMae.toFixed(2)} mm ↓ · EE rot MAE ${model.rotationMae.toFixed(2)}° ↓`,
         ],
@@ -197,12 +197,12 @@ const compactLeaderboards = [
     title: "Real-World Deployment",
     metric: "Task success rate ↑",
     status: publicResults.t4.status,
-    tone: "proposal",
-    rows: publicResults.t4.models.map((model) => ({
-      rank: null,
+    tone: "measured",
+    rows: [...publicResults.t4.models].sort((left, right) => Number.parseFloat(right.score) - Number.parseFloat(left.score)).map((model, index) => ({
+      rank: index + 1,
       name: model.name,
-      score: model.score === null ? "—" : String(model.score),
-      details: model.estimated ? [publicResults.t4.estimateNote] : undefined,
+      score: String(model.score),
+      details: undefined,
     })),
   },
 ] as const;
