@@ -52,9 +52,9 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /EmbodiVSI/);
   assert.match(html, /Beyond Passive Evaluation\./);
   assert.match(html, /Talks, papers, and evidence-backed results\./);
-  assert.match(html, /X-Humanoid aligned/);
+  assert.match(html, /X-Humanoid-aligned/);
   assert.match(html, /RoboExam challenge/);
-  assert.match(html, /Tentative invited speakers/);
+  assert.match(html, /Eight confirmed speakers and two tentative speakers\./);
   assert.match(html, /Sergey Levine/);
   assert.match(html, /Chelsea Finn/);
   assert.match(html, /Organizing team/);
@@ -62,11 +62,18 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /Xiaobao Wei/);
   assert.match(html, /people\/shanghang-zhang\.jpg/);
   assert.match(html, /people\/jixian-wu\.jpg/);
-  assert.match(html, /Leaderboards/);
-  assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 7);
+  assert.match(html, /From simulation to physical deployment\./);
+  assert.match(html, /samples\/stack-bowls-policy\.mp4/);
+  assert.match(html, /scenes\/agilex-towel\.webp/);
+  assert.match(html, /Embodied Agency preview\./);
+  assert.match(html, /GPT-6\.1-sol/);
+  assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);
   assert.ok(html.indexOf('id="organizers"') < html.indexOf('id="speakers"'));
+  assert.ok(html.indexOf('id="scenes"') < html.indexOf('id="organizers"'));
+  assert.ok(html.indexOf('id="speakers"') < html.indexOf('id="leaderboard-preview"'));
+  assert.doesNotMatch(html, /href="\/leaderboards"/);
   assert.doesNotMatch(html, /href="\/#(?:program|speakers|organizers)"/);
-  assert.doesNotMatch(html, /heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|samples\/stack-bowls-policy\.mp4|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
+  assert.doesNotMatch(html, /heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
 });
 
 test("does not require an authentication cookie", async () => {
@@ -183,20 +190,9 @@ test("serves compressed video renditions with ranges and immutable identity", as
 });
 
 
-test("renders the public UniBench-24 Track 1 score tables across five settings", async () => {
+test("does not publish a standalone leaderboards page", async () => {
   const response = await render("/leaderboards");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  const bundle = JSON.parse(readFileSync(new URL("../app/data/generated/t1-unibench-results.json", import.meta.url), "utf8"));
-  for (const model of bundle.models) {
-    assert.ok(html.includes(model.label), model.label);
-    if (model.overall) assert.ok(html.includes(`<strong>${model.overall.overall.toFixed(1)}</strong>`), `${model.id} overall`);
-  }
-  for (const text of ["Overall", "VQA", "Subtask", "In-distribution", "Visual OOD", "Semantic OOD", "Behavioral OOD", "Failure recovery"]) assert.ok(html.includes(text), text);
-  assert.match(html, /aria-label="Per-task subtask scores"/);
-  assert.doesNotMatch(html, /Rollout model|Rollout setting|Rollout task|Episode VQA|data-episode-id|src="\/api\/t1-/);
-  assert.doesNotMatch(html, /MiMo/);
-  assert.doesNotMatch(html, /\/bh\/|\/mnt\//);
+  assert.equal(response.status, 404);
 });
 
 test("serves selected-episode VQA questions, first answers and exact saved scores", async () => {

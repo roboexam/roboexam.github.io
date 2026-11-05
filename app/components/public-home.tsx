@@ -5,8 +5,8 @@ const programCards = [
   {
     number: "01",
     title: "Invited talks",
-    description: "Ten confirmed perspectives on foundation models, world models, robot learning, and deployment.",
-    meta: "10 confirmed speakers",
+    description: "Perspectives on foundation models, world models, robot learning, and deployment.",
+    meta: "8 confirmed · 2 tentative",
   },
   {
     number: "02",
@@ -44,6 +44,56 @@ const speakers = [
   ["Marios Savvides", "Carnegie Mellon University", "https://www.mariossavvides.com/"],
   ["Katerina Fragkiadaki", "Carnegie Mellon University", "https://www.cs.cmu.edu/~katef/"],
   ["Xiaozhu Ju", "X-Humanoid", "https://openreview.net/profile?id=~Xiaozhu_Ju1"],
+] as const;
+
+const evaluationScenes = [
+  {
+    mode: "SIM",
+    title: "Reference-conditioned arrangement",
+    description: "Visual grounding and long-horizon ordering under controlled scene variation.",
+    video: "/samples/arrange-number-reference.mp4",
+    poster: "/samples/arrange-number-reference.webp",
+  },
+  {
+    mode: "SIM",
+    title: "Closed-loop manipulation",
+    description: "Policy execution with task progress, intervention, and recovery evidence.",
+    video: "/samples/stack-bowls-policy.mp4",
+    poster: "/samples/stack-bowls-policy.webp",
+  },
+  {
+    mode: "SIM",
+    title: "Failure and recovery",
+    description: "Matched failure cases test whether an update repairs execution rather than only its explanation.",
+    video: "/samples/stack-bowls-failure.mp4",
+    poster: "/samples/stack-bowls-failure.webp",
+  },
+  {
+    mode: "REAL",
+    title: "Dual-arm towel folding",
+    description: "AgileX manipulation with deformable-object and coordination challenges.",
+    image: "/scenes/agilex-towel.webp",
+  },
+  {
+    mode: "REAL",
+    title: "Button sequencing",
+    description: "Tianyi dual-arm execution conditioned on ordered visual cues.",
+    image: "/scenes/tianyi-buttons.webp",
+  },
+  {
+    mode: "REAL",
+    title: "Semantic placement",
+    description: "Tianyi object placement tests visual matching and physically grounded action.",
+    image: "/scenes/tianyi-vegetables.webp",
+  },
+] as const;
+
+const leaderboardRows = [
+  { rank: "1", model: "GPT-6.1-sol (xhigh)", score: "43.5" },
+  { rank: "2", model: "DeepSeek-V4.1-Flash (high)", score: "31.1" },
+  { rank: "3", model: "GLM-5.3-Flash (high)", score: "23.9" },
+  { rank: "", model: "Claude Opus 5.5 (xhigh)", score: "" },
+  { rank: "", model: "Qwen3.8-27B (xhigh)", score: "" },
 ] as const;
 
 const organizers = [
@@ -114,7 +164,7 @@ export function PublicHome() {
         </div>
         <div className="publicHeroActions">
           <a className="primary" href="#program">View program <ArrowRight size={18}/></a>
-          <a href="/leaderboards">Leaderboards</a>
+          <a href="#leaderboard-preview">Leaderboard preview</a>
         </div>
       </div>
     </section>
@@ -139,6 +189,29 @@ export function PublicHome() {
       </ol>
     </section>
 
+    <section id="scenes" className="publicSection sceneSection" aria-labelledby="scenes-title">
+      <div className="publicSectionHeading">
+        <div><p className="publicEyebrow">Evaluation scenes</p><h2 id="scenes-title">From simulation to physical deployment.</h2></div>
+        <p>Representative scenes connect controlled diagnosis with evaluation on real robot systems.</p>
+      </div>
+      <div className="sceneGrid">
+        {evaluationScenes.map((scene) => <figure key={scene.title}>
+          <div className="sceneMedia">
+            {"video" in scene
+              ? <video autoPlay muted loop playsInline preload="metadata" poster={scene.poster}
+                  aria-label={`${scene.title} simulation scene`}>
+                  <source src={scene.video} type="video/mp4"/>
+                  <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio" default/>
+                </video>
+              : <img src={scene.image} alt={`${scene.title} real-robot evaluation scene`}
+                  width="960" height="540" loading="lazy"/>}
+            <span className={`sceneMode sceneMode${scene.mode}`}>{scene.mode}</span>
+          </div>
+          <figcaption><h3>{scene.title}</h3><p>{scene.description}</p></figcaption>
+        </figure>)}
+      </div>
+    </section>
+
     <section id="organizers" className="publicSection organizerSection" aria-labelledby="organizers-title">
       <div className="publicSectionHeading compactHeading">
         <div><p className="publicEyebrow">Organizing team</p><h2 id="organizers-title">Organizers</h2></div>
@@ -154,8 +227,8 @@ export function PublicHome() {
 
     <section id="speakers" className="publicSection" aria-labelledby="speakers-title">
       <div className="publicSectionHeading compactHeading">
-        <div><p className="publicEyebrow">Confirmed invited speakers</p><h2 id="speakers-title">Invited speakers</h2></div>
-        <p>Ten confirmed in-person speakers across vision, learning, and robotics.</p>
+        <div><p className="publicEyebrow">Invited speakers</p><h2 id="speakers-title">Vision, learning, and robotics.</h2></div>
+        <p>Eight confirmed speakers and two tentative speakers.</p>
       </div>
       <div className="speakerGrid">
         {speakers.map(([name, affiliation, href], index) =>
@@ -167,13 +240,23 @@ export function PublicHome() {
       </div>
     </section>
 
-    <section className="leaderboardCallout" aria-labelledby="leaderboard-callout-title">
-      <div>
-        <p className="publicEyebrow">RoboExam</p>
-        <h2 id="leaderboard-callout-title">Four tracks. Independent rankings.</h2>
-        <p>T1 VLM reasoning · T2 action-conditioned prediction · T3 simulation · T4 real-robot deployment</p>
+    <section id="leaderboard-preview" className="publicSection leaderboardPreview"
+      aria-labelledby="leaderboard-preview-title">
+      <div className="publicSectionHeading">
+        <div><p className="publicEyebrow">RoboExam leaderboard</p><h2 id="leaderboard-preview-title">Embodied Agency preview.</h2></div>
+        <p>0–100, higher is better. Execution is primary and VQA is supporting evidence. Unevaluated baselines remain blank.</p>
       </div>
-      <a href="/leaderboards">Open leaderboards <ArrowRight size={18}/></a>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Scrollable table region needs keyboard access. */}
+      <div className="leaderboardPreviewTable" role="region" aria-label="Embodied Agency leaderboard preview" tabIndex={0}>
+        <table>
+          <thead><tr><th scope="col">Rank</th><th scope="col">Baseline</th><th scope="col">Score</th></tr></thead>
+          <tbody>{leaderboardRows.map((row) => <tr key={row.model}>
+            <td>{row.rank}</td>
+            <th scope="row">{row.model}</th>
+            <td>{row.score}</td>
+          </tr>)}</tbody>
+        </table>
+      </div>
     </section>
   </div>;
 }

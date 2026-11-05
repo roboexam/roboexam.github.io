@@ -1,6 +1,10 @@
-# RoboExam dashboard
+# EmbodiVSI · RoboExam public site
 
-Public research dashboard for a planned CVPR 2027 Workshop benchmark. It presents four independent track tables, metric definitions, dataset cohorts, published baselines, and linked evidence for VLM, ACWM, VLA, and WAM systems.
+Public one-page research site for EmbodiVSI and the RoboExam evaluation program.
+The homepage presents the workshop program, organizers, invited speakers,
+representative simulation and real-robot scenes, and a compact leaderboard
+preview. Unevaluated baselines remain blank. There is no standalone public
+leaderboards route.
 
 ## Requirements
 
@@ -26,7 +30,9 @@ Forward port `3000` from VS Code's **Ports** panel and open the forwarded addres
 - **T3 Simulation Deployment** — policy correctness, local closed-loop effectiveness, long-horizon execution, robustness, safety, and efficiency.
 - **T4 Real-World Deployment** — hardware task outcome, subgoal progress, timing, and manual safety/intervention review.
 
-**Leaderboards** opens on all report entries. Every metric opens its full definition, scoring rule, interpretation, and evidence; there is no separate Metric guide page. Filter by dimension or search; **More filters** adds subdimension, required evidence, protocol status, and model family or result availability.
+The homepage leaderboard is intentionally compact. Detailed metric and evidence
+components remain internal implementation assets and are not published as a
+separate page.
 
 The current T1 publication uses `Overall = 0.70 × Subtask + 0.30 × VQA`, with
 `VQA = (A + B + (C1 + C2 + C3) / 3) / 3`. Its frozen common scope is fourteen
