@@ -49,7 +49,7 @@ export const publicResults = {
         psnr: 21.334,
         ssim: 0.775,
         jepa: 0.291,
-        positionMae: 15.75,
+        positionMae: 15.749,
       },
       {
         name: "LingBot-VA",
