@@ -65,6 +65,9 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /people\/jixian-wu\.jpg/);
   assert.match(html, /From simulation to physical deployment\./);
   assert.match(html, /samples\/stack-bowls-policy\.mp4/);
+  assert.match(html, /samples\/real-towel-folding\.mp4/);
+  assert.match(html, /samples\/real-button-sequencing\.mp4/);
+  assert.match(html, /samples\/real-semantic-placement\.mp4/);
   assert.match(html, /scenes\/agilex-towel\.webp/);
   assert.doesNotMatch(html, /Verified results|Completed evaluations, shown as measured\.|Confirmed protocols, traceable results/);
   assert.match(html, /GPT-6\.1-sol \(xhigh\)/);
@@ -86,11 +89,14 @@ test("renders the public workshop program without internal surfaces", async () =
     assert.match(html, new RegExp(method));
   }
   assert.match(html, /<p>Overall score<\/p>/);
-  assert.match(html, /<p>PSNR ↑<\/p>/);
+  assert.match(html, /<p>Native metrics<\/p>/);
   assert.match(html, /<p>Task success · macro ↑<\/p>/);
   assert.match(html, /<p>Task success rate ↑<\/p>/);
   assert.doesNotMatch(html, /Overall scores follow each track’s official protocol|All five settings complete|Native metric view|480 completed episodes per model|Research leadership and benchmark operations/);
-  assert.match(html, /23\.67 dB/);
+  assert.match(html, /PSNR 23\.67 dB/);
+  assert.match(html, /SSIM 0\.839 · JEPA 0\.659 · JEDi 1\.041/);
+  assert.match(html, /Motion smoothness 1\.667 ↑ · M-MSE 0\.0226 ↓ · Subject consistency 0\.618 ↑/);
+  assert.match(html, /EE pos MAE 13\.54 mm ↓ · EE rot MAE 7\.39° ↓/);
   assert.match(html, />21\.46%</);
   assert.doesNotMatch(html, /proposal-only score mock-up|Example VLA|Example WAM|illustrative values/);
   assert.doesNotMatch(html, /Baseline slot|Placeholder rows|Claude Opus|Qwen3\.8/);

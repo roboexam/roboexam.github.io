@@ -73,19 +73,22 @@ const evaluationScenes = [
     mode: "REAL",
     title: "Dual-arm towel folding",
     description: "AgileX manipulation with deformable-object and coordination challenges.",
-    image: "/scenes/agilex-towel.webp",
+    video: "/samples/real-towel-folding.mp4",
+    poster: "/scenes/agilex-towel.webp",
   },
   {
     mode: "REAL",
     title: "Button sequencing",
     description: "Tianyi dual-arm execution conditioned on ordered visual cues.",
-    image: "/scenes/tianyi-buttons.webp",
+    video: "/samples/real-button-sequencing.mp4",
+    poster: "/scenes/tianyi-buttons.webp",
   },
   {
     mode: "REAL",
     title: "Semantic placement",
     description: "Tianyi object placement tests visual matching and physically grounded action.",
-    image: "/scenes/tianyi-vegetables.webp",
+    video: "/samples/real-semantic-placement.mp4",
+    poster: "/scenes/tianyi-vegetables.webp",
   },
 ] as const;
 
@@ -151,21 +154,27 @@ const compactLeaderboards = [
       rank: model.rank,
       name: model.name,
       score: model.overall.toFixed(2),
+      details: undefined,
     })),
   },
   {
     id: "T2",
     title: "Physical Foresight",
-    metric: "PSNR ↑",
+    metric: "Native metrics",
     status: "Measured",
     tone: "measured",
     rows: [...publicResults.t2.models]
       .sort((left, right) => right.psnr - left.psnr)
       .map((model, index) => ({
-      rank: index + 1,
-      name: model.name,
-      score: `${model.psnr.toFixed(2)} dB`,
-    })),
+        rank: index + 1,
+        name: model.name,
+        score: `PSNR ${model.psnr.toFixed(2)} dB`,
+        details: [
+          `SSIM ${model.ssim.toFixed(3)} · JEPA ${model.jepa.toFixed(3)} · JEDi ${model.jedi.toFixed(3)} ↓`,
+          `Motion smoothness ${model.motionSmoothness.toFixed(3)} ↑ · M-MSE ${model.motionMse.toFixed(4)} ↓ · Subject consistency ${model.subjectConsistency.toFixed(3)} ↑`,
+          `EE pos MAE ${model.positionMae.toFixed(2)} mm ↓ · EE rot MAE ${model.rotationMae.toFixed(2)}° ↓`,
+        ],
+      })),
   },
   {
     id: "T3",
@@ -178,6 +187,7 @@ const compactLeaderboards = [
       rank: null,
       name: model.name,
       score: `${(model.taskSuccess.reduce((sum, score) => sum + score, 0) / model.taskSuccess.length).toFixed(2)}%`,
+      details: undefined,
     }))
       .sort((left, right) => Number.parseFloat(right.score) - Number.parseFloat(left.score))
       .map((row, index) => ({ ...row, rank: index + 1 })),
@@ -192,6 +202,7 @@ const compactLeaderboards = [
       rank: null,
       name: model.name,
       score: model.score === null ? "—" : String(model.score),
+      details: undefined,
     })),
   },
 ] as const;
@@ -246,14 +257,11 @@ export function PublicHome() {
       <div className="sceneGrid">
         {evaluationScenes.map((scene) => <figure key={scene.title}>
           <div className="sceneMedia">
-            {"video" in scene
-              ? <video autoPlay muted loop playsInline preload="metadata" poster={scene.poster}
-                  aria-label={`${scene.title} simulation scene`}>
-                  <source src={scene.video} type="video/mp4"/>
-                  <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio" default/>
-                </video>
-              : <img src={scene.image} alt={`${scene.title} real-robot evaluation scene`}
-                  width="960" height="540" loading="lazy"/>}
+            <video autoPlay muted loop playsInline preload="metadata" poster={scene.poster}
+              aria-label={`${scene.title} ${scene.mode === "REAL" ? "real-robot" : "simulation"} scene`}>
+              <source src={scene.video} type="video/mp4"/>
+              <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio" default/>
+            </video>
             <span className={`sceneMode sceneMode${scene.mode}`}>{scene.mode}</span>
           </div>
           <figcaption><h3>{scene.title}</h3><p>{scene.description}</p></figcaption>
@@ -303,7 +311,10 @@ export function PublicHome() {
             {track.rows.map((row) => <li key={row.name}>
               <span>{row.rank === null ? "•" : String(row.rank).padStart(2, "0")}</span>
               <strong>{row.name}</strong>
-              <b>{row.score}</b>
+              <div className="leaderboardRowValue">
+                <b>{row.score}</b>
+                {row.details?.map((detail) => <small key={detail}>{detail}</small>)}
+              </div>
             </li>)}
           </ol>
         </article>)}

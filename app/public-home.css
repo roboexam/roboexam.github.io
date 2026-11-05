@@ -963,11 +963,26 @@
   font-size: 12px;
   font-weight: 620;
 }
-.leaderboardTrackCard li > b {
+.leaderboardTrackCard li > .leaderboardRowValue {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+  justify-items: end;
+  text-align: right;
+}
+.leaderboardTrackCard li > .leaderboardRowValue > b {
   color: #245f7e;
   font-size: 16px;
   font-weight: 680;
   font-variant-numeric: tabular-nums;
+}
+.leaderboardTrackCard li > .leaderboardRowValue > small {
+  max-width: 100%;
+  color: #6d8197;
+  display: block;
+  font-size: 9px;
+  line-height: 1.25;
+  white-space: normal;
 }
 
 .leaderboardTrackCard footer {
