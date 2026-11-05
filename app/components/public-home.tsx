@@ -158,6 +158,65 @@ function scoreWidth(value: number, max = 100) {
   return `${Math.max(0, Math.min(100, (value / max) * 100))}%`;
 }
 
+const compactLeaderboards = [
+  {
+    id: "T1",
+    title: "Embodied Agency",
+    metric: "Final overall score",
+    status: "Final",
+    tone: "final",
+    detail: "All five settings complete",
+    rows: publicResults.t1.models.map((model) => ({
+      rank: model.rank,
+      name: model.name,
+      score: model.overall.toFixed(2),
+    })),
+  },
+  {
+    id: "T2",
+    title: "Physical Foresight",
+    metric: "PSNR snapshot ↑",
+    status: "Measured",
+    tone: "measured",
+    detail: "Native metric view · no combined total",
+    rows: [...publicResults.t2.models]
+      .sort((left, right) => right.psnr - left.psnr)
+      .map((model, index) => ({
+        rank: index + 1,
+        name: model.name,
+        score: `${model.psnr.toFixed(2)} dB`,
+      })),
+  },
+  {
+    id: "T3",
+    title: "Simulation Deployment",
+    metric: "ID task success ↑",
+    status: "Measured",
+    tone: "measured",
+    detail: "480 completed episodes per model",
+    rows: [...publicResults.t3.models]
+      .sort((left, right) => right.taskSuccess[0] - left.taskSuccess[0])
+      .map((model, index) => ({
+        rank: index + 1,
+        name: model.name,
+        score: `${model.taskSuccess[0].toFixed(2)}%`,
+      })),
+  },
+  {
+    id: "T4",
+    title: "Real-World Deployment",
+    metric: publicResults.t4Proposal.metric,
+    status: "Proposal",
+    tone: "proposal",
+    detail: "Layout-only values · not measured",
+    rows: publicResults.t4Proposal.models.map((model, index) => ({
+      rank: index + 1,
+      name: model.name,
+      score: model.score.toFixed(2),
+    })),
+  },
+] as const;
+
 export function PublicHome() {
   return <div className="content publicHome">
     <section className="publicHero" aria-labelledby="public-hero-title">
@@ -292,7 +351,7 @@ export function PublicHome() {
 
       <aside className="resultPolicy">
         <CheckCircle2 size={20} aria-hidden="true"/>
-        <div><strong>Complete cohorts only</strong><p>Unfinished baselines and real-robot trials are omitted until their registered evaluations are complete.</p></div>
+        <div><strong>Complete cohorts only</strong><p>Measured result panels omit unfinished baselines and real-robot trials. The T4 proposal preview below is not a result.</p></div>
         <span>Verified {publicResults.verifiedOn}</span>
       </aside>
     </section>
@@ -351,21 +410,27 @@ export function PublicHome() {
     <section id="leaderboard-preview" className="publicSection leaderboardPreview"
       aria-labelledby="leaderboard-preview-title">
       <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">A compact view of final T1 scores.</h2></div>
-        <p>Only baselines with all five evaluation settings are ranked. Other tracks retain their native metric views above.</p>
+        <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">Four tracks in one compact view.</h2></div>
+        <p>T1–T3 use completed dashboard results with track-specific metrics. T4 is a proposal-only score mock-up.</p>
       </div>
-      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Scrollable table region needs keyboard access. */}
-      <div className="leaderboardPreviewTable" role="region" aria-label="Track 1 final leaderboard" tabIndex={0}>
-        <table>
-          <thead><tr><th scope="col">Rank</th><th scope="col">Baseline</th><th scope="col">Coverage</th><th scope="col">Overall</th></tr></thead>
-          <tbody>{publicResults.t1.models.map((model) => <tr key={model.name}>
-            <td>{String(model.rank).padStart(2, "0")}</td>
-            <th scope="row">{model.name}</th>
-            <td><span className="coverageMark"><CheckCircle2 size={15} aria-hidden="true"/>5 / 5 settings</span></td>
-            <td>{model.overall.toFixed(2)}</td>
-          </tr>)}</tbody>
-        </table>
+      <div className="trackLeaderboardGrid">
+        {compactLeaderboards.map((track) => <article className={`leaderboardTrackCard ${track.tone}`} key={track.id}>
+          <header>
+            <span>{track.id}</span>
+            <div><h3>{track.title}</h3><p>{track.metric}</p></div>
+            <b>{track.status}</b>
+          </header>
+          <ol>
+            {track.rows.map((row) => <li key={row.name}>
+              <span>{String(row.rank).padStart(2, "0")}</span>
+              <strong>{row.name}</strong>
+              <b>{row.score}</b>
+            </li>)}
+          </ol>
+          <footer>{track.detail}</footer>
+        </article>)}
       </div>
+      <p className="proposalScoreNote"><strong>T4 proposal preview:</strong> illustrative values demonstrate the intended score presentation and do not report hardware performance.</p>
     </section>
   </div>;
 }

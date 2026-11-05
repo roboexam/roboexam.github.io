@@ -76,7 +76,11 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /G05/);
   assert.match(html, /HyVLA/);
   assert.match(html, /XVLA/);
-  assert.match(html, /A compact view of final T1 scores\./);
+  assert.match(html, /Four tracks in one compact view\./);
+  assert.match(html, /Real-World Deployment/);
+  assert.match(html, /Example VLA/);
+  assert.match(html, /Example WAM/);
+  assert.match(html, /illustrative values demonstrate the intended score presentation and do not report hardware performance\./);
   assert.match(html, /Complete cohorts only/);
   assert.doesNotMatch(html, /Baseline slot|Placeholder rows|Claude Opus|Qwen3\.8/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);

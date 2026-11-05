@@ -1,8 +1,9 @@
 /**
- * Curated public snapshot of completed RoboExam evaluations.
+ * Curated public snapshot of RoboExam evaluations.
  *
- * Values are copied from the versioned dashboard bundles named below. Models
- * without a complete published cohort are intentionally omitted.
+ * T1–T3 values are copied from the versioned dashboard bundles named below.
+ * Models without a complete published cohort are intentionally omitted. T4 is
+ * an explicitly labeled proposal mock-up and does not represent measurements.
  */
 export const publicResults = {
   verifiedOn: "November 5, 2026",
@@ -90,6 +91,14 @@ export const publicResults = {
         taskSuccess: [5.83, 2.50, 1.67, 8.33],
         subtask: [9.75, 4.42, 3.75, 14.49],
       },
+    ],
+  },
+  t4Proposal: {
+    metric: "Illustrative task score",
+    models: [
+      { name: "Example VLA", score: 72.40 },
+      { name: "Example WAM", score: 66.80 },
+      { name: "Example Open Policy", score: 61.20 },
     ],
   },
 } as const;
