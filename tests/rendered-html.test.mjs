@@ -53,7 +53,7 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /Beyond Passive Evaluation\./);
   assert.match(html, /Talks, papers, and evidence-backed results\./);
   assert.equal((html.match(/X-Humanoid/g) ?? []).length, 1);
-  assert.match(html, /RoboExam challenge/);
+  assert.match(html, /RoboExam competition/);
   assert.match(html, /Eight confirmed speakers and two tentative speakers\./);
   assert.match(html, /Sergey Levine/);
   assert.match(html, /Chelsea Finn/);
@@ -65,16 +65,29 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /From simulation to physical deployment\./);
   assert.match(html, /samples\/stack-bowls-policy\.mp4/);
   assert.match(html, /scenes\/agilex-towel\.webp/);
-  assert.match(html, /Ranking format preview\./);
-  assert.match(html, /Placeholder rows do not indicate measured performance\./);
-  assert.match(html, /Baseline slot 01/);
+  assert.match(html, /Completed evaluations, shown as measured\./);
+  assert.match(html, /GPT-6\.1-sol \(xhigh\)/);
+  assert.match(html, /DeepSeek-V4\.1-Flash \(high\)/);
+  assert.match(html, /GLM-5\.3-Flash \(high\)/);
+  assert.match(html, />43\.52</);
+  assert.match(html, /Ctrl-World/);
+  assert.match(html, /LingBot-VA/);
+  assert.match(html, /Motus/);
+  assert.match(html, /G05/);
+  assert.match(html, /HyVLA/);
+  assert.match(html, /XVLA/);
+  assert.match(html, /A compact view of final T1 scores\./);
+  assert.match(html, /Complete cohorts only/);
+  assert.doesNotMatch(html, /Baseline slot|Placeholder rows|Claude Opus|Qwen3\.8/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);
+  assert.ok(html.indexOf('id="program"') < html.indexOf('id="results"'));
+  assert.ok(html.indexOf('id="results"') < html.indexOf('id="scenes"'));
   assert.ok(html.indexOf('id="organizers"') < html.indexOf('id="speakers"'));
   assert.ok(html.indexOf('id="scenes"') < html.indexOf('id="organizers"'));
   assert.ok(html.indexOf('id="speakers"') < html.indexOf('id="leaderboard-preview"'));
   assert.doesNotMatch(html, /href="\/leaderboards"/);
   assert.doesNotMatch(html, /href="\/#(?:program|speakers|organizers)"/);
-  assert.doesNotMatch(html, /X-Humanoid-aligned|GPT-6\.1-sol|43\.5|heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
+  assert.doesNotMatch(html, /X-Humanoid-aligned|heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
 });
 
 test("does not require an authentication cookie", async () => {
