@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element -- Static GitHub Pages deployment has no image optimizer. */
-import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { publicResults } from "../data/public-results";
 
 const programCards = [
@@ -89,20 +89,6 @@ const evaluationScenes = [
   },
 ] as const;
 
-const resultStats = [
-  { value: "24", label: "shared tasks", detail: "reasoning, prediction, and execution" },
-  { value: "3", label: "T1 final baselines", detail: "all five settings complete" },
-  { value: "1,800", label: "T2 completed cases", detail: "three models across five regimes" },
-  { value: "1,440", label: "T3 completed episodes", detail: "three models across four settings" },
-] as const;
-
-const t2MetricViews = [
-  { key: "psnr", label: "PSNR", direction: "↑", max: 30, digits: 2, suffix: " dB" },
-  { key: "ssim", label: "SSIM", direction: "↑", max: 1, digits: 3, suffix: "" },
-  { key: "jepa", label: "JEPA", direction: "↑", max: 1, digits: 3, suffix: "" },
-  { key: "positionMae", label: "EE position MAE", direction: "↓", max: 100, digits: 2, suffix: " mm" },
-] as const;
-
 const organizers = [
   {
     name: "Karl Henrik Johansson",
@@ -153,10 +139,6 @@ const organizers = [
     photo: "/people/fangyuan-zhao.jpg",
   },
 ] as const;
-
-function scoreWidth(value: number, max = 100) {
-  return `${Math.max(0, Math.min(100, (value / max) * 100))}%`;
-}
 
 const compactLeaderboards = [
   {
@@ -221,7 +203,7 @@ export function PublicHome() {
           <span>Seattle</span><span>June 20 or 21, 2027</span><span>Half-day</span>
         </div>
         <div className="publicHeroActions">
-          <a className="primary" href="#results">View verified results <ArrowRight size={18}/></a>
+          <a className="primary" href="#leaderboard-preview">View four-track overview <ArrowRight size={18}/></a>
           <a href="#program">Explore the workshop</a>
         </div>
       </div>
@@ -245,103 +227,6 @@ export function PublicHome() {
           <time>{time}</time><strong>{title}</strong><span>{description}</span>
         </li>)}
       </ol>
-    </section>
-
-    <section id="results" className="publicSection resultsSection" aria-labelledby="results-title">
-      <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">Verified results</p><h2 id="results-title">Completed evaluations, shown as measured.</h2></div>
-        <p>Only complete published cohorts are included. Native metrics remain separate where no official combined score exists.</p>
-      </div>
-
-      <div className="resultStatGrid" aria-label="Published evaluation coverage">
-        {resultStats.map((stat) => <article key={stat.label}>
-          <strong>{stat.value}</strong><div><h3>{stat.label}</h3><p>{stat.detail}</p></div>
-        </article>)}
-      </div>
-
-      <article className="resultPanel t1ResultPanel" aria-labelledby="t1-result-title">
-        <header className="resultPanelHeader">
-          <div><span className="trackBadge">T1 · Final</span><h3 id="t1-result-title">Embodied Agency</h3>
-            <p>Overall scores require ID, three OOD settings, and failure recovery.</p></div>
-          <div className="resultScope"><strong>24 tasks</strong><span>0–100 score</span></div>
-        </header>
-        <div className="t1ModelGrid">
-          {publicResults.t1.models.map((model) => <article className="t1ModelCard" key={model.name}>
-            <header>
-              <span className="resultRank">#{model.rank}</span>
-              <div><h4>{model.name}</h4><p>Final overall</p></div>
-              <strong>{model.overall.toFixed(2)}</strong>
-            </header>
-            <div className="t1HeadlineMetrics">
-              <span><small>Subtask</small><b>{model.subtask.toFixed(2)}</b></span>
-              <span><small>VQA</small><b>{model.vqa.toFixed(2)}</b></span>
-            </div>
-            <div className="settingBars" aria-label={`${model.name} scores by setting`}>
-              {publicResults.t1.settings.map((setting, index) => <div key={setting}>
-                <span>{setting}</span><i aria-hidden="true"><b style={{ width: scoreWidth(model.settings[index]) }}/></i>
-                <strong>{model.settings[index].toFixed(2)}</strong>
-              </div>)}
-            </div>
-          </article>)}
-        </div>
-        <footer className="resultVersion">Result version <code>{publicResults.t1.version}</code></footer>
-      </article>
-
-      <article className="resultPanel t2ResultPanel" aria-labelledby="t2-result-title">
-        <header className="resultPanelHeader">
-          <div><span className="trackBadge">T2 · Complete cohort</span><h3 id="t2-result-title">Physical Foresight</h3>
-            <p>Native metrics compare action-conditioned predictions. No cross-metric total is reported.</p></div>
-          <div className="resultScope"><strong>600 cases / model</strong><span>24 tasks · 5 regimes</span></div>
-        </header>
-        <div className="t2ModelGrid">
-          {publicResults.t2.models.map((model) => <article className="t2ModelCard" key={model.name}>
-            <header><div><h4>{model.name}</h4><p>{model.checkpoint}</p></div><span>600</span></header>
-            <dl>
-              {t2MetricViews.map((metric) => {
-                const value = model[metric.key];
-                return <div key={metric.key} data-direction={metric.direction === "↓" ? "lower" : "higher"}>
-                  <dt>{metric.label}<small>{metric.direction}</small></dt>
-                  <dd><strong>{value.toFixed(metric.digits)}{metric.suffix}</strong>
-                    <span aria-hidden="true"><i style={{ width: scoreWidth(value, metric.max) }}/></span>
-                  </dd>
-                </div>;
-              })}
-            </dl>
-          </article>)}
-        </div>
-        <footer className="resultVersion">Result version <code>{publicResults.t2.version}</code></footer>
-      </article>
-
-      <article className="resultPanel t3ResultPanel" aria-labelledby="t3-result-title">
-        <header className="resultPanelHeader">
-          <div><span className="trackBadge">T3 · Complete settings</span><h3 id="t3-result-title">Simulation Deployment</h3>
-            <p>Task success is shown alongside subtask progress for each completed setting.</p></div>
-          <div className="resultScope"><strong>480 episodes / model</strong><span>120 per setting</span></div>
-        </header>
-        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Scrollable result table needs keyboard access. */}
-        <div className="t3ResultTable" role="region" aria-label="T3 task success and subtask scores" tabIndex={0}>
-          <table>
-            <thead><tr><th scope="col">Model</th>{publicResults.t3.settings.map((setting) =>
-              <th scope="col" key={setting}>{setting}</th>)}</tr></thead>
-            <tbody>{publicResults.t3.models.map((model) => <tr key={model.name}>
-              <th scope="row">{model.name}<small>480 / 480 episodes</small></th>
-              {model.taskSuccess.map((score, index) => <td key={publicResults.t3.settings[index]}
-                data-label={publicResults.t3.settings[index]}>
-                <strong>{score.toFixed(2)}%</strong>
-                <span aria-hidden="true"><i style={{ width: scoreWidth(score) }}/></span>
-                <small>Subtask {model.subtask[index].toFixed(2)}</small>
-              </td>)}
-            </tr>)}</tbody>
-          </table>
-        </div>
-        <footer className="resultVersion">Result version <code>{publicResults.t3.version}</code></footer>
-      </article>
-
-      <aside className="resultPolicy">
-        <CheckCircle2 size={20} aria-hidden="true"/>
-        <div><strong>Confirmed protocols, traceable results</strong><p>T1–T3 show completed dashboard cohorts. T4 uses the confirmed hardware protocol, with synchronized trial evidence and manual review for each reported result.</p></div>
-        <span>Verified {publicResults.verifiedOn}</span>
-      </aside>
     </section>
 
     <section id="scenes" className="publicSection sceneSection" aria-labelledby="scenes-title">

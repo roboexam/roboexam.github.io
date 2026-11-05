@@ -66,7 +66,7 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /From simulation to physical deployment\./);
   assert.match(html, /samples\/stack-bowls-policy\.mp4/);
   assert.match(html, /scenes\/agilex-towel\.webp/);
-  assert.match(html, /Completed evaluations, shown as measured\./);
+  assert.doesNotMatch(html, /Verified results|Completed evaluations, shown as measured\.|Confirmed protocols, traceable results/);
   assert.match(html, /GPT-6\.1-sol \(xhigh\)/);
   assert.match(html, /DeepSeek-V4\.1-Flash \(high\)/);
   assert.match(html, /GLM-5\.3-Flash \(high\)/);
@@ -85,14 +85,13 @@ test("renders the public workshop program without internal surfaces", async () =
   for (const method of ["Pi0.5 / XPolicyLab", "FastWAM", "OpenWAM", "HyVLA", "LingBot-VLA", "LingBot-VA", "XVLA", "AHA-WAM"]) {
     assert.match(html, new RegExp(method));
   }
-  assert.match(html, /Confirmed protocols, traceable results/);
   assert.equal((html.match(/<p>Overall score<\/p>/g) ?? []).length, 4);
   assert.doesNotMatch(html, /All five settings complete|Native metric view|480 completed episodes per model|Research leadership and benchmark operations/);
   assert.doesNotMatch(html, /proposal-only score mock-up|Example VLA|Example WAM|illustrative values/);
   assert.doesNotMatch(html, /Baseline slot|Placeholder rows|Claude Opus|Qwen3\.8/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);
-  assert.ok(html.indexOf('id="program"') < html.indexOf('id="results"'));
-  assert.ok(html.indexOf('id="results"') < html.indexOf('id="scenes"'));
+  assert.equal((html.match(/id="results"/g) ?? []).length, 0);
+  assert.ok(html.indexOf('id="program"') < html.indexOf('id="scenes"'));
   assert.ok(html.indexOf('id="organizers"') < html.indexOf('id="speakers"'));
   assert.ok(html.indexOf('id="scenes"') < html.indexOf('id="organizers"'));
   assert.ok(html.indexOf('id="speakers"') < html.indexOf('id="leaderboard-preview"'));
