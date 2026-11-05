@@ -52,7 +52,7 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /EmbodiVSI/);
   assert.match(html, /Beyond Passive Evaluation\./);
   assert.match(html, /Talks, papers, and evidence-backed results\./);
-  assert.match(html, /X-Humanoid-aligned/);
+  assert.equal((html.match(/X-Humanoid/g) ?? []).length, 1);
   assert.match(html, /RoboExam challenge/);
   assert.match(html, /Eight confirmed speakers and two tentative speakers\./);
   assert.match(html, /Sergey Levine/);
@@ -65,15 +65,16 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /From simulation to physical deployment\./);
   assert.match(html, /samples\/stack-bowls-policy\.mp4/);
   assert.match(html, /scenes\/agilex-towel\.webp/);
-  assert.match(html, /Embodied Agency preview\./);
-  assert.match(html, /GPT-6\.1-sol/);
+  assert.match(html, /Ranking format preview\./);
+  assert.match(html, /Placeholder rows do not indicate measured performance\./);
+  assert.match(html, /Baseline slot 01/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);
   assert.ok(html.indexOf('id="organizers"') < html.indexOf('id="speakers"'));
   assert.ok(html.indexOf('id="scenes"') < html.indexOf('id="organizers"'));
   assert.ok(html.indexOf('id="speakers"') < html.indexOf('id="leaderboard-preview"'));
   assert.doesNotMatch(html, /href="\/leaderboards"/);
   assert.doesNotMatch(html, /href="\/#(?:program|speakers|organizers)"/);
-  assert.doesNotMatch(html, /heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
+  assert.doesNotMatch(html, /X-Humanoid-aligned|GPT-6\.1-sol|43\.5|heroPeople|heroPortraitGrid|X-Humanoid ecosystem alignment|What should count as genuine improvement|Provisional 2027 dates|Representative challenge evidence|Track 1 snapshot|Correlation|>Review<|>Datasets<|当前 baseline 训练与测评计划|RUN REGISTRY/);
 });
 
 test("does not require an authentication cookie", async () => {

@@ -89,11 +89,9 @@ const evaluationScenes = [
 ] as const;
 
 const leaderboardRows = [
-  { rank: "1", model: "GPT-6.1-sol (xhigh)", score: "43.5" },
-  { rank: "2", model: "DeepSeek-V4.1-Flash (high)", score: "31.1" },
-  { rank: "3", model: "GLM-5.3-Flash (high)", score: "23.9" },
-  { rank: "", model: "Claude Opus 5.5 (xhigh)", score: "" },
-  { rank: "", model: "Qwen3.8-27B (xhigh)", score: "" },
+  { rank: "—", model: "Baseline slot 01", score: "—" },
+  { rank: "—", model: "Baseline slot 02", score: "—" },
+  { rank: "—", model: "Baseline slot 03", score: "—" },
 ] as const;
 
 const organizers = [
@@ -157,14 +155,14 @@ export function PublicHome() {
         <p className="publicHeroLead">
           An open research program on dual recursive self-improvement and open-ended multi-agent
           capability evolution, with RoboExam linking reasoning, world models, simulation, and
-          X-Humanoid-aligned deployment.
+          real-world deployment.
         </p>
         <div className="workshopMeta" aria-label="Proposed workshop format">
           <span>Seattle</span><span>June 20 or 21, 2027</span><span>Half-day</span>
         </div>
         <div className="publicHeroActions">
           <a className="primary" href="#program">View program <ArrowRight size={18}/></a>
-          <a href="#leaderboard-preview">Leaderboard preview</a>
+          <a href="#scenes">Explore evaluation scenes</a>
         </div>
       </div>
     </section>
@@ -243,11 +241,11 @@ export function PublicHome() {
     <section id="leaderboard-preview" className="publicSection leaderboardPreview"
       aria-labelledby="leaderboard-preview-title">
       <div className="publicSectionHeading">
-        <div><p className="publicEyebrow">RoboExam leaderboard</p><h2 id="leaderboard-preview-title">Embodied Agency preview.</h2></div>
-        <p>0–100, higher is better. Execution is primary and VQA is supporting evidence. Unevaluated baselines remain blank.</p>
+        <div><p className="publicEyebrow">Illustrative leaderboard</p><h2 id="leaderboard-preview-title">Ranking format preview.</h2></div>
+        <p>A compact ranking table will appear after official evaluation. Placeholder rows do not indicate measured performance.</p>
       </div>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- Scrollable table region needs keyboard access. */}
-      <div className="leaderboardPreviewTable" role="region" aria-label="Embodied Agency leaderboard preview" tabIndex={0}>
+      <div className="leaderboardPreviewTable" role="region" aria-label="Illustrative leaderboard format" tabIndex={0}>
         <table>
           <thead><tr><th scope="col">Rank</th><th scope="col">Baseline</th><th scope="col">Score</th></tr></thead>
           <tbody>{leaderboardRows.map((row) => <tr key={row.model}>
