@@ -2,8 +2,9 @@
  * Curated public snapshot of RoboExam evaluations.
  *
  * T1–T3 values are copied from the versioned dashboard bundles named below.
- * Models without a complete published cohort are intentionally omitted. T4 is
- * an explicitly labeled proposal mock-up and does not represent measurements.
+ * Models without a complete published cohort are intentionally omitted. T4
+ * publishes its confirmed hardware methods and protocol while scores remain
+ * unavailable until synchronized trials and review are complete.
  */
 export const publicResults = {
   verifiedOn: "November 5, 2026",
@@ -93,12 +94,18 @@ export const publicResults = {
       },
     ],
   },
-  t4Proposal: {
-    metric: "Illustrative task score",
+  t4: {
+    metric: "Task success rate ↑ · 3 task families",
+    detail: "Button sequencing · dual-arm towel folding · semantic placement",
     models: [
-      { name: "Example VLA", score: 72.40 },
-      { name: "Example WAM", score: 66.80 },
-      { name: "Example Open Policy", score: 61.20 },
+      { name: "Pi0.5 / XPolicyLab", score: null },
+      { name: "FastWAM", score: null },
+      { name: "OpenWAM", score: null },
+      { name: "HyVLA", score: null },
+      { name: "LingBot-VLA", score: null },
+      { name: "LingBot-VA", score: null },
+      { name: "XVLA", score: null },
+      { name: "AHA-WAM", score: null },
     ],
   },
 } as const;

@@ -77,11 +77,15 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /HyVLA/);
   assert.match(html, /XVLA/);
   assert.match(html, /Four tracks in one compact view\./);
+  assert.match(html, /href="#main-content">Home<\/a>/);
+  assert.doesNotMatch(html, /href="#scenes">Scenes<\/a>/);
   assert.match(html, /Real-World Deployment/);
-  assert.match(html, /Example VLA/);
-  assert.match(html, /Example WAM/);
-  assert.match(html, /illustrative values demonstrate the intended score presentation and do not report hardware performance\./);
-  assert.match(html, /Complete cohorts only/);
+  for (const method of ["Pi0.5 / XPolicyLab", "FastWAM", "OpenWAM", "HyVLA", "LingBot-VLA", "LingBot-VA", "XVLA", "AHA-WAM"]) {
+    assert.match(html, new RegExp(method));
+  }
+  assert.match(html, /Confirmed protocols, traceable results/);
+  assert.match(html, /All four tracks use confirmed task designs and track-specific metrics/);
+  assert.doesNotMatch(html, /proposal-only score mock-up|Example VLA|Example WAM|illustrative values/);
   assert.doesNotMatch(html, /Baseline slot|Placeholder rows|Claude Opus|Qwen3\.8/);
   assert.equal((html.match(/<img[^>]*src="\/people\/[^"]+\.jpg"/g) ?? []).length, 8);
   assert.ok(html.indexOf('id="program"') < html.indexOf('id="results"'));

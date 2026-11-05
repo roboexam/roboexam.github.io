@@ -205,14 +205,14 @@ const compactLeaderboards = [
   {
     id: "T4",
     title: "Real-World Deployment",
-    metric: publicResults.t4Proposal.metric,
-    status: "Proposal",
-    tone: "proposal",
-    detail: "Layout-only values · not measured",
-    rows: publicResults.t4Proposal.models.map((model, index) => ({
-      rank: index + 1,
+    metric: publicResults.t4.metric,
+    status: "Confirmed",
+    tone: "measured",
+    detail: publicResults.t4.detail,
+    rows: publicResults.t4.models.map((model) => ({
+      rank: null,
       name: model.name,
-      score: model.score.toFixed(2),
+      score: model.score === null ? "—" : String(model.score),
     })),
   },
 ] as const;
@@ -351,7 +351,7 @@ export function PublicHome() {
 
       <aside className="resultPolicy">
         <CheckCircle2 size={20} aria-hidden="true"/>
-        <div><strong>Complete cohorts only</strong><p>Measured result panels omit unfinished baselines and real-robot trials. The T4 proposal preview below is not a result.</p></div>
+        <div><strong>Confirmed protocols, traceable results</strong><p>T1–T3 show completed dashboard cohorts. T4 uses the confirmed hardware protocol, with synchronized trial evidence and manual review for each reported result.</p></div>
         <span>Verified {publicResults.verifiedOn}</span>
       </aside>
     </section>
@@ -411,7 +411,7 @@ export function PublicHome() {
       aria-labelledby="leaderboard-preview-title">
       <div className="publicSectionHeading">
         <div><p className="publicEyebrow">Current leaderboard</p><h2 id="leaderboard-preview-title">Four tracks in one compact view.</h2></div>
-        <p>T1–T3 use completed dashboard results with track-specific metrics. T4 is a proposal-only score mock-up.</p>
+        <p>All four tracks use confirmed task designs and track-specific metrics. T1–T3 show completed dashboard results; T4 lists the confirmed real-robot methods and protocol.</p>
       </div>
       <div className="trackLeaderboardGrid">
         {compactLeaderboards.map((track) => <article className={`leaderboardTrackCard ${track.tone}`} key={track.id}>
@@ -422,7 +422,7 @@ export function PublicHome() {
           </header>
           <ol>
             {track.rows.map((row) => <li key={row.name}>
-              <span>{String(row.rank).padStart(2, "0")}</span>
+              <span>{row.rank === null ? "•" : String(row.rank).padStart(2, "0")}</span>
               <strong>{row.name}</strong>
               <b>{row.score}</b>
             </li>)}
@@ -430,7 +430,6 @@ export function PublicHome() {
           <footer>{track.detail}</footer>
         </article>)}
       </div>
-      <p className="proposalScoreNote"><strong>T4 proposal preview:</strong> illustrative values demonstrate the intended score presentation and do not report hardware performance.</p>
     </section>
   </div>;
 }
