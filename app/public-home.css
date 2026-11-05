@@ -298,7 +298,7 @@
 .resultStatGrid p {
   margin: 5px 0 0;
   color: #718095;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.45;
 }
 
@@ -328,7 +328,7 @@
   border: 1px solid rgba(64, 139, 171, .28);
   border-radius: 5px;
   background: rgba(236, 248, 252, .8);
-  font: 760 9px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 760 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -367,7 +367,7 @@
 
 .resultScope span {
   color: #788699;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 650;
   letter-spacing: .04em;
   text-transform: uppercase;
@@ -376,7 +376,7 @@
 .t1ModelGrid,
 .t2ModelGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
   gap: 13px;
 }
 
@@ -424,7 +424,7 @@
 .t2ModelCard header p {
   margin: 4px 0 0;
   color: #7a8798;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .t1ModelCard > header > strong {
@@ -451,7 +451,7 @@
   background: rgba(231, 242, 249, .72);
 }
 
-.t1HeadlineMetrics small { color: #697d91; font-size: 9px; }
+.t1HeadlineMetrics small { color: #697d91; font-size: 10px; }
 .t1HeadlineMetrics b { color: #315f82; font-size: 12px; font-variant-numeric: tabular-nums; }
 
 .settingBars {
@@ -468,7 +468,7 @@
 
 .settingBars span {
   color: #6d7a8c;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .settingBars > div > i,
@@ -492,7 +492,7 @@
 
 .settingBars > div > strong {
   color: #48637f;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 680;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -518,7 +518,7 @@
   color: #55729d;
   border-radius: 5px;
   background: #edf2fb;
-  font: 760 9px/1 ui-monospace, monospace;
+  font: 760 10px/1 ui-monospace, monospace;
 }
 
 .t2ModelCard dl {
@@ -538,17 +538,20 @@
 }
 
 .t2ModelCard dl > div:last-child { border-bottom: 0; }
-.t2ModelCard dt { color: #63758c; font-size: 10px; }
+.t2ModelCard dt { color: #63758c; font-size: 11px; }
 .t2ModelCard dt small { margin-left: 6px; color: #2e858a; font-weight: 760; }
 .t2ModelCard dd { display: grid; grid-template-columns: auto 1fr; gap: 9px; align-items: center; margin: 0; }
 .t2ModelCard dd strong {
   min-width: 68px;
   color: #314d70;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 680;
   font-variant-numeric: tabular-nums;
 }
 .t2ModelCard dd span i { background: linear-gradient(90deg, #657bd0, #3ca6a5); }
+.t2ModelCard dl > div[data-direction="lower"] dd span i {
+  background: linear-gradient(90deg, #e39b51, #d06a72);
+}
 
 .t3ResultPanel {
   background:
@@ -582,7 +585,7 @@
 .t3ResultTable thead th {
   color: #58708d;
   background: rgba(233, 244, 247, .7);
-  font: 740 9px/1.2 ui-monospace, monospace;
+  font: 740 10px/1.2 ui-monospace, monospace;
   letter-spacing: .06em;
   text-transform: uppercase;
 }
@@ -599,7 +602,7 @@
   display: block;
   margin-top: 5px;
   color: #7b8898;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 520;
 }
 
@@ -617,13 +620,13 @@
 .resultVersion {
   margin-top: 18px;
   color: #7b8796;
-  font-size: 8px;
+  font-size: 10px;
   text-align: right;
 }
 
 .resultVersion code {
   color: #53708e;
-  font: 600 8px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 600 9px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .resultPolicy {
@@ -640,8 +643,8 @@
 }
 
 .resultPolicy strong { display: block; color: #285d65; font-size: 11px; }
-.resultPolicy p { margin: 3px 0 0; color: #627b82; font-size: 10px; line-height: 1.5; }
-.resultPolicy > span { color: #69888c; font-size: 8px; font-weight: 680; text-transform: uppercase; }
+.resultPolicy p { margin: 3px 0 0; color: #627b82; font-size: 11px; line-height: 1.5; }
+.resultPolicy > span { color: #69888c; font-size: 10px; font-weight: 680; text-transform: uppercase; }
 
 .sceneGrid {
   display: grid;
@@ -981,6 +984,56 @@
   .t2ModelGrid { grid-template-columns: 1fr; }
   .resultPolicy { grid-template-columns: auto 1fr; }
   .resultPolicy > span { grid-column: 2; }
+  .t3ResultTable {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+  .t3ResultTable table,
+  .t3ResultTable tbody,
+  .t3ResultTable tr { display: block; min-width: 0; }
+  .t3ResultTable thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .t3ResultTable tbody tr {
+    margin-bottom: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(74, 129, 177, .22);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .74);
+  }
+  .t3ResultTable tbody tr:last-child { margin-bottom: 0; }
+  .t3ResultTable th,
+  .t3ResultTable td {
+    border-right: 0;
+    border-bottom: 1px solid rgba(93, 124, 164, .12);
+  }
+  .t3ResultTable tbody th {
+    padding: 14px 15px;
+    background: rgba(233, 244, 247, .55);
+  }
+  .t3ResultTable td {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: 58px 64px minmax(70px, 1fr) auto;
+    gap: 9px;
+    align-items: center;
+    padding: 12px 15px;
+  }
+  .t3ResultTable td::before {
+    content: attr(data-label);
+    color: #5e7892;
+    font: 720 9px/1.2 ui-monospace, monospace;
+  }
+  .t3ResultTable td > strong { margin: 0; font-size: 12px; }
+  .t3ResultTable td > small { margin: 0; white-space: nowrap; }
   .sceneGrid { grid-template-columns: 1fr; }
   .sceneGrid figcaption { min-height: 0; }
   .compactAgenda li { grid-template-columns: 58px 1fr; gap: 5px 12px; }

@@ -52,7 +52,7 @@ test("renders the public workshop program without internal surfaces", async () =
   assert.match(html, /EmbodiVSI/);
   assert.match(html, /Beyond Passive Evaluation\./);
   assert.match(html, /Talks, papers, and evidence-backed results\./);
-  assert.equal((html.match(/X-Humanoid/g) ?? []).length, 1);
+  assert.equal((html.match(/<b>X-Humanoid<\/b>/g) ?? []).length, 1);
   assert.match(html, /RoboExam competition/);
   assert.match(html, /Eight confirmed speakers and two tentative speakers\./);
   assert.match(html, /Sergey Levine/);

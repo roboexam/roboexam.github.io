@@ -252,7 +252,7 @@ export function PublicHome() {
             <dl>
               {t2MetricViews.map((metric) => {
                 const value = model[metric.key];
-                return <div key={metric.key}>
+                return <div key={metric.key} data-direction={metric.direction === "↓" ? "lower" : "higher"}>
                   <dt>{metric.label}<small>{metric.direction}</small></dt>
                   <dd><strong>{value.toFixed(metric.digits)}{metric.suffix}</strong>
                     <span aria-hidden="true"><i style={{ width: scoreWidth(value, metric.max) }}/></span>
@@ -278,7 +278,8 @@ export function PublicHome() {
               <th scope="col" key={setting}>{setting}</th>)}</tr></thead>
             <tbody>{publicResults.t3.models.map((model) => <tr key={model.name}>
               <th scope="row">{model.name}<small>480 / 480 episodes</small></th>
-              {model.taskSuccess.map((score, index) => <td key={publicResults.t3.settings[index]}>
+              {model.taskSuccess.map((score, index) => <td key={publicResults.t3.settings[index]}
+                data-label={publicResults.t3.settings[index]}>
                 <strong>{score.toFixed(2)}%</strong>
                 <span aria-hidden="true"><i style={{ width: scoreWidth(score) }}/></span>
                 <small>Subtask {model.subtask[index].toFixed(2)}</small>
