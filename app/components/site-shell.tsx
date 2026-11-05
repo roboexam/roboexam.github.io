@@ -13,7 +13,6 @@ export function SiteShell({ children }: Props) {
         <span className="brandGlyph brandGlyphImage" aria-hidden="true"/>EmbodiVSI
       </Link>
       <nav aria-label="Primary navigation">
-        <Link className="researchNavItem active" aria-current="page" href="/">Home</Link>
         <a className="researchNavItem" href="#results">Results</a>
         <a className="researchNavItem" href="#scenes">Scenes</a>
       </nav>
