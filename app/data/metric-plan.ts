@@ -123,8 +123,8 @@ export const tracks: TrackDefinition[] = [
   {
     id: "T2", title: "Physical Foresight", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
     scoreGuide: {
-      en: "Metrics keep their native units and directions; there is no official cross-metric total yet. JEPA is split-level and Motion Smoothness is not bounded to 0–1.",
-      zh: "各指标保留原始单位与方向，目前没有正式跨指标总分。JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
+      en: "The published headline is a 0–100 composite score. Native metrics remain visible for diagnostic comparison; JEPA is split-level and Motion Smoothness is not bounded to 0–1.",
+      zh: "公开榜单以 0–100 综合分数为主，同时保留原始指标用于诊断比较；JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
     },
     models: [
       { id: "Cosmos Predict 2.5", family: "ACWM", status: "Published result" },

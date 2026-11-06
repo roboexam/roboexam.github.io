@@ -13,7 +13,7 @@ export type ReportResult = {
 
 export const protocolNotes: Record<TrackId, string> = {
   T1: 'VLM design · 07 Sep 2026 · Three dimensions, nine subdimensions. Alternatives, audit subsets, and diagnostics remain labeled.',
-  T2: 'ACWM v2 · 13 Sep 2026 · 18 report items. Future frames only; AF-div is auxiliary, and Brier / boundary error are extensions.',
+  T2: 'ACWM v2 · 13 Sep 2026 · Published 0–100 composite over nine direction-aware metrics; native metric values remain available for diagnosis.',
   T3: 'Policy design · Action correctness, local effectiveness, long-horizon execution, and deployment diagnostics. Baseline: Stack Bowls, 100 distinct seeds per model.',
   T4: 'Hardware design · Task success, subgoal progress, and manual review. Three independent evaluators; 1–3 ratings per rubric item. Trials pending.',
 };

@@ -7,6 +7,7 @@ import { tracks, type MetricDefinition, type TrackId } from "../data/metric-plan
 import { scenarioPlan } from "../data/scenario-plan";
 import { metricsFor, readResult, type MetricSelection, type ReportMode, type ReportResult } from "../data/track-results";
 import { policyTaskIds } from "../data/policy-baselines";
+import { publicResults } from "../data/public-results";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
 type EvalSetting = "id" | "visual" | "semantic" | "behavioral";
@@ -39,6 +40,36 @@ function concisePrimary(result: ReportResult) {
   if (!Number.isFinite(value)) return result.primary;
   if (Math.abs(value) >= 1) return value.toFixed(3).replace(/\.?0+$/, "");
   return value.toPrecision(4).replace(/\.?0+$/, "");
+}
+
+function T2CompositeLeaderboard() {
+  const models = [...publicResults.t2.models].sort((left, right) => right.composite - left.composite);
+
+  return <section className="t2CompositeBoard" aria-label="T2 composite leaderboard">
+    <div className="tableHint">
+      <span>Composite score · 0–100 ↑ · measured</span>
+      <span>{publicResults.t2.taskCount} tasks · {publicResults.t2.regimes} regimes · {publicResults.t2.casesPerModel} cases / model</span>
+    </div>
+    <div className="t2CompositeTableWrap">
+      <table className="t2CompositeTable">
+        <caption className="srOnly">T2 Physical Foresight models ranked by composite score.</caption>
+        <thead>
+          <tr><th scope="col">Rank</th><th scope="col">Model</th><th scope="col">Composite score</th><th scope="col">Native metrics</th></tr>
+        </thead>
+        <tbody>{models.map((model, index) => <tr key={model.name}>
+          <td className="t2CompositeRank">{String(index + 1).padStart(2, "0")}</td>
+          <th scope="row"><strong>{model.name}</strong><small>{model.checkpoint}</small></th>
+          <td className="t2CompositeScore"><strong>{model.composite.toFixed(2)}</strong><small>out of 100</small></td>
+          <td className="t2CompositeDetails">
+            <span>PSNR {model.psnr.toFixed(2)} dB · SSIM {model.ssim.toFixed(3)} · JEPA {model.jepa.toFixed(3)} · JEDi {model.jedi.toFixed(3)} ↓</span>
+            <span>Motion smoothness {model.motionSmoothness.toFixed(3)} ↑ · M-MSE {model.motionMse.toFixed(4)} ↓ · Subject consistency {model.subjectConsistency.toFixed(3)} ↑</span>
+            <span>EE pos MAE {model.positionMae.toFixed(2)} mm ↓ · EE rot MAE {model.rotationMae.toFixed(2)}° ↓</span>
+          </td>
+        </tr>)}</tbody>
+      </table>
+    </div>
+    <p className="t2CompositeNote">{publicResults.t2.scoreNote}. Native metrics remain visible for diagnostic comparison.</p>
+  </section>;
 }
 
 export function LeaderboardView({ initialTrack, onMetric }: Props) {
@@ -162,6 +193,11 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
 
     {trackId === "T1" ? <section className="trackWorkspace" aria-label="T1 current results">
       <T1UnibenchView showEpisodeEvidence={false}/>
+    </section> : trackId === "T2" ? <section className="trackWorkspace" aria-label="T2 Physical Foresight">
+      <div className="trackSectionTitle">
+        <div><h2>{track.title}</h2><p>{track.question}</p></div>
+      </div>
+      <T2CompositeLeaderboard/>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       <div className="trackSectionTitle">
         <div><h2>{track.title}</h2><p>{track.question}</p></div>
