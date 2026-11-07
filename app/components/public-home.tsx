@@ -24,14 +24,12 @@ const programCards = [
 ] as const;
 
 const agenda = [
-  ["13:00", "Opening", "Learning from failure"],
-  ["13:10", "Invited talks I", "Learner–evaluator co-adaptation"],
-  ["14:10", "Best Paper", "Presentation and award"],
-  ["14:25", "Posters & demos", "Accepted papers and demonstrations"],
-  ["15:15", "Coffee break", "Networking"],
-  ["15:30", "Invited talks II", "Cross-agent transfer and retention"],
-  ["16:30", "RoboExam", "Results and awards"],
-  ["16:45", "Synthesis panel", "Audience case vote and reporting guidance"],
+  ["13:00–13:05", "Opening remarks", "Learning from failure"],
+  ["13:05–15:10", "Invited Session I", "Agentic Evaluation Loop · Five 25-minute talks, including questions"],
+  ["15:10–15:30", "Best Paper, posters & demos", "Presentation, award, posters, and demonstrations"],
+  ["15:30–15:40", "Coffee break", "Transition back to talks"],
+  ["15:40–17:45", "Invited Session II", "Multi-Agent Co-Evolution · Five 25-minute talks, including questions"],
+  ["17:45–18:00", "RoboExam & closing", "Challenge reports, results, audience panel, and closing remarks"],
 ] as const;
 
 const speakers = [
@@ -154,7 +152,6 @@ const compactLeaderboards = [
       rank: model.rank,
       name: model.name,
       score: model.overall.toFixed(2),
-      details: undefined,
     })),
   },
   {
@@ -169,11 +166,6 @@ const compactLeaderboards = [
         rank: index + 1,
         name: model.name,
         score: model.composite.toFixed(2),
-        details: [
-          `PSNR ${model.psnr.toFixed(2)} dB · SSIM ${model.ssim.toFixed(3)} · JEPA ${model.jepa.toFixed(3)} · JEDi ${model.jedi.toFixed(3)} ↓`,
-          `Motion smoothness ${model.motionSmoothness.toFixed(3)} ↑ · M-MSE ${model.motionMse.toFixed(4)} ↓ · Subject consistency ${model.subjectConsistency.toFixed(3)} ↑`,
-          `EE pos MAE ${model.positionMae.toFixed(2)} mm ↓ · EE rot MAE ${model.rotationMae.toFixed(2)}° ↓`,
-        ],
       })),
   },
   {
@@ -187,7 +179,6 @@ const compactLeaderboards = [
       rank: null,
       name: model.name,
       score: `${(model.taskSuccess.reduce((sum, score) => sum + score, 0) / model.taskSuccess.length).toFixed(2)}%`,
-      details: undefined,
     }))
       .sort((left, right) => Number.parseFloat(right.score) - Number.parseFloat(left.score))
       .map((row, index) => ({ ...row, rank: index + 1 })),
@@ -202,7 +193,6 @@ const compactLeaderboards = [
       rank: index + 1,
       name: model.name,
       score: String(model.score),
-      details: undefined,
     })),
   },
 ] as const;
@@ -232,7 +222,7 @@ export function PublicHome() {
     <section id="program" className="publicSection programSection" aria-labelledby="program-title">
       <div className="publicSectionHeading">
         <div><p className="publicEyebrow">Program</p><h2 id="program-title">Talks, papers, and evidence-backed results.</h2></div>
-        <p>A focused half-day program for sharing research and comparing verifiable embodied-AI progress.</p>
+        <p>A five-hour program in Seattle local time, with ten invited talks of 25 minutes each, including questions.</p>
       </div>
       <div className="programCardGrid">
         {programCards.map((item) => <article key={item.number}>
@@ -242,7 +232,7 @@ export function PublicHome() {
           <small>{item.meta}</small>
         </article>)}
       </div>
-      <ol className="compactAgenda" aria-label="Proposed half-day schedule">
+      <ol className="compactAgenda" aria-label="Preliminary workshop schedule · 13:00–18:00 Seattle time">
         {agenda.map(([time, title, description]) => <li key={time}>
           <time>{time}</time><strong>{title}</strong><span>{description}</span>
         </li>)}
@@ -313,7 +303,6 @@ export function PublicHome() {
               <strong>{row.name}</strong>
               <div className="leaderboardRowValue">
                 <b>{row.score}</b>
-                {row.details?.map((detail) => <small key={detail}>{detail}</small>)}
               </div>
             </li>)}
           </ol>

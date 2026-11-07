@@ -47,14 +47,11 @@
 .t2CompositeTable tbody tr:hover { background: #fafcff; }
 .t2CompositeRank { width: 76px; color: #71809a; font-size: var(--text-small); font-weight: 650; }
 .t2CompositeTable tbody th { min-width: 190px; font-weight: 500; }
-.t2CompositeTable tbody th strong, .t2CompositeTable tbody th small, .t2CompositeScore strong, .t2CompositeScore small, .t2CompositeDetails span { display: block; }
+.t2CompositeTable tbody th strong, .t2CompositeTable tbody th small, .t2CompositeScore strong, .t2CompositeScore small { display: block; }
 .t2CompositeTable tbody th strong { color: var(--ink); font-size: var(--text-body); }
 .t2CompositeTable tbody th small, .t2CompositeScore small { margin-top: 5px; color: var(--muted); font-size: var(--text-small); font-weight: 400; }
 .t2CompositeScore { width: 170px; }
 .t2CompositeScore strong { color: #246b9c; font-size: 27px; line-height: 1; }
-.t2CompositeDetails { min-width: 520px; color: #536b88; font-size: var(--text-small); line-height: 1.7; }
-.t2CompositeDetails span + span { margin-top: 2px; }
-.t2CompositeNote { margin: 12px 2px 0; color: var(--muted); font-size: var(--text-small); }
 .trackMetricTableWrap { max-width: 100%; max-height: 72vh; overflow: auto; border: 1px solid var(--line); border-radius: 10px; scrollbar-color: #a5b4ce #f2f5fa; }
 .trackMetricTable { width: 100%; border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums; font-size: var(--text-body); }
 .trackMetricTable th, .trackMetricTable td { text-transform: none; letter-spacing: 0; font-weight: 400; vertical-align: middle; border-bottom: 1px solid #e6ebf2; padding: 0; }

@@ -750,7 +750,7 @@
 
 .compactAgenda li {
   display: grid;
-  grid-template-columns: 64px 148px 1fr;
+  grid-template-columns: 100px minmax(0, 1fr);
   gap: 14px;
   align-items: center;
   min-height: 72px;
@@ -759,9 +759,9 @@
 }
 .compactAgenda li:nth-child(odd) { border-right: 1px solid rgba(116, 143, 181, .16); }
 .compactAgenda li:nth-last-child(-n + 2) { border-bottom: 0; }
-.compactAgenda time { color: #39789a; font-size: 11px; font-weight: 760; }
+.compactAgenda time { color: #39789a; font-size: 11px; font-weight: 760; white-space: nowrap; }
 .compactAgenda strong { color: #20344f; font-size: 13px; }
-.compactAgenda span { color: #6b788b; font-size: 12px; }
+.compactAgenda span { grid-column: 2; color: #6b788b; font-size: 12px; line-height: 1.5; }
 
 .speakerGrid {
   display: grid;
@@ -976,14 +976,6 @@
   font-weight: 680;
   font-variant-numeric: tabular-nums;
 }
-.leaderboardTrackCard li > .leaderboardRowValue > small {
-  max-width: 100%;
-  color: #6d8197;
-  display: block;
-  font-size: 9px;
-  line-height: 1.25;
-  white-space: normal;
-}
 
 .leaderboardTrackCard footer {
   padding: 13px 22px 15px;
@@ -1130,7 +1122,7 @@
   .t3ResultTable td > small { margin: 0; white-space: nowrap; }
   .sceneGrid { grid-template-columns: 1fr; }
   .sceneGrid figcaption { min-height: 0; }
-  .compactAgenda li { grid-template-columns: 58px 1fr; gap: 5px 12px; }
+  .compactAgenda li { grid-template-columns: 100px minmax(0, 1fr); gap: 5px 12px; }
   .compactAgenda li span { grid-column: 2; }
   .speakerGrid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .speakerGrid a { min-height: 175px; padding: 18px; }
