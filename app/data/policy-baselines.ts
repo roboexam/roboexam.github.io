@@ -1,9 +1,9 @@
 import raw from "./generated/policy-baselines-aggregates.json" with { type: "json" };
 
-export const policyBaselineModelIds = ["G05", "HyVLA", "XVLA"] as const;
+export const policyBaselineModelIds = ["G05", "HyVLA", "XVLA", "Pi0.5", "OpenDM"] as const;
 export type PolicyBaselineModel = (typeof policyBaselineModelIds)[number];
-export type PolicySetting = "id" | "visual" | "semantic" | "behavioral";
-type StoredSetting = "id" | "visual" | "semantic" | "behavior";
+export type PolicySetting = "id" | "visual" | "semantic" | "behavioral" | "recovery";
+type StoredSetting = "id" | "visual" | "semantic" | "behavior" | "recovery";
 export type PolicyScalar = number | null;
 export type PolicyMetric = {
   value: PolicyScalar;

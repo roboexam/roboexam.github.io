@@ -1,0 +1,52 @@
+/* Motion kit (components/fx.tsx), adapted from React Bits — https://github.com/DavidHDev/react-bits
+   MIT + Commons Clause License Condition v1.0, Copyright (c) 2026 David Haz. See fx.tsx for the notice. */
+
+.fxSrOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* LogoLoop: two identical rows slide left by one row's width, faded at both edges */
+.fxMarquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.fxMarqueeTrack { display: flex; width: max-content; animation: fxMarquee var(--fx-marquee-duration, 40s) linear infinite; }
+.fxMarquee:hover .fxMarqueeTrack { animation-play-state: paused; }
+.fxMarqueeRow { display: flex; gap: 10px; margin: 0; padding: 0 10px 0 0; list-style: none; }
+@keyframes fxMarquee { to { transform: translate3d(-50%, 0, 0); } }
+
+/* CountUp */
+.fxCount { font-variant-numeric: tabular-nums; }
+
+/* BlurText: words rise out of a blur, one after another */
+.fxReveal > span[aria-hidden] { display: inline-block; white-space: pre; transition: opacity .75s cubic-bezier(.2, .7, .2, 1), filter .75s cubic-bezier(.2, .7, .2, 1), transform .75s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--fx-i, 0) * 65ms); }
+.fxRevealPending > span[aria-hidden] { opacity: 0; filter: blur(10px); transform: translateY(.32em); }
+
+/* SpotlightCard: a soft light under the cursor, between the card's background and its content */
+[data-spotlight] { position: relative; isolation: isolate; }
+[data-spotlight]::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .35s ease;
+  background: radial-gradient(260px circle at var(--fx-x, 50%) var(--fx-y, 50%), rgb(118 80 180 / .12), rgb(224 125 115 / .05) 45%, transparent 70%); }
+[data-spotlight]:hover::after { opacity: 1; }
+
+/* ShinyText: a light sweep through muted text */
+.fxShiny { background: linear-gradient(110deg, var(--re-copy) 38%, #7650b4 50%, var(--re-copy) 62%); background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: fxShine 4.6s linear infinite; }
+@keyframes fxShine { from { background-position: 130% 0; } to { background-position: -130% 0; } }
+
+/* GradientText: the hero title's logo gradient flows (mirrored, so the loop is seamless) */
+.researchShell .heroTitle h1 { background-image: linear-gradient(90deg, #4955b3 0%, #714eac 15%, #a24b9f 29%, #c85a8a 39%, #e07d73 50%, #c85a8a 61%, #a24b9f 71%, #714eac 85%, #4955b3 100%); background-size: 200% 100%; animation: fxGradientFlow 14s linear infinite; }
+@keyframes fxGradientFlow { from { background-position: 0% 50%; } to { background-position: -200% 50%; } }
+
+/* GooeyNav (simplified): the dark pill glides to the active item */
+.researchNav .navPills { position: relative; }
+.researchNav .researchNavItem { position: relative; z-index: 1; }
+.navGlider { position: absolute; top: 5px; bottom: 5px; left: 0; width: 0; border-radius: 999px; background: var(--re-ink); opacity: 0; pointer-events: none; box-shadow: 0 8px 18px -10px #1d1c2b99;
+  transition: transform .5s cubic-bezier(.65, 0, .25, 1), width .5s cubic-bezier(.65, 0, .25, 1), opacity .2s; }
+.researchNav .navPills.hasGlider .researchNavItem.active { background: transparent; }
+
+/* method marquee on the overview */
+.methodMarquee { display: grid; gap: 12px; }
+.methodMarquee > p { margin: 0; }
+.methodMarquee li { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 7px; border: 1px solid var(--re-line); border-radius: 999px; background: #fff; white-space: nowrap; box-shadow: 0 6px 16px -14px #1d1c2b66; }
+.methodMarquee li span { display: grid; line-height: 1.2; }
+.methodMarquee li b { color: var(--re-ink); font-size: 13.5px; font-weight: 650; }
+.methodMarquee li small { color: var(--re-faint); font-size: 11.5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fxMarqueeTrack, .fxShiny, .researchShell .heroTitle h1 { animation: none; }
+  .fxReveal > span[aria-hidden], .navGlider { transition: none; }
+}

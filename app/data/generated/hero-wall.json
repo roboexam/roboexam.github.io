@@ -1,0 +1,110 @@
+{
+  "schema": "roboexam.hero-wall.v1",
+  "version": "hero-wall-v1-20261108",
+  "columns": [
+    {
+      "track": "T1",
+      "label": "VLM agent rollouts",
+      "source": "UniBench-24 · GPT-6.1-sol · ID",
+      "direction": "up",
+      "period": 25.0,
+      "width": 400,
+      "height": 900,
+      "tasks": [
+        "solve_equation",
+        "set_button_colors",
+        "pack_mixed_objects_into_box_v1",
+        "hold_water_mug",
+        "mirror_pair_layout"
+      ],
+      "video": {
+        "file": "ad7123fb0e63919f9702dec0e3cb963e3ece276441942733cc0f03f517623466.mp4",
+        "sha256": "ad7123fb0e63919f9702dec0e3cb963e3ece276441942733cc0f03f517623466",
+        "bytes": 924236
+      },
+      "poster": {
+        "file": "537833dea0653eb22b5fe02228eb21c398a1de67d2c6394ef348ec61fc150538.jpg",
+        "sha256": "537833dea0653eb22b5fe02228eb21c398a1de67d2c6394ef348ec61fc150538",
+        "bytes": 42553
+      }
+    },
+    {
+      "track": "T2",
+      "label": "World-model predictions",
+      "source": "ACWM eval-600 · Pelican · ID",
+      "direction": "down",
+      "period": 25.0,
+      "width": 400,
+      "height": 900,
+      "tasks": [
+        "fold_clothes",
+        "build_tower",
+        "pour_liquid_into_cup",
+        "insert_key",
+        "cover_blocks"
+      ],
+      "video": {
+        "file": "44f3f95ddcba3a3a26d4ec1c4bade5bebb428761ad46c3c02ef0d2cd10d4e428.mp4",
+        "sha256": "44f3f95ddcba3a3a26d4ec1c4bade5bebb428761ad46c3c02ef0d2cd10d4e428",
+        "bytes": 949643
+      },
+      "poster": {
+        "file": "75eac092496c6e419582293f7ad97d8636b82437d80a9a9565e77d59a40c4e2d.jpg",
+        "sha256": "75eac092496c6e419582293f7ad97d8636b82437d80a9a9565e77d59a40c4e2d",
+        "bytes": 27471
+      }
+    },
+    {
+      "track": "T3",
+      "label": "Simulation policy rollouts",
+      "source": "Benchmark policy · G05 · ID",
+      "direction": "up",
+      "period": 25.0,
+      "width": 400,
+      "height": 900,
+      "tasks": [
+        "stack_bowls",
+        "hang_mugs",
+        "fold_clothes",
+        "pour_liquid_into_cup",
+        "match_and_pick_from_conveyor"
+      ],
+      "video": {
+        "file": "d9d96ad8dd7a87303d634f77861a329ba8f353b9262e9b35819ba979ec1b930b.mp4",
+        "sha256": "d9d96ad8dd7a87303d634f77861a329ba8f353b9262e9b35819ba979ec1b930b",
+        "bytes": 1010693
+      },
+      "poster": {
+        "file": "8df3572fb27d65df749f34478bc2ee60b7bc30e41b0f1765792a601384b64299.jpg",
+        "sha256": "8df3572fb27d65df749f34478bc2ee60b7bc30e41b0f1765792a601384b64299",
+        "bytes": 37704
+      }
+    },
+    {
+      "track": "T4",
+      "label": "Real-robot episodes",
+      "source": "Real collection · 3 dual-arm rigs",
+      "direction": "down",
+      "period": 25.0,
+      "width": 400,
+      "height": 900,
+      "tasks": [
+        "towel_folding",
+        "button_sequence",
+        "vegetable_sorting",
+        "button_sequence",
+        "vegetable_sorting"
+      ],
+      "video": {
+        "file": "f5081f7d8a939d467c8eba42456358fb3cdf90ea924fc28c8e8e0541611fd099.mp4",
+        "sha256": "f5081f7d8a939d467c8eba42456358fb3cdf90ea924fc28c8e8e0541611fd099",
+        "bytes": 822872
+      },
+      "poster": {
+        "file": "22630a162b02ebfcbe9c980d4b5da150af7f15b8fe457feb6acd11cc0e90f885.jpg",
+        "sha256": "22630a162b02ebfcbe9c980d4b5da150af7f15b8fe457feb6acd11cc0e90f885",
+        "bytes": 34829
+      }
+    }
+  ]
+}

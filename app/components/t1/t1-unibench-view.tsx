@@ -135,7 +135,7 @@ function Breakdown({ results }: { results: T1UnibenchResults }) {
 }
 
 function TaskMatrix({ results, model, onPick }: {
-  results: T1UnibenchResults; model: T1UnibenchModel; onPick?: (split: T1SplitId, taskId: string) => void;
+  results: T1UnibenchResults; model: T1UnibenchModel; onPick: (split: T1SplitId, taskId: string) => void;
 }) {
   return <section className="t1uSection" aria-labelledby="t1u-tasks">
     <header className="t1uSectionHeading"><div><p className="eyebrow">Per task · {model.label}</p><h3 id="t1u-tasks">Subtask score by setting</h3></div></header>
@@ -149,13 +149,11 @@ function TaskMatrix({ results, model, onPick }: {
             const row = model.splits[split]?.perTask[task.id];
             if (!row) return <td key={split}><span className="t1uPending">—</span></td>;
             const level = Math.round(Math.min(100, Math.max(0, row.subtask ?? 0)) / 25);
-            const value = <><strong>{scoreText(row.subtask)}</strong>
-              <small>{split === "REC" ? `success ${scoreText(row.success)}` : `VQA ${scoreText(row.vqa)}`}</small></>;
-            return <td key={split} data-level={level}>{onPick
-              ? <button type="button" className="t1uTaskCell" onClick={() => onPick(split, task.id)}
-                aria-label={`${task.label}, ${SPLIT_LABEL[split]}: subtask ${scoreText(row.subtask)}, ${row.cases} episodes. Open rollouts.`}>{value}</button>
-              : <span className="t1uTaskCell static" aria-label={`${task.label}, ${SPLIT_LABEL[split]}: subtask ${scoreText(row.subtask)}, ${row.cases} episodes.`}>{value}</span>}
-            </td>;
+            return <td key={split} data-level={level}><button type="button" className="t1uTaskCell"
+              onClick={() => onPick(split, task.id)}
+              aria-label={`${task.label}, ${SPLIT_LABEL[split]}: subtask ${scoreText(row.subtask)}, ${row.cases} episodes. Open rollouts.`}>
+              <strong>{scoreText(row.subtask)}</strong><small>{split === "REC" ? `success ${scoreText(row.success)}` : `VQA ${scoreText(row.vqa)}`}</small>
+            </button></td>;
           })}
         </tr>)}</tbody>
       </table>
@@ -289,9 +287,7 @@ function Explorer({ results, selection, setSelection }: {
   </section>;
 }
 
-export function T1UnibenchView({ results = t1UnibenchResults, showEpisodeEvidence = true }: {
-  results?: T1UnibenchResults; showEpisodeEvidence?: boolean;
-} = {}) {
+export function T1UnibenchView({ results = t1UnibenchResults }: { results?: T1UnibenchResults } = {}) {
   const [selection, setSelection] = useState<Selection>(() => firstUnibenchSelection(results, results.models[0]?.id ?? ""));
   const explorer = useRef<HTMLDivElement>(null);
   const model = results.models.find((m) => m.id === selection.modelId) ?? results.models[0];
@@ -306,8 +302,8 @@ export function T1UnibenchView({ results = t1UnibenchResults, showEpisodeEvidenc
       onModel={(id) => setSelection(firstUnibenchSelection(results, id, selection.split, selection.taskId))}/>
     <Breakdown results={results}/>
     {model && <TaskMatrix results={results} model={model}
-      onPick={showEpisodeEvidence ? (split, taskId) => jump(firstUnibenchSelection(results, model.id, split, taskId)) : undefined}/>}
-    {showEpisodeEvidence && <div ref={explorer} className="t1uExplorerAnchor"><Explorer results={results} selection={selection} setSelection={setSelection}/></div>}
+      onPick={(split, taskId) => jump(firstUnibenchSelection(results, model.id, split, taskId))}/>}
+    <div ref={explorer} className="t1uExplorerAnchor"><Explorer results={results} selection={selection} setSelection={setSelection}/></div>
     <section className="t1uSection t1uNotes" aria-label="Data notes">
       <h3>Notes on this release</h3>
       <ul>

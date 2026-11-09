@@ -7,7 +7,6 @@ import { definitionFor, metricsFor, readResult } from '../app/data/track-results
 import { scenarioPlan } from '../app/data/scenario-plan.ts';
 import { policyTaskIds } from '../app/data/policy-baselines.ts';
 import { acwmDashboardBundle as acwm } from '../app/data/acwm-results.ts';
-import { vlaWamDashboardBundle as policy } from '../app/data/vla-wam-results.ts';
 
 const selection = (trackId, mode, metricId, modelId) => ({ trackId, mode, metricId, modelId });
 test('new T1 and T2 contracts never inherit scores from old metric IDs', () => {
@@ -77,8 +76,11 @@ test('hardware and planned models cannot open a simulation result', () => {
     assert.equal(r.available, false);
   }
   const measured = readResult(selection('T3','plan','TSR','Pi0.5'));
-  assert.equal(measured.primary, policy.models['Pi0.5'].values.TSR.primary);
-  assert.equal(measured.version, policy.models['Pi0.5'].resultVersion);
+  assert.equal(measured.primary, '9.17%');
+  assert.match(measured.version, /five-model-recovery-v7/);
+  const recovery = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'Pi0.5', taskId: 'all', setting: 'recovery' });
+  assert.equal(recovery.primary, '9.24%');
+  assert.equal(recovery.sampleCount, 119);
 });
 test('all displayed metric plans have bilingual explanations and explicit input/output contracts', () => {
   for (const track of tracks) {
@@ -125,10 +127,10 @@ test('policy baselines use the official fixed 24-task, 120-episode summaries', (
   const tsr = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TSR', modelId: 'XVLA', taskId: 'all' });
   const score = readResult({ trackId: 'T3', mode: 'plan', metricId: 'TASK_SCORE', modelId: 'XVLA', taskId: 'all' });
   const collision = readResult({ trackId: 'T3', mode: 'plan', metricId: 'COLLISION_RATE', modelId: 'XVLA', taskId: 'all' });
-  assert.equal(tsr.primary, '5.83%');
+  assert.equal(tsr.primary, '7.50%');
   assert.equal(tsr.sampleCount, 120);
   assert.match(tsr.cohort, /24 tasks/);
-  assert.equal(score.primary, '9.75');
+  assert.equal(score.primary, '11.42');
   assert.equal(collision.available, false);
   assert.equal(collision.primary, 'N/A');
 });

@@ -34,7 +34,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.check.json",
     "test": "npm run test:unit",
     "pretest:unit": "node --test tests/iteration-history.test.mjs tests/review-admission.test.mjs && node --experimental-strip-types --test tests/curated-dataset.test.mjs",
-    "test:unit": "NODE_NO_WARNINGS=1 node --experimental-strip-types --test tests/real-datasets.test.mjs tests/acwm-data.test.mjs tests/vlm-data.test.mjs tests/vla-wam-data.test.mjs tests/vla-wam-samples.test.mjs tests/explainability-data.test.mjs tests/pearson-matrix-data.test.mjs tests/track-correlation-results.test.mjs tests/leaderboard-data.test.mjs tests/overall-score.test.mjs tests/track-results.test.mjs tests/xvla-24id.test.mjs tests/policy-baselines.test.mjs tests/planning-filters.test.mjs tests/episode-browser.test.mjs tests/dataset-episodes.test.mjs tests/curated-traces.test.mjs tests/review-candidates.test.mjs tests/review-pipeline.test.mjs tests/raw-review.test.mjs tests/raw-action-traces.test.mjs tests/review-contract.test.mjs tests/l1-minimal-data.test.mjs tests/l1-phase1-provisional-data.test.mjs tests/l1-phase1-evidence.test.mjs tests/ops-4090-safety.test.mjs tests/ops-4090-supervisor.test.mjs tests/a800-remote-supervisor.test.mjs tests/publish-curated.test.mjs tests/repository-contract.test.mjs tests/ood-progress.test.mjs tests/explorer-dataset.test.mjs tests/pi05-curated.test.mjs tests/media-integrity.test.mjs tests/video-renditions.test.mjs tests/t1-agent-results.test.mjs tests/t1-media.test.mjs app/components/t1/result-format.test.mjs app/components/t1/t1-components.test.mjs tests/t1-benchmark-results.test.mjs tests/t1-benchmark-media.test.mjs tests/t1-benchmark-components.test.mjs tests/t1-leaderboard-results.test.mjs tests/t1-benchmark-vqa.test.mjs tests/t1-benchmark-vqa-api.test.mjs tests/t1-unibench.test.mjs",
+    "test:unit": "NODE_NO_WARNINGS=1 node --experimental-strip-types --test tests/real-datasets.test.mjs tests/acwm-data.test.mjs tests/vlm-data.test.mjs tests/vla-wam-data.test.mjs tests/vla-wam-samples.test.mjs tests/explainability-data.test.mjs tests/pearson-matrix-data.test.mjs tests/track-correlation-results.test.mjs tests/leaderboard-data.test.mjs tests/overall-score.test.mjs tests/track-results.test.mjs tests/xvla-24id.test.mjs tests/policy-baselines.test.mjs tests/planning-filters.test.mjs tests/episode-browser.test.mjs tests/dataset-episodes.test.mjs tests/curated-traces.test.mjs tests/review-candidates.test.mjs tests/review-pipeline.test.mjs tests/raw-review.test.mjs tests/raw-action-traces.test.mjs tests/review-contract.test.mjs tests/l1-minimal-data.test.mjs tests/l1-phase1-provisional-data.test.mjs tests/l1-phase1-evidence.test.mjs tests/ops-4090-safety.test.mjs tests/ops-4090-supervisor.test.mjs tests/a800-remote-supervisor.test.mjs tests/publish-curated.test.mjs tests/repository-contract.test.mjs tests/ood-progress.test.mjs tests/explorer-dataset.test.mjs tests/pi05-curated.test.mjs tests/media-integrity.test.mjs tests/video-renditions.test.mjs tests/t1-agent-results.test.mjs tests/t1-media.test.mjs app/components/t1/result-format.test.mjs app/components/t1/t1-components.test.mjs tests/t1-benchmark-results.test.mjs tests/t1-benchmark-media.test.mjs tests/t1-benchmark-components.test.mjs tests/t1-leaderboard-results.test.mjs tests/t1-benchmark-vqa.test.mjs tests/t1-benchmark-vqa-api.test.mjs tests/t1-unibench.test.mjs tests/acwm600-data.test.mjs tests/main-board.test.mjs tests/home-demos.test.mjs tests/snowflake.test.mjs",
     "test:raw-action-traces": "TRACE_PYTHON=${DASHBOARD_RAW_TRACE_PYTHON:-/mnt/gyc_ckp/benchmark2027/runtime/caches/dashboard_raw_action_traces/v1/python/bin/python}; PYTHONDONTWRITEBYTECODE=1 \"$TRACE_PYTHON\" tests/raw-action-trace.test.py && PYTHONDONTWRITEBYTECODE=1 \"$TRACE_PYTHON\" tests/real-action-trace.test.py",
     "test:render": "node --test tests/rendered-html.test.mjs",
     "test:raw-browser": "node --experimental-strip-types tests/raw-browser-smoke.mjs",
@@ -61,14 +61,17 @@
     "export:t1-benchmark-vqa": "node scripts/export-t1-benchmark-vqa.mjs",
     "check:t1-benchmark-vqa": "node scripts/export-t1-benchmark-vqa.mjs --check",
     "export:t1-unibench": "node scripts/export-t1-unibench.mjs",
-    "check:t1-unibench": "node scripts/export-t1-unibench.mjs --check"
+    "check:t1-unibench": "node scripts/export-t1-unibench.mjs --check",
+    "export:acwm600": "node scripts/export-acwm600-results.mjs",
+    "check:acwm600": "node scripts/export-acwm600-results.mjs --check"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
     "lucide-react": "^1.31.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "react-loading-skeleton": "3.5.0"
+    "react-loading-skeleton": "3.5.0",
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
@@ -78,6 +81,7 @@
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "@types/three": "0.186.0",
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",

@@ -1,36 +1,56 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import data from "../app/data/generated/policy-baselines.json" with { type: "json" };
+import g05 from "../app/data/generated/policy-baselines-g05.json" with { type: "json" };
+import hyvla from "../app/data/generated/policy-baselines-hyvla.json" with { type: "json" };
+import xvla from "../app/data/generated/policy-baselines-xvla.json" with { type: "json" };
+import pi05 from "../app/data/generated/policy-baselines-pi05.json" with { type: "json" };
+import opendm from "../app/data/generated/policy-baselines-opendm.json" with { type: "json" };
 import aggregates from "../app/data/generated/policy-baselines-aggregates.json" with { type: "json" };
 import media from "../scripts/policy-baseline-media.json" with { type: "json" };
 import { HEAD } from "../app/api/policy-baseline-media/[file]/route.ts";
+
+const documents = [g05, hyvla, xvla, pi05, opendm];
+const data = {
+  ...g05,
+  models: Object.assign({}, ...documents.map((document) => document.models)),
+  overall: Object.assign({}, ...documents.map((document) => document.overall)),
+};
 import { policyBaselineModelIds, policyTaskIds } from "../app/data/policy-baselines.ts";
 import { readResult } from "../app/data/track-results.ts";
 import { tracks } from "../app/data/metric-plan.ts";
 
-test("policy benchmark publishes exactly three complete 24-task baselines", () => {
-  assert.deepEqual(policyBaselineModelIds, ["G05", "HyVLA", "XVLA"]);
+test("policy benchmark publishes exactly five complete 24-task baselines", () => {
+  assert.equal(data.scoringRevision, "20261104_B01_B06_B08");
+  assert.equal(data.efficiencyReferenceRevision, "20261104_exact_v3_parquet_source_episode_id");
+  assert.equal(data.lossEventRevision, "20261105_six_task_loss_events");
+  assert.equal(data.pi05OpenDmEfficiencyReferenceRevision, "20261106_exact_v3_parquet_source_episode_id");
+  assert.equal(data.fiveModelCurrentRuleRevision, "20261106_current_rule_evidence_with_original_fallback");
+  assert.match(data.fiveModelCurrentRuleFallback, /Insufficient saved physical evidence/);
+  assert.match(data.officialResultScope, /current-rule success\/score/);
+  assert.equal(data.recoveryAddedAt, "2026-11-07T10:14:11.786470+00:00");
+  assert.match(data.recoveryScope, /missing classify_objects_by_language\/episode_4 retained/);
+  assert.deepEqual(policyBaselineModelIds, ["G05", "HyVLA", "XVLA", "Pi0.5", "OpenDM"]);
   assert.deepEqual(tracks.find((track) => track.id === "T3").models.map((model) => model.id), policyBaselineModelIds);
   assert.equal(policyTaskIds.length, 24);
   assert.deepEqual(Object.keys(data.models), Object.keys(aggregates.models));
   assert.deepEqual(Object.keys(data.overall), policyBaselineModelIds);
   for (const model of policyBaselineModelIds) {
-    assert.deepEqual(Object.keys(data.models[model]).sort(), ["behavior", "id", "semantic", "visual"]);
+    assert.deepEqual(Object.keys(data.models[model]).sort(), ["behavior", "id", "recovery", "semantic", "visual"]);
     assert.equal(Object.values(data.models[model]).every((setting) => Object.keys(setting).length === 24), true);
   }
   const tasks = Object.values(data.models).flatMap((model) => Object.values(model).flatMap(Object.values));
-  assert.equal(tasks.length, 3 * 4 * 24);
-  assert.equal(tasks.reduce((sum, task) => sum + task.samples.length, 0), 1440);
-  assert.equal(tasks.reduce((sum, task) => sum + task.samples.flatMap((sample) => sample.videos).length, 0), 4320);
+  assert.equal(tasks.length, 5 * 5 * 24);
+  assert.equal(tasks.reduce((sum, task) => sum + task.samples.length, 0), 2995);
+  assert.equal(tasks.reduce((sum, task) => sum + task.samples.flatMap((sample) => sample.videos).length, 0), 8985);
   assert.doesNotMatch(JSON.stringify(data), /\/mnt\//);
 });
 
 test("all-scenario rows use the official 120-episode ID and OOD summaries", () => {
   const expected = {
-    id: { once: "41.02%", end: "39.11%", drop: "5.08%", retention: "96.77%" },
-    visual: { once: "33.40%", end: "30.56%", drop: "14.42%", retention: "95.24%" },
-    semantic: { once: "40.21%", end: "38.97%", drop: "6.90%", retention: "100.00%" },
+    id: { once: "41.97%", end: "39.11%", drop: "8.33%", retention: "96.88%" },
+    visual: { once: "36.25%", end: "32.94%", drop: "15.45%", retention: "95.83%" },
+    semantic: { once: "44.97%", end: "42.78%", drop: "7.94%", retention: "96.97%" },
     behavioral: { once: "29.00%", end: "28.49%", drop: "6.67%", retention: "100.00%" },
   };
   for (const [setting, values] of Object.entries(expected)) {
@@ -45,9 +65,11 @@ test("all-scenario rows use the official 120-episode ID and OOD summaries", () =
 
 test("all-scenario TSR keeps ID and three OOD settings separate for every baseline", () => {
   const expected = {
-    G05: { id: "24.17%", visual: "12.50%", semantic: "25.83%", behavioral: "15.83%" },
-    HyVLA: { id: "4.17%", visual: "4.17%", semantic: "8.33%", behavioral: "11.67%" },
-    XVLA: { id: "5.83%", visual: "2.50%", semantic: "1.67%", behavioral: "8.33%" },
+    G05: { id: "25.00%", visual: "15.00%", semantic: "30.00%", behavioral: "15.83%" },
+    HyVLA: { id: "8.33%", visual: "6.67%", semantic: "10.83%", behavioral: "12.50%" },
+    XVLA: { id: "7.50%", visual: "2.50%", semantic: "4.17%", behavioral: "8.33%" },
+    "Pi0.5": { id: "9.17%", visual: "7.50%", semantic: "10.00%", behavioral: "10.83%" },
+    OpenDM: { id: "12.50%", visual: "9.17%", semantic: "19.17%", behavioral: "6.67%" },
   };
   for (const model of policyBaselineModelIds) {
     const actual = Object.fromEntries(["id", "visual", "semantic", "behavioral"].map((setting) => [
@@ -55,6 +77,20 @@ test("all-scenario TSR keeps ID and three OOD settings separate for every baseli
       readResult({ trackId: "T3", mode: "plan", modelId: model, taskId: "all", metricId: "TSR", setting }).primary,
     ]));
     assert.deepEqual(actual, expected[model]);
+  }
+});
+
+test("Recovery publishes 119 verified episodes per model and preserves the missing episode", () => {
+  const expected = { G05: "17.65%", HyVLA: "6.72%", XVLA: "9.24%", "Pi0.5": "9.24%", OpenDM: "9.24%" };
+  for (const model of policyBaselineModelIds) {
+    const result = readResult({ trackId: "T3", mode: "plan", modelId: model, taskId: "all", metricId: "TSR", setting: "recovery" });
+    assert.equal(result.primary, expected[model]);
+    assert.equal(result.sampleCount, 119);
+    assert.match(result.cohort, /119\/120 episodes/);
+    const missingTask = data.models[model].recovery.classify_objects_by_language;
+    assert.equal(missingTask.episodes, 4);
+    assert.equal(missingTask.incompleteEpisodes, 1);
+    assert.equal(missingTask.samples.some((sample) => sample.sourceEpisode === "episode_4"), false);
   }
 });
 

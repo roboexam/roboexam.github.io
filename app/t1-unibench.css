@@ -30,8 +30,6 @@
 .t1uTaskCell strong { font-size: 14px; font-weight: 560; }
 .t1uTaskCell small { color: #8795ac; font-size: 10px; }
 .t1uTaskCell:hover { outline: 2px solid #83a6e1; outline-offset: -2px; }
-.t1uTaskCell.static { cursor: default; }
-.t1uTaskCell.static:hover { outline: 0; }
 .t1uTaskMatrix td[data-level="1"] { background: #f2f7ff; }
 .t1uTaskMatrix td[data-level="2"] { background: #e4eefe; }
 .t1uTaskMatrix td[data-level="3"] { background: #d3e3fd; }

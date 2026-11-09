@@ -1,4 +1,5 @@
 import { MetricOnlyMatrix } from "./pearson-matrix-section";
+import { TrackIcon } from "./podium";
 import { tracks, type TrackId } from "../data/metric-plan";
 import {
   type CurrentCorrelationMetric,
@@ -15,7 +16,7 @@ const trackScope: Record<TrackId, string> = {
 function TrackNav({ active, onChange }: { active: TrackId; onChange: (track: TrackId) => void }) {
   return <section className="correlationTrackNav band" aria-label="Correlation track">
     {tracks.map((track) => <button type="button" key={track.id} className={active === track.id ? "selected" : ""} aria-pressed={active === track.id} onClick={() => onChange(track.id)}>
-      <span>{track.id}</span><strong>{track.title}</strong><small>{trackScope[track.id]}</small>
+      <span><TrackIcon track={track.id} size={24}/>{track.id}</span><strong>{track.title}</strong><small>{trackScope[track.id]}</small>
     </button>)}
   </section>;
 }
