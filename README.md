@@ -24,8 +24,7 @@ Then copy `<dir>/static-media.json` to `app/data/generated/`, pack `static-api/`
 
 ```bash
 GITHUB_PAGES=true UNIBENCH_DEPLOY_BUILD=1 npm run build
-node scripts/audit-static-site.mjs dist/client               # add --anonymous for the anonymous copy
-STATIC_AUDIT_DENY=<deny list kept outside Git> bash scripts/build-anonymous-site.sh
+node scripts/audit-static-site.mjs dist/client   # --deny <file> adds literal strings kept outside Git
 ```
 
 ## Requirements
