@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { demoMediaUrl, homeDemos, rigFor, taskFor, type DemoClip } from "../data/home-demos";
 import { CountUp, RevealWords } from "./fx";
+import { STATIC_SITE } from "../static-site";
 
 const number = new Intl.NumberFormat("en-US");
 
@@ -75,7 +76,7 @@ export function HomeDemos() {
 
       <div className="demoStripHead">
         <strong>{strip.length} clips · head camera</strong>
-        <span className="demoSoon"><i/>Policy rollouts on these rigs arrive next week</span>
+        {!STATIC_SITE && <span className="demoSoon"><i/>Policy rollouts on these rigs arrive next week</span>}
       </div>
       <div className="demoStrip">
         <div className="demoTrack">

@@ -1,6 +1,7 @@
 // Homepage demo reel: browser-safe catalog built by scripts/build-home-demos.py.
 import catalog from "./generated/home-demos.json" with { type: "json" };
 import wall from "./generated/hero-wall.json" with { type: "json" };
+import { STATIC_SITE } from "../static-site.ts";
 
 export type DemoMedia = { file: string; sha256: string; bytes: number };
 export type DemoClip = {
@@ -18,7 +19,8 @@ export type HomeDemos = {
 
 export const homeDemos = catalog as HomeDemos;
 
-export const demoMediaUrl = (media: DemoMedia) => `/api/home-demo-media/${media.file}`;
+export const demoMediaUrl = (media: DemoMedia) =>
+  STATIC_SITE ? `/static-media/home-demos/${media.file}` : `/api/home-demo-media/${media.file}`;
 export const rigFor = (id: string) => homeDemos.rigs.find((rig) => rig.id === id);
 export const taskFor = (id: string) => homeDemos.tasks.find((task) => task.id === id);
 

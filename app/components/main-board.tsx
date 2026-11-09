@@ -138,8 +138,8 @@ function TrackBand({ track, compare, expanded, onExpand, onCompare, onBreakdown 
       <OursRow colSpan={colSpan}/>
     </> : <tr className="plannedRow"><td colSpan={colSpan}>
       <div className="plannedInner">
-        <Info size={16}/><span>No formal hardware score yet. Planned baselines:</span>
-        <ul>{track.rows.map((row) => <li key={row.id} title={row.detail}><b>{row.label}</b><small>{row.type} · {row.detail}</small></li>)}</ul>
+        <Info size={16}/><span>No formal hardware score yet.{track.rows.length > 0 && " Planned baselines:"}</span>
+        {track.rows.length > 0 && <ul>{track.rows.map((row) => <li key={row.id} title={row.detail}><b>{row.label}</b><small>{row.type} · {row.detail}</small></li>)}</ul>}
       </div>
     </td></tr>}
   </tbody>;

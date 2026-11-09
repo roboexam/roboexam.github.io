@@ -6,6 +6,7 @@ import { demoMediaUrl, heroWall } from "../data/home-demos";
 import { HERO_TOUCH_EVENT, HeroHands3D } from "./hero-hands-3d";
 import { TrackIcon } from "./podium";
 import { tracks, type TrackId } from "../data/metric-plan";
+import { STATIC_SITE } from "../static-site";
 
 type Props = { onLeaderboards: (track?: TrackId) => void; onDatasets: () => void };
 
@@ -19,7 +20,7 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
       <HeroHands3D/>
     </div>
     <div className="heroTitle">
-      <p className="heroBadge"><span/><b className="fxShiny">Planned CVPR 2027 Workshop</b></p>
+      <p className="heroBadge"><span/><b className="fxShiny">{STATIC_SITE ? "Physical AI Benchmark" : "Planned CVPR 2027 Workshop"}</b></p>
       <h1 id="hero-title">RoboExam</h1>
       <p className="heroSubtitle"><span className="srOnly">The final exam for Physical AI</span><span aria-hidden="true"><span className="heroMuted">The final exam</span> for Physical AI</span></p>
     </div>

@@ -1,6 +1,32 @@
 # RoboExam dashboard
 
-Public research dashboard for a planned CVPR 2027 Workshop benchmark. It presents four independent track tables, metric definitions, dataset cohorts, published baselines, and linked evidence for VLM, ACWM, VLA, and WAM systems.
+Public research dashboard for a Physical AI benchmark. It presents four independent track tables, metric definitions, dataset cohorts, published baselines, and linked evidence for VLM, ACWM, VLA, and WAM systems.
+
+## GitHub Pages (this repository)
+
+This repository publishes the dashboard as a static site. `GITHUB_PAGES=true` turns on `output: "export"` and
+`ROBOEXAM_STATIC_SITE` (see `app/static-site.ts`): every page is prerendered, the browser reads data
+endpoints from JSON snapshots in `public/static-api/`, and video from a curated sample in `public/static-media/`
+(clips outside the sample show a placeholder). The static site leaves out sign-in, the Review page, plans and
+internal run statuses; `build/static-redactions.mjs` lists the text it rewrites.
+
+The snapshot is not in Git. It is one release asset, pinned by tag and SHA-256 in
+`.github/workflows/deploy-pages.yml`. To refresh it, on a host that runs the full dashboard:
+
+```bash
+node --experimental-strip-types scripts/export-static-site.mjs --base http://127.0.0.1:3297 --data <dashboard>/app/data/generated --out <dir>
+bash scripts/build-static-media.sh <dir>
+node scripts/redact-static-site.mjs <dir>/static-api
+```
+
+Then copy `<dir>/static-media.json` to `app/data/generated/`, pack `static-api/` and `static-media/` as
+`static-snapshot.tar.gz`, attach it to a new release and update the pinned tag and hash. Build and check locally:
+
+```bash
+GITHUB_PAGES=true UNIBENCH_DEPLOY_BUILD=1 npm run build
+node scripts/audit-static-site.mjs dist/client               # add --anonymous for the anonymous copy
+STATIC_AUDIT_DENY=<deny list kept outside Git> bash scripts/build-anonymous-site.sh
+```
 
 ## Requirements
 

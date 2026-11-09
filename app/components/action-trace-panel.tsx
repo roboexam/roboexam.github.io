@@ -4,6 +4,7 @@ import { Activity, LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { validateActionTrace, type ActionTrace, type ActionTraceSource } from "../data/action-trace";
+import { dataUrl } from "../static-site";
 
 const jointColors = ["#5f8fe5", "#64c5bc", "#9e7bd5", "#e1a255", "#dc7181", "#7792aa"];
 const xyzColors = ["#dc7181", "#64b98b", "#5f8fe5"];
@@ -23,7 +24,7 @@ export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId
   useEffect(() => {
     const controller = new AbortController();
     if (!validId || unavailable) return () => controller.abort();
-    void fetch(url, { signal: controller.signal, ...(binding ? { cache: "no-store" as const } : {}) })
+    void fetch(url.startsWith("/api/") ? dataUrl(url) : url, { signal: controller.signal, ...(binding ? { cache: "no-store" as const } : {}) })
       .then(async response => {
         if (!response.ok) throw new Error("trace unavailable");
         const body = await response.json();

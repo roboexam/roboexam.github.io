@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { acwmDashboardBundle, type AcwmSampleResult } from "../data/acwm-results";
+import { mediaUrl } from "../static-site";
+import { MediaUnavailable } from "./static-media";
 
 const metricSteps: Record<string, { input: string; compute: string; aggregate: string }> = {
   MSE: {
@@ -48,9 +50,11 @@ const metricSteps: Record<string, { input: string; compute: string; aggregate: s
 
 function SampleVideoPair({ sample }: { sample: AcwmSampleResult | undefined }) {
   if (!sample?.media) return <div className="sampleUnavailable"><strong>No publishable video sample is available</strong><p>The value still comes from the formal result bundle; no video from another model or seed is substituted.</p></div>;
+  const prediction = mediaUrl(sample.media.prediction.url);
+  const groundTruth = mediaUrl(sample.media.groundTruth.url);
   return <div className="acwmVideoPair">
-    <div className="sampleVideo"><video key={sample.media.prediction.sha256} controls muted playsInline preload="metadata" src={sample.media.prediction.url}/><div><b>Predicted future</b><span>SHA-256: {sample.media.prediction.sha256.slice(0, 12)}…</span></div></div>
-    <div className="sampleVideo"><video key={sample.media.groundTruth.sha256} controls muted playsInline preload="metadata" src={sample.media.groundTruth.url}/><div><b>Ground-truth future</b><span>SHA-256: {sample.media.groundTruth.sha256.slice(0, 12)}…</span></div></div>
+    <div className="sampleVideo">{prediction ? <video key={sample.media.prediction.sha256} controls muted playsInline preload="metadata" src={prediction}/> : <MediaUnavailable/>}<div><b>Predicted future</b><span>SHA-256: {sample.media.prediction.sha256.slice(0, 12)}…</span></div></div>
+    <div className="sampleVideo">{groundTruth ? <video key={sample.media.groundTruth.sha256} controls muted playsInline preload="metadata" src={groundTruth}/> : <MediaUnavailable/>}<div><b>Ground-truth future</b><span>SHA-256: {sample.media.groundTruth.sha256.slice(0, 12)}…</span></div></div>
   </div>;
 }
 

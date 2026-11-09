@@ -7,6 +7,7 @@ import {
   type T1SplitId, type T1SplitMetrics, type T1UnibenchEpisode, type T1UnibenchModel, type T1UnibenchResults,
 } from "../../data/t1-unibench-results";
 import type { T1UnibenchVqaEpisode } from "../../data/t1-unibench-vqa";
+import { dataUrl, STATIC_SITE, withMedia } from "../../static-site";
 
 type Selection = { modelId: string; split: T1SplitId; taskId: string; episodeId: string | null };
 type HeadlineId = "score" | "subtask" | "success" | "vqa";
@@ -173,7 +174,7 @@ function EpisodeVqa({ episode }: { episode: T1UnibenchEpisode }) {
   const [state, setState] = useState<{ id: string; detail: T1UnibenchVqaEpisode | null; failed: boolean } | null>(null);
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`/api/t1-unibench-vqa/${encodeURIComponent(episode.id)}`, { signal: controller.signal })
+    fetch(dataUrl(`/api/t1-unibench-vqa/${encodeURIComponent(episode.id)}`), { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error("VQA request failed");
         const detail: T1UnibenchVqaEpisode = await response.json();
@@ -208,7 +209,7 @@ function EpisodeVqa({ episode }: { episode: T1UnibenchEpisode }) {
     </div>}
     {detail && detail.checkpoints.length > 0 && <div className="t1bVqaQuestionSection">
       <div className="t1bVqaSectionHeading"><h4>Process checkpoints (C2/C3)</h4>
-        <span>{detail.checkpoints.filter((c) => c.status === "scored").length} answered · {detail.checkpoints.length} planned</span></div>
+        <span>{detail.checkpoints.filter((c) => c.status === "scored").length} answered · {detail.checkpoints.length} {STATIC_SITE ? "checkpoints" : "planned"}</span></div>
       <div className="t1bVqaQuestionList">{detail.checkpoints.map((c) => <div className="t1bVqaUnreached t1uCheckpoint" key={c.slotId}>
         <span className="t1bVqaQuestionTitle"><span>{c.status.replaceAll("_", " ")}</span><strong>{c.slotId.toLowerCase().replaceAll("_", " ")}</strong></span>
         <span className="t1bVqaCheckpointScores"><span>C2 <span className="t1bVqaScore">{scoreText(c.c2)}</span></span><span>C3 <span className="t1bVqaScore">{scoreText(c.c3)}</span></span></span>
@@ -231,7 +232,8 @@ function Explorer({ results, selection, setSelection }: {
   const taskIds = new Set(splitEpisodes.map((e) => e.taskId));
   const scenes = unibenchEpisodes(results, selection.modelId, selection.split, selection.taskId);
   const episode = scenes.find((e) => e.id === selection.episodeId) ?? scenes[0];
-  const video = view === "replay" && episode?.replayVideo ? episode.replayVideo : episode?.video ?? null;
+  const replayVideo = withMedia(episode?.replayVideo);
+  const video = withMedia(view === "replay" && replayVideo ? episode?.replayVideo : episode?.video);
   return <section className="t1bViewerSection t1uSection" aria-labelledby={`${id}-title`}>
     <header className="t1bViewerHeading"><div><p className="eyebrow">Saved executions</p><h3 id={`${id}-title`}>Explore rollouts</h3></div>
       <div className="t1bViewerControls">
@@ -249,7 +251,7 @@ function Explorer({ results, selection, setSelection }: {
     <div className="t1bSceneGallery" role="group" aria-label="Episodes of this task and setting">
       {scenes.map((e) => <button type="button" key={e.id} className="t1bSceneCard" aria-pressed={e.id === episode?.id}
         onClick={() => { setView("takeover"); setSelection({ ...selection, episodeId: e.id }); }}>
-        <span className="t1bScenePreview">{e.video && <><video src={e.video.url} muted playsInline preload="metadata" aria-hidden="true" tabIndex={-1}>
+        <span className="t1bScenePreview">{withMedia(e.video) && <><video src={withMedia(e.video)!.url} muted playsInline preload="metadata" aria-hidden="true" tabIndex={-1}>
           <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/></video>
           <span className="t1bScenePlay"><Play size={17} fill="currentColor" aria-hidden="true"/></span></>}</span>
         <span className="t1bSceneCaption"><strong>{e.slot}</strong><span>{e.execution.success ? "Success" : "Failure"} · subtask {scoreText(e.execution.subtask)}</span></span>
@@ -258,10 +260,10 @@ function Explorer({ results, selection, setSelection }: {
     {episode && model && task ? <div className={`t1bEpisode${video ? "" : " t1bEpisodeFactsOnly"}`} data-episode-id={episode.id}>
       {video && <div className="t1bPlayer">
         <div className="t1bPlayerBar"><span>{view === "replay" ? "Recorded failure (replayed, model observing)" : "Saved rollout"}</span>
-          {episode.replayVideo && <span className="t1uReplaySwitch" role="group" aria-label="Recovery video part">
+          {replayVideo && <span className="t1uReplaySwitch" role="group" aria-label="Recovery video part">
             <button type="button" aria-pressed={view === "replay"} onClick={() => setView("replay")}>Failure replay</button>
             <button type="button" aria-pressed={view === "takeover"} onClick={() => setView("takeover")}>Model takeover</button></span>}
-          {!episode.replayVideo && <span>Head · Left wrist · Right wrist</span>}</div>
+          {!replayVideo && <span>Head · Left wrist · Right wrist</span>}</div>
         <video key={`${episode.id}:${video.id}`} src={video.url} controls playsInline preload="metadata"
           aria-label={`${model.label}, ${task.label}, ${SPLIT_LABEL[episode.split]} ${episode.slot}`}>
           <track kind="captions" src="/no-spoken-audio.vtt" srcLang="en" label="No spoken audio"/>

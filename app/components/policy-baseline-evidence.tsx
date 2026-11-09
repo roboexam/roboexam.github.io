@@ -7,6 +7,8 @@ import {
   type PolicyBaselineModel,
   type PolicySetting,
 } from "../data/policy-baselines";
+import { dataUrl, mediaUrl } from "../static-site";
+import { MediaUnavailable } from "./static-media";
 
 type PolicySample = {
   id: string;
@@ -43,7 +45,7 @@ export function PolicyBaselineEvidence({ model, taskId, metricId, formula, setti
   const [error, setError] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`/api/policy-baseline-results/${encodeURIComponent(model)}/${encodeURIComponent(taskId)}?setting=${encodeURIComponent(setting)}`, { signal: controller.signal })
+    fetch(dataUrl(`/api/policy-baseline-results/${encodeURIComponent(model)}/${encodeURIComponent(taskId)}?setting=${encodeURIComponent(setting)}`), { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Missing policy-baseline cohort");
         return response.json();
@@ -62,8 +64,12 @@ export function PolicyBaselineEvidence({ model, taskId, metricId, formula, setti
       ? `${model} sample evidence could not be loaded.`
       : `Loading ${model} episode evidence…`}</p></section>;
   }
-  const sample = samples.find((item) => item.id === sampleId) ?? samples[0];
-  const video = sample.videos.find((item) => item.camera === camera) ?? sample.videos[0];
+  // open on a sample whose clip is carried (all of them on the server; the curated few on the static site)
+  const playable = (item: PolicySample) => item.videos.some((entry) => mediaUrl(entry.url));
+  const sample = samples.find((item) => item.id === sampleId) ?? samples.find(playable) ?? samples[0];
+  const video = sample.videos.find((item) => item.camera === camera && mediaUrl(item.url))
+    ?? sample.videos.find((item) => mediaUrl(item.url)) ?? sample.videos.find((item) => item.camera === camera) ?? sample.videos[0];
+  const videoSrc = mediaUrl(video.url);
   const metric = task.values[metricId];
   const settingLabel = setting === "id" ? "ID" : `${setting.toUpperCase()} OOD`;
 
@@ -92,7 +98,7 @@ export function PolicyBaselineEvidence({ model, taskId, metricId, formula, setti
       </div>
       <div className="sampleBody vlaSampleBody">
         <div className="sampleVideo">
-          <video key={video.sha256} controls muted playsInline preload="metadata" src={video.url}/>
+          {videoSrc ? <video key={video.sha256} controls muted playsInline preload="metadata" src={videoSrc}/> : <MediaUnavailable/>}
           <div><b>{cameraLabels[video.camera]}</b><span>{(video.size / 1024 / 1024).toFixed(1)} MiB · SHA {video.sha256.slice(0, 12)}</span></div>
         </div>
         <div className="sampleCalculation">

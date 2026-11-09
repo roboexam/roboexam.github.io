@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Bot, Eye, GitBranch, Globe, MemoryStick, ShieldCheck, Telescope, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { LeaderboardView } from './components/leaderboard-view';
 import { HeroStage } from './components/hero-stage';
 import { HomeDemos } from './components/home-demos';
@@ -16,6 +16,7 @@ import { metricExplanationFor, type BilingualText } from './data/metric-explanat
 import { tracks, type TrackId } from './data/metric-plan';
 import { scenarioTags, scenarioTagCoverage, simulationV2Plan, type ScenarioTag } from './data/scenario-plan';
 import { definitionFor, readResult, type MetricSelection } from './data/track-results';
+import { STATIC_SITE } from './static-site';
 
 type Page = 'Overview' | 'Leaderboards' | 'Datasets' | 'Correlation';
 const navigation: Page[] = ['Overview', 'Leaderboards', 'Datasets', 'Correlation'];
@@ -29,6 +30,19 @@ const capabilities = [
   { id: 'C7', title: 'Generalization', layer: 'Transfer beyond training', question: 'Can it handle novel objects, layouts, compositions, instructions, and failure states?', Icon: Globe },
 ] as const;
 type CapabilityId = (typeof capabilities)[number]['id'];
+type View = { page: Page; track: TrackId };
+
+// The static build prerenders one page, so links like /?track=T2 or /?task=… are read in the browser
+// (the server snapshot is empty, so hydration matches the prerendered HTML).
+const noSubscription = () => () => {};
+const browserSearch = () => STATIC_SITE ? window.location.search : '';
+function linkedView(search: string): View | null {
+  const params = new URLSearchParams(search);
+  const task = params.get('task');
+  if (task && /^[A-Za-z0-9_+-]{1,128}$/.test(task)) return { page: 'Datasets', track: 'T1' };
+  if (params.get('track') === 'T2') return { page: 'Leaderboards', track: 'T2' };
+  return null;
+}
 const trackSummaries: Record<TrackId, string> = {
   T1: 'Compare diverse VLM agents under one harness, from grounding and task memory to planning and next-action generation.',
   T2: 'Test future prediction, physical response, and intervention outcomes under candidate actions.',
@@ -43,14 +57,15 @@ const trackCapabilityTargets: Record<TrackId, string[]> = {
 };
 
 export default function DashboardClient({ initialPage = 'Overview', initialTrack = 'T1' }: { initialPage?: Page; initialTrack?: TrackId } = {}) {
-  const [page, setPage] = useState<Page>(initialPage);
-  const [track, setTrack] = useState<TrackId>(initialTrack);
+  const search = useSyncExternalStore(noSubscription, browserSearch, () => '');
+  const [chosen, setChosen] = useState<View | null>(null);
+  const { page, track } = chosen ?? linkedView(search) ?? { page: initialPage, track: initialTrack };
   const [activeCapability, setActiveCapability] = useState<CapabilityId>('C1');
   const [detail, setDetail] = useState<MetricSelection | null>(null);
   const navRef = useRef<HTMLElement>(null);
   useNavGlider(navRef, page);
   function navigate(next: Page, nextTrack: TrackId = 'T1') {
-    setDetail(null); setTrack(nextTrack); setPage(next);
+    setDetail(null); setChosen({ page: next, track: nextTrack });
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
   return <div className="researchShell">
@@ -59,7 +74,7 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
     <header className={`researchNav ${page === 'Overview' ? 'onHero' : ''}`}>
       <button type="button" className="researchBrand" onClick={() => navigate('Overview')} aria-label="RoboExam home"><img src="/brand/roboexam-logo.png" alt="RoboExam" width={900} height={163}/></button>
       <nav ref={navRef} aria-label="Primary navigation" className="navPills"><span className="navGlider" aria-hidden="true"/>{navigation.map(item => <button key={item} type="button" className={`researchNavItem ${page === item ? 'active' : ''}`} aria-current={page === item ? 'page' : undefined} onClick={() => navigate(item)}>{item}</button>)}</nav>
-      <a className="navAction" href="/review"><span aria-hidden="true"><ArrowUpRight size={16}/></span>Review</a>
+      {!STATIC_SITE && <a className="navAction" href="/review"><span aria-hidden="true"><ArrowUpRight size={16}/></span>Review</a>}
     </header>
     <main id="main-content" className="researchMain">
       {page === 'Overview' && <>
@@ -74,7 +89,7 @@ export default function DashboardClient({ initialPage = 'Overview', initialTrack
       {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading datasetPageHeading"><p className="eyebrow">DATA LIBRARY</p><h1>Datasets</h1><p>Browse simulation, real-robot, and egocentric records in one workspace.</p></div><ScenarioBrowser/></div>}
       {page === 'Correlation' && <ExplainabilityView/>}
     </main>
-    <footer className="researchFooter"><div><img src="/brand/roboexam-mark-64.png" alt="" width={32} height={32}/><strong>RoboExam</strong><span>Planned CVPR 2027 Workshop</span></div></footer>
+    <footer className="researchFooter"><div><img src="/brand/roboexam-mark-64.png" alt="" width={32} height={32}/><strong>RoboExam</strong>{!STATIC_SITE && <span>Planned CVPR 2027 Workshop</span>}</div></footer>
     {detail && <MetricDetail key={`${detail.trackId}:${detail.mode}:${detail.metricId}:${detail.modelId}:${detail.taskId ?? ''}:${readResult(detail).version ?? 'pending'}`} selection={detail} onClose={() => setDetail(null)}/>}
   </div>;
 }
@@ -127,7 +142,7 @@ function CapabilityTrackFlow({ activeId, onCapability, onTrack }: { activeId: Ca
       </div>
       <div className="flowEvidenceRail">
         <div className="flowEvidenceLabel"><strong>Shared task evidence</strong><span>Six requirement tags across 24 simulation scenes. Tags can overlap.</span></div>
-        <div className="flowScenarioTags" aria-label="Simulation task requirement coverage">{Object.entries(scenarioTags).map(([tag, definition]) => <span key={tag} title={`${definition.rule} Planned scene coverage includes scoped variants; this is not an accepted-episode count.`} aria-label={`${definition.label}: ${scenarioTagCoverage[tag as ScenarioTag]} of ${simulationV2Plan.length} simulation scenes`}><CapabilityIcon tag={tag} size={24}/><b>{definition.label}</b><small>{scenarioTagCoverage[tag as ScenarioTag]}/{simulationV2Plan.length}</small></span>)}</div>
+        <div className="flowScenarioTags" aria-label="Simulation task requirement coverage">{Object.entries(scenarioTags).map(([tag, definition]) => <span key={tag} title={`${definition.rule} ${STATIC_SITE ? 'Scene' : 'Planned scene'} coverage includes scoped variants; this is not an accepted-episode count.`} aria-label={`${definition.label}: ${scenarioTagCoverage[tag as ScenarioTag]} of ${simulationV2Plan.length} simulation scenes`}><CapabilityIcon tag={tag} size={24}/><b>{definition.label}</b><small>{scenarioTagCoverage[tag as ScenarioTag]}/{simulationV2Plan.length}</small></span>)}</div>
         <div className="flowRegimes"><span>ID</span><span>Visual OOD</span><span>Semantic OOD</span><span>Behavioral OOD</span><span>Recovery</span></div>
       </div>
     </div>

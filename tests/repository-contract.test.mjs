@@ -1,25 +1,25 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 
 test("uses the public RoboExam shell and direct anonymous routing", async () => {
-  const [layout, page, packageJson, worker, login, proxy] = await Promise.all([
+  const [layout, page, packageJson, worker, proxy] = await Promise.all([
     readFile(new URL("app/layout.tsx", root), "utf8"),
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("package.json", root), "utf8"),
     readFile(new URL("worker/index.ts", root), "utf8"),
-    readFile(new URL("app/login/page.tsx", root), "utf8"),
     readFile(new URL("proxy.ts", root), "utf8"),
   ]);
 
-  assert.match(layout, /title:\s*"RoboExam · Planned CVPR 2027 Workshop"/);
+  assert.match(layout, /"RoboExam · Physical AI Benchmark"/);
   assert.match(layout, /<html lang="en">/);
   assert.match(page, /DashboardClient/);
   assert.match(packageJson, /"node":\s*">=22\.13\.0"/);
   assert.match(worker, /RoboExam dashboard/);
-  assert.match(login, /redirect\("\/"\)/);
+  // GitHub Pages serves static files only: no sign-in or review pages
+  for (const route of ["app/login/page.tsx", "app/review/page.tsx"]) await assert.rejects(access(new URL(route, root)));
   assert.match(proxy, /NextResponse\.next/);
   assert.doesNotMatch(layout + page + worker, /UniEmbodied-Bench|Unified Embodied Evaluation|Research preview|ICLR 2027/);
 });

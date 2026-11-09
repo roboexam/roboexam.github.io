@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { acwm600, aColumns, compositeScores, regimeNames, type ReaderVersion } from '../data/acwm600-results';
+import { dataUrl } from '../static-site';
 
 type Dimension = 'all' | 'A' | 'B';
 const videoColumns = aColumns;
@@ -86,7 +87,7 @@ export function Acwm600Results() {
           {acwm600.sources.map(source => <tr key={source.id}><th scope="row">{source.id}</th><td><code>{source.sha256}</code></td></tr>)}
         </tbody></table>
       </div>
-      <p><a href="/api/acwm600-results" download>Download complete per-case results and provenance (JSON)</a></p>
+      <p><a href={dataUrl("/api/acwm600-results")} download="acwm600-results.json">Download complete per-case results and provenance (JSON)</a></p>
     </details>
   </>;
 }

@@ -26,9 +26,10 @@ import "./brand.css";
 import "./board.css";
 import "./snowflake.css";
 import "./fx.css";
+import "./static-site.css";
 
 export const metadata: Metadata = {
-  title: "RoboExam · Planned CVPR 2027 Workshop",
+  title: process.env.ROBOEXAM_STATIC_SITE === "1" ? "RoboExam · Physical AI Benchmark" : "RoboExam · Planned CVPR 2027 Workshop",
   description: "A comprehensive benchmark of Physical AI capabilities across embodied reasoning, world prediction, simulated control, and real-robot deployment.",
   icons: {
     icon: [

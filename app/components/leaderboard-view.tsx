@@ -10,6 +10,7 @@ import { admittedSettingScores, calculateOverallScore, type OverallScorecard } f
 import { metricsFor, readResult, type MetricSelection, type ReportMode, type ReportResult } from "../data/track-results";
 import { policyTaskIds } from "../data/policy-baselines";
 import { BaselineRunPlan } from "./baseline-run-plan";
+import { STATIC_SITE } from "../static-site";
 import { MainBoard } from "./main-board";
 import { CapabilityIcon, TrackIcon } from "./podium";
 import { SnowflakeBoard } from "./snowflake-board";
@@ -113,7 +114,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
     setFamily("all");
     setAvailability("all");
   }
-  const selectMetric = (metricId: string, modelId = models[0]?.id ?? track.models[0].id, setting: EvalSetting = "id") =>
+  const selectMetric = (metricId: string, modelId = models[0]?.id ?? track.models[0]?.id ?? "", setting: EvalSetting = "id") =>
     onMetric({ trackId, mode, metricId, modelId, setting, ...(trackId === "T3" ? {taskId: sceneId} : {}) });
   function selectTrack(next: TrackId) {
     setTrackId(next);
@@ -161,12 +162,12 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       <strong>Score guide · 分数说明</strong>
       <p lang="en">{scoreGuide.en}</p><p lang="zh-CN">{scoreGuide.zh}</p>
     </section>}
-    {trackId !== "T2" && <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>}
+    {!STATIC_SITE && trackId !== "T2" && <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>}
     {trackId === "T2" && <div className="trackSectionTitle">
       <h2>{track.title}</h2>
       <div className="reportSwitch" aria-label="Result protocol">
         <button type="button" aria-pressed={latestT2} onClick={() => { setLatestT2(true); reset(); }}>Current results</button>
-        {(["plan", "history"] as const).map(value => <button key={value} type="button"
+        {(STATIC_SITE ? ["history"] as const : ["plan", "history"] as const).map(value => <button key={value} type="button"
           aria-pressed={!latestT2 && mode === value} onClick={() => { setLatestT2(false); setMode(value); reset(); }}>
           {value === "plan" ? "Current plan" : "Historical runs"}
         </button>)}
@@ -176,6 +177,8 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       <T1UnibenchView/>
     </section> : trackId === "T2" && latestT2 ? <section className="trackWorkspace" aria-label="T2 current results">
       <Suspense fallback={<p role="status">Loading results…</p>}><CurrentAcwmResults/></Suspense>
+    </section> : STATIC_SITE && trackId === "T4" ? <section className="trackWorkspace" aria-label="T4 results">
+      <p className="staticEmpty">No formal hardware results are published yet.</p>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       {trackId !== "T2" && <div className="trackSectionTitle">
         <h2>{track.title}</h2>
@@ -298,6 +301,6 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
         </div>}
       </div>
     </section>}
-    {trackId === "T2" && <details><summary>Training and evaluation registry · historical snapshot</summary><BaselineRunPlan initialTrack="T2"/></details>}
+    {!STATIC_SITE && trackId === "T2" && <details><summary>Training and evaluation registry · historical snapshot</summary><BaselineRunPlan initialTrack="T2"/></details>}
   </div>;
 }

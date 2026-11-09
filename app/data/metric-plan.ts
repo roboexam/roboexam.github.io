@@ -1,3 +1,5 @@
+import { STATIC_SITE } from "../static-site.ts";
+
 export type TrackId = "T1" | "T2" | "T3" | "T4";
 type Source = "vlm" | "acwm" | "policy" | "real";
 export type MetricDefinition = { id: string; label: string; group: string; direction: string; note?: string; diagnostic?: boolean };
@@ -114,8 +116,9 @@ export const tracks: TrackDefinition[] = [
     },
     models: [
       { id: "Cosmos3-Nano", family: "VLM", status: "Provisional" },
-      ...["deepseek-v4.1-flash", "internal-mimo-v2.6-pro", "kimi-k3", "glm-5.3-flash", "minimax-h3.1-preview"]
-        .map(id => ({ id, family: "Commercial VLM", status: "Planned" })),
+      // the static site publishes evaluated methods only: planned entries stay out of its bundle
+      ...(STATIC_SITE ? [] : ["deepseek-v4.1-flash", "internal-mimo-v2.6-pro", "kimi-k3", "glm-5.3-flash", "minimax-h3.1-preview"]
+        .map(id => ({ id, family: "Commercial VLM", status: "Planned" }))),
     ], metrics: t1Metrics,
   },
   {
@@ -125,13 +128,15 @@ export const tracks: TrackDefinition[] = [
       zh: "主要分数将冻结的九项指标按方向归一化到 0–100 后等权平均，原始数值仍用于诊断。JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
     },
     models: [
-      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Planned · clean24" },
-      { id: "CtrlWorld", family: "ACWM", status: "AIHC training · Failed" },
-      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: "AIHC evaluation · Succeeded" },
-      { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
-      { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
-      { id: "Wan-Move", family: "ACWM", status: "Planned" },
-      { id: "EnerVerse-AC", family: "ACWM", status: "Planned" },
+      { id: "Cosmos Predict 2.5", family: "ACWM", status: STATIC_SITE ? "Historical run" : "Planned · clean24" },
+      { id: "CtrlWorld", family: "ACWM", status: STATIC_SITE ? "Historical run" : "AIHC training · Failed" },
+      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: STATIC_SITE ? "Evaluated" : "AIHC evaluation · Succeeded" },
+      ...(STATIC_SITE ? [] : [
+        { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
+        { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
+        { id: "Wan-Move", family: "ACWM", status: "Planned" },
+        { id: "EnerVerse-AC", family: "ACWM", status: "Planned" },
+      ]),
     ], metrics: acwmMetrics,
   },
   {
@@ -154,7 +159,8 @@ export const tracks: TrackDefinition[] = [
       en: "No formal hardware score is published yet. Future headline reporting uses task success; progress, intervention, and safety remain separate evidence.",
       zh: "目前尚未发布正式真机分数。后续以任务成功率为主要结果，进度、人工干预和安全证据分别报告。",
     },
-    models: [
+    // no formal hardware trial yet: the static site lists no T4 method
+    models: STATIC_SITE ? [] : [
       { id: "Pi0.5", family: "VLA", status: "AIHC training · Running" },
       { id: "FastWAM", family: "WAM", status: "AIHC training · Running" },
       { id: "OpenWAM", family: "WAM", status: "T4 independent · Planned" },

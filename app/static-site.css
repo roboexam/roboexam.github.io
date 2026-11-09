@@ -1,0 +1,5 @@
+/* Static site (GitHub Pages): stand-ins for clips the curated sample leaves out */
+.staticMediaMissing { display: flex; align-items: center; justify-content: center; gap: 10px; aspect-ratio: 16 / 9; padding: 18px; background: var(--re-stage); color: var(--re-copy); font-size: 13px; line-height: 1.5; text-align: center; }
+.staticMediaMissing svg { flex: none; color: var(--re-faint); }
+.vlaSampleBody .staticMediaMissing, .acwmVideoPair .staticMediaMissing { aspect-ratio: 4 / 3; }
+.staticEmpty { margin: 0; padding: 28px 24px; border: 1px dashed var(--re-line); border-radius: 14px; background: var(--re-paper); color: var(--re-copy); font-size: 14px; text-align: center; }
