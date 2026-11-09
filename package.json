@@ -16,7 +16,7 @@
     "check:curated-traces": "${UNIBENCH_TRACE_PYTHON:-python} scripts/export-curated-traces.py --check",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "prebuild": "bash ops/4090/guard-live-build.sh",
-    "build": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "build": "node scripts/build-pages-bundle.mjs",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "export:acwm": "node scripts/export-acwm-results.mjs",
     "export:vlm": "node scripts/export-vlm-results.mjs",

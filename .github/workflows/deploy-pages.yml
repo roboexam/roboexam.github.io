@@ -14,6 +14,12 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Data snapshots and curated clips are kept out of Git: they are one release asset, pinned here by tag
+# and SHA-256 (made with scripts/export-static-site.mjs and scripts/build-static-media.sh).
+env:
+  STATIC_SNAPSHOT_TAG: static-snapshot-0f093a7
+  STATIC_SNAPSHOT_SHA256: df62dbcdfe14ac18086d13e6bb7e6603a99901d3b92f26aad00f591395dd470d
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,6 +30,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Fetch the static data and clip snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$STATIC_SNAPSHOT_TAG" --pattern static-snapshot.tar.gz --dir "$RUNNER_TEMP"
+          echo "$STATIC_SNAPSHOT_SHA256  $RUNNER_TEMP/static-snapshot.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/static-snapshot.tar.gz" -C public
       - run: npm run build
         env:
           GITHUB_PAGES: "true"
@@ -37,6 +50,8 @@ jobs:
             dist/client/episode-data \
             dist/client/explorer-data \
             dist/client/review-data
+      - name: Audit the site for private paths, hosts and credentials
+        run: node scripts/audit-static-site.mjs dist/client
       - run: touch dist/client/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

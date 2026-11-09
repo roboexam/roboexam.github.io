@@ -6,6 +6,21 @@ representative simulation and real-robot scenes, and a compact leaderboard
 format preview. Its rows are illustrative placeholders rather than published
 results. There is no standalone public leaderboards route.
 
+## Workshop root and archived public dashboard
+
+The GitHub Pages root remains the workshop-facing site from the local `main`
+checkout. The latest public dashboard is preserved at the immutable commit
+`087d029bf269dc14333f68eaac109ca3f5ffa13c` on the
+`archive/public-latest-087d029` backup branch. Pages also builds that commit
+under a no-index path so it can be reviewed without changing the root page:
+
+<https://roboexam.github.io/__public_latest_087d029/>
+
+The hidden build is packaged by `scripts/package-hidden-public-site.mjs` and
+uses the pinned `static-snapshot-0f093a7` release asset. Its resource and data
+URLs are prefixed during packaging, so the two site versions do not share
+runtime assets or navigation state.
+
 ## Requirements
 
 - Node.js `>=22.13.0`
