@@ -95,7 +95,7 @@ export function SnowCrystal3D({ arms, overall, focus, full, onReady, onSettle, o
         return; // keep the 2D drawing
       }
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       renderer.toneMapping = THREE.NeutralToneMapping;
       renderer.toneMappingExposure = 1.04;
       renderer.shadowMap.enabled = true;
@@ -113,7 +113,7 @@ export function SnowCrystal3D({ arms, overall, focus, full, onReady, onSettle, o
       const key = new THREE.DirectionalLight(0xffffff, 1.45);
       key.position.set(-520, 900, 1700);
       key.castShadow = true;
-      key.shadow.mapSize.set(2048, 2048);
+      key.shadow.mapSize.set(1024, 1024); // the soft PCF radius hides the lower resolution
       Object.assign(key.shadow.camera, { left: -1400, right: 1400, top: 1400, bottom: -1400, near: 100, far: 4000 });
       key.shadow.radius = 7;
       scene.add(key, new THREE.HemisphereLight(0xffffff, 0xe2ddf2, 0.6));
@@ -335,12 +335,28 @@ export function SnowCrystal3D({ arms, overall, focus, full, onReady, onSettle, o
         if (visible && !idle) raf = requestAnimationFrame(loop);
         else running = false;
       }
+      let compiled = false;
       function wake() {
-        if (running || !visible || disposed) return;
+        if (!compiled || running || !visible || disposed) return;
         running = true;
         raf = requestAnimationFrame(loop);
       }
+      const release = () => {
+        built.disposables.forEach((item) => item.dispose());
+        catcher.geometry.dispose();
+        (catcher.material as Three.Material).dispose();
+        environment.dispose();
+        pmrem.dispose();
+        (scene.background as Three.Texture | null)?.dispose();
+        renderer.dispose();
+        api.current = null;
+      };
 
+      // Compile every program before the first frame, in parallel where the browser can
+      // (KHR_parallel_shader_compile); compiling them inside the first render froze the page for most of a second.
+      await renderer.compileAsync(scene, camera);
+      if (disposed) { clearTimeout(settleTimer); release(); return; }
+      compiled = true;
       resize();
       const resizeObserver = new ResizeObserver(resize);
       resizeObserver.observe(host);
@@ -362,14 +378,7 @@ export function SnowCrystal3D({ arms, overall, focus, full, onReady, onSettle, o
         canvas.removeEventListener("pointermove", onMove);
         canvas.removeEventListener("pointerleave", onLeave);
         canvas.removeEventListener("click", onClick as EventListener);
-        built.disposables.forEach((item) => item.dispose());
-        catcher.geometry.dispose();
-        (catcher.material as Three.Material).dispose();
-        environment.dispose();
-        pmrem.dispose();
-        (scene.background as Three.Texture | null)?.dispose();
-        renderer.dispose();
-        api.current = null;
+        release();
       };
     })();
 

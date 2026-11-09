@@ -182,6 +182,8 @@
 
 /* 3D ice crystal (three.js) — replaces the 2D drawing once WebGL is up */
 .snowCrystal { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+/* shaders compile before the first frame; until then the 2D drawing shows, not an empty canvas */
+.snowCanvas:not(.crystal3d) > .snowCrystal { visibility: hidden; }
 .snowCanvas.crystal3d { background: #f6f5fa; border-color: #e7e5f1; box-shadow: 0 30px 60px -48px #1d1c2b88; }
 .snowCanvas.crystal3d > svg { visibility: hidden; }
 .crystal3d .snowProngLabel { background: var(--snow-glass); border-color: #ffffff; box-shadow: 0 10px 26px -16px #1d1c2b77; backdrop-filter: blur(10px) saturate(1.3); }

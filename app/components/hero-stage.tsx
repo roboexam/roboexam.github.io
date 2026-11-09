@@ -100,6 +100,17 @@ const RING_STOPS: [number, string][] = [
 ];
 
 /**
+ * The ring's three strokes: a wide glow, a narrower glow and a fine line. Each is
+ * blurred on its own offscreen canvas at `scale` of the ring's resolution and drawn
+ * back enlarged; blurring the full-size canvas three times a frame overloaded the GPU.
+ */
+const RING_LAYERS = [
+  { blur: 34, line: 0.24, alpha: 0.75, amp: 1.25, scale: 0.25 },
+  { blur: 12, line: 0.09, alpha: 0.95, amp: 1, scale: 0.25 },
+  { blur: 2, line: 0.012, alpha: 0.7, amp: 0.9, scale: 0.5 },
+];
+
+/**
  * A soft iridescent ring whose outline keeps undulating, with ripples that
  * travel outward. The pointer swells the wave locally; a click sends an extra
  * ripple. Static under prefers-reduced-motion and paused off-screen.
@@ -115,31 +126,37 @@ function RippleRing() {
     let width = 0;
     let dpr = 1;
     let frame = 0;
+    let drawn = 0;
+    const layers = RING_LAYERS.map((layer) => {
+      const surface = document.createElement("canvas");
+      return { ...layer, surface, ctx: surface.getContext("2d") };
+    });
     let visible = true;
     const pointer = { x: 0, y: 0, strength: 0, target: 0 };
     const bursts: number[] = [];
     const start = performance.now();
 
     function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       width = canvas!.clientWidth;
       canvas!.width = Math.round(width * dpr);
       canvas!.height = Math.round(width * dpr);
+      for (const layer of layers) layer.surface.width = layer.surface.height = Math.max(1, Math.round(width * dpr * layer.scale));
     }
 
-    function gradient(cx: number, cy: number, rotation: number) {
-      if (typeof ctx!.createConicGradient === "function") {
-        const g = ctx!.createConicGradient(rotation, cx, cy);
+    function gradient(cx: number, cy: number, rotation: number, target = ctx!) {
+      if (typeof target.createConicGradient === "function") {
+        const g = target.createConicGradient(rotation, cx, cy);
         for (const [stop, color] of RING_STOPS) g.addColorStop(stop, color);
         return g;
       }
-      const g = ctx!.createLinearGradient(0, 0, width * dpr, width * dpr);
+      const g = target.createLinearGradient(0, 0, width * dpr, width * dpr);
       for (const [stop, color] of RING_STOPS) g.addColorStop(stop, color);
       return g;
     }
 
-    function ringPath(cx: number, cy: number, radius: number, t: number, amp: number) {
-      ctx!.beginPath();
+    function ringPath(cx: number, cy: number, radius: number, t: number, amp: number, target = ctx!) {
+      target.beginPath();
       const steps = 180;
       for (let i = 0; i <= steps; i++) {
         const theta = (i / steps) * Math.PI * 2;
@@ -150,9 +167,9 @@ function RippleRing() {
         const wave = 0.022 * Math.sin(3 * theta + 1.1 * t) + 0.016 * Math.sin(5 * theta - 1.6 * t + 1.3)
           + 0.009 * Math.sin(9 * theta + 2.4 * t) + near * 0.05 * Math.sin(12 * theta - 4 * t);
         const r = radius * (1 + amp * wave);
-        if (i === 0) ctx!.moveTo(cx + r * px, cy + r * py); else ctx!.lineTo(cx + r * px, cy + r * py);
+        if (i === 0) target.moveTo(cx + r * px, cy + r * py); else target.lineTo(cx + r * px, cy + r * py);
       }
-      ctx!.closePath();
+      target.closePath();
     }
 
     function draw(now: number) {
@@ -172,22 +189,24 @@ function RippleRing() {
       ctx!.beginPath(); ctx!.arc(cx, cy, radius * 1.05, 0, Math.PI * 2); ctx!.fill();
 
       const rotation = t * 0.12;
-      const layers = [
-        { blur: 34, line: 0.24, alpha: 0.75, amp: 1.25 },
-        { blur: 12, line: 0.09, alpha: 0.95, amp: 1 },
-        { blur: 2, line: 0.012, alpha: 0.7, amp: 0.9 },
-      ];
       for (const layer of layers) {
-        ctx!.save();
+        const target = layer.ctx;
+        if (!target) continue;
+        // the layer canvas works in full-size coordinates, scaled down; the blur is in its own pixels
+        const side = layer.surface.width;
+        target.setTransform(1, 0, 0, 1, 0, 0);
+        target.clearRect(0, 0, side, side);
+        target.setTransform(layer.scale, 0, 0, layer.scale, 0, 0);
         // blur scales with the ring so small screens never clip the glow at the canvas edge
-        if (supportsFilter) ctx!.filter = layer.blur ? `blur(${(layer.blur * size) / 700}px)` : "none";
+        if (supportsFilter) target.filter = `blur(${(layer.blur * size * layer.scale) / 700}px)`;
+        target.lineWidth = Math.max(1 / layer.scale, radius * layer.line);
+        target.strokeStyle = gradient(cx, cy, rotation, target);
+        ringPath(cx, cy, radius, t, layer.amp, target);
+        target.stroke();
         ctx!.globalAlpha = layer.alpha;
-        ctx!.lineWidth = Math.max(1, radius * layer.line);
-        ctx!.strokeStyle = gradient(cx, cy, rotation);
-        ringPath(cx, cy, radius, t, layer.amp);
-        ctx!.stroke();
-        ctx!.restore();
+        ctx!.drawImage(layer.surface, 0, 0, size, size);
       }
+      ctx!.globalAlpha = 1;
 
       // outward ripples: one every 3.6 s plus click bursts
       const waves = [((t % 3.6) / 3.6), (((t + 1.8) % 3.6) / 3.6), ...bursts.map((b) => (t - b) / 2.4)];
@@ -205,7 +224,8 @@ function RippleRing() {
     }
 
     function loop(now: number) {
-      draw(now);
+      // 60 fps is plenty for the ring: on 120 Hz screens every other frame is skipped
+      if (now - drawn >= 12) { drawn = now; draw(now); }
       if (visible) frame = requestAnimationFrame(loop);
     }
 

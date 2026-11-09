@@ -217,7 +217,8 @@
 }
 
 /* ------------------------------------------------ animated hands (three.js) */
-.heroHands3d { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; filter: drop-shadow(0 18px 22px #1d1c2b14); }
+/* the hands' shadow is drawn in WebGL (hero-hands-3d.tsx): a CSS filter here re-blurred the whole canvas every frame */
+.heroHands3d { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .heroStage.hands3d .heroHand { visibility: hidden; animation: none; transform: translate(0, -39%); }
 
 /* ------------------------------------------------------------------ polish: type, controls, alignment */

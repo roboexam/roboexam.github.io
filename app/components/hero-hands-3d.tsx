@@ -68,6 +68,38 @@ void main() {
   gl_FragColor = vec4(c.rgb * clamp(vShade, 0.86, 1.0), c.a * uOpacity);
 }`;
 
+/** The hands' drop shadow (#1d1c2b at 8%), read from a pre-blurred copy of the photo's alpha. */
+const SHADOW_FRAGMENT = /* glsl */ `
+uniform sampler2D uMap;
+uniform float uOpacity;
+varying vec2 vUv;
+varying float vShade;
+void main() {
+  float a = texture2D(uMap, vUv).a * 0.078 * uOpacity;
+  if (a < 0.001) discard;
+  gl_FragColor = vec4(0.114, 0.11, 0.169, a);
+}`;
+
+/** CSS drop-shadow(0 18px 22px): 18 px down, a Gaussian with a standard deviation of 11 px. */
+const SHADOW_OFFSET = 18;
+const SHADOW_SIGMA = 11;
+/** The shadow is blurred at a quarter of the photo's resolution, which is plenty for a soft shadow. */
+const SHADOW_SCALE = 0.25;
+
+/**
+ * A blurred copy of a photo for its shadow, made once. Blurring the whole canvas with a CSS
+ * filter instead cost a full-screen blur on every frame.
+ */
+function shadowTexture(THREE: typeof Three, image: CanvasImageSource & { width: number; height: number }, displayWidth: number) {
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.max(1, Math.round(image.width * SHADOW_SCALE));
+  canvas.height = Math.max(1, Math.round(image.height * SHADOW_SCALE));
+  const ctx = canvas.getContext("2d")!;
+  ctx.filter = `blur(${(SHADOW_SIGMA * canvas.width) / Math.max(displayWidth, 1)}px)`;
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  return new THREE.CanvasTexture(canvas);
+}
+
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
 const easeOut = (x: number) => 1 - (1 - x) ** 3;
@@ -104,12 +136,13 @@ export function HeroHands3D() {
       if (disposed) return;
       let renderer: Three.WebGLRenderer;
       try {
-        renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, premultipliedAlpha: true });
+        // no MSAA: the hands' outlines come from the photos' alpha, not from geometry edges
+        renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, premultipliedAlpha: true });
       } catch {
         return; // keep the static images
       }
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       renderer.setClearColor(0x000000, 0);
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(28, 1, 10, 20000);
@@ -117,6 +150,9 @@ export function HeroHands3D() {
       const textures = await Promise.all(HANDS.map((hand) => loader.loadAsync(hand.src)));
       if (disposed) { renderer.dispose(); textures.forEach((t) => t.dispose()); return; }
 
+      const shadows = HANDS.map((spec, index) =>
+        shadowTexture(THREE, textures[index].image, field.querySelector(spec.selector)?.getBoundingClientRect().width ?? 1));
+      const geometry = new THREE.PlaneGeometry(1, 1, 64, 16);
       const hands = HANDS.map((spec, index) => {
         const texture = textures[index];
         texture.anisotropy = 4;
@@ -137,12 +173,28 @@ export function HeroHands3D() {
             uOpacity: { value: 0 },
           },
         });
-        const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 64, 16), material);
+        // the shadow bends with the hand: same vertex shader, same uniform objects, its own blurred map
+        const shadowMaterial = new THREE.ShaderMaterial({
+          vertexShader: VERTEX,
+          fragmentShader: SHADOW_FRAGMENT,
+          transparent: true,
+          depthWrite: false,
+          uniforms: { ...material.uniforms, uMap: { value: shadows[index] } },
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        const shadow = new THREE.Mesh(geometry, shadowMaterial);
+        mesh.renderOrder = 1; // both shadows first, so neither falls across a hand
         const pivot = new THREE.Group(); // rotates about the wrist for the 3D turn
-        pivot.add(mesh);
+        pivot.add(shadow, mesh);
         scene.add(pivot);
-        return { spec, mesh, pivot, material, base: { x: 0, y: 0, w: 1, h: 1 }, wrist: { x: 0, y: 0 }, servo: { wrist: 0, finger: 0 } };
+        return { spec, mesh, shadow, pivot, material, shadowMaterial, base: { x: 0, y: 0, w: 1, h: 1 }, wrist: { x: 0, y: 0 }, servo: { wrist: 0, finger: 0 } };
       });
+      const release = () => {
+        geometry.dispose();
+        hands.forEach((hand) => { hand.material.dispose(); hand.shadowMaterial.dispose(); });
+        [...textures, ...shadows].forEach((texture) => texture.dispose());
+        renderer.dispose();
+      };
 
       const size = { w: 1, h: 1 };
       function layout() {
@@ -162,6 +214,7 @@ export function HeroHands3D() {
           hand.base = { x: cx, y: cy, w: r.width, h: r.height };
           hand.wrist = { x: (hand.spec.wrist[0] - 0.5) * r.width, y: (0.5 - hand.spec.wrist[1]) * r.height };
           hand.mesh.position.set(-hand.wrist.x, -hand.wrist.y, 0);
+          hand.shadow.position.set(-hand.wrist.x, -hand.wrist.y - SHADOW_OFFSET, 0);
           hand.material.uniforms.uSize.value.set(r.width, r.height);
         }
       }
@@ -178,6 +231,11 @@ export function HeroHands3D() {
       const start = performance.now();
       let last = start;
       let lastCycle = -1;
+      // 60 fps is plenty for the hands: on 120 Hz screens every other frame is skipped
+      function tick(now: number) {
+        if (now - last >= 12) frame(now);
+        else if (visible) raf = requestAnimationFrame(tick);
+      }
       function frame(now: number) {
         const t = (now - start) / 1000;
         const dt = Math.min(0.05, (now - last) / 1000);
@@ -231,27 +289,29 @@ export function HeroHands3D() {
           uniforms.uOpacity.value = entry;
         }
         renderer.render(scene, camera);
-        if (!reduce && visible) raf = requestAnimationFrame(frame);
+        if (!reduce && visible) raf = requestAnimationFrame(tick);
       }
 
       let raf = 0;
       let visible = true;
+      // compile both programs before the first frame, in parallel where the browser can
+      await renderer.compileAsync(scene, camera);
+      if (disposed) { release(); return; }
       // switch the fallback images to their static pose first, then measure them
       stage!.classList.add("hands3d");
       layout();
-      frame(performance.now());
+      frame(performance.now()); // also starts the loop, unless motion is reduced
       const resize = new ResizeObserver(() => { layout(); if (reduce || !visible) frame(performance.now()); });
       resize.observe(field!);
       const io = new IntersectionObserver(([entry]) => {
         const next = entry.isIntersecting && document.visibilityState === "visible";
-        if (next && !visible && !reduce) { visible = true; last = performance.now(); raf = requestAnimationFrame(frame); }
+        if (next && !visible && !reduce) { visible = true; last = performance.now(); raf = requestAnimationFrame(tick); }
         if (!next) { visible = false; cancelAnimationFrame(raf); }
       });
       io.observe(field!);
       if (!reduce) {
         stage!.addEventListener("pointermove", onMove as EventListener);
         stage!.addEventListener("pointerleave", onLeave);
-        raf = requestAnimationFrame(frame);
       }
       cleanup = () => {
         cancelAnimationFrame(raf);
@@ -260,9 +320,7 @@ export function HeroHands3D() {
         stage!.removeEventListener("pointermove", onMove as EventListener);
         stage!.removeEventListener("pointerleave", onLeave);
         stage!.classList.remove("hands3d");
-        hands.forEach((hand) => { hand.mesh.geometry.dispose(); hand.material.dispose(); });
-        textures.forEach((texture) => texture.dispose());
-        renderer.dispose();
+        release();
       };
     })();
 
