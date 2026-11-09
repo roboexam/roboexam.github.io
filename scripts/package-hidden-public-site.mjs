@@ -42,7 +42,7 @@ const textExtensions = new Set([
 function rewriteRootPaths(text) {
   // The public build is compiled as a root site. It is copied below the workshop
   // build, so root-relative asset/data links must point into this archive.
-  let result = text.replace(/(["'])\/(?![\/"'\\>\)])/g, `$1${prefix}/`);
+  let result = text.replace(/(["'`])\/(?![\/"'`\\>\)])/g, `$1${prefix}/`);
   result = result.replace(/url\(\s*\/(?![\/\)])/g, `url(${prefix}/`);
   result = result.replaceAll('href="/"', `href="${prefix}/"`);
   result = result.replaceAll("href='/'", `href='${prefix}/'`);
