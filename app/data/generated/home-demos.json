@@ -1,0 +1,385 @@
+{
+  "schema": "roboexam.home-demos.v1",
+  "version": "real-v1-20261108",
+  "source": "UniEmbodied-Bench real · LeRobot v3",
+  "totals": {
+    "rigs": 3,
+    "datasets": 22,
+    "episodes": 2938,
+    "frames": 3123096,
+    "cameras": 3,
+    "fps": [
+      26,
+      27,
+      30
+    ]
+  },
+  "rigs": [
+    {
+      "id": "agilex-35",
+      "label": "AgileX Cobot Magic 2",
+      "unit": "#35",
+      "datasets": 12,
+      "episodes": 1759,
+      "tasks": [
+        "button_sequence",
+        "towel_folding",
+        "vegetable_sorting"
+      ]
+    },
+    {
+      "id": "tienyi-17",
+      "label": "Tienyi Prod 2.5",
+      "unit": "#17",
+      "datasets": 5,
+      "episodes": 609,
+      "tasks": [
+        "vegetable_sorting"
+      ]
+    },
+    {
+      "id": "tienyi-40",
+      "label": "Tienyi Prod 2.5",
+      "unit": "#40",
+      "datasets": 5,
+      "episodes": 570,
+      "tasks": [
+        "button_sequence"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "button_sequence",
+      "label": "Button sequence",
+      "variants": 10,
+      "episodes": 1207,
+      "rigs": [
+        "agilex-35",
+        "tienyi-40"
+      ]
+    },
+    {
+      "id": "towel_folding",
+      "label": "Towel folding",
+      "variants": 2,
+      "episodes": 532,
+      "rigs": [
+        "agilex-35"
+      ]
+    },
+    {
+      "id": "vegetable_sorting",
+      "label": "Vegetable sorting",
+      "variants": 10,
+      "episodes": 1199,
+      "rigs": [
+        "agilex-35",
+        "tienyi-17"
+      ]
+    }
+  ],
+  "featured": [
+    {
+      "rig": "agilex-35",
+      "task": "button_sequence",
+      "variant": 1,
+      "episode": 0,
+      "instruction": "Press the buttons in the order: red → green → blue → red.",
+      "fps": 30,
+      "camera": "head+wrists",
+      "speed": 3,
+      "duration": 13.7,
+      "width": 1440,
+      "height": 540,
+      "video": {
+        "file": "bfd6892af7a7d09cfed8f762f849c4ff5d8bbcf679904c33fd3b80e7bc904d8f.mp4",
+        "sha256": "bfd6892af7a7d09cfed8f762f849c4ff5d8bbcf679904c33fd3b80e7bc904d8f",
+        "bytes": 1237530
+      },
+      "poster": {
+        "file": "6b891139b9b81c680d4d648c6199f43a31704b4287aee8cfadda9177a96b7a20.jpg",
+        "sha256": "6b891139b9b81c680d4d648c6199f43a31704b4287aee8cfadda9177a96b7a20",
+        "bytes": 33125
+      }
+    },
+    {
+      "rig": "agilex-35",
+      "task": "towel_folding",
+      "variant": 1,
+      "episode": 0,
+      "instruction": "fold_towel_in_half_twice",
+      "fps": 30,
+      "camera": "head+wrists",
+      "speed": 3,
+      "duration": 16.733,
+      "width": 1440,
+      "height": 540,
+      "video": {
+        "file": "fd8c71ac3ee56be592003a3a0056061d9e2be4239de8fda4d4fd472b136b61a0.mp4",
+        "sha256": "fd8c71ac3ee56be592003a3a0056061d9e2be4239de8fda4d4fd472b136b61a0",
+        "bytes": 1995899
+      },
+      "poster": {
+        "file": "0d4171e33b808b0c699aa3e7c20b2aaec275db12dead1fb5bf668b604539904e.jpg",
+        "sha256": "0d4171e33b808b0c699aa3e7c20b2aaec275db12dead1fb5bf668b604539904e",
+        "bytes": 44315
+      }
+    },
+    {
+      "rig": "tienyi-17",
+      "task": "vegetable_sorting",
+      "variant": 1,
+      "episode": 0,
+      "instruction": "Place the carrot, then the eggplant, then the broccoli into their matching slots",
+      "fps": 26,
+      "camera": "head+wrists",
+      "speed": 3,
+      "duration": 16.115,
+      "width": 1440,
+      "height": 540,
+      "video": {
+        "file": "71d4bd4b545c997f092836ab038d26508a4216c7a451f1827e1b66464bc35757.mp4",
+        "sha256": "71d4bd4b545c997f092836ab038d26508a4216c7a451f1827e1b66464bc35757",
+        "bytes": 2314601
+      },
+      "poster": {
+        "file": "120a8eb256d8a1f61c50eb5ab1d7d0a787bf5392b11d41696ce2cb980c69954b.jpg",
+        "sha256": "120a8eb256d8a1f61c50eb5ab1d7d0a787bf5392b11d41696ce2cb980c69954b",
+        "bytes": 48653
+      }
+    }
+  ],
+  "strip": [
+    {
+      "rig": "agilex-35",
+      "task": "button_sequence",
+      "variant": 3,
+      "episode": 0,
+      "instruction": "Press the buttons in the order: blue → red → green → blue",
+      "fps": 30,
+      "camera": "head",
+      "speed": 4,
+      "duration": 10.342,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "00120483b74979e0142f5cf3fcd6002a4b63af8c9d05cd092e3fd0505030972b.mp4",
+        "sha256": "00120483b74979e0142f5cf3fcd6002a4b63af8c9d05cd092e3fd0505030972b",
+        "bytes": 246377
+      },
+      "poster": {
+        "file": "397e27198170485fa65f6cc1151767c6080daef48d650d945ded0cb84b18362b.jpg",
+        "sha256": "397e27198170485fa65f6cc1151767c6080daef48d650d945ded0cb84b18362b",
+        "bytes": 12599
+      }
+    },
+    {
+      "rig": "agilex-35",
+      "task": "towel_folding",
+      "variant": 2,
+      "episode": 0,
+      "instruction": "fold_towel_in_half_twice",
+      "fps": 30,
+      "camera": "head",
+      "speed": 5,
+      "duration": 9.06,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "1cf79b000724976a4148e21ccf9365acba1660f68723b852e5d408c731054d70.mp4",
+        "sha256": "1cf79b000724976a4148e21ccf9365acba1660f68723b852e5d408c731054d70",
+        "bytes": 299478
+      },
+      "poster": {
+        "file": "ba1bfb5698312b3d5915f930a2fa98c29d4a0ce6df12a031b0d5fe777427f6e7.jpg",
+        "sha256": "ba1bfb5698312b3d5915f930a2fa98c29d4a0ce6df12a031b0d5fe777427f6e7",
+        "bytes": 18421
+      }
+    },
+    {
+      "rig": "agilex-35",
+      "task": "vegetable_sorting",
+      "variant": 2,
+      "episode": 0,
+      "instruction": "Place the eggplant, then the corn, then the cucumber into their matching slots",
+      "fps": 30,
+      "camera": "head",
+      "speed": 4,
+      "duration": 10.267,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "163df1762b5c4caaf3c2302c9274e13df2a2ea95729d4e20ddeb75949d91b715.mp4",
+        "sha256": "163df1762b5c4caaf3c2302c9274e13df2a2ea95729d4e20ddeb75949d91b715",
+        "bytes": 271985
+      },
+      "poster": {
+        "file": "382df360c27061b80282d763c564b7816ca23f1eb4144a13e68c6f9582d42994.jpg",
+        "sha256": "382df360c27061b80282d763c564b7816ca23f1eb4144a13e68c6f9582d42994",
+        "bytes": 14777
+      }
+    },
+    {
+      "rig": "tienyi-40",
+      "task": "button_sequence",
+      "variant": 1,
+      "episode": 0,
+      "instruction": "Press the buttons in the order: red → green → blue → red.",
+      "fps": 26,
+      "camera": "head",
+      "speed": 4,
+      "duration": 9.837,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "23a9127f0ef871ba74567264f85d3d4c9f13566db357310278139d71d01c8c65.mp4",
+        "sha256": "23a9127f0ef871ba74567264f85d3d4c9f13566db357310278139d71d01c8c65",
+        "bytes": 320920
+      },
+      "poster": {
+        "file": "0ee5f4dbaae8e38db5f2ffa3d4e59714ce6558d7de6c71ef09eae791f9f65a9a.jpg",
+        "sha256": "0ee5f4dbaae8e38db5f2ffa3d4e59714ce6558d7de6c71ef09eae791f9f65a9a",
+        "bytes": 18436
+      }
+    },
+    {
+      "rig": "tienyi-17",
+      "task": "vegetable_sorting",
+      "variant": 3,
+      "episode": 0,
+      "instruction": "Place the corn, then the broccoli, then the carrot into their matching slots",
+      "fps": 27,
+      "camera": "head",
+      "speed": 5,
+      "duration": 9.163,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "b1832946cebed889a1fa7d9aab79266a7d95f7c9fff9863627c801cb11f192ca.mp4",
+        "sha256": "b1832946cebed889a1fa7d9aab79266a7d95f7c9fff9863627c801cb11f192ca",
+        "bytes": 372227
+      },
+      "poster": {
+        "file": "2fff0e0252359b6f925247326ff22a798a82b9b5c13e6e3cafc1098ab7ab567b.jpg",
+        "sha256": "2fff0e0252359b6f925247326ff22a798a82b9b5c13e6e3cafc1098ab7ab567b",
+        "bytes": 18146
+      }
+    },
+    {
+      "rig": "agilex-35",
+      "task": "button_sequence",
+      "variant": 5,
+      "episode": 0,
+      "instruction": "Press the buttons in the order: green → red → blue → green",
+      "fps": 30,
+      "camera": "head",
+      "speed": 3,
+      "duration": 10.389,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "9c13c848337c9c6f44cff6eebe89f9899b20c9e4208182255d4755b79b4a4334.mp4",
+        "sha256": "9c13c848337c9c6f44cff6eebe89f9899b20c9e4208182255d4755b79b4a4334",
+        "bytes": 240914
+      },
+      "poster": {
+        "file": "52040b078cfea471d04a760a0289e37cd38e3a596f1c552c321b57bd96875ab6.jpg",
+        "sha256": "52040b078cfea471d04a760a0289e37cd38e3a596f1c552c321b57bd96875ab6",
+        "bytes": 12609
+      }
+    },
+    {
+      "rig": "agilex-35",
+      "task": "towel_folding",
+      "variant": 1,
+      "episode": 2,
+      "instruction": "fold_towel_in_half_twice",
+      "fps": 30,
+      "camera": "head",
+      "speed": 6,
+      "duration": 9.811,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "1285216a1d15f972970e7326f74983c4e692bab61b09cc6f470fe53abb882e1f.mp4",
+        "sha256": "1285216a1d15f972970e7326f74983c4e692bab61b09cc6f470fe53abb882e1f",
+        "bytes": 328274
+      },
+      "poster": {
+        "file": "f40b68961ae4dbba496c58ec12f4a2fd3ad95542d3ac4293e41e5c83f5f44754.jpg",
+        "sha256": "f40b68961ae4dbba496c58ec12f4a2fd3ad95542d3ac4293e41e5c83f5f44754",
+        "bytes": 16183
+      }
+    },
+    {
+      "rig": "tienyi-40",
+      "task": "button_sequence",
+      "variant": 4,
+      "episode": 0,
+      "instruction": "Press the buttons in the order: red → blue → green → red",
+      "fps": 26,
+      "camera": "head",
+      "speed": 3,
+      "duration": 11.282,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "a07692730b05cbe299aec7c2e2fa30cc1311b96f2519d7a6a715f9e35e4cd9e2.mp4",
+        "sha256": "a07692730b05cbe299aec7c2e2fa30cc1311b96f2519d7a6a715f9e35e4cd9e2",
+        "bytes": 357368
+      },
+      "poster": {
+        "file": "32311325d8361c2b35193fb7e66694ef6de21ee323472922ac25194aa609a7e7.jpg",
+        "sha256": "32311325d8361c2b35193fb7e66694ef6de21ee323472922ac25194aa609a7e7",
+        "bytes": 18666
+      }
+    },
+    {
+      "rig": "agilex-35",
+      "task": "vegetable_sorting",
+      "variant": 5,
+      "episode": 0,
+      "instruction": "Place the cucumber , then the carrot, then the corn their matching slots",
+      "fps": 30,
+      "camera": "head",
+      "speed": 4,
+      "duration": 9.017,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "d2a9ca6e2766b6a498419e63298aa2a5e6d28d91f96c4049fa17e80f7c0ec3ed.mp4",
+        "sha256": "d2a9ca6e2766b6a498419e63298aa2a5e6d28d91f96c4049fa17e80f7c0ec3ed",
+        "bytes": 233313
+      },
+      "poster": {
+        "file": "7e8c4eadb0dba8d6c2d8c41bd337e53d9f286e9fed5a286d17ec5dd364895c71.jpg",
+        "sha256": "7e8c4eadb0dba8d6c2d8c41bd337e53d9f286e9fed5a286d17ec5dd364895c71",
+        "bytes": 14920
+      }
+    },
+    {
+      "rig": "tienyi-17",
+      "task": "vegetable_sorting",
+      "variant": 5,
+      "episode": 0,
+      "instruction": "Place the cucumber , then the carrot, then the corn their matching slots",
+      "fps": 27,
+      "camera": "head",
+      "speed": 3,
+      "duration": 10.111,
+      "width": 640,
+      "height": 360,
+      "video": {
+        "file": "efe381ea4a5c30a2891700dfb1eb1833fcfd8ed014e2d0f9e715ef2d7901bb0a.mp4",
+        "sha256": "efe381ea4a5c30a2891700dfb1eb1833fcfd8ed014e2d0f9e715ef2d7901bb0a",
+        "bytes": 348493
+      },
+      "poster": {
+        "file": "b41e981a59ef89bf120f4b2d0fab57d11c64997f34248bd1c696dafd9f7092e2.jpg",
+        "sha256": "b41e981a59ef89bf120f4b2d0fab57d11c64997f34248bd1c696dafd9f7092e2",
+        "bytes": 20424
+      }
+    }
+  ]
+}

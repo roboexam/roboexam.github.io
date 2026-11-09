@@ -13,7 +13,7 @@ export type ReportResult = {
 
 export const protocolNotes: Record<TrackId, string> = {
   T1: 'VLM design · 07 Sep 2026 · Three dimensions, nine subdimensions. Alternatives, audit subsets, and diagnostics remain labeled.',
-  T2: 'ACWM v2 · 13 Sep 2026 · Published 0–100 composite over nine direction-aware metrics; native metric values remain available for diagnosis.',
+  T2: 'ACWM v2 · 13 Sep 2026 · 18 report items. Future frames only; AF-div is auxiliary, and Brier / boundary error are extensions.',
   T3: 'Policy design · Action correctness, local effectiveness, long-horizon execution, and deployment diagnostics. Baseline: Stack Bowls, 100 distinct seeds per model.',
   T4: 'Hardware design · Task success, subgoal progress, and manual review. Three independent evaluators; 1–3 ratings per rubric item. Trials pending.',
 };
@@ -25,7 +25,6 @@ export function metricsFor(trackId: TrackId, mode: ReportMode): MetricDefinition
 }
 export function readResult({ trackId, mode, metricId, modelId, taskId, setting }: MetricSelection): ReportResult {
   const pending = { primary: '—', detail: 'No validated result for this metric and protocol.', status: 'Pending', available: false };
-  if (trackId === 'T3' && setting === 'recovery') return pending;
   if (trackId === 'T4') return { ...pending, detail: 'Hardware trial and manual review pending.' };
   // A matching metric name is not evidence of a matching input/scorer contract.
   if (trackId === 'T1' || (trackId === 'T2' && mode !== 'history')) return pending;
@@ -36,8 +35,10 @@ export function readResult({ trackId, mode, metricId, modelId, taskId, setting }
     const cohort = acwmDashboardBundle.primarySplit.split(' ')[0];
     return { primary: m.availability === 'available' ? m.primary : '—', detail: m.availability === 'available' ? m.aux : m.availability.replaceAll('_', ' '), status: m.status, available: m.availability === 'available', version: model.resultVersion, protocol: model.protocol, sampleCount: m.groups[cohort]?.sampleCount, cohort };
   }
+  if (trackId === 'T3' && isPolicyBaselineModel(modelId)) {
+    return policyBaselineResult(modelId, taskId ?? 'all', metricId, (setting ?? 'id') as PolicySetting);
+  }
   if (trackId === 'T3' && taskId) {
-    if (isPolicyBaselineModel(modelId)) return policyBaselineResult(modelId, taskId, metricId, (setting ?? 'id') as PolicySetting);
     return pending;
   }
   const model = vlaWamDashboardBundle.models[modelId];

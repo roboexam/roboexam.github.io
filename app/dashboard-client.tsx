@@ -1,20 +1,152 @@
 "use client";
 
-import { X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Bot, Eye, GitBranch, Globe, MemoryStick, ShieldCheck, Telescope, X } from 'lucide-react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { LeaderboardView } from './components/leaderboard-view';
+import { HeroStage } from './components/hero-stage';
+import { HomeDemos } from './components/home-demos';
+import { CapabilityIcon } from './components/podium';
+import { SpotlightLayer, useNavGlider } from './components/fx';
+import { MethodMarquee } from './components/method-marquee';
+import { ScenarioBrowser } from './components/scenario-browser';
+import { ExplainabilityView } from './components/explainability-view';
 import { AcwmMetricEvidence } from './components/acwm-metric-evidence';
 import { VlaWamMetricEvidence } from './components/vla-wam-metric-evidence';
 import { metricExplanationFor, type BilingualText } from './data/metric-explanations';
 import { tracks, type TrackId } from './data/metric-plan';
+import { scenarioTags, scenarioTagCoverage, simulationV2Plan, type ScenarioTag } from './data/scenario-plan';
 import { definitionFor, readResult, type MetricSelection } from './data/track-results';
+import { STATIC_SITE } from './static-site';
 
-export default function DashboardClient({ initialTrack = 'T1' }: { initialTrack?: TrackId } = {}) {
+type Page = 'Overview' | 'Leaderboards' | 'Datasets' | 'Correlation';
+const navigation: Page[] = ['Overview', 'Leaderboards', 'Datasets', 'Correlation'];
+const capabilities = [
+  { id: 'C1', title: 'State Grounding', layer: 'Current-state understanding', question: 'Does the model know what is present, where it is, its state, and the task goal?', Icon: Eye },
+  { id: 'C2', title: 'Task Memory', layer: 'History and task-state retention', question: 'Does it retain past observations, completed steps, occluded targets, and ordering rules?', Icon: MemoryStick },
+  { id: 'C3', title: 'Predictive Imagination', layer: 'Future prediction', question: 'Can it predict the future state under no action or under candidate actions?', Icon: Telescope },
+  { id: 'C4', title: 'Action–Effect Reasoning', layer: 'Action causality', question: 'Does it know which action advances the task—and which action will fail?', Icon: GitBranch },
+  { id: 'C5', title: 'Closed-Loop Execution', layer: 'Action generation and execution', question: 'Can it generate executable actions and complete the task under feedback?', Icon: Bot },
+  { id: 'C6', title: 'Recovery & Safety', layer: 'Failure detection and recovery', question: 'Can it detect deviation, avoid repeated errors, and recover the task safely?', Icon: ShieldCheck },
+  { id: 'C7', title: 'Generalization', layer: 'Transfer beyond training', question: 'Can it handle novel objects, layouts, compositions, instructions, and failure states?', Icon: Globe },
+] as const;
+type CapabilityId = (typeof capabilities)[number]['id'];
+type View = { page: Page; track: TrackId };
+
+// The static build prerenders one page, so links like /?track=T2 or /?task=… are read in the browser
+// (the server snapshot is empty, so hydration matches the prerendered HTML).
+const noSubscription = () => () => {};
+const browserSearch = () => STATIC_SITE ? window.location.search : '';
+function linkedView(search: string): View | null {
+  const params = new URLSearchParams(search);
+  const task = params.get('task');
+  if (task && /^[A-Za-z0-9_+-]{1,128}$/.test(task)) return { page: 'Datasets', track: 'T1' };
+  if (params.get('track') === 'T2') return { page: 'Leaderboards', track: 'T2' };
+  return null;
+}
+const trackSummaries: Record<TrackId, string> = {
+  T1: 'Compare diverse VLM agents under one harness, from grounding and task memory to planning and next-action generation.',
+  T2: 'Test future prediction, physical response, and intervention outcomes under candidate actions.',
+  T3: 'Test long-horizon completion, stable control, memory, recovery, and safety in simulation.',
+  T4: 'Validate task completion, recovery, and safety on standardized real-robot trials.',
+};
+const trackCapabilityTargets: Record<TrackId, string[]> = {
+  T1: ['C1', 'C2', 'C3', 'C4'],
+  T2: ['C3', 'C4', 'C7'],
+  T3: ['C1', 'C2', 'C5', 'C6', 'C7'],
+  T4: ['C5', 'C6', 'C7'],
+};
+
+export default function DashboardClient({ initialPage = 'Overview', initialTrack = 'T1' }: { initialPage?: Page; initialTrack?: TrackId } = {}) {
+  const search = useSyncExternalStore(noSubscription, browserSearch, () => '');
+  const [chosen, setChosen] = useState<View | null>(null);
+  const { page, track } = chosen ?? linkedView(search) ?? { page: initialPage, track: initialTrack };
+  const [activeCapability, setActiveCapability] = useState<CapabilityId>('C1');
   const [detail, setDetail] = useState<MetricSelection | null>(null);
-  return <>
-    <LeaderboardView initialTrack={initialTrack} onMetric={setDetail}/>
+  const navRef = useRef<HTMLElement>(null);
+  useNavGlider(navRef, page);
+  function navigate(next: Page, nextTrack: TrackId = 'T1') {
+    setDetail(null); setChosen({ page: next, track: nextTrack });
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+  return <div className="researchShell">
+    <SpotlightLayer/>
+    <a className="skipLink" href="#main-content">Skip to content</a>
+    <header className={`researchNav ${page === 'Overview' ? 'onHero' : ''}`}>
+      <button type="button" className="researchBrand" onClick={() => navigate('Overview')} aria-label="RoboExam home"><img src="/brand/roboexam-logo.png" alt="RoboExam" width={900} height={163}/></button>
+      <nav ref={navRef} aria-label="Primary navigation" className="navPills"><span className="navGlider" aria-hidden="true"/>{navigation.map(item => <button key={item} type="button" className={`researchNavItem ${page === item ? 'active' : ''}`} aria-current={page === item ? 'page' : undefined} onClick={() => navigate(item)}>{item}</button>)}</nav>
+      {!STATIC_SITE && <a className="navAction" href="/review"><span aria-hidden="true"><ArrowUpRight size={16}/></span>Review</a>}
+    </header>
+    <main id="main-content" className="researchMain">
+      {page === 'Overview' && <>
+        <HeroStage onLeaderboards={nextTrack => navigate('Leaderboards', nextTrack)} onDatasets={() => navigate('Datasets')}/>
+        <div className="content researchOverview">
+          <MethodMarquee/>
+          <HomeDemos/>
+          <CapabilityTrackFlow activeId={activeCapability} onCapability={setActiveCapability} onTrack={nextTrack => navigate('Leaderboards', nextTrack)}/>
+        </div>
+      </>}
+      {page === 'Leaderboards' && <LeaderboardView key={track} initialTrack={track} onMetric={setDetail}/>}
+      {page === 'Datasets' && <div className="content datasetView"><div className="pageHeading datasetPageHeading"><p className="eyebrow">DATA LIBRARY</p><h1>Datasets</h1><p>Browse simulation, real-robot, and egocentric records in one workspace.</p></div><ScenarioBrowser/></div>}
+      {page === 'Correlation' && <ExplainabilityView/>}
+    </main>
+    <footer className="researchFooter"><div><img src="/brand/roboexam-mark-64.png" alt="" width={32} height={32}/><strong>RoboExam</strong>{!STATIC_SITE && <span>Planned CVPR 2027 Workshop</span>}</div></footer>
     {detail && <MetricDetail key={`${detail.trackId}:${detail.mode}:${detail.metricId}:${detail.modelId}:${detail.taskId ?? ''}:${readResult(detail).version ?? 'pending'}`} selection={detail} onClose={() => setDetail(null)}/>}
-  </>;
+  </div>;
+}
+
+function CapabilityTrackFlow({ activeId, onCapability, onTrack }: { activeId: CapabilityId; onCapability: (capability: CapabilityId) => void; onTrack: (track: TrackId) => void }) {
+  const activeCapability = capabilities.find(capability => capability.id === activeId)!;
+  const sourceX = [100, 300, 500, 700, 900, 1100, 1300];
+  const branchPaths = [
+    'M250 58 C250 112 175 112 175 180',
+    'M550 58 C550 112 525 112 525 180',
+    'M850 58 C850 112 875 112 875 180',
+    'M1150 58 C1150 112 1225 112 1225 180',
+  ];
+  return <section className="capabilityFlow" aria-labelledby="capability-flow-title">
+    <div className="sectionHeading">
+      <div><p className="eyebrow">The RoboExam evaluation spectrum</p><h2 id="capability-flow-title">From model capabilities to task-level evidence.</h2></div>
+      <p>Seven capabilities connect to four model exams, a shared task registry, and matched ID, OOD, and Recovery conditions. Select a capability to trace its evidence.</p>
+    </div>
+    <div className="flowSurface">
+      <div className="flowQuestion" aria-live="polite"><span>{activeCapability.id}</span><strong>{activeCapability.title}</strong><p>{activeCapability.question}</p></div>
+      <div className="flowCapabilities" aria-label="Physical AI capabilities">
+        {capabilities.map(({ Icon, ...capability }) => <button id={`capability-${capability.id.toLowerCase()}`} type="button" className={activeId === capability.id ? 'active' : ''} aria-pressed={activeId === capability.id} onClick={() => onCapability(capability.id)} key={capability.id}>
+          <span className="flowCapabilityTop"><b>{capability.id}</b><span aria-hidden="true"><Icon size={19} strokeWidth={1.7}/></span></span>
+          <strong>{capability.title}</strong>
+          <small>{capability.layer}</small>
+        </button>)}
+      </div>
+      <div className="flowConduits" aria-hidden="true">
+        <svg viewBox="0 0 1400 180" preserveAspectRatio="none">
+          <path className="flowBus" d="M100 58H1300"/>
+          {sourceX.map((x, index) => <path key={x} className={`flowSource ${capabilities[index].id === activeId ? 'active' : ''}`} d={`M${x} 0V58`}/>)}
+          {branchPaths.map((path, index) => {
+            const target = tracks[index];
+            const active = trackCapabilityTargets[target.id].includes(activeId);
+            return <path key={target.id} className={`flowBranch ${active ? 'active' : ''}`} d={path}/>;
+          })}
+          <circle className="flowHub" cx="700" cy="58" r="6"/>
+        </svg>
+      </div>
+      <div className="flowTracks" aria-label={`Tracks connected to ${activeCapability.title}`}>
+        {tracks.map(track => {
+          const supportsActive = trackCapabilityTargets[track.id].includes(activeId);
+          return <button type="button" key={track.id} className={`flowTrack flowTrack${track.id} ${supportsActive ? 'supportsActive' : ''}`} onClick={() => onTrack(track.id)}>
+            <span className="flowTrackTop"><b>{track.id}</b><ArrowUpRight size={19}/></span>
+            <strong>{track.title}</strong>
+            <p>{trackSummaries[track.id]}</p>
+            <span className="flowTargetList">{trackCapabilityTargets[track.id].map(capability => <i className={capability === activeId ? 'active' : ''} key={capability}>{capability}</i>)}</span>
+          </button>;
+        })}
+      </div>
+      <div className="flowEvidenceRail">
+        <div className="flowEvidenceLabel"><strong>Shared task evidence</strong><span>Six requirement tags across 24 simulation scenes. Tags can overlap.</span></div>
+        <div className="flowScenarioTags" aria-label="Simulation task requirement coverage">{Object.entries(scenarioTags).map(([tag, definition]) => <span key={tag} title={`${definition.rule} ${STATIC_SITE ? 'Scene' : 'Planned scene'} coverage includes scoped variants; this is not an accepted-episode count.`} aria-label={`${definition.label}: ${scenarioTagCoverage[tag as ScenarioTag]} of ${simulationV2Plan.length} simulation scenes`}><CapabilityIcon tag={tag} size={24}/><b>{definition.label}</b><small>{scenarioTagCoverage[tag as ScenarioTag]}/{simulationV2Plan.length}</small></span>)}</div>
+        <div className="flowRegimes"><span>ID</span><span>Visual OOD</span><span>Semantic OOD</span><span>Behavioral OOD</span><span>Recovery</span></div>
+      </div>
+    </div>
+  </section>;
 }
 
 function MetricDetail({ selection, onClose }: { selection: MetricSelection; onClose: () => void }) {

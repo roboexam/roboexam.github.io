@@ -1,3 +1,5 @@
+import { STATIC_SITE } from "../static-site.ts";
+
 export type TrackId = "T1" | "T2" | "T3" | "T4";
 type Source = "vlm" | "acwm" | "policy" | "real";
 export type MetricDefinition = { id: string; label: string; group: string; direction: string; note?: string; diagnostic?: boolean };
@@ -109,26 +111,32 @@ export const tracks: TrackDefinition[] = [
   {
     id: "T1", title: "Embodied Agency", subtitle: "VLM agents through a shared harness", question: "Ground observations, track task state, plan, and emit structured next actions.", source: "vlm",
     scoreGuide: {
-      en: "0–100; higher is better. Execution across ID, OOD, and Recovery is primary. VQA is supporting evidence, not task success.",
-      zh: "0–100 分，越高越好。ID、OOD 与失败恢复中的执行表现为主，VQA 仅作为辅助证据，不等同于任务成功。",
+      en: "0–100 score; higher is better. Overall = 70% × mean Subtask over ID, V-OOD, S-OOD, B-OOD and Recovery + 30% × mean VQA over ID and the three OOD settings. Each setting score = 70% Subtask + 30% VQA (Recovery: Subtask only). VQA alone is not execution success.",
+      zh: "0–100 分，越高越好。总分 = 70% × ID、视觉/语义/行为 OOD 与失败恢复五种设定的子任务平均分 + 30% × ID 与三种 OOD 的 VQA 平均分。每个设定的分数 = 70% 子任务 + 30% VQA（失败恢复只计子任务）。VQA 高分不等于执行成功。",
     },
     models: [
-      { id: "gpt-6-1-sol", family: "VLM", status: "Validated · 5 settings" },
-      { id: "deepseek-v4-1-flash", family: "VLM", status: "Validated · 5 settings" },
-      { id: "glm-5-3-flash", family: "VLM", status: "Validated · 5 settings" },
-      { id: "claude-opus-5-5", family: "VLM", status: "Validated · ID" },
-      { id: "qwen3-8-27b", family: "VLM", status: "Validated · ID" },
+      { id: "Cosmos3-Nano", family: "VLM", status: "Provisional" },
+      // the static site publishes evaluated methods only: planned entries stay out of its bundle
+      ...(STATIC_SITE ? [] : ["deepseek-v4.1-flash", "internal-mimo-v2.6-pro", "kimi-k3", "glm-5.3-flash", "minimax-h3.1-preview"]
+        .map(id => ({ id, family: "Commercial VLM", status: "Planned" }))),
     ], metrics: t1Metrics,
   },
   {
     id: "T2", title: "Physical Foresight", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
     scoreGuide: {
-      en: "Models are ranked by the published 0–100 composite score; higher is better.",
-      zh: "模型按公开的 0–100 综合分数排名，越高越好。",
+      en: "The headline score direction-normalizes the nine frozen metrics to 0–100 and averages them equally; native values remain available for diagnosis. JEPA is split-level and Motion Smoothness is not bounded to 0–1.",
+      zh: "主要分数将冻结的九项指标按方向归一化到 0–100 后等权平均，原始数值仍用于诊断。JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
     },
     models: [
-      { id: "Cosmos Predict 2.5", family: "ACWM", status: "Published result" },
-      { id: "CtrlWorld", family: "ACWM", status: "Published result" },
+      { id: "Cosmos Predict 2.5", family: "ACWM", status: STATIC_SITE ? "Historical run" : "Planned · clean24" },
+      { id: "CtrlWorld", family: "ACWM", status: STATIC_SITE ? "Historical run" : "AIHC training · Failed" },
+      { id: "Cosmos3-Nano ACWM", family: "ACWM", status: STATIC_SITE ? "Evaluated" : "AIHC evaluation · Succeeded" },
+      ...(STATIC_SITE ? [] : [
+        { id: "Pelican-Unify 1.0", family: "ACWM", status: "Planned" },
+        { id: "IRASim / Bridge", family: "ACWM", status: "Planned" },
+        { id: "Wan-Move", family: "ACWM", status: "Planned" },
+        { id: "EnerVerse-AC", family: "ACWM", status: "Planned" },
+      ]),
     ], metrics: acwmMetrics,
   },
   {
@@ -141,6 +149,8 @@ export const tracks: TrackDefinition[] = [
       { id: "G05", family: "VLA", status: "Benchmark complete · 480 episodes" },
       { id: "HyVLA", family: "VLA", status: "Benchmark complete · 480 episodes" },
       { id: "XVLA", family: "VLA", status: "Benchmark complete · 480 episodes" },
+      { id: "Pi0.5", family: "VLA", status: "Benchmark complete · 480 episodes" },
+      { id: "OpenDM", family: "VLA", status: "Benchmark complete · 480 episodes" },
     ], metrics: policyMotion,
   },
   {
@@ -149,7 +159,15 @@ export const tracks: TrackDefinition[] = [
       en: "No formal hardware score is published yet. Future headline reporting uses task success; progress, intervention, and safety remain separate evidence.",
       zh: "目前尚未发布正式真机分数。后续以任务成功率为主要结果，进度、人工干预和安全证据分别报告。",
     },
-    models: [], metrics: realWorldMetrics,
+    // no formal hardware trial yet: the static site lists no T4 method
+    models: STATIC_SITE ? [] : [
+      { id: "Pi0.5", family: "VLA", status: "AIHC training · Running" },
+      { id: "FastWAM", family: "WAM", status: "AIHC training · Running" },
+      { id: "OpenWAM", family: "WAM", status: "T4 independent · Planned" },
+      { id: "HyVLA", family: "VLA", status: "AIHC training · Failed" },
+      { id: "LingBot-VA2.0", family: "WAM", status: "T4 independent · Planned" },
+      { id: "XVLA", family: "VLA", status: "T4 independent · Planned" },
+    ], metrics: realWorldMetrics,
   },
 ];
 

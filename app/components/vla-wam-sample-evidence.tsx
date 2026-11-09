@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { vlaWamSampleBundle, type VlaWamSample } from "../data/vla-wam-samples";
+import { mediaUrl } from "../static-site";
+import { MediaUnavailable } from "./static-media";
 
 const purePredictionMetrics = new Set(["MUSIQ", "Motion", "Scene", "HSD", "NDTW", "DYN"]);
 
@@ -93,7 +95,7 @@ export function VlaWamSampleEvidence({ id, model, formula }: { id: string; model
       </div>
     </div>
     <div className="sampleBody vlaSampleBody">
-      <div className="sampleVideo"><video key={sample.media.sha256} controls muted playsInline preload="metadata" src={sample.media.url}/><div><b>Head-camera rollout</b><span>{sample.media.durationSeconds.toFixed(2)} s · {sample.media.frameCount} frames · SHA {sample.media.sha256.slice(0, 12)}…</span></div></div>
+      <div className="sampleVideo">{mediaUrl(sample.media.url) ? <video key={sample.media.sha256} controls muted playsInline preload="metadata" src={mediaUrl(sample.media.url)!}/> : <MediaUnavailable/>}<div><b>Head-camera rollout</b><span>{sample.media.durationSeconds.toFixed(2)} s · {sample.media.frameCount} frames · SHA {sample.media.sha256.slice(0, 12)}…</span></div></div>
       {ineligiblePrediction ? <div className="sampleCalculation"><div className="sampleUnavailable"><strong>Counterexample input, not an eligible sample for this metric</strong><p>This video records a post-execution simulator observation;{id} the metric requires an independently generated prediction-only future. It is shown to document available evidence, not to substitute for prediction scoring.</p></div><div className="calculationSteps"><article><span>① Current evidence</span><strong>execution observation</strong><p>Real rollout, eligible for action and closed-loop metrics.</p></article><article><span>② Protocol requirement</span><strong>prediction-only video</strong><p>An independent action-conditioned future prediction must be stored.</p></article><article><span>③ Eligibility check</span><strong>Failed</strong><p>The two video types have different semantics and cannot substitute for each other.</p></article><article><span>④ Item result</span><strong>N/A</strong><p>Pending a prediction-only artifact.</p></article></div></div> : plan ? <div className="sampleCalculation"><p>Walk through this episode from raw evidence to its item result.</p><div className="calculationSteps"><article><span>① Lock sample</span><strong>seed {sample.seed} · {sample.outcome}</strong><p>{sample.id}</p></article><article><span>② Read input</span><strong>{plan.input}</strong><p>{sampleValue.raw}</p></article><article><span>③ Apply formula</span><strong>{plan.compute}</strong><p>{formula}</p></article><article><span>④ Item contribution</span><strong>{sampleValue.value}</strong><p>{plan.note}</p></article></div></div> : <div className="sampleUnavailable"><strong>No item-level calculation explanation is registered for this metric yet</strong><p>The video and formal episode remain visible; the page does not invent calculation steps.</p></div>}
     </div>
   </section>;

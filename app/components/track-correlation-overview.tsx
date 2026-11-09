@@ -1,5 +1,7 @@
 import { MetricOnlyMatrix } from "./pearson-matrix-section";
+import { TrackIcon } from "./podium";
 import { tracks, type TrackId } from "../data/metric-plan";
+import { STATIC_SITE } from "../static-site";
 import {
   type CurrentCorrelationMetric,
   trackCorrelationResults,
@@ -15,7 +17,7 @@ const trackScope: Record<TrackId, string> = {
 function TrackNav({ active, onChange }: { active: TrackId; onChange: (track: TrackId) => void }) {
   return <section className="correlationTrackNav band" aria-label="Correlation track">
     {tracks.map((track) => <button type="button" key={track.id} className={active === track.id ? "selected" : ""} aria-pressed={active === track.id} onClick={() => onChange(track.id)}>
-      <span>{track.id}</span><strong>{track.title}</strong><small>{trackScope[track.id]}</small>
+      <span><TrackIcon track={track.id} size={24}/>{track.id}</span><strong>{track.title}</strong><small>{trackScope[track.id]}</small>
     </button>)}
   </section>;
 }
@@ -67,8 +69,8 @@ function Track4() {
   const result = trackCorrelationResults.T4;
   return <section className="pearsonMatrix band" aria-labelledby="t4-current-correlation">
     <div className="pearsonMatrixHeading">
-      <div><p className="eyebrow">T4 · HARDWARE EVIDENCE</p><h2 id="t4-current-correlation">Correlation will open after formal paired trials</h2><p>{result.reason} Training status alone is not evaluation evidence, so the dashboard does not manufacture coefficients from planned runs.</p></div>
-      <div className="pearsonMatrixMeta">{result.models.map((model) => <span key={model.id}><strong>{model.id}</strong> {model.status}</span>)}</div>
+      <div><p className="eyebrow">T4 · HARDWARE EVIDENCE</p><h2 id="t4-current-correlation">Correlation will open after formal paired trials</h2><p>{result.reason} {STATIC_SITE ? "Coefficients are reported only from formal paired trials." : "Training status alone is not evaluation evidence, so the dashboard does not manufacture coefficients from planned runs."}</p></div>
+      {!STATIC_SITE && <div className="pearsonMatrixMeta">{result.models.map((model) => <span key={model.id}><strong>{model.id}</strong> {model.status}</span>)}</div>}
     </div>
   </section>;
 }

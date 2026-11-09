@@ -1,58 +1,69 @@
-# Scenario and metric review · 2026-10-10
+# Scenario and metric review · updated 2026-11-04
 
-## Assessment
+## Current simulation requirement tags: scheme A
 
-The proposed simulation tasks support overlapping tags. These tags describe task requirements, not independent, experimentally isolated model abilities. The main problems were stale website assignments, unqualified history/order claims, and mixing scenario properties with evaluation conditions. The metric proposals are suitable as a layered reporting framework; they are not a justified equal-weight overall score.
+The adopted Feishu “仿真批量方案V2” contains 24 final simulation scenes. On 2026-11-04 the user adopted scheme A: merge H and S into T, preserving memory, task-level order/prerequisites, and duration/event timing as temporal subtypes. These are overlapping task requirements, not independently isolated model abilities or accepted-episode counts. The separate C1–C7 model-capability spectrum remains unchanged.
 
-Sources reviewed: `UniEmbodied-Bench (RoboExam).md` (canonical four-track table, task-scene axes v2, simulation batch plan V1, hardware/manual-review sections), `level1 VLM metrics设计最新（初步final）.md`, `ACWM metrics设计方案.md` (v2), and `Policy Model指标（优化）.md`. These source documents live in the parent `bmk` directory. They were not edited.
+Source: https://zitd5je6f7j.feishu.cn/wiki/NtdQw2iUDi4pUqkUJFVcvyEFnxe . The Feishu V2 table and `app/data/scenario-plan.ts` are aligned. `simulationV2ScenarioIds` explicitly scopes the 24-scene coverage; the 39-entry registry retains historical catalog tasks for browsing. Generated catalogs, original episode tags/hashes, formal result bundles, task mechanics, and training/evaluation splits are unchanged.
 
-The simulation batch table has **31 scenario entries**, including the proposed board-pattern task. **26** match the local episode catalog. The remaining five are Board Pattern Placement, Match and Pick from Conveyor, Swap Blocks, Swap T, and Fill Pen Holder. A local recording proves neither compliance with a revised instruction nor readiness of a new split. The earlier nine-task scene-axis examples are not the full batch-plan inventory.
-
-## Tag decisions
-
-The website now uses a separate proposal annotation layer. Generated catalogs, episode hashes, original tags, and result bundles remain intact. `?` means candidate eligibility, `*` means variant-only; unmarked tags still describe the plan, not completed validation.
-
-| Tag | Keep when | Do not infer from |
+| Main tag | Keep when | Planned scenes / 24 |
 | --- | --- | --- |
-| G · Object grounding | Identity, category, or attribute selects the target | Incidental texture or color |
-| R · Spatial goals | A goal region or object relation is checked | A claim that spatial reasoning has been isolated |
-| F · Functional interaction | A functional part/interaction is required | Ordinary grasping or the presence of a tool |
-| P · Pose alignment | A specified pose or insertion tolerance matters | Every successful placement |
-| S · Order & stages | A temporal order or transition is specified and checked | Left-to-right final arrangement; “one by one” |
-| M · Multiple objects | Multiple target objects must meet the goal | Props, repeated button presses, or memory |
-| H · History dependence | Earlier observations are necessary without current-observation shortcuts | Occlusion alone or repeated training layouts |
+| G · Object grounding | Identity, category, or attribute selects the target | 12 / 24 (50.0%) |
+| R · Spatial goals | An object–region or object–object goal relation is checked | 13 / 24 (54.2%) |
+| F · Functional interaction | A functional part or interaction matters beyond ordinary grasping | 10 / 24 (41.7%) |
+| P · Pose alignment | A specified pose or insertion tolerance matters beyond reaching a region | 11 / 24 (45.8%) |
+| T · Temporal & stage control | History, task-level order/prerequisites, or a task-specific hold/event window matters | 13 / 24 (54.2%) |
+| M · Multiple objects | Several target objects must satisfy goals | 14 / 24 (58.3%) |
 
-| Scenario | Website correction / remaining assessment |
-| --- | --- |
-| Imitate Sorting Sequence | G/S/M, H candidate. Remove the old generic R assignment; verify demonstration playback and full-order holdout. |
-| Cover Blocks | G/R/S/M, H candidate. Audit head and wrist cameras and every model-visible state field for color leakage. |
-| Press by Number | G/F/S, H candidate; remove M. Parameterize the checker for both stage orders; audit counters and visible button state. |
-| Insert Key | F/P, S candidate; remove M. Final depth/pose does not verify handover or insert-before-turn. |
-| Make Toast | F/P/M, S candidate. Verify the lever follows insertion; do not claim physical cooking fidelity. |
-| Pour by Language | G/R/F/M, S candidate. Resolve trigger-query semantics and record stage events. |
-| Arrange Largest Number | G/R/P/M. No S/H from final order or a recovery initial state. |
-| Solve Equation | G/R/P for the base task; M only for the three-equation variant. Keep arithmetic reasoning in the task specification. |
-| Hang Mugs / Insert Tubes | F/P/M. Hook/slot geometry matters; repeated insertion alone does not establish S. |
-| Stack Blocks | R/M. Incidental textures do not establish G; do not invent an order constraint. |
-| Fold Clothes | Keep R from the batch table; physical setting is deformable. Audit the stage checker before promoting S from the scene-axis narrative. |
-| Play Stacking Toy | Preserve G/F/P/M. The new ordered-group variant needs explicit S eligibility and a process checker; the source tag column and variant description are not fully aligned. |
-| Pack Objects into Box | Preserve R/M. Left-facing orientation motivates a P review, but the tolerance/checker must be frozen. |
-| Store Tools in Toolbox | Preserve G/R/F/P/M from the proposal; review whether F measures functional interaction or only shape-slot matching. It is not tool use. |
-| Pick from Conveyor by Image | G/R; dynamic physical setting. Resolve the instruction/checker mismatch about which object must rise 8 cm. |
-| Tic-Tac-Toe | G/R/P/S/M. Alternating legal moves to fill a board, not game-winning ability; no adopted behavioral OOD. |
-| Board Pattern Placement | R/P/M remain candidates. Separate task contract; no opponent and free placement order. |
-| Sweep / Key / Pen Holder / Bottles | Handover or support requirements need process evidence. Do not infer synchronized bimanual coordination from terminal success. |
+Do not infer T from a final left-to-right arrangement, freely ordered object completion, generic pick/move/place steps, or ordinary terminal settling. Behavioral OOD eligibility is independent of T eligibility. The same scene counts once for T even when it has several temporal subtypes.
 
-All six H assignments remain candidates: Imitate, Cover, Press, Match-and-Pick, Swap Blocks, and Swap T. To qualify H, specify the observation interface, construct cases with ambiguous current observations and different required actions, check all sensors/state for leakage, and compare current-observation and history-enabled baselines. This is episode memory, not memorization of training layouts.
+| Temporal attribute | Meaning | Qualification |
+| --- | --- | --- |
+| T-H · History dependence | Earlier information cannot be recovered from the current model-visible observation | All four current memory assignments remain candidates pending camera/state leakage and history-interface checks |
+| T-S · Order & prerequisite stages | A prescribed program, semantic stage, or physical prerequisite constrains the process | Some event checkers and handover evidence still need validation; the tag is planned coverage |
+| T-D · Hold duration & event timing | Sustained validity, an external cue, or a task-specific response window matters | Retain continuous-time, contact and irreversible-failure conditions; ordinary placement settling is insufficient |
 
-Multiple-tag filters use intersection. Tag-level sample sets overlap: report each set's task/episode denominator, compute an overall task average from unique tasks, and do not sum tag counts or treat tag averages as independent votes. R intentionally includes explicit goal regions; it should not be marketed as a pure test of relational reasoning.
+| Final V2 scene | Main tags | Temporal attribute / scope |
+| --- | --- | --- |
+| Imitate Sorting Sequence | G/T/M | T-H candidate; T-S |
+| Classify Objects by Language | G/R/M | Free execution order |
+| Pour Liquid into Cup | R/F/T | T-S: align → pour → return upright |
+| Arrange Largest Number | G/R/P/M | Final descending arrangement, free grasp order |
+| Solve Equation | G/R/P/M* | M only in the three-equation behavioral variant |
+| Pack Mixed Objects into Box | R/T/M | T-S: specified four-role program |
+| Hang Mugs | F/P/M | Free order and available hooks |
+| Cover Blocks | G/R/T/M | T-H candidate; T-S |
+| Press by Number | G/F/T | T-H candidate; T-S; repeated presses do not imply M |
+| Play Stacking Toy | G/F/P/T/M | T-S: finish each shape group before the next |
+| Store Tools in Toolbox | G/R/F/P/M | Shape-slot storage, not tool use |
+| Fold Clothes | R/T | T-S: instructed three-part fold program; process/B qualification remains conditional |
+| Stack Bowls | R/M | No prescribed bowl order |
+| Match and Pick from Conveyor | G/T | T-H candidate; no basket or placement requirement |
+| Push T | R/P | A rigid T block; enforce the no-lifting rule |
+| Insert Key | F/P/T | T-S: insert before turning; verify process/handover evidence |
+| Build Tower | R/P/T/M | T-S: supports before boards/upper layers; equivalent placements remain free |
+| Find Category Outlier | G | Three candidates, one target |
+| Set Button Colors | G/F/M* | M only when both buttons need changes; free button order |
+| Place Between References | R | One target, no fine orientation or language-based selection |
+| Mirror Pair Layout | G/R/P/M | Visible reference; free placement order |
+| Clear Keyboard, Then Close Laptop | F/T/M | T-S: release/settle obstacle before closing |
+| Hold Water Mug | F/P/T | T-D: continuous valid hold with native fluid/tilt constraints |
+| Hold Button Until Cue | F/P/T | T-S and T-D: mallet contact → cue → timed release |
+
+The T-H candidates are Imitate Sorting Sequence, Cover Blocks, Press by Number, and Match and Pick from Conveyor. Historical Swap Blocks / Swap T memory annotations remain available outside the final 24-scene denominator. Moving a visible-object completion checklist into T-H is not justified. No memory variants or new collection runs were added by this migration.
+
+Overview coverage includes explicitly scoped variants, so it does not imply every episode in a tagged scene tests that requirement. `*` means variant-only; `?` marks candidate eligibility. Tag filters use intersection. Report each task/episode denominator, average overall results from unique scenes, and do not sum overlapping tag counts as independent evidence.
+
+## Earlier metric review scope
+
+The 2026-10-10 review used the V1 batch plan and metric proposals in `UniEmbodied-Bench (RoboExam).md`, `level1 VLM metrics设计最新（初步final）.md`, `ACWM metrics设计方案.md`, and `Policy Model指标（优化）.md`. The metric assessment below is retained separately from the current V2 tag migration. Metrics remain a layered reporting framework rather than an arbitrary equal-weight average of raw fields.
 
 ## Split and replay requirements
 
 - Keep ID, visual OOD, semantic OOD, behavioral OOD, and recovery in cohort metadata, outside the capability tag list.
 - V1–V7 test individual visual factors; V8 is combined. Pair clean/shifted initial layouts and keep geometry/physics fixed when testing only appearance. Replacing geometry is an object/physics shift, not automatically a visual-only intervention.
 - Semantic paraphrases preserve the exact goal. A changed mapping or instruction rule is not merely a paraphrase.
-- Distinguish held-out combinations (e.g. complete demonstration orders), length/count transfer (four to five digits; one to three independent equations), and unseen rules (descending to ascending). Do not pool all three as “compositional generalization.”
+- Distinguish held-out combinations, length/count transfer, and unseen rules. Current Arrange Largest Number uses descending four/five-digit training support and four-digit set holdouts; Solve Equation retains the one-to-three independent-equation behavioral variant. Do not pool distinct mechanisms as “compositional generalization.”
 - The Imitate pilot's 100 official episodes yield 69 orders; the proposed 80/20 split retains those orders in training. The behavioral holdout needs independently reserved full orders. A small pilot budget does not prove generalization.
 - A wrong initial arrangement tests correction from a supplied state. Online recovery additionally needs a physical error prefix, full simulator and task-controller state (counters/history included), a controlled handover point, and a fixed remaining budget. Select eligible recovery opportunities independently of later model success.
 - Pin task/checker revision, asset hashes, initial state, seed, camera configuration, demonstration trajectory/playback, control frequency, action chunk length, and time budget. Validate outcomes and event logs, not bit-identical videos alone.

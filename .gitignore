@@ -53,3 +53,7 @@ yarn-error.log*
 /public/vlm-l1-samples
 /public/l1-minimal-media
 /public/l1-phase1-media
+
+# static site snapshot (data + curated clips), published as a release asset; see scripts/export-static-site.mjs
+/public/static-api/
+/public/static-media/

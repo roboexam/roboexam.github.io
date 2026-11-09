@@ -39,7 +39,7 @@ test("XVLA result routing is task-specific and preserves unavailable metrics", (
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "FIRST_TARGET_SELECTION" }).primary, "100.00%");
   assert.equal(readResult({ ...selection, taskId: "arrange_largest_number", metricId: "COLLISION_RATE" }).available, false);
   assert.equal(readResult({ ...selection, taskId: "not_a_task", metricId: "TSR" }).available, false);
-  assert.equal(readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE" }).primary, "9.75");
+  assert.equal(readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE" }).primary, "11.42");
 });
 
 test("legacy XVLA OOD export remains intact while routing uses the complete policy baseline", () => {
@@ -53,12 +53,12 @@ test("legacy XVLA OOD export remains intact while routing uses the complete poli
     setting,
     readResult({ ...selection, taskId: "all", metricId: "TSR", setting }).primary,
   ]));
-  assert.deepEqual(overall, { id: "5.83%", visual: "2.50%", semantic: "1.67%", behavioral: "8.33%" });
+  assert.deepEqual(overall, { id: "7.50%", visual: "2.50%", semantic: "4.17%", behavioral: "8.33%" });
   const completionRates = Object.fromEntries(["id", "visual", "semantic", "behavioral"].map((setting) => [
     setting,
     readResult({ ...selection, taskId: "all", metricId: "TASK_SCORE", setting }).primary,
   ]));
-  assert.deepEqual(completionRates, { id: "9.75", visual: "4.42", semantic: "3.75", behavioral: "14.49" });
+  assert.deepEqual(completionRates, { id: "11.42", visual: "4.42", semantic: "6.25", behavioral: "14.49" });
   assert.equal(readResult({ ...selection, taskId: "cover_blocks", metricId: "TSR", setting: "visual" }).available, true);
   assert.equal(readResult({ ...selection, taskId: "classify_objects_by_language", metricId: "TSR", setting: "semantic" }).available, true);
   assert.equal(readResult({ ...selection, taskId: "all", metricId: "TSR", setting: "behavioral" }).available, true);

@@ -1,8 +1,8 @@
-import { PublicHome } from "./components/public-home";
-import { SiteShell } from "./components/site-shell";
+import DashboardClient from "./dashboard-client";
 
+// Prerendered once for GitHub Pages; the dashboard reads ?track= and ?task= in the browser.
 export const dynamic = "force-static";
 
 export default function Page() {
-  return <SiteShell><PublicHome/></SiteShell>;
+  return <DashboardClient/>;
 }

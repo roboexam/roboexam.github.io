@@ -13,12 +13,13 @@ import type {
 } from "../data/real-datasets";
 import { secondsLabel } from "../data/curated-dataset";
 import { ActionTracePanel } from "./action-trace-panel";
+import { dataUrl, mediaUrl, STATIC_SITE } from "../static-site";
 
 type DatasetEntries = { dataset: RealDatasetSummary; version: string; episodes: RealEpisodeEntry[] };
 type BrowserMode = "real" | "simulation";
 
 async function read<T>(apiPrefix: string, query: string, signal: AbortSignal): Promise<T> {
-  const response = await fetch(`/api/${apiPrefix}${query}`, { signal, cache: "no-store" });
+  const response = await fetch(dataUrl(`/api/${apiPrefix}${query}`), { signal, cache: "no-store" });
   if (!response.ok) throw new Error(response.status === 503 ? "数据源暂时不可读，请稍后重试。" : "无法读取数据，请刷新重试。");
   return response.json();
 }
@@ -39,7 +40,7 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
   const canPlay = !!master && ready.includes(master.id) && !failed.includes(master.id);
   const start = (view: RealDatasetEpisode["media"][number]) => quality === "fast" ? 0 : view.startSeconds;
   const end = (view: RealDatasetEpisode["media"][number]) => start(view) + view.durationSeconds;
-  const source = (view: RealDatasetEpisode["media"][number]) => quality === "fast" ? view.renditionUrl : view.url;
+  const source = (view: RealDatasetEpisode["media"][number]) => mediaUrl(quality === "fast" ? view.renditionUrl : view.url);
 
   function seek(seconds: number) {
     const relative = Math.max(0, Math.min(seconds, duration));
@@ -132,10 +133,10 @@ function EpisodePlayer({ episode, title }: { episode: RealDatasetEpisode; title:
           <label><span>Speed · 倍速</span><select aria-label="样本播放速度" value={rate} onChange={event => changeRate(Number(event.target.value))}>
             {[.5, 1, 1.5, 2].map(value => <option value={value} key={value}>{value}×</option>)}
           </select></label>
-          <label><span>Resolution · 清晰度</span><select aria-label="视频清晰度" value={quality} onChange={event => switchQuality(event.target.value as "fast" | "original")}>
+          {!STATIC_SITE && <label><span>Resolution · 清晰度</span><select aria-label="视频清晰度" value={quality} onChange={event => switchQuality(event.target.value as "fast" | "original")}>
             {supportsFast && <option value="fast">360p · 快速</option>}
             <option value="original">Original · 原始</option>
-          </select></label>
+          </select></label>}
         </div>
       </div>
       <ActionTracePanel episodeId={episode.id} currentTime={time} source={episode.trace}/>
@@ -201,15 +202,16 @@ function DatasetWorkspace({ dataset, revision, apiPrefix, mode, simulation }: {
   const episode = episodes.find(row => row.id === selectedId) ?? episodes[0];
   const index = episode ? episodes.indexOf(episode) : -1;
   const split = simulation ? splitDefinition(simulation.split.id) : null;
-  const visibleFrames = data?.episodes.reduce((sum, row) => sum + row.frames, 0);
-  const visibleEpisodes = data?.episodes.length ?? simulation?.split.episodeCount ?? dataset.episodeCount;
+  // the static site carries a few sample episodes per group, so its counts come from the catalog
+  const visibleFrames = STATIC_SITE ? undefined : data?.episodes.reduce((sum, row) => sum + row.frames, 0);
+  const visibleEpisodes = (STATIC_SITE ? undefined : data?.episodes.length) ?? simulation?.split.episodeCount ?? dataset.episodeCount;
   return <section className="rawReviewPanel realDatasetPanel" aria-label={mode === "simulation" ? "Simulation 样本浏览" : "Real & Ego 样本浏览"}>
     <div className="rawReviewHeading"><h3>{simulation?.task.name ?? dataset.name}</h3><span>{split ? `${split.label} · ${split.detail}` : dataset.kind === "ego" ? "Ego" : "Real robot"} · {dataset.format}</span></div>
-    <div className="realDatasetFacts"><span>{mode === "simulation" ? `Robot: ${dataset.robotType || "未记录"}` : `Robot / device: ${dataset.robotType || "未记录"}`}</span>{mode === "real" && <span>{dataset.taskCount.toLocaleString()} 个任务</span>}<span>{visibleEpisodes.toLocaleString()} 个 episode</span><span>{visibleFrames === undefined ? "正在统计帧数" : `${visibleFrames.toLocaleString()} 帧`}</span><span>{dataset.cameras.length} 路相机</span><span>{dataset.fps} FPS</span></div>
+    <div className="realDatasetFacts"><span>{mode === "simulation" ? `Robot: ${dataset.robotType || "未记录"}` : `Robot / device: ${dataset.robotType || "未记录"}`}</span>{mode === "real" && <span>{dataset.taskCount.toLocaleString()} 个任务</span>}<span>{visibleEpisodes.toLocaleString()} 个 episode</span>{STATIC_SITE ? data && <span>{data.episodes.length} sample {data.episodes.length === 1 ? "episode" : "episodes"} online</span> : <span>{visibleFrames === undefined ? "正在统计帧数" : `${visibleFrames.toLocaleString()} 帧`}</span>}<span>{dataset.cameras.length} 路相机</span><span>{dataset.fps} FPS</span></div>
     <details className="rawReviewDetails realIdentity"><summary>目录来源与质量状态</summary><dl><dt>Dataset ID</dt><dd>{dataset.id}</dd><dt>Format / schema</dt><dd>{dataset.format} · {mode === "simulation" ? "roboexam.simulation-datasets.v1" : "roboexam.real-datasets.v1"}</dd><dt>可读性</dt><dd>{dataset.availability === "available" ? "Available" : "Unavailable"}</dd><dt>QC</dt><dd>未提供独立审核状态{dataset.warnings.length ? ` · ${dataset.warnings.length} 条目录提示` : ""}</dd></dl></details>
     {!!dataset.warnings.length && <ul className="rawReviewWarnings">{dataset.warnings.map(warning => <li key={warning}>{warning}</li>)}</ul>}
     <label className="realSearch"><Search size={17}/><span className="curatedSrOnly">搜索样本或任务指令</span><input type="search" placeholder="搜索样本或任务指令…" value={query} onChange={event => setQuery(event.target.value)}/></label>
-    {!data ? <p className="reviewLoading">正在读取数据集…</p> : !episode ? <p className="reviewLoading">没有匹配的样本。</p> : <>
+    {!data ? <p className="reviewLoading">正在读取数据集…</p> : !episode ? <p className="reviewLoading">{STATIC_SITE && !data.episodes.length ? "No sample episode from this group is online." : "没有匹配的样本。"}</p> : <>
       <div className="reviewEpisodeControls"><label>选择样本 <small>{index + 1} / {episodes.length}</small><select value={episode.id} onChange={event => setSelectedId(event.target.value)}>{episodes.map(row => <option key={row.id} value={row.id}>{row.name} · {row.instruction}</option>)}</select></label>
         <div><button type="button" disabled={index <= 0} aria-label={`上一条 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 样本`} onClick={() => setSelectedId(episodes[index - 1].id)}><ChevronLeft size={18}/></button><button type="button" disabled={index >= episodes.length - 1} aria-label={`下一条 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 样本`} onClick={() => setSelectedId(episodes[index + 1].id)}><ChevronRight size={18}/></button></div>
       </div>
@@ -249,7 +251,7 @@ function DatasetBrowser({ embedded = false, mode }: {
         delay = Math.max(1000, value.refreshSeconds * 1000) + 100;
         setCatalog(value); setError(""); setRevision(current => current + 1);
       } catch (reason) { if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : "无法读取目录。"); }
-      finally { if (!controller.signal.aborted) { setLoading(false); timer = setTimeout(() => { void update(); }, delay); } }
+      finally { if (!controller.signal.aborted) { setLoading(false); if (!STATIC_SITE) timer = setTimeout(() => { void update(); }, delay); } }
     }
     void update(request > 0);
     return () => { controller.abort(); clearTimeout(timer); };
@@ -279,7 +281,7 @@ function DatasetBrowser({ embedded = false, mode }: {
     </section>}
     {embedded ? <section className="datasetSummaryStrip" aria-label={mode === "simulation" ? "Simulation catalog summary" : "Real and ego catalog summary"}>
       <div><strong>{mode === "simulation" ? catalog?.simulationTasks?.length ?? 24 : catalog?.datasets.length ?? "—"}</strong><span>{mode === "simulation" ? "Tasks" : "Datasets"}</span></div><div><strong>{catalog ? episodeCount.toLocaleString() : mode === "simulation" ? "3,000" : "—"}</strong><span>Episodes</span></div>
-      <div className="datasetSummaryAction"><span role="status">{error || (catalog ? `${mode === "simulation" ? "125 episodes / task · " : ""}扫描于 ${new Date(catalog.scannedAt).toLocaleString()}` : `正在读取 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 目录…`)}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>
+      <div className="datasetSummaryAction"><span role="status">{error || (catalog ? `${mode === "simulation" ? "125 episodes / task · " : ""}${STATIC_SITE ? "Online sample of the catalog" : `扫描于 ${new Date(catalog.scannedAt).toLocaleString()}`}` : `正在读取 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 目录…`)}</span>{!STATIC_SITE && <button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button>}</div>
     </section> : <div className="rawReviewRefresh"><span role="status">{error || (catalog ? `最近扫描：${new Date(catalog.scannedAt).toLocaleString()}` : `正在读取 ${mode === "simulation" ? "Simulation" : "Real & Ego"} 目录…`)}</span><button type="button" disabled={loading} onClick={() => setRequest(current => current + 1)}><RefreshCw size={15}/>{loading ? "扫描中…" : "刷新"}</button></div>}
     {mode === "real" && <div className="realDatasetFilters"><div className="reportSwitch" aria-label="数据类型筛选">{([["all", "全部"], ["robot", "Real robot"], ["ego", "Ego"]] as const).map(([value, label]) => <button type="button" key={value} aria-pressed={kind === value} onClick={() => setKind(value)}>{label}</button>)}</div><label className="realSearch"><Search size={17}/><span className="curatedSrOnly">搜索 Real & Ego 数据集</span><input type="search" placeholder="搜索数据集…" value={query} onChange={event => setQuery(event.target.value)}/></label></div>}
     {error ? <p className="reviewError" role="alert">{error}</p> : mode === "simulation" ? <div className="simulationTaskWorkspace">

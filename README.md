@@ -1,10 +1,31 @@
-# EmbodiVSI · RoboExam public site
+# RoboExam dashboard
 
-Public one-page research site for EmbodiVSI and the RoboExam evaluation program.
-The homepage presents the workshop program, organizers, invited speakers,
-representative simulation and real-robot scenes, and a compact leaderboard
-format preview. Its rows are illustrative placeholders rather than published
-results. There is no standalone public leaderboards route.
+Public research dashboard for a Physical AI benchmark. It presents four independent track tables, metric definitions, dataset cohorts, published baselines, and linked evidence for VLM, ACWM, VLA, and WAM systems.
+
+## GitHub Pages (this repository)
+
+This repository publishes the dashboard as a static site. `GITHUB_PAGES=true` turns on `output: "export"` and
+`ROBOEXAM_STATIC_SITE` (see `app/static-site.ts`): every page is prerendered, the browser reads data
+endpoints from JSON snapshots in `public/static-api/`, and video from a curated sample in `public/static-media/`
+(clips outside the sample show a placeholder). The static site leaves out sign-in, the Review page, plans and
+internal run statuses; `build/static-redactions.mjs` lists the text it rewrites.
+
+The snapshot is not in Git. It is one release asset, pinned by tag and SHA-256 in
+`.github/workflows/deploy-pages.yml`. To refresh it, on a host that runs the full dashboard:
+
+```bash
+node --experimental-strip-types scripts/export-static-site.mjs --base http://127.0.0.1:3297 --data <dashboard>/app/data/generated --out <dir>
+bash scripts/build-static-media.sh <dir>
+node scripts/redact-static-site.mjs <dir>/static-api
+```
+
+Then copy `<dir>/static-media.json` to `app/data/generated/`, pack `static-api/` and `static-media/` as
+`static-snapshot.tar.gz`, attach it to a new release and update the pinned tag and hash. Build and check locally:
+
+```bash
+GITHUB_PAGES=true UNIBENCH_DEPLOY_BUILD=1 npm run build
+node scripts/audit-static-site.mjs dist/client   # --deny <file> adds literal strings kept outside Git
+```
 
 ## Requirements
 
@@ -30,9 +51,7 @@ Forward port `3000` from VS Code's **Ports** panel and open the forwarded addres
 - **T3 Simulation Deployment** — policy correctness, local closed-loop effectiveness, long-horizon execution, robustness, safety, and efficiency.
 - **T4 Real-World Deployment** — hardware task outcome, subgoal progress, timing, and manual safety/intervention review.
 
-The homepage leaderboard is intentionally illustrative. Detailed metric and
-evidence components remain internal implementation assets and are not published
-as a separate page.
+**Leaderboards** opens on all report entries. Every metric opens its full definition, scoring rule, interpretation, and evidence; there is no separate Metric guide page. Filter by dimension or search; **More filters** adds subdimension, required evidence, protocol status, and model family or result availability.
 
 The current T1 publication uses `Overall = 0.70 × Subtask + 0.30 × VQA`, with
 `VQA = (A + B + (C1 + C2 + C3) / 3) / 3`. Its frozen common scope is fourteen
