@@ -9,10 +9,13 @@ results. There is no standalone public leaderboards route.
 ## Workshop root and archived public dashboard
 
 The GitHub Pages root remains the workshop-facing site from the local `main`
-checkout. The latest public dashboard is preserved at the immutable commit
-`087d029bf269dc14333f68eaac109ca3f5ffa13c` on the
-`archive/public-latest-087d029` backup branch. Pages also builds that commit
-under a no-index path so it can be reviewed without changing the root page:
+checkout. The latest public dashboard is the immutable commit
+`93b18766212debeb156ba9c4427d8cb53e4a0468` on the `archive/public-paper-sync`
+branch: the `087d029` dashboard (kept on the `archive/public-latest-087d029`
+backup branch) with its results synced to the submitted RoboExam manuscript by
+`scripts/export-paper-results.py`. Pages builds that commit under a no-index
+path, which keeps its original name, so it can be reviewed without changing
+the root page:
 
 <https://roboexam.github.io/__public_latest_087d029/>
 
