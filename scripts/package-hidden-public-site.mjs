@@ -42,8 +42,13 @@ const textExtensions = new Set([
 function rewriteRootPaths(text) {
   // The public build is compiled as a root site. It is copied below the workshop
   // build, so root-relative asset/data links must point into this archive.
-  let result = text.replace(/(["'`])\/(?![\/"'`\\>\)])/g, `$1${prefix}/`);
+  // `/api/...` strings stay as they are: they are request identities, not files.
+  // The static build hashes them into `/static-api/...` names and looks them up
+  // as media keys, so a prefix would point every data request at a missing file.
+  let result = text.replace(/(["'`])\/(?![\/"'`\\>\)]|api\/)/g, `$1${prefix}/`);
   result = result.replace(/url\(\s*\/(?![\/\)])/g, `url(${prefix}/`);
+  // Vite's module-preload helper joins chunk names onto a bare "/" base.
+  result = result.replace(/(function\((\w+)\)\{return\s*)(["'`])\/\3\+\2\}/g, `$1$3${prefix}/$3+$2}`);
   result = result.replaceAll('href="/"', `href="${prefix}/"`);
   result = result.replaceAll("href='/'", `href='${prefix}/'`);
   return result;
