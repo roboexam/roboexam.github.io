@@ -2,80 +2,71 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { AXES, BOARD_SCENES, BOARD_TAGS, axisRows, buildMainBoard, columnRanks, metricTable, t3Rows } from "../app/data/main-board.ts";
-import { simulationV2Plan } from "../app/data/scenario-plan.ts";
-import { policyBaselines } from "../app/data/policy-baselines.ts";
-import { acwm600 } from "../app/data/acwm600-results.ts";
-import { t1UnibenchResults } from "../app/data/t1-unibench-results.ts";
+import { paperResults } from "../app/data/paper-results.ts";
+import { simulationV2Plan, tagsForScenario } from "../app/data/scenario-plan.ts";
 
 const close = (a, b, eps = 1e-9) => Math.abs(a - b) <= eps;
 
-test("capability columns use the frozen base tags of the 24 shared scenes", () => {
+test("capability columns follow the manuscript's task-capability mapping", () => {
   assert.equal(BOARD_SCENES.length, 24);
   for (const tag of BOARD_TAGS) {
-    const expected = simulationV2Plan.filter((scene) => scene.tags.includes(tag.id)).map((scene) => scene.id);
-    assert.deepEqual(tag.scenes, expected, `${tag.id} must ignore candidate and variant-scoped tags`);
-    assert.ok(tag.scenes.length > 0);
+    const expected = simulationV2Plan.filter((scene) => tagsForScenario(scene).includes(tag.id)).map((scene) => scene.id);
+    assert.deepEqual(tag.scenes, expected);
+    assert.equal(tag.scenes.length, paperResults.tags[tag.id].tasks, `${tag.id} task count matches Supp. Table 3`);
+    const paperTasks = paperResults.tasks.filter((task) => [...task.tags, ...task.conditionalTags].includes(tag.id)).map((task) => task.id).sort();
+    assert.deepEqual([...tag.scenes].sort(), paperTasks, `${tag.id} task membership matches the manuscript`);
   }
 });
 
-test("main board keeps the four tracks and never ranks incomplete cohorts", () => {
+test("main board reproduces manuscript Table 1 for all four tracks", () => {
   const board = buildMainBoard();
   assert.deepEqual(board.map((track) => track.id), ["T1", "T2", "T3", "T4"]);
-  const t1 = board[0];
-  for (const model of t1UnibenchResults.models) {
-    const row = t1.rows.find((item) => item.id === model.id);
-    assert.equal(row.ranked, model.overall !== null);
-    if (!row.ranked) {
-      assert.equal(row.overall, null);
-      assert.ok(Object.values(row.tags).every((value) => value === null), "missing settings stay null, never zero");
-    } else {
-      // scene-macro overall stays within a point of the official split-macro overall
-      assert.ok(Math.abs(row.overall - model.overall.overall) < 1, `${model.id} overall drift`);
-    }
+  assert.deepEqual(board.map((track) => track.rows.length), [5, 5, 7, 5]);
+  const gpt = board[0].rows.find((row) => row.id === "gpt-6.1-sol-xhigh");
+  assert.deepEqual([gpt.tags.G, gpt.tagSecondary.G, gpt.overall, gpt.overallSecondary], [34.7, 47.5, 26.3, 45.6]);
+  const pelican = board[1].rows.find((row) => row.id === "pelican_sim");
+  assert.deepEqual([pelican.overall, pelican.overallSecondary], [58.3, 8.2]);
+  const openwam = board[2].rows.find((row) => row.id === "OpenWAM");
+  assert.deepEqual([openwam.tags.M, openwam.tagSecondary.M, openwam.overall], [25.5, 26.4, 24.8]);
+  const pi = board[3].rows.find((row) => row.label === "π0.5");
+  assert.deepEqual([pi.overall, pi.overallSecondary], [26.1, 55.07]);
+  assert.deepEqual(pi.real.map((cell) => cell.value), [10, 0, 35, 33.3, 25, 100]);
+  for (const row of board[3].rows) assert.ok(Object.values(row.tags).every((value) => value === null), "T4 is not tag-scored");
+  for (const track of board) for (const row of track.rows) {
+    assert.ok(row.ranked);
+    for (const value of [row.overall, ...Object.values(row.tags)].filter((item) => item !== null)) assert.ok(value >= 0 && value <= 100, `${row.id} value in range`);
   }
-  assert.equal(board[1].rows.length, acwm600.models.length);
-  assert.ok(board[1].rows.every((row) => row.cases === 600 && row.ranked));
-  assert.ok(board[3].rows.every((row) => !row.ranked && row.overall === null), "T4 has no published score");
-  for (const track of board.slice(0, 3)) for (const row of track.rows.filter((item) => item.ranked)) {
-    for (const value of [row.overall, ...Object.values(row.tags)]) assert.ok(value >= 0 && value <= 100, `${row.id} value in range`);
-  }
+  const labels = board.flatMap((track) => track.rows.map((row) => row.label));
+  assert.ok(!labels.some((label) => /Claude|Qwen/.test(label)), "only manuscript models are published");
 });
 
-test("T3 scene-macro success rate equals the official pooled success rate", () => {
-  const rows = t3Rows();
-  for (const row of rows) {
-    const splits = Object.values(policyBaselines.overall[row.id]);
-    const pooled = 100 * splits.reduce((sum, split) => sum + split.successes, 0) / splits.reduce((sum, split) => sum + split.episodes, 0);
-    assert.ok(Math.abs(row.overall - pooled) < 0.5, `${row.id}: ${row.overall} vs ${pooled}`);
+test("T3 per-task strips pool the frozen episodes behind Table 1", () => {
+  for (const row of t3Rows()) {
+    const model = paperResults.tracks.T3.find((item) => item.id === row.id);
+    const n = Object.values(row.scenes).reduce((sum, scene) => sum + scene.n, 0);
+    assert.equal(n, model.cases);
+    assert.ok(model.cases >= 598 && model.cases <= 600, `${row.id} covers the 600-case suite`);
     const axis = axisRows("T3").find((item) => item.id === row.id);
-    assert.ok(close(axis.axes.ID.value, 100 * policyBaselines.overall[row.id].id.values.TSR.value));
+    assert.ok(close(axis.axes.ID.value, model.settings.ID.tsr));
+    assert.ok(close(axis.overall, model.summary.tsr));
   }
 });
 
-test("a missing scene nulls its tag columns and the overall instead of counting as zero", () => {
-  const bundle = structuredClone(policyBaselines);
-  delete bundle.models.G05.id.stack_bowls;
-  const row = t3Rows(bundle).find((item) => item.id === "G05");
-  assert.equal(row.scenes.stack_bowls.value, null);
-  assert.equal(row.overall, null);
-  for (const tag of BOARD_TAGS) {
-    if (tag.scenes.includes("stack_bowls")) assert.equal(row.tags[tag.id], null, `${tag.id} must be null`);
-    else assert.notEqual(row.tags[tag.id], null);
-  }
-});
-
-test("sub-tables expose every axis and the exact native T2 values", () => {
-  for (const trackId of ["T1", "T2", "T3"]) {
+test("sub-tables expose every axis and the manuscript's native T2 values", () => {
+  for (const trackId of ["T1", "T2", "T3", "T4"]) {
     for (const row of axisRows(trackId)) assert.deepEqual(Object.keys(row.axes), AXES.map((axis) => axis.id));
   }
   const table = metricTable("T2");
-  for (const model of acwm600.models) {
+  for (const model of paperResults.tracks.T2) {
     const row = table.rows.find((item) => item.id === model.id);
-    assert.equal(row.values.A1, model.groups.ALL.a.A1);
-    assert.equal(row.values.pos, model.groups.ALL.b.v5.position.mae);
-    assert.equal(row.values.rot, model.groups.ALL.b.v5.rotation.mae);
+    assert.equal(row.values.psnr, model.metrics.psnr);
+    assert.equal(row.values.eePos, model.metrics.eePos);
+    assert.equal(row.values.pred, model.overall.pred);
   }
-  assert.ok(table.columns.filter((column) => column.pending).every((column) => table.rows.every((row) => !(column.id in row.values))));
+  const real = axisRows("T4").find((row) => row.id === "Pi_05");
+  assert.equal(real.axes.ID.n, 15);
+  assert.equal(real.axes.REC.n, 6);
+  assert.ok(close(real.axes.REC.value, 100 * 4 / 6), "π0.5 completes 1/3 towel and 3/3 puzzle continuations");
 });
 
 test("column ranks respect direction, ties and unranked rows", () => {

@@ -75,7 +75,7 @@ function prongsFor(board: BoardTrack[], read: (row: BoardRow) => number | null):
       scale: SNOW_SCALE,
       best: climbers[0]?.value ?? null,
       climbers,
-      pending: climbers.length ? null : track.rows.length ? "No admitted results yet" : "No baselines registered",
+      pending: climbers.length ? null : track.rows.some((row) => row.real) ? "Scored per real-robot task · see main table" : track.rows.length ? "No admitted results yet" : "No baselines registered",
     };
   });
 }

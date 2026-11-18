@@ -18,7 +18,7 @@ const MARKS: [RegExp, MethodIcon][] = [
   [/^G0?\.?5$|^Galaxea/i, { org: "Galaxea", src: "/brand/methods/galaxea.png", bleed: true }],
   [/^Hy-?VLA|^Hy-Embodied/i, { org: "Tencent Hunyuan", src: "/brand/methods/hunyuan.svg", bleed: true }],
   [/^X-?VLA/i, { org: "Tsinghua University", src: "/brand/methods/tsinghua.png", bleed: false }],
-  [/^Pi-?0/i, { org: "Physical Intelligence", src: "/brand/methods/physical-intelligence.png", bleed: false }],
+  [/^(Pi-?|π)0/i, { org: "Physical Intelligence", src: "/brand/methods/physical-intelligence.png", bleed: false }],
   [/^(Open)?DM(0|$)/i,{ org: "Dexmal", src: "/brand/methods/dexmal.png", bleed: true }],
 ];
 

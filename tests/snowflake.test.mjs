@@ -44,7 +44,7 @@ test("climbers are exactly the ranked rows with a tag score, on the shared 0–1
       if (!prong.climbers.length) assert.ok(prong.pending, "empty prongs say why");
     }
   }
-  assert.ok(arms.every((arm) => arm.prongs[3].climbers.length === 0), "T4 has no published hardware score");
+  assert.ok(arms.every((arm) => arm.prongs[3].climbers.length === 0), "T4 is scored per real-robot task, not per tag");
 });
 
 test("every route shares one altitude scale, and neighbouring forks never touch", () => {

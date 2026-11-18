@@ -15,6 +15,7 @@ import { MainBoard } from "./main-board";
 import { CapabilityIcon, TrackIcon } from "./podium";
 import { SnowflakeBoard } from "./snowflake-board";
 import { TrackSubtables } from "./track-subtables";
+import { PAPER_REAL_TASKS, paperResults } from "../data/paper-results";
 
 type Props = { initialTrack: TrackId; onMetric: (selection: MetricSelection) => void };
 type EvalSetting = "id" | "visual" | "semantic" | "behavioral" | "recovery";
@@ -176,13 +177,15 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
     {trackId === "T1" ? <section className="trackWorkspace" aria-label="T1 current results">
       <T1UnibenchView/>
     </section> : trackId === "T2" && latestT2 ? <section className="trackWorkspace" aria-label="T2 current results">
+      <p className="paperProvenance">Per-scenario diagnostics below come from the earlier three-model release; its composite is relative to those three models only. The manuscript&apos;s five ACWMs (adding Pelican-Sim and IRASim) and its Pred. score are in the tables above.</p>
       <Suspense fallback={<p role="status">Loading results…</p>}><CurrentAcwmResults/></Suspense>
     </section> : STATIC_SITE && trackId === "T4" ? <section className="trackWorkspace" aria-label="T4 results">
-      <p className="staticEmpty">No formal hardware results are published yet.</p>
+      <RealRobotResults/>
     </section> : <section className="trackWorkspace" aria-label={`${track.id} ${track.title}`}>
       {trackId !== "T2" && <div className="trackSectionTitle">
         <h2>{track.title}</h2>
       </div>}
+      {STATIC_SITE && trackId === "T3" && <p className="paperProvenance">Per-metric evidence below covers the five policies of the earlier release, which use the same frozen episodes as the manuscript. OpenWAM and Fast-WAM appear in the tables above.</p>}
       <div className="leaderboardSceneFilters">
         <div className="leaderboardTagFilter"><span>Capability tags</span><div>
           {sceneTagEntries.map(([tag, definition]) => <button type="button" key={tag}
@@ -302,5 +305,36 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       </div>
     </section>}
     {!STATIC_SITE && trackId === "T2" && <details><summary>Training and evaluation registry · historical snapshot</summary><BaselineRunPlan initialTrack="T2"/></details>}
+  </div>;
+}
+
+/** Manuscript Supp. Table (real-robot results): per task and condition, verified on site. */
+function RealRobotResults() {
+  const conditions = ["ID", "V", "S", "B"] as const;
+  return <div className="realRobotResults">
+    <div className="trackSectionTitle"><h2>Real-robot deployment</h2></div>
+    <p className="paperProvenance">Five policies on dual Piper arms. Each task has 20 ordinary cases (5 per condition) and three extra cases: missing colors for button sequences, continuation from a partly completed state for towel folding and puzzle insertion. Success counts are on-site verified terminal labels.</p>
+    {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable region must be keyboard-focusable */}
+    <div className="subtableWrap" role="region" tabIndex={0} aria-label="Real-robot results by task and condition">
+      <table className="subTable">
+        <thead><tr>
+          <th scope="col">Model</th><th scope="col">Task</th>
+          {conditions.map((condition) => <th scope="col" key={condition}>{condition === "ID" ? "ID" : `${condition}-OOD`}</th>)}
+          <th scope="col">Ordinary</th><th scope="col">Extra</th><th scope="col">Ord. Subtask</th><th scope="col">Extra Subtask</th>
+        </tr></thead>
+        <tbody>{paperResults.tracks.T4.flatMap((model) => PAPER_REAL_TASKS.map((task, index) => {
+          const cell = model.tasks[task];
+          return <tr key={`${model.id}:${task}`}>
+            {index === 0 && <th scope="rowgroup" rowSpan={PAPER_REAL_TASKS.length}><strong>{model.label}</strong></th>}
+            <td>{cell.label}<small>{cell.extraLabel}</small></td>
+            {conditions.map((condition) => <td key={condition}><b>{cell.conditions[condition].successes}/{cell.conditions[condition].n}</b></td>)}
+            <td><b>{cell.ordinary.successes}/{cell.ordinary.n}</b></td>
+            <td><b>{cell.extra.successes}/{cell.extra.n}</b></td>
+            <td><b>{cell.ordinary.subtask.toFixed(2)}</b></td>
+            <td><b>{cell.extra.subtask.toFixed(2)}</b></td>
+          </tr>;
+        }))}</tbody>
+      </table>
+    </div>
   </div>;
 }

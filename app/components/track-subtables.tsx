@@ -2,7 +2,7 @@
 
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
-import { AXES, axisRows, columnRanks, metricTable, type AxisRow, type MetricColumn, type MetricRow } from "../data/main-board";
+import { AXES, axisLowerIsBetter, axisRows, columnRanks, metricTable, type AxisRow, type MetricColumn, type MetricRow } from "../data/main-board";
 import type { TrackId } from "../data/metric-plan";
 
 type View = "axis" | "metric";
@@ -10,15 +10,17 @@ type View = "axis" | "metric";
 const fmt = (value: number | null | undefined, digits = 1) =>
   typeof value === "number" && Number.isFinite(value) ? value.toFixed(digits) : "—";
 
-const AXIS_SECONDARY: Partial<Record<TrackId, string>> = { T1: "Subtask", T2: "PSNR dB", T3: "Subtask %" };
-const AXIS_METRIC: Partial<Record<TrackId, string>> = { T1: "Agent score", T2: "Composite", T3: "Success rate %" };
+const AXIS_SECONDARY: Record<TrackId, string> = { T1: "Subtask %", T2: "M-MSE", T3: "Subtask %", T4: "" };
+const AXIS_METRIC: Record<TrackId, string> = { T1: "TSR %", T2: "EE position error (mm, lower is better)", T3: "TSR %", T4: "SR % pooled over the three real-robot tasks" };
+const AXIS_NOTE: Record<TrackId, string> = {
+  T1: "Overall is the TSR over all 600 cases.",
+  T2: "Overall is the EE position error over all 600 cases; a positive Δ means larger error out of distribution.",
+  T3: "Overall is the TSR over all 600 cases.",
+  T4: "Real robot: 5 cases per task and condition; Recovery is the continuation scope of towel folding and puzzle insertion (3 + 3 cases). Overall averages all 69 cases.",
+};
 
 export function TrackSubtables({ trackId }: { trackId: TrackId }) {
   const [view, setView] = useState<View>("axis");
-  if (trackId === "T4") {
-    return <div className="subtableEmpty"><strong>Real-robot sub-tables are not published yet.</strong>
-      <p>Task success on standardized hardware trials will fill the same ID / OOD / Failure and metric layouts once the first admitted runs land.</p></div>;
-  }
   return <section className="subtables" aria-label={`${trackId} sub-tables`}>
     <div className="subtableBar">
       <div className="viewSwitch" role="group" aria-label="Sub-table view">
@@ -26,8 +28,8 @@ export function TrackSubtables({ trackId }: { trackId: TrackId }) {
         <button type="button" aria-pressed={view === "metric"} onClick={() => setView("metric")}>By metric</button>
       </div>
       <p>{view === "axis"
-        ? "Each column pools one setting across the shared scenes; n is the number of evaluated cases."
-        : "Each column pools all scenes and all five settings."}</p>
+        ? "Each column is one evaluation condition; n is the number of evaluated cases."
+        : "Each column pools all tasks and all conditions."}</p>
     </div>
     {view === "axis" ? <AxisTable key={trackId} trackId={trackId}/> : <MetricBreakdown key={trackId} trackId={trackId}/>}
   </section>;
@@ -35,13 +37,14 @@ export function TrackSubtables({ trackId }: { trackId: TrackId }) {
 
 function AxisTable({ trackId }: { trackId: TrackId }) {
   const rows = useMemo(() => axisRows(trackId), [trackId]);
+  const higher = !axisLowerIsBetter(trackId);
   const columns: { id: string; label: string; title: string; read: (row: AxisRow) => number | null; higher: boolean }[] = [
-    { id: "overall", label: "Overall", title: "Official overall for the full cohort", read: (row) => row.overall, higher: true },
-    ...AXES.map((axis) => ({ id: axis.id, label: axis.short, title: axis.label, read: (row: AxisRow) => row.axes[axis.id].value, higher: true })),
-    { id: "ood", label: "OOD avg", title: "Mean of V-, S- and B-OOD", read: (row) => row.oodMean, higher: true },
+    { id: "overall", label: "Overall", title: "Official overall for the full cohort", read: (row) => row.overall, higher },
+    ...AXES.map((axis) => ({ id: axis.id, label: axis.short, title: axis.label, read: (row: AxisRow) => row.axes[axis.id].value, higher })),
+    { id: "ood", label: "OOD avg", title: "Mean of V-, S- and B-OOD", read: (row) => row.oodMean, higher },
   ];
   const ranks = Object.fromEntries(columns.map((column) => [column.id, columnRanks(rows, column.read, column.higher)]));
-  const sorted = [...rows].sort((a, b) => (a.ranked === b.ranked ? (b.overall ?? -1) - (a.overall ?? -1) : a.ranked ? -1 : 1));
+  const sorted = [...rows].sort((a, b) => (a.ranked === b.ranked ? (higher ? 1 : -1) * ((b.overall ?? -1) - (a.overall ?? -1)) : a.ranked ? -1 : 1));
   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- scrollable region must be keyboard-focusable
   return <div className="subtableWrap" role="region" tabIndex={0} aria-label={`${trackId} results by evaluation axis`}>
     <table className="subTable">
@@ -56,17 +59,18 @@ function AxisTable({ trackId }: { trackId: TrackId }) {
           const rank = ranks[column.id].get(row.id);
           const axis = AXES.find((item) => item.id === column.id);
           const cell = axis ? row.axes[axis.id] : null;
-          return <td key={column.id} className={`${rank === 1 ? "best" : rank === 2 ? "second" : ""} ${column.id === "overall" ? "overallCell" : ""}`}>
+          const placed = (column.read(row) ?? 0) > 0;
+          return <td key={column.id} className={`${placed && rank === 1 ? "best" : placed && rank === 2 ? "second" : ""} ${column.id === "overall" ? "overallCell" : ""}`}>
             <b>{fmt(column.read(row))}</b>
-            {cell && cell.n > 0 && <small>{cell.secondary != null ? `${fmt(cell.secondary)} · ` : ""}n={cell.n}</small>}
+            {cell && cell.n > 0 && <small>{cell.secondary != null ? `${fmt(cell.secondary, trackId === "T2" ? 4 : 1)} · ` : ""}n={cell.n}</small>}
           </td>;
         })}
-        <td className={`deltaCell ${row.oodDrop == null ? "" : row.oodDrop < 0 ? "down" : "up"}`}>
+        <td className={`deltaCell ${row.oodDrop == null ? "" : (higher ? row.oodDrop < 0 : row.oodDrop > 0) ? "down" : "up"}`}>
           <b>{row.oodDrop == null ? "—" : `${row.oodDrop > 0 ? "+" : ""}${row.oodDrop.toFixed(1)}`}</b>
         </td>
       </tr>)}</tbody>
     </table>
-    <p className="subtableCaption">Main value: {AXIS_METRIC[trackId]}. Small text: {AXIS_SECONDARY[trackId]} · cases. {trackId === "T2" ? "Composite is cohort-relative (50 = cohort geometric mean) and recomputed per setting." : ""}{trackId === "T1" ? "Overall is the official T1 formula (70% Subtask over five settings + 30% VQA over four)." : ""}</p>
+    <p className="subtableCaption">Main value: {AXIS_METRIC[trackId]}. Small text: {AXIS_SECONDARY[trackId] ? `${AXIS_SECONDARY[trackId]} · ` : ""}cases. {AXIS_NOTE[trackId]} Source: RoboExam manuscript.</p>
   </div>;
 }
 
@@ -105,7 +109,7 @@ function MetricBreakdown({ trackId }: { trackId: TrackId }) {
           const rank = ranks[column.id].get(row.id);
           return <Fragment key={column.id}>{column.pending
             ? <td className="pendingCell"><span>{column.pending}</span></td>
-            : <td className={`${rank === 1 ? "best" : rank === 2 ? "second" : ""} ${sort === column.id ? "sorted" : ""}`}>
+            : <td className={`${(row.values[column.id] ?? 0) !== 0 && rank === 1 ? "best" : (row.values[column.id] ?? 0) !== 0 && rank === 2 ? "second" : ""} ${sort === column.id ? "sorted" : ""}`}>
               <b>{fmt(row.values[column.id], column.digits)}</b>{column.unit && row.values[column.id] != null && <small>{column.unit}</small>}
             </td>}</Fragment>;
         })}

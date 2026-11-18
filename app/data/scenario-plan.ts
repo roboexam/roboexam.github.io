@@ -6,7 +6,7 @@ export const scenarioTags = {
   R: { label: 'Spatial goals', rule: 'Success checks an object–region or object–object spatial relation.' },
   F: { label: 'Functional interaction', rule: 'A functional part or interaction is required; ordinary grasping alone is insufficient.' },
   P: { label: 'Pose alignment', rule: 'Success requires a specified pose or insertion tolerance, beyond reaching a region.' },
-  T: { label: 'Temporal & stage control', rule: 'History dependence, task-level order or prerequisite stages, or a task-specific hold/event window is required. Generic pick-and-place steps and final spatial order alone do not qualify.' },
+  T: { label: 'Order & stages', rule: 'History dependence, task-level order or prerequisite stages, or a task-specific hold/event window is required. Generic pick-and-place steps and final spatial order alone do not qualify.' },
   M: { label: 'Multiple objects', rule: 'Several target objects must satisfy the goal. Props and repeated actions do not count as extra targets.' },
 } as const;
 export type ScenarioTag = keyof typeof scenarioTags;

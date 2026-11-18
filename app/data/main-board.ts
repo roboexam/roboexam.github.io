@@ -1,32 +1,36 @@
 // Cross-track leaderboard: one main table grouped by track and capability tag,
 // plus per-track sub-tables by evaluation axis and by metric.
-// Every value is derived from the published, validated bundles; nothing here is
-// hand-entered. Missing evidence stays null and is never coerced to zero.
-import { acwm600, compositeScoresFor, type Acwm600Summary } from "./acwm600-results.ts";
+// Every value comes from the submitted manuscript's bundle (paper-results.ts);
+// nothing here is hand-entered. Missing evidence stays null and is never coerced to zero.
 import { tracks, type TrackId } from "./metric-plan.ts";
-import { policyBaselineModelIds, policyBaselines, type PolicyBaselineModel } from "./policy-baselines.ts";
-import { scenarioTags, simulationV2Plan, type ScenarioTag } from "./scenario-plan.ts";
-import { t1UnibenchResults, T1_SPLITS, type T1SplitId, type T1UnibenchResults } from "./t1-unibench-results.ts";
+import {
+  PAPER_REAL_TASKS, PAPER_SETTINGS, PAPER_SIM_CASES, PAPER_VERSION, paperResults,
+  type PaperResults, type PaperSetting,
+} from "./paper-results.ts";
+import { scenarioTags, simulationV2Plan, tagsForScenario, type ScenarioTag } from "./scenario-plan.ts";
 
 export const BOARD_TAGS = (Object.keys(scenarioTags) as ScenarioTag[]).map((id) => ({
   id,
   label: scenarioTags[id].label,
   rule: scenarioTags[id].rule,
-  // Base tags only: candidate and variant-scoped tags are not frozen protocol.
-  scenes: simulationV2Plan.filter((scene) => scene.tags.includes(id)).map((scene) => scene.id),
+  // Manuscript Supp. Table 3: a conditional tag (Solve Equation M†, Set Button Colors M‡)
+  // counts toward its task group, giving 12/13/10/11/13/14 tasks.
+  scenes: simulationV2Plan.filter((scene) => tagsForScenario(scene).includes(id)).map((scene) => scene.id),
 }));
-export const BOARD_SCENES = simulationV2Plan.map((scene) => ({ id: scene.id, name: scene.name, tags: scene.tags }));
+export const BOARD_SCENES = simulationV2Plan.map((scene) => ({ id: scene.id, name: scene.name, tags: tagsForScenario(scene) }));
 
 export const AXES = [
   { id: "ID", short: "ID", label: "In-distribution" },
   { id: "V", short: "V-OOD", label: "Visual OOD" },
   { id: "S", short: "S-OOD", label: "Semantic OOD" },
   { id: "B", short: "B-OOD", label: "Behavioral OOD" },
-  { id: "REC", short: "Failure", label: "Failure recovery" },
+  { id: "REC", short: "Recovery", label: "Failure recovery" },
 ] as const;
 export type AxisId = (typeof AXES)[number]["id"];
 
 export type SceneScore = { value: number | null; secondary: number | null; n: number };
+/** One T4 cell: success rate (value) and Subtask (secondary) for a task scope. */
+export type RealCell = { id: string; value: number; secondary: number; successes: number; n: number };
 export type BoardRow = {
   trackId: TrackId;
   id: string;
@@ -38,7 +42,12 @@ export type BoardRow = {
   pendingReason: string | null;
   scenes: Record<string, SceneScore>;
   tags: Record<ScenarioTag, number | null>;
+  /** Second number of each Table 1 cell (Score, EE error or Subtask). */
+  tagSecondary: Record<ScenarioTag, number | null>;
   overall: number | null;
+  overallSecondary: number | null;
+  /** T4 only: the six task-scope cells of Table 1 (ordinary / extra for each real task). */
+  real?: RealCell[];
   cases: number;
 };
 export type BoardTrack = {
@@ -49,6 +58,10 @@ export type BoardTrack = {
   metricShort: string;
   definition: string;
   secondaryLabel: string | null;
+  /** True when a smaller secondary value is better (T2 end-effector error). */
+  secondaryLowerIsBetter: boolean;
+  /** T4 replaces the six tag columns with these task-scope columns. */
+  realColumns?: { id: string; task: string; scope: string }[];
   version: string | null;
   rows: BoardRow[];
 };
@@ -57,176 +70,104 @@ const mean = (values: number[]) => values.length ? values.reduce((sum, value) =>
 function finite(value: number | null | undefined): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
-/** Mean over every listed scene; null as soon as one scene has no value. */
-function strictMean(values: (number | null | undefined)[]) {
-  return values.length > 0 && values.every(finite) ? mean(values as number[]) : null;
-}
-function aggregate(scenes: Record<string, SceneScore>) {
-  const tags = Object.fromEntries(BOARD_TAGS.map((tag) =>
-    [tag.id, strictMean(tag.scenes.map((scene) => scenes[scene]?.value))])) as Record<ScenarioTag, number | null>;
-  return { tags, overall: strictMean(BOARD_SCENES.map((scene) => scenes[scene.id]?.value)) };
-}
 const trackMeta = (id: TrackId) => tracks.find((track) => track.id === id)!;
+function nullTags() {
+  return Object.fromEntries(BOARD_TAGS.map((tag) => [tag.id, null])) as Record<ScenarioTag, null>;
+}
+function pick<T>(source: Record<ScenarioTag, T>, read: (value: T) => number) {
+  return Object.fromEntries(BOARD_TAGS.map((tag) => [tag.id, read(source[tag.id])])) as Record<ScenarioTag, number>;
+}
 
 // ---------------------------------------------------------------- T1 · VLM agents
-// Scene score follows the published T1 formula: 0.7 × Subtask + 0.3 × VQA, where
-// Subtask is averaged over the settings that evaluated the scene (Recovery included)
-// and VQA over ID and the three OOD settings.
-export function t1Rows(results: T1UnibenchResults = t1UnibenchResults): BoardRow[] {
-  return results.models.map((model) => {
-    const complete = T1_SPLITS.every((split) => model.splits[split] !== null);
-    const scenes: Record<string, SceneScore> = {};
-    for (const scene of BOARD_SCENES) {
-      const subtask: number[] = [];
-      const vqa: number[] = [];
-      let n = 0;
-      for (const split of T1_SPLITS) {
-        const task = model.splits[split]?.perTask[scene.id];
-        if (!task) continue;
-        n += task.cases;
-        if (finite(task.subtask)) subtask.push(task.subtask);
-        if (split !== "REC" && finite(task.vqa)) vqa.push(task.vqa);
-      }
-      const sub = mean(subtask);
-      const q = mean(vqa);
-      scenes[scene.id] = {
-        value: complete && sub !== null && q !== null ? 0.7 * sub + 0.3 * q : null,
-        secondary: complete ? sub : null,
-        n,
-      };
-    }
-    const cases = T1_SPLITS.reduce((sum, split) => sum + (model.splits[split]?.cases ?? 0), 0);
-    return {
-      trackId: "T1",
-      id: model.id,
-      label: model.label,
-      type: "VLM agent",
-      detail: model.family,
-      ranked: complete,
-      pendingReason: complete ? null : `Only ${model.splitsPresent.join(", ")} evaluated`,
-      scenes,
-      ...(complete ? aggregate(scenes) : { tags: nullTags(), overall: null }),
-      cases,
-    };
-  });
+// Manuscript Table 1: TSR and Score (0.7 × Subtask + 0.3 × VQA) per capability tag.
+// Per-task values of the completed 600-case run are not part of the bundle, so scenes stay empty.
+export function t1Rows(results: PaperResults = paperResults): BoardRow[] {
+  return results.tracks.T1.map((model) => ({
+    trackId: "T1", id: model.id, label: model.label, type: "VLM agent", detail: "Shared robot-control harness",
+    ranked: true, pendingReason: null, scenes: {},
+    tags: pick(model.tags, (cell) => cell.tsr), tagSecondary: pick(model.tags, (cell) => cell.score),
+    overall: model.overall.tsr, overallSecondary: model.overall.score, cases: PAPER_SIM_CASES,
+  }));
 }
 
 // ---------------------------------------------------------------- T2 · world models
-// Scene score is the frozen nine-metric T2 composite computed on that scene's 25
-// cases (5 settings × 5). It is cohort-relative: 50 equals the cohort geometric mean.
-export function t2Rows(models: Acwm600Summary["models"] = acwm600.models): BoardRow[] {
-  const perScene = Object.fromEntries(BOARD_SCENES.map((scene) => [scene.id, compositeScoresFor(models, `task/${scene.id}`)]));
-  return models.map((model) => {
-    const scenes: Record<string, SceneScore> = {};
-    for (const scene of BOARD_SCENES) {
-      const group = model.groups[`task/${scene.id}`];
-      scenes[scene.id] = { value: perScene[scene.id][model.id] ?? null, secondary: group?.a.A1 ?? null, n: group?.count ?? 0 };
-    }
-    return {
-      trackId: "T2",
-      id: model.id,
-      label: model.label,
-      type: "ACWM",
-      detail: model.checkpoint,
-      ranked: true,
-      pendingReason: null,
-      scenes,
-      ...aggregate(scenes),
-      cases: model.caseCount,
-    };
-  });
+// Manuscript Table 1: video prediction score (Pred., higher is better) and EE error (mm, lower is better).
+export function t2Rows(results: PaperResults = paperResults): BoardRow[] {
+  return results.tracks.T2.map((model) => ({
+    trackId: "T2", id: model.id, label: model.label, type: "ACWM", detail: "Fixed recorded actions",
+    ranked: true, pendingReason: null, scenes: {},
+    tags: pick(model.tags, (cell) => cell.pred), tagSecondary: pick(model.tags, (cell) => cell.ee),
+    overall: model.overall.pred, overallSecondary: model.overall.ee, cases: PAPER_SIM_CASES,
+  }));
 }
 
 // ---------------------------------------------------------------- T3 · sim policies
-const POLICY_SPLITS = ["id", "visual", "semantic", "behavior", "recovery"] as const;
-type PolicyBundle = typeof policyBaselines;
-// Scene score is the pooled task success rate over the five settings' frozen
-// episodes (25 per scene; the published cohort may freeze fewer, e.g. 4 recovery).
-export function t3Rows(bundle: PolicyBundle = policyBaselines): BoardRow[] {
-  return policyBaselineModelIds.map((model) => {
+// Manuscript Table 1: TSR and Score per tag. Scene strips pool the frozen episodes of each task.
+export function t3Rows(results: PaperResults = paperResults): BoardRow[] {
+  return results.tracks.T3.map((model) => {
     const scenes: Record<string, SceneScore> = {};
-    let cases = 0;
     for (const scene of BOARD_SCENES) {
-      let successes = 0;
-      let episodes = 0;
-      let progress = 0;
-      let progressN = 0;
-      let complete = true;
-      for (const split of POLICY_SPLITS) {
-        const task = bundle.models[model][split]?.[scene.id];
-        if (!task || task.episodes <= 0 || !task.values.TSR?.available) { complete = false; continue; }
-        successes += task.successes;
-        episodes += task.episodes;
-        const score = task.values.TASK_SCORE;
-        if (score?.available && finite(score.value)) { progress += score.value * score.n; progressN += score.n; }
-      }
-      cases += episodes;
-      scenes[scene.id] = {
-        value: complete && episodes > 0 ? (100 * successes) / episodes : null,
-        secondary: complete && progressN > 0 ? (100 * progress) / progressN : null,
-        n: episodes,
-      };
+      const cells = Object.values(model.tasks[scene.id] ?? {});
+      const n = cells.reduce((sum, cell) => sum + cell.n, 0);
+      const successes = cells.reduce((sum, cell) => sum + cell.successes, 0);
+      const subtask = cells.filter((cell) => finite(cell.subtask)).reduce((sum, cell) => sum + cell.subtask! * cell.n, 0);
+      scenes[scene.id] = { value: n ? (100 * successes) / n : null, secondary: n ? subtask / n : null, n };
     }
     return {
-      trackId: "T3",
-      id: model,
-      label: model,
-      type: "VLA",
-      detail: "Benchmark policy",
-      ranked: true,
-      pendingReason: null,
-      scenes,
-      ...aggregate(scenes),
-      cases,
+      trackId: "T3", id: model.id, label: model.label, type: "Policy", detail: "Fine-tuned on 2,400 demos",
+      ranked: true, pendingReason: null, scenes,
+      tags: pick(model.tags, (cell) => cell.tsr), tagSecondary: pick(model.tags, (cell) => cell.score),
+      overall: model.overall.tsr, overallSecondary: model.overall.score, cases: model.cases,
     };
   });
 }
 
 // ---------------------------------------------------------------- T4 · real robot
-function plannedRows(trackId: TrackId): BoardRow[] {
-  return trackMeta(trackId).models.map((model) => ({
-    trackId,
-    id: `${trackId}:${model.id}`,
-    label: model.id,
-    type: model.family,
-    detail: model.status,
-    ranked: false,
-    pendingReason: model.status,
-    scenes: {},
-    tags: nullTags(),
-    overall: null,
-    cases: 0,
+// Manuscript Table 1 (T4 block): SR and Subtask for 20 ordinary + 3 extra cases per task.
+const REAL_SCOPES = ["ordinary", "extra"] as const;
+export const REAL_COLUMNS = PAPER_REAL_TASKS.flatMap((task) => REAL_SCOPES.map((scope) => ({
+  id: `${task}:${scope}`,
+  task: paperResults.tracks.T4[0]?.tasks[task].label ?? task,
+  scope: scope === "ordinary" ? "Ordinary" : paperResults.tracks.T4[0]?.tasks[task].extraLabel ?? "Extra",
+})));
+export function t4Rows(results: PaperResults = paperResults): BoardRow[] {
+  return results.tracks.T4.map((model) => ({
+    trackId: "T4", id: `T4:${model.id}`, label: model.label, type: "Policy", detail: "Dual Piper arms",
+    ranked: true, pendingReason: null, scenes: {}, tags: nullTags(), tagSecondary: nullTags(),
+    overall: model.overall.sr, overallSecondary: model.overall.subtask,
+    real: PAPER_REAL_TASKS.flatMap((task) => REAL_SCOPES.map((scope) => {
+      const cell = model.tasks[task][scope];
+      return { id: `${task}:${scope}`, value: cell.sr, secondary: cell.subtask, successes: cell.successes, n: cell.n };
+    })),
+    cases: model.overall.n,
   }));
-}
-function nullTags() {
-  return Object.fromEntries(BOARD_TAGS.map((tag) => [tag.id, null])) as Record<ScenarioTag, null>;
 }
 
 export function buildMainBoard(): BoardTrack[] {
   return [
     {
       id: "T1", title: trackMeta("T1").title, subtitle: trackMeta("T1").subtitle,
-      metric: "Agent score", metricShort: "Score",
-      definition: "0.7 × Subtask + 0.3 × VQA per scene, averaged over the settings that evaluated it.",
-      secondaryLabel: "Subtask", version: t1UnibenchResults.resultVersion, rows: t1Rows(),
+      metric: "Task success rate", metricShort: "TSR %",
+      definition: "TSR (%) per capability tag; small: Score = 0.7 × Subtask + 0.3 × VQA.",
+      secondaryLabel: "Score", secondaryLowerIsBetter: false, version: PAPER_VERSION, rows: t1Rows(),
     },
     {
       id: "T2", title: trackMeta("T2").title, subtitle: trackMeta("T2").subtitle,
-      metric: "Composite score", metricShort: "Composite",
-      definition: "Nine frozen metrics, direction-normalised against the cohort geometric mean (= 50) and averaged; 25 cases per scene.",
-      secondaryLabel: "PSNR (dB)", version: acwm600.version, rows: t2Rows(),
+      metric: "Video prediction score", metricShort: "Pred.",
+      definition: "Pred. averages normalized video-quality, feature-consistency and action-following scores; small: EE error (mm, lower is better).",
+      secondaryLabel: "EE mm", secondaryLowerIsBetter: true, version: PAPER_VERSION, rows: t2Rows(),
     },
     {
       id: "T3", title: trackMeta("T3").title, subtitle: trackMeta("T3").subtitle,
-      metric: "Success rate", metricShort: "SR %",
-      definition: "Official successes ÷ frozen episodes, pooled over ID, three OOD settings and Recovery (25 episodes per scene).",
-      secondaryLabel: "Subtask %", version: policyBaselines.resultVersion, rows: t3Rows(),
+      metric: "Task success rate", metricShort: "TSR %",
+      definition: "TSR (%) per capability tag in Isaac Sim; small: Score = Subtask × (0.50 + 0.25 I + 0.25 K).",
+      secondaryLabel: "Score", secondaryLowerIsBetter: false, version: PAPER_VERSION, rows: t3Rows(),
     },
     {
       id: "T4", title: trackMeta("T4").title, subtitle: trackMeta("T4").subtitle,
       metric: "Success rate", metricShort: "SR %",
-      definition: "No formal hardware score is published yet.",
-      secondaryLabel: null, version: null, rows: plannedRows("T4"),
+      definition: "SR (%) per real-robot task: 20 ordinary + 3 extra cases each; small: Subtask (%). Overall averages all 69 cases.",
+      secondaryLabel: "Subtask", secondaryLowerIsBetter: false, realColumns: REAL_COLUMNS, version: PAPER_VERSION, rows: t4Rows(),
     },
   ];
 }
@@ -252,62 +193,55 @@ export type AxisRow = {
   oodMean: number | null;
   oodDrop: number | null;
 };
+/** T2 axis values are prediction errors, so smaller is better and a positive OOD − ID is a loss. */
+export const axisLowerIsBetter = (trackId: TrackId) => trackId === "T2";
 function withOod(row: Omit<AxisRow, "oodMean" | "oodDrop">): AxisRow {
-  const ood = strictMean([row.axes.V.value, row.axes.S.value, row.axes.B.value]);
+  const values = [row.axes.V.value, row.axes.S.value, row.axes.B.value];
+  const ood = values.every(finite) ? mean(values as number[]) : null;
   const id = row.axes.ID.value;
   return { ...row, oodMean: ood, oodDrop: ood !== null && finite(id) ? ood - id : null };
 }
 const emptyAxes = () => Object.fromEntries(AXES.map((axis) => [axis.id, { value: null, secondary: null, n: 0 }])) as AxisRow["axes"];
+const CASES_PER_SETTING = PAPER_SIM_CASES / PAPER_SETTINGS.length;
 
-export function axisRows(trackId: TrackId): AxisRow[] {
+export function axisRows(trackId: TrackId, results: PaperResults = paperResults): AxisRow[] {
   if (trackId === "T1") {
-    return t1UnibenchResults.models.map((model) => {
+    return results.tracks.T1.map((model) => {
       const axes = emptyAxes();
-      for (const split of T1_SPLITS) {
-        const metrics = model.splits[split as T1SplitId];
-        if (metrics) axes[split] = { value: metrics.score, secondary: metrics.subtask, n: metrics.cases };
-      }
-      const complete = model.overall !== null;
-      return withOod({ id: model.id, label: model.label, type: "VLM agent", ranked: complete,
-        note: complete ? null : `Only ${model.splitsPresent.join(", ")} evaluated`,
-        overall: model.overall?.overall ?? null, axes });
+      for (const setting of PAPER_SETTINGS) axes[setting] = { value: model.settings[setting].tsr, secondary: model.settings[setting].subtask, n: CASES_PER_SETTING };
+      return withOod({ id: model.id, label: model.label, type: "VLM agent", ranked: true, note: null, overall: model.summary.tsr, axes });
     });
   }
   if (trackId === "T2") {
-    const all = compositeScoresFor(acwm600.models, "ALL");
-    const byAxis = Object.fromEntries(AXES.map((axis) => [axis.id, compositeScoresFor(acwm600.models, `family/${axis.id}`)]));
-    return acwm600.models.map((model) => {
+    return results.tracks.T2.map((model) => {
       const axes = emptyAxes();
-      for (const axis of AXES) {
-        const group = model.groups[`family/${axis.id}`];
-        axes[axis.id] = { value: byAxis[axis.id][model.id] ?? null, secondary: group?.a.A1 ?? null, n: group?.count ?? 0 };
-      }
-      return withOod({ id: model.id, label: model.label, type: "ACWM", ranked: true, note: null, overall: all[model.id] ?? null, axes });
+      for (const setting of PAPER_SETTINGS) axes[setting] = { value: model.settings[setting].eePos, secondary: model.settings[setting].mmse, n: CASES_PER_SETTING };
+      return withOod({ id: model.id, label: model.label, type: "ACWM", ranked: true, note: null, overall: model.metrics.eePos, axes });
     });
   }
   if (trackId === "T3") {
-    return policyBaselineModelIds.map((model) => {
+    return results.tracks.T3.map((model) => {
       const axes = emptyAxes();
-      const splitFor: Record<AxisId, (typeof POLICY_SPLITS)[number]> = { ID: "id", V: "visual", S: "semantic", B: "behavior", REC: "recovery" };
-      let successes = 0;
-      let episodes = 0;
-      for (const axis of AXES) {
-        const overall = policyBaselines.overall[model][splitFor[axis.id]];
-        if (!overall) continue;
-        const tsr = overall.values.TSR;
-        const score = overall.values.TASK_SCORE;
-        axes[axis.id] = {
-          value: tsr?.available && finite(tsr.value) ? 100 * tsr.value : null,
-          secondary: score?.available && finite(score.value) ? 100 * score.value : null,
-          n: overall.episodes,
-        };
-        successes += overall.successes;
-        episodes += overall.episodes;
+      for (const setting of PAPER_SETTINGS) {
+        const n = Object.values(model.tasks).reduce((sum, task) => sum + (task[setting]?.n ?? 0), 0);
+        axes[setting] = { value: model.settings[setting].tsr, secondary: model.settings[setting].subtask, n };
       }
-      return withOod({ id: model, label: model, type: "VLA", ranked: true, note: null, overall: episodes ? (100 * successes) / episodes : null, axes });
+      return withOod({ id: model.id, label: model.label, type: "Policy", ranked: true, note: null, overall: model.summary.tsr, axes });
     });
   }
-  return [];
+  return results.tracks.T4.map((model) => {
+    const axes = emptyAxes();
+    for (const setting of ["ID", "V", "S", "B"] as const) {
+      const cells = PAPER_REAL_TASKS.map((task) => model.tasks[task].conditions[setting]);
+      const n = cells.reduce((sum, cell) => sum + cell.n, 0);
+      axes[setting] = { value: (100 * cells.reduce((sum, cell) => sum + cell.successes, 0)) / n, secondary: null, n };
+    }
+    // Real-robot recovery is the continuation scope of towel folding and puzzle insertion.
+    const continuation = (["Towel", "Puzzle"] as const).map((task) => model.tasks[task].extra);
+    const n = continuation.reduce((sum, cell) => sum + cell.n, 0);
+    axes.REC = { value: (100 * continuation.reduce((sum, cell) => sum + cell.successes, 0)) / n, secondary: null, n };
+    return withOod({ id: model.id, label: model.label, type: "Policy", ranked: true, note: null, overall: model.overall.sr, axes });
+  });
 }
 
 // ================================================================= Sub-table 2 · by metric
@@ -319,100 +253,65 @@ export type MetricRow = { id: string; label: string; type: string; ranked: boole
 export type MetricTable = { columns: MetricColumn[]; rows: MetricRow[]; caption: string };
 
 const T1_METRIC_COLUMNS: MetricColumn[] = [
-  { id: "score", label: "Agent score", short: "Overall", group: "Outcome", direction: "↑", unit: "", digits: 1 },
-  { id: "subtask", label: "Subtask progress", short: "Subtask", group: "Outcome", direction: "↑", unit: "", digits: 1 },
-  { id: "success", label: "Task success", short: "Success", group: "Outcome", direction: "↑", unit: "%", digits: 1 },
-  { id: "vqa", label: "VQA · (A + B + C1) / 3", short: "VQA", group: "Embodied VQA", direction: "↑", unit: "", digits: 1 },
-  { id: "a", label: "A · Perception", short: "A", group: "Embodied VQA", direction: "↑", unit: "", digits: 1 },
-  { id: "b", label: "B · Understanding", short: "B", group: "Embodied VQA", direction: "↑", unit: "", digits: 1 },
-  { id: "c1", label: "C1 · Full plan", short: "C1", group: "Planning", direction: "↑", unit: "", digits: 1 },
-  { id: "c2", label: "C2 · Milestones", short: "C2", group: "Planning", direction: "↑", unit: "", digits: 1 },
-  { id: "c3", label: "C3 · Next action", short: "C3", group: "Planning", direction: "↑", unit: "", digits: 1 },
+  { id: "tsr", label: "Task success rate", short: "TSR", group: "Execution", direction: "↑", unit: "%", digits: 2 },
+  { id: "subtask", label: "Subtask progress", short: "Subtask", group: "Execution", direction: "↑", unit: "%", digits: 2 },
+  { id: "vqa", label: "VQA · (perception + instruction + reasoning) / 3", short: "VQA", group: "Understanding", direction: "↑", unit: "", digits: 2 },
+  { id: "score", label: "Score · 0.7 × Subtask + 0.3 × VQA", short: "Score", group: "Composite", direction: "↑", unit: "", digits: 2 },
 ];
 const T2_METRIC_COLUMNS: MetricColumn[] = [
-  { id: "composite", label: "Nine-metric composite", short: "Overall", group: "Outcome", direction: "↑", unit: "", digits: 1 },
-  { id: "A1", label: "PSNR", short: "PSNR", group: "GT-action replay · video quality", direction: "↑", unit: "dB", digits: 2 },
-  { id: "A2", label: "SSIM", short: "SSIM", group: "GT-action replay · video quality", direction: "↑", unit: "", digits: 3 },
-  { id: "JEPA", label: "JEPA similarity (set-level)", short: "JEPA", group: "GT-action replay · video quality", direction: "↑", unit: "", digits: 3 },
-  { id: "JEDi", label: "JEDi distance (set-level)", short: "JEDi", group: "GT-action replay · video quality", direction: "↓", unit: "", digits: 3 },
-  { id: "A4", label: "Motion smoothness", short: "Smooth", group: "GT-action replay · video quality", direction: "↑", unit: "", digits: 3 },
-  { id: "A5", label: "Motion-weighted MSE", short: "M-MSE", group: "GT-action replay · video quality", direction: "↓", unit: "", digits: 4 },
-  { id: "A6", label: "Subject consistency", short: "Subject", group: "GT-action replay · video quality", direction: "↑", unit: "", digits: 3 },
-  { id: "pos", label: "End-effector position error · AnyPos v5", short: "Pos err", group: "Action following · AnyPos v5", direction: "↓", unit: "mm", digits: 1 },
-  { id: "rot", label: "End-effector rotation error · AnyPos v5", short: "Rot err", group: "Action following · AnyPos v5", direction: "↓", unit: "°", digits: 2 },
-  { id: "cl_psnr", label: "Closed-loop PSNR (π0.5 actions)", short: "PSNR", group: "Closed loop · π0.5 actions", direction: "↑", unit: "dB", digits: 2, pending: "Planned" },
-  { id: "cl_ssim", label: "Closed-loop SSIM (π0.5 actions)", short: "SSIM", group: "Closed loop · π0.5 actions", direction: "↑", unit: "", digits: 3, pending: "Planned" },
-  { id: "cl_ndtw", label: "Closed-loop action following (NDTW)", short: "NDTW", group: "Closed loop · π0.5 actions", direction: "↑", unit: "", digits: 3, pending: "Planned" },
-  { id: "sim_corr", label: "Simulator ↔ world-model success correlation", short: "Corr.", group: "Policy evaluator", direction: "↑", unit: "", digits: 2, pending: "Planned" },
+  { id: "pred", label: "Video prediction score", short: "Pred.", group: "Composite", direction: "↑", unit: "", digits: 1 },
+  { id: "psnr", label: "PSNR", short: "PSNR", group: "Video quality", direction: "↑", unit: "dB", digits: 2 },
+  { id: "ssim", label: "SSIM", short: "SSIM", group: "Video quality", direction: "↑", unit: "", digits: 3 },
+  { id: "smoothness", label: "Motion smoothness", short: "Smooth", group: "Video quality", direction: "↑", unit: "", digits: 3 },
+  { id: "mmse", label: "Motion-weighted MSE", short: "M-MSE", group: "Video quality", direction: "↓", unit: "", digits: 4 },
+  { id: "jepa", label: "JEPA similarity (set-level)", short: "JEPA", group: "Feature consistency", direction: "↑", unit: "", digits: 3 },
+  { id: "jedi", label: "JEDi distance (set-level)", short: "JEDi", group: "Feature consistency", direction: "↓", unit: "", digits: 3 },
+  { id: "subject", label: "Subject consistency", short: "Subject", group: "Feature consistency", direction: "↑", unit: "", digits: 3 },
+  { id: "eePos", label: "End-effector position error · AnyPos", short: "EE pos", group: "Action following", direction: "↓", unit: "mm", digits: 2 },
+  { id: "eeRot", label: "End-effector rotation error · AnyPos", short: "EE rot", group: "Action following", direction: "↓", unit: "°", digits: 2 },
 ];
-const T3_METRIC_IDS: [string, string, MetricColumn["direction"], string][] = [
-  ["TSR", "Overall", "↑", "Outcome"],
-  ["TASK_SCORE", "Subtask", "↑", "Outcome"],
-  ["FIRST_TARGET_SELECTION", "1st target", "↑", "Action correctness"],
-  ["GRASP_STABILITY", "Grasp", "↑", "Action correctness"],
-  ["DROP_RATE", "Drop", "↓", "Action correctness"],
-  ["LOCAL_SUCCESS_AT_END", "Local SR", "↑", "Closed-loop effectiveness"],
-  ["STAGE_TRANSITION", "Stage", "↑", "Stateful execution"],
-  ["GOAL_RETENTION", "Retention", "↑", "Stateful execution"],
-  ["PATH_EFFICIENCY", "Path eff.", "↑", "Motion & efficiency"],
-  ["TIME_EFFICIENCY", "Time eff.", "↑", "Motion & efficiency"],
-  ["SPARC", "SPARC", "→0", "Motion & efficiency"],
+const T3_METRIC_COLUMNS: MetricColumn[] = [
+  { id: "tsr", label: "Task success rate", short: "TSR", group: "Execution", direction: "↑", unit: "%", digits: 2 },
+  { id: "subtask", label: "Subtask progress", short: "Subtask", group: "Execution", direction: "↑", unit: "%", digits: 2 },
+  { id: "score", label: "Score · Subtask × (0.50 + 0.25 I + 0.25 K)", short: "Score", group: "Composite", direction: "↑", unit: "", digits: 1 },
 ];
-const T3_LABELS: Record<string, string> = {
-  TSR: "Task success rate", TASK_SCORE: "Subtask completion", FIRST_TARGET_SELECTION: "First target selection",
-  GRASP_STABILITY: "Grasp stability", DROP_RATE: "Transport drop rate", LOCAL_SUCCESS_AT_END: "Local success at end",
-  STAGE_TRANSITION: "Stage transition accuracy", GOAL_RETENTION: "Completed-goal retention",
-  PATH_EFFICIENCY: "Path efficiency", TIME_EFFICIENCY: "Time efficiency", SPARC: "SPARC smoothness",
-};
+const T4_METRIC_COLUMNS: MetricColumn[] = [
+  ...REAL_COLUMNS.flatMap((column) => [
+    { id: `${column.id}:sr`, label: `${column.task} · ${column.scope} SR`, short: `${column.scope} SR`, group: column.task, direction: "↑" as const, unit: "%", digits: 1 },
+    { id: `${column.id}:subtask`, label: `${column.task} · ${column.scope} Subtask`, short: "Subtask", group: column.task, direction: "↑" as const, unit: "%", digits: 2 },
+  ]),
+  { id: "overall:sr", label: "Overall SR · all 69 cases", short: "SR", group: "Overall", direction: "↑", unit: "%", digits: 1 },
+  { id: "overall:subtask", label: "Overall Subtask · all 69 cases", short: "Subtask", group: "Overall", direction: "↑", unit: "%", digits: 2 },
+];
 
-export function metricTable(trackId: TrackId): MetricTable {
+export function metricTable(trackId: TrackId, results: PaperResults = paperResults): MetricTable {
   if (trackId === "T1") {
-    const rows = t1UnibenchResults.models.map((model) => {
-      const present = T1_SPLITS.filter((split) => model.splits[split] !== null);
-      const values: Record<string, number | null> = {};
-      for (const column of T1_METRIC_COLUMNS) {
-        if (column.id === "score") { values.score = model.overall?.overall ?? null; continue; }
-        const splits = ["subtask", "success"].includes(column.id) ? present : present.filter((split) => split !== "REC");
-        values[column.id] = mean(splits.map((split) => model.splits[split]?.[column.id as "subtask"]).filter(finite));
-      }
-      const complete = model.overall !== null;
-      return { id: model.id, label: model.label, type: "VLM agent", ranked: complete,
-        note: complete ? null : `ID only · ${model.splits.ID?.cases ?? 0} cases`, values };
-    });
-    return { columns: T1_METRIC_COLUMNS, rows, caption: "Each value is the mean over the evaluated settings; VQA-family metrics exclude Recovery, which has no VQA." };
+    const rows = results.tracks.T1.map((model) => ({ id: model.id, label: model.label, type: "VLM agent", ranked: true, note: null,
+      values: { tsr: model.summary.tsr, subtask: model.summary.subtask, vqa: model.summary.vqa, score: model.summary.score } }));
+    return { columns: T1_METRIC_COLUMNS, rows, caption: "All 600 simulation cases per agent (manuscript Supp. track metrics). VQA comes from probes in separate contexts; answers never enter the control loop." };
   }
   if (trackId === "T2") {
-    const composite = compositeScoresFor(acwm600.models, "ALL");
-    const rows = acwm600.models.map((model) => {
-      const all = model.groups.ALL;
-      const values: Record<string, number | null> = { composite: composite[model.id] ?? null };
-      for (const key of ["A1", "A2", "JEPA", "JEDi", "A4", "A5", "A6"]) values[key] = all.a[key] ?? null;
-      values.pos = all.b.v5.position.mae;
-      values.rot = all.b.v5.rotation.mae;
-      return { id: model.id, label: model.label, type: "ACWM", ranked: true, note: null, values };
-    });
-    return { columns: T2_METRIC_COLUMNS, rows, caption: `All 600 cases (24 scenes × 5 settings × 5). Fixed-action self-recursive replay from t0 on a ${acwm600.gridSeconds}s grid; JEPA/JEDi are set-level.` };
+    const rows = results.tracks.T2.map((model) => ({ id: model.id, label: model.label, type: "ACWM", ranked: true, note: null,
+      values: { pred: model.overall.pred, ...model.metrics } as Record<string, number | null> }));
+    return { columns: T2_METRIC_COLUMNS, rows, caption: "All 600 cases with fixed recorded actions. JEPA/JEDi are set-level; EE errors come from a frozen AnyPos reader validated against simulator poses." };
   }
   if (trackId === "T3") {
-    const columns: MetricColumn[] = T3_METRIC_IDS.map(([id, short, direction, group]) => ({
-      id, short, direction, group, label: T3_LABELS[id], unit: id === "SPARC" ? "" : "%", digits: id === "SPARC" ? 2 : 1,
-    }));
-    const rows = policyBaselineModelIds.map((model: PolicyBaselineModel) => {
-      const values: Record<string, number | null> = {};
-      for (const [id] of T3_METRIC_IDS) {
-        let total = 0;
-        let n = 0;
-        for (const split of POLICY_SPLITS) {
-          const metric = policyBaselines.overall[model][split]?.values[id];
-          if (!metric?.available || !finite(metric.value) || metric.n <= 0) continue;
-          total += metric.value * metric.n;
-          n += metric.n;
-        }
-        values[id] = n > 0 ? (id === "SPARC" ? total / n : (100 * total) / n) : null;
-      }
-      return { id: model, label: model, type: "VLA", ranked: true, note: null, values };
-    });
-    return { columns, rows, caption: "Pooled over all five settings, weighted by each metric's evaluable episodes." };
+    const rows = results.tracks.T3.map((model) => ({ id: model.id, label: model.label, type: "Policy", ranked: true, note: null,
+      values: { tsr: model.summary.tsr, subtask: model.summary.subtask, score: model.overall.score } }));
+    return { columns: T3_METRIC_COLUMNS, rows, caption: "All 600 simulation cases per policy in Isaac Sim. I and K ∈ [0, 1] are interaction and motion quality." };
   }
-  return { columns: [], rows: [], caption: "" };
+  const rows = results.tracks.T4.map((model) => {
+    const values: Record<string, number | null> = { "overall:sr": model.overall.sr, "overall:subtask": model.overall.subtask };
+    for (const task of PAPER_REAL_TASKS) for (const scope of REAL_SCOPES) {
+      values[`${task}:${scope}:sr`] = model.tasks[task][scope].sr;
+      values[`${task}:${scope}:subtask`] = model.tasks[task][scope].subtask;
+    }
+    return { id: model.id, label: model.label, type: "Policy", ranked: true, note: null, values };
+  });
+  return { columns: T4_METRIC_COLUMNS, rows, caption: "Dual Piper arms; 20 ordinary and three missing-color or continuation cases per task, verified on site." };
+}
+
+/** Per-setting success for a T3 policy and task, used by the scene strip tooltip. */
+export function t3SettingCell(modelId: string, taskId: string, setting: PaperSetting) {
+  return paperResults.tracks.T3.find((model) => model.id === modelId)?.tasks[taskId]?.[setting] ?? null;
 }

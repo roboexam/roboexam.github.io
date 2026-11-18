@@ -300,6 +300,7 @@ export function T1UnibenchView({ results = t1UnibenchResults }: { results?: T1Un
   return <div className="t1Benchmark t1Unibench">
     <header className="t1bHeading"><div><p className="eyebrow">VLM agents · Shared harness · 24 tasks</p><h2>Model performance by setting</h2></div>
       <p className="t1uVersion">Result version {results.resultVersion}</p></header>
+    <p className="t1uProvenance">Rollouts and per-task scores below come from the earlier evaluation release ({results.resultVersion}, up to 391 cases per agent). The leaderboard tables above report the manuscript&apos;s completed 600-case run, so their numbers differ slightly. MiniMax-M3.1 Flash and GPT-6 Luna have no rollouts in this release.</p>
     <Scoreboard results={results} selectedModelId={selection.modelId}
       onModel={(id) => setSelection(firstUnibenchSelection(results, id, selection.split, selection.taskId))}/>
     <Breakdown results={results}/>

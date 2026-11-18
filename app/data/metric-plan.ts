@@ -156,8 +156,8 @@ export const tracks: TrackDefinition[] = [
   {
     id: "T4", title: "Real-World Deployment", subtitle: "Policy models on hardware", question: "Complete standardized hardware tasks while separating task outcome from manual safety review.", source: "real",
     scoreGuide: {
-      en: "No formal hardware score is published yet. Future headline reporting uses task success; progress, intervention, and safety remain separate evidence.",
-      zh: "目前尚未发布正式真机分数。后续以任务成功率为主要结果，进度、人工干预和安全证据分别报告。",
+      en: "Success rate (SR) uses on-site verified terminal labels; Subtask averages each task's progress checklist. Each task has 20 ordinary cases (ID and three OOD conditions, 5 each) plus three missing-color or continuation cases; Overall averages all 69 cases per policy.",
+      zh: "成功率（SR）采用现场核验的终止标签；子任务分数为各任务进度清单的平均值。每个任务包含 20 个常规案例（ID 与三种 OOD 各 5 个）以及 3 个缺色或续做案例；总体为每个策略全部 69 个案例的平均。",
     },
     // no formal hardware trial yet: the static site lists no T4 method
     models: STATIC_SITE ? [] : [

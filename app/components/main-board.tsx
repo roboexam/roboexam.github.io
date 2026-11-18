@@ -3,6 +3,7 @@
 import { ArrowDownRight, ChevronDown, Info } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
 import { BOARD_SCENES, BOARD_TAGS, buildMainBoard, columnRanks, type BoardRow, type BoardTrack } from "../data/main-board";
+import { paperResults } from "../data/paper-results";
 import type { TrackId } from "../data/metric-plan";
 import type { ScenarioTag } from "../data/scenario-plan";
 import { RevealWords } from "./fx";
@@ -10,6 +11,7 @@ import { CapabilityIcon, capabilityIconSrc, TrackIcon } from "./podium";
 
 const RADAR_COLORS = ["#4a56c0", "#e07d73", "#a94b9c"] as const;
 const MAX_COMPARE = 3;
+const hasTags = (track: BoardTrack) => track.rows.some((row) => BOARD_TAGS.some((tag) => row.tags[tag.id] !== null));
 
 const fmt = (value: number | null | undefined, digits = 1) =>
   typeof value === "number" && Number.isFinite(value) ? value.toFixed(digits) : "—";
@@ -25,7 +27,7 @@ export function MainBoard({ onBreakdown }: { onBreakdown: (track: TrackId) => vo
   const board = useMemo(() => buildMainBoard(), []);
   const [radarTrack, setRadarTrack] = useState<TrackId>("T1");
   const [compare, setCompare] = useState<Record<string, string[]>>(() => Object.fromEntries(board.map((track) =>
-    [track.id, rankedRows(track).filter((row) => row.ranked && row.overall !== null).slice(0, 2).map((row) => row.id)])));
+    [track.id, hasTags(track) ? rankedRows(track).filter((row) => row.ranked && row.overall !== null).slice(0, 2).map((row) => row.id) : []])));
   const [expanded, setExpanded] = useState<string | null>(null);
 
   function toggleCompare(track: TrackId, id: string) {
@@ -44,7 +46,7 @@ export function MainBoard({ onBreakdown }: { onBreakdown: (track: TrackId) => vo
       <div>
         <p className="eyebrow">Main table · by capability tag</p>
         <h2 id="main-board-title"><RevealWords text="One exam, four tracks"/></h2>
-        <p>Each column averages a track&apos;s per-scene score over the simulation scenes that carry that capability tag (24 shared scenes, 25 cases each across ID, three OOD settings and failure recovery). Ranks and highlights compare models <strong>within a track only</strong>.</p>
+        <p>Manuscript Table 1. Each tag column aggregates the 600 shared simulation cases (24 tasks × 5 conditions × 5) whose task carries that requirement; T4 reports its three real-robot tasks instead. Large numbers are the headline metric, small numbers the second metric of each cell. Ranks and highlights compare models <strong>within a track only</strong>.</p>
       </div>
       <dl className="tagLegend" aria-label="Capability tags">
         {BOARD_TAGS.map((tag) => <div key={tag.id} title={tag.rule} data-spotlight><dt><CapabilityIcon tag={tag.id} size={30}/></dt><dd>{tag.label}<small>{tag.scenes.length} scenes</small></dd></div>)}
@@ -58,7 +60,7 @@ export function MainBoard({ onBreakdown }: { onBreakdown: (track: TrackId) => vo
           <thead>
             <tr>
               <th scope="col" className="boardModelHead">Model</th>
-              <th scope="col" className="boardOverallHead" title="Mean over all 24 scenes (scene-macro)">Overall<small>24 scenes</small></th>
+              <th scope="col" className="boardOverallHead" title="All 600 simulation cases (T4: all 69 real-robot cases)">Overall<small>all cases</small></th>
               {BOARD_TAGS.map((tag) => <th scope="col" key={tag.id} title={`${tag.label}: ${tag.rule}`}><span className="tagCode"><CapabilityIcon tag={tag.id} size={28}/></span><small>{tag.label}</small></th>)}
               <th scope="col" className="boardCasesHead">Cases</th>
             </tr>
@@ -66,6 +68,7 @@ export function MainBoard({ onBreakdown }: { onBreakdown: (track: TrackId) => vo
           {board.map((track) => <TrackBand key={track.id} track={track} compare={compare[track.id] ?? []}
             expanded={expanded} onExpand={(id) => setExpanded(expanded === id ? null : id)}
             onCompare={(id) => toggleCompare(track.id, id)} onBreakdown={() => onBreakdown(track.id)}/>)}
+          <HybridBand colSpan={BOARD_TAGS.length + 3}/>
         </table>
       </div>
 
@@ -73,7 +76,7 @@ export function MainBoard({ onBreakdown }: { onBreakdown: (track: TrackId) => vo
         <div className="radarHead">
           <strong>Capability profile</strong>
           <div className="radarTracks" role="group" aria-label="Radar track">
-            {board.filter((track) => track.rows.some((row) => row.ranked)).map((track) =>
+            {board.filter((track) => hasTags(track) && track.rows.some((row) => row.ranked)).map((track) =>
               <button type="button" key={track.id} aria-pressed={radarTrack === track.id} className={`track-${track.id}`}
                 onClick={() => setRadarTrack(track.id)}>{track.id}</button>)}
           </div>
@@ -93,6 +96,7 @@ function TrackBand({ track, compare, expanded, onExpand, onCompare, onBreakdown 
   const ranked = rows.some((row) => row.ranked);
   const overallRanks = columnRanks(rows, (row) => row.overall);
   const tagRanks = Object.fromEntries(BOARD_TAGS.map((tag) => [tag.id, columnRanks(rows, (row) => row.tags[tag.id])])) as Record<ScenarioTag, Map<string, number>>;
+  const realRanks = (track.realColumns ?? []).map((_, index) => columnRanks(rows, (row) => row.real?.[index]?.value ?? null));
   const colSpan = BOARD_TAGS.length + 3;
   return <tbody className={`boardBand track-${track.id}`}>
     <tr className="bandRow">
@@ -105,11 +109,19 @@ function TrackBand({ track, compare, expanded, onExpand, onCompare, onBreakdown 
         </div>
       </th>
     </tr>
+    {track.realColumns && ranked && <tr className="realHeadRow">
+      <th scope="row"><span>Real-robot task</span></th>
+      <td className="realOverallHead">69 cases</td>
+      {track.realColumns.map((column) => <th scope="col" key={column.id} title={`${column.task} · ${column.scope}`}><b>{column.task}</b><small>{column.scope} · {column.scope === "Ordinary" ? 20 : 3}</small></th>)}
+      <td/>
+    </tr>}
     {ranked ? <>
       {rows.map((row) => {
         const rank = overallRanks.get(row.id);
         const open = expanded === row.id;
         const inRadar = compare.includes(row.id);
+        const hasScenes = Object.keys(row.scenes).length > 0;
+        const radarable = row.ranked && hasTags(track);
         return <Fragment key={row.id}>
           <tr className={`boardRow ${row.ranked ? "" : "unranked"} ${open ? "open" : ""}`}>
             <th scope="row">
@@ -119,23 +131,24 @@ function TrackBand({ track, compare, expanded, onExpand, onCompare, onBreakdown 
                   <strong>{row.label}</strong>
                   <span><i className="typePill">{row.type}</i>{row.pendingReason ?? row.detail}</span>
                 </div>
-                <label className={`compareToggle ${inRadar ? "on" : ""}`} title={row.ranked ? "Show on radar" : "Not enough settings for the radar"}>
-                  <input type="checkbox" checked={inRadar} disabled={!row.ranked} onChange={() => onCompare(row.id)} aria-label={`Compare ${row.label} on the radar`}/>
+                <label className={`compareToggle ${inRadar ? "on" : ""}`} title={radarable ? "Show on radar" : "Real-robot tasks are not tag-scored"}>
+                  <input type="checkbox" checked={inRadar} disabled={!radarable} onChange={() => onCompare(row.id)} aria-label={`Compare ${row.label} on the radar`}/>
                   <span aria-hidden="true"/>
                 </label>
-                <button type="button" className="expandRow" aria-expanded={open} aria-label={`Per-scene scores for ${row.label}`} onClick={() => onExpand(row.id)} disabled={!row.ranked}>
+                <button type="button" className="expandRow" aria-expanded={open} aria-label={`Per-task scores for ${row.label}`} title={hasScenes ? "Per-task scores" : "Per-task values are not published for this track"} onClick={() => onExpand(row.id)} disabled={!row.ranked || !hasScenes}>
                   <ChevronDown size={17}/>
                 </button>
               </div>
             </th>
-            <ScoreCell value={row.overall} rank={rank} overall/>
-            {BOARD_TAGS.map((tag) => <ScoreCell key={tag.id} value={row.tags[tag.id]} rank={tagRanks[tag.id].get(row.id)}/>)}
+            <ScoreCell value={row.overall} secondary={row.overallSecondary} rank={rank} overall/>
+            {row.real ? row.real.map((cell, index) => <ScoreCell key={cell.id} value={cell.value} secondary={cell.secondary} rank={realRanks[index].get(row.id)}
+              title={`${cell.successes}/${cell.n} successes · Subtask ${fmt(cell.secondary, 2)}`}/>)
+              : BOARD_TAGS.map((tag) => <ScoreCell key={tag.id} value={row.tags[tag.id]} secondary={row.tagSecondary[tag.id]} rank={tagRanks[tag.id].get(row.id)}/>)}
             <td className="casesCell">{row.cases ? row.cases.toLocaleString() : "—"}</td>
           </tr>
           {open && <tr className="sceneRow"><td colSpan={colSpan}><SceneStrip track={track} row={row}/></td></tr>}
         </Fragment>;
       })}
-      <OursRow colSpan={colSpan}/>
     </> : <tr className="plannedRow"><td colSpan={colSpan}>
       <div className="plannedInner">
         <Info size={16}/><span>No formal hardware score yet.{track.rows.length > 0 && " Planned baselines:"}</span>
@@ -145,27 +158,42 @@ function TrackBand({ track, compare, expanded, onExpand, onCompare, onBreakdown 
   </tbody>;
 }
 
-function ScoreCell({ value, rank, overall = false }: { value: number | null; rank?: number; overall?: boolean }) {
+function ScoreCell({ value, secondary = null, rank, overall = false, title }: { value: number | null; secondary?: number | null; rank?: number; overall?: boolean; title?: string }) {
   // rounded: the browser normalises long percentages, which would not match the server HTML
   const width = value === null ? 0 : Math.round(Math.max(0, Math.min(100, value)) * 100) / 100;
-  return <td className={`scoreCell ${overall ? "overallCell" : ""} ${rank === 1 ? "best" : rank === 2 ? "second" : ""}`}>
+  // a shared zero is not a placing: only non-zero values earn the best/second highlight
+  const placed = value !== null && value > 0;
+  return <td className={`scoreCell ${overall ? "overallCell" : ""} ${placed && rank === 1 ? "best" : placed && rank === 2 ? "second" : ""}`} title={title}>
     <span className="scoreValue">{fmt(value)}</span>
+    {secondary !== null && <small className="scoreSecondary">{fmt(secondary)}</small>}
     <span className="scoreBar" aria-hidden="true"><i style={{ width: `${width}%` }}/></span>
   </td>;
 }
 
-function OursRow({ colSpan }: { colSpan: number }) {
-  return <tr className="oursRow"><th scope="row"><div className="boardModel">
-    <span className="rankBadge rank-ours" aria-hidden="true">★</span>
-    <div><strong>Ours · unified system</strong><span><i className="typePill">RoboExam</i>Harness + VLM + ACWM + policy · in development</span></div>
-  </div></th><td colSpan={colSpan - 1} className="oursPending">Not yet evaluated — results appear here once the shared protocol run is admitted.</td></tr>;
+/** The hybrid agent runs on the same 600 cases but is reported apart from the track rankings (manuscript Sec. 5.4). */
+function HybridBand({ colSpan }: { colSpan: number }) {
+  return <tbody className="boardBand track-hybrid">
+    <tr className="bandRow"><th colSpan={colSpan} scope="colgroup"><div className="bandInner">
+      <span className="bandBadge">★</span>
+      <div className="bandTitle"><strong>Hybrid agent</strong><span>PyRUA-Lean + DeepSeek-V4.1 Flash, with an optional LingBot-VA forecasting tool</span></div>
+      <div className="bandMetric"><b>Task success rate</b><span>Same 600 cases, success checkers and budgets; reported separately from track rankings because its interface differs. Small: Subtask.</span></div>
+    </div></th></tr>
+    {paperResults.hybrid.map((row) => <tr className="oursRow" key={row.id}>
+      <th scope="row"><div className="boardModel">
+        <span className="rankBadge rank-ours" aria-hidden="true">★</span>
+        <div><strong>{row.label}</strong><span><i className="typePill">Hybrid</i>{row.id === "forecast" ? "Up to 16 ACWM forecasts per episode" : "Direct execution, no forecasts"}</span></div>
+      </div></th>
+      <ScoreCell value={row.tsr} secondary={row.subtask} overall/>
+      <td colSpan={colSpan - 2} className="oursPending">ID {row.settings.ID.toFixed(1)} · V-OOD {row.settings.V.toFixed(1)} · S-OOD {row.settings.S.toFixed(1)} · B-OOD {row.settings.B.toFixed(1)} · Recovery {row.settings.REC.toFixed(1)} (TSR %)</td>
+    </tr>)}
+  </tbody>;
 }
 
 function SceneStrip({ track, row }: { track: BoardTrack; row: BoardRow }) {
   const values = BOARD_SCENES.map((scene) => row.scenes[scene.id]?.value).filter((value): value is number => typeof value === "number");
   const max = Math.max(1, ...values);
   return <div className="sceneStrip">
-    <p><strong>{row.label}</strong> · per-scene {track.metric.toLowerCase()}{track.secondaryLabel ? ` (small: ${track.secondaryLabel})` : ""}</p>
+    <p><strong>{row.label}</strong> · per-task {track.metric.toLowerCase()} pooled over the five conditions (small: Subtask)</p>
     <ol>{BOARD_SCENES.map((scene) => {
       const score = row.scenes[scene.id];
       const intensity = score?.value == null ? 0 : score.value / max;

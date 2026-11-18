@@ -1,4 +1,5 @@
 import publishedBundle from "./generated/t1-unibench-results.json" with { type: "json" };
+import { paperT1ModelIds } from "./paper-results.ts";
 
 /** Track 1 UniBench-24 board: models x {ID, V/S/B OOD, failure recovery}. Scores are 0-100; null = not available. */
 export type T1SplitId = "ID" | "V" | "S" | "B" | "REC";
@@ -83,7 +84,16 @@ export type T1UnibenchResults = {
   provenance: { codeCommit: string; graderRevision: string; selection: string; boardSha256: string; episodesSha256: string };
 };
 
-export const t1UnibenchResults = publishedBundle as T1UnibenchResults;
+const releasedBundle = publishedBundle as T1UnibenchResults;
+/** Bundle model ids drop the effort suffix and dots: "gpt-6.1-sol-xhigh" -> "gpt-6-1-sol". */
+const paperRosterKey = (id: string) => id.replace(/-(xhigh|high)$/, "").replaceAll(".", "-");
+const paperRoster = new Set([...paperT1ModelIds].map(paperRosterKey));
+/** Only agents reported in the manuscript are published; ID-only extras stay out of the site. */
+export const t1UnibenchResults: T1UnibenchResults = {
+  ...releasedBundle,
+  models: releasedBundle.models.filter((model) => paperRoster.has(model.id)),
+  episodes: releasedBundle.episodes.filter((episode) => paperRoster.has(episode.modelId)),
+};
 
 export const T1_SPLITS: T1SplitId[] = ["ID", "V", "S", "B", "REC"];
 

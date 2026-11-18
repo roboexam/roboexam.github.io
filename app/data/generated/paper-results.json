@@ -1,0 +1,6534 @@
+{
+ "schemaVersion": "roboexam.paper-results.v1",
+ "paper": {
+  "title": "RoboExam: A Shared-Task Benchmark for Robotic Components and Systems",
+  "manuscript": "CVPR 2027 submission (main-e22e87b)",
+  "sourceCommit": "fce3c03"
+ },
+ "tags": {
+  "G": {
+   "tasks": 12
+  },
+  "R": {
+   "tasks": 13
+  },
+  "F": {
+   "tasks": 10
+  },
+  "P": {
+   "tasks": 11
+  },
+  "T": {
+   "tasks": 13
+  },
+  "M": {
+   "tasks": 14
+  }
+ },
+ "tasks": [
+  {
+   "id": "imitate_sorting_sequence",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "T",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Reproduce a demonstrated object order"
+  },
+  {
+   "id": "classify_objects_by_language",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "R",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Bind object categories to bins"
+  },
+  {
+   "id": "pour_liquid_into_cup",
+   "origin": "RoboDojo",
+   "tags": [
+    "R",
+    "F",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Align, pour, and return the container upright"
+  },
+  {
+   "id": "arrange_largest_number",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "R",
+    "P",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Place digits to form the largest number"
+  },
+  {
+   "id": "solve_equation",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "R",
+    "P"
+   ],
+   "conditionalTags": [
+    "M"
+   ],
+   "requirement": "Select and place the missing answer"
+  },
+  {
+   "id": "pack_mixed_objects_into_box_v1",
+   "origin": "RoboDojo",
+   "tags": [
+    "R",
+    "T",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Pack role-bound objects in a specified order"
+  },
+  {
+   "id": "hang_mugs",
+   "origin": "RoboDojo",
+   "tags": [
+    "F",
+    "P",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Align handles and hang all mugs"
+  },
+  {
+   "id": "cover_blocks",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "R",
+    "T",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Cover and uncover objects in the required order"
+  },
+  {
+   "id": "press_by_number",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "F",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Count presses and confirm each stage"
+  },
+  {
+   "id": "play_stacking_toy",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "F",
+    "P",
+    "T",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Match and insert shapes in the required order"
+  },
+  {
+   "id": "store_tools_in_toolbox",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "R",
+    "F",
+    "P",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Fit all tools into their matching slots"
+  },
+  {
+   "id": "fold_clothes",
+   "origin": "RoboDojo",
+   "tags": [
+    "R",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Execute dependent folds on a deformable object"
+  },
+  {
+   "id": "stack_bowls",
+   "origin": "RoboDojo",
+   "tags": [
+    "R",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Complete a stable multi-bowl stack"
+  },
+  {
+   "id": "match_and_pick_from_conveyor",
+   "origin": "RoboDojo",
+   "tags": [
+    "G",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Identify and intercept a matching moving object"
+  },
+  {
+   "id": "push_T",
+   "origin": "RoboDojo",
+   "tags": [
+    "R",
+    "P"
+   ],
+   "conditionalTags": [],
+   "requirement": "Align a pushed object with its target pose"
+  },
+  {
+   "id": "insert_key",
+   "origin": "RoboDojo",
+   "tags": [
+    "F",
+    "P",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Grasp, align, insert, and turn a key"
+  },
+  {
+   "id": "build_tower",
+   "origin": "RoboDojo",
+   "tags": [
+    "R",
+    "P",
+    "T",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Place multiple parts with support dependencies"
+  },
+  {
+   "id": "find_category_outlier",
+   "origin": "new",
+   "tags": [
+    "G"
+   ],
+   "conditionalTags": [],
+   "requirement": "Infer the target from a relation among objects"
+  },
+  {
+   "id": "set_button_colors",
+   "origin": "new",
+   "tags": [
+    "G",
+    "F"
+   ],
+   "conditionalTags": [
+    "M"
+   ],
+   "requirement": "Reach target colors from visible current states"
+  },
+  {
+   "id": "place_between_references",
+   "origin": "new",
+   "tags": [
+    "R"
+   ],
+   "conditionalTags": [],
+   "requirement": "Place an object at a reference-defined midpoint"
+  },
+  {
+   "id": "mirror_pair_layout",
+   "origin": "new",
+   "tags": [
+    "G",
+    "R",
+    "P",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Reflect object positions and orientation across an axis"
+  },
+  {
+   "id": "clear_keyboard_then_close_laptop",
+   "origin": "new",
+   "tags": [
+    "F",
+    "T",
+    "M"
+   ],
+   "conditionalTags": [],
+   "requirement": "Clear and stabilize an obstacle before closing"
+  },
+  {
+   "id": "hold_water_mug",
+   "origin": "new",
+   "tags": [
+    "F",
+    "P",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Maintain a lifted pose while retaining free fluid"
+  },
+  {
+   "id": "hold_button_until_cue",
+   "origin": "new",
+   "tags": [
+    "F",
+    "P",
+    "T"
+   ],
+   "conditionalTags": [],
+   "requirement": "Maintain contact, then release after a visual cue"
+  }
+ ],
+ "tracks": {
+  "T1": [
+   {
+    "id": "gpt-6.1-sol-xhigh",
+    "label": "GPT-6.1 Sol",
+    "tags": {
+     "G": {
+      "tsr": 34.7,
+      "score": 47.5
+     },
+     "R": {
+      "tsr": 21.5,
+      "score": 42.9
+     },
+     "F": {
+      "tsr": 18.4,
+      "score": 43.3
+     },
+     "P": {
+      "tsr": 13.1,
+      "score": 35.5
+     },
+     "T": {
+      "tsr": 16.3,
+      "score": 40.8
+     },
+     "M": {
+      "tsr": 21.9,
+      "score": 45.6
+     }
+    },
+    "overall": {
+     "tsr": 26.3,
+     "score": 45.6
+    },
+    "summary": {
+     "tsr": 26.33,
+     "subtask": 34.5,
+     "vqa": 71.43,
+     "score": 45.58
+    },
+    "settings": {
+     "ID": {
+      "tsr": 23.33,
+      "subtask": 34.46
+     },
+     "V": {
+      "tsr": 23.33,
+      "subtask": 33.68
+     },
+     "S": {
+      "tsr": 30.0,
+      "subtask": 39.58
+     },
+     "B": {
+      "tsr": 23.33,
+      "subtask": 32.94
+     },
+     "REC": {
+      "tsr": 31.67,
+      "subtask": 31.82
+     }
+    }
+   },
+   {
+    "id": "deepseek-v4.1-flash-high",
+    "label": "DeepSeek-V4.1 Flash",
+    "tags": {
+     "G": {
+      "tsr": 18.3,
+      "score": 34.5
+     },
+     "R": {
+      "tsr": 6.5,
+      "score": 28.6
+     },
+     "F": {
+      "tsr": 14.4,
+      "score": 38.1
+     },
+     "P": {
+      "tsr": 5.1,
+      "score": 27.6
+     },
+     "T": {
+      "tsr": 4.6,
+      "score": 30.0
+     },
+     "M": {
+      "tsr": 4.9,
+      "score": 29.3
+     }
+    },
+    "overall": {
+     "tsr": 13.8,
+     "score": 34.4
+    },
+    "summary": {
+     "tsr": 13.83,
+     "subtask": 20.86,
+     "vqa": 65.86,
+     "score": 34.36
+    },
+    "settings": {
+     "ID": {
+      "tsr": 11.67,
+      "subtask": 19.88
+     },
+     "V": {
+      "tsr": 12.5,
+      "subtask": 19.58
+     },
+     "S": {
+      "tsr": 14.17,
+      "subtask": 22.64
+     },
+     "B": {
+      "tsr": 14.17,
+      "subtask": 22.22
+     },
+     "REC": {
+      "tsr": 16.67,
+      "subtask": 20.0
+     }
+    }
+   },
+   {
+    "id": "minimax-m3.1-flash-high",
+    "label": "MiniMax-M3.1 Flash",
+    "tags": {
+     "G": {
+      "tsr": 15.7,
+      "score": 29.8
+     },
+     "R": {
+      "tsr": 5.8,
+      "score": 25.3
+     },
+     "F": {
+      "tsr": 8.8,
+      "score": 31.8
+     },
+     "P": {
+      "tsr": 2.2,
+      "score": 23.7
+     },
+     "T": {
+      "tsr": 0.6,
+      "score": 24.2
+     },
+     "M": {
+      "tsr": 4.0,
+      "score": 25.4
+     }
+    },
+    "overall": {
+     "tsr": 10.3,
+     "score": 29.5
+    },
+    "summary": {
+     "tsr": 10.33,
+     "subtask": 17.63,
+     "vqa": 57.06,
+     "score": 29.46
+    },
+    "settings": {
+     "ID": {
+      "tsr": 9.17,
+      "subtask": 16.85
+     },
+     "V": {
+      "tsr": 8.33,
+      "subtask": 17.29
+     },
+     "S": {
+      "tsr": 10.83,
+      "subtask": 18.99
+     },
+     "B": {
+      "tsr": 10.0,
+      "subtask": 20.0
+     },
+     "REC": {
+      "tsr": 13.33,
+      "subtask": 15.0
+     }
+    }
+   },
+   {
+    "id": "glm-5.3-flash-high",
+    "label": "GLM-5.3 Flash",
+    "tags": {
+     "G": {
+      "tsr": 14.7,
+      "score": 30.6
+     },
+     "R": {
+      "tsr": 4.3,
+      "score": 23.5
+     },
+     "F": {
+      "tsr": 10.0,
+      "score": 31.0
+     },
+     "P": {
+      "tsr": 1.5,
+      "score": 22.2
+     },
+     "T": {
+      "tsr": 1.5,
+      "score": 23.3
+     },
+     "M": {
+      "tsr": 5.3,
+      "score": 26.4
+     }
+    },
+    "overall": {
+     "tsr": 9.2,
+     "score": 28.4
+    },
+    "summary": {
+     "tsr": 9.17,
+     "subtask": 15.39,
+     "vqa": 58.83,
+     "score": 28.42
+    },
+    "settings": {
+     "ID": {
+      "tsr": 9.17,
+      "subtask": 14.54
+     },
+     "V": {
+      "tsr": 7.5,
+      "subtask": 14.92
+     },
+     "S": {
+      "tsr": 9.17,
+      "subtask": 16.16
+     },
+     "B": {
+      "tsr": 6.67,
+      "subtask": 17.38
+     },
+     "REC": {
+      "tsr": 13.33,
+      "subtask": 13.94
+     }
+    }
+   },
+   {
+    "id": "gpt-6-luna-xhigh",
+    "label": "GPT-6 Luna",
+    "tags": {
+     "G": {
+      "tsr": 15.0,
+      "score": 28.4
+     },
+     "R": {
+      "tsr": 2.5,
+      "score": 19.0
+     },
+     "F": {
+      "tsr": 10.8,
+      "score": 28.7
+     },
+     "P": {
+      "tsr": 0.7,
+      "score": 21.9
+     },
+     "T": {
+      "tsr": 1.5,
+      "score": 19.6
+     },
+     "M": {
+      "tsr": 4.6,
+      "score": 24.4
+     }
+    },
+    "overall": {
+     "tsr": 8.8,
+     "score": 24.8
+    },
+    "summary": {
+     "tsr": 8.83,
+     "subtask": 10.4,
+     "vqa": 58.46,
+     "score": 24.82
+    },
+    "settings": {
+     "ID": {
+      "tsr": 5.0,
+      "subtask": 8.88
+     },
+     "V": {
+      "tsr": 6.67,
+      "subtask": 7.43
+     },
+     "S": {
+      "tsr": 10.83,
+      "subtask": 12.15
+     },
+     "B": {
+      "tsr": 6.67,
+      "subtask": 7.94
+     },
+     "REC": {
+      "tsr": 15.0,
+      "subtask": 15.61
+     }
+    }
+   }
+  ],
+  "T2": [
+   {
+    "id": "motus",
+    "label": "Motus",
+    "tags": {
+     "G": {
+      "ee": 108.6,
+      "pred": 38.9
+     },
+     "R": {
+      "ee": 100.2,
+      "pred": 40.2
+     },
+     "F": {
+      "ee": 95.6,
+      "pred": 37.2
+     },
+     "P": {
+      "ee": 111.3,
+      "pred": 35.8
+     },
+     "T": {
+      "ee": 86.7,
+      "pred": 39.1
+     },
+     "M": {
+      "ee": 111.6,
+      "pred": 38.2
+     }
+    },
+    "overall": {
+     "ee": 97.3,
+     "pred": 39.5
+    },
+    "metrics": {
+     "psnr": 18.03,
+     "ssim": 0.762,
+     "jepa": 0.409,
+     "jedi": 2.234,
+     "smoothness": 1.581,
+     "mmse": 0.0789,
+     "subject": 0.57,
+     "eePos": 97.35,
+     "eeRot": 28.16
+    },
+    "settings": {
+     "ID": {
+      "eePos": 89.12,
+      "mmse": 0.0707
+     },
+     "V": {
+      "eePos": 95.11,
+      "mmse": 0.0899
+     },
+     "S": {
+      "eePos": 96.25,
+      "mmse": 0.0752
+     },
+     "B": {
+      "eePos": 95.44,
+      "mmse": 0.0755
+     },
+     "REC": {
+      "eePos": 109.32,
+      "mmse": 0.0823
+     }
+    }
+   },
+   {
+    "id": "ctrl_world",
+    "label": "Ctrl-World",
+    "tags": {
+     "G": {
+      "ee": 15.3,
+      "pred": 50.9
+     },
+     "R": {
+      "ee": 14.7,
+      "pred": 54.2
+     },
+     "F": {
+      "ee": 15.0,
+      "pred": 50.1
+     },
+     "P": {
+      "ee": 15.6,
+      "pred": 50.5
+     },
+     "T": {
+      "ee": 16.7,
+      "pred": 50.6
+     },
+     "M": {
+      "ee": 16.1,
+      "pred": 50.5
+     }
+    },
+    "overall": {
+     "ee": 15.7,
+     "pred": 51.7
+    },
+    "metrics": {
+     "psnr": 21.33,
+     "ssim": 0.775,
+     "jepa": 0.282,
+     "jedi": 3.161,
+     "smoothness": 1.711,
+     "mmse": 0.0315,
+     "subject": 0.623,
+     "eePos": 15.75,
+     "eeRot": 9.08
+    },
+    "settings": {
+     "ID": {
+      "eePos": 12.0,
+      "mmse": 0.0235
+     },
+     "V": {
+      "eePos": 30.31,
+      "mmse": 0.0622
+     },
+     "S": {
+      "eePos": 11.76,
+      "mmse": 0.0228
+     },
+     "B": {
+      "eePos": 12.37,
+      "mmse": 0.0256
+     },
+     "REC": {
+      "eePos": 11.9,
+      "mmse": 0.0224
+     }
+    }
+   },
+   {
+    "id": "lingbot_va",
+    "label": "LingBot-VA",
+    "tags": {
+     "G": {
+      "ee": 12.1,
+      "pred": 58.1
+     },
+     "R": {
+      "ee": 12.3,
+      "pred": 60.3
+     },
+     "F": {
+      "ee": 12.8,
+      "pred": 57.1
+     },
+     "P": {
+      "ee": 14.5,
+      "pred": 56.5
+     },
+     "T": {
+      "ee": 15.0,
+      "pred": 56.0
+     },
+     "M": {
+      "ee": 13.6,
+      "pred": 57.3
+     }
+    },
+    "overall": {
+     "ee": 13.5,
+     "pred": 57.5
+    },
+    "metrics": {
+     "psnr": 23.67,
+     "ssim": 0.839,
+     "jepa": 0.656,
+     "jedi": 1.055,
+     "smoothness": 1.667,
+     "mmse": 0.0226,
+     "subject": 0.618,
+     "eePos": 13.54,
+     "eeRot": 7.39
+    },
+    "settings": {
+     "ID": {
+      "eePos": 9.55,
+      "mmse": 0.0171
+     },
+     "V": {
+      "eePos": 26.65,
+      "mmse": 0.0442
+     },
+     "S": {
+      "eePos": 9.51,
+      "mmse": 0.0158
+     },
+     "B": {
+      "eePos": 9.95,
+      "mmse": 0.0184
+     },
+     "REC": {
+      "eePos": 11.54,
+      "mmse": 0.0171
+     }
+    }
+   },
+   {
+    "id": "pelican_sim",
+    "label": "Pelican-Sim",
+    "tags": {
+     "G": {
+      "ee": 7.2,
+      "pred": 58.9
+     },
+     "R": {
+      "ee": 8.8,
+      "pred": 59.7
+     },
+     "F": {
+      "ee": 6.8,
+      "pred": 59.2
+     },
+     "P": {
+      "ee": 7.1,
+      "pred": 60.3
+     },
+     "T": {
+      "ee": 8.8,
+      "pred": 57.1
+     },
+     "M": {
+      "ee": 7.8,
+      "pred": 59.9
+     }
+    },
+    "overall": {
+     "ee": 8.2,
+     "pred": 58.3
+    },
+    "metrics": {
+     "psnr": 24.25,
+     "ssim": 0.864,
+     "jepa": 0.348,
+     "jedi": 2.637,
+     "smoothness": 1.63,
+     "mmse": 0.0146,
+     "subject": 0.621,
+     "eePos": 8.17,
+     "eeRot": 6.5
+    },
+    "settings": {
+     "ID": {
+      "eePos": 7.24,
+      "mmse": 0.0137
+     },
+     "V": {
+      "eePos": 12.64,
+      "mmse": 0.0219
+     },
+     "S": {
+      "eePos": 7.08,
+      "mmse": 0.0124
+     },
+     "B": {
+      "eePos": 7.37,
+      "mmse": 0.0135
+     },
+     "REC": {
+      "eePos": 6.44,
+      "mmse": 0.0114
+     }
+    }
+   },
+   {
+    "id": "irasim",
+    "label": "IRASim",
+    "tags": {
+     "G": {
+      "ee": 18.7,
+      "pred": 45.9
+     },
+     "R": {
+      "ee": 19.4,
+      "pred": 46.2
+     },
+     "F": {
+      "ee": 21.2,
+      "pred": 42.6
+     },
+     "P": {
+      "ee": 23.2,
+      "pred": 42.9
+     },
+     "T": {
+      "ee": 23.5,
+      "pred": 43.6
+     },
+     "M": {
+      "ee": 21.4,
+      "pred": 43.9
+     }
+    },
+    "overall": {
+     "ee": 21.4,
+     "pred": 44.4
+    },
+    "metrics": {
+     "psnr": 20.78,
+     "ssim": 0.742,
+     "jepa": 0.088,
+     "jedi": 6.09,
+     "smoothness": 1.892,
+     "mmse": 0.0357,
+     "subject": 0.602,
+     "eePos": 21.36,
+     "eeRot": 12.57
+    },
+    "settings": {
+     "ID": {
+      "eePos": 16.03,
+      "mmse": 0.028
+     },
+     "V": {
+      "eePos": 39.65,
+      "mmse": 0.062
+     },
+     "S": {
+      "eePos": 15.86,
+      "mmse": 0.0273
+     },
+     "B": {
+      "eePos": 16.43,
+      "mmse": 0.0312
+     },
+     "REC": {
+      "eePos": 18.16,
+      "mmse": 0.0294
+     }
+    }
+   }
+  ],
+  "T3": [
+   {
+    "id": "G05",
+    "label": "G0.5",
+    "tags": {
+     "G": {
+      "tsr": 17.3,
+      "score": 17.8
+     },
+     "R": {
+      "tsr": 22.8,
+      "score": 23.1
+     },
+     "F": {
+      "tsr": 15.2,
+      "score": 16.4
+     },
+     "P": {
+      "tsr": 4.0,
+      "score": 7.1
+     },
+     "T": {
+      "tsr": 12.9,
+      "score": 14.0
+     },
+     "M": {
+      "tsr": 17.0,
+      "score": 19.8
+     }
+    },
+    "overall": {
+     "tsr": 20.7,
+     "score": 20.6
+    },
+    "summary": {
+     "tsr": 20.67,
+     "subtask": 26.21
+    },
+    "settings": {
+     "ID": {
+      "tsr": 25.0,
+      "subtask": 29.5417
+     },
+     "V": {
+      "tsr": 15.0,
+      "subtask": 21.0833
+     },
+     "S": {
+      "tsr": 30.0,
+      "subtask": 35.875
+     },
+     "B": {
+      "tsr": 15.83,
+      "subtask": 21.9861
+     },
+     "REC": {
+      "tsr": 17.5,
+      "subtask": 22.5833
+     }
+    },
+    "cases": 599,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 14.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 34.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 14.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 31.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 50.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 55.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 71.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 17.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 27.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 9.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 47.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 9.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 7.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 24.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 18.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 70.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 34.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 80.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 16.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 66.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 29.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 46.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 32.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 24.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 30.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     }
+    }
+   },
+   {
+    "id": "HyVLA",
+    "label": "HyVLA",
+    "tags": {
+     "G": {
+      "tsr": 11.7,
+      "score": 10.9
+     },
+     "R": {
+      "tsr": 6.5,
+      "score": 8.6
+     },
+     "F": {
+      "tsr": 9.6,
+      "score": 10.1
+     },
+     "P": {
+      "tsr": 0.7,
+      "score": 4.1
+     },
+     "T": {
+      "tsr": 4.6,
+      "score": 5.8
+     },
+     "M": {
+      "tsr": 5.4,
+      "score": 8.9
+     }
+    },
+    "overall": {
+     "tsr": 9.0,
+     "score": 9.9
+    },
+    "summary": {
+     "tsr": 9.0,
+     "subtask": 12.95
+    },
+    "settings": {
+     "ID": {
+      "tsr": 8.33,
+      "subtask": 11.125
+     },
+     "V": {
+      "tsr": 6.67,
+      "subtask": 8.5833
+     },
+     "S": {
+      "tsr": 10.83,
+      "subtask": 13.7917
+     },
+     "B": {
+      "tsr": 12.5,
+      "subtask": 18.0278
+     },
+     "REC": {
+      "tsr": 6.67,
+      "subtask": 13.2083
+     }
+    },
+    "cases": 599,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 17.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 11.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 35.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 25.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 21.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 7.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 28.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 9.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 46.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 32.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 32.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 18.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 72.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 52.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 58.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     }
+    }
+   },
+   {
+    "id": "XVLA",
+    "label": "X-VLA",
+    "tags": {
+     "G": {
+      "tsr": 6.3,
+      "score": 6.6
+     },
+     "R": {
+      "tsr": 6.5,
+      "score": 8.3
+     },
+     "F": {
+      "tsr": 5.6,
+      "score": 7.1
+     },
+     "P": {
+      "tsr": 0.7,
+      "score": 4.3
+     },
+     "T": {
+      "tsr": 4.0,
+      "score": 5.7
+     },
+     "M": {
+      "tsr": 4.9,
+      "score": 7.9
+     }
+    },
+    "overall": {
+     "tsr": 6.3,
+     "score": 7.7
+    },
+    "summary": {
+     "tsr": 6.33,
+     "subtask": 10.31
+    },
+    "settings": {
+     "ID": {
+      "tsr": 7.5,
+      "subtask": 11.4167
+     },
+     "V": {
+      "tsr": 2.5,
+      "subtask": 4.4167
+     },
+     "S": {
+      "tsr": 4.17,
+      "subtask": 6.25
+     },
+     "B": {
+      "tsr": 8.33,
+      "subtask": 14.4861
+     },
+     "REC": {
+      "tsr": 9.17,
+      "subtask": 14.9583
+     }
+    },
+    "cases": 599,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 17.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 60.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 35.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 85.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 25.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 9.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 35.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 14.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 46.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 9.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 9.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 32.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 49.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 32.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 49.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     }
+    }
+   },
+   {
+    "id": "Pi_05",
+    "label": "π0.5",
+    "tags": {
+     "G": {
+      "tsr": 8.7,
+      "score": 9.2
+     },
+     "R": {
+      "tsr": 8.6,
+      "score": 10.6
+     },
+     "F": {
+      "tsr": 7.6,
+      "score": 9.3
+     },
+     "P": {
+      "tsr": 1.1,
+      "score": 4.3
+     },
+     "T": {
+      "tsr": 4.6,
+      "score": 7.0
+     },
+     "M": {
+      "tsr": 6.7,
+      "score": 9.6
+     }
+    },
+    "overall": {
+     "tsr": 9.3,
+     "score": 10.6
+    },
+    "summary": {
+     "tsr": 9.33,
+     "subtask": 13.94
+    },
+    "settings": {
+     "ID": {
+      "tsr": 9.17,
+      "subtask": 12.6667
+     },
+     "V": {
+      "tsr": 7.5,
+      "subtask": 11.6667
+     },
+     "S": {
+      "tsr": 10.0,
+      "subtask": 13.875
+     },
+     "B": {
+      "tsr": 10.83,
+      "subtask": 16.4028
+     },
+     "REC": {
+      "tsr": 9.17,
+      "subtask": 15.0833
+     }
+    },
+    "cases": 599,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 17.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 45.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 55.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 90.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 35.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 7.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 18.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 16.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 29.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 23.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 49.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 52.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 86.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 66.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     }
+    }
+   },
+   {
+    "id": "OpenDM",
+    "label": "OpenDM",
+    "tags": {
+     "G": {
+      "tsr": 14.7,
+      "score": 12.6
+     },
+     "R": {
+      "tsr": 10.2,
+      "score": 13.3
+     },
+     "F": {
+      "tsr": 8.4,
+      "score": 7.6
+     },
+     "P": {
+      "tsr": 3.3,
+      "score": 5.5
+     },
+     "T": {
+      "tsr": 2.2,
+      "score": 5.7
+     },
+     "M": {
+      "tsr": 8.6,
+      "score": 11.6
+     }
+    },
+    "overall": {
+     "tsr": 11.3,
+     "score": 12.0
+    },
+    "summary": {
+     "tsr": 11.33,
+     "subtask": 16.1
+    },
+    "settings": {
+     "ID": {
+      "tsr": 12.5,
+      "subtask": 16.5417
+     },
+     "V": {
+      "tsr": 9.17,
+      "subtask": 11.375
+     },
+     "S": {
+      "tsr": 19.17,
+      "subtask": 24.9167
+     },
+     "B": {
+      "tsr": 6.67,
+      "subtask": 12.6111
+     },
+     "REC": {
+      "tsr": 9.17,
+      "subtask": 15.0417
+     }
+    },
+    "cases": 599,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 31.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 35.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 90.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 55.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 70.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 35.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 30.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 40.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 50.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 32.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 22.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 66.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 52.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 86.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 18.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     }
+    }
+   },
+   {
+    "id": "OpenWAM",
+    "label": "OpenWAM",
+    "tags": {
+     "G": {
+      "tsr": 20.0,
+      "score": 18.8
+     },
+     "R": {
+      "tsr": 28.3,
+      "score": 27.2
+     },
+     "F": {
+      "tsr": 20.4,
+      "score": 18.7
+     },
+     "P": {
+      "tsr": 12.0,
+      "score": 13.3
+     },
+     "T": {
+      "tsr": 13.5,
+      "score": 13.8
+     },
+     "M": {
+      "tsr": 25.5,
+      "score": 26.4
+     }
+    },
+    "overall": {
+     "tsr": 24.8,
+     "score": 23.2
+    },
+    "summary": {
+     "tsr": 24.83,
+     "subtask": 29.29
+    },
+    "settings": {
+     "ID": {
+      "tsr": 33.33,
+      "subtask": 37.8333
+     },
+     "V": {
+      "tsr": 18.33,
+      "subtask": 22.7917
+     },
+     "S": {
+      "tsr": 30.0,
+      "subtask": 33.3333
+     },
+     "B": {
+      "tsr": 22.5,
+      "subtask": 27.8194
+     },
+     "REC": {
+      "tsr": 20.0,
+      "subtask": 24.6667
+     }
+    },
+    "cases": 598,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 15.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 3.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 8.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 18.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 10.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 25.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 7.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 49.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 85.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 50.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 90.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 34.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 76.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 76.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 64.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 24.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 10.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 49.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 48.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 46.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 24.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 18.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     }
+    }
+   },
+   {
+    "id": "FastWAM",
+    "label": "Fast-WAM",
+    "tags": {
+     "G": {
+      "tsr": 12.3,
+      "score": 11.8
+     },
+     "R": {
+      "tsr": 8.0,
+      "score": 10.8
+     },
+     "F": {
+      "tsr": 8.8,
+      "score": 9.8
+     },
+     "P": {
+      "tsr": 0.4,
+      "score": 4.9
+     },
+     "T": {
+      "tsr": 4.3,
+      "score": 5.8
+     },
+     "M": {
+      "tsr": 7.8,
+      "score": 12.1
+     }
+    },
+    "overall": {
+     "tsr": 10.7,
+     "score": 11.8
+    },
+    "summary": {
+     "tsr": 10.67,
+     "subtask": 15.37
+    },
+    "settings": {
+     "ID": {
+      "tsr": 13.33,
+      "subtask": 18.7083
+     },
+     "V": {
+      "tsr": 6.67,
+      "subtask": 9.5
+     },
+     "S": {
+      "tsr": 13.33,
+      "subtask": 15.7917
+     },
+     "B": {
+      "tsr": 10.83,
+      "subtask": 17.4861
+     },
+     "REC": {
+      "tsr": 9.17,
+      "subtask": 15.375
+     }
+    },
+    "cases": 599,
+    "tasks": {
+     "imitate_sorting_sequence": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 1.0
+      }
+     },
+     "classify_objects_by_language": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 2.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 4,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pour_liquid_into_cup": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "arrange_largest_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 17.0
+      }
+     },
+     "solve_equation": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 66.6667
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "pack_mixed_objects_into_box_v1": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 50.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 25.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 80.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 70.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 60.0
+      }
+     },
+     "hang_mugs": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 35.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 14.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 11.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 25.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 40.0
+      }
+     },
+     "cover_blocks": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 7.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "press_by_number": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "play_stacking_toy": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "store_tools_in_toolbox": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 5.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "fold_clothes": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 4.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 20.0
+      }
+     },
+     "stack_bowls": {
+      "ID": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 46.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 49.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 43.0
+      }
+     },
+     "match_and_pick_from_conveyor": {
+      "ID": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 60.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "push_T": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "insert_key": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 15.0
+      }
+     },
+     "build_tower": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "find_category_outlier": {
+      "ID": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "set_button_colors": {
+      "ID": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 3,
+       "subtask": 66.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 83.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 5,
+       "subtask": 100.0
+      }
+     },
+     "place_between_references": {
+      "ID": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 2,
+       "subtask": 40.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 4,
+       "subtask": 80.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 20.0
+      }
+     },
+     "mirror_pair_layout": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 30.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 12.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "clear_keyboard_then_close_laptop": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 6.0
+      }
+     },
+     "hold_water_mug": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     },
+     "hold_button_until_cue": {
+      "ID": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "V": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "S": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      },
+      "B": {
+       "n": 5,
+       "successes": 1,
+       "subtask": 26.0
+      },
+      "REC": {
+       "n": 5,
+       "successes": 0,
+       "subtask": 0.0
+      }
+     }
+    }
+   }
+  ],
+  "T4": [
+   {
+    "id": "XVLA",
+    "label": "X-VLA",
+    "tasks": {
+     "Buttons": {
+      "label": "Button sequence",
+      "extraLabel": "Missing color",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 10.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 33.3,
+       "subtask": 33.33,
+       "successes": 1,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Towel": {
+      "label": "Towel folding",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 17.5,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Puzzle": {
+      "label": "Puzzle insertion",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 25.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     }
+    },
+    "overall": {
+     "sr": 1.4,
+     "subtask": 10.51,
+     "n": 69
+    }
+   },
+   {
+    "id": "HyVLA",
+    "label": "HyVLA",
+    "tasks": {
+     "Buttons": {
+      "label": "Button sequence",
+      "extraLabel": "Missing color",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Towel": {
+      "label": "Towel folding",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Puzzle": {
+      "label": "Puzzle insertion",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 16.67,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     }
+    },
+    "overall": {
+     "sr": 0.0,
+     "subtask": 0.72,
+     "n": 69
+    }
+   },
+   {
+    "id": "FastWAM",
+    "label": "Fast-WAM",
+    "tasks": {
+     "Buttons": {
+      "label": "Button sequence",
+      "extraLabel": "Missing color",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 5.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Towel": {
+      "label": "Towel folding",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 20.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Puzzle": {
+      "label": "Puzzle insertion",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 11.25,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 16.67,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     }
+    },
+    "overall": {
+     "sr": 0.0,
+     "subtask": 11.23,
+     "n": 69
+    }
+   },
+   {
+    "id": "OpenWAM",
+    "label": "OpenWAM",
+    "tasks": {
+     "Buttons": {
+      "label": "Button sequence",
+      "extraLabel": "Missing color",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 0.0,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Towel": {
+      "label": "Towel folding",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 5.0,
+       "subtask": 31.67,
+       "successes": 1,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 22.22,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 1,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Puzzle": {
+      "label": "Puzzle insertion",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 0.0,
+       "subtask": 23.75,
+       "successes": 0,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 33.33,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 0,
+        "n": 5
+       },
+       "S": {
+        "successes": 0,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     }
+    },
+    "overall": {
+     "sr": 1.4,
+     "subtask": 18.48,
+     "n": 69
+    }
+   },
+   {
+    "id": "Pi_05",
+    "label": "π0.5",
+    "tasks": {
+     "Buttons": {
+      "label": "Button sequence",
+      "extraLabel": "Missing color",
+      "ordinary": {
+       "sr": 10.0,
+       "subtask": 30.0,
+       "successes": 2,
+       "n": 20
+      },
+      "extra": {
+       "sr": 0.0,
+       "subtask": 8.33,
+       "successes": 0,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 1,
+        "n": 5
+       },
+       "S": {
+        "successes": 1,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Towel": {
+      "label": "Towel folding",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 35.0,
+       "subtask": 65.83,
+       "successes": 7,
+       "n": 20
+      },
+      "extra": {
+       "sr": 33.3,
+       "subtask": 77.78,
+       "successes": 1,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 3,
+        "n": 5
+       },
+       "V": {
+        "successes": 2,
+        "n": 5
+       },
+       "S": {
+        "successes": 2,
+        "n": 5
+       },
+       "B": {
+        "successes": 0,
+        "n": 5
+       }
+      }
+     },
+     "Puzzle": {
+      "label": "Puzzle insertion",
+      "extraLabel": "Continuation",
+      "ordinary": {
+       "sr": 25.0,
+       "subtask": 66.25,
+       "successes": 5,
+       "n": 20
+      },
+      "extra": {
+       "sr": 100.0,
+       "subtask": 100.0,
+       "successes": 3,
+       "n": 3
+      },
+      "conditions": {
+       "ID": {
+        "successes": 0,
+        "n": 5
+       },
+       "V": {
+        "successes": 2,
+        "n": 5
+       },
+       "S": {
+        "successes": 1,
+        "n": 5
+       },
+       "B": {
+        "successes": 2,
+        "n": 5
+       }
+      }
+     }
+    },
+    "overall": {
+     "sr": 26.1,
+     "subtask": 55.07,
+     "n": 69
+    }
+   }
+  ]
+ },
+ "hybrid": [
+  {
+   "id": "direct",
+   "label": "Without forecasting",
+   "tsr": 30.33,
+   "subtask": 34.28,
+   "settings": {
+    "ID": 31.67,
+    "V": 20.0,
+    "S": 34.17,
+    "B": 31.67,
+    "REC": 34.17
+   }
+  },
+  {
+   "id": "forecast",
+   "label": "With forecasting",
+   "tsr": 31.67,
+   "subtask": 36.04,
+   "settings": {
+    "ID": 33.33,
+    "V": 22.5,
+    "S": 33.33,
+    "B": 33.33,
+    "REC": 35.83
+   }
+  }
+ ],
+ "sources": {
+  "data/policy_results_20261115/episodes.json": "0144b4d9cdafd6db06eaa19308e0aaf931918b8ac977a32becda1a0645f34fd5",
+  "data/track_results_20261112/episodes.json": "360ffa7b6686bd6012227a09065a934a7c72fe08d04a24c7439cd3a3e888f016",
+  "tables/acwm_conditions.tex": "def7160a96545686380f105b0c151a616b3e61f63a0580724dadba01093f66e2",
+  "tables/acwm_full_results.tex": "ed19fc69cc6175ba26697772695674ca1bf76aa619b28be7122475e7c4240bf4",
+  "tables/evaluation_axes.tex": "f1c90840e29582071507ed62400e598a722f0feef7842257cc3126080c78f88d",
+  "tables/main_capabilities.tex": "3a03854c30bfec66111f67f7007bd622dc811002b5034f0f99e3ebe6fd403a08",
+  "tables/real_results.tex": "c42684332650b1b9f41963055b67028e076f313a05805c1ee22ce57c33b7da33",
+  "tables/task_capability_mapping.tex": "9a1339e5b6d707743ffb9f8e3b3ce009eae6d441ecbaa6715ec54f8d42212882",
+  "tables/team_vlm_results.tex": "ad671acc49ebaf61875739ca6f7c67c97306af3c23a3cd1afb69666f55c89615",
+  "tables/track_metrics.tex": "21af276d852dc0a01c270842c843376a3d1d79adcc26c1252c2f67e0d5482130"
+ }
+}
