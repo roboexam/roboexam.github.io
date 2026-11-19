@@ -25,20 +25,20 @@
 
 .correlationTrackNav button span {
   color: #849099;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .correlationTrackNav button strong {
   margin-top: 4px;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .correlationTrackNav button small {
   overflow: hidden;
   margin-top: 5px;
   color: #8a959d;
-  font-size: 11px;
+  font-size: 13px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -78,14 +78,14 @@
 }
 
 .currentCorrelationModels header strong {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .currentCorrelationModels header span,
 .currentCorrelationModels header small,
 .currentCorrelationModels footer {
   color: #7c8992;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .currentCorrelationModels header span {
@@ -106,13 +106,13 @@
 
 .currentCorrelationNotice strong {
   color: #6e512f;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .currentCorrelationNotice p {
   margin: 4px 0 0;
   color: #75818a;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.55;
 }
 

@@ -141,7 +141,7 @@ export function OverviewFindings() {
       <article className="findingCard">
         <h3>Similar averages, opposite strengths</h3>
         <p className="findingLead">{`VLM agents average ${familyTsr.T1.toFixed(1)}% TSR and policies ${familyTsr.T3.toFixed(1)}%, yet each wins different tasks.`}</p>
-        <div className="divergeLegend" aria-hidden="true"><span><i className="swatch agents"/>VLM agents lead</span><span><i className="swatch policies"/>Policies lead</span></div>
+        <div className="findingBody">
         <ul className="divergeBars" aria-label="Tasks with the largest gap between mean VLM-agent and mean policy TSR">
           {strengthRows.map((row) => {
             const width = `${(Math.abs(row.gapPp) / maxGap) * 50}%`;
@@ -153,11 +153,14 @@ export function OverviewFindings() {
             </li>;
           })}
         </ul>
+        <div className="divergeLegend" aria-hidden="true"><span><i className="swatch agents"/>VLM agents lead</span><span><i className="swatch policies"/>Policies lead</span></div>
+        </div>
       </article>
 
       <article className="findingCard">
         <h3>Visual change hurts most</h3>
         <p className="findingLead">New textures, lighting, backgrounds, distractors or viewpoints cost policies and the hybrid agent the most success and more than double world-model error. VLM agents barely notice.</p>
+        <div className="findingBody">
         <ul className="dropBars" aria-label="Change in TSR from ID to visual OOD">
           {visualShift.rows.map((row) => <li key={row.id} title={`${row.label} (${row.detail}): ${pp(row.pp)} TSR from ID to V-OOD`}>
             <span className="barLabel"><span>{row.label}<small>{row.detail}</small></span><b>{pp(row.pp)}</b></span>
@@ -168,17 +171,20 @@ export function OverviewFindings() {
           <div><b>{`×${visualShift.t2.ee.toFixed(2)}`}</b><span>EE-position error</span></div>
           <div><b>{`×${visualShift.t2.mmse.toFixed(2)}`}</b><span>M-MSE</span></div>
         </div>
+        </div>
       </article>
 
       <article className="findingCard">
         <h3>Seeing the true future rarely fixes a failed plan</h3>
         <p className="findingLead">{`At the ${replay.planFails} decision points where the original plan fails, the agent reaches its local goal this often:`}</p>
+        <div className="findingBody">
         <ul className="replayBars" aria-label={`Local-goal attainment at ${replay.planFails} failed-plan points, by supplied video`}>
           {replay.rows.map((row) => <li key={row.forecast} className={row.forecast === "GT" ? "emphasis" : ""} title={`${row.forecast}: ${row.planFails} of ${replay.planFails}; ${row.all} of ${replay.points} over all points`}>
             <span className="barLabel"><span>{row.forecast === "Blank" ? "No video" : row.forecast === "GT" ? "Ground truth" : row.forecast}</span><b>{`${row.planFails} / ${replay.planFails}`}</b></span>
             <span className="replayTrack"><i style={{ width: `${(row.planFails / replay.planFails) * 100}%` }}/></span>
           </li>)}
         </ul>
+        </div>
         <p className="findingFoot">{`A repair exists at ${repairs.repairablePoints} of the ${repairs.unsolvedFailedPoints} points nothing solved, yet fresh runs find it ${repairs.blank.successes} of ${repairs.blank.n} times without video and ${repairs.gt.successes} of ${repairs.gt.n} with ground truth.`}</p>
       </article>
     </div>
