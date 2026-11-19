@@ -16,7 +16,6 @@ import type { ScenarioTag } from "../data/scenario-plan";
 import { MethodMarquee } from "./method-marquee";
 import { CapabilityIcon, TrackIcon } from "./podium";
 
-const TRACK_UNITS: Record<TrackId, string> = { T1: "VLM agents", T2: "world models", T3: "policies in Isaac Sim", T4: "policies on a real robot" };
 
 const pp = (value: number) => `${value > 0 ? "+" : value < 0 ? "−" : ""}${Math.abs(value).toFixed(1)} pp`;
 
@@ -125,7 +124,7 @@ export function OverviewBenchmark({ onTrack, onOpenTask }: { onTrack: (track: Tr
     <nav className="trackLinks" aria-label="Open a track leaderboard">
       {tracks.map((track) => <button type="button" key={track.id} onClick={() => onTrack(track.id)}>
         <TrackIcon track={track.id} size={34}/>
-        <span><b>{track.title}</b><small>{`${track.id} · ${trackSizes[track.id]} ${TRACK_UNITS[track.id]}`}</small></span>
+        <span><b>{track.title}</b><small>{`${track.id} · ${trackSizes[track.id]} methods`}</small></span>
         <ArrowUpRight size={16} aria-hidden="true"/>
       </button>)}
     </nav>

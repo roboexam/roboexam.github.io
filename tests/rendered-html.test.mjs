@@ -52,16 +52,21 @@ test("renders the dashboard introduction without login", async () => {
   const html = await response.text();
   assert.match(html, /RoboExam/);
   assert.match(html, /CVPR 2027 Workshop/);
-  assert.match(html, /The final exam for Physical AI/);
+  // the hero follows the manuscript's title, in English only
+  assert.match(html, /A shared-task benchmark for robotic components and systems/);
+  assert.doesNotMatch(html, /The final exam for Physical AI|Physical AI Benchmark/);
   assert.match(html, /You just can&#x27;t differentiate between a robot and the very best of humans\./);
   assert.doesNotMatch(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
-  assert.match(html, /Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950/);
+  assert.match(html, /Isaac Asimov · I, Robot · 1950/);
+  assert.doesNotMatch(html, /阿西莫夫|我，机器人/);
   // the Correlation page was removed from the public dashboard
   assert.doesNotMatch(html, />Correlation</);
   // the Overview follows the manuscript: question → benchmark → hybrid agent → findings → explore
   const order = ["Where does each system excel", "24 tasks, five conditions, four tracks.", "Does seeing the future help a robot act?", "What the shared tasks show.", "Every result in the paper, on the leaderboard."].map((label) => html.indexOf(label));
   assert.ok(order.every((index, i) => index > 0 && (i === 0 || index > order[i - 1])), `section order ${order}`);
-  assert.match(html, /Embodied Agency/);
+  // track names follow the manuscript (abstract, Sec. 3.2)
+  for (const title of ["VLM agents", "ACWMs", "Robot policies", "Real-robot deployment"]) assert.match(html, new RegExp(title));
+  assert.doesNotMatch(html, /Embodied Agency|Physical Foresight|Simulation Deployment|Real-World Deployment/);
   assert.match(html, /24 tasks · 600 shared cases · four tracks/);
   assert.doesNotMatch(html, /Seven capabilities|State Grounding|Recovery &amp; Safety/);
   // the manuscript's six capability tags filter the 24-task gallery, with Order & stages lettered S
@@ -185,7 +190,7 @@ test("Datasets renders the unified live dataset workspace", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Task-aligned simulation episodes/);
-  assert.match(html, /Choose one task, then browse its 100 Training episodes/);
+  assert.match(html, /Pick a task to watch its 100 Training episodes/);
   assert.match(html, /24[\s\S]{0,30}Tasks/);
   assert.match(html, /3,000[\s\S]{0,30}Episodes/);
   assert.match(html, /24 tasks/);
@@ -203,7 +208,7 @@ test("a task deep link opens the task-first Datasets view", async () => {
   const html = await response.text();
   assert.match(html, /Task-aligned simulation episodes/);
   assert.match(html, /24 tasks/);
-  assert.doesNotMatch(html, /The final exam for Physical AI/);
+  assert.doesNotMatch(html, /A shared-task benchmark for robotic components and systems/);
 });
 
 test("serves compressed video renditions with ranges and immutable identity", async () => {

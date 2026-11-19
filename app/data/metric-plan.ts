@@ -109,15 +109,15 @@ const realWorldMetrics: MetricDefinition[] = [
 
 /** What each track evaluates, in the manuscript's terms (Sec. 3.2). */
 export const trackModelType: Record<TrackId, string> = {
-  T1: "VLM agents",
-  T2: "World models (ACWMs)",
-  T3: "Policies in Isaac Sim",
-  T4: "Policies on a real robot",
+  T1: "Task execution and VQA",
+  T2: "Future video for given actions",
+  T3: "Task execution in Isaac Sim",
+  T4: "Task execution on real robots",
 };
 
 export const tracks: TrackDefinition[] = [
   {
-    id: "T1", title: "Embodied Agency", subtitle: "VLM agents through a shared harness", question: "Ground observations, track task state, plan, and emit structured next actions.", source: "vlm",
+    id: "T1", title: "VLM agents", subtitle: "VLM agents through a shared harness", question: "Ground observations, track task state, plan, and emit structured next actions.", source: "vlm",
     scoreGuide: {
       en: "0–100 score; higher is better. Overall = 70% × mean Subtask over ID, V-OOD, S-OOD, B-OOD and Recovery + 30% × mean VQA over ID and the three OOD settings. Each setting score = 70% Subtask + 30% VQA (Recovery: Subtask only). VQA alone is not execution success.",
       zh: "0–100 分，越高越好。总分 = 70% × ID、视觉/语义/行为 OOD 与失败恢复五种设定的子任务平均分 + 30% × ID 与三种 OOD 的 VQA 平均分。每个设定的分数 = 70% 子任务 + 30% VQA（失败恢复只计子任务）。VQA 高分不等于执行成功。",
@@ -130,7 +130,7 @@ export const tracks: TrackDefinition[] = [
     ], metrics: t1Metrics,
   },
   {
-    id: "T2", title: "Physical Foresight", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
+    id: "T2", title: "ACWMs", subtitle: "Action-conditioned world models", question: "Predict the consequences of interventions and distinguish actions that advance the task.", source: "acwm",
     scoreGuide: {
       en: "The headline score direction-normalizes the nine frozen metrics to 0–100 and averages them equally; native values remain available for diagnosis. JEPA is split-level and Motion Smoothness is not bounded to 0–1.",
       zh: "主要分数将冻结的九项指标按方向归一化到 0–100 后等权平均，原始数值仍用于诊断。JEPA 是集合级分数，Motion Smoothness 也不限定在 0–1。",
@@ -148,7 +148,7 @@ export const tracks: TrackDefinition[] = [
     ], metrics: acwmMetrics,
   },
   {
-    id: "T3", title: "Simulation Deployment", subtitle: "Policy models in simulation", question: "Complete long-horizon tasks while preserving safe, stable, interpretable execution.", source: "policy",
+    id: "T3", title: "Robot policies", subtitle: "Robot policies in Isaac Sim", question: "Complete long-horizon tasks while preserving safe, stable, interpretable execution.", source: "policy",
     scoreGuide: {
       en: "Task Success Rate is the headline 0–100% outcome; intermediate 100% metrics are not task success. Compare only the same task, protocol, and episode count N.",
       zh: "任务成功率是主要的 0–100% 结果；中间指标的 100% 不代表任务成功。模型比较必须使用相同任务、协议和 episode 数 N。",
@@ -162,7 +162,7 @@ export const tracks: TrackDefinition[] = [
     ], metrics: policyMotion,
   },
   {
-    id: "T4", title: "Real-World Deployment", subtitle: "Policy models on hardware", question: "Complete standardized hardware tasks while separating task outcome from manual safety review.", source: "real",
+    id: "T4", title: "Real-robot deployment", subtitle: "Robot policies on real robots", question: "Complete standardized hardware tasks while separating task outcome from manual safety review.", source: "real",
     scoreGuide: {
       en: "Success rate (SR) uses on-site verified terminal labels; Subtask averages each task's progress checklist. Each task has 20 ordinary cases (ID and three OOD conditions, 5 each) plus three missing-color or continuation cases; Overall averages all 69 cases per policy.",
       zh: "成功率（SR）采用现场核验的终止标签；子任务分数为各任务进度清单的平均值。每个任务包含 20 个常规案例（ID 与三种 OOD 各 5 个）以及 3 个缺色或续做案例；总体为每个策略全部 69 个案例的平均。",

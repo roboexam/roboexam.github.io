@@ -4,7 +4,7 @@ import { Activity, LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { validateActionTrace, type ActionTrace, type ActionTraceSource } from "../data/action-trace";
-import { dataUrl, STATIC_SITE } from "../static-site";
+import { dataUrl, say, STATIC_SITE } from "../static-site";
 
 const jointColors = ["#5f8fe5", "#64c5bc", "#9e7bd5", "#e1a255", "#dc7181", "#7792aa"];
 const xyzColors = ["#dc7181", "#64b98b", "#5f8fe5"];
@@ -39,8 +39,8 @@ export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId
 
   if (!validId || unavailable || failedKey === requestKey) return <section className="actionTracePanel traceUnavailable">
     <Activity size={18}/><div><strong>Action telemetry unavailable</strong>
-      <span>此样本缺少可验证的同步关节/末端记录，保留视频与评论；不合成曲线。</span>
-      {!unavailable && source && <button type="button" onClick={() => { setFailedKey(null); setRetry(value => value + 1); }}>重试读取轨迹</button>}
+      <span>{say("This episode has no verified joint or end-effector record, so no curves are drawn.", "此样本缺少可验证的同步关节/末端记录，保留视频与评论；不合成曲线。")}</span>
+      {!unavailable && source && <button type="button" onClick={() => { setFailedKey(null); setRetry(value => value + 1); }}>{say("Retry", "重试读取轨迹")}</button>}
     </div>
   </section>;
   if (!loaded || loaded.key !== requestKey) return <section className="actionTracePanel traceLoading">
@@ -100,7 +100,7 @@ function TraceChart({ title, values, time, labels, colors, currentTime }: {
   currentTime: number;
 }) {
   if (!values) return <figure className="traceChart traceMissing"><figcaption><strong>{title}</strong></figcaption>
-    <p>{labels[0] === "J1" ? "此来源未记录关节角度" : labels[0] === "X" ? "此来源未记录末端位置" : "此来源未记录该侧动作"}</p></figure>;
+    <p>{labels[0] === "J1" ? say("No joint angles recorded for this source", "此来源未记录关节角度") : labels[0] === "X" ? say("No end-effector position recorded for this source", "此来源未记录末端位置") : say("No action recorded for this arm", "此来源未记录该侧动作")}</p></figure>;
   const width = 640, height = 150, top = 14, bottom = 22;
   const flat = values.flat();
   const rawMin = Math.min(...flat), rawMax = Math.max(...flat);

@@ -21,14 +21,15 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
       <HeroHands3D/>
     </div>
     <div className="heroTitle">
-      <p className="heroBadge"><span/><b className="fxShiny">{STATIC_SITE ? "Physical AI Benchmark" : "Planned CVPR 2027 Workshop"}</b></p>
+      <p className="heroBadge"><span/><b className="fxShiny">{STATIC_SITE ? "Benchmark and evaluation toolkit" : "Planned CVPR 2027 Workshop"}</b></p>
       <h1 id="hero-title">RoboExam</h1>
-      <p className="heroSubtitle"><span className="srOnly">The final exam for Physical AI</span><span aria-hidden="true"><span className="heroMuted">The final exam</span> for Physical AI</span></p>
+      {/* the manuscript's title: "RoboExam: A Shared-Task Benchmark for Robotic Components and Systems" */}
+      <p className="heroSubtitle"><span className="srOnly">A shared-task benchmark for robotic components and systems</span><span aria-hidden="true"><span className="heroMuted">A shared-task benchmark</span><br/>for robotic components and systems</span></p>
     </div>
     <div className="heroFoot">
       <div className="heroIntro">
         <p className="eyebrow">{`${paperResults.tasks.length} tasks · ${PAPER_SIM_CASES} shared cases · four tracks`}</p>
-        <p>VLM agents, action-conditioned world models and robot policies on the same manipulation tasks and conditions — plus a real-robot track.</p>
+        <p>Three simulation tracks put VLM agents, action-conditioned world models (ACWMs) and robot policies on the same tasks and conditions. A fourth evaluates real-robot deployment.</p>
         <div className="heroCtas">
           <button type="button" className="heroPrimary" onClick={() => onLeaderboards()}>Explore leaderboards <ArrowRight size={17}/></button>
           <button type="button" className="heroSecondary" onClick={onDatasets}>Datasets <ArrowUpRight size={16}/></button>
@@ -42,10 +43,15 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
     </div>
     <blockquote className="heroQuote">
       <p>{"“You just can't differentiate between a robot and the very best of humans.”"}</p>
-      <cite>Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950</cite>
+      <cite>Isaac Asimov · I, Robot · 1950</cite>
     </blockquote>
   </section>;
 }
+
+/** Column captions in the manuscript's track terms (the wall bundle's own labels predate them). */
+const WALL_LABELS: Record<string, string> = {
+  T1: "VLM agent rollouts", T2: "ACWM predictions", T3: "Policy rollouts in Isaac Sim", T4: "Real-robot deployment",
+};
 
 /**
  * Four evaluation-video columns behind the hero, one per track, tinted from pale
@@ -79,7 +85,7 @@ function HeroWall() {
       <video src={demoMediaUrl(column.video)} poster={demoMediaUrl(column.poster)} width={column.width} height={column.height}
         muted loop playsInline preload="auto"/>
       <span className="wallTint"/>
-      <span className="wallLabel"><b>{column.track}</b>{column.label}</span>
+      <span className="wallLabel"><b>{column.track}</b>{WALL_LABELS[column.track] ?? column.label}</span>
     </div>)}
     <span className="wallVeil"/>
   </div>;

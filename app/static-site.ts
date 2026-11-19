@@ -6,6 +6,8 @@ import snapshot from "./data/generated/static-media.json" with { type: "json" };
  * public/static-media. The server build keeps every URL as it is.
  */
 export const STATIC_SITE = process.env.ROBOEXAM_STATIC_SITE === "1";
+/** The public site is English only; the internal review build keeps its Chinese labels. */
+export const say = (en: string, zh: string) => STATIC_SITE ? en : zh;
 
 const media: Record<string, string> = snapshot.media;
 

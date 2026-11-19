@@ -13,7 +13,7 @@ test("uses the public RoboExam shell and direct anonymous routing", async () => 
     readFile(new URL("proxy.ts", root), "utf8"),
   ]);
 
-  assert.match(layout, /"RoboExam · Physical AI Benchmark"/);
+  assert.match(layout, /"RoboExam · A Shared-Task Benchmark for Robotic Components and Systems"/);
   assert.match(layout, /<html lang="en">/);
   assert.match(page, /DashboardClient/);
   assert.match(packageJson, /"node":\s*">=22\.13\.0"/);
@@ -36,7 +36,7 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   ]);
 
   for (const track of ["T1", "T2", "T3", "T4"]) assert.match(leaderboard, new RegExp(`id: "${track}"`));
-  for (const title of ["Embodied Agency", "Physical Foresight", "Simulation Deployment", "Real-World Deployment"]) {
+  for (const title of ["VLM agents", "ACWMs", "Robot policies", "Real-robot deployment"]) {
     assert.match(leaderboard, new RegExp(title));
   }
   assert.match(leaderboard, /VLM agents through a shared harness/);

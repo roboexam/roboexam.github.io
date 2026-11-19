@@ -29,8 +29,8 @@ import "./fx.css";
 import "./static-site.css";
 
 export const metadata: Metadata = {
-  title: process.env.ROBOEXAM_STATIC_SITE === "1" ? "RoboExam · Physical AI Benchmark" : "RoboExam · Planned CVPR 2027 Workshop",
-  description: "A comprehensive benchmark of Physical AI capabilities across embodied reasoning, world prediction, simulated control, and real-robot deployment.",
+  title: process.env.ROBOEXAM_STATIC_SITE === "1" ? "RoboExam · A Shared-Task Benchmark for Robotic Components and Systems" : "RoboExam · Planned CVPR 2027 Workshop",
+  description: "A benchmark and evaluation toolkit with three simulation tracks for VLM agents, action-conditioned world models and robot policies on shared tasks and conditions, and a fourth track for real-robot deployment.",
   icons: {
     icon: [
       { url: "/brand/roboexam-mark-32.png", type: "image/png", sizes: "32x32" },

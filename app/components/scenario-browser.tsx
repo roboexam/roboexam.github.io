@@ -3,6 +3,7 @@
 import { Database, Video } from 'lucide-react';
 import { useState } from 'react';
 import { RealDatasetBrowser, SimulationDatasetBrowser } from './real-dataset-browser';
+import { STATIC_SITE } from '../static-site';
 
 export function ScenarioBrowser() {
   // ?source=real (from the Overview's real-robot clips) opens the Real & Ego view
@@ -10,11 +11,11 @@ export function ScenarioBrowser() {
   return <div className="scenarioBrowser">
     <nav className="datasetSourceNav" aria-label="Dataset source">
       <button type="button" className={view === 'episodes' ? 'active' : ''} aria-pressed={view === 'episodes'} onClick={() => setView('episodes')}>
-        <span className="datasetSourceIcon"><Database size={17}/></span><span><strong>Simulation</strong></span>
+        <span className="datasetSourceIcon"><Database size={17}/></span><span><strong>Simulation</strong>{!STATIC_SITE && <small>Tasks, episodes &amp; actions</small>}</span>
         <b>24 tasks</b>
       </button>
       <button type="button" className={view === 'real' ? 'active' : ''} aria-pressed={view === 'real'} onClick={() => setView('real')}>
-        <span className="datasetSourceIcon"><Video size={17}/></span><span><strong>Real &amp; Ego</strong></span><b>2 sources</b>
+        <span className="datasetSourceIcon"><Video size={17}/></span><span><strong>Real &amp; Ego</strong>{!STATIC_SITE && <small>Camera + action replay</small>}</span><b>2 sources</b>
       </button>
     </nav>
     <div className="datasetSourceContext">

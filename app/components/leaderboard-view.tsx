@@ -149,8 +149,8 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
     <details className="evidenceDetails">
       <summary><span><b>Full results &amp; evidence</b><span>{`Per-metric scores and run records for ${track.title}`}</span></span><ChevronDown size={20} aria-hidden="true"/></summary>
     {!(trackId === "T2" && latestT2) && <section className="trackScoreGuide" aria-label={`${track.id} score guide`}>
-      <strong>Score guide · 分数说明</strong>
-      <p lang="en">{scoreGuide.en}</p><p lang="zh-CN">{scoreGuide.zh}</p>
+      <strong>{STATIC_SITE ? "Score guide" : "Score guide · 分数说明"}</strong>
+      <p lang="en">{scoreGuide.en}</p>{!STATIC_SITE && <p lang="zh-CN">{scoreGuide.zh}</p>}
     </section>}
     {!STATIC_SITE && trackId !== "T2" && <BaselineRunPlan key={trackId} initialTrack={trackId === "T1" ? "ALL" : trackId}/>}
     {trackId === "T2" && <div className="trackSectionTitle">

@@ -34,8 +34,8 @@ export const acwm600 = summary as Acwm600Summary;
 export const aColumns = [
   { id: 'A1', name: 'PSNR', unit: 'dB', direction: '↑', note: 'Future-frame micro mean' },
   { id: 'A2', name: 'SSIM', unit: '', direction: '↑', note: 'Future-frame micro mean' },
-  { id: 'JEPA', name: 'JEPA similarity', unit: '', direction: '↑', note: '集合级 / set-level' },
-  { id: 'JEDi', name: 'JEDi distance', unit: '', direction: '↓', note: '与 JEPA 同一集合分布结果' },
+  { id: 'JEPA', name: 'JEPA similarity', unit: '', direction: '↑', note: 'set-level' },
+  { id: 'JEDi', name: 'JEDi distance', unit: '', direction: '↓', note: 'set-level, from the same distributions as JEPA' },
   { id: 'A4', name: 'Motion Smoothness', unit: '', direction: '↑', note: 'A4 · Frozen future-only triples · case macro' },
   { id: 'A5', name: 'M-MSE', unit: '', direction: '↓', note: 'Pooled numerator / denominator · η=0.01' },
   { id: 'A6', name: 'Subject Consistency', unit: '', direction: '↑', note: 'A6 · Frozen motion gate · case macro' },
