@@ -10,11 +10,11 @@ results. There is no standalone public leaderboards route.
 
 The GitHub Pages root remains the workshop-facing site from the local `main`
 checkout. The latest public dashboard is the immutable commit
-`79468796e98bd1a056144d0b8e2de1b2b88c0edf` on the `archive/public-paper-sync`
+`94a38ca15f1c3a01356d359bad35ddb253e36717` on the `archive/public-paper-sync`
 branch: the `087d029` dashboard (kept on the `archive/public-latest-087d029`
 backup branch) with its results synced to the submitted RoboExam manuscript by
 `scripts/export-paper-results.py`, with an Overview that follows the paper's
-story. Pages builds that commit under a no-index
+story and a RoboDojo-style leaderboard. Pages builds that commit under a no-index
 path, which keeps its original name, so it can be reviewed without changing
 the root page:
 
