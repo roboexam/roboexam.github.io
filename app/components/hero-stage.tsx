@@ -5,7 +5,8 @@ import { useEffect, useRef } from "react";
 import { demoMediaUrl, heroWall } from "../data/home-demos";
 import { HERO_TOUCH_EVENT, HeroHands3D } from "./hero-hands-3d";
 import { TrackIcon } from "./podium";
-import { tracks, type TrackId } from "../data/metric-plan";
+import { trackModelType, tracks, type TrackId } from "../data/metric-plan";
+import { PAPER_SIM_CASES, paperResults } from "../data/paper-results";
 import { STATIC_SITE } from "../static-site";
 
 type Props = { onLeaderboards: (track?: TrackId) => void; onDatasets: () => void };
@@ -26,8 +27,8 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
     </div>
     <div className="heroFoot">
       <div className="heroIntro">
-        <p className="eyebrow">Seven capabilities · four exams</p>
-        <p>Evaluating VLM agents, world models and robot policies on one shared set of scenes — from reasoning to real-robot execution.</p>
+        <p className="eyebrow">{`${paperResults.tasks.length} tasks · ${PAPER_SIM_CASES} shared cases · four tracks`}</p>
+        <p>VLM agents, action-conditioned world models and robot policies on the same manipulation tasks and conditions — plus a real-robot track.</p>
         <div className="heroCtas">
           <button type="button" className="heroPrimary" onClick={() => onLeaderboards()}>Explore leaderboards <ArrowRight size={17}/></button>
           <button type="button" className="heroSecondary" onClick={onDatasets}>Datasets <ArrowUpRight size={16}/></button>
@@ -35,7 +36,7 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
       </div>
       <nav className="heroTracks" aria-label="Jump to a track">
         {tracks.map((track) => <button type="button" key={track.id} data-spotlight onClick={() => onLeaderboards(track.id)}>
-          <b><TrackIcon track={track.id} size={30}/></b><span>{track.title}<small>{track.id}</small></span>
+          <b><TrackIcon track={track.id} size={30}/></b><span>{track.title}<small>{`${track.id} · ${trackModelType[track.id]}`}</small></span>
         </button>)}
       </nav>
     </div>

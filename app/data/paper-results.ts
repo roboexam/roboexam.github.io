@@ -45,6 +45,21 @@ export type PaperT4Model = {
   }>;
 };
 export type PaperHybrid = { id: "direct" | "forecast"; label: string; tsr: number; subtask: number; settings: Record<PaperSetting, number> };
+type Count = { successes: number; n: number };
+/** Sec. 5 results: frozen cross-track package and the decision-replay table, checked against the prose. */
+export type PaperFindings = {
+  taskStrengths: { familyTsr: { T1: number; T3: number }; tasks: { task: string; gapPp: number; t1: number; t3: number }[] };
+  conditionShifts: {
+    bySetting: Record<"V" | "S" | "B" | "REC", { tasks: number; t1Pp: number; t3Pp: number; t2EeRatio: number; t2MmseRatio: number }>;
+    hybridVisualDropPp: { direct: number; forecast: number };
+  };
+  answeringVsActing: { vqa: number[]; tsr: number[] }; // [min, max]
+  decisionReplay: {
+    points: number; planSucceeds: number; planFails: number;
+    rows: { forecast: string; all: number; planSucceeds: number; planFails: number }[];
+    repairs: { unsolvedFailedPoints: number; repairablePoints: number; blank: Count; gt: Count };
+  };
+};
 
 export type PaperResults = {
   schemaVersion: "roboexam.paper-results.v1";
@@ -53,6 +68,7 @@ export type PaperResults = {
   tasks: { id: string; origin: "RoboDojo" | "new"; tags: PaperTag[]; conditionalTags: PaperTag[]; requirement: string }[];
   tracks: { T1: PaperT1Model[]; T2: PaperT2Model[]; T3: PaperT3Model[]; T4: PaperT4Model[] };
   hybrid: PaperHybrid[];
+  findings: PaperFindings;
   sources: Record<string, string>;
 };
 
@@ -61,4 +77,6 @@ export const PAPER_VERSION = paperResults.paper.manuscript;
 export const PAPER_REAL_TASKS: PaperRealTaskId[] = ["Buttons", "Towel", "Puzzle"];
 /** Every T1–T3 model runs the same 600 simulation cases (24 tasks × 5 conditions × 5). */
 export const PAPER_SIM_CASES = 600;
+/** Each task has 100 clean training demonstrations (manuscript Sec. 3.1). */
+export const PAPER_DEMOS_PER_TASK = 100;
 export const paperT1ModelIds = new Set(paperResults.tracks.T1.map((model) => model.id));

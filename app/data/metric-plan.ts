@@ -107,6 +107,14 @@ const realWorldMetrics: MetricDefinition[] = [
   {"id":"HUMAN_TERMINATION","label":"Manual Termination Rate","group":"Manual safety review","direction":"↓","note":"Requires a frozen video-review or operator-log rubric"},
 ];
 
+/** What each track evaluates, in the manuscript's terms (Sec. 3.2). */
+export const trackModelType: Record<TrackId, string> = {
+  T1: "VLM agents",
+  T2: "World models (ACWMs)",
+  T3: "Policies in Isaac Sim",
+  T4: "Policies on a real robot",
+};
+
 export const tracks: TrackDefinition[] = [
   {
     id: "T1", title: "Embodied Agency", subtitle: "VLM agents through a shared harness", question: "Ground observations, track task state, plan, and emit structured next actions.", source: "vlm",

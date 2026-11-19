@@ -310,6 +310,68 @@ def main():
                             "tsr": num(cells_[0]), "subtask": num(cells_[1]),
                             "settings": {s: axes_cells[i] for i, s in enumerate(SETTINGS)}})
 
+    # ------------------------------------------------------------ findings (Sec. 5)
+    # Read from the frozen cross-track package and the decision-replay table, and
+    # checked against the numbers the manuscript prose reports.
+    prose = read("sec/5_experiments.tex")
+    r2 = lambda x: round(x + 0.0, 2)
+    cross = json.loads(read("data/cross_track_20261115/summary.json"))
+    assert cross["scope"]["T1"] == [site for site, _ in T1_MODELS.values()], cross["scope"]["T1"]
+    assert cross["scope"]["T3"] == [site for site, _ in T3_MODELS.values()], cross["scope"]["T3"]
+    task_ids = {task["id"].lower(): task["id"] for task in tasks}
+    assert sorted(task_ids) == sorted(cross["task_gaps"]), "cross-track tasks differ from the task mapping"
+    task_strengths = sorted(
+        ({"task": task_ids[task], "gapPp": r2(gap["gap_pp"]),
+          "t1": r2(100 * cross["profiles"][task]["T1"]), "t3": r2(100 * cross["profiles"][task]["T3"])}
+         for task, gap in cross["task_gaps"].items()),
+        key=lambda row: -row["gapPp"])
+    family_tsr = {"T1": round(sum(m["summary"]["tsr"] for m in t1) / len(t1), 1),
+                  "T3": round(sum(m["summary"]["tsr"] for m in t3) / len(t3), 1)}
+    assert f"{family_tsr['T1']}\\% for T1 and {family_tsr['T3']}\\% for T3" in prose, family_tsr
+    shifts = {}
+    for setting in ["V", "S", "B", "REC"]:
+        block = cross["shifts"][setting]
+        shifts[setting] = {"tasks": block["T3"]["n_tasks"], "t1Pp": r2(block["T1"]["mean"]), "t3Pp": r2(block["T3"]["mean"]),
+                           "t2EeRatio": r2(block["T2_position_mm"]["ratio"]), "t2MmseRatio": r2(block["T2_mmse"]["ratio"])}
+    by_id = {row["id"]: row["settings"] for row in hybrid_rows}
+    hybrid_v = {key: r2(by_id[key]["ID"] - by_id[key]["V"]) for key in ("direct", "forecast")}
+    v = shifts["V"]
+    assert f"drops by {abs(v['t3Pp']):.2f} pp for T3 policies and by {hybrid_v['direct']:.2f}/{hybrid_v['forecast']:.2f} pp" in prose, (v, hybrid_v)
+    assert f"rise to {v['t2EeRatio']:.2f} and {v['t2MmseRatio']:.2f} times ID" in prose, v
+    vqa = sorted(m["summary"]["vqa"] for m in t1)
+    tsr = sorted(m["summary"]["tsr"] for m in t1)
+    assert f"score {vqa[0]:.1f}--{vqa[-1]:.1f}\\% on VQA but attain {tsr[0]:.1f}--{tsr[-1]:.1f}\\% TSR" in prose, (vqa, tsr)
+
+    replay_text = read("tables/acwm_decision_replay.tex")
+    replay_n = [int(n) for n in re.findall(r"\(\$n=(\d+)\$\)", replay_text)]
+    assert len(replay_n) == 3, replay_n
+    replay = []
+    for cells in rows_of(replay_text):
+        if len(cells) == 4 and re.fullmatch(r"\d+ \([\d.]+\)", cells[1]):
+            all_, ok, failed = (int(c.split()[0]) for c in cells[1:])
+            replay.append({"forecast": cells[0], "all": all_, "planSucceeds": ok, "planFails": failed})
+    assert [row["forecast"] for row in replay] == ["Blank", "LingBot-VA", "Motus", "Ctrl-World", "Pelican-Sim", "GT"], replay
+    acwm = [row for row in replay if row["forecast"] not in ("Blank", "GT")]
+    blank, gt = replay[0], replay[-1]
+    assert (f"Local-goal attainment is {blank['all']}/{replay_n[0]} with Blank, {min(r['all'] for r in acwm)}--{max(r['all'] for r in acwm)}/{replay_n[0]} "
+            f"with ACWMs, and {gt['all']}/{replay_n[0]} with GT") in prose
+    assert (f"At the {replay_n[2]} points where the original plan fails, these counts are {blank['planFails']}, "
+            f"{min(r['planFails'] for r in acwm)}--{max(r['planFails'] for r in acwm)}, and {gt['planFails']}") in prose
+    repair = re.search(r"At the (\d+) failed-plan points with no success under any of the six conditions, .*? finds executable repairs at (\d+) points", prose)
+    repair_runs = re.search(r"yield (\d+)/(\d+) successes with Blank and (\d+)/(\d+) with GT", prose)
+    assert repair and repair_runs, "repairability sentence changed"
+    findings = {
+        "taskStrengths": {"familyTsr": family_tsr, "tasks": task_strengths},
+        "conditionShifts": {"bySetting": shifts, "hybridVisualDropPp": hybrid_v},
+        "answeringVsActing": {"vqa": [vqa[0], vqa[-1]], "tsr": [tsr[0], tsr[-1]]},
+        "decisionReplay": {
+            "points": replay_n[0], "planSucceeds": replay_n[1], "planFails": replay_n[2], "rows": replay,
+            "repairs": {"unsolvedFailedPoints": int(repair[1]), "repairablePoints": int(repair[2]),
+                        "blank": {"successes": int(repair_runs[1]), "n": int(repair_runs[2])},
+                        "gt": {"successes": int(repair_runs[3]), "n": int(repair_runs[4])}},
+        },
+    }
+
     head = subprocess.run(["git", "-C", str(paper), "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     bundle = {
         "schemaVersion": "roboexam.paper-results.v1",
@@ -319,6 +381,7 @@ def main():
         "tasks": tasks,
         "tracks": {"T1": t1, "T2": t2, "T3": t3, "T4": t4},
         "hybrid": hybrid_rows,
+        "findings": findings,
         "sources": dict(sorted(sources.items())),
     }
     text = json.dumps(bundle, indent=1, ensure_ascii=False) + "\n"

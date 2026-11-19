@@ -29,7 +29,7 @@ export function MethodMarquee() {
     }));
   }, []);
   return <section className="methodMarquee" aria-labelledby="method-marquee-title">
-    <p className="eyebrow" id="method-marquee-title">On the board · {items.length} methods under evaluation</p>
-    <LogoMarquee items={items} label="Methods under evaluation"/>
+    <p className="eyebrow" id="method-marquee-title">On the board · {items.length} methods evaluated across four tracks</p>
+    <LogoMarquee items={items} label="Evaluated methods"/>
   </section>;
 }

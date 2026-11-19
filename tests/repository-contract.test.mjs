@@ -54,9 +54,12 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   assert.match(dashboard, /<HeroStage/);
   assert.match(leaderboardView, /<MainBoard/);
   assert.match(leaderboardView, /<TrackSubtables/);
-  for (const capability of ["State Grounding", "Task Memory", "Predictive Imagination", "Action–Effect Reasoning", "Closed-Loop Execution", "Recovery & Safety", "Generalization"]) {
-    assert.match(dashboard, new RegExp(capability.replace(/[&–]/g, ".")));
-  }
+  // the Overview follows the manuscript (components/overview-story.tsx, data from data/overview.ts)
+  const story = await readFile(new URL("app/components/overview-story.tsx", root), "utf8");
+  for (const section of ["OverviewQuestion", "OverviewBenchmark", "OverviewHybrid", "OverviewFindings", "OverviewExplore"]) assert.match(dashboard, new RegExp(`<${section}`));
+  assert.match(story, /overviewTags/);
+  assert.match(story, /galleryTasks/);
+  assert.doesNotMatch(dashboard, /State Grounding|Predictive Imagination|Closed-Loop Execution/);
   assert.doesNotMatch(dashboard, /One robot|Head \+ cameras|Build history|IterationCounter/);
   const scenarios = await readFile(new URL("app/components/scenario-browser.tsx", root), "utf8");
   const simulationDatasets = await readFile(new URL("app/data/simulation-datasets.server.ts", root), "utf8");

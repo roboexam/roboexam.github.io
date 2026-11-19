@@ -6519,10 +6519,268 @@
    }
   }
  ],
+ "findings": {
+  "taskStrengths": {
+   "familyTsr": {
+    "T1": 13.7,
+    "T3": 13.2
+   },
+   "tasks": [
+    {
+     "task": "find_category_outlier",
+     "gapPp": 33.49,
+     "t1": 79.2,
+     "t3": 45.71
+    },
+    {
+     "task": "set_button_colors",
+     "gapPp": 18.1,
+     "t1": 94.67,
+     "t3": 76.57
+    },
+    {
+     "task": "clear_keyboard_then_close_laptop",
+     "gapPp": 17.07,
+     "t1": 17.07,
+     "t3": 0.0
+    },
+    {
+     "task": "solve_equation",
+     "gapPp": 6.29,
+     "t1": 7.0,
+     "t3": 0.71
+    },
+    {
+     "task": "place_between_references",
+     "gapPp": 4.29,
+     "t1": 46.0,
+     "t3": 41.71
+    },
+    {
+     "task": "hold_water_mug",
+     "gapPp": 3.9,
+     "t1": 5.33,
+     "t3": 1.43
+    },
+    {
+     "task": "arrange_largest_number",
+     "gapPp": 1.14,
+     "t1": 4.0,
+     "t3": 2.86
+    },
+    {
+     "task": "mirror_pair_layout",
+     "gapPp": 0.38,
+     "t1": 19.67,
+     "t3": 19.29
+    },
+    {
+     "task": "classify_objects_by_language",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "imitate_sorting_sequence",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "insert_key",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "play_stacking_toy",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "press_by_number",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "push_T",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "store_tools_in_toolbox",
+     "gapPp": 0.0,
+     "t1": 0.0,
+     "t3": 0.0
+    },
+    {
+     "task": "cover_blocks",
+     "gapPp": -0.19,
+     "t1": 2.67,
+     "t3": 2.86
+    },
+    {
+     "task": "hold_button_until_cue",
+     "gapPp": -0.57,
+     "t1": 0.0,
+     "t3": 0.57
+    },
+    {
+     "task": "build_tower",
+     "gapPp": -2.86,
+     "t1": 0.0,
+     "t3": 2.86
+    },
+    {
+     "task": "match_and_pick_from_conveyor",
+     "gapPp": -3.0,
+     "t1": 12.0,
+     "t3": 15.0
+    },
+    {
+     "task": "fold_clothes",
+     "gapPp": -6.29,
+     "t1": 0.0,
+     "t3": 6.29
+    },
+    {
+     "task": "hang_mugs",
+     "gapPp": -10.29,
+     "t1": 0.0,
+     "t3": 10.29
+    },
+    {
+     "task": "pour_liquid_into_cup",
+     "gapPp": -18.29,
+     "t1": 0.0,
+     "t3": 18.29
+    },
+    {
+     "task": "stack_bowls",
+     "gapPp": -29.29,
+     "t1": 0.0,
+     "t3": 29.29
+    },
+    {
+     "task": "pack_mixed_objects_into_box_v1",
+     "gapPp": -36.04,
+     "t1": 4.53,
+     "t3": 40.57
+    }
+   ]
+  },
+  "conditionShifts": {
+   "bySetting": {
+    "V": {
+     "tasks": 24,
+     "t1Pp": -0.28,
+     "t3Pp": -6.19,
+     "t2EeRatio": 2.26,
+     "t2MmseRatio": 2.73
+    },
+    "S": {
+     "tasks": 24,
+     "t1Pp": 1.81,
+     "t3Pp": 1.19,
+     "t2EeRatio": 1.0,
+     "t2MmseRatio": 1.0
+    },
+    "B": {
+     "tasks": 19,
+     "t1Pp": -1.33,
+     "t3Pp": -4.51,
+     "t2EeRatio": 1.05,
+     "t2MmseRatio": 1.02
+    },
+    "REC": {
+     "tasks": 22,
+     "t1Pp": 1.88,
+     "t3Pp": -3.77,
+     "t2EeRatio": 1.28,
+     "t2MmseRatio": 1.31
+    }
+   },
+   "hybridVisualDropPp": {
+    "direct": 11.67,
+    "forecast": 10.83
+   }
+  },
+  "answeringVsActing": {
+   "vqa": [
+    57.06,
+    71.43
+   ],
+   "tsr": [
+    8.83,
+    26.33
+   ]
+  },
+  "decisionReplay": {
+   "points": 200,
+   "planSucceeds": 137,
+   "planFails": 63,
+   "rows": [
+    {
+     "forecast": "Blank",
+     "all": 130,
+     "planSucceeds": 125,
+     "planFails": 5
+    },
+    {
+     "forecast": "LingBot-VA",
+     "all": 130,
+     "planSucceeds": 127,
+     "planFails": 3
+    },
+    {
+     "forecast": "Motus",
+     "all": 132,
+     "planSucceeds": 128,
+     "planFails": 4
+    },
+    {
+     "forecast": "Ctrl-World",
+     "all": 133,
+     "planSucceeds": 127,
+     "planFails": 6
+    },
+    {
+     "forecast": "Pelican-Sim",
+     "all": 135,
+     "planSucceeds": 128,
+     "planFails": 7
+    },
+    {
+     "forecast": "GT",
+     "all": 136,
+     "planSucceeds": 128,
+     "planFails": 8
+    }
+   ],
+   "repairs": {
+    "unsolvedFailedPoints": 52,
+    "repairablePoints": 21,
+    "blank": {
+     "successes": 0,
+     "n": 63
+    },
+    "gt": {
+     "successes": 1,
+     "n": 63
+    }
+   }
+  }
+ },
  "sources": {
+  "data/cross_track_20261115/summary.json": "e5caa35719858b304cb09602a4119a368e0f1e635473201a6d6511d447df5fc9",
   "data/policy_results_20261115/episodes.json": "0144b4d9cdafd6db06eaa19308e0aaf931918b8ac977a32becda1a0645f34fd5",
   "data/track_results_20261112/episodes.json": "360ffa7b6686bd6012227a09065a934a7c72fe08d04a24c7439cd3a3e888f016",
+  "sec/5_experiments.tex": "a1efc7bfa9b89353810b69b9d72980dcc2d78a80402e8e2c2656487740f81544",
   "tables/acwm_conditions.tex": "def7160a96545686380f105b0c151a616b3e61f63a0580724dadba01093f66e2",
+  "tables/acwm_decision_replay.tex": "89677d82a1edb5ef8a33e3a246b8fa926d48c3839eff8427cb37b724bf045732",
   "tables/acwm_full_results.tex": "ed19fc69cc6175ba26697772695674ca1bf76aa619b28be7122475e7c4240bf4",
   "tables/evaluation_axes.tex": "f1c90840e29582071507ed62400e598a722f0feef7842257cc3126080c78f88d",
   "tables/main_capabilities.tex": "3a03854c30bfec66111f67f7007bd622dc811002b5034f0f99e3ebe6fd403a08",

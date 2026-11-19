@@ -80,3 +80,58 @@ test("column ranks respect direction, ties and unranked rows", () => {
   assert.equal(low.get("a"), 1);
   assert.equal(low.has("d"), false);
 });
+
+test("Overview benchmark: tags, gallery, conditions and track sizes come from the manuscript bundle", async () => {
+  const { CONDITIONS, casesPerTask, demosPerTask, galleryTasks, overviewStats, overviewTags, trackSizes } = await import("../app/data/overview.ts");
+  assert.deepEqual(overviewTags.map((tag) => tag.letter), ["G", "R", "F", "P", "S", "M"]);
+  assert.deepEqual(overviewTags.map((tag) => tag.tasks.length), [12, 13, 10, 11, 13, 14]);
+  assert.equal(overviewTags.find((tag) => tag.letter === "S").label, "Order & stages");
+  assert.equal(galleryTasks.length, 24);
+  assert.equal(galleryTasks.filter((task) => task.isNew).length, 7);
+  for (const tag of overviewTags) assert.equal(galleryTasks.filter((task) => task.tags.includes(tag.id)).length, tag.tasks.length, tag.letter);
+  assert.ok(galleryTasks.every((task) => !task.letters.includes("T")));
+  assert.deepEqual(CONDITIONS.map((condition) => condition.id), ["ID", "V", "S", "B", "REC"]);
+  assert.deepEqual(trackSizes, { T1: 5, T2: 5, T3: 7, T4: 5 });
+  assert.equal(casesPerTask, 25);
+  assert.equal(demosPerTask, 100);
+  assert.deepEqual(overviewStats, { tasks: 24, newTasks: 7, demos: 2400, simCases: 600, realCasesPerPolicy: 69 });
+});
+
+test("Overview images exist and match the hashes their manifest records", async () => {
+  const { createHash } = await import("node:crypto");
+  const { readFileSync } = await import("node:fs");
+  const { galleryTasks, CONDITIONS } = await import("../app/data/overview.ts");
+  const { conditionMedia, figureMedia, taskMedia } = await import("../app/data/overview-media.ts");
+  const check = (media) => {
+    assert.ok(media, "missing media");
+    assert.match(media.image, /^\/overview\/(tasks|conditions|figures)\/[a-z0-9_-]+\.webp$/i);
+    const bytes = readFileSync(new URL(`../public${media.image}`, import.meta.url));
+    assert.equal(createHash("sha256").update(bytes).digest("hex"), media.sha256, media.image);
+  };
+  for (const task of galleryTasks) {
+    const media = taskMedia(task.id);
+    check(media);
+    assert.match(media.clip, new RegExp(`^/static-media/datasets-simulation/${task.id}-training-[0-9a-f]{64}-[0-9a-f]{64}\\.mp4$`));
+  }
+  for (const condition of CONDITIONS) for (const domain of ["sim", "real"]) check(conditionMedia(domain, condition.id));
+  check(figureMedia.tracks);
+  check(figureMedia.hybrid);
+  assert.equal(figureMedia.tracks.source, "figures/roboexam_overview.pdf");
+  assert.equal(figureMedia.hybrid.source, "figures/roboexam_pipeline.pdf");
+});
+
+test("Overview findings read the manuscript's Sec. 5 numbers from the bundle", async () => {
+  const { answeringVsActing, familyTsr, hybridRuns, replay, strengthRows, visualShift } = await import("../app/data/overview.ts");
+  assert.deepEqual(familyTsr, { T1: 13.7, T3: 13.2 });
+  assert.deepEqual(strengthRows.map((row) => [row.task, row.gapPp]), [
+    ["Find Category Outlier", 33.49], ["Set Button Colors", 18.1], ["Clear Keyboard, Then Close Laptop", 17.07],
+    ["Pour Liquid into Cup", -18.29], ["Stack Bowls", -29.29], ["Pack Mixed Objects into Box", -36.04],
+  ]);
+  assert.deepEqual(visualShift.rows.map((row) => row.pp), [-11.67, -10.83, -6.19, -0.28]);
+  assert.deepEqual(visualShift.t2, { ee: 2.26, mmse: 2.73 });
+  assert.deepEqual(replay.rows.map((row) => [row.forecast, row.planFails]), [["Blank", 5], ["LingBot-VA", 3], ["Motus", 4], ["Ctrl-World", 6], ["Pelican-Sim", 7], ["GT", 8]]);
+  assert.equal(replay.planFails, 63);
+  assert.deepEqual(replay.repairs, { unsolvedFailedPoints: 52, repairablePoints: 21, blank: { successes: 0, n: 63 }, gt: { successes: 1, n: 63 } });
+  assert.deepEqual(answeringVsActing, { vqa: [57.06, 71.43], tsr: [8.83, 26.33] });
+  assert.deepEqual(hybridRuns.map((run) => [run.id, run.tsr]), [["direct", 30.33], ["forecast", 31.67]]);
+});

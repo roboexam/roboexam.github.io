@@ -1,0 +1,451 @@
+{
+ "generatedBy": "scripts/capture-overview-media.mjs",
+ "tasks": {
+  "arrange_largest_number": {
+   "image": "/overview/tasks/arrange_largest_number.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "fc41a88f0952b0d4b4081a157fe0a9a5f36ad2169d09da5602372d0b756df33e",
+   "clip": "/static-media/datasets-simulation/arrange_largest_number-training-5c2179704dc3bac432536e4160e4e3be1c566344e317bd455d46b56aa2b06f36-a302df81755b20b181d13ab2dde5d0d598b925a12b5a689794807eaf8c2e8b5d.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "build_tower": {
+   "image": "/overview/tasks/build_tower.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "3f58b8bdf897e566a64e81c152e75ab86dc5d8c2d1a16bc7d3559fa3c0a0e873",
+   "clip": "/static-media/datasets-simulation/build_tower-training-aea279826855bd9a6014b84cac142e3cad3ed085bd122b0b92c073f06edc09ec-a33d626cb46325daf6f7f7c746ad2600736678c2b3603ebd335b9f7947c11f88.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "classify_objects_by_language": {
+   "image": "/overview/tasks/classify_objects_by_language.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "1c38cb13dc16631570c9f7d3146ca89915fd75f787e37b13a3104a79308a9fa3",
+   "clip": "/static-media/datasets-simulation/classify_objects_by_language-training-6b974d8df2982ab5b9518d147f005d3c6db706727e2540b1ea65e52e019e6357-cea074cb0f043c4a0cfac422a54970b6b77cf3d6857abf05393a44edbedd699f.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "clear_keyboard_then_close_laptop": {
+   "image": "/overview/tasks/clear_keyboard_then_close_laptop.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "d9f8e9d3096e6d4d56af159be2ee57adc8f6188023ced68127eb9710ff36c847",
+   "clip": "/static-media/datasets-simulation/clear_keyboard_then_close_laptop-training-04372a5c5c5b5f43440d90f50773c833342499a31fe52a9af56426ea5df67cda-28c1ab62b017ee4de8fa2d3db4eea4b5dc59bade1b10a9a65ef6164ed18b746b.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "cover_blocks": {
+   "image": "/overview/tasks/cover_blocks.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "972abbecbcb549c8000d4d1881a0c9986cc9bc14ad9c802901da68b7c8b3d233",
+   "clip": "/static-media/datasets-simulation/cover_blocks-training-28be160bbebb11952f9a3675e2d62d334d7182cf97bc40b42aa14da8406efb7a-e11617654e101e2887c38066a2d5f197251c26c65381af34b3a86df1d2f3f622.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "find_category_outlier": {
+   "image": "/overview/tasks/find_category_outlier.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "201468d4608548fb743fd2e9ec728d72aac84fb68ae0bb8a3a3c92a5fa598e34",
+   "clip": "/static-media/datasets-simulation/find_category_outlier-training-6e8e4b79b07752583b01b93c8e62b0bb5b65e85dce4473973f471d0c693cd3b8-3005e4c23262e4476c2606f575f9f609f11112fcd927197e54e1e7fed030e934.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "fold_clothes": {
+   "image": "/overview/tasks/fold_clothes.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "25734dd5a0c1a86424eb32c3b4bbd311af6aaa2bd5b50f538975bb9114bbb3cd",
+   "clip": "/static-media/datasets-simulation/fold_clothes-training-9e1076db7c5afbc57d07581bb8f059e8a2d592f15e43f5be1db16a5571e7e31c-0c2f898e1c9e6fd8801032cbd42ae8e6fccca4ce49001545b93def431d20cfc0.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "hang_mugs": {
+   "image": "/overview/tasks/hang_mugs.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "2699b4661763550eaf91bea983148b2cd3b50dc440490ab5a11586501f6bef01",
+   "clip": "/static-media/datasets-simulation/hang_mugs-training-a2709eae6816bd6eeb6165363b2ab56a11495691e993fff54af4ab6ac319c2fc-006ddd7666690804b54703aea4ebad290c5270c5a7536899e93ecfed2f947784.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "hold_button_until_cue": {
+   "image": "/overview/tasks/hold_button_until_cue.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "5e0d1d08536cfed6e4a9e55b4cd76d503cba77ce03161c3c357d8645060b5867",
+   "clip": "/static-media/datasets-simulation/hold_button_until_cue-training-f81c8b4cbd805e11a83f479ad05e800ea4b7aa54efdbef5d07037c7aab0afcf2-62bbe837c1b0a116afc5830a87ffb71c030e9a240a6283d819dc4788c7048d44.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "hold_water_mug": {
+   "image": "/overview/tasks/hold_water_mug.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "fa64f6dea4fc8ffdcb965a22a2771ca0f24179f1b26a022cc3222174b146b562",
+   "clip": "/static-media/datasets-simulation/hold_water_mug-training-0dfd5427879dd38be2e211d14f23057e294833cde5c6b8bae3b80bf4feba095a-667a4d42c496a373b8c0ee47b4502ecb151a4331f93015fd7c7f34aafec162c3.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "imitate_sorting_sequence": {
+   "image": "/overview/tasks/imitate_sorting_sequence.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "6c12cde7a83b11ff78d3ae805b65f28f8311299f91459a7dfc3309c8bbc948e9",
+   "clip": "/static-media/datasets-simulation/imitate_sorting_sequence-training-d847056be513f68ebfa43b90f8b97b9d47b5041cbc97a7e5ce84f2bd42adf40a-b624756f54c6150a0b6a80ec6d6c5515d46636bcaa3300e22352c6a713e6ab97.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "insert_key": {
+   "image": "/overview/tasks/insert_key.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "4d7be3e8a0bb897389b345d4f8d8260729b458af5d594a1c254e6ecf3c24c4d4",
+   "clip": "/static-media/datasets-simulation/insert_key-training-1a4e647ec92a6636edc0261a1225d0bef12310926c15446a32dee208234e626a-7868cbe32664af92761cccf268e26edd02351b92d83b4befeac0ff2cc2e568ad.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "match_and_pick_from_conveyor": {
+   "image": "/overview/tasks/match_and_pick_from_conveyor.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "7a144f0d3fba5ed8c1b5fee64ac41259fdc083171a0dba742bd223a16f959ff3",
+   "clip": "/static-media/datasets-simulation/match_and_pick_from_conveyor-training-7a4ed3202f7e2fadae6a96bcfa0694b957590408d01d58890577d9a2b9076c70-9016fab772e374a758c3e0f64362eb0b106190d77c078f3af1b8ba9566a95bba.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "mirror_pair_layout": {
+   "image": "/overview/tasks/mirror_pair_layout.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "a7d90e796b5a6c2991893cb6925caac07ecb2d901cbc68e67b7fd9f1c7e7a89d",
+   "clip": "/static-media/datasets-simulation/mirror_pair_layout-training-ec278a43d820eeec4311b6c7705eb7955ca8c15597f4c47ce9aa4cd25b3790f4-492d23e2fd396634ab2686c1c416fe3f087cd3bdc91c7b48c994f1379b984c7e.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "pack_mixed_objects_into_box_v1": {
+   "image": "/overview/tasks/pack_mixed_objects_into_box_v1.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "02574ce283febf816621dcbef174f3c80222e83bbc04a0b2d57d4fb66ae04146",
+   "clip": "/static-media/datasets-simulation/pack_mixed_objects_into_box_v1-training-df8c0cffd0f6d6e68f6f7d15fbf02848b2865691aa0f182036d71ef328f0d532-90b470a75b605476543951b9078e79150c3272303dc604242313e3115ebb12aa.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "place_between_references": {
+   "image": "/overview/tasks/place_between_references.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "c200173d3dde717ff71f8c99ddf4aeda79f472417d2c2f8e98a5cdbf6163a886",
+   "clip": "/static-media/datasets-simulation/place_between_references-training-6a74eb9a0fbd47ae4edcc0d86e8a83383b821773918795b28ee9290272becbb9-b18ab000973464586b70e801f4c3d5e856491291ead2a79a5ce064df5a8b4b5a.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "play_stacking_toy": {
+   "image": "/overview/tasks/play_stacking_toy.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "6e46a6cfb1de3c6dc72413af0a86d9332514d21801c49f45d5ed9c1469d86187",
+   "clip": "/static-media/datasets-simulation/play_stacking_toy-training-93daea469b81d0f96cb3497f0bf019365c64c0a0357ce0ca2f51648c2695a3ad-a271e59a7c6ed07597c4ddf3d3053825c07b5132615f4aa64f6a80acc47d2553.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "pour_liquid_into_cup": {
+   "image": "/overview/tasks/pour_liquid_into_cup.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "738dc61332771aea7dee8f3681727e10b338bc5257c4062f0c40f0cd6f19b85c",
+   "clip": "/static-media/datasets-simulation/pour_liquid_into_cup-training-509b614d4308e4bceeecd2b8331d618e28d510d1cbc856ca4726dda134525674-349a9bd047d2fb76ff8549c81d34f7a12a1c0a0d1011f31314cc52d7e41cbb9b.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "press_by_number": {
+   "image": "/overview/tasks/press_by_number.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "fe62a4fc9de3283490870172f09ee8e0bcb7f2e49958721e527214e2b1c61ed4",
+   "clip": "/static-media/datasets-simulation/press_by_number-training-257a8cc1997c48d3f0d9dd4a08c66c7733e97ada97506cd665658fbdc30dd95a-cb47e62fe4eb8eecf41f291d50b2ee5e23063e9fc566afd9cc8794979d6e6043.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "push_T": {
+   "image": "/overview/tasks/push_T.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "ac3c77bfa3f17a32855c95672fcf9f1f271a787f41b3d684a68c1c5ffa8c6ba2",
+   "clip": "/static-media/datasets-simulation/push_T-training-54f0b3271ed71ddfc51f3c6c81e242a769d4ea5d93a0928fded1f024a73b7913-2953f22bd81a8d49fe5a85b959e0273d0295b22c3f90852b79a3fc8b34ca4fa0.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "set_button_colors": {
+   "image": "/overview/tasks/set_button_colors.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "02ce93d682c019a2821e885f95e1a61e8cf7e31d0e7d6c31d07f785ae9beb440",
+   "clip": "/static-media/datasets-simulation/set_button_colors-training-944311acd5ec7c273280c40152fa7cd9f25a77e910e253634f397be78082cb50-f9f505c34ba53c9345f71ba281ded9f773b348c2e1c44f6b896fcb9651bef134.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "solve_equation": {
+   "image": "/overview/tasks/solve_equation.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "eef3adc2c17eef9b1928fe8c81a32e56efa8c7f3cc20ba010da85f58c59cf40d",
+   "clip": "/static-media/datasets-simulation/solve_equation-training-da070976e1a6f54fe3d09062d7c35d08d823daa3ed1915cadc9367d1f28e95ae-b9902be4771dad531fb5dc944b2cc1906f32df44248319fa95bd361532e38828.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "stack_bowls": {
+   "image": "/overview/tasks/stack_bowls.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "a93d333d1f373f5f6809fe19ed4f8d1bbf85d4525ad5306e7c779786e1aded24",
+   "clip": "/static-media/datasets-simulation/stack_bowls-training-bd5ecce4da92d8f7a33bb5ee5020f10d3c2d6e817ba3010eef69ed270bc8c4f8-9aca5cf1a7c102a9de2dafec115913a5f2843543ff9f705d78518f1165886649.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  },
+  "store_tools_in_toolbox": {
+   "image": "/overview/tasks/store_tools_in_toolbox.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "1487e653b3e02d706c0c6182552d4e739a4ae914232f0e3318601ea137411863",
+   "clip": "/static-media/datasets-simulation/store_tools_in_toolbox-training-98fa888f87a52dba467448cba76b7e567b6e691b154adc4fb641fbe5ae7c279f-6270638f23eb1d18ad255ee1e1b88e46132e483098c1d765e6f9c52e1bd5ab00.mp4",
+   "frameAt": 0.04,
+   "crop": {
+    "x": 0.125,
+    "y": 0.16,
+    "w": 0.75,
+    "h": 0.75
+   }
+  }
+ },
+ "conditions": {
+  "sim:ID": {
+   "image": "/overview/conditions/sim-id.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "437c2407218f694737be40907bd781a89a0c37543d00c30de04c3be19c449db0",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image.jpeg",
+   "sourceSha256": "4b8ec7d33ce9f9fbc3238dc732c000a9971c07cf0c8274f12b59e2fced911779",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "sim:V": {
+   "image": "/overview/conditions/sim-v.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "aabd44d46a72a113fefc59a41e59b05c65557d9536ae2548638b9c482084c522",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image5.jpeg",
+   "sourceSha256": "9d09ab6e4290209d426555a25ee7c494e10d264ef5f8b439e64b2492a86a0895",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "sim:S": {
+   "image": "/overview/conditions/sim-s.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "f958d06881ab8bd6331cee5096f09609e4739569ccb7d8c4462a32095b1cb4d7",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image9.jpeg",
+   "sourceSha256": "35c246a739637c74d43c7f8b74f3e056bad49b7e41fbf38ce5ae3781916a92c6",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "sim:B": {
+   "image": "/overview/conditions/sim-b.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "cbe3e274622b70b96247bb81c7cc5ff1a81060a2e7adcd2a505df6ecfe253cb9",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image13.jpeg",
+   "sourceSha256": "7479d59c901c673f888069de51453a7286e37c7d9248ac873c7a190b4e56df79",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "sim:REC": {
+   "image": "/overview/conditions/sim-rec.webp",
+   "width": 360,
+   "height": 270,
+   "sha256": "fdae4dae7a1e5803252456808151c6bf1461d7d1139cf5964227f75f2711fad0",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image17.jpeg",
+   "sourceSha256": "abe8bcb8c70cce55719d0dbf61f564c259b48ea0a3c803da3f2d95adee3a6b55",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "real:ID": {
+   "image": "/overview/conditions/real-id.webp",
+   "width": 640,
+   "height": 360,
+   "sha256": "443fff35cffddd4fa43d8bdff4f4003c2f1db3b22cd50b3be43480f64937bed6",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image21.jpeg",
+   "sourceSha256": "6813abbebd70873f63c551aec7cc8ec39fe0362b7d1ae011271bf2928d33506a",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "real:V": {
+   "image": "/overview/conditions/real-v.webp",
+   "width": 640,
+   "height": 360,
+   "sha256": "efea8e90c83c33853ac3699587e2d2bd1d0432483f2a5c1504427ff399af1ee5",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image25.jpeg",
+   "sourceSha256": "fc1129fd98d453898ea6876d0f83874d985e5e1aff8d3f9b46c4b183a5651516",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "real:S": {
+   "image": "/overview/conditions/real-s.webp",
+   "width": 640,
+   "height": 360,
+   "sha256": "4cbdb083e8a6da7e25bfd87280990f3d94dfce2a3fc9e9c37abbed7d2f010996",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image29.jpeg",
+   "sourceSha256": "b02ded0116092a18aeeaf966e98e71430b50d41c64a19981664a6e7441449b3c",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "real:B": {
+   "image": "/overview/conditions/real-b.webp",
+   "width": 640,
+   "height": 360,
+   "sha256": "e6fe0c7e0d0dbd3d64d40c42de21b1eb924443a59da973919beb4789f4ba41be",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image33.jpeg",
+   "sourceSha256": "66c804245ee4c402c4b635d591541a409f9e8850e0c6a00712d4df691c80b09c",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  },
+  "real:REC": {
+   "image": "/overview/conditions/real-rec.webp",
+   "width": 640,
+   "height": 360,
+   "sha256": "f8c705d31021acd35d88a7b9b9991011f74878c05ca05057455894bc2fc8407a",
+   "source": "figures/editable/RoboExam-Case-Conditions-Compact.pptx#ppt/media/image37.jpeg",
+   "sourceSha256": "15f565ab7dc15a750aa36c488d35e071e92a8660227dd2a1b0cf7276c3f855c7",
+   "deckSha256": "81eae3b1189c6483f05d1859e986d6699c6bf30509c5827b0effb76c4e07c6d7"
+  }
+ },
+ "figures": {
+  "tracks": {
+   "image": "/overview/figures/tracks.webp",
+   "width": 2880,
+   "height": 1195,
+   "sha256": "8311c173c0dc781d215c54b3491b79c14169fd627c014c1498b167485867e1dd",
+   "source": "figures/roboexam_overview.pdf",
+   "sourceSha256": "e8940fd964133d331a464b78fd1b042d4835fec29f61f8f1d10e1f2ce600e60f"
+  },
+  "hybrid": {
+   "image": "/overview/figures/hybrid.webp",
+   "width": 2880,
+   "height": 1320,
+   "sha256": "eee61c6f703af245ff98c1f843cfbdb05f684990eb2f9fe4751762f197129891",
+   "source": "figures/roboexam_pipeline.pdf",
+   "sourceSha256": "9d648936d72d85122ef9424091836a50a175e412ad50418e7e819f2e9fab34fc"
+  }
+ }
+}

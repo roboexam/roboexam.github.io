@@ -57,20 +57,23 @@ test("renders the dashboard introduction without login", async () => {
   assert.doesNotMatch(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
   assert.match(html, /Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950/);
   assert.match(html, /Correlation/);
-  assert.match(html, /From model capabilities to task-level evidence\./);
-  assert.match(html, /The RoboExam evaluation spectrum/);
-  assert.doesNotMatch(html, /Measures C[1-7]|Other capabilities|VLM agents · shared harness|Action-conditioned world models|Policies in simulation|Policies on real robots/);
+  // the Overview follows the manuscript: question → benchmark → hybrid agent → findings → explore
+  const order = ["Where does each system excel", "24 tasks, five conditions, four tracks.", "Does seeing the future help a robot act?", "What the shared tasks show.", "Every result in the paper, on the leaderboard."].map((label) => html.indexOf(label));
+  assert.ok(order.every((index, i) => index > 0 && (i === 0 || index > order[i - 1])), `section order ${order}`);
   assert.match(html, /Embodied Agency/);
-  assert.match(html, /Seven capabilities/);
-  assert.match(html, /Six requirement tags across 24 simulation scenes/);
-  assert.match(html, /Temporal &amp; stage control/);
-  assert.match(html, /Temporal &amp; stage control: 13 of 24 simulation scenes/);
-  const requirementLegend = html.match(/<div class="flowScenarioTags".*?<\/div>/)?.[0];
-  assert.ok(requirementLegend);
-  assert.equal((requirementLegend.match(/<b>/g) ?? []).length, 6);
-  assert.doesNotMatch(requirementLegend, /<b>[SH]<\/b>/);
-  assert.match(html, /State Grounding/);
-  assert.match(html, /Recovery &amp; Safety/);
+  assert.match(html, /24 tasks · 600 shared cases · four tracks/);
+  assert.doesNotMatch(html, /Seven capabilities|State Grounding|Recovery &amp; Safety/);
+  // the manuscript's six capability tags filter the 24-task gallery, with Order & stages lettered S
+  const tagFilter = html.match(/<div class="tagFilter".*?<\/div>/)?.[0];
+  assert.ok(tagFilter);
+  assert.equal((tagFilter.match(/<button/g) ?? []).length, 7);
+  assert.match(tagFilter, /<b>S<\/b>Order &amp; stages/);
+  assert.doesNotMatch(tagFilter, /<b>[TH]<\/b>/);
+  assert.equal((html.match(/class="taskTile/g) ?? []).length, 24);
+  assert.match(html, /Failure recovery/);
+  assert.match(html, /Similar averages, opposite strengths/);
+  assert.match(html, /Visual change hurts most/);
+  assert.match(html, /Seeing the true future rarely fixes a failed plan/);
   assert.match(html, /Leaderboards/);
   assert.doesNotMatch(html, /当前 baseline 训练与测评计划|RUN REGISTRY/);
   assert.doesNotMatch(html, /拟之而后言|识其境，推其变，成其事，应万变|Where Physical AI|纸上得来终觉浅|Lu You|Reason from observations|Perceive and reason without acting|Fire tests gold|Seneca|Toward human-level Physical AI|One robot|Build history|From profile to evidence|Read abilities first|reducing embodied intelligence to a single success rate|Capability × interface × regime|One syllabus\. Four exams|UniEmbodied-Bench|Unified Embodied Evaluation|Research preview|ICLR 2027/);
