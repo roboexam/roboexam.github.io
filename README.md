@@ -10,7 +10,7 @@ results. There is no standalone public leaderboards route.
 
 The GitHub Pages root remains the workshop-facing site from the local `main`
 checkout. The latest public dashboard is the immutable commit
-`3be934fc548c264c2d92cf46d68a8db177031bb3` on the `archive/public-paper-sync`
+`61b62eb9a5bf4fc59459ea303acb642c03ba3a15` on the `archive/public-paper-sync`
 branch: the `087d029` dashboard (kept on the `archive/public-latest-087d029`
 backup branch) with its results synced to the submitted RoboExam manuscript by
 `scripts/export-paper-results.py`, with an Overview that follows the paper's

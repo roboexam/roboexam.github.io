@@ -20,7 +20,7 @@ if (process.env.GITHUB_PAGES !== "true") {
   process.exit(0);
 }
 
-const publicCommit = process.env.PUBLIC_SITE_COMMIT ?? "3be934fc548c264c2d92cf46d68a8db177031bb3";
+const publicCommit = process.env.PUBLIC_SITE_COMMIT ?? "61b62eb9a5bf4fc59459ea303acb642c03ba3a15";
 const snapshotTag = process.env.STATIC_SNAPSHOT_TAG ?? "static-snapshot-0f093a7";
 const hiddenPath = process.env.HIDDEN_PUBLIC_PATH ?? "__public_latest_087d029";
 const publicDir = await mkdtemp(path.join(os.tmpdir(), "roboexam-public-pages-"));
