@@ -4,6 +4,7 @@ import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { Fragment, useMemo, useState } from "react";
 import { AXES, axisLowerIsBetter, axisRows, columnRanks, metricTable, type AxisRow, type MetricColumn, type MetricRow } from "../data/main-board";
 import type { TrackId } from "../data/metric-plan";
+import { MethodLogo } from "./podium";
 
 type View = "axis" | "metric";
 
@@ -11,12 +12,12 @@ const fmt = (value: number | null | undefined, digits = 1) =>
   typeof value === "number" && Number.isFinite(value) ? value.toFixed(digits) : "—";
 
 const AXIS_SECONDARY: Record<TrackId, string> = { T1: "Subtask %", T2: "M-MSE", T3: "Subtask %", T4: "" };
-const AXIS_METRIC: Record<TrackId, string> = { T1: "TSR %", T2: "EE position error (mm, lower is better)", T3: "TSR %", T4: "SR % pooled over the three real-robot tasks" };
+const AXIS_METRIC: Record<TrackId, string> = { T1: "Task success rate (%)", T2: "End-effector error in mm, lower is better", T3: "Task success rate (%)", T4: "Success rate (%) over the three real-robot tasks" };
 const AXIS_NOTE: Record<TrackId, string> = {
-  T1: "Overall is the TSR over all 600 cases.",
-  T2: "Overall is the EE position error over all 600 cases; a positive Δ means larger error out of distribution.",
-  T3: "Overall is the TSR over all 600 cases.",
-  T4: "Real robot: 5 cases per task and condition; Recovery is the continuation scope of towel folding and puzzle insertion (3 + 3 cases). Overall averages all 69 cases.",
+  T1: "Overall covers all 600 cases.",
+  T2: "Overall covers all 600 cases; a positive Δ means a larger error out of distribution.",
+  T3: "Overall covers all 600 cases.",
+  T4: "Recovery is the continuation cases of towel folding and puzzle insertion. Overall covers all 69 cases.",
 };
 
 export function TrackSubtables({ trackId }: { trackId: TrackId }) {
@@ -27,9 +28,7 @@ export function TrackSubtables({ trackId }: { trackId: TrackId }) {
         <button type="button" aria-pressed={view === "axis"} onClick={() => setView("axis")}>By evaluation axis</button>
         <button type="button" aria-pressed={view === "metric"} onClick={() => setView("metric")}>By metric</button>
       </div>
-      <p>{view === "axis"
-        ? "Each column is one evaluation condition; n is the number of evaluated cases."
-        : "Each column pools all tasks and all conditions."}</p>
+      <p>{view === "axis" ? "One column per evaluation condition." : "Each column pools all tasks and conditions."}</p>
     </div>
     {view === "axis" ? <AxisTable key={trackId} trackId={trackId}/> : <MetricBreakdown key={trackId} trackId={trackId}/>}
   </section>;
@@ -54,15 +53,14 @@ function AxisTable({ trackId }: { trackId: TrackId }) {
         <th scope="col" title="OOD average minus ID. Negative means the model loses ground out of distribution.">Δ OOD − ID</th>
       </tr></thead>
       <tbody>{sorted.map((row) => <tr key={row.id} className={row.ranked ? "" : "unranked"}>
-        <th scope="row"><strong>{row.label}</strong><span><i className="typePill">{row.type}</i>{row.note ?? ""}</span></th>
+        <th scope="row" title={row.note ?? undefined}><span className="subModel"><MethodLogo label={row.label} size={26}/><strong>{row.label}</strong></span></th>
         {columns.map((column) => {
           const rank = ranks[column.id].get(row.id);
           const axis = AXES.find((item) => item.id === column.id);
           const cell = axis ? row.axes[axis.id] : null;
           const placed = (column.read(row) ?? 0) > 0;
           return <td key={column.id} className={`${placed && rank === 1 ? "best" : placed && rank === 2 ? "second" : ""} ${column.id === "overall" ? "overallCell" : ""}`}>
-            <b>{fmt(column.read(row))}</b>
-            {cell && cell.n > 0 && <small>{cell.secondary != null ? `${fmt(cell.secondary, trackId === "T2" ? 4 : 1)} · ` : ""}n={cell.n}</small>}
+            <b title={cell && cell.n > 0 ? `${cell.secondary != null ? `${AXIS_SECONDARY[trackId]} ${fmt(cell.secondary, trackId === "T2" ? 4 : 1)} · ` : ""}${cell.n} cases` : undefined}>{fmt(column.read(row))}</b>
           </td>;
         })}
         <td className={`deltaCell ${row.oodDrop == null ? "" : (higher ? row.oodDrop < 0 : row.oodDrop > 0) ? "down" : "up"}`}>
@@ -70,7 +68,7 @@ function AxisTable({ trackId }: { trackId: TrackId }) {
         </td>
       </tr>)}</tbody>
     </table>
-    <p className="subtableCaption">Main value: {AXIS_METRIC[trackId]}. Small text: {AXIS_SECONDARY[trackId] ? `${AXIS_SECONDARY[trackId]} · ` : ""}cases. {AXIS_NOTE[trackId]} Source: RoboExam manuscript.</p>
+    <p className="subtableCaption">{AXIS_METRIC[trackId]}{rows[0] ? `, ${rows[0].axes.ID.n} cases per condition` : ""}. {AXIS_NOTE[trackId]}</p>
   </div>;
 }
 
@@ -99,23 +97,23 @@ function MetricBreakdown({ trackId }: { trackId: TrackId }) {
           className={column.pending ? "pendingHead" : ""} aria-sort={sort === column.id ? "ascending" : undefined}>
           {column.pending ? <span>{column.short}<i>{column.direction}</i></span> :
             <button type="button" onClick={() => setSort(column.id)} aria-label={`Rank by ${column.label}`}>
-              {column.short}<i>{column.direction}</i>{sort === column.id ? (column.direction === "↓" ? <ArrowUp size={13}/> : <ArrowDown size={13}/>) : <ArrowUpDown size={13}/>}
+              {column.short}{column.unit ? ` (${column.unit})` : ""}<i>{column.direction}</i>{sort === column.id ? (column.direction === "↓" ? <ArrowUp size={13}/> : <ArrowDown size={13}/>) : <ArrowUpDown size={13}/>}
             </button>}
         </th>)}</tr>
       </thead>
       <tbody>{sorted.map((row) => <tr key={row.id} className={row.ranked ? "" : "unranked"}>
-        <th scope="row"><strong>{row.label}</strong><span><i className="typePill">{row.type}</i>{row.note ?? ""}</span></th>
+        <th scope="row" title={row.note ?? undefined}><span className="subModel"><MethodLogo label={row.label} size={26}/><strong>{row.label}</strong></span></th>
         {table.columns.map((column) => {
           const rank = ranks[column.id].get(row.id);
           return <Fragment key={column.id}>{column.pending
             ? <td className="pendingCell"><span>{column.pending}</span></td>
             : <td className={`${(row.values[column.id] ?? 0) !== 0 && rank === 1 ? "best" : (row.values[column.id] ?? 0) !== 0 && rank === 2 ? "second" : ""} ${sort === column.id ? "sorted" : ""}`}>
-              <b>{fmt(row.values[column.id], column.digits)}</b>{column.unit && row.values[column.id] != null && <small>{column.unit}</small>}
+              <b>{fmt(row.values[column.id], column.digits)}</b>
             </td>}</Fragment>;
         })}
       </tr>)}</tbody>
     </table>
-    <p className="subtableCaption">{table.caption} Click a column to rank by it; arrows show the better direction.</p>
+    <p className="subtableCaption">{table.caption} Click a column to rank by it.</p>
   </div>;
 }
 

@@ -19,7 +19,7 @@
   max-width: 760px;
   margin: 0;
   color: var(--muted);
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
   line-height: 1.6;
 }
 
@@ -37,19 +37,19 @@
 
 .progressRelease span {
   color: #7e8991;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-weight: 800;
   letter-spacing: .7px;
 }
 
 .progressRelease strong {
   margin: 7px 0 5px;
-  font-size: calc(14.5px * var(--type-scale, 1));
+  font-size: calc(15.5px * var(--type-scale, 1));
 }
 
 .progressRelease small {
   color: #89949b;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   line-height: 1.5;
 }
 
@@ -79,7 +79,7 @@
 
 .progressFacts span {
   color: #7c8991;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-weight: 800;
 }
 
@@ -91,7 +91,7 @@
 
 .progressFacts small {
   color: #88939a;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
 }
 
 .progressSection {
@@ -109,13 +109,13 @@
 
 .progressSectionTitle h2 {
   margin: 0;
-  font-size: calc(15.5px * var(--type-scale, 1));
+  font-size: calc(16.5px * var(--type-scale, 1));
 }
 
 .progressSectionTitle p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: calc(12.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
 }
 
 .progressSectionTitle > span {
@@ -123,7 +123,7 @@
   border-radius: 3px;
   background: #e7f2ed;
   color: #267158;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-weight: 800;
 }
 
@@ -144,7 +144,7 @@
   display: block;
   margin-top: 4px;
   color: #859098;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
 }
 
 .familyTag {
@@ -153,13 +153,13 @@
   border-radius: 3px;
   background: #edf2f5;
   color: #496273;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-weight: 800;
 }
 
 .formalResult {
   color: #1f648e;
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
 }
 
 .versionText {
@@ -192,7 +192,7 @@
   border-radius: 4px;
   background: #18222c;
   color: #fff;
-  font-size: calc(12.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-weight: 800;
 }
 
@@ -205,21 +205,21 @@
 }
 
 .pipelineBody strong {
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
 }
 
 .pipelineBody span,
 .pipelineNext span {
   margin-top: 4px;
   color: #7d8991;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
 }
 
 .pipelineBody p,
 .pipelineNext p {
   margin: 7px 0 0;
   color: #52616b;
-  font-size: calc(12.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   line-height: 1.55;
 }
 
@@ -235,7 +235,7 @@
   gap: 6px;
   padding: 7px 8px;
   border-radius: 4px;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-weight: 800;
 }
 
@@ -275,13 +275,13 @@
 }
 
 .claimBoundary strong {
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
 }
 
 .claimBoundary p {
   margin: 7px 0 0;
   color: #627079;
-  font-size: calc(12.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   line-height: 1.6;
 }
 

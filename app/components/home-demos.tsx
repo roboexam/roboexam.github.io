@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { demoMediaUrl, homeDemos, rigFor, taskFor, type DemoClip } from "../data/home-demos";
+import { demoDatasetHint, demoMediaUrl, homeDemos, rigFor, taskFor, type DemoClip } from "../data/home-demos";
 import { CountUp, RevealWords } from "./fx";
 import { STATIC_SITE } from "../static-site";
 
@@ -31,7 +31,7 @@ function useVisiblePlayback() {
   return ref;
 }
 
-export function HomeDemos() {
+export function HomeDemos({ onOpenClip }: { onOpenClip: (datasetHint: string | null) => void }) {
   const { totals, featured, strip } = homeDemos;
   const [active, setActive] = useState(0);
   const clip = featured[active];
@@ -68,29 +68,30 @@ export function HomeDemos() {
       </div>
 
       <dl className="demoStats">
-        <div data-spotlight><dt>Dual-arm rigs</dt><dd><CountUp value={totals.rigs}/></dd><small>{homeDemos.rigs.map((item) => `${item.label} ${item.unit}`).join(" · ")}</small></div>
-        <div data-spotlight><dt>Task variants</dt><dd><CountUp value={totals.datasets}/></dd><small>{homeDemos.tasks.map((task) => `${task.label} ×${task.variants}`).join(" · ")}</small></div>
-        <div data-spotlight><dt>Episodes</dt><dd><CountUp value={totals.episodes} duration={1700}/></dd><small>{number.format(totals.frames)} frames at {totals.fps.join("/")} fps</small></div>
-        <div data-spotlight><dt>Cameras per frame</dt><dd><CountUp value={totals.cameras}/></dd><small>Head + left wrist + right wrist, 720p</small></div>
+        <div data-spotlight><dt>Dual-arm rigs</dt><dd><CountUp value={totals.rigs}/></dd></div>
+        <div data-spotlight><dt>Task variants</dt><dd><CountUp value={totals.datasets}/></dd></div>
+        <div data-spotlight><dt>Episodes</dt><dd><CountUp value={totals.episodes} duration={1700}/></dd></div>
+        <div data-spotlight><dt>Cameras per frame</dt><dd><CountUp value={totals.cameras}/></dd></div>
       </dl>
 
       <div className="demoStripHead">
-        <strong>{strip.length} clips · head camera</strong>
+        <strong>{`${strip.length} clips · click one to replay it in Datasets`}</strong>
         {!STATIC_SITE && <span className="demoSoon"><i/>Policy rollouts on these rigs arrive next week</span>}
       </div>
       <div className="demoStrip">
         <div className="demoTrack">
-          {[...strip, ...strip].map((item, index) => <DemoCard key={`${item.video.sha256}:${index}`} clip={item} hidden={index >= strip.length}/>)}
+          {[...strip, ...strip].map((item, index) => <DemoCard key={`${item.video.sha256}:${index}`} clip={item} hidden={index >= strip.length} onOpen={() => onOpenClip(demoDatasetHint(item))}/>)}
         </div>
       </div>
     </div>
   </section>;
 }
 
-function DemoCard({ clip, hidden }: { clip: DemoClip; hidden: boolean }) {
+function DemoCard({ clip, hidden, onOpen }: { clip: DemoClip; hidden: boolean; onOpen: () => void }) {
   const rig = rigFor(clip.rig);
   const task = taskFor(clip.task);
   return <figure className="demoCard" aria-hidden={hidden || undefined}>
+    <button type="button" className="demoCardOpen" onClick={onOpen} tabIndex={hidden ? -1 : undefined} aria-label={`Play ${task?.label} on ${rig?.label} ${rig?.unit} in Datasets`}/>
     <video src={demoMediaUrl(clip.video)} poster={demoMediaUrl(clip.poster)} width={clip.width} height={clip.height}
       muted loop playsInline preload="none" tabIndex={-1} aria-label={hidden ? undefined : `${task?.label} on ${rig?.label} ${rig?.unit}`}/>
     <span className="demoSpeed">{clip.speed}×</span>

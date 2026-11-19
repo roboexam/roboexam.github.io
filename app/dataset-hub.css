@@ -15,23 +15,23 @@
 .datasetSourceIcon { display: grid; width: 36px; height: 36px; place-items: center; color: #61728b; border: 1px solid #dce3ec; border-radius: 9px; background: #fff; }
 .datasetSourceNav button.active .datasetSourceIcon { color: #285bd8; border-color: #b8ccef; background: #edf3ff; }
 .datasetSourceNav button>span:nth-child(2) { display: grid; min-width: 0; }
-.datasetSourceNav strong { color: inherit; font-size: calc(15.5px * var(--type-scale, 1)); font-weight: 650; }
-.datasetSourceNav small { overflow: hidden; color: #7a8799; font-size: calc(14px * var(--type-scale, 1)); font-weight: 450; text-overflow: ellipsis; white-space: nowrap; }
-.datasetSourceNav b { color: #748197; font-size: calc(14px * var(--type-scale, 1)); font-weight: 600; white-space: nowrap; }
+.datasetSourceNav strong { color: inherit; font-size: calc(16.5px * var(--type-scale, 1)); font-weight: 650; }
+.datasetSourceNav small { overflow: hidden; color: #7a8799; font-size: calc(15px * var(--type-scale, 1)); font-weight: 450; text-overflow: ellipsis; white-space: nowrap; }
+.datasetSourceNav b { color: #748197; font-size: calc(15px * var(--type-scale, 1)); font-weight: 600; white-space: nowrap; }
 
 .datasetSourceContext { display: flex; align-items: end; justify-content: space-between; gap: 28px; padding: 10px 2px 17px; border-bottom: 1px solid #e2e7ee; }
-.datasetSourceContext>div>span { color: #66748b; font-size: calc(14px * var(--type-scale, 1)); font-weight: 700; letter-spacing: .11em; }
+.datasetSourceContext>div>span { color: #66748b; font-size: calc(15px * var(--type-scale, 1)); font-weight: 700; letter-spacing: .11em; }
 .datasetSourceContext h2 { margin: 4px 0 0; font-size: calc(25px * var(--type-scale, 1)); line-height: 1.2; font-weight: 580; }
-.datasetSourceContext p { max-width: 600px; margin: 0; color: #68758a; font-size: calc(15.5px * var(--type-scale, 1)); text-align: right; }
+.datasetSourceContext p { max-width: 600px; margin: 0; color: #68758a; font-size: calc(16.5px * var(--type-scale, 1)); text-align: right; }
 
 .episodeInstruction { display: grid; grid-template-columns: minmax(130px,auto) minmax(0,1fr); align-items: start; gap: 8px 16px; margin: 0 0 16px; padding: 12px 14px; border: 1px solid #dce5f0; border-radius: 9px; background: #f8faff; }
-.episodeInstruction>span { color: #62758f; font-size: calc(13px * var(--type-scale, 1)); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
-.episodeInstruction>p, .episodeInstruction .reviewInstruction { margin: 0; color: #253b5b; font-size: calc(15.5px * var(--type-scale, 1)); line-height: 1.65; overflow-wrap: anywhere; }
+.episodeInstruction>span { color: #62758f; font-size: calc(14px * var(--type-scale, 1)); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.episodeInstruction>p, .episodeInstruction .reviewInstruction { margin: 0; color: #253b5b; font-size: calc(16.5px * var(--type-scale, 1)); line-height: 1.65; overflow-wrap: anywhere; }
 
 .datasetSummaryStrip { display: grid; grid-template-columns: repeat(2,minmax(95px,130px)) minmax(280px,1fr); align-items: stretch; min-height: 68px; overflow: hidden; border: 1px solid #e0e6ee; border-radius: 11px; background: #f8fafc; }
 .datasetSummaryStrip>div:not(.datasetSummaryAction) { display: grid; align-content: center; padding: 10px 18px; border-right: 1px solid #e0e6ee; }
 .datasetSummaryStrip strong { color: #243c62; font-size: calc(20px * var(--type-scale, 1)); line-height: 1.15; font-weight: 620; font-variant-numeric: tabular-nums; }
-.datasetSummaryStrip span { color: #718096; font-size: calc(14px * var(--type-scale, 1)); }
+.datasetSummaryStrip span { color: #718096; font-size: calc(15px * var(--type-scale, 1)); }
 .datasetSummaryAction { display: flex; align-items: center; justify-content: flex-end; gap: 16px; min-width: 0; padding: 10px 12px 10px 18px; }
 .datasetSummaryAction>span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .datasetSummaryAction button { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 7px 12px; color: #355272; white-space: nowrap; border: 1px solid #d5dee9; border-radius: 7px; background: #fff; }
@@ -40,7 +40,7 @@
 .datasetEmbedded .reviewToolbar { display: grid; grid-template-columns: minmax(220px,.55fr) minmax(300px,1fr); gap: 10px; margin: 0; padding: 12px; }
 .datasetEmbedded .reviewToolbar label { min-width: 0; }
 .datasetEmbedded .reviewTaskHeading { gap: 20px; padding: 15px 2px 10px; }
-.datasetEmbedded .reviewTaskHeading span { font-size: calc(13px * var(--type-scale, 1)); }
+.datasetEmbedded .reviewTaskHeading span { font-size: calc(14px * var(--type-scale, 1)); }
 .datasetEmbedded .reviewTaskHeading h3 { display: inline; margin: 0 10px 0 0; font-size: calc(18px * var(--type-scale, 1)); }
 .datasetEmbedded .reviewTaskHeading>strong { font-size: calc(18px * var(--type-scale, 1)); }
 .datasetEmbedded .reviewTaskHeading>strong small { display: inline; margin-left: 5px; }
@@ -54,26 +54,49 @@
 .datasetEmbedded .realDatasetWorkspace { grid-template-columns: minmax(205px,240px) minmax(0,1fr); gap: 14px; }
 .datasetEmbedded .realDatasetList { gap: 6px; }
 .datasetEmbedded .realDatasetList button { gap: 3px; padding: 11px 12px; border-radius: 8px; }
-.datasetEmbedded .realDatasetList strong { font-size: calc(15.5px * var(--type-scale, 1)); }
+.datasetEmbedded .realDatasetList strong { font-size: calc(16.5px * var(--type-scale, 1)); }
 .datasetEmbedded .realDatasetPanel { padding: 18px; }
 .datasetEmbedded .realDatasetFacts { margin: 8px 0 13px; }
 .datasetEmbedded .realIdentity { margin: 10px 0 14px; }
-.realReplayLayout { display: grid; grid-template-columns: minmax(360px,.82fr) minmax(500px,1.18fr); gap: 14px; align-items: start; }
-.realMediaPanel { position: sticky; top: 106px; min-width: 0; }
+/* the player leads: main camera large on the left, the wrist cameras stacked beside it, the action replay below */
+.realReplayLayout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; }
+.realMediaPanel { min-width: 0; scroll-margin-top: 92px; }
 .realReplayLayout>.actionTracePanel { min-width: 0; margin-top: 0; }
-.realReplayLayout .realCameraGrid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-.realReplayLayout .realCameraGrid figure:first-child { grid-column: 1 / -1; }
-.realReplayLayout .realPlaybackControls { margin-top: 9px; }
+.realReplayLayout .realCameraGrid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 10px; }
+.realReplayLayout .realCameraGrid figure:first-child { grid-column: 1; grid-row: 1 / span 2; }
+.realReplayLayout .realCameraGrid:has(> figure:only-child) { grid-template-columns: minmax(0, 1fr); }
+.realReplayLayout .realCameraGrid:has(> figure:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.realReplayLayout .realCameraGrid:has(> figure:nth-child(2):last-child) figure:first-child { grid-row: auto; }
+.realCameraGrid figure { cursor: pointer; }
+.realCameraGrid figcaption { position: absolute; z-index: 1; top: 10px; left: 10px; padding: 3px 10px !important; color: #fff !important; border-radius: 999px; background: #0b1420b3; pointer-events: none; }
+.realReplayLayout .realPlaybackControls { gap: 14px; margin-top: 12px; padding: 12px 16px; border-radius: 14px; }
+.realPlaybackControls .realPlayButton { width: 46px; height: 46px; padding: 0; color: #fff; border: 0; border-radius: 50%; background: var(--re-ink, #1d1c2b); }
+.realPlaybackControls .realPlayButton:hover:not(:disabled) { background: var(--re-indigo, #4a56c0); }
+.realScrub { height: 28px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
+.realScrub::-webkit-slider-runnable-track { height: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--re-indigo, #4a56c0) var(--played, 0%), #dfe3ec var(--played, 0%)); }
+.realScrub::-moz-range-track { height: 8px; border-radius: 99px; background: #dfe3ec; }
+.realScrub::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--re-indigo, #4a56c0); }
+.realScrub::-webkit-slider-thumb { width: 22px; height: 22px; margin-top: -7px; border: 3px solid #fff; border-radius: 50%; background: var(--re-indigo, #4a56c0); box-shadow: 0 2px 8px -2px #1d1c2b80; -webkit-appearance: none; appearance: none; }
+.realScrub::-moz-range-thumb { width: 16px; height: 16px; border: 3px solid #fff; border-radius: 50%; background: var(--re-indigo, #4a56c0); box-shadow: 0 2px 8px -2px #1d1c2b80; }
+.realScrub:active::-webkit-slider-thumb { transform: scale(1.15); }
+.realPlaybackControls .realTheaterButton { width: 40px; height: 40px; padding: 0; }
+/* full screen (or the full-window fallback): cameras fill the screen, controls stay at the bottom */
+.realMediaPanel:fullscreen, .realMediaPanel.isTheater { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding: 16px; background: #05080d; }
+.realMediaPanel.isTheater { position: fixed; inset: 0; z-index: 200; }
+.realMediaPanel:fullscreen .realCameraGrid, .realMediaPanel.isTheater .realCameraGrid { min-height: 0; align-content: center; }
+.realMediaPanel:fullscreen video, .realMediaPanel.isTheater video { max-height: calc(100vh - 140px); }
+.realMediaPanel:fullscreen .realCameraGrid figure:not(:first-child) video, .realMediaPanel.isTheater .realCameraGrid figure:not(:first-child) video { max-height: calc(50vh - 76px); }
+.realMediaPanel:fullscreen .realPlaybackControls, .realMediaPanel.isTheater .realPlaybackControls { margin: 0; border-color: #ffffff1f; background: #111827; }
+.realMediaPanel:fullscreen .realPlaybackControls span, .realMediaPanel.isTheater .realPlaybackControls span { color: #c9d3e2; }
 .realReplayLayout .actionTracePanel { padding: 14px; }
 .realReplayLayout .traceGroups { gap: 8px; }
 .realReplayLayout .traceGroup { padding: 9px; }
 .realReplayLayout .traceChart svg { height: 112px; }
 
-@media (max-width: 1280px) {
-  .realReplayLayout { grid-template-columns: 1fr; }
-  .realMediaPanel { position: static; }
-  .realReplayLayout .realCameraGrid { grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr)); }
-  .realReplayLayout .realCameraGrid figure:first-child { grid-column: auto; }
+@media (max-width: 700px) {
+  .realReplayLayout .realCameraGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .realReplayLayout .realCameraGrid figure:first-child { grid-column: 1 / -1; grid-row: auto; }
+  .realReplayLayout .realPlaybackControls { gap: 10px; padding: 10px 12px; }
 }
 @media (max-width: 900px) {
   .datasetPageHeading { grid-template-columns: 1fr; }
@@ -97,7 +120,7 @@
   .datasetSummaryAction { grid-column: 1 / -1; justify-content: space-between; border-top: 1px solid #e0e6ee; padding-left: 13px; }
   .datasetEmbedded .reviewToolbar { grid-template-columns: 1fr; }
   .datasetEmbedded .reviewTaskHeading { align-items: flex-start; }
-  .datasetEmbedded .reviewTaskHeading>strong { font-size: calc(16px * var(--type-scale, 1)); }
+  .datasetEmbedded .reviewTaskHeading>strong { font-size: calc(17px * var(--type-scale, 1)); }
   .datasetEmbedded .realDatasetFilters { align-items: stretch; }
   .datasetEmbedded .realDatasetFilters>.realSearch { width: 100%; }
   .realReplayLayout .realCameraGrid { grid-template-columns: 1fr; }

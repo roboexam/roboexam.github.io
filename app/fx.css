@@ -43,8 +43,8 @@
 .methodMarquee > p { margin: 0; }
 .methodMarquee li { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 7px; border: 1px solid var(--re-line); border-radius: 999px; background: #fff; white-space: nowrap; box-shadow: 0 6px 16px -14px #1d1c2b66; }
 .methodMarquee li span { display: grid; line-height: 1.2; }
-.methodMarquee li b { color: var(--re-ink); font-size: calc(14.5px * var(--type-scale, 1)); font-weight: 650; }
-.methodMarquee li small { color: var(--re-faint); font-size: calc(12.5px * var(--type-scale, 1)); }
+.methodMarquee li b { color: var(--re-ink); font-size: calc(17.5px * var(--type-scale, 1)); font-weight: 650; }
+.methodMarquee li small { color: var(--re-faint); font-size: calc(14px * var(--type-scale, 1)); }
 
 @media (prefers-reduced-motion: reduce) {
   .fxMarqueeTrack, .fxShiny, .researchShell .heroTitle h1 { animation: none; }

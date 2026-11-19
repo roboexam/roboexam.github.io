@@ -25,20 +25,20 @@
 
 .correlationTrackNav button span {
   color: #849099;
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
   font-weight: 800;
 }
 
 .correlationTrackNav button strong {
   margin-top: 4px;
-  font-size: calc(15.5px * var(--type-scale, 1));
+  font-size: calc(16.5px * var(--type-scale, 1));
 }
 
 .correlationTrackNav button small {
   overflow: hidden;
   margin-top: 5px;
   color: #8a959d;
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -78,14 +78,14 @@
 }
 
 .currentCorrelationModels header strong {
-  font-size: calc(15.5px * var(--type-scale, 1));
+  font-size: calc(16.5px * var(--type-scale, 1));
 }
 
 .currentCorrelationModels header span,
 .currentCorrelationModels header small,
 .currentCorrelationModels footer {
   color: #7c8992;
-  font-size: calc(14px * var(--type-scale, 1));
+  font-size: calc(15px * var(--type-scale, 1));
 }
 
 .currentCorrelationModels header span {
@@ -106,13 +106,13 @@
 
 .currentCorrelationNotice strong {
   color: #6e512f;
-  font-size: calc(14.5px * var(--type-scale, 1));
+  font-size: calc(15.5px * var(--type-scale, 1));
 }
 
 .currentCorrelationNotice p {
   margin: 4px 0 0;
   color: #75818a;
-  font-size: calc(14.5px * var(--type-scale, 1));
+  font-size: calc(15.5px * var(--type-scale, 1));
   line-height: 1.55;
 }
 

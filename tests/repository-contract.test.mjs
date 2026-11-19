@@ -73,7 +73,10 @@ test("keeps the four leaderboard tracks and metric adapters wired", async () => 
   assert.match(simulationDatasets, /evaluation24_sdk_ee20_25hz_episode_mp4_instruction_20261029_v3/);
   assert.doesNotMatch(scenarios, /<BaselineExplorer|OodValidationPanel/);
   assert.doesNotMatch(dashboard, /\x27Metrics\x27|Metric guide/);
-  assert.match(dashboard, /<ExplainabilityView/);
+  // the Correlation page was removed from the public dashboard
+  assert.doesNotMatch(dashboard, /<ExplainabilityView|'Correlation'/);
+  // Overview clips open their episode in Datasets
+  assert.match(dashboard, /openDataset\(\{ task \}\)/);
   assert.match(acwm, /generated\/acwm-results\.json/);
   assert.match(vlm, /generated\/vlm-results\.json/);
   assert.match(policy, /generated\/vla-wam-results\.json/);

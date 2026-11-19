@@ -56,7 +56,8 @@ test("renders the dashboard introduction without login", async () => {
   assert.match(html, /You just can&#x27;t differentiate between a robot and the very best of humans\./);
   assert.doesNotMatch(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
   assert.match(html, /Isaac Asimov（艾萨克·阿西莫夫）· I, Robot（《我，机器人》）· 1950/);
-  assert.match(html, /Correlation/);
+  // the Correlation page was removed from the public dashboard
+  assert.doesNotMatch(html, />Correlation</);
   // the Overview follows the manuscript: question → benchmark → hybrid agent → findings → explore
   const order = ["Where does each system excel", "24 tasks, five conditions, four tracks.", "Does seeing the future help a robot act?", "What the shared tasks show.", "Every result in the paper, on the leaderboard."].map((label) => html.indexOf(label));
   assert.ok(order.every((index, i) => index > 0 && (i === 0 || index > order[i - 1])), `section order ${order}`);

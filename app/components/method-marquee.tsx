@@ -2,7 +2,6 @@
 
 import { useMemo } from "react";
 import { buildMainBoard } from "../data/main-board";
-import { methodIcon } from "../data/method-icons";
 import { LogoMarquee } from "./fx";
 import { MethodLogo } from "./podium";
 
@@ -24,7 +23,7 @@ export function MethodMarquee() {
       key: method.label,
       content: <>
         <MethodLogo label={method.label} size={30}/>
-        <span><b>{shortLabel(method.label)}</b><small>{method.tracks.join(" · ")} · {methodIcon(method.label)?.org ?? method.type}</small></span>
+        <span><b>{shortLabel(method.label)}</b></span>
       </>,
     }));
   }, []);

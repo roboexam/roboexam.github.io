@@ -4,8 +4,8 @@
 // The Overview below the hero, in the manuscript's order: the question (Sec. 1), the benchmark
 // (Sec. 3), the hybrid agent (Sec. 4), the findings (Sec. 5). Numbers come from the manuscript
 // bundle through data/overview.ts; images from data/overview-media.ts.
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useRef, useState, type ReactNode } from "react";
+import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   answeringVsActing, CONDITIONS, casesPerTask, demosPerTask, familyTsr, galleryTasks, hybridRuns, overviewStats,
   overviewTags, replay, strengthRows, trackSizes, visualShift,
@@ -39,27 +39,48 @@ export function OverviewQuestion() {
   </section>;
 }
 
-function TaskTile({ task, dimmed }: { task: (typeof galleryTasks)[number]; dimmed: boolean }) {
+/** Plays each tile's training clip while it is on screen; the still frame shows until the clip runs. */
+function useGalleryPlayback() {
+  const ref = useRef<HTMLUListElement>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const video = entry.target as HTMLVideoElement;
+        if (entry.isIntersecting) {
+          if (!video.src && video.dataset.src) video.src = video.dataset.src;
+          void video.play().catch(() => undefined);
+        } else if (video.src) video.pause();
+      }
+    }, { rootMargin: "120px 0px", threshold: 0.2 });
+    root.querySelectorAll("video").forEach((video) => observer.observe(video));
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
+
+function TaskTile({ task, dimmed, onOpen }: { task: (typeof galleryTasks)[number]; dimmed: boolean; onOpen: (taskId: string) => void }) {
   const media = taskMedia(task.id);
-  const video = useRef<HTMLVideoElement>(null);
-  const play = () => {
-    const node = video.current;
-    if (!node || !media || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!node.src) node.src = media.clip;
-    void node.play().catch(() => undefined);
-  };
-  const stop = () => { const node = video.current; if (node && node.src) { node.pause(); node.currentTime = 0; } };
-  return <li className={`taskTile ${dimmed ? "dimmed" : ""}`} onPointerEnter={play} onPointerLeave={stop}>
-    <figure>
-      {media && <img src={media.image} width={media.width} height={media.height} alt="" loading="lazy" decoding="async"/>}
-      {media && <video ref={video} muted loop playsInline preload="none" aria-hidden="true"/>}
-      <figcaption><span>{task.name}</span><small>{task.letters.join(" · ")}{task.isNew && <b>New</b>}</small></figcaption>
-    </figure>
+  // the clip is cropped exactly like its still frame
+  const crop = media?.crop;
+  const frame = crop ? { width: `${100 / crop.w}%`, height: `${100 / crop.h}%`, left: `${(-100 * crop.x) / crop.w}%`, top: `${(-100 * crop.y) / crop.h}%` } : undefined;
+  return <li className={`taskTile ${dimmed ? "dimmed" : ""}`}>
+    <button type="button" onClick={() => onOpen(task.id)} aria-label={`Play ${task.name} in Datasets`}>
+      <figure>
+        {media && <img src={media.image} width={media.width} height={media.height} alt="" loading="lazy" decoding="async"/>}
+        {media && <video data-src={media.clip} style={frame} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1}
+          onPlaying={(event) => event.currentTarget.classList.add("isPlaying")}/>}
+        <span className="taskPlay" aria-hidden="true"><Play size={16} fill="currentColor"/></span>
+        <figcaption><span>{task.name}</span>{task.isNew && <b>New</b>}</figcaption>
+      </figure>
+    </button>
   </li>;
 }
 
-export function OverviewBenchmark({ onTrack }: { onTrack: (track: TrackId) => void }) {
+export function OverviewBenchmark({ onTrack, onOpenTask }: { onTrack: (track: TrackId) => void; onOpenTask: (taskId: string) => void }) {
   const [tag, setTag] = useState<ScenarioTag | null>(null);
+  const gallery = useGalleryPlayback();
   const active = overviewTags.find((item) => item.id === tag) ?? null;
   const figure = figureMedia.tracks;
   return <section className="storySection storyBenchmark" aria-labelledby="story-benchmark-title">
@@ -73,9 +94,9 @@ export function OverviewBenchmark({ onTrack }: { onTrack: (track: TrackId) => vo
         <CapabilityIcon tag={item.id} size={20}/><b>{item.letter}</b>{item.label}<small>{item.tasks.length}</small>
       </button>)}
     </div>
-    <p className="tagRule" aria-live="polite">{active ? `${active.label}: ${active.rule}` : "Six overlapping capability tags describe what each task requires. Pick one to see its tasks; hover a task to play its training clip."}</p>
-    <ul className="taskGallery" aria-label="The 24 simulation tasks">
-      {galleryTasks.map((task) => <TaskTile key={task.id} task={task} dimmed={tag !== null && !task.tags.includes(tag)}/>)}
+    <p className="tagRule" aria-live="polite">{active ? `${active.label}: ${active.rule}` : "Six overlapping tags describe what each task needs. Pick one to filter; click a task to watch it in Datasets."}</p>
+    <ul className="taskGallery" ref={gallery} aria-label="The 24 simulation tasks">
+      {galleryTasks.map((task) => <TaskTile key={task.id} task={task} dimmed={tag !== null && !task.tags.includes(tag)} onOpen={onOpenTask}/>)}
     </ul>
 
     <div className="conditionBlock">
@@ -192,7 +213,7 @@ export function OverviewFindings() {
   </section>;
 }
 
-export function OverviewExplore({ onLeaderboards, onDatasets, onCorrelation }: { onLeaderboards: () => void; onDatasets: () => void; onCorrelation: () => void }) {
+export function OverviewExplore({ onLeaderboards, onDatasets }: { onLeaderboards: () => void; onDatasets: () => void }) {
   return <section className="storySection storyExplore" aria-labelledby="story-explore-title">
     <Heading id="story-explore-title" eyebrow="Explore" title="Every result in the paper, on the leaderboard.">
       Table 1, the per-condition and per-metric breakdowns, the real-robot runs, and the training and evaluation data.
@@ -200,7 +221,6 @@ export function OverviewExplore({ onLeaderboards, onDatasets, onCorrelation }: {
     <div className="heroCtas storyCtas">
       <button type="button" className="heroPrimary" onClick={onLeaderboards}>Explore leaderboards <ArrowRight size={17}/></button>
       <button type="button" className="heroSecondary" onClick={onDatasets}>Datasets <ArrowUpRight size={16}/></button>
-      <button type="button" className="heroSecondary" onClick={onCorrelation}>Correlation <ArrowUpRight size={16}/></button>
     </div>
     <MethodMarquee/>
   </section>;

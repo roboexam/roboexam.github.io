@@ -129,7 +129,7 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
         <p className="eyebrow">The RoboExam snowflake</p>
         <h2 id="snow-title"><RevealWords text="Six capabilities. Four tracks. One crystal."/></h2>
       </div>
-      <p>Each arm of the crystal is a capability and ends in a four-pronged fork — one route per track, all meeting at the capability&apos;s flagged summit. Every method climbs its track&apos;s route; contour rings mark equal scores on one 0–100 scale, so the higher it stands, the higher its score. The centre gathers each method&apos;s mean over all six capabilities. Ranks compare methods within a track only.</p>
+      <p>Each arm is a capability and each prong a track. The higher a method climbs, the higher its score, from 0 to 100 at the summit.</p>
     </div>
 
     <div className="snowStage">
@@ -151,13 +151,13 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
               {arms.map((item, index) => <button type="button" tabIndex={-1} key={item.tag} className={`snowTipLabel ${index === focus ? "active" : ""}`}
                 style={pct(tips[index])} onClick={() => move(index, false)}>
                 <i><CapabilityIcon tag={item.tag} size={compact ? 24 : 34}/></i>
-                {!compact && <span><strong>{item.label}</strong><small>{item.scenes} scenes</small>
+                {!compact && <span><strong>{item.label}</strong>
                   <span className="snowTipBars">{item.prongs.map((prong) => <em key={prong.track} title={prong.track}
                     style={{ ...track(prong.track), ["--reach" as string]: `${round(prong.best === null ? 0 : Math.min(1, prong.best / SNOW_SCALE) * 100)}%` }}/>)}</span>
                 </span>}
               </button>)}
               <button type="button" tabIndex={-1} className={`snowCentreLabel ${centre ? "active" : ""}`} style={pct(toScreen({ x: 0, y: 0 }))} onClick={() => move(CENTRE, false)}>
-                <i><CapabilityIcon tag="ALL" size={compact ? 22 : 28}/></i>{!compact && <span><strong>Overall</strong><small>mean of 6 capabilities</small></span>}
+                <i><CapabilityIcon tag="ALL" size={compact ? 22 : 28}/></i>{!compact && <span><strong>Overall</strong></span>}
               </button>
             </> : <>
               <svg className="snowLeaders" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none">
@@ -177,7 +177,7 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
             {hover && <div className="snowTooltip" style={{ ...pct(hoverAt(hover)), ...track(hover.prong.track) }}>
               <div className="snowTooltipHead"><MethodLogo label={hover.climber.label} size={28}/><strong>{hover.climber.label}</strong><Medal rank={hover.climber.rank} size={18}/></div>
               <span>{hover.prong.track} · {hover.prong.title} · {hover.arm.label}</span>
-              <b>{fmt(hover.climber.value)} <small>{hover.prong.metric}{hover.arm === overall ? " · mean of 6 capabilities" : ""} · rank {hover.climber.rank} of {hover.prong.climbers.length}</small></b>
+              <b>{fmt(hover.climber.value)} <small>{hover.prong.metric} · rank {hover.climber.rank} of {hover.prong.climbers.length}</small></b>
             </div>}
           </div>
 
@@ -187,7 +187,7 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
             </span>)}
           </div>}
           {!full && <div className="snowTitle"><i><CapabilityIcon tag={current.tag} size={compact ? 27 : 38}/></i>
-            <div><strong>{current.label}</strong><small>{centre ? "mean of the six capabilities · per track" : `${current.scenes} shared scenes · close-up`}</small></div>
+            <div><strong>{current.label}</strong><small>{centre ? "Mean of the six" : `${current.scenes} tasks`}</small></div>
           </div>}
           <button type="button" className="snowZoom" onClick={() => move(focus, !full)} aria-pressed={full}>
             {full ? <><Minimize2 size={15}/>{centre ? "Overall" : "Close-up"}</> : <><Maximize2 size={15}/>Whole snowflake</>}
@@ -199,11 +199,11 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
         <div className="snowArms" role="group" aria-label="Capability">
           <button type="button" className="overall" data-spotlight aria-pressed={centre && !full} onClick={() => move(CENTRE, false)}>
             <i><CapabilityIcon tag="ALL" size={compact ? 24 : 29}/></i>
-            <span>Overall<small>mean of 6</small></span>
+            <span>Overall</span>
           </button>
           {arms.map((item, index) => <button type="button" key={item.tag} data-spotlight aria-pressed={index === focus && !full} onClick={() => move(index, false)}>
             <i><CapabilityIcon tag={item.tag} size={compact ? 24 : 29}/></i>
-            <span>{item.label}<small>{item.scenes} scenes</small></span>
+            <span>{item.label}</span>
           </button>)}
         </div>
       </div>
@@ -211,7 +211,7 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
       <aside className="snowPanel" aria-live="polite">
         <div className="snowPanelHead">
           <i><CapabilityIcon tag={current.tag} size={36}/></i>
-          <div><strong>{current.label}</strong><small>{centre ? current.rule : `${current.scenes} shared scenes · ${current.rule}`}</small></div>
+          <div><strong>{current.label}</strong><small>{centre ? "Mean over the six capabilities" : `${current.scenes} of 24 tasks`}</small></div>
         </div>
         <ol className="snowPanelLevels">
           {current.prongs.map((prong) => <li key={prong.track} data-spotlight style={track(prong.track)}>

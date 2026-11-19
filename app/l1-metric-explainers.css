@@ -5,7 +5,7 @@
   border: 1px solid #b9d7d1;
   background: #eaf7f4;
   color: #226e62;
-  font: 700 calc(11.5px * var(--type-scale, 1)) var(--font-geist-mono), monospace;
+  font: 700 calc(14px * var(--type-scale, 1)) var(--font-geist-mono), monospace;
   letter-spacing: .06em;
 }
 
@@ -52,20 +52,20 @@
 
 .l1SampleMetrics article > header small {
   color: #278070;
-  font: 700 calc(11px * var(--type-scale, 1)) var(--font-geist-mono), monospace;
+  font: 700 calc(14px * var(--type-scale, 1)) var(--font-geist-mono), monospace;
   letter-spacing: .07em;
 }
 
 .l1SampleMetrics article > header strong {
   margin-top: 6px;
   color: #173747;
-  font-size: calc(15.5px * var(--type-scale, 1));
+  font-size: calc(16.5px * var(--type-scale, 1));
 }
 
 .l1SampleMetrics article > header span {
   margin-top: 2px;
   color: #7b909c;
-  font: calc(11.5px * var(--type-scale, 1)) var(--font-geist-mono), monospace;
+  font: calc(14px * var(--type-scale, 1)) var(--font-geist-mono), monospace;
 }
 
 .l1SampleMetrics article > header > div:last-child {
@@ -76,7 +76,7 @@
 .l1SampleMetrics article > header em {
   display: block;
   color: #8396a1;
-  font-size: calc(11px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   font-style: normal;
 }
 
@@ -92,7 +92,7 @@
   padding: 7px 9px;
   background: #eef5f7;
   color: #4c7180 !important;
-  font-size: calc(11.5px * var(--type-scale, 1)) !important;
+  font-size: calc(14px * var(--type-scale, 1)) !important;
   font-weight: 700;
 }
 
@@ -108,7 +108,7 @@
   overflow-wrap: anywhere;
   background: #f7f9fa;
   color: #3e5967;
-  font: calc(11.5px * var(--type-scale, 1))/1.5 var(--font-geist-mono), monospace;
+  font: calc(14px * var(--type-scale, 1))/1.5 var(--font-geist-mono), monospace;
 }
 
 .l1SampleMetrics article > .l1MetricSubstitution {
@@ -124,7 +124,7 @@
   place-items: center;
   background: #173747;
   color: #fff;
-  font-size: calc(11px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
 }
 
 .l1MetricResult {
@@ -132,13 +132,13 @@
   padding: 9px 10px;
   background: #eaf7f4;
   color: #426c65 !important;
-  font-size: calc(12.5px * var(--type-scale, 1)) !important;
+  font-size: calc(14px * var(--type-scale, 1)) !important;
 }
 
 .l1MetricResult b {
   margin-right: 7px;
   color: #1d7163;
-  font-size: calc(11.5px * var(--type-scale, 1)) !important;
+  font-size: calc(14px * var(--type-scale, 1)) !important;
 }
 
 .l1SampleMetrics details {
@@ -149,14 +149,14 @@
 
 .l1SampleMetrics summary {
   color: #31748c;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   cursor: pointer;
 }
 
 .l1SampleMetrics details p {
   margin-top: 7px;
   color: #6a808d;
-  font-size: calc(11.5px * var(--type-scale, 1));
+  font-size: calc(14px * var(--type-scale, 1));
   line-height: 1.6;
 }
 

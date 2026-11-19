@@ -22,6 +22,15 @@ export const homeDemos = catalog as HomeDemos;
 export const demoMediaUrl = (media: DemoMedia) =>
   STATIC_SITE ? `/static-media/home-demos/${media.file}` : `/api/home-demo-media/${media.file}`;
 export const rigFor = (id: string) => homeDemos.rigs.find((rig) => rig.id === id);
+
+// The real catalogs name these tasks T1–T3 (scripts/build-home-demos.py, TASKS); a clip's source
+// dataset is the one whose name carries "3cameras_<rig>_<code>_ID<variant>".
+const CATALOG_TASK_CODE: Record<string, string> = { button_sequence: "T1", towel_folding: "T2", vegetable_sorting: "T3" };
+export function demoDatasetHint(clip: DemoClip) {
+  const unit = clip.rig.split("-").pop();
+  const code = CATALOG_TASK_CODE[clip.task];
+  return unit && code ? `3cameras_${unit}_${code}_ID${clip.variant}` : null;
+}
 export const taskFor = (id: string) => homeDemos.tasks.find((task) => task.id === id);
 
 /** Hero background: one pre-rendered scrolling column of evaluation clips per track. */

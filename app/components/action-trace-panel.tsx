@@ -4,7 +4,7 @@ import { Activity, LoaderCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { validateActionTrace, type ActionTrace, type ActionTraceSource } from "../data/action-trace";
-import { dataUrl } from "../static-site";
+import { dataUrl, STATIC_SITE } from "../static-site";
 
 const jointColors = ["#5f8fe5", "#64c5bc", "#9e7bd5", "#e1a255", "#dc7181", "#7792aa"];
 const xyzColors = ["#dc7181", "#64b98b", "#5f8fe5"];
@@ -50,9 +50,9 @@ export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId
 
   return <section className="actionTracePanel" aria-label="Synchronized joint and end-effector traces">
     <header><div><p className="eyebrow">Action replay</p><h5>Joint and end-effector trajectories</h5></div>
-      <span>{trace.clock.sourceFrames.toLocaleString()} source frames → {trace.clock.samples} plotted samples · {trace.clock.label ?? "video PTS clock"}</span></header>
+      {!STATIC_SITE && <span>{trace.clock.sourceFrames.toLocaleString()} source frames → {trace.clock.samples} plotted samples · {trace.clock.label ?? "video PTS clock"}</span>}</header>
     <div className="traceGroups">
-      {trace.action && <TraceGroup title="Recorded action · 记录动作" unit={trace.action.unit}
+      {trace.action && <TraceGroup title={STATIC_SITE ? "Recorded action" : "Recorded action · 记录动作"} unit={trace.action.unit}
         labels={trace.action.labels} colors={actionColors} left={trace.action.left}
         right={trace.action.right} time={trace.action.t ?? trace.t} currentTime={currentTime}/>}
       <TraceGroup title="Joint position" unit={trace.jointPosition.unit} labels={["J1","J2","J3","J4","J5","J6"]}
@@ -62,13 +62,13 @@ export function ActionTracePanel({ episodeId, currentTime, source }: { episodeId
         labels={["X","Y","Z"]} colors={xyzColors} left={trace.endEffectorPosition.left}
         right={trace.endEffectorPosition.right} time={trace.t} currentTime={currentTime}/>
     </div>
-    <footer>{trace.provenance.bindingMethod === "raw_file_identity" ? <>
+    {!STATIC_SITE && <footer>{trace.provenance.bindingMethod === "raw_file_identity" ? <>
       原始轨迹只读抽样 · 元数据 <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> · 文件绑定 <code>{trace.provenance.bindingSha256?.slice(0, 12)}</code>
       <span>曲线使用记录的状态；大型轨迹文件未重复做整文件哈希验收。</span>
     </> : trace.provenance.bindingMethod === "real_parquet_identity" ? <>
       真机 Parquet 只读抽样 · 元数据 <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> · 文件绑定 <code>{trace.provenance.bindingSha256?.slice(0, 12)}</code>
       <span>动作与状态按 episode 视频时间同步；缺失通道保持为空。</span>
-    </> : <>Source-bound to manifest <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> and trajectory <code>{trace.provenance.trajectorySha256?.slice(0, 12) ?? "hash unavailable"}</code>.</>}</footer>
+    </> : <>Source-bound to manifest <code>{trace.provenance.manifestSha256.slice(0, 12)}</code> and trajectory <code>{trace.provenance.trajectorySha256?.slice(0, 12) ?? "hash unavailable"}</code>.</>}</footer>}
   </section>;
 }
 

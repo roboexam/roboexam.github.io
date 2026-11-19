@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Search, SlidersHorizontal } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Search, SlidersHorizontal } from "lucide-react";
 import { lazy, Suspense, useState } from "react";
 import { T1UnibenchView } from "./t1/t1-unibench-view";
 import { evidenceLabels, facetsFor, initialMetricFilters, matchesMetric, protocolLabels, type MetricFilters } from "../data/metric-facets";
@@ -12,7 +12,7 @@ import { policyTaskIds } from "../data/policy-baselines";
 import { BaselineRunPlan } from "./baseline-run-plan";
 import { STATIC_SITE } from "../static-site";
 import { MainBoard } from "./main-board";
-import { CapabilityIcon, TrackIcon } from "./podium";
+import { CapabilityIcon } from "./podium";
 import { SnowflakeBoard } from "./snowflake-board";
 import { TrackSubtables } from "./track-subtables";
 import { PAPER_REAL_TASKS, paperResults } from "../data/paper-results";
@@ -126,7 +126,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
   }
   function showBreakdown(next: TrackId) {
     selectTrack(next);
-    requestAnimationFrame(() => document.getElementById("track-breakdown")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    requestAnimationFrame(() => document.getElementById("main-board")?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }
   function toggleSceneTag(tag: ScenarioTag) {
     setSelectedSceneTags((current) =>
@@ -138,27 +138,16 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
     <div className="pageHeading boardPageHeading">
       <p className="eyebrow">RoboExam leaderboard</p>
       <h1>Leaderboards</h1>
-      <p>Validated results only; unavailable settings stay blank and are never counted as zero. / 仅显示已验证结果，未完成设定保持为空，不按 0 计。</p>
+      <p>Four tracks on the same 24 tasks. Only validated results are shown; a missing setting stays blank.</p>
     </div>
     <SnowflakeBoard onBreakdown={showBreakdown}/>
-    <MainBoard onBreakdown={showBreakdown}/>
+    <MainBoard trackId={trackId} onTrack={selectTrack}/>
     <div className="breakdownHeading" id="track-breakdown">
-      <p className="eyebrow">Sub-tables · per track</p>
-      <h2>Track breakdown</h2>
+      <h2>{track.title} by condition</h2>
     </div>
-    <nav className="trackTabs" aria-label="Four benchmark tracks">
-      {tracks.map((item) => <button key={item.id} type="button"
-        aria-current={item.id === trackId ? "page" : undefined}
-        className={item.id === trackId ? "selected" : ""}
-        onClick={() => selectTrack(item.id)}>
-        <span><TrackIcon track={item.id} size={24}/>{item.id}</span><strong>{item.title}</strong>
-      </button>)}
-    </nav>
     <TrackSubtables trackId={trackId}/>
-    <div className="breakdownHeading evidenceHeading">
-      <p className="eyebrow">{trackId} · {track.title}</p>
-      <h2>Full results &amp; evidence</h2>
-    </div>
+    <details className="evidenceDetails">
+      <summary><span><b>Full results &amp; evidence</b><span>{`Per-metric scores and run records for ${track.title}`}</span></span><ChevronDown size={20} aria-hidden="true"/></summary>
     {!(trackId === "T2" && latestT2) && <section className="trackScoreGuide" aria-label={`${track.id} score guide`}>
       <strong>Score guide · 分数说明</strong>
       <p lang="en">{scoreGuide.en}</p><p lang="zh-CN">{scoreGuide.zh}</p>
@@ -305,6 +294,7 @@ export function LeaderboardView({ initialTrack, onMetric }: Props) {
       </div>
     </section>}
     {!STATIC_SITE && trackId === "T2" && <details><summary>Training and evaluation registry · historical snapshot</summary><BaselineRunPlan initialTrack="T2"/></details>}
+    </details>
   </div>;
 }
 

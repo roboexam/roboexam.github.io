@@ -5,7 +5,7 @@ import bundle from "./generated/overview-media.json" with { type: "json" };
 // which records each file's source and SHA-256; never edit by hand.
 
 type Image = { image: string; width: number; height: number; sha256: string };
-export type TaskMedia = Image & { clip: string; frameAt: number };
+export type TaskMedia = Image & { clip: string; frameAt: number; crop: { x: number; y: number; w: number; h: number } };
 export type ConditionMedia = Image & { source: string; sourceSha256: string };
 export type FigureMedia = Image & { source: string; sourceSha256: string };
 
