@@ -55,9 +55,9 @@ test("renders the dashboard introduction without login", async () => {
   // the hero follows the manuscript's title, in English only
   assert.match(html, /A shared-task benchmark for robotic components and systems/);
   assert.doesNotMatch(html, /The final exam for Physical AI|Physical AI Benchmark/);
-  assert.match(html, /You just can&#x27;t differentiate between a robot and the very best of humans\./);
+  assert.match(html, /You just can&#x27;t differentiate between<\/span> <span[^>]*>a robot and the very best of humans\./);
   assert.doesNotMatch(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
-  assert.match(html, /Isaac Asimov<span[^>]*><\/span><cite>I, Robot<\/cite><span[^>]*><\/span>1950/);
+  assert.match(html, /Isaac Asimov, <cite>I, Robot<\/cite> \(1950\)/);
   // the Why section asks the manuscript's question and answers its three clauses
   assert.match(html, /Where does each system excel\?/);
   assert.match(html, /One shared exam/);
@@ -70,7 +70,6 @@ test("renders the dashboard introduction without login", async () => {
   // track names follow the manuscript (abstract, Sec. 3.2)
   for (const title of ["VLM agents", "ACWMs", "Robot policies", "Real-robot deployment"]) assert.match(html, new RegExp(title));
   assert.doesNotMatch(html, /Embodied Agency|Physical Foresight|Simulation Deployment|Real-World Deployment/);
-  assert.match(html, /24 tasks · 600 shared cases · four tracks/);
   assert.doesNotMatch(html, /Seven capabilities|State Grounding|Recovery &amp; Safety/);
   // the manuscript's six capability tags filter the 24-task gallery, with Order & stages lettered S
   const tagFilter = html.match(/<div class="tagFilter".*?<\/div>/)?.[0];

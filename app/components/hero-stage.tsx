@@ -6,7 +6,6 @@ import { demoMediaUrl, heroWall } from "../data/home-demos";
 import { HERO_TOUCH_EVENT, HeroHands3D } from "./hero-hands-3d";
 import { TrackIcon } from "./podium";
 import { trackModelType, tracks, type TrackId } from "../data/metric-plan";
-import { PAPER_SIM_CASES, paperResults } from "../data/paper-results";
 import { STATIC_SITE } from "../static-site";
 
 type Props = { onLeaderboards: (track?: TrackId) => void; onDatasets: () => void };
@@ -21,36 +20,33 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
       <HeroHands3D/>
     </div>
     <div className="heroTitle">
-      <p className="heroBadge"><span/><b className="fxShiny">{STATIC_SITE ? "Benchmark and evaluation toolkit" : "Planned CVPR 2027 Workshop"}</b></p>
+      {!STATIC_SITE && <p className="heroBadge"><span/><b className="fxShiny">Planned CVPR 2027 Workshop</b></p>}
       <h1 id="hero-title">RoboExam</h1>
       {/* the manuscript's title: "RoboExam: A Shared-Task Benchmark for Robotic Components and Systems" */}
       <p className="heroSubtitle"><span className="srOnly">A shared-task benchmark for robotic components and systems</span><span aria-hidden="true"><span className="heroMuted">A shared-task benchmark</span><br/>for robotic components and systems</span></p>
-      <HeroQuote placement="title"/>
     </div>
+    {/* the corners: Asimov over the two calls to action bottom left, the four tracks bottom right */}
     <div className="heroFoot">
-      <HeroQuote placement="foot"/>
-      <div className="heroIntro">
-        <p className="eyebrow">{`${paperResults.tasks.length} tasks · ${PAPER_SIM_CASES} shared cases · four tracks`}</p>
-        <p>Three simulation tracks put VLM agents, action-conditioned world models (ACWMs) and robot policies on the same tasks and conditions. A fourth evaluates real-robot deployment.</p>
+      <div className="heroCorner">
+        <HeroQuote/>
         <div className="heroCtas">
           <button type="button" className="heroPrimary" onClick={() => onLeaderboards()}>Explore leaderboards <ArrowRight size={17}/></button>
           <button type="button" className="heroSecondary" onClick={onDatasets}>Datasets <ArrowUpRight size={16}/></button>
         </div>
       </div>
       <nav className="heroTracks" aria-label="Jump to a track">
-        {tracks.map((track) => <button type="button" key={track.id} data-spotlight onClick={() => onLeaderboards(track.id)}>
-          <b><TrackIcon track={track.id} size={30}/></b><span>{track.title}<small>{`${track.id} · ${trackModelType[track.id]}`}</small></span>
+        {tracks.map((track) => <button type="button" key={track.id} data-spotlight title={`${track.id} · ${trackModelType[track.id]}`} onClick={() => onLeaderboards(track.id)}>
+          <b><TrackIcon track={track.id} size={30}/></b><span>{track.title}</span>
         </button>)}
       </nav>
     </div>
   </section>;
 }
 
-/** Asimov under the subtitle; on phones the hands cover that spot, so a second copy opens the foot instead (CSS shows one). */
-function HeroQuote({ placement }: { placement: "title" | "foot" }) {
-  return <figure className={`heroQuote heroQuote-${placement}`}>
-    <blockquote><p>You just can&apos;t differentiate between a robot and the very best of humans.</p></blockquote>
-    <figcaption><span className="heroQuoteRule" aria-hidden="true"/>Isaac Asimov<span className="heroQuoteDot" aria-hidden="true"/><cite>I, Robot</cite><span className="heroQuoteDot" aria-hidden="true"/>1950<span className="heroQuoteRule" aria-hidden="true"/></figcaption>
+function HeroQuote() {
+  return <figure className="heroQuote">
+    <blockquote><p><span>{"\u201C"}You just can&apos;t differentiate between</span> <span className="heroQuoteLead">a robot and the very best of humans.{"\u201D"}</span></p></blockquote>
+    <figcaption>Isaac Asimov, <cite>I, Robot</cite> (1950)</figcaption>
   </figure>;
 }
 
@@ -91,7 +87,7 @@ function HeroWall() {
       <video src={demoMediaUrl(column.video)} poster={demoMediaUrl(column.poster)} width={column.width} height={column.height}
         muted loop playsInline preload="auto"/>
       <span className="wallTint"/>
-      <span className="wallLabel"><b>{column.track}</b>{WALL_LABELS[column.track] ?? column.label}</span>
+      <span className="wallLabel" title={WALL_LABELS[column.track] ?? column.label}>{column.track}</span>
     </div>)}
     <span className="wallVeil"/>
   </div>;

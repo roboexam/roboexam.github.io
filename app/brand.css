@@ -56,47 +56,51 @@
 @keyframes handIn { from { opacity: 0; transform: translate(var(--hand-from), -39%); } to { opacity: 1; transform: translate(0, -39%); } }
 @keyframes handFloat { from { transform: translate(0, -39%); } to { transform: translate(0, calc(-39% - 9px)); } }
 /* title and quote centre together in the band below the wall captions */
-.heroTitle { position: relative; z-index: 2; align-self: center; padding: 62px 0 10px; text-align: center; pointer-events: none; }
+.heroTitle { position: relative; z-index: 2; align-self: center; padding: 52px 0 12px; text-align: center; pointer-events: none; }
 .heroBadge { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; padding: 7px 17px; color: var(--re-copy); font-size: 15.5px; font-weight: 550; letter-spacing: .02em; border-radius: 999px; background: #ffffffb3; box-shadow: 0 0 0 1px #0000000d; }
 .heroBadge span { width: 7px; height: 7px; border-radius: 50%; background: var(--re-amber); box-shadow: 0 0 0 4px #f0a24a33; }
-.researchShell .heroTitle h1 { margin: 0; padding-bottom: .06em; color: var(--re-indigo); background: var(--re-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: clamp(64px, min(8.2vw, 14vh), 150px); line-height: .9; font-weight: 720; letter-spacing: -.06em; }
-.heroSubtitle { margin: 10px 0 0; color: var(--re-ink); font-size: clamp(30px, min(4vw, 7vh), 72px); line-height: 1.02; font-weight: 640; letter-spacing: -.05em; }
-.heroSubtitle .heroMuted { color: var(--re-faint); font-weight: 520; }
-.heroFoot { position: relative; z-index: 3; display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); align-items: end; gap: 32px; padding: 0 max(clamp(24px, 2.5vw, 48px), calc((100vw - 1824px) / 2)) 40px; }
-.heroIntro { padding-right: 32px; border-right: 1px solid var(--re-line); }
-.heroIntro .eyebrow { margin: 0 0 10px; font-size: 14.5px; letter-spacing: .14em; }
-.heroIntro > p:not(.eyebrow) { margin: 0; color: var(--re-ink); font-size: clamp(19px, 1.45vw, 24px); line-height: 1.32; font-weight: 500; letter-spacing: -.02em; }
-.heroCtas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.researchShell .heroTitle h1 { margin: 0; padding-bottom: .06em; color: var(--re-indigo); background: var(--re-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: clamp(60px, min(7.6vw, 13vh), 140px); line-height: .92; font-weight: 680; letter-spacing: -.05em; }
+.heroSubtitle { margin: 14px 0 0; color: #34304f; font-size: clamp(26px, min(3.3vw, 5.8vh), 60px); line-height: 1.1; font-weight: 540; letter-spacing: -.035em; }
+.heroSubtitle .heroMuted { color: #8e8aa6; font-weight: 440; }
+.heroFoot { position: relative; z-index: 3; display: grid; grid-template-columns: minmax(0, 600px) minmax(0, 1fr); align-items: end; gap: 32px; padding: 0 max(clamp(24px, 2.5vw, 48px), calc((100vw - 1824px) / 2)) 40px; }
+.heroCtas { display: flex; flex-wrap: wrap; gap: 10px; }
+/* bottom-left corner: the quote, then the two calls to action */
+.heroCorner { align-self: end; display: grid; justify-items: start; gap: clamp(20px, 3vh, 30px); min-width: 0; }
 .heroCtas button { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 10px 22px; font-size: 16.5px; font-weight: 600; border-radius: 999px; transition: background .2s, color .2s, box-shadow .2s; }
 .heroPrimary { color: #fff; border: 0; background: var(--re-gradient); background-size: 160% 100%; box-shadow: 0 10px 26px -14px #7650b4; }
 .heroPrimary:hover { background-position: 100% 0; box-shadow: 0 12px 30px -12px #a94b9c; }
 .heroSecondary { color: var(--re-ink); border: 0; background: #fff; box-shadow: 0 0 0 1px var(--re-line); }
 .heroSecondary:hover { box-shadow: 0 0 0 1px var(--re-slate); }
 .heroTracks { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
-.heroTracks button { display: inline-flex; align-items: center; gap: 10px; min-height: 54px; padding: 8px 22px 8px 10px; color: var(--re-ink); font-size: 17px; font-weight: 520; border: 1px solid var(--re-line); border-radius: 999px; background: #ffffffd9; transition: border-color .2s, transform .2s; }
+.heroTracks button { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 6px 20px 6px 7px; color: var(--re-ink); font-size: 17px; font-weight: 580; border: 1px solid var(--re-line); border-radius: 999px; background: #ffffffd9; transition: border-color .2s, transform .2s; }
 .heroTracks button:hover { border-color: var(--re-slate); transform: translateY(-2px); }
 .heroTracks b { display: grid; place-items: center; min-width: 32px; height: 32px; padding: 0 6px; color: #fff; font-size: 12px; border-radius: 999px; background: var(--re-indigo); }
 .heroTracks button:nth-child(2) b { background: var(--re-violet); }
 .heroTracks button:nth-child(3) b { background: var(--re-magenta); }
 .heroTracks button:nth-child(4) b { background: var(--re-coral); }
-/* Asimov, set under the subtitle: a display-serif italic with gradient quote marks and a ruled byline */
-.heroQuote { width: min(760px, 84vw); margin: clamp(18px, 2.8vh, 36px) auto 0; }
-.heroQuote-foot { display: none; }
+/* Asimov in the bottom-left corner: a quiet first line, the second in the title's gradient, one plain attribution */
+.heroQuote { max-width: 600px; margin: 0; }
 .heroQuote blockquote { margin: 0; }
-.heroStage .heroQuote p { margin: 0; color: #2b2940; font-family: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; font-size: clamp(24px, min(2.1vw, 3.5vh), 40px); font-style: italic; font-weight: 400; line-height: 1.16; letter-spacing: -.004em; text-wrap: balance; text-shadow: 0 0 20px #f3f3f6, 0 0 8px #f3f3f6e6; }
-.heroQuote p::before, .heroQuote p::after { display: inline-block; padding: 0 .08em; background: var(--re-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.5em; line-height: 0; vertical-align: -.24em; text-shadow: none; }
-.heroQuote p::before { content: "\201C"; }
-.heroQuote p::after { content: "\201D"; }
-.heroQuote figcaption { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; color: var(--re-copy); font-size: 14.5px; font-weight: 650; letter-spacing: .18em; text-transform: uppercase; text-shadow: 0 0 10px #f3f3f6; }
-.heroQuote cite { color: var(--re-ink); font-family: "Instrument Serif", "Iowan Old Style", Palatino, Georgia, serif; font-size: 1.5em; font-style: italic; font-weight: 400; letter-spacing: 0; text-transform: none; }
-.heroQuoteRule { width: clamp(28px, 4vw, 72px); height: 1px; background: linear-gradient(90deg, #a94b9c00, #a94b9c); }
-.heroQuoteRule:last-child { background: linear-gradient(270deg, #e07d7300, #e07d73); }
-.heroQuoteDot { width: 4px; height: 4px; border-radius: 50%; background: #b9b6cb; }
+.heroStage .heroQuote p { margin: 0; color: #5d5a73; font-size: clamp(20px, min(1.6vw, 2.9vh), 30px); font-weight: 400; line-height: 1.32; letter-spacing: -.02em; text-wrap: initial; }
+.heroQuote p > span { display: block; }
+.heroQuote .heroQuoteLead { width: fit-content; margin-top: 2px; font-weight: 620; background: var(--re-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.heroQuote figcaption { margin-top: 12px; color: #6f6c86; font-size: 15.5px; font-weight: 500; letter-spacing: .01em; }
+.heroQuote figcaption::before { display: inline-block; width: 22px; height: 1px; margin-right: 10px; content: ""; vertical-align: .32em; background: currentColor; }
+.heroQuote cite { font-style: italic; }
+/* the title block rises in softly on load */
+@keyframes heroRise { from { opacity: 0; transform: translateY(16px); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
+.researchShell .heroStage .heroTitle h1 { animation: heroRise 1.2s cubic-bezier(.2, .7, .2, 1) .05s both, fxGradientFlow 14s linear infinite; }
+.heroStage .heroSubtitle { animation: heroRise 1.2s cubic-bezier(.2, .7, .2, 1) .2s both; }
+.heroStage .heroQuote { animation: heroRise 1.2s cubic-bezier(.2, .7, .2, 1) .4s both; }
+.heroStage .heroCorner .heroCtas { animation: heroRise 1.2s cubic-bezier(.2, .7, .2, 1) .55s both; }
+@media (prefers-reduced-motion: reduce) {
+  .researchShell .heroStage .heroTitle h1, .heroStage .heroSubtitle, .heroStage .heroQuote, .heroStage .heroCorner .heroCtas { animation: none; }
+}
 
+/* tablets keep the corner and the track chips side by side, so the corner stays below the hands */
 @media (max-width: 1100px) {
-  .heroFoot { grid-template-columns: 1fr; }
-  .heroIntro { padding-right: 0; border-right: 0; }
-  .heroTracks { justify-content: flex-start; }
+  .heroFoot { grid-template-columns: minmax(0, 1fr) auto; }
+  .heroStage .heroQuote p { font-size: 21px; }
 }
 @media (max-width: 700px) {
   .researchNav { grid-template-columns: auto 1fr; align-items: center; }
@@ -114,16 +118,14 @@
   .heroHandRobot { right: -30%; }
   .researchShell .heroTitle h1 { font-size: clamp(52px, 16vw, 76px); }
   .heroSubtitle { font-size: clamp(24px, 7.4vw, 34px); }
-  .heroFoot { padding: 0 20px 32px; gap: 22px; }
+  .heroFoot { grid-template-columns: 1fr; padding: 0 20px 32px; gap: 22px; }
   .heroCtas button { flex: 1 1 auto; justify-content: center; }
   .heroTracks { display: grid; grid-template-columns: 1fr 1fr; }
   .heroTracks button { min-width: 0; padding-right: 12px; font-size: 15px; }
   .heroTitle { padding-top: 0; }
-  .heroQuote-title { display: none; }
-  .heroQuote-foot { display: block; width: auto; margin: 0 0 4px; }
-  .heroStage .heroQuote p { font-size: 22px; }
-  .heroQuote figcaption { gap: 8px; margin-top: 10px; font-size: 12.5px; letter-spacing: .12em; }
-  .heroQuoteRule { width: 18px; }
+  .heroCorner { justify-items: stretch; }
+  .heroStage .heroQuote p { font-size: 19px; }
+  .heroQuote figcaption { margin-top: 10px; font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .heroHandHuman, .heroHandRobot { animation: none; transform: translate(0, -39%); }
@@ -216,13 +218,12 @@
 .wall-T2 .wallTint { background: linear-gradient(180deg, #e3dff8b3, #d6cff2a3); }
 .wall-T3 .wallTint { background: linear-gradient(180deg, #8a62c88f, #7650b49e); }
 .wall-T4 .wallTint { background: linear-gradient(180deg, #2a2456b8, #1d1a3ec7); }
-.wallLabel { position: absolute; left: 16px; top: 16px; display: inline-flex; align-items: center; gap: 9px; padding: 5px 15px 5px 5px; color: var(--re-ink); font-size: 15px; font-weight: 600; letter-spacing: .01em; border-radius: 999px; background: #ffffffc7; backdrop-filter: blur(8px); }
-.wallLabel b { display: grid; place-items: center; min-width: 32px; height: 26px; padding: 0 8px; color: #fff; font-size: 13px; border-radius: 999px; }
-.wall-T1 .wallLabel b { background: var(--re-indigo); }
-.wall-T2 .wallLabel b { background: var(--re-violet); }
-.wall-T3 .wallLabel b { background: var(--re-magenta); }
-.wall-T4 .wallLabel b { background: var(--re-coral); }
-.wall-T3 .wallLabel, .wall-T4 .wallLabel { color: #fff; background: #1d1c2b66; }
+/* each column carries only its track tag; the track chips in the hero foot name them */
+.wallLabel { position: absolute; left: 16px; top: 16px; display: grid; place-items: center; min-width: 38px; height: 26px; padding: 0 9px; color: #fff; font-size: 13.5px; font-weight: 700; letter-spacing: .02em; border-radius: 999px; box-shadow: 0 4px 12px -6px #1d1c2b80; }
+.wall-T1 .wallLabel { background: var(--re-indigo); }
+.wall-T2 .wallLabel { background: var(--re-violet); }
+.wall-T3 .wallLabel { background: var(--re-magenta); }
+.wall-T4 .wallLabel { background: var(--re-coral); }
 /* keeps the title and ring readable over the moving columns */
 .wallVeil { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 32% 30% at 50% 43%, #f3f3f6f0 0%, #f3f3f6b3 50%, #f3f3f600 100%); }
 @media (max-width: 700px) {
@@ -247,10 +248,12 @@ body { font-feature-settings: "cv11", "ss01", "ss03"; -webkit-font-smoothing: an
 .researchShell button:focus-visible, .researchShell a:focus-visible { outline: 2px solid var(--re-indigo); outline-offset: 2px; }
 
 /* hero: the muted half of the line stays legible where it passes over the hands */
-.heroSubtitle { text-shadow: 0 0 22px #f3f3f6, 0 0 8px #f3f3f6cc; }
-.heroSubtitle .heroMuted { color: #8f8ca4; }
+.heroSubtitle { text-shadow: 0 1px 18px #f6f5fae6; }
 /* track chips: two even columns instead of a ragged wrap */
 .heroTracks { display: grid; grid-template-columns: repeat(2, max-content); justify-content: end; }
+/* with the captions gone the four chips fit one row beside the buttons on laptop widths and up */
+@media (min-width: 1280px) { .heroTracks { grid-template-columns: repeat(4, max-content); } }
+@media (min-width: 701px) and (max-width: 900px) { .heroTracks { grid-template-columns: max-content; } }
 /* on phones the columns share the width; max-content pushed the hero foot past the screen edge */
 @media (max-width: 700px) {
   .heroTracks { grid-template-columns: repeat(2, minmax(0, 1fr)); justify-content: stretch; }
@@ -363,10 +366,12 @@ body { font-feature-settings: "cv11", "ss01", "ss03"; -webkit-font-smoothing: an
 .whyAnswers.willReveal li:nth-child(2) { transition-delay: .1s; }
 .whyAnswers.willReveal li:nth-child(3) { transition-delay: .2s; }
 .whyAnswers.isIn li { opacity: 1; transform: none; }
+/* zero minimums: the panels' unwrapped labels must not size the column (they widened the page below 1100 px) */
+.storySection, .whyCompare > *, .whyAnswers > li { min-width: 0; }
 @media (max-width: 1100px) {
-  .whyCompare { grid-template-columns: 1fr; gap: 14px; }
+  .whyCompare { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .whyArrow { justify-self: center; rotate: 90deg; }
-  .whyAnswers { grid-template-columns: 1fr; }
+  .whyAnswers { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 700px) {
   .whyQuestion { font-size: calc(30px * var(--type-scale, 1)); }
