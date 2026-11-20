@@ -25,8 +25,10 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
       <h1 id="hero-title">RoboExam</h1>
       {/* the manuscript's title: "RoboExam: A Shared-Task Benchmark for Robotic Components and Systems" */}
       <p className="heroSubtitle"><span className="srOnly">A shared-task benchmark for robotic components and systems</span><span aria-hidden="true"><span className="heroMuted">A shared-task benchmark</span><br/>for robotic components and systems</span></p>
+      <HeroQuote placement="title"/>
     </div>
     <div className="heroFoot">
+      <HeroQuote placement="foot"/>
       <div className="heroIntro">
         <p className="eyebrow">{`${paperResults.tasks.length} tasks · ${PAPER_SIM_CASES} shared cases · four tracks`}</p>
         <p>Three simulation tracks put VLM agents, action-conditioned world models (ACWMs) and robot policies on the same tasks and conditions. A fourth evaluates real-robot deployment.</p>
@@ -41,11 +43,15 @@ export function HeroStage({ onLeaderboards, onDatasets }: Props) {
         </button>)}
       </nav>
     </div>
-    <blockquote className="heroQuote">
-      <p>{"“You just can't differentiate between a robot and the very best of humans.”"}</p>
-      <cite>Isaac Asimov · I, Robot · 1950</cite>
-    </blockquote>
   </section>;
+}
+
+/** Asimov under the subtitle; on phones the hands cover that spot, so a second copy opens the foot instead (CSS shows one). */
+function HeroQuote({ placement }: { placement: "title" | "foot" }) {
+  return <figure className={`heroQuote heroQuote-${placement}`}>
+    <blockquote><p>You just can&apos;t differentiate between a robot and the very best of humans.</p></blockquote>
+    <figcaption><span className="heroQuoteRule" aria-hidden="true"/>Isaac Asimov<span className="heroQuoteDot" aria-hidden="true"/><cite>I, Robot</cite><span className="heroQuoteDot" aria-hidden="true"/>1950<span className="heroQuoteRule" aria-hidden="true"/></figcaption>
+  </figure>;
 }
 
 /** Column captions in the manuscript's track terms (the wall bundle's own labels predate them). */

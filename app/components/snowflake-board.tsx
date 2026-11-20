@@ -62,7 +62,7 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
   const [hover, setHover] = useState<Hover>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const canvas = useRef<HTMLDivElement>(null);
-  const [pixels, setPixels] = useState({ w: 1180, h: 737.5 }); // rendered canvas size, for label sizing
+  const [pixels, setPixels] = useState({ w: 1180, h: 737.5, s: 1 }); // rendered canvas size and type scale, for label sizing
   const [crystal, setCrystal] = useState(false); // 3D crystal took over from the 2D drawing
   const [projector, setProjector] = useState<Projector | null>(null);
   const centre = focus === CENTRE;
@@ -72,7 +72,9 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
   useEffect(() => {
     const node = canvas.current;
     if (!node) return;
-    const observer = new ResizeObserver(([entry]) => setPixels({ w: entry.contentRect.width, h: entry.contentRect.height }));
+    // labels grow with the page's --type-scale on wide screens, so their estimated widths must too
+    const observer = new ResizeObserver(([entry]) => setPixels({ w: entry.contentRect.width, h: entry.contentRect.height,
+      s: parseFloat(getComputedStyle(node).getPropertyValue("--type-scale")) || 1 }));
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
@@ -171,7 +173,7 @@ export function SnowflakeBoard({ onBreakdown }: { onBreakdown: (track: TrackId) 
                 style={{ ...pct(at), ...track(prong.track) }}><TrackIcon track={prong.track} size={compact ? 22 : 30}/><b>{prong.track}</b></span>)}
               {layout.callouts.map(({ key, prong, climber, anchor, left }) => <span key={key} className={`snowClimberLabel ${left ? "toLeft" : ""} ${climber.rank === 1 ? "lead" : ""}`}
                 style={{ ...pct(anchor), ...track(prong.track) }}>
-                <i>{prong.track}</i>{shortLabel(climber.label)}<em>{fmt(climber.value)}</em>
+                <i>{prong.track}</i><MethodLogo label={climber.label} size={compact ? 16 : 19}/>{shortLabel(climber.label)}<em>{fmt(climber.value)}</em>
               </span>)}
             </>}
             {hover && <div className="snowTooltip" style={{ ...pct(hoverAt(hover)), ...track(hover.prong.track) }}>
@@ -282,10 +284,10 @@ function Prong({ arm, prong, onHover }: { arm: SnowArm; prong: SnowProng; onHove
 type Box = { x0: number; x1: number; y0: number; y1: number };
 const overlaps = (a: Box, b: Box) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
 type CalloutInput = { prong: SnowProng; climber: Climber; bead: Vec; rim: number; left: boolean };
-type Units = { ux: number; uy: number; compact: boolean };
+type Units = { ux: number; uy: number; compact: boolean; s: number };
 
-function units(pixels: { w: number; h: number }): Units {
-  return { ux: W / Math.max(pixels.w, 1), uy: H / Math.max(pixels.h, 1), compact: pixels.w < 640 }; // overlay units per CSS pixel, per axis
+function units(pixels: { w: number; h: number; s?: number }): Units {
+  return { ux: W / Math.max(pixels.w, 1), uy: H / Math.max(pixels.h, 1), compact: pixels.w < 640, s: pixels.s ?? 1 }; // overlay units per CSS pixel, per axis
 }
 /** Canvas chrome every close-up layout keeps clear of: title, zoom toggle, rotate buttons, the track legend along the bottom. */
 function chrome({ ux, uy, compact }: Units): Box[] {
@@ -310,14 +312,15 @@ const chipBox = ({ ux, uy, compact }: Units, at: Vec): Box => {
  * where it can be, joined to it by a leader. Narrow canvases call out only
  * each track's leader.
  */
-function layoutCallouts(inputs: CalloutInput[], taken: Box[], { ux, uy, compact }: Units) {
+function layoutCallouts(inputs: CalloutInput[], taken: Box[], { ux, uy, compact, s }: Units) {
   const margin = 14 * ux;
   const row = 22 * uy;
   const bottom = H - (compact ? 14 : 58) * uy; // above the track legend
   return [true, false].flatMap((left) => {
     const side = inputs.filter((item) => item.left === left && (!compact || item.climber.rank === 1)).sort((a, b) => a.bead.y - b.bead.y);
     if (!side.length) return [];
-    const width = (item: CalloutInput) => ((shortLabel(item.climber.label).length + 6) * (compact ? 6.2 : 7.2) + 34) * ux;
+    // characters at the label size, plus the track chip and the method mark
+    const width = (item: CalloutInput) => ((shortLabel(item.climber.label).length + 6) * (compact ? 7.4 : 7.9) + (compact ? 58 : 62)) * s * ux;
     const widest = Math.max(...side.map(width));
     // the column clears the outermost medallion on its side
     const edge = left ? Math.min(...side.map((item) => item.bead.x - item.rim)) : Math.max(...side.map((item) => item.bead.x + item.rim));
@@ -350,7 +353,7 @@ function layoutCallouts(inputs: CalloutInput[], taken: Box[], { ux, uy, compact 
 }
 
 /** Close-up of an arm: track chips at the routes' feet, contour values at the left end of each ring. */
-function layoutArm(arm: SnowArm, toScreen: Screen, pixels: { w: number; h: number }) {
+function layoutArm(arm: SnowArm, toScreen: Screen, pixels: { w: number; h: number; s?: number }) {
   const u = units(pixels);
   const taken = chrome(u);
   const routes = arm.prongs.map((prong) => {
@@ -377,7 +380,7 @@ function layoutArm(arm: SnowArm, toScreen: Screen, pixels: { w: number; h: numbe
 }
 
 /** The opened centre: track chips where the streams fall from, contour values at the rings' front. */
-function layoutColumn(overall: SnowArm, toColumn: Projector["column"], pixels: { w: number; h: number }) {
+function layoutColumn(overall: SnowArm, toColumn: Projector["column"], pixels: { w: number; h: number; s?: number }) {
   const u = units(pixels);
   const taken = chrome(u);
   // chips mark where each stream falls from, above the summit ring

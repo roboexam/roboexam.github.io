@@ -75,9 +75,6 @@ export function MainBoard({ trackId, onTrack }: { trackId: TrackId; onTrack: (tr
     if (left === null || right === null) return left === null ? (right === null ? 0 : 1) : -1;
     return meta.lowerIsBetter ? left - right : right - left;
   });
-  // percentages fill against 100; the millimetre error fills against the worst model
-  const scale = (column: Column) => meta.percent ? 100 : Math.max(1, ...rows.map((row) => column.read(row, measure) ?? 0));
-  const scales = Object.fromEntries(columns.map((column) => [column.id, scale(column)]));
   const best = Object.fromEntries(columns.map((column) => [column.id, columnRanks(rows, (row) => column.read(row, measure), !meta.lowerIsBetter)]));
 
   function chooseTrack(next: TrackId) {
@@ -138,11 +135,9 @@ export function MainBoard({ trackId, onTrack }: { trackId: TrackId; onTrack: (tr
                 <td className="lbType"><span className={`lbPill pill-${row.type.split(" ")[0].toLowerCase()}`}>{row.type === "VLM agent" ? "VLM" : row.type}</span></td>
                 {columns.map((column) => {
                   const value = column.read(row, measure);
-                  const width = value === null ? 0 : Math.round(Math.max(0, Math.min(1, value / scales[column.id])) * 1000) / 10;
                   const top = row.ranked && value !== null && value > 0 && best[column.id].get(row.id) === 1;
                   return <td key={column.id} className={`lbMetric ${column.id === sortColumn.id ? "isSorted" : ""} ${top ? "isBest" : ""}`}>
                     <span className="lbValue">{fmt(value)}{value !== null && meta.unit === "%" && <i>%</i>}</span>
-                    {value !== null && <span className="lbBar" aria-hidden="true"><i style={{ width: `${width}%` }}/></span>}
                   </td>;
                 })}
               </tr>
@@ -151,7 +146,7 @@ export function MainBoard({ trackId, onTrack }: { trackId: TrackId; onTrack: (tr
           })}</tbody>
         </table>
       </div>
-      <p className="lbFoot">{FOOTNOTE[trackId][measure]} Bars fill against {meta.percent ? "100" : "the largest error"}.</p>
+      <p className="lbFoot">{FOOTNOTE[trackId][measure]}</p>
     </div>
   </section>;
 }
@@ -164,7 +159,6 @@ function SceneStrip({ row, measure }: { row: BoardRow; measure: Measure }) {
       const value = measure === "primary" ? score?.value : score?.secondary;
       return <li key={scene.id} title={`${scene.name} · ${score?.n ?? 0} episodes`}>
         <span>{scene.name}</span><b>{fmt(value)}</b>
-        <span className="lbBar" aria-hidden="true"><i style={{ width: `${Math.round(Math.max(0, Math.min(100, value ?? 0)) * 10) / 10}%` }}/></span>
       </li>;
     })}
   </ol>;

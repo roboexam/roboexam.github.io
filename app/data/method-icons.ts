@@ -20,6 +20,14 @@ const MARKS: [RegExp, MethodIcon][] = [
   [/^X-?VLA/i, { org: "Tsinghua University", src: "/brand/methods/tsinghua.png", bleed: false }],
   [/^(Pi-?|π)0/i, { org: "Physical Intelligence", src: "/brand/methods/physical-intelligence.png", bleed: false }],
   [/^(Open)?DM(0|$)/i,{ org: "Dexmal", src: "/brand/methods/dexmal.png", bleed: true }],
+  [/^MiniMax/i, { org: "MiniMax", src: "/brand/methods/minimax.svg", bleed: false }],
+  [/^Pelican/i, { org: "Beijing Innovation Center of Humanoid Robotics", src: "/brand/methods/x-humanoid.png", bleed: false }],
+  [/^IRASim/i, { org: "ByteDance Seed", src: "/brand/methods/bytedance.svg", bleed: false }],
+  [/^OpenWAM/i, { org: "OpenWAM", src: "/brand/methods/openwam.png", bleed: false }],
+  // Fast-WAM: IIIS, Tsinghua University (first affiliation) with Galaxea AI
+  [/^Fast-?WAM/i, { org: "Tsinghua University", src: "/brand/methods/tsinghua.png", bleed: false }],
+  // the hybrid agent is the paper's own reference system (Sec. 4)
+  [/^Hybrid agent/i, { org: "RoboExam", src: "/brand/roboexam-mark-64.png", bleed: true }],
 ];
 
 export function methodIcon(label: string): MethodIcon | null {

@@ -4,3 +4,17 @@
 @media(max-width:900px){.simulationTaskWorkspace{grid-template-columns:1fr}.simulationTaskRail{position:static}.simulationTaskRail nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-height:250px}}
 @media(max-width:700px){.simulationSplitRail{grid-template-columns:repeat(2,minmax(0,1fr))}.simulationTaskHeader{padding:13px}.simulationTaskHeader h3{font-size:calc(18px * var(--type-scale, 1))}}
 @media(max-width:400px){.realDatasetList{grid-template-columns:1fr;max-height:300px}.realPlaybackControls{gap:7px;padding:8px}.realPlaybackControls span{font-size:calc(15px * var(--type-scale, 1))}.realDatasetPanel .rawReviewHeading{align-items:flex-start;flex-direction:column}.realDatasetFilters .reportSwitch{flex-wrap:wrap}.simulationTaskRail nav,.simulationSplitRail{grid-template-columns:1fr}.simulationTaskHeader>strong{font-size:calc(21px * var(--type-scale, 1))}}
+/* capability tags on the simulation tasks: the same six glyphs as the Overview filter and the leaderboard columns */
+.simTagFilter{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.simTagFilter button{display:grid;place-items:center;height:40px;padding:0;border:1px solid #dce5ef;border-radius:9px;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s,opacity .15s}
+.simTagFilter button:hover{border-color:#adc8ec}
+.simTagFilter button[aria-pressed=true]{border-color:#285bd8;box-shadow:0 0 0 2px #285bd833}
+.simTagFilter:has(button[aria-pressed=true]) button[aria-pressed=false]{opacity:.5}
+.simTagActive{display:flex;align-items:center;gap:6px;margin:0 2px;color:#52647b;font-size:calc(15px * var(--type-scale, 1))}
+.simTagActive b{color:#203b62}
+.simTagActive button{margin-left:auto;padding:2px 8px;color:#285bd8;font:inherit;font-weight:600;border:0;border-radius:6px;background:#eaf0ff;cursor:pointer}
+.simTaskTagIcons{display:flex;gap:3px;font-style:normal}
+.simTaskTagIcons .capabilityIcon{opacity:.85}
+.simulationTaskRail nav button[aria-pressed=true] .simTaskTagIcons .capabilityIcon{opacity:1}
+.simTaskTags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none}
+.simTaskTags li{display:inline-flex;align-items:center;gap:6px;padding:4px 11px 4px 5px;color:#203b62;font-size:calc(15px * var(--type-scale, 1));font-weight:600;border:1px solid #d6e0ed;border-radius:999px;background:#fff}

@@ -57,7 +57,10 @@ test("renders the dashboard introduction without login", async () => {
   assert.doesNotMatch(html, /The final exam for Physical AI|Physical AI Benchmark/);
   assert.match(html, /You just can&#x27;t differentiate between a robot and the very best of humans\./);
   assert.doesNotMatch(html, /你已无法分辨，何者是机器人，何者是人类中的至善者。/);
-  assert.match(html, /Isaac Asimov · I, Robot · 1950/);
+  assert.match(html, /Isaac Asimov<span[^>]*><\/span><cite>I, Robot<\/cite><span[^>]*><\/span>1950/);
+  // the Why section asks the manuscript's question and answers its three clauses
+  assert.match(html, /Where does each system excel\?/);
+  assert.match(html, /One shared exam/);
   assert.doesNotMatch(html, /阿西莫夫|我，机器人/);
   // the Correlation page was removed from the public dashboard
   assert.doesNotMatch(html, />Correlation</);

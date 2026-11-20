@@ -62,6 +62,9 @@ export function MethodLogo({ label, size = 20 }: { label: string; size?: number 
   const icon = methodIcon(label);
   const style = { width: size, height: size };
   if (!icon) return <span className="methodLogo monogram" style={{ ...style, fontSize: size * 0.4 }} aria-hidden="true">{monogram(label)}</span>;
+  // Marks load eagerly (each is a few kB): lazy loading left blank circles in the moving method strip until
+  // each one neared the screen. The empty alt keeps a failed load from drawing a broken-image glyph; the
+  // organisation is named by the title, and the method's own label always sits beside the mark.
   // eslint-disable-next-line @next/next/no-img-element -- tiny static marks; no optimisation pipeline in this worker build
-  return <span className={`methodLogo ${icon.bleed ? "bleed" : ""}`} style={style} title={icon.org}><img src={icon.src} alt={icon.org} loading="lazy" decoding="async"/></span>;
+  return <span className={`methodLogo ${icon.bleed ? "bleed" : ""}`} style={style} title={icon.org}><img src={icon.src} alt="" width={size} height={size} decoding="async" fetchPriority="low"/></span>;
 }

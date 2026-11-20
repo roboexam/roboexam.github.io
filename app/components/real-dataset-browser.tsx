@@ -13,6 +13,9 @@ import type {
 } from "../data/real-datasets";
 import { secondsLabel } from "../data/curated-dataset";
 import { ActionTracePanel } from "./action-trace-panel";
+import { BOARD_SCENES, BOARD_TAGS } from "../data/main-board";
+import type { ScenarioTag } from "../data/scenario-plan";
+import { CapabilityIcon } from "./podium";
 import { dataUrl, mediaUrl, say, STATIC_SITE } from "../static-site";
 
 type DatasetEntries = { dataset: RealDatasetSummary; version: string; episodes: RealEpisodeEntry[] };
@@ -23,6 +26,10 @@ async function read<T>(apiPrefix: string, query: string, signal: AbortSignal): P
   if (!response.ok) throw new Error(response.status === 503 ? say("The data source is temporarily unavailable. Try again shortly.", "数据源暂时不可读，请稍后重试。") : say("Could not load the data. Refresh to try again.", "无法读取数据，请刷新重试。"));
   return response.json();
 }
+
+/** Capability tags of a simulation task, from the same scenario plan as the Overview and the leaderboard. */
+const taskTagsFor = (taskId: string) => BOARD_SCENES.find(scene => scene.id.toLowerCase() === taskId.toLowerCase())?.tags ?? [];
+const tagLabel = (tag: string) => BOARD_TAGS.find(item => item.id === tag)?.label ?? tag;
 
 function EpisodePlayer({ episode, title, autoPlay = false }: { episode: RealDatasetEpisode; title: string; autoPlay?: boolean }) {
   const videos = useRef<Record<string, HTMLVideoElement | null>>({});
@@ -262,6 +269,7 @@ function DatasetBrowser({ embedded = false, mode }: {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("");
   const [taskQuery, setTaskQuery] = useState("");
+  const [taskTag, setTaskTag] = useState<ScenarioTag | null>(null);
   const [selectedTaskId, setSelectedTaskId] = useState(() =>
     typeof window === "undefined" ? "" : new URL(window.location.href).searchParams.get("task") ?? "");
   const [splitId, setSplitId] = useState<SimulationSplitId>("training");
@@ -291,7 +299,7 @@ function DatasetBrowser({ embedded = false, mode }: {
   const allDatasets = catalog?.datasets ?? [];
   const simulationTasks = catalog?.simulationTasks ?? [];
   const filteredTasks = simulationTasks.filter(task =>
-    `${task.name} ${task.id}`.toLowerCase().includes(taskQuery.trim().toLowerCase()));
+    `${task.name} ${task.id}`.toLowerCase().includes(taskQuery.trim().toLowerCase()) && (!taskTag || taskTagsFor(task.id).includes(taskTag)));
   const activeTask = simulationTasks.find(task => task.id === selectedTaskId) ?? simulationTasks[0];
   const activeSplit = activeTask?.splits.find(split => split.id === splitId) ?? activeTask?.splits[0];
   const datasets = allDatasets.filter(row => (kind === "all" || row.kind === kind) &&
@@ -321,11 +329,14 @@ function DatasetBrowser({ embedded = false, mode }: {
       <aside className="simulationTaskRail">
         <div className="simulationTaskRailHeading"><span>{say("Tasks", "Task · 任务")}</span><strong>{simulationTasks.length || 24}</strong></div>
         <label className="realSearch"><Search size={16}/><span className="curatedSrOnly">{say("Search tasks", "搜索 Simulation 任务")}</span><input type="search" placeholder={say("Search tasks…", "搜索任务…")} value={taskQuery} onChange={event => setTaskQuery(event.target.value)}/></label>
-        <nav aria-label="Simulation tasks">{filteredTasks.map(task => <button type="button" key={task.id} aria-pressed={activeTask?.id === task.id} onClick={() => chooseTask(task.id)}><b>{String(task.sceneId + 1).padStart(2, "0")}</b><span><strong>{task.name}</strong>{!STATIC_SITE && <small>{task.episodeCount} episodes</small>}</span></button>)}</nav>
+        <div className="simTagFilter" role="group" aria-label="Filter tasks by capability">{BOARD_TAGS.map(tag => <button type="button" key={tag.id} aria-pressed={taskTag === tag.id} title={`${tag.label}: ${tag.rule}`} aria-label={`${tag.label} (${tag.scenes.length} tasks)`} onClick={() => setTaskTag(taskTag === tag.id ? null : tag.id)}><CapabilityIcon tag={tag.id} size={26}/></button>)}</div>
+        {taskTag && <p className="simTagActive"><b>{BOARD_TAGS.find(tag => tag.id === taskTag)?.label}</b> · {filteredTasks.length} tasks<button type="button" onClick={() => setTaskTag(null)}>Clear</button></p>}
+        <nav aria-label="Simulation tasks">{filteredTasks.map(task => <button type="button" key={task.id} aria-pressed={activeTask?.id === task.id} onClick={() => chooseTask(task.id)}><b>{String(task.sceneId + 1).padStart(2, "0")}</b><span><strong>{task.name}</strong><i className="simTaskTagIcons" aria-label={taskTagsFor(task.id).map(tagLabel).join(", ")}>{taskTagsFor(task.id).map(tag => <CapabilityIcon key={tag} tag={tag} size={18}/>)}</i>{!STATIC_SITE && <small>{task.episodeCount} episodes</small>}</span></button>)}</nav>
         {catalog && filteredTasks.length === 0 && <p>{say("No matching task.", "没有匹配的任务。")}</p>}
       </aside>
       <div className="simulationTaskStage">
-        {activeTask && <header className="simulationTaskHeader"><div><span>Task {activeTask.sceneId + 1} of {simulationTasks.length}</span><h3>{activeTask.name}</h3></div><strong>{activeTask.episodeCount}<small>episodes</small></strong></header>}
+        {activeTask && <header className="simulationTaskHeader"><div><span>Task {activeTask.sceneId + 1} of {simulationTasks.length}</span><h3>{activeTask.name}</h3>
+          <ul className="simTaskTags" aria-label="Capability tags">{taskTagsFor(activeTask.id).map(tag => <li key={tag} title={BOARD_TAGS.find(item => item.id === tag)?.rule}><CapabilityIcon tag={tag} size={22}/>{tagLabel(tag)}</li>)}</ul></div><strong>{activeTask.episodeCount}<small>episodes</small></strong></header>}
         {activeTask && <nav className="simulationSplitRail" aria-label={`${activeTask.name} data groups`}>{simulationSplits.map(definition => {
           const split = activeTask.splits.find(candidate => candidate.id === definition.id);
           return <button type="button" key={definition.id} disabled={!split} aria-pressed={activeSplit?.id === definition.id} onClick={() => { setSplitId(definition.id); setAutoPlay(false); }}><span><strong>{definition.label}</strong>{!STATIC_SITE && <small>{definition.detail}</small>}</span><b>{split?.episodeCount ?? "—"}</b></button>;

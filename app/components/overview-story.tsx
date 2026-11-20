@@ -27,14 +27,147 @@ function Heading({ id, eyebrow, title, children }: { id: string; eyebrow: string
   </div>;
 }
 
+// The manuscript's question (Sec. 1), split at its three clauses; each clause is answered by one card below.
+const QUESTION = [
+  "Where does each system excel,",
+  "how does it respond to changing conditions,",
+  "and how are its components\u2019 outputs used during execution?",
+];
+
+/** Lights the question word by word as it scrolls up the screen. Rendered fully lit; stays lit under reduced motion. */
+function useScrollReveal<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const words = [...root.querySelectorAll<HTMLElement>("[data-word]")];
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const box = root.getBoundingClientRect();
+      // 0 when the heading's top reaches 85% of the viewport, 1 once its bottom passes the middle
+      const start = window.innerHeight * 0.85;
+      const span = start - window.innerHeight * 0.5 + box.height;
+      const lit = Math.round(Math.min(1, Math.max(0, (start - box.top) / span)) * words.length);
+      words.forEach((word, index) => word.classList.toggle("dim", index >= lit));
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, []);
+  return ref;
+}
+
+/** Adds `isIn` once the element is a third on screen, so its wires draw and its parts settle in. */
+function useInView<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { node.classList.add("isIn"); return; }
+    node.classList.add("willReveal");
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { node.classList.add("isIn"); observer.disconnect(); }
+    }, { threshold: 0.3 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
+
+const jumpTo = (selector: string) => {
+  const target = document.querySelector(selector);
+  if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 110, behavior: "smooth" });
+};
+
+// three rows, 52 px tall with 14 px gaps: their centres sit at 26, 92 and 158 px of a 184 px column
+const ROW_Y = [26, 92, 158];
+const APART = [
+  { track: "T1", who: "VLMs", scored: "Embodied QA" },
+  { track: "T2", who: "World models", scored: "Future video" },
+  { track: "T3", who: "Robot policies", scored: "Task execution" },
+] as const;
+const TOGETHER = [
+  { track: "T1", who: "VLM agents" },
+  { track: "T2", who: "ACWMs" },
+  { track: "T3", who: "Robot policies" },
+] as const;
+const WIRE_COLORS = ["#4a56c0", "#7650b4", "#a94b9c"];
+
 export function OverviewQuestion() {
+  const question = useScrollReveal<HTMLHeadingElement>();
+  const compare = useInView<HTMLDivElement>();
+  const answers = useInView<HTMLOListElement>();
   return <section className="storySection storyQuestion" aria-labelledby="story-question-title">
     <p className="eyebrow">Why RoboExam</p>
-    <h2 id="story-question-title">Where does each system excel, how does it respond to changing conditions, and how are its components&apos; outputs used during execution?</h2>
-    <div className="questionBody">
-      <p>Robotic agents now combine vision-language reasoning, action-outcome prediction and robot control. Yet VLMs are scored on embodied question answering, world models on future video and policies on task execution, each with its own tasks and conditions. Those scores cannot be compared, and none of them shows how one component&apos;s output changes what the robot does next.</p>
-      <p>{`RoboExam puts all three on the same ${overviewStats.tasks} manipulation tasks and ${overviewStats.simCases} simulation cases, adds a real-robot track, and links every forecast to the decision and the physical outcome that follow.`}</p>
+    <h2 id="story-question-title" ref={question} className="whyQuestion">
+      {QUESTION.map((clause, index) => <span key={clause} className="whyClause">
+        {clause.split(" ").map((word, w) => <span key={w} data-word="">{word} </span>)}
+        <sup className={`whyMark whyMark${index + 1}`} aria-hidden="true">{index + 1}</sup>{" "}
+      </span>)}
+    </h2>
+
+    <div className="whyCompare" ref={compare}>
+      <article className="whyPanel whyApart">
+        <div className="whyPanelHead"><span className="whyTag">Today</span><h3>Evaluated apart</h3></div>
+        <div className="whyFlow">
+          <ul className="whyNodes">{APART.map((row) => <li key={row.who}><TrackIcon track={row.track} size={28}/>{row.who}</li>)}</ul>
+          <svg className="whyWires" viewBox="0 0 100 184" preserveAspectRatio="none" aria-hidden="true">
+            {ROW_Y.map((y) => <path key={y} d={`M0 ${y} L100 ${y}`}/>)}
+          </svg>
+          <ul className="whyNodes whyTargets">{APART.map((row) => <li key={row.scored}>{row.scored}</li>)}</ul>
+        </div>
+        <p>Different tasks and conditions make their scores hard to compare.</p>
+      </article>
+
+      <span className="whyArrow" aria-hidden="true"><ArrowRight size={22}/></span>
+
+      <article className="whyPanel whyTogether">
+        <div className="whyPanelHead"><span className="whyTag">RoboExam</span><h3>One shared exam</h3></div>
+        <div className="whyFlow">
+          <ul className="whyNodes">{TOGETHER.map((row) => <li key={row.who}><TrackIcon track={row.track} size={28}/>{row.who}</li>)}</ul>
+          <svg className="whyWires" viewBox="0 0 100 184" preserveAspectRatio="none" aria-hidden="true">
+            {ROW_Y.map((y, index) => <g key={y} style={{ ["--wire" as string]: WIRE_COLORS[index] }}>
+              <path d={`M0 ${y} C 55 ${y}, 45 92, 100 92`}/>
+              <path className="whyPulse" d={`M0 ${y} C 55 ${y}, 45 92, 100 92`} style={{ animationDelay: `${1.6 + index * 0.45}s` }}/>
+            </g>)}
+          </svg>
+          <div className="whyHub">
+            <b>{overviewStats.simCases}</b>
+            <span>shared cases</span>
+            <small>{`${overviewStats.tasks} tasks × ${CONDITIONS.length} conditions`}</small>
+          </div>
+        </div>
+        <p><TrackIcon track="T4" size={24}/>A fourth track deploys the policies on real robots.</p>
+      </article>
     </div>
+
+    <ol className="whyAnswers" ref={answers} aria-label="How RoboExam answers each part">
+      <li><button type="button" onClick={() => jumpTo(".storyBenchmark .tagFilter")}>
+        <span className="whyMark whyMark1" aria-hidden="true">1</span>
+        <h3>Where does each system excel?</h3>
+        <p>Six task requirements organize every result.</p>
+        <span className="whyVisual whyCaps">{overviewTags.map((tag) => <i key={tag.id} title={tag.label}><CapabilityIcon tag={tag.id} size={34}/></i>)}</span>
+      </button></li>
+      <li><button type="button" onClick={() => jumpTo(".conditionBlock")}>
+        <span className="whyMark whyMark2" aria-hidden="true">2</span>
+        <h3>How does it respond to changing conditions?</h3>
+        <p>Every task runs under the same five conditions.</p>
+        <span className="whyVisual whyConditions">{CONDITIONS.map((condition) => <i key={condition.id} title={condition.rule}>{condition.id === "ID" ? "ID" : condition.label.replace(" OOD", "").replace("Failure recovery", "Recovery")}</i>)}</span>
+      </button></li>
+      <li><button type="button" onClick={() => jumpTo("#story-hybrid-title")}>
+        <span className="whyMark whyMark3" aria-hidden="true">3</span>
+        <h3>How are its components’ outputs used?</h3>
+        <p>A hybrid agent and decision replay link each forecast to what the agent does next.</p>
+        <span className="whyVisual whySteps">{["Forecast", "Interpretation", "Action", "Outcome"].map((step) => <i key={step}>{step}</i>)}</span>
+      </button></li>
+    </ol>
   </section>;
 }
 

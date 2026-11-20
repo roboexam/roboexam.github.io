@@ -58,28 +58,22 @@
 .pill-acwm { color: #6a43a8; background: #f1ebfa; }
 .pill-policy { color: #13806f; background: #e3f5f1; }
 .pill-agent { color: #a5610c; background: #fdf1e1; }
-.lbMetric { min-width: 118px; padding: 10px 16px !important; text-align: left; }
-.lbValue { display: block; color: var(--re-ink); font-size: calc(17.5px * var(--type-scale, 1)); font-weight: 600; line-height: 1.2; }
+.lbMetric { min-width: 104px; padding: 14px 16px !important; text-align: center; }
+.lbValue { display: block; color: var(--re-ink); font-size: calc(18px * var(--type-scale, 1)); font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .lbValue i { margin-left: 1px; color: var(--re-faint); font-size: .78em; font-style: normal; font-weight: 500; }
-.lbBar { display: block; height: 6px; margin-top: 8px; overflow: hidden; border-radius: 99px; background: #efeef5; }
-.lbBar i { display: block; height: 100%; border-radius: inherit; background: color-mix(in srgb, var(--track) 48%, #fff); transform-origin: left; transition: width .45s cubic-bezier(.2, .7, .2, 1); animation: lbGrow .8s cubic-bezier(.2, .7, .2, 1) both; }
 .lbMetric.isSorted { background: color-mix(in srgb, var(--track) 6%, #fff) !important; }
-.lbMetric.isSorted .lbBar i { background: var(--track); }
 .lbMetric.isBest .lbValue { color: var(--track); font-weight: 750; }
 .lbRow.isGhost .lbValue, .lbRow.isGhost strong, .lbRow.isGhost .lbRank { color: var(--re-faint); }
-.lbRow.isGhost .methodLogo, .lbRow.isGhost .lbPill, .lbRow.isGhost .lbBar { opacity: .55; }
+.lbRow.isGhost .methodLogo, .lbRow.isGhost .lbPill { opacity: .55; }
 .lbRow.isOpen > td, .lbRow.isOpen > th { background: var(--track-wash); }
 .lbTable tbody tr:last-child > * { border-bottom: 0; }
 .lbFoot { margin: 0; padding: 14px 24px; color: var(--re-copy); font-size: calc(16px * var(--type-scale, 1)); border-top: 1px solid var(--re-line); background: #fbfbfd; }
-@keyframes lbGrow { from { transform: scaleX(0); } }
-@media (prefers-reduced-motion: reduce) { .lbBar i { transition: none; animation: none; } }
 
 .lbSceneRow td { padding: 0 !important; background: var(--track-wash); }
 .lbScenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px 22px; margin: 0; padding: 16px 20px 22px; list-style: none; }
 .lbScenes li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 2px 10px; }
 .lbScenes li > span:first-child { overflow: hidden; color: var(--re-ink); font-size: calc(16px * var(--type-scale, 1)); white-space: nowrap; text-overflow: ellipsis; }
 .lbScenes li b { color: var(--re-ink); font-size: calc(16.5px * var(--type-scale, 1)); font-weight: 650; }
-.lbScenes .lbBar { grid-column: 1 / -1; margin-top: 2px; background: #ffffffb3; }
 
 @media (max-width: 980px) { .lbTracks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) {

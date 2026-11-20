@@ -56,6 +56,7 @@
 .snowClimberLabel em { color: var(--track); font-style: normal; font-weight: 750; font-variant-numeric: tabular-nums; }
 .snowClimberLabel i { align-self: center; padding: 1px 4px; color: var(--track); font-size: calc(14px * var(--type-scale, 1)); font-style: normal; font-weight: 750; letter-spacing: .03em; text-shadow: none; border-radius: 4px; background: color-mix(in srgb, var(--track) 13%, #ffffff); }
 .snowClimberLabel.lead { font-weight: 720; }
+.snowClimberLabel .methodLogo { align-self: center; }
 
 /* whole view: the six capabilities as named cards at the arm tips */
 .snowTipLabel { display: inline-flex; align-items: center; gap: 10px; transform: translate(-50%, -50%); padding: 7px 14px 7px 7px; color: var(--snow-ink); font: inherit; text-align: left; white-space: nowrap; border: 1px solid #ffffff; border-radius: 16px; background: var(--snow-glass); box-shadow: 0 14px 34px -20px #1d1c2b80, 0 1px 0 #ffffff inset; backdrop-filter: blur(12px) saturate(1.3); pointer-events: auto; cursor: pointer; transition: transform .25s cubic-bezier(.2, .7, .2, 1), box-shadow .25s; }
